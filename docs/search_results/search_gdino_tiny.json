@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://arxiv.org/html/2303.05499v5",
+    "name": "Marrying DINO with Grounded Pre-Training for Open-Set",
+    "snippet": "Grounding DINO perform s well on this benchmark. With only O365 and GoldG for pre-train, Grounding DINO T outperforms DINO on few-shot and full-shot settings. Read more",
+    "host_name": "arxiv.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/tao/models/grounding_dino",
+    "name": "Grounding DINO - NGC Catalog - NVIDIA",
+    "snippet": "This model card contains pre-trained weights for the Grounding DINO object detection networks pretrained on the commercial dataset. The goal of this card is to ... Read more",
+    "host_name": "catalog.ngc.nvidia.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/idea-research/groundingdino",
+    "name": "IDEA-Research/GroundingDINO: [ECCV 2024] Official",
+    "snippet": "model can run on machines without GPUs . Grounding DINO Includes: a text backbone, an image backbone, a feature enhancer, a language-guided query selection, and ...",
+    "host_name": "github.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://visincept.com/en/blog/6",
+    "name": "Grounding DINO 1.6",
+    "snippet": "Jul 19, 2024 — As illustrated in Figure 1, Grounding DINO 1.6 achieves 55.4 AP, 57.7 AP, and 51.5 AP on the COCO, LVIS-minival split, and LVIS-val benchmarks . Read more",
+    "host_name": "visincept.com",
+    "rank": 3,
+    "date": "Jul 19, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S2215098625000837",
+    "name": "Grounding DINO and distillation-enhanced model for",
+    "snippet": "by HN Tran · 2025 · Cited by 7 — an inference speed of over 10 FPS on edge devices, higher inference speeds (221.13 FPS vs. 40 FPS for YOLOv7- Tiny ),",
+    "host_name": "www.sciencedirect.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://huggingface.co/docs/transformers/en/model_doc/grounding-dino",
+    "name": "Grounding DINO",
+    "snippet": "Apr 11, 2024 — Grounding DINO performs remarkably well on all three settings , including benchmarks on COCO, LVIS, ODinW, and RefCOCO/+/g.",
+    "host_name": "huggingface.co",
+    "rank": 5,
+    "date": "Apr 11, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://playground.roboflow.com/models/idea-research/grounding-dino",
+    "name": "Grounding DINO Vision Benchmarks & Latency",
+    "snippet": "Grounding DINO vision benchmark results: 36.1% on Detection, 0.8s avg response. On an NVIDIA V100, the small variant reaches ~74 FPS at standard resolutions.",
+    "host_name": "playground.roboflow.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://learnopencv.com/fine-tuning-grounding-dino",
+    "name": "Fine-Tuning Grounding DINO - Object Detection",
+    "snippet": "Jun 3, 2025 — The “ Tiny ” model uses Swin- Tiny as the vision backbone and ... benchmark numbers, speed , GPU memory, depth,. MiniCPM-o 4.5: A 9B ... Read more",
+    "host_name": "learnopencv.com",
+    "rank": 7,
+    "date": "Jun 3, 2025",
+    "favicon": ""
+  }
+]

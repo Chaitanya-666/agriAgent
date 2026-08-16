@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://datasetninja.com/plantdoc",
+    "name": "PlantDoc - Dataset Ninja",
+    "snippet": "A Dataset for Visual Plant Disease Detection is a dataset for an object detection task. It is used in the agricultural research. The dataset consists of 2482 ...",
+    "host_name": "datasetninja.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.kaggle.com/datasets/nirmalsankalana/plantdoc-dataset",
+    "name": "PlantDoc Classification dataset - Kaggle",
+    "snippet": "It's important to note that this dataset focuses on classification and does not include bounding boxes or other object recognition elements. files names has ...",
+    "host_name": "www.kaggle.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://blog.roboflow.com/introducing-an-improved-plantdoc-dataset-for-plant-disease-object-detection",
+    "name": "Improved PlantDoc Dataset for Plant Disease Object Detection",
+    "snippet": "Feb 25, 2026 · PlantDoc is a public dataset of 2,598 images spanning 13 plant species and 27 classes … plant disease classification and object detection.",
+    "host_name": "blog.roboflow.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.researchgate.net/publication/337531775_PlantDoc_A_Dataset_for_Visual_Plant_Disease_Detection",
+    "name": "PlantDoc: A Dataset for Visual Plant Disease Detection",
+    "snippet": "Our dataset contains 2,598 data points in total across 13 plant species and up to 17 classes of diseases, involving approximately 300 human hours of effort in ...",
+    "host_name": "www.researchgate.net",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/kruthi-sb/leaf_disease_detection",
+    "name": "Plant Disease Detection using PlantDoc and YOLOv5 · GitHub",
+    "snippet": "The dataset consists of 2482 images with 8595 labeled objects belonging to 29 different classes. Images in the PlantDoc dataset have bounding box annotations.",
+    "host_name": "github.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.nature.com/articles/s41598-025-14021-z",
+    "name": "YOLO-LeafNet: a robust deep learning framework for multispecies",
+    "snippet": "Aug 5, 2025 · In this work, a YOLO-LeafNet approach is proposed for detecting diseases from leaf images of four distinct species, namely, grape, bell pepper, ...",
+    "host_name": "www.nature.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://debuggercafe.com/plant-disease-detection-using-plantdoc",
+    "name": "Plant Disease Detection using the PlantDoc Dataset and PyTorch",
+    "snippet": "Jan 16, 2023 · Object detection can point out which parts or leaves of the plant are affected and with which disease.",
+    "host_name": "debuggercafe.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.academia.edu/figures/41153250/figure-3-an-image-with-bounding-boxes-and-its-cropped-leaves",
+    "name": "Figure 3 - from PlantDoc - Academia.edu",
+    "snippet": "PlantDoc: a dataset for visual plant disease detection. Our dataset contains 2,598 data points in total across 13 plant species and up to 17 classes of  ...",
+    "host_name": "www.academia.edu",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  }
+]

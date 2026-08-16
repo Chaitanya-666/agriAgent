@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6375952",
+    "name": "DeepWeeds: A Multiclass Weed Species Image Dataset for",
+    "snippet": "by A Olsen · 2019 · Cited by 659 — The DeepWeeds dataset consists of 17,509 labelled images of eight nationally significant weed species native to eight locations across northern Australia.",
+    "host_name": "pmc.ncbi.nlm.nih.gov",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/AlexOlsen/DeepWeeds",
+    "name": "DeepWeeds: A Multiclass Weed Species Image Dataset for",
+    "snippet": "The DeepWeeds dataset consists of 17,509 images capturing eight different weed species native to Australia in situ with neighbouring flora.",
+    "host_name": "github.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.kaggle.com/datasets/imsparsh/deepweeds",
+    "name": "DeepWeeds",
+    "snippet": "The DeepWeeds dataset consists of 17,509 unique 256x256 colour images in 9 classes . There are 15,007 training images and 2,501 test images. These images were ...",
+    "host_name": "www.kaggle.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S2589721725000492",
+    "name": "ADeepWeeD: An adaptive deep learning framework for",
+    "snippet": "by MG Rahman · 2025 · Cited by 13 — A standard weed species classification system consists of four main steps: image acquisition, image pre-processing, feature extraction, and weed classification ...",
+    "host_name": "www.sciencedirect.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.tensorflow.org/datasets/catalog/deep_weeds",
+    "name": "deep_weeds | TensorFlow Datasets",
+    "snippet": "Jun 1, 2024 — The DeepWeeds dataset consists of 17,509 images capturing eight different weed species native to Australia in situ with neighbouring flora.",
+    "host_name": "www.tensorflow.org",
+    "rank": 4,
+    "date": "Jun 1, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://arxiv.org/abs/1810.05726",
+    "name": "A Multiclass Weed Species Image Dataset for Deep Learning",
+    "snippet": "by A Olsen · 2018 · Cited by 659 — The DeepWeeds dataset consists of 17,509 labelled images of eight nationally significant weed species native to eight locations across northern ...",
+    "host_name": "arxiv.org",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://weed-ai.sydney.edu.au/datasets/71318619-87d3-458d-a01e-bb291143d341",
+    "name": "DeepWeeds Dataset - Weed-AI - The University of Sydney",
+    "snippet": "A multiclass weed species image dataset for deep learning at classification level . Photos of rangeland pasture classified for different weed species.",
+    "host_name": "weed-ai.sydney.edu.au",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://researchportal.murdoch.edu.au/view/pdfCoverPage?instCode=61MUN_INST&filePid=13155927310007891&download=true",
+    "name": "Image patch-based deep learning approach for crop and",
+    "snippet": "by ASM Hasan · 2023 · Cited by 52 — DeepWeeds dataset has inter-class similarity and intra-class dissimilarity problems, making the weed species recognition task more challenging.",
+    "host_name": "researchportal.murdoch.edu.au",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  }
+]

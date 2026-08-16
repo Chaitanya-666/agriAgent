@@ -1,0 +1,83 @@
+[
+  {
+    "url": "https://www.researchgate.net/publication/367131095_CROP_AND_WEED_SEGMENTATION_ON_GROUND-BASED_IMAGES_USING_DEEP_CONVOLUTIONAL_NEURAL_NETWORK",
+    "name": "crop and weed segmentation on ground-based images",
+    "snippet": "In this paper, the U -Net++ network, a state-of-the-art convolutional neural network ( CNN ) algorithm, was implemented for the semantic segmentation of weed ...",
+    "host_name": "www.researchgate.net",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://isprs-annals.copernicus.org/articles/X-4-W1-2022/195/2023/isprs-annals-X-4-W1-2022-195-2023.pdf",
+    "name": "CROP AND WEED SEGMENTATION ON GROUND-",
+    "snippet": "by H Fathipoor · 2023 · Cited by 34 — In this paper, the U - Net ++ network, a state-of-the-art convolutional neural network ( CNN ) algorithm, which has rarely been used in precision agriculture, was ... 6 pages",
+    "host_name": "isprs-annals.copernicus.org",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.nature.com/articles/s41598-025-31285-7",
+    "name": "Enhancing the weed segmentation in diverse crop fields",
+    "snippet": "by R Arumuga Arun · 2025 · Cited by 1 — This study uses deep learning models like SegNet5127, U - Net , RRUDC, UNet++, and DeepLabV3 +10 to evaluate the effectiveness of the proposed CAUC ...",
+    "host_name": "www.nature.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10886131",
+    "name": "Improving U-net network for semantic segmentation of corns",
+    "snippet": "by J Cui · 2024 · Cited by 35 — Comparative experiments with DeepLabv3+, PSANet, and Mask R- CNN on a weed dataset showed that the improved Swin- Unet model achieved optimal ...",
+    "host_name": "pmc.ncbi.nlm.nih.gov",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S2772375526001188",
+    "name": "Real-time deep learning segmentation for agricultural",
+    "snippet": "by J Joy · 2026 · Cited by 2 — This study aims to provide a systematic review of the recent use of segmentation models for real-time performance and their applicability in the weed management ...",
+    "host_name": "www.sciencedirect.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.agroengineering.org/jae/article/view/1741/1333",
+    "name": "Leveraging deep semantic segmentation for assisted weed",
+    "snippet": "by F Garibaldi-Márquez · 2025 · Cited by 14 — Through applying deep neural networks, semantic segmentation facilitates the accurate delineation of specific objects within agricultural images ...",
+    "host_name": "www.agroengineering.org",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://digitalcommons.unl.edu/cgi/viewcontent.cgi?article=1145&context=biosysengdiss",
+    "name": "Semantic Segmentation based deep learning approaches for",
+    "snippet": "by P Singh · 2022 · Cited by 7 — DL techniques using CNN have revolutionized computer vision tasks by creating state - classifiers were used to perform weed species recognition tasks on the ...",
+    "host_name": "digitalcommons.unl.edu",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2025.1647736/full",
+    "name": "DSC-DeepLabv3+: a lightweight semantic segmentation",
+    "snippet": "by H Fu · 2025 · Cited by 12 — To evaluate the proposed model, a corn– weed segmentation dataset was constructed. Experimental results demonstrate that DSC-DeepLabv3+ achieves an mIoU of 85.57 ...",
+    "host_name": "www.frontiersin.org",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.mdpi.com/2504-446X/7/10/624",
+    "name": "Deep Learning-Based Weed Detection Using UAV Images",
+    "snippet": "by TB Shahi · 2023 · Cited by 73 — DeepLab is a state-of-the-art deep learning model for semantic segmentation . It has evolved from DeepLabV1 to the latest DeepLabV3.",
+    "host_name": "www.mdpi.com",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  }
+]

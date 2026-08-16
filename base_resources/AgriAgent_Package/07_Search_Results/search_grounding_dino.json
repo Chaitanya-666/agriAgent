@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://github.com/idea-research/groundingdino",
+    "name": "IDEA-Research/GroundingDINO: [ECCV 2024] Official",
+    "snippet": "Official implementation of the paper . Capable Open-World Object Detection Model ! zero - shot 52.5 AP. We provide an example to evaluate Grounding DINO zero - shot ...",
+    "host_name": "github.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://arxiv.org/abs/2303.05499",
+    "name": "Marrying DINO with Grounded Pre-Training for Open-Set",
+    "snippet": "by S Liu · 2023 · Cited by 5920 — In this paper , we present an open-set object detector, called Grounding DINO , by marrying Transformer-based detector DINO with grounded pre- ... Read more",
+    "host_name": "arxiv.org",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://medium.com/mlearning-ai/zero-shot-object-detection-with-grounding-dino-aefe99b5a67d",
+    "name": "Zero-shot object detection with Grounding DINO",
+    "snippet": "Grounding DINO (published in this paper in March 2023) was to develop a strong system to detect arbitrary objects specified by human language ...",
+    "host_name": "medium.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://pub.towardsai.net/grounding-dino-achieving-sota-zero-shot-learning-object-detection-78388d6842ed",
+    "name": "Achieving SOTA Zero-Shot Learning Object Detection",
+    "snippet": "May 12, 2023 — The aim of zero - shot detectors is to disrupt the current norm by enabling the detection of novel objects without the need to retrain the model . Read more",
+    "host_name": "pub.towardsai.net",
+    "rank": 3,
+    "date": "May 12, 2023",
+    "favicon": ""
+  },
+  {
+    "url": "https://openreview.net/forum?id=DS5qRs0tQz",
+    "name": "Marrying DINO with Grounded Pre-Training for Open-Set",
+    "snippet": "by S Liu · Cited by 5920 — Paper proposes an open-set object detector, termed Grounding DINO . The design is a combination of Transformer-based detector DINO with grounded pre-training. Read more",
+    "host_name": "openreview.net",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S2666544125000012",
+    "name": "Optimizing zero-shot text-based segmentation of remote",
+    "snippet": "by M Diab · 2025 · Cited by 24 — Grounding DINO supports text prompts as inputs, which allows it to do semantic object detection , capturing the features specified in the input text prompt.",
+    "host_name": "www.sciencedirect.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://playground.roboflow.com/models/idea-research/grounding-dino",
+    "name": "Grounding DINO Vision Benchmarks & Latency",
+    "snippet": "Grounding DINO achieves strong zero - shot detection performance on COCO, LVIS, and ODinW benchmarks, and supports referring expression comprehension tasks.",
+    "host_name": "playground.roboflow.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://huggingface.co/docs/transformers/en/model_doc/grounding-dino",
+    "name": "Grounding DINO",
+    "snippet": "Apr 11, 2024 — In this paper , we present an open-set object detector, called Grounding DINO , by marrying Transformer-based detector DINO with grounded pre- ... Read more",
+    "host_name": "huggingface.co",
+    "rank": 7,
+    "date": "Apr 11, 2024",
+    "favicon": ""
+  }
+]

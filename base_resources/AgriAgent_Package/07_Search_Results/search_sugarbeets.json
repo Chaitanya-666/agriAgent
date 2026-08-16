@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://www.frontiersin.org/journals/plant-science/articles/10.3389/fpls.2023.1226329/full",
+    "name": "WeedNet-R: a sugar beet field weed detection algorithm",
+    "snippet": "by Z Guo · 2023 · Cited by 36 — WeedNet-R's average precision for weed and sugar beet is 85.70% and 98.89 %, respectively. WeedNet-R outperforms other sophisticated object detection",
+    "host_name": "www.frontiersin.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.ipb.uni-bonn.de/2018/10/2018-10-new-dataset-release-agricultural-sugar-beet-datasets-with-annotations/index.html",
+    "name": "2018-10: New Dataset Release: Agricultural Sugar Beet",
+    "snippet": "Oct 3, 2018 — We released 12340 labeled images containing pixel-wise annotations of sugar beets and weeds . we recorded data three times per week over 6 weeks ...",
+    "host_name": "www.ipb.uni-bonn.de",
+    "rank": 1,
+    "date": "Oct 3, 2018",
+    "favicon": ""
+  },
+  {
+    "url": "https://datasetninja.com/sugar-beets-2016",
+    "name": "Sugar Beets 2016 Dataset",
+    "snippet": "The dataset consists of 25429 images with 110084 labeled objects belonging to 2 different classes including sugar beet and weed . Images in the Sugar Beets 2016 ... Read more",
+    "host_name": "datasetninja.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10408303",
+    "name": "WeedNet-R: a sugar beet field weed detection algorithm",
+    "snippet": "by Z Guo · 2023 · Cited by 36 — WeedNet-R's average precision for weed and sugar beet is 85.70% and 98.89 %, respectively. WeedNet-R outperforms other sophisticated object detection algorithms",
+    "host_name": "pmc.ncbi.nlm.nih.gov",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://phenoroam.phenorob.de/geonetwork/srv/search?keyword=Sugar%20Beets",
+    "name": "Sugar Beets - Bonn - PhenoRoam - PhenoRob",
+    "snippet": "This dataset contains over 13,000 images captured by a UGV in Bonn 2016. We labelled all the images with pixel-wise semantic segmentation differenting crops ...",
+    "host_name": "phenoroam.phenorob.de",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.ipb.uni-bonn.de/pdfs/milioto17uavg.pdf",
+    "name": "real-time blob-wise sugar beets vs weeds classification for",
+    "snippet": "by A Milioto · Cited by 219 — University of Bonn , Germany. In this paper, we address the problem of detecting the sugar beet plants and weeds in the field based solely on ... 8 pages",
+    "host_name": "www.ipb.uni-bonn.de",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://repository.lincoln.ac.uk/articles/journal_contribution/ATT-NestedUnet_Sugar_Beet_and_Weed_Detection_Using_Semantic_Segmentation/25867600",
+    "name": "ATT-NestedUnet: Sugar Beet and Weed Detection Using",
+    "snippet": "by X Hu · Cited by 4 — The image dataset in this study was obtained from sugar beet and weed images collected at the University of Bonn , Germany. According to the experimental ... Read more",
+    "host_name": "repository.lincoln.ac.uk",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://pdfs.semanticscholar.org/754c/27095a8fe310a0c22c82b515536734086ae3.pdf",
+    "name": "REAL-TIME BLOB-WISE SUGAR BEETS VS WEEDS",
+    "snippet": "by A Milioto · Cited by 219 — University of Bonn , Germany. In this paper, we address the problem of detecting the sugar beet plants and weeds in the field based solely on image data. They ... 8 pages",
+    "host_name": "pdfs.semanticscholar.org",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  }
+]

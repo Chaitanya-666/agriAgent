@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://www.langchain.com/langgraph",
+    "name": "LangGraph: Agent Orchestration Framework for Reliable AI",
+    "snippet": "Learn the basics of LangGraph in this LangChain Academy Course. You'll learn about how to leverage state, memory, human-in-the-loop, and more for your agents. Read more",
+    "host_name": "www.langchain.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.langchain.com/blog/langgraph-multi-agent-workflows",
+    "name": "LangGraph: Multi-Agent Workflows",
+    "snippet": "Jan 23, 2024 — Build multi-agent AI workflows with LangGraph . Create specialized agents with unique prompts and tools, then connect them for better LLM ...",
+    "host_name": "www.langchain.com",
+    "rank": 1,
+    "date": "Jan 23, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.reddit.com/r/LangChain/comments/1onoufx/building_a_langchainlanggraph_multiagent",
+    "name": "Building a LangChain/LangGraph multi-agent orchestrator",
+    "snippet": "Hey everyone, I’m experimenting with LangGraph and to build a multi-agent system that runs locally with LangSmith tracing. I’m trying to figure out ...",
+    "host_name": "www.reddit.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://medium.com/@akankshasinha247/agent-orchestration-when-to-use-langchain-langgraph-autogen-or-build-an-agentic-rag-system-cc298f785ea4",
+    "name": "Agent Orchestration: When to Use LangChain, LangGraph",
+    "snippet": "LangGraph builds on LangChain with a graph-based orchestration framework . 2024 — Concepts like Agentic RAG and Multi-RAG Agents take form, ...",
+    "host_name": "medium.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.langchain.com/resources/ai-agent-frameworks",
+    "name": "The best AI agent frameworks in 2026",
+    "snippet": "LangGraph is a separate, lower-level orchestration framework for building stateful multi-agent systems that require loops, persistence, and cyclic reasoning. Read more",
+    "host_name": "www.langchain.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.ayautomate.com/blog/best-multi-agent-frameworks",
+    "name": "9 Best Multi-Agent Frameworks for Production in 2026",
+    "snippet": "Jun 19, 2026 — LangGraph is the orchestration framework from the LangChain team , and by 2026 it is the de facto standard for serious multi-agent systems.",
+    "host_name": "www.ayautomate.com",
+    "rank": 5,
+    "date": "Jun 19, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.emergentmind.com/topics/langgraph",
+    "name": "LangGraph: Modular LLM Agent Orchestration",
+    "snippet": "Sep 11, 2025 — LangGraph is a graph-based, agentic programming framework that orchestrates modular, stateful workflows among LLM agents. Read more",
+    "host_name": "www.emergentmind.com",
+    "rank": 6,
+    "date": "Sep 11, 2025",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.langchain.com/blog/how-and-when-to-build-multi-agent-systems",
+    "name": "How and when to build multi-agent systems",
+    "snippet": "Jun 16, 2025 — We prioritize this with LangGraph , which is a low-level orchestration framework with no hidden prompts, no enforced “cognitive architectures”. Read more",
+    "host_name": "www.langchain.com",
+    "rank": 7,
+    "date": "Jun 16, 2025",
+    "favicon": ""
+  }
+]

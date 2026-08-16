@@ -1,0 +1,35 @@
+applications:
+  weed_spraying:
+    id: 1
+    name: "Site-Specific Weed Spraying"
+    grounding_prompt: "weed. crop."
+    description: "Find all weeds and spare the crops"
+    classes: ["weed", "crop"]
+
+  disease_auditing:
+    id: 2
+    name: "Disease & Pest Lesion Auditing"
+    grounding_prompt: "diseased leaf. spot. lesion. yellow patch."
+    description: "Highlight diseased leaf regions"
+    classes: ["diseased_leaf", "spot", "lesion"]
+
+  yield_counting:
+    id: 3
+    name: "Yield Estimation / Fruit Counting"
+    grounding_prompt: "wheat head."
+    description: "Count the wheat heads"
+    classes: ["wheat_head"]
+
+  canopy_coverage:
+    id: 4
+    name: "Canopy Coverage & Stand Count"
+    grounding_prompt: "crop. bare soil. gap."
+    description: "Measure crop coverage vs. bare soil"
+    classes: ["crop", "bare_soil"]
+
+  nutrient_stress:
+    id: 5
+    name: "Nutrient Stress (Chlorosis) Mapping"
+    grounding_prompt: "yellow leaf. stressed leaf. chlorosis."
+    description: "Segment yellowing/stressed leaves"
+    classes: ["yellow_leaf", "stressed_leaf"]

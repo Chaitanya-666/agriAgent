@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://docs.ultralytics.com/models/sam-2",
+    "name": "SAM 2: Segment Anything Model 2",
+    "snippet": "Jul 30, 2024 — This comparison demonstrates the substantial differences in model sizes and speeds between SAM variants and YOLO segmentation models. While SAM ... Read more",
+    "host_name": "docs.ultralytics.com",
+    "rank": 0,
+    "date": "Jul 30, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://arxiv.org/html/2408.00714v1",
+    "name": "SAM 2: Segment Anything in Images and Videos",
+    "snippet": "In image segmentation, our model is more accurate and 6\\x faster than the Segment Anything Model ( SAM ). We compare SAM 2 to SAM and HQ- SAM with different model ...",
+    "host_name": "arxiv.org",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://learnopencv.com/sam-2",
+    "name": "SAM 2 – Promptable Segmentation for Images and Videos",
+    "snippet": "Jul 30, 2024 — SAM 2 Tiny, Small, Base Plus, and Large ; Tiny being the smallest and fastest with 38.9 million parameters, and running at 47.2 FPS on an A100 ...",
+    "host_name": "learnopencv.com",
+    "rank": 2,
+    "date": "Jul 30, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/facebookresearch/sam2",
+    "name": "facebookresearch/sam2: The repository provides code for",
+    "snippet": "Dec 11, 2024 — SAM 2 supports video inference . Speed measured on an A100 with torch 2.5.1, cuda 12.4 . also provide (a smaller) speed-up",
+    "host_name": "github.com",
+    "rank": 3,
+    "date": "Dec 11, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://openwhispr.com/blog/whisper-model-sizes-explained",
+    "name": "Whisper Model Sizes: Complete Guide",
+    "snippet": "Feb 17, 2026 — Every Whisper model size compared : parameters, speed , Tiny vs Base vs Small . The tiny model is the smallest and fastest Whisper variant. Speed ...",
+    "host_name": "openwhispr.com",
+    "rank": 4,
+    "date": "Feb 17, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S3050577125000325",
+    "name": "Improving medical image segmentation with SAM2",
+    "snippet": "by E Chukwujindu · 2025 · Cited by 7 — SAM - 2 hiera- base plus models achieve inference speeds of approximately 30–40 frames per second on an A100 GPU, with memory usage of 10–20 GB per GPU",
+    "host_name": "www.sciencedirect.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.reddit.com/r/LocalLLaMA/comments/1ftlz6a/the_insanity_of_whisper_versions",
+    "name": "The insanity of whisper versions : r/LocalLLaMA",
+    "snippet": "There's whisper. Then there's base , small , tiny , large , turbo. v1 v2 v3. And English-only versions. Maybe regressions due to Hindi. Read more",
+    "host_name": "www.reddit.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://ai.meta.com/blog/segment-anything-model-3",
+    "name": "SAM 3.1: Faster and More Accessible Real-Time Video",
+    "snippet": "Mar 27, 2026 — This excellent performance comes with fast inference — SAM 3 runs in 30 milliseconds for a single image with more than 100 detected objects on ... Read more",
+    "host_name": "ai.meta.com",
+    "rank": 7,
+    "date": "Mar 27, 2026",
+    "favicon": ""
+  }
+]

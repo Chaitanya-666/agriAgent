@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S0950705124002211",
+    "name": "Transfer and zero-shot learning for scalable weed",
+    "snippet": "by N Belissent · 2024 · Cited by 55 — Zero-shot learning approach built to detect unseen weed classes at testing . aim to recognize and locate weed species within a crop field, using precision ...",
+    "host_name": "www.sciencedirect.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC12827514",
+    "name": "Deep learning–based approaches for weed detection in crops",
+    "snippet": "by H Zhao · 2026 · Cited by 14 — Deep learning-based weed classification models can automatically learn discriminative features from images through end-to-end training,",
+    "host_name": "pmc.ncbi.nlm.nih.gov",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.ipb.uni-bonn.de/pdfs/chong2025iros.pdf",
+    "name": "Zero-Shot Semantic Segmentation for Robots in Agriculture",
+    "snippet": "Our experiments show that our zero-shot anomaly segmentation method can perform crop-weed segmentation on several datasets from real crop fields. 9 pages",
+    "host_name": "www.ipb.uni-bonn.de",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.mdpi.com/2072-4292/16/23/4394",
+    "name": "Deep Learning for Weed Detection and Segmentation in",
+    "snippet": "by JAOS Silva · 2024 · Cited by 44 — This study presents the application of deep learning techniques to detect and segment weeds in agricultural crop s by applying models with different ...",
+    "host_name": "www.mdpi.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://link.springer.com/article/10.1007/s11119-023-10073-1",
+    "name": "Deep learning techniques for in-crop weed recognition in",
+    "snippet": "by K Hu · 2024 · Cited by 89 — This paper reviews recent developments of deep learning techniques in the field of image-based weed detection . precision farming . Single shot ...",
+    "host_name": "link.springer.com",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.researchgate.net/publication/386133780_Deep_Learning_for_Weed_Detection_and_Segmentation_in_Agricultural_Crops_Using_Images_Captured_by_an_Unmanned_Aerial_Vehicle",
+    "name": "Deep Learning for Weed Detection and Segmentation in",
+    "snippet": "Nov 7, 2024 — This study presents the application of deep learning techniques to detect and segment weeds in agricultural crops by applying models with ...",
+    "host_name": "www.researchgate.net",
+    "rank": 5,
+    "date": "Nov 7, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://isprs-annals.copernicus.org/articles/X-4-W1-2022/195/2023/isprs-annals-X-4-W1-2022-195-2023.pdf",
+    "name": "CROP AND WEED SEGMENTATION ON GROUND-",
+    "snippet": "by H Fathipoor · 2023 · Cited by 34 — deep learning algorithms have increasingly gained attention for crop and weed segmentation in agricultural fields. gmentation accuracy of 96.12% was obtained",
+    "host_name": "isprs-annals.copernicus.org",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://mediatum.ub.tum.de/doc/1773274/1773274.pdf",
+    "name": "Deep Learning-based Weed Detection in Agricultural Images",
+    "snippet": "Sep 18, 2022 — They enhance plant breeding and Precision Farming through fine-scale sensing and actuation [63], which significantly reduces labor input.",
+    "host_name": "mediatum.ub.tum.de",
+    "rank": 7,
+    "date": "Sep 18, 2022",
+    "favicon": ""
+  }
+]

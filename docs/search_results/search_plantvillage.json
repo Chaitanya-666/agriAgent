@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://www.kaggle.com/datasets/emmarex/plantdisease",
+    "name": "PlantVillage Dataset",
+    "snippet": "Dataset of diseased plant leaf images and corresponding labels. This dataset was created for use in my Plant Disease detection System. Plant Disease ...",
+    "host_name": "www.kaggle.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/spmohanty/plantvillage-dataset",
+    "name": "spMohanty/PlantVillage-Dataset: Dataset of diseased plant",
+    "snippet": "The PlantVillage Dataset is an open access repository of 54,306 images of healthy and diseased plant leave s, collected to advance research in automated plant ...",
+    "host_name": "github.com",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.openml.org/d/44286",
+    "name": "Meta-Album Plant Village Dataset (Mini)",
+    "snippet": "This collection covers 26 plant diseases and 12 healthy plants. The leaves are removed from the plant and placed on gray or black background, in various ... Read more",
+    "host_name": "www.openml.org",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11176340",
+    "name": "Robust diagnosis and meta visualizations of plant diseases",
+    "snippet": "by S Natarajan · 2024 · Cited by 63 — This paper presents the development of a graph-based deep learning model that enables accurate and rapid diagnosis of plant diseases . A dataset preparation ...",
+    "host_name": "pmc.ncbi.nlm.nih.gov",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.researchgate.net/figure/Sample-images-from-PlantVillage-dataset-For-the-details-of-different-classes-check_fig2_348032743",
+    "name": "Sample images from PlantVillage dataset. For the details of",
+    "snippet": "Accurate and timely identification of plant diseases along with their severity is critical for effective crop management and minimizing agricultural losses. Read more",
+    "host_name": "www.researchgate.net",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://ieee-dataport.org/documents/plantvillage-plant-disease-classification-dataset",
+    "name": "PlantVillage Plant Disease Classification Dataset",
+    "snippet": "Feb 5, 2026 — It includes more than 54,000 RGB pictures of healthy and diseased plant leaves . The dataset consists of 14 crop species and 38 different ...",
+    "host_name": "ieee-dataport.org",
+    "rank": 5,
+    "date": "Feb 5, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://medium.com/data-science/uncovering-bias-in-the-plantvillage-dataset-7ac564334526",
+    "name": "Uncovering Bias in the PlantVillage Dataset",
+    "snippet": "The PlantVillage dataset contains 54,305 single leaf images from 14 crop species (Figure 1). There are 38 classes named as species_disease or ... Read more",
+    "host_name": "medium.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.tensorflow.org/datasets/catalog/plant_village",
+    "name": "plant_village | TensorFlow Datasets",
+    "snippet": "Jun 1, 2024 — The PlantVillage dataset consists of 54303 healthy and unhealthy leaf images divided into 38 categories by species and disease .",
+    "host_name": "www.tensorflow.org",
+    "rank": 7,
+    "date": "Jun 1, 2024",
+    "favicon": ""
+  }
+]

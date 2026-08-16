@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://huggingface.co/blog/clipseg-zero-shot",
+    "name": "Zero-shot image segmentation with CLIPSeg",
+    "snippet": "Dec 21, 2022 — This guide shows how you can use CLIPSeg , a zero - shot image segmentation model , using 🤗 transformers . CLIPSeg creates rough segmentation masks",
+    "host_name": "huggingface.co",
+    "rank": 0,
+    "date": "Dec 21, 2022",
+    "favicon": ""
+  },
+  {
+    "url": "https://cs231n.stanford.edu/2025/papers/text_file_840580677-cs231n_final_report_yundam_ko_submitted.pdf",
+    "name": "Zero-Shot vs. Few-Shot CLIPSeg: Efficient Urban Feature",
+    "snippet": "This study aims to address this challenge by investigat- ing the performance of vision models under limited-label scenarios, specifically comparing zero - shot ... 9 pages",
+    "host_name": "cs231n.stanford.edu",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.width.ai/post/what-is-clipseg",
+    "name": "What is CLIPSeg & how we build optimization pipelines for",
+    "snippet": "Aug 21, 2023 — In this article, we look at a segmentation model called CLIPSeg that is built for such text-guided tasks and integration with LLMs as an agent.",
+    "host_name": "www.width.ai",
+    "rank": 2,
+    "date": "Aug 21, 2023",
+    "favicon": ""
+  },
+  {
+    "url": "https://ipolcore.ipol.im/demo/clientApp/demo.html?id=77777000424",
+    "name": "Comparing SAM and CLIPSeg for zero-shot object",
+    "snippet": "This demo allows you to test and compare two approaches for zero-shot object segmentation, CLIPSeg and Segment Anything Model (SAM).",
+    "host_name": "ipolcore.ipol.im",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://arxiv.org/abs/2112.10003",
+    "name": "Image Segmentation Using Text and Image Prompts",
+    "snippet": "by T Lüddecke · 2021 · Cited by 1030 — zero-shot segmentation and. We build upon the CLIP model as a backbone transformer-based decoder that enables dense prediction. CVPR 2022 ...",
+    "host_name": "arxiv.org",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://medium.com/@ntampakisnik/how-to-segment-images-with-zero-data-a-k-a-zero-shot-segmentation-f4ae53acf46d",
+    "name": "How to segment images with zero data (a.k.a. Zero-Shot",
+    "snippet": "CLIPSeg is a model that uses CLIP model . Zero-Shot image segmentation is performed by incorporating a Transformer-based decoder into the pre- ...",
+    "host_name": "medium.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.emergentmind.com/topics/clipseg",
+    "name": "CLIPSeg: Language-Guided Segmentation",
+    "snippet": "Jan 7, 2026 — CLIPSeg extends CLIP to pixel-level segmentation using prompt-based language and visual cues, supporting zero- and few-shot segmentation ...",
+    "host_name": "www.emergentmind.com",
+    "rank": 6,
+    "date": "Jan 7, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.scribd.com/document/633554920/Luddecke-Image-Segmentation-Using-Text-and-Image-Prompts-CVPR-2022-paper-pdf",
+    "name": "CLIPSeg: Text-Driven Image Segmentation | PDF",
+    "snippet": "CLIPSeg handles zero-shot segmentation by predicting binary segmentation maps for novel categories without explicit training on those particular categories.",
+    "host_name": "www.scribd.com",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  }
+]

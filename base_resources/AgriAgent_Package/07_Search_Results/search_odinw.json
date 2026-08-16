@@ -1,0 +1,74 @@
+[
+  {
+    "url": "https://arxiv.org/html/2401.02361v2",
+    "name": "An Open and Comprehensive Pipeline for Unified Object",
+    "snippet": "ODinW (Object Detection in the Wild) benchmark represents a more rigorous benchmark designed to assess model performance within real-world contexts. It ...",
+    "host_name": "arxiv.org",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://eval.ai/web/challenges/challenge-page/1839/overview",
+    "name": "Object Detection in the Wild (ODinW)",
+    "snippet": "This ODinW Challenge consists of 35 free public Object Detection datasets , crowd-sourced on roboflow.com. For more details about the challenge submission format ... Read more",
+    "host_name": "eval.ai",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/idea-research/groundingdino",
+    "name": "IDEA-Research/GroundingDINO: [ECCV 2024] Official",
+    "snippet": "Grounding DINO 1.5 is released now, which is IDEA Research's Most Capable Open-World Object Detection Model! and basic object detection prompt engineering.  ...",
+    "host_name": "github.com",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://openaccess.thecvf.com/content/CVPR2026/papers/Huang_Synthetic_Object_Compositions_for_Scalable_and_Accurate_Learning_in_Detection_CVPR_2026_paper.pdf",
+    "name": "Synthetic Object Compositions for Scalable and Accurate",
+    "snippet": "by W Huang · 2026 — To study the efficacy of SOC data on open-vocabulary object detection , we use MM- Grounding - DINO [22], a strong open- vocabulary detector and visual grounding ... Read more 11 pages",
+    "host_name": "openaccess.thecvf.com",
+    "rank": 3,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.ecva.net/papers/eccv_2024/papers_ECCV/html/6319_ECCV_2024_paper.php",
+    "name": "Marrying DINO with Grounded Pre-Training for Open-Set",
+    "snippet": "Grounding DINO achieves a 52.5 AP on the COCO zero-shot1 detection benchmark . It sets a new record on the ODinW zero-shot benchmark with a mean 26.1 AP.",
+    "host_name": "www.ecva.net",
+    "rank": 4,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://openreview.net/forum?id=DS5qRs0tQz",
+    "name": "Marrying DINO with Grounded Pre-Training for Open-Set",
+    "snippet": "by S Liu · Cited by 5920 — Grounding DINO performs remarkably well on all three settings, including benchmarks on COCO, LVIS, ODinW , and RefCOCO/+/g. Grounding DINO achieves a 52.5 AP on ... Read more",
+    "host_name": "openreview.net",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://huggingface.co/papers?q=Grounding%20DINO",
+    "name": "Daily Papers",
+    "snippet": "Grounding DINO performs remarkably well on all three settings, including benchmarks on COCO, LVIS, ODinW , and RefCOCO/+/g. Grounding DINO achieves a 52.5 AP on ... Read more",
+    "host_name": "huggingface.co",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/0e3af444e7d82d29871804de476d1fbe-Paper-Conference.pdf",
+    "name": "Multi-modal Queried Object Detection in the Wild",
+    "snippet": "by Y Xu · 2023 · Cited by 80 — It collects more than. 35 datasets for evaluation. There are two commonly used versions of the ODinW benchmark , i.e.,. ODinW -13 and ODinW -35, where ODinW -13 is ... Read more 18 pages",
+    "host_name": "proceedings.neurips.cc",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  }
+]

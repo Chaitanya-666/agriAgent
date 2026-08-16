@@ -1,0 +1,83 @@
+[
+  {
+    "url": "https://cvpr.thecvf.com/virtual/2024/poster/30009",
+    "name": "YOLO-World: Real-Time Open-Vocabulary Object Detection",
+    "snippet": "GLIP [24] presents a pre- training framework for open - vocabulary detection based on phrase grounding and evaluates in a zero - shot setting. Grounding DINO [30] ... Read more",
+    "host_name": "cvpr.thecvf.com",
+    "rank": 0,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://arxiv.org/html/2307.09220v2",
+    "name": "A Survey on Open-Vocabulary Detection and Segmentation",
+    "snippet": "In this survey, we provide a comprehensive review on recent developments of OVD and OVS . Open-Vocabulary, Zero-Shot Learning, Object Detection, Image ...",
+    "host_name": "arxiv.org",
+    "rank": 1,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2024/file/e1fcd183ab33714a8464e4e9a20ac710-Paper-Conference.pdf",
+    "name": "Open-Vocabulary Object Detection via Language Hierarchy",
+    "snippet": "This work strives for exploiting weakly-supervised object detection (WSOD) to learn generalizable detectors by addressing the image-level label mismatch issue. 28 pages",
+    "host_name": "proceedings.neurips.cc",
+    "rank": 2,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://github.com/seanzhuh/Awesome-Open-Vocabulary-Detection-and-Segmentation",
+    "name": "A Survey on Open-Vocabulary Detection and",
+    "snippet": "Jun 5, 2024 — In this survey, we cover two settings ( zero - shot and open - vocabulary ) and six tasks ( object detection , semantic/instance/panoptic segmentation, ... Read more",
+    "host_name": "github.com",
+    "rank": 3,
+    "date": "Jun 5, 2024",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.researchgate.net/publication/400340268_OOVDet_Low-Density_Prior_Learning_for_Zero-Shot_Out-of-Vocabulary_Object_Detection",
+    "name": "OOVDet: Low-Density Prior Learning for Zero-Shot Out-of-",
+    "snippet": "May 8, 2026 — Zero - shot out-of- vocabulary detection (ZS-OOVD) aims to accurately recognize objects of in- vocabulary (IV) categories provided at zero - shot ... Read more",
+    "host_name": "www.researchgate.net",
+    "rank": 4,
+    "date": "May 8, 2026",
+    "favicon": ""
+  },
+  {
+    "url": "https://link.springer.com/article/10.1007/s11042-026-21443-y",
+    "name": "Open-vocabulary models for object detection and",
+    "snippet": "by T Yemelianenko · 2026 — This model demonstrates high accuracy of open - vocabulary object detection on natural images with real-time inference, it achieves 35.4 mAP on ... Read more",
+    "host_name": "link.springer.com",
+    "rank": 5,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.sciencedirect.com/science/article/pii/S0924271625000061",
+    "name": "Learning transferable land cover semantics for open",
+    "snippet": "by V Zermatten · 2025 · Cited by 29 — Open vocabulary recognition , TACOSS is designed as an open vocabulary semantic segmentation (OVSS) model for land cover mapping … zero - shot transferred to SS.  ...",
+    "host_name": "www.sciencedirect.com",
+    "rank": 6,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://www.frontiersin.org/journals/sustainable-food-systems/articles/10.3389/fsufs.2022.1039299/full",
+    "name": "Object detection and classification using few-shot learning",
+    "snippet": "by N Ragu · 2023 · Cited by 30 — These include object detection and classification such as plants, leaves, weeds, fruits as well as animals and pests in the agricultural domain. Read more",
+    "host_name": "www.frontiersin.org",
+    "rank": 7,
+    "date": "",
+    "favicon": ""
+  },
+  {
+    "url": "https://proceedings.mlr.press/v265/sinhamahapatra25a.html",
+    "name": "Zero-Shot Open-Vocabulary OOD Object Detection and",
+    "snippet": "by P Sinhamahapatra · 2025 · Cited by 7 — In this work, we propose an automated framework zPROD, for zero-shot promptable open vocabulary OOD object detection , segmentation, and ... Read more",
+    "host_name": "proceedings.mlr.press",
+    "rank": 8,
+    "date": "",
+    "favicon": ""
+  }
+]
