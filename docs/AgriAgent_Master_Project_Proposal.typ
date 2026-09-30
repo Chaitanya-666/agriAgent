@@ -218,9 +218,9 @@ To prove true zero-shot cross-domain generalization, the project evaluates model
 
 To ensure absolute academic fairness, balanced intellectual rigor, and complete defensibility during the university viva voce, the project is structured into four distinct, equally weighted engineering tracks. Every track involves substantial machine learning, research, or advanced systems design.
 
-#callout("Policy for Role Finalization", [
-  *Status:* Track 1 is locked by project author Chaitanya Shinde. Tracks 2, 3, and 4 represent balanced 25% workloads open for immediate review and assignment among Amit Ingle, Sahil Chavan, and Sumant Vetal. If no grievances or counter-proposals are raised by tonight, these four tracks stand as the official team division.
-], bg: locked-bg, stroke-col: locked-stroke)
+#callout("Official Role Confirmation & Final Team Allocation", [
+  *Status:* Unanimously Confirmed & Locked. All four team members have formally accepted and locked their designated engineering tracks. Chaitanya Shinde leads Core AI & Vision Systems, Sumant Vetal leads Multimodal VLM & Agronomy Intelligence, Sahil Chavan leads Data Science & Empirical Benchmarking, and Amit Ingle leads Geospatial Systems & Full-Stack Deployment.
+], bg: box-bg, stroke-col: box-stroke)
 
 #v(0.4em)
 
@@ -256,7 +256,7 @@ To ensure absolute academic fairness, balanced intellectual rigor, and complete 
 
   [
     *Track 2: Multimodal VLM & Agronomy Intelligence* \
-    #text(style: "italic", fill: rgb("#555555"))[Candidate: Amit Ingle]
+    #text(weight: "bold", fill: brand-green)[LOCKED: Sumant Vetal]
   ],
   [
     • Vision-Language Models (Qwen2.5-VL / Florence-2) \
@@ -276,7 +276,7 @@ To ensure absolute academic fairness, balanced intellectual rigor, and complete 
 
   [
     *Track 3: Data Science & Empirical Benchmarking* \
-    #text(style: "italic", fill: rgb("#555555"))[Candidate: Sahil Chavan]
+    #text(weight: "bold", fill: brand-green)[LOCKED: Sahil Chavan]
   ],
   [
     • Dataset acquisition (Kaggle Cotton, SugarBeets) \
@@ -296,7 +296,7 @@ To ensure absolute academic fairness, balanced intellectual rigor, and complete 
 
   [
     *Track 4: Geospatial Systems & Full-Stack Deployment* \
-    #text(style: "italic", fill: rgb("#555555"))[Candidate: Sumant Vetal]
+    #text(weight: "bold", fill: brand-green)[LOCKED: Amit Ingle]
   ],
   [
     • Production Streamlit Dashboard (`app/app.py`) \
@@ -354,7 +354,7 @@ To eliminate this vulnerability, *AgriAgent is architected to be 100% self-suffi
 
   [
     *Track 2: Multimodal VLM & RAG* \
-    #text(style: "italic", fill: rgb("#555555"))[Candidate: Amit Ingle]
+    #text(weight: "bold", fill: brand-green)[Sumant Vetal]
   ],
   [
     • Standard Laptop (8 GB RAM) \
@@ -372,7 +372,7 @@ To eliminate this vulnerability, *AgriAgent is architected to be 100% self-suffi
 
   [
     *Track 3: Data & Benchmarking* \
-    #text(style: "italic", fill: rgb("#555555"))[Candidate: Sahil Chavan]
+    #text(weight: "bold", fill: brand-green)[Sahil Chavan]
   ],
   [
     • Standard Laptop (8 GB RAM) \
@@ -390,7 +390,7 @@ To eliminate this vulnerability, *AgriAgent is architected to be 100% self-suffi
 
   [
     *Track 4: Geospatial & UI* \
-    #text(style: "italic", fill: rgb("#555555"))[Candidate: Sumant Vetal]
+    #text(weight: "bold", fill: brand-green)[Amit Ingle]
   ],
   [
     • Any basic laptop (Windows / Mac / Linux) \
@@ -434,7 +434,7 @@ To eliminate this vulnerability, *AgriAgent is architected to be 100% self-suffi
     • *UI Shell:* Construct Streamlit layout (`app/app.py`) with upload widget and mock visualizer. \
     *Milestone 1 (Tuesday Oct 6/7):* Working prototype progress demo for Prof. V. D. Dhore.
   ],
-  [All 4 Members \ (Chaitanya, Amit, \ Sahil, Sumant)],
+  [All 4 Members \ (Chaitanya, Sumant, \ Sahil, Amit)],
 
   [*Week 2* \ (Oct 8 – Oct 15)],
   [
@@ -444,7 +444,7 @@ To eliminate this vulnerability, *AgriAgent is architected to be 100% self-suffi
     • *Agronomy Knowledge Base:* Ingest essential ICAR cotton protection guidelines into ChromaDB. \
     *Milestone 2 (Oct 15):* Automated CLI pipeline running zero-shot prompt to mask generation.
   ],
-  [Chaitanya (AI/State) \ Amit (VLM/RAG)],
+  [Chaitanya (AI/State) \ Sumant (VLM/RAG)],
 
   [*Week 3* \ (Oct 16 – Oct 22)],
   [
@@ -454,7 +454,7 @@ To eliminate this vulnerability, *AgriAgent is architected to be 100% self-suffi
     • *Geospatial Engine:* Generate GPS coordinates, GeoJSON files, and drone spray route plots. \
     *Milestone 3 (Oct 22):* Full-stack interactive web application running live with 70%+ savings proof.
   ],
-  [Chaitanya (Refine) \ Sahil (Benchmarking) \ Sumant (UI & Maps)],
+  [Chaitanya (Refine) \ Sahil (Benchmarking) \ Amit (UI & Maps)],
 
   [*Week 4* \ (Oct 23 – Oct 31)],
   [
