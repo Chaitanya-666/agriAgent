@@ -197,10 +197,23 @@ AgriAgent/
 │   └── outputs/                       # Exported spray maps and prescription PDFs
 │
 └── docs/                              # Academic Specifications & Publications
-    ├── AgriAgent_Master_Project_Proposal.pdf # 6-page compiled formal monograph
+    ├── AgriAgent_Master_Project_Proposal.pdf # 7-page compiled formal monograph
     ├── AgriAgent_Master_Project_Proposal.typ # Typst publication source code
     └── Qwen_Dossier/                  # Feasibility dossiers and research catalogs
 ```
+
+---
+
+## 📅 Compressed 4-Week Sprint Roadmap (October 2026 Evaluation)
+
+To achieve completion by the end of October 2026, the 16-week timeline is compressed into a **30-day parallel execution sprint**:
+
+| Week | Date Window | Core Engineering Sprints & Deliverables | Primary Leads |
+| :---: | :---: | :--- | :--- |
+| **Week 1** | **Oct 1 – Oct 7** | • Patch `src/state.py` schema with typed artifacts.<br>• Run Grounding DINO + SAM 2 Colab verification on 5 cotton images.<br>• Stage 50-image Kaggle Indian Cotton & SugarBeets test set.<br>• Construct base Streamlit UI shell with dummy upload & sliders.<br>**Milestone 1 (Tuesday Oct 6/7):** Working prototype demo for Prof. V. D. Dhore. | All 4 Members |
+| **Week 2** | **Oct 8 – Oct 15** | • Implement FP16 model wrappers (`grounding_dino.py`, `sam2_wrapper.py`).<br>• Assemble LangGraph Orchestrator pipeline with Clean Slate finalizers.<br>• Implement System-1 fast routing (<40ms) & safety guardrails.<br>• Ingest essential ICAR cotton agronomy guides into ChromaDB.<br>**Milestone 2 (Oct 15):** End-to-end CLI prompt-to-mask execution. | Chaitanya (AI/State)<br>Amit (VLM/RAG) |
+| **Week 3** | **Oct 16 – Oct 22** | • Implement heuristic IoU error centroid refinement loop (`refinement.py`).<br>• Run quantitative benchmark on 50–100 images (mIoU, Dice, Herbicide savings %).<br>• Connect live vision backend to Streamlit UI with real-time mask overlay.<br>• Generate geospatial spray maps (GeoJSON & GPS drone coordinates).<br>**Milestone 3 (Oct 22):** Live interactive web application demo with >70% savings. | Chaitanya (Refine)<br>Sahil (Benchmark)<br>Sumant (UI & Maps) |
+| **Week 4** | **Oct 23 – Oct 31** | • Compute bootstrapped 95% confidence intervals & paired t-test tables.<br>• Compile final B.Tech Project Report / Black Book monograph.<br>• Record high-definition video walkthrough & prepare viva defense slides.<br>• Final code freeze, repository tagging (`v1.0.0`), and viva rehearsal.<br>**Milestone 4 (Oct 31):** Final project submission, Black Book delivery & viva defense ready. | Sahil (Stats/Tables)<br>All Members (Thesis & Viva) |
 
 ---
 
@@ -238,4 +251,5 @@ streamlit run app/app.py
 
 * **Target Academic Venue:** 7th International Agriculture-Vision Workshop (CVPR 2026) / MDPI AgriEngineering.
 * **Key Milestone:** Tuesday Progress Presentation with Project Supervisor **Prof. V. D. Dhore**, VJTI Mumbai.
+
 

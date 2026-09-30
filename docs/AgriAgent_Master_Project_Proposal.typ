@@ -315,56 +315,156 @@ To ensure absolute academic fairness, balanced intellectual rigor, and complete 
   ]
 )
 
-#section-heading("7. 16-Week Semester Implementation Roadmap")
+#v(0.6em)
+#sub-heading("6.1 Hardware Feasibility & Local Environment Requirements by Role")
+
+A major failure mode in undergraduate engineering projects is unverified dependency on institutional lab servers (e.g., college SSH access). In practice, campus servers frequently suffer from strict firewall port restrictions, unannounced maintenance reboots, outdated CUDA toolchains (incompatible with PyTorch 2.4+ and SAM 2), and resource contention among multiple student batches.
+
+To eliminate this vulnerability, *AgriAgent is architected to be 100% self-sufficient on basic student laptops and zero-cost cloud tiers*. Not a single team member requires a high-end gaming laptop or local GPU to complete their deliverables:
+
+#v(0.3em)
 
 #table(
-  columns: (1.5fr, 3.5fr, 1.5fr),
+  columns: (1.3fr, 1.8fr, 1.8fr, 1.1fr),
+  fill: (col, row) => if row == 0 { brand-dark } else if col == 0 and row == 1 { locked-bg } else { none },
+  stroke: 0.5pt + rgb("#cccccc"),
+  align: (left, left, left, center),
+  [#text(weight: "bold", fill: white, font: "Inter")[Track & Assignee]],
+  [#text(weight: "bold", fill: white, font: "Inter")[Minimum Local Machine Specs]],
+  [#text(weight: "bold", fill: white, font: "Inter")[Free Cloud / Engine Tier]],
+  [#text(weight: "bold", fill: white, font: "Inter")[Cost & Lab Dependency]],
+
+  [
+    *Track 1: Core AI & Vision* \
+    #text(weight: "bold", fill: brand-green)[Chaitanya Shinde]
+  ],
+  [
+    • Standard Laptop (8–16 GB RAM) \
+    • Core i3/i5 or Ryzen 3/5 CPU \
+    • No local GPU required (CPU fallback)
+  ],
+  [
+    • Google Colab Free Tier (T4 GPU, 16 GB VRAM) \
+    • Combined FP16 footprint is only $approx 430"MB"$ \
+    • Gives $37 times$ safety headroom on free T4
+  ],
+  [
+    *Zero Cost (Free)* \ Zero Lab Dependency
+  ],
+
+  [
+    *Track 2: Multimodal VLM & RAG* \
+    #text(style: "italic", fill: rgb("#555555"))[Candidate: Amit Ingle]
+  ],
+  [
+    • Standard Laptop (8 GB RAM) \
+    • $< 1"GB"$ free disk space \
+    • ChromaDB vector store runs 100% on CPU
+  ],
+  [
+    • Groq API Free Tier (30 req/min, 0% local GPU) \
+    • HuggingFace Inference API for embeddings \
+    • Google Colab T4 for optional local VLM tests
+  ],
+  [
+    *Zero Cost (Free)* \ Zero Lab Dependency
+  ],
+
+  [
+    *Track 3: Data & Benchmarking* \
+    #text(style: "italic", fill: rgb("#555555"))[Candidate: Sahil Chavan]
+  ],
+  [
+    • Standard Laptop (8 GB RAM) \
+    • 5–10 GB disk for Kaggle dataset splits \
+    • IoU & Dice scripts run in $<1"ms"$ on CPU
+  ],
+  [
+    • Kaggle Free Notebooks (30 hrs/wk Dual T4 GPUs) \
+    • Google Drive / Kaggle API for direct dataset pulls \
+    • NumPy bootstrapping runs instantly on CPU
+  ],
+  [
+    *Zero Cost (Free)* \ Zero Lab Dependency
+  ],
+
+  [
+    *Track 4: Geospatial & UI* \
+    #text(style: "italic", fill: rgb("#555555"))[Candidate: Sumant Vetal]
+  ],
+  [
+    • Any basic laptop (Windows / Mac / Linux) \
+    • 8 GB RAM, standard integrated graphics \
+    • OpenCV and Streamlit run natively on CPU
+  ],
+  [
+    • Localhost development (`streamlit run app.py`) \
+    • Streamlit Community Cloud (free 1-click deploy) \
+    • GeoJSON and GPS raster rendering in Python
+  ],
+  [
+    *Zero Cost (Free)* \ Zero Lab Dependency
+  ]
+)
+
+#v(0.6em)
+
+#section-heading("7. Compressed 4-Week Sprint-to-Finish Roadmap (October 2026 Deadline)")
+
+#callout("Accelerated Execution Strategy (October 1 – October 31, 2026)", [
+  To target full project completion and defense readiness by the end of October 2026, the 16-week timeline is compressed into an intensive *4-Week (30-Day) Concurrent Engineering Sprint*. Rather than relying on serial dependencies, all four tracks execute in parallel against strictly defined data and interface contracts.
+])
+
+#v(0.3em)
+
+#table(
+  columns: (1.4fr, 3.6fr, 1.5fr),
   fill: (col, row) => if row == 0 { brand-green } else { none },
   stroke: 0.5pt + rgb("#cccccc"),
   align: (center, left, center),
-  [#text(weight: "bold", fill: white, font: "Inter")[Phase & Weeks]],
-  [#text(weight: "bold", fill: white, font: "Inter")[Milestones, Engineering Tasks & Activities]],
+  [#text(weight: "bold", fill: white, font: "Inter")[Week & Date Window]],
+  [#text(weight: "bold", fill: white, font: "Inter")[Core Engineering Sprints & Deliverables]],
   [#text(weight: "bold", fill: white, font: "Inter")[Primary Leads]],
 
-  [*Phase 1: Setup & Scaffolding* \ (Weeks 1–3)],
+  [*Week 1* \ (Oct 1 – Oct 7)],
   [
-    • Fix state schema and integrate typed artifacts into repository. \
-    • Standalone Colab verification of Grounding DINO-T + SAM 2-Tiny. \
-    • Stage 50-image Kaggle Indian Cotton & SugarBeets test sets. \
-    • Build base Streamlit UI shell with dummy upload & sliders. \
-    *Milestone 1:* Working prototype demo for Prof. V. D. Dhore.
+    • *Foundation & State Schema:* Patch `src/state.py` with typed artifacts and task models. \
+    • *Standalone Colab Verification:* Run Grounding DINO-T + SAM 2-Tiny on 5 sample cotton images. \
+    • *Data Curation:* Download and stage 50 clean Indian Cotton and SugarBeet test images. \
+    • *UI Shell:* Construct Streamlit layout (`app/app.py`) with upload widget and mock visualizer. \
+    *Milestone 1 (Tuesday Oct 6/7):* Working prototype progress demo for Prof. V. D. Dhore.
   ],
-  [All Members \ (Chaitanya, Amit, Sahil, Sumant)],
+  [All 4 Members \ (Chaitanya, Amit, \ Sahil, Sumant)],
 
-  [*Phase 2: Core Engine & Routing* \ (Weeks 4–7)],
+  [*Week 2* \ (Oct 8 – Oct 15)],
   [
-    • Implement Python wrappers for Grounding DINO and SAM 2. \
-    • Construct System-1 fast decision routing (Laya/Jev logic). \
-    • Wire LangGraph Orchestrator with Clean Slate finalizers. \
-    • Ingest ICAR cotton and crop protection manuals into ChromaDB. \
-    *Milestone 2:* End-to-end zero-shot weed segmentation from text prompt.
+    • *Model Wrappers:* Deploy FP16 inference scripts for Grounding DINO and SAM 2. \
+    • *LangGraph Assembly:* Wire Orchestrator state machine with Clean Slate finalizers. \
+    • *System-1 Fast Routing:* Implement sub-40ms intent classification and safety boundary checks. \
+    • *Agronomy Knowledge Base:* Ingest essential ICAR cotton protection guidelines into ChromaDB. \
+    *Milestone 2 (Oct 15):* Automated CLI pipeline running zero-shot prompt to mask generation.
   ],
-  [Chaitanya (AI) \ Amit (VLM/RAG)],
+  [Chaitanya (AI/State) \ Amit (VLM/RAG)],
 
-  [*Phase 3: Refinement & Action* \ (Weeks 8–11)],
+  [*Week 3* \ (Oct 16 – Oct 22)],
   [
-    • Implement deterministic error centroid refinement loop. \
-    • Connect Qwen2.5-VL as secondary agronomic reasoning critic. \
-    • Develop GeoJSON / GPS spray map coordinate generator. \
-    • Compute automated herbicide savings percentage and dosage cards. \
-    *Milestone 3:* Live demonstration of selective spray map with 70%+ savings.
+    • *Refinement Engine:* Implement IoU error centroid calculation and corrective point injection. \
+    • *Quantitative Benchmark:* Evaluate 50–100 images; compute mIoU, Dice, and Herbicide savings %. \
+    • *Full-Stack Integration:* Connect Streamlit dashboard to vision engine with real-time overlay. \
+    • *Geospatial Engine:* Generate GPS coordinates, GeoJSON files, and drone spray route plots. \
+    *Milestone 3 (Oct 22):* Full-stack interactive web application running live with 70%+ savings proof.
   ],
-  [Chaitanya (Refine) \ Sumant (Maps/UI)],
+  [Chaitanya (Refine) \ Sahil (Benchmarking) \ Sumant (UI & Maps)],
 
-  [*Phase 4: Benchmarking & Defense* \ (Weeks 12–16)],
+  [*Week 4* \ (Oct 23 – Oct 31)],
   [
-    • Run 100+ image benchmark across SugarBeets, CottonWeeds, PlantDoc. \
-    • Compute statistical significance (bootstrapped 95% CIs, paired t-tests). \
-    • Draft publication manuscript targeted for CVPR Agriculture-Vision 2026. \
-    • Finalize comprehensive B.Tech project monograph (Black Book) and viva rehearsal. \
-    *Milestone 4:* Final viva defense and manuscript submission.
+    • *Statistical Proofs:* Compute bootstrapped 95% confidence intervals and paired t-test tables. \
+    • *Thesis Monograph (Black Book):* Compile comprehensive final B.Tech documentation. \
+    • *Demo Asset Freeze:* Record high-definition end-to-end video walkthrough and prepare viva slides. \
+    • *Repository Freeze:* Final code review, tagging release `v1.0.0`, and viva defense rehearsal. \
+    *Milestone 4 (Oct 31):* Final B.Tech project submission, Black Book delivery, and viva defense ready.
   ],
-  [Sahil (Stats/Tables) \ All Members (Thesis)]
+  [Sahil (Stats/Tables) \ All Members \ (Thesis & Viva Deck)]
 )
 
 #v(1em)
