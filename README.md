@@ -7,11 +7,11 @@
 [![Institution](https://img.shields.io/badge/Institution-VJTI%20Mumbai-red.svg)](https://vjti.ac.in/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-> **Final Year B.Tech Engineering Project (4 Credits) · Academic Year 2025–2026**  
-> **Department of Computer Engineering, Veermata Jijabai Technological Institute (VJTI), Mumbai**  
+> **Final Year B.Tech Engineering Project · Department of Computer Engineering**  
+> **Veermata Jijabai Technological Institute (VJTI), Mumbai**  
 > **Project Guide:** Prof. V. D. Dhore  
-> **Repository:** [https://github.com/Chaitanya-666/agriAgent](https://github.com/Chaitanya-666/agriAgent)  
-> **Official Proposal & Monograph:** [`docs/AgriAgent_Master_Project_Proposal.pdf`](docs/AgriAgent_Master_Project_Proposal.pdf)
+> **Project Team:** Chaitanya Shinde, Amit Ingle, Sahil Chavan, Sumant Vetal  
+> **Formal Specification:** [`docs/AgriAgent_Master_Project_Proposal.pdf`](docs/AgriAgent_Master_Project_Proposal.pdf)
 
 ---
 
@@ -69,7 +69,7 @@ AgriAgent introduces a **Dual-Brain Cognitive Architecture**:
 ```
 
 1. **System 1 (Fast Deterministic Decision & Triage Layer):**
-   * Inspired by modern non-generative "System One" decision models like *Jev* (TypeSafe AI) and open-source *Laya* (ConvAI Innovations, Apache 2.0).
+   * Inspired by non-generative "System One" decision models (such as *Jev* and open-source *Laya*).
    * Runs in **$<40\text{ ms}$** without token generation, mapping user queries to typed schemas (`TaskRoute.WEED_SPRAYING`, `TaskRoute.PEST_AUDITING`), gating refinement triggers, and checking safety buffers.
 2. **System 2 (Deliberative Agronomic Intelligence & RAG):**
    * Groq-accelerated Llama-3.3-70B and multimodal vision models (Qwen2.5-VL / Florence-2).
@@ -95,58 +95,14 @@ Configured dynamically via [`config/prompts.yaml`](config/prompts.yaml) without 
 
 ---
 
-## 🏗️ Heritage: SmartDesk Multi-Agent Refactoring
+## 🏗️ Heritage & Multi-Agent Architecture
 
-AgriAgent builds directly upon the architectural foundation of **SmartDesk**, a multi-agent productivity orchestrator authored by team members:
+AgriAgent builds upon a modular multi-agent foundation orchestrated via **LangGraph**:
 
-* **Pruned Components:** Removed personal desktop tools (Gmail SMTP, Google Calendar, Telegram bot, local terminal execution) which are irrelevant to agricultural edge systems.
-* **Preserved & Specialized Signatures:**
-  * **LangGraph Orchestrator:** Supervisor-worker state machine directing multi-agent handoffs.
-  * **Clean Slate Finalizers (`RemoveMessage`):** Cleans all intermediate reasoning tokens between successive field image runs, preventing visual context bleeding in batch processing.
-  * **Typed `Artifact` Subsystem:** Stores large 2D numpy mask arrays and GeoTIFF spray rasters as external typed artifacts (`VISION_MASK`, `SPRAY_MAP`), keeping the LLM context window pristine.
-  * **ChromaDB Agronomy RAG:** Redirected vector store to index ICAR crop protection manuals and CIBRC chemical registration databases.
-
----
-
-## 👥 Balanced Team Allocation & Contribution Matrix
-
-To ensure equal academic rigor and strong viva defense, the project is structured into four distinct, equally weighted engineering tracks:
-
-```
-                      ┌───────────────────────────────────────────────┐
-                      │            AgriAgent Architecture             │
-                      └──────────────────────┬────────────────────────┘
-                                             │
-           ┌───────────────────┬─────────────┴───────┬───────────────────┐
-           │                   │                     │                   │
-           ▼                   ▼                     ▼                   ▼
-  ┌─────────────────┐ ┌─────────────────┐   ┌─────────────────┐ ┌─────────────────┐
-  │ Track 1 (LOCKED)│ │ Track 2 (Review)│   │ Track 3 (Review)│ │ Track 4 (Review)│
-  │ Chaitanya Shinde│ │   Amit Ingle    │   │  Sahil Chavan   │ │  Sumant Vetal   │
-  │ Lead AI Engine  │ │ Multimodal VLM  │   │ Data & Benchmark│ │ Geospatial & UI │
-  └─────────────────┘ └─────────────────┘   └─────────────────┘ └─────────────────┘
-```
-
-* **Track 1 — Core AI & Vision Systems (LOCKED: Chaitanya Shinde):**
-  * Grounding DINO + SAM 2 pipeline inference wrappers (`src/vision/`).
-  * System-1 Fast Decision Engine (Laya / Jev routing & safety guardrails).
-  * Deterministic IoU Refinement Engine (`refinement.py`) and FP16 memory optimization.
-  * LangGraph state schema & SmartDesk core refactoring.
-* **Track 2 — Multimodal VLM & Agronomy Intelligence (Candidate: Amit Ingle):**
-  * Multimodal visual reasoning with Qwen2.5-VL / Florence-2 for lesion diagnosis.
-  * ICAR & CIBRC Agronomy RAG vector pipeline in ChromaDB.
-  * Contextual farmer prescription generator and VLM vs Heuristic ablation study.
-* **Track 3 — Data Science & Empirical Benchmarking (Candidate: Sahil Chavan):**
-  * Dataset curation (Kaggle Indian CottonWeeds, Cotton Pests, SugarBeets 2016).
-  * Quantitative evaluation test harness ([`src/evaluation/iou_dice.py`](src/evaluation/iou_dice.py)).
-  * Statistical significance testing (bootstrapped 95% CIs, paired t-tests) and benchmark tables.
-* **Track 4 — Geospatial Systems & Full-Stack Deployment (Candidate: Sumant Vetal):**
-  * Production Streamlit Dashboard ([`app/app.py`](app/app.py)).
-  * Real-time OpenCV / Supervision mask overlay compositor.
-  * Geospatial spray-map generator (GeoJSON / GPS drone coordinates).
-  * Automated prescription PDF / CSV report generator.
-
-> *Note:* Track 1 is locked. Tracks 2, 3, and 4 are open for team review and will be confirmed if no grievances are raised.
+* **Supervisor-Worker Flow:** Central Orchestrator analyzes natural language intent, dispatches tasks across specialized agents (Grounding, Segmentation, Refinement, Agronomy RAG), and aggregates results into structured artifacts.
+* **Clean Slate Finalizers (`RemoveMessage`):** Cleans all intermediate reasoning tokens between successive field image runs, preventing visual context bleeding in batch processing.
+* **Typed `Artifact` Subsystem:** Stores large 2D numpy mask arrays and GeoTIFF spray rasters as external typed artifacts (`VISION_MASK`, `SPRAY_MAP`), keeping the LLM context window pristine.
+* **ChromaDB Agronomy RAG:** Dedicated vector store indexing ICAR crop protection manuals and CIBRC chemical registration databases.
 
 ---
 
@@ -174,8 +130,7 @@ AgriAgent/
 │   │   ├── grounding_agent.py         # Grounding DINO detector node
 │   │   ├── segmentation_agent.py      # SAM 2 instance segmenter node
 │   │   ├── analysis_agent.py          # Refinement trigger & savings calculator
-│   │   ├── agronomy_agent.py          # ICAR RAG & VLM reasoning agent
-│   │   └── smartdesk_agents/          # Preserved SmartDesk modular sub-agents
+│   │   └── agronomy_agent.py          # ICAR RAG & VLM reasoning agent
 │   │
 │   ├── vision/                        # Core AI Inference & Heuristics
 │   │   ├── grounding_dino.py          # Grounding DINO HuggingFace wrapper
@@ -197,23 +152,10 @@ AgriAgent/
 │   └── outputs/                       # Exported spray maps and prescription PDFs
 │
 └── docs/                              # Academic Specifications & Publications
-    ├── AgriAgent_Master_Project_Proposal.pdf # 7-page compiled formal monograph
+    ├── AgriAgent_Master_Project_Proposal.pdf # Compiled formal project monograph
     ├── AgriAgent_Master_Project_Proposal.typ # Typst publication source code
     └── Qwen_Dossier/                  # Feasibility dossiers and research catalogs
 ```
-
----
-
-## 📅 Compressed 4-Week Sprint Roadmap (October 2026 Evaluation)
-
-To achieve completion by the end of October 2026, the 16-week timeline is compressed into a **30-day parallel execution sprint**:
-
-| Week | Date Window | Core Engineering Sprints & Deliverables | Primary Leads |
-| :---: | :---: | :--- | :--- |
-| **Week 1** | **Oct 1 – Oct 7** | • Patch `src/state.py` schema with typed artifacts.<br>• Run Grounding DINO + SAM 2 Colab verification on 5 cotton images.<br>• Stage 50-image Kaggle Indian Cotton & SugarBeets test set.<br>• Construct base Streamlit UI shell with dummy upload & sliders.<br>**Milestone 1 (Tuesday Oct 6/7):** Working prototype demo for Prof. V. D. Dhore. | All 4 Members |
-| **Week 2** | **Oct 8 – Oct 15** | • Implement FP16 model wrappers (`grounding_dino.py`, `sam2_wrapper.py`).<br>• Assemble LangGraph Orchestrator pipeline with Clean Slate finalizers.<br>• Implement System-1 fast routing (<40ms) & safety guardrails.<br>• Ingest essential ICAR cotton agronomy guides into ChromaDB.<br>**Milestone 2 (Oct 15):** End-to-end CLI prompt-to-mask execution. | Chaitanya (AI/State)<br>Amit (VLM/RAG) |
-| **Week 3** | **Oct 16 – Oct 22** | • Implement heuristic IoU error centroid refinement loop (`refinement.py`).<br>• Run quantitative benchmark on 50–100 images (mIoU, Dice, Herbicide savings %).<br>• Connect live vision backend to Streamlit UI with real-time mask overlay.<br>• Generate geospatial spray maps (GeoJSON & GPS drone coordinates).<br>**Milestone 3 (Oct 22):** Live interactive web application demo with >70% savings. | Chaitanya (Refine)<br>Sahil (Benchmark)<br>Sumant (UI & Maps) |
-| **Week 4** | **Oct 23 – Oct 31** | • Compute bootstrapped 95% confidence intervals & paired t-test tables.<br>• Compile final B.Tech Project Report / Black Book monograph.<br>• Record high-definition video walkthrough & prepare viva defense slides.<br>• Final code freeze, repository tagging (`v1.0.0`), and viva rehearsal.<br>**Milestone 4 (Oct 31):** Final project submission, Black Book delivery & viva defense ready. | Sahil (Stats/Tables)<br>All Members (Thesis & Viva) |
 
 ---
 
@@ -244,12 +186,3 @@ HF_TOKEN=your_huggingface_token_here
 ```bash
 streamlit run app/app.py
 ```
-
----
-
-## 🎯 Target Publication & Milestones
-
-* **Target Academic Venue:** 7th International Agriculture-Vision Workshop (CVPR 2026) / MDPI AgriEngineering.
-* **Key Milestone:** Tuesday Progress Presentation with Project Supervisor **Prof. V. D. Dhore**, VJTI Mumbai.
-
-
