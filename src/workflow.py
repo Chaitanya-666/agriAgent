@@ -43,6 +43,7 @@ from src.vision.grounding_dino import GroundingDINOEngine
 from src.vision.sam2_wrapper import SAM2Segmenter
 from src.vision.refinement import get_refinement_point
 from src.evaluation.iou_dice import compute_herbicide_savings
+from src.agents.laya_router import LayaTriageRouter
 
 logger = logging.getLogger("agriagent.workflow")
 
@@ -52,13 +53,14 @@ class VisionWorkflowRunner:
     Production orchestrator for AgriAgent System-1 visual reasoning.
     
     Coordinates zero-shot detection, instance segmentation, closed-loop
-    error-centroid refinement, and herbicide savings calculation.
+    error-centroid refinement, Laya-based triage, and herbicide savings calculation.
     """
 
     def __init__(
         self,
         detector: Optional[GroundingDINOEngine] = None,
         segmenter: Optional[SAM2Segmenter] = None,
+        laya_router: Optional[LayaTriageRouter] = None,
         iou_threshold: float = 0.85,
         max_refinements: int = 2,
         buffer_pixels: int = 10,
@@ -67,6 +69,7 @@ class VisionWorkflowRunner:
         self.mock_mode = mock_mode
         self.detector = detector or GroundingDINOEngine(mock_mode=mock_mode)
         self.segmenter = segmenter or SAM2Segmenter(mock_mode=mock_mode)
+        self.laya_router = laya_router or LayaTriageRouter()
         self.iou_threshold = iou_threshold
         self.max_refinements = max_refinements
         self.buffer_pixels = buffer_pixels
@@ -110,8 +113,14 @@ class VisionWorkflowRunner:
         for mask_dict in masks:
             current_iou = mask_dict.get("predicted_iou", 1.0)
             box = mask_dict["box"]
+            area_px = int(mask_dict["mask_array"].sum())
+            label = box.get("label", "weed")
 
-            if current_iou < self.iou_threshold and refinement_count < self.max_refinements:
+            needs_refine = self.laya_router.evaluate_mask_refinement(
+                current_iou, area_px, label, threshold=self.iou_threshold
+            )
+
+            if needs_refine and refinement_count < self.max_refinements:
                 # Calculate geometric error centroid
                 box_coords = (box["x1"], box["y1"], box["x2"], box["y2"])
                 pt = get_refinement_point(
@@ -237,6 +246,16 @@ class VisionWorkflowRunner:
         # 4. Spray Map Generation
         spray_out = self.spray_map_node(state)
         state.update(spray_out)
+
+        # 5. System-1 vs System-2 Laya Triage Arbitration
+        for b, m in zip(state.get("boxes", []), state.get("masks", [])):
+            escalate, reason = self.laya_router.evaluate_system2_escalation(
+                b.get("score", 1.0), b.get("label", "weed"), m.get("predicted_iou", 1.0)
+            )
+            if escalate:
+                state["system2_needed"] = True
+                state["vlm_reasoning"] = f"Laya Triage Alert: {reason}"
+                break
 
         return state
 
