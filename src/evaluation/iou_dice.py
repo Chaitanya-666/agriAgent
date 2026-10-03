@@ -58,11 +58,23 @@ def compute_herbicide_savings(
     Compute herbicide savings percentage.
     savings = 1 - (weed_area + buffer) / total_area
     """
-    import cv2
-
-    # Dilate weed mask to add spray buffer
-    kernel = np.ones((buffer_pixels, buffer_pixels), np.uint8)
-    buffered_mask = cv2.dilate(weed_mask.astype(np.uint8), kernel)
+    # Dilate weed mask to add spray buffer safety margin
+    try:
+        import cv2
+        kernel = np.ones((buffer_pixels, buffer_pixels), np.uint8)
+        buffered_mask = cv2.dilate(weed_mask.astype(np.uint8), kernel)
+    except ImportError:
+        # Graceful pure NumPy morphological dilation fallback
+        buffered_mask = weed_mask.astype(bool).copy()
+        if buffer_pixels > 0:
+            h, w = weed_mask.shape
+            b = min(buffer_pixels, 20)
+            pad_mask = np.pad(buffered_mask, b, mode="constant", constant_values=False)
+            dilated = np.zeros_like(buffered_mask)
+            for dy in range(2 * b + 1):
+                for dx in range(2 * b + 1):
+                    dilated |= pad_mask[dy:dy + h, dx:dx + w]
+            buffered_mask = dilated
 
     weed_area = buffered_mask.sum()
     total_area = total_image_shape[0] * total_image_shape[1]

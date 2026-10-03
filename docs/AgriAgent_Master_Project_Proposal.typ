@@ -166,7 +166,7 @@ Modern agent frameworks suffer because they utilize generative LLMs for tasks th
 
 #sub-heading("2.2 System 2: Deliberative Agronomic Intelligence & Multimodal RAG")
 When deep agricultural reasoning or contextual advice is required, the Orchestrator dispatches tasks to *System 2*:
-- *Reasoning Core:* Powered by Groq-accelerated Llama-3.3-70B and multimodal vision models (e.g., Qwen2.5-VL / Florence-2).
+- *Reasoning Core:* Powered by Groq-accelerated Llama-3.3-70B and state-of-the-art multimodal vision models (e.g., Qwen3-VL / InternVL 3.5 / PaliGemma 2).
 - *ICAR & CIBRC Agronomy RAG:* Connected to a local ChromaDB vector store indexed with official compendiums from the Indian Council of Agricultural Research (ICAR) and Central Insecticide Board & Registration Committee (CIBRC).
 - *Actionable Output:* Rather than just outputting raw labels, System 2 generates a farmer-facing prescription: _"Targeted spray map generated for Parthenium hysterophorus. Recommended chemical: Glyphosate 41% SL spot application. Estimated herbicide reduction: 74.2%."_
 
@@ -259,7 +259,7 @@ To ensure absolute academic fairness, balanced intellectual rigor, and complete 
     #text(weight: "bold", fill: brand-green)[LOCKED: Sumant Vetal]
   ],
   [
-    • Vision-Language Models (Qwen2.5-VL / Florence-2) \
+    • Vision-Language Models (Qwen3-VL / InternVL 3.5) \
     • Multimodal visual reasoning critic \
     • ICAR & CIBRC Agronomy RAG pipeline \
     • Treatment & chemical dosage generator
