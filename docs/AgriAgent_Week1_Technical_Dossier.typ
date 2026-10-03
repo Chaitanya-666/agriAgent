@@ -465,9 +465,8 @@ A critical finding established during Week 1: *GPU quotas on Kaggle and Google C
 
 #sub-heading("9.2 Turnkey Verification Notebooks")
 
-We built and committed two identical, ready-to-run Jupyter notebooks to the repository:
-1. `notebooks/00_colab_live_gpu_verification.ipynb` (for Google Colab)
-2. `notebooks/00_kaggle_live_gpu_verification.ipynb` (for Kaggle drag-and-drop)
+We built and committed a unified, ready-to-run Jupyter notebook to the repository:
+- `notebooks/agriAgentShared.ipynb` (unified one-click execution for both Kaggle and Google Colab)
 
 Both notebooks execute the full pipeline end-to-end:
 1. Driver verification via `!nvidia-smi`
