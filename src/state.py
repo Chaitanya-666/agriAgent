@@ -12,7 +12,10 @@ from enum import Enum
 from typing import Annotated, Any, Dict, List, Optional, Tuple, TypedDict
 from pydantic import BaseModel, Field
 from PIL import Image
-from langchain_core.messages import AnyMessage
+try:
+    from langchain_core.messages import AnyMessage
+except ImportError:
+    AnyMessage = Any  # type: ignore # Graceful fallback when langchain-core is not installed
 
 
 def merge_dicts(a: dict, b: dict) -> dict:
