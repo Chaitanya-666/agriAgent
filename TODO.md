@@ -14,20 +14,20 @@
 ### 🌿 Track 1: Core AI & Vision Systems
 **Owner:** Chaitanya Shinde (`chaitanya/foundation-vision`)
 - [x] **Task 1.0:** Prune SmartDesk legacy agents (`workspace_agent`, `productivity_agent`, `knowledge_agent`) and specialize `src/state.py`.
-- [/] **Task 1.1:** Build `src/vision/grounding_dino.py`:
+- [x] **Task 1.1:** Build `src/vision/grounding_dino.py`:
   - [x] Zero-shot open-vocabulary bounding box detector interface.
   - [x] Hugging Face / IDEA-Research model loader (`IDEA-Research/grounding-dino-tiny`).
   - [x] Deterministic mock fallback mode (`mock_mode=True`) for lightweight CPU/laptop testing.
-  - [ ] Standalone test & verification script.
-- [ ] **Task 1.2:** Build `src/vision/sam2_wrapper.py`:
-  - [ ] Meta AI SAM 2 promptable mask generator wrapper.
-  - [ ] Bounding-box-to-mask conversion (`predict_masks(image, boxes)`).
-  - [ ] Deterministic mock fallback mode for fast local verification.
-- [ ] **Task 1.3:** Connect `src/vision/refinement.py` closed-loop logic:
-  - [ ] Active IoU threshold evaluation ($\text{IoU} < 0.85$).
-  - [ ] Error centroid calculation for point prompt correction.
-- [ ] **Task 1.4:** Build `src/workflow.py` LangGraph state graph linking System-1 vision reflex nodes.
-- [ ] **Task 1.5:** Create end-to-end test verification in `tests/test_vision_pipeline.py`.
+  - [x] Standalone test & verification script.
+- [x] **Task 1.2:** Build `src/vision/sam2_wrapper.py`:
+  - [x] Meta AI SAM 2 promptable mask generator wrapper.
+  - [x] Bounding-box-to-mask conversion (`predict_masks(image, boxes)`).
+  - [x] Deterministic mock fallback mode for fast local verification.
+- [x] **Task 1.3:** Connect `src/vision/refinement.py` closed-loop logic:
+  - [x] Active IoU threshold evaluation ($\text{IoU} < 0.85$).
+  - [x] Error centroid calculation for point prompt correction.
+- [x] **Task 1.4:** Build `src/workflow.py` LangGraph state graph linking System-1 vision reflex nodes.
+- [x] **Task 1.5:** Create end-to-end test verification in `tests/test_vision_pipeline.py` (7/7 unit tests passing).
 
 ---
 

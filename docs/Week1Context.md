@@ -88,6 +88,32 @@ flowchart TD
      $$\bar{x} = \frac{1}{N} \sum_{i=1}^N x_i, \quad \bar{y} = \frac{1}{N} \sum_{i=1}^N y_i$$
   4. Returns a corrective positive or negative point prompt back to SAM 2.
 
+### 4.4 `src/workflow.py` (System-1 Reflex Orchestrator)
+* **Design Pattern:** Directed Acyclic Graph (DAG) state machine with conditional routing.
+* **Dual-Execution Design:**
+  * **Direct Native Engine (`VisionWorkflowRunner`):** Implements the state progression directly in pure Python. Eliminates dependency lock-in, enabling rapid unit testing and offline execution.
+  * **LangGraph Adapter (`create_langgraph_workflow`):** Compiles the identical nodes and conditional edges into a LangGraph `StateGraph(GraphState)` whenever the `langgraph` framework is installed.
+* **Node Responsibilities:**
+  1. `detect_node`: Feeds input image and text prompt to Grounding DINO; populates `boxes`.
+  2. `segment_node`: Feeds `boxes` into SAM 2; populates `masks`.
+  3. `refine_node`: Iteratively computes error centroids for masks with IoU $<0.85$, queries SAM 2 with corrective clicks, and increments `refinement_count` (capped at $k=2$).
+  4. `spray_map_node`: Generates the union composite binary mask, computes weed infestation area %, evaluates selective herbicide chemical savings % via morphological dilation, and serializes the result into a `SPRAY_MAP` `Artifact`.
+
+### 4.5 `tests/test_vision_pipeline.py` (Automated Test Harness)
+* **Coverage:** 7 dedicated unit and integration tests executing across 13 ms.
+* **Verification Scope:**
+  * Coordinate boundaries and data contract validation (`DetectionResult.box` within image bounds).
+  * Binary mask data types (`bool`), shapes (`[H, W]`), and area consistency.
+  * Active refinement IoU progression (asserts that corrective point prompting strictly improves predicted IoU).
+  * End-to-end `VisionWorkflowRunner.run()` lifecycle asserting $>50\%$ chemical savings calculation and artifact serialization.
+
+### 4.6 Resilience Engineering & Dependency Decoupling
+* **The Problem:** In academic teams, members work on varied environments (Windows, macOS, Linux, GPU servers, low-spec laptops). Hard dependencies on heavy GPU frameworks (`torch`, `torchvision`, `transformers`, `opencv-cv2`, `langgraph`) frequently lead to blocked teammates.
+* **Our Solution:**
+  1. **Dynamic Fallbacks:** Optional imports for `langchain_core.messages`, `cv2`, and `langgraph`.
+  2. **Pure NumPy Dilations:** When `cv2` is missing, `compute_herbicide_savings()` uses pure NumPy slice dilation, preserving mathematical parity without requiring OpenCV binaries.
+  3. **Deterministic Mock Mode:** Enables immediate front-end development (Track 4 - Amit) and benchmarking (Track 3 - Sahil) on any standard laptop without downloading weights.
+
 ---
 
 ## 5. Viva Voce & Technical Placement Defense Drill
@@ -105,3 +131,14 @@ These questions are curated specifically for college project vivas (Prof. Dhore)
 ### Q3: What is the computational latency trade-off of your refinement loop?
 > **Model Answer:**  
 > "Running SAM 2 with a single box prompt takes approximately 25-35 ms on an edge GPU (or Colab T4). Rather than blindly running iterative refinement on every detection, our System-1 employs a gating heuristic: only masks with $\text{predicted\_iou} < 0.85$ trigger the error centroid calculation, and we cap iterations at $k=2$. For $>80\%$ of clean weed detections, the first pass is accepted, preserving our $<40\text{ ms}$ real-time reflex budget."
+
+### Q4: How do you mathematically calculate the "Herbicide Savings %", and why is dilation necessary?
+> **Model Answer:**  
+> "Herbicide savings is calculated as:
+> $$\text{Savings} = \left(1 - \frac{\text{Area}(\text{Dilated Weed Mask})}{\text{Total Field Area}}\right) \times 100$$
+> Dilation using a morphological kernel (e.g. $10\text{ cm}$ buffer) is mandatory in real-world robotics to account for drone GPS drift, physical wind displacement during chemical droplet descent, and margin of safety around root systems. Even with a conservative $10\text{ cm}$ safety buffer, selective spot-spraying yields $70\text{--}85\%$ chemical reduction compared to blanket broadcast spraying."
+
+### Q5: How is your system resilient to hardware constraints and edge deployment failures?
+> **Model Answer:**  
+> "We engineered strict separation between interface contracts and execution backends. Every vision module supports dual-mode operation: GPU inference via PyTorch/HuggingFace and deterministic mock synthesis for CPU testing. Furthermore, our core DAG runner operates natively in pure Python without requiring heavyweight orchestration frameworks like LangGraph to be installed at runtime, while still exposing a clean compilation target for LangGraph when deployed in cloud environments."
+
