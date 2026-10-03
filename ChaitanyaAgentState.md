@@ -37,7 +37,7 @@
 - [x] Build `src/workflow.py` with pure-Python `VisionWorkflowRunner` DAG and LangGraph `create_langgraph_workflow()`.
 - [x] Build automated test suite in `tests/test_vision_pipeline.py` (**7/7 tests passing in 0.013s**).
 - [x] Provide turnkey Live GPU verification script (`scripts/run_live_pipeline.py`) and unified notebook (`notebooks/agriAgentShared.ipynb`).
-- [x] Author comprehensive 9-page publication-grade technical dossier and viva guide (`docs/AgriAgent_Week1_Technical_Dossier.pdf`).
+- [x] Author comprehensive 11-page publication-grade technical dossier and viva guide (`docs/AgriAgent_Week1_Technical_Dossier_Chaitanya_Shinde.pdf`).
 - [x] Maintain living context in `docs/Week1Context.md` and `TODO.md`.
 
 ### 🌾 Track 2: Multimodal VLM & Agronomy Intelligence

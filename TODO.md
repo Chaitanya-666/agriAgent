@@ -29,12 +29,15 @@
 - [x] **Task 1.4:** Build `src/workflow.py` LangGraph state graph linking System-1 vision reflex nodes.
 - [x] **Task 1.5:** Create end-to-end test verification in `tests/test_vision_pipeline.py` (7/7 unit tests passing).
 - [x] **Task 1.6:** Provide turnkey Live GPU verification script (`scripts/run_live_pipeline.py`) and unified GPU notebook (`notebooks/agriAgentShared.ipynb`).
-- [x] **Task 1.7:** Author comprehensive 9-page technical dossier & viva defense guide (`docs/AgriAgent_Week1_Technical_Dossier.pdf`).
+- [x] **Task 1.7:** Author comprehensive 11-page technical dossier & viva defense guide (`docs/AgriAgent_Week1_Technical_Dossier_Chaitanya_Shinde.pdf`).
 - [x] **Task 1.8:** Kaggle & Colab GPU verification hardening:
   - [x] Patch Grounding DINO dynamic `box_threshold` / `threshold` argument handling (`transformers >= 4.55.0`).
   - [x] Integrate official `SAM2ImagePredictor.from_pretrained` loader (eliminates Hydra config error).
   - [x] Add package `__init__.py` markers across `src/`, `src/vision/`, `src/agents/`, `src/evaluation/`, `tests/`.
   - [x] Consolidate one-click Kaggle & Colab verification notebook (`notebooks/agriAgentShared.ipynb`).
+- [x] **Task 1.9:** Formal Proof-of-Work Mapping & README Overhaul:
+  - [x] Document assigned scope vs. concrete implementation with dual-mode empirical validation (Mock vs. Actual GPU).
+  - [x] Complete modernization of `README.md` with Mermaid architecture diagram, Kaggle GPU figures, and verified quickstart.
 
 ---
 
