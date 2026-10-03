@@ -78,7 +78,7 @@
    - Solves the token explosion problem via Interleaved-MRoPE and fits comfortably in $<3\text{ GB}$ VRAM.
 
 ### Testing & Verification Record:
-Ran automated test suite: `python3 -m unittest tests/test_vision_pipeline.py -v`
+Ran automated test suite: `python3 -m unittest discover tests -v` (and `PYTHONPATH=. python3 -m unittest tests/test_vision_pipeline.py -v`)
 * `test_detect_to_state_boxes` $\rightarrow$ **PASS**
 * `test_mock_detection_generates_boxes` $\rightarrow$ **PASS**
 * `test_compute_error_centroid_under_segmentation` $\rightarrow$ **PASS**
@@ -86,18 +86,18 @@ Ran automated test suite: `python3 -m unittest tests/test_vision_pipeline.py -v`
 * `test_point_refinement_improves_iou` $\rightarrow$ **PASS**
 * `test_segment_boxes_generates_masks` $\rightarrow$ **PASS**
 * `test_end_to_end_execution` $\rightarrow$ **PASS**
-* **Result:** **7/7 tests passed in 0.013s**.
+* **Result:** **7/7 tests passed in 0.014s**.
 
-### Git Micro-Commit History (Today):
-```text
-* c256f34 - docs: update TODO.md and expand Week1Context.md viva guide
-* cf9d2b1 - feat(workflow): implement System-1 reflex orchestrator and vision pipeline test suite
-* 4f85773 - feat(vision): implement SAM 2 promptable segmentation wrapper with active point refinement
-* 46c7ec4 - feat(vision): implement Grounding DINO zero-shot detector wrapper with mock mode
-* a0e6246 - docs: add sprint tracking TODO.md and Week1 viva defense context guide
-* fc96b2a - refactor(state): strip SmartDesk legacy agents and specialize GraphState for precision agriculture
-* ab73a8b - docs: finalize locked team roles and add Week 1 operational sprint guide
-```
+### Kaggle GPU Execution Diagnosis & Fixes (Oct 3, 2026):
+1. **Grounding DINO Argument Deprecation (`transformers >= 4.55.0`):**
+   - *Issue:* `post_process_grounded_object_detection()` threw `TypeError: got an unexpected keyword argument 'box_threshold'. Did you mean 'text_threshold'?`
+   - *Fix:* Added dual-version fallback in `src/vision/grounding_dino.py` trying `box_threshold` and falling back to `threshold`.
+2. **Meta SAM 2 Hydra Config Resolution:**
+   - *Issue:* `build_sam2("facebook/sam2-hiera-tiny")` threw `Cannot find primary config 'facebook/sam2-hiera-tiny'`.
+   - *Fix:* Switched to official `SAM2ImagePredictor.from_pretrained(self.model_id, device=self.device)` in `src/vision/sam2_wrapper.py`.
+3. **Python Package Discovery on Remote Environments:**
+   - *Issue:* `unittest` could not resolve `tests.test_vision_pipeline` without package markers.
+   - *Fix:* Created `__init__.py` in `src/`, `src/vision/`, `src/agents/`, `src/evaluation/`, and `tests/`, and configured notebooks to use `!PYTHONPATH=. python -m unittest discover tests -v`.
 
 ---
 

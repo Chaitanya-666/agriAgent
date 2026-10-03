@@ -98,12 +98,18 @@ class SAM2Segmenter:
 
             # Attempt import from official sam2 repository or transformers
             try:
-                from sam2.build_sam import build_sam2
                 from sam2.sam2_image_predictor import SAM2ImagePredictor
 
-                model = build_sam2(self.model_id, device=self.device)
-                self._predictor = SAM2ImagePredictor(model)
-                logger.info("Meta SAM 2 Image Predictor initialized successfully.")
+                try:
+                    self._predictor = SAM2ImagePredictor.from_pretrained(self.model_id, device=self.device)
+                    logger.info("Meta SAM 2 Image Predictor initialized via from_pretrained.")
+                except Exception as exc_fp:
+                    logger.info("from_pretrained failed (%s), attempting build_sam2...", exc_fp)
+                    from sam2.build_sam import build_sam2
+
+                    model = build_sam2(self.model_id, device=self.device)
+                    self._predictor = SAM2ImagePredictor(model)
+                    logger.info("Meta SAM 2 Image Predictor initialized successfully via build_sam2.")
             except ImportError:
                 # Fallback to Hugging Face transformers SAM2 wrapper if installed
                 from transformers import Sam2Model, Sam2Processor

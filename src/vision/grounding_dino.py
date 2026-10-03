@@ -219,13 +219,23 @@ class GroundingDINOEngine:
             outputs = self._model(**inputs)
 
         # Post-process raw logits to target image dimensions
-        results = self._processor.post_process_grounded_object_detection(
-            outputs=outputs,
-            input_ids=inputs.input_ids,
-            box_threshold=effective_box_th,
-            text_threshold=effective_text_th,
-            target_sizes=[(h, w)],
-        )[0]
+        # Compatible across transformers versions (older uses box_threshold, >=4.55 uses threshold)
+        try:
+            results = self._processor.post_process_grounded_object_detection(
+                outputs=outputs,
+                input_ids=inputs.input_ids,
+                box_threshold=effective_box_th,
+                text_threshold=effective_text_th,
+                target_sizes=[(h, w)],
+            )[0]
+        except TypeError:
+            results = self._processor.post_process_grounded_object_detection(
+                outputs=outputs,
+                input_ids=inputs.input_ids,
+                threshold=effective_box_th,
+                text_threshold=effective_text_th,
+                target_sizes=[(h, w)],
+            )[0]
 
         detections: List[DetectionResult] = []
         for box, score, label in zip(results["boxes"], results["scores"], results["labels"]):
@@ -255,3 +265,7 @@ class GroundingDINOEngine:
         """Convenience method returning detections directly formatted for LangGraph GraphState."""
         detections = self.detect(image, text_prompt=text_prompt, box_threshold=box_threshold)
         return [d.to_dict() for d in detections]
+
+
+# Alias for backwards and forwards naming compatibility
+GroundingDINODetector = GroundingDINOEngine
