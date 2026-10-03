@@ -463,18 +463,34 @@ A critical finding established during Week 1: *GPU quotas on Kaggle and Google C
 - *Kaggle Collaboration Setup:* The notebook owner creates the notebook $-->$ clicks *Share* (top-right) $-->$ adds the other 3 members with *Can edit* permissions $-->$ sets visibility to *Private*.
 - *Kaggle Internet Toggle:* Under the right panel (Settings), *Internet must be toggled to ON* so `git clone` and model weights can download.
 
-#sub-heading("9.2 Turnkey Verification Notebooks")
+#sub-heading("9.2 Turnkey Verification Notebook (agriAgentShared.ipynb)")
 
 We built and committed a unified, ready-to-run Jupyter notebook to the repository:
 - `notebooks/agriAgentShared.ipynb` (unified one-click execution for both Kaggle and Google Colab)
 
-Both notebooks execute the full pipeline end-to-end:
-1. Driver verification via `!nvidia-smi`
+The notebook executes the full pipeline end-to-end:
+1. Driver verification via `!nvidia-smi` (Tesla T4 GPU with CUDA 13.0)
 2. Bulletproof directory reset (`os.chdir('/kaggle/working')`) and repo clone (`git clone`)
 3. Dependency installation (`transformers`, `sam2`, `laya`)
-4. Verification of the 7-test unit suite (`python -m unittest tests/test_vision_pipeline.py`)
+4. Verification of the 7-test unit suite (`!PYTHONPATH=. python -m unittest discover tests -v`)
 5. Live execution on both synthetic and real field photos via `scripts/run_live_pipeline.py`
 6. Inline rendering of the 3-panel precision spray prescription visualizer
+
+#v(0.4em)
+#align(center)[
+  #figure(
+    image("images/live_synthetic_spray_map_kaggle.png", width: 98%),
+    caption: [Figure 1: Live Kaggle T4 GPU Execution — Synthetic Cotton Field Patch (Grounding DINO + SAM 2 + Laya, Weed Infestation: 2.08%, Chemical Volume Saved: 97.4%).]
+  )
+]
+
+#v(0.4em)
+#align(center)[
+  #figure(
+    image("images/live_real_spray_map_kaggle.png", width: 98%),
+    caption: [Figure 2: Live Kaggle T4 GPU Execution — Real Agricultural Field Photo from USDA ARS (Palmer amaranth foliage segmentation with 19.5% savings under 78.9% heavy infestation).]
+  )
+]
 
 #v(0.6em)
 
