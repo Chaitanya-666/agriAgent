@@ -33,7 +33,7 @@
 
 ### 🌾 Track 2: Multimodal VLM & Agronomy Intelligence
 **Owner:** Sumant Vetal (`sumant/vlm-agronomy`)
-- [ ] **Task 2.1:** Evaluate Qwen2.5-VL-7B or Florence-2 for visual reasoning on field photos (`notebooks/01_vlm_reasoning_experiment.ipynb`).
+- [ ] **Task 2.1:** Evaluate Qwen3-VL (2B/4B) or InternVL 3.5 (2B/4B) for visual reasoning on field photos (`notebooks/01_vlm_reasoning_experiment.ipynb`).
 - [ ] **Task 2.2:** Ingest ICAR & CIBRC weed management recommendations into ChromaDB (`src/agronomy/knowledge_store.py`).
 - [ ] **Task 2.3:** Implement agronomy recommendation tool `get_herbicide_prescription(weed_name, crop_stage)`.
 

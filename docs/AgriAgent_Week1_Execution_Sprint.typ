@@ -162,12 +162,13 @@
    - Create `src/agents/agronomy_rag.py`:
      - Ingest the knowledge base documents into a local ChromaDB collection using sentence-transformer embeddings (`all-MiniLM-L6-v2`).
      - Implement semantic search function: `retrieve_agronomy_context(query: str, top_k: int = 3) -> list[str]`.
-3. *Task 2.3 (Multimodal Visual Reasoning with Groq API):*
-   - Create a prescription generator script using Groq Free Tier (`llama-3.3-70b-versatile` or `llama-3.2-11b-vision-preview`):
+3. *Task 2.3 (Multimodal Visual Reasoning with Qwen3-VL / InternVL 3.5 & Groq):*
+   - Evaluate modern open-weight VLMs in `notebooks/01_vlm_reasoning_experiment.ipynb` (Qwen3-VL-2B/4B or InternVL3.5-4B) for visual lesion and weed symptom reasoning on sample images.
+   - Create a prescription generator script using Groq Free Tier (`llama-3.3-70b-versatile`):
      - Prompt: Ingest detected weed/disease name + retrieved ICAR guidelines.
      - Output: Structured JSON containing recommended chemical trade name, dilution ratio (ml per liter of water), safety buffer, and targeted spot-spray instructions.
 4. *Sprint 01 Deliverable (Sunday):*
-   - Runnable script `scripts/test_agronomy_rag.py` proving that querying _"Parthenium infestation in cotton"_ returns the exact ICAR chemical dosage and treatment timeline.
+   - Runnable script `scripts/test_agronomy_rag.py` and evaluation notebook proving that querying _"Parthenium infestation in cotton"_ returns the exact ICAR chemical dosage, VLM visual reasoning, and treatment timeline.
 
 ---
 

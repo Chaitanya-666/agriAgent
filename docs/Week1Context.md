@@ -32,7 +32,7 @@ flowchart TD
     end
 
     subgraph S2["SYSTEM-2: Deliberative Reasoning Engine (>1.5 s)"]
-        D -- "Uncertain / Unfamiliar" --> G["Multimodal VLM Critic<br/>(Qwen2.5-VL / Florence-2)"]
+        D -- "Uncertain / Unfamiliar" --> G["Multimodal VLM Critic<br/>(Qwen3-VL / InternVL 3.5)"]
         G --> H["Agronomy Knowledge Store<br/>(ChromaDB + ICAR/CIBRC Guidelines)"]
         H --> I["Actionable Chemical Prescription<br/>(Herbicide Active Ingredient & Dosage)"]
     end
