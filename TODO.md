@@ -28,6 +28,7 @@
   - [x] Error centroid calculation for point prompt correction.
 - [x] **Task 1.4:** Build `src/workflow.py` LangGraph state graph linking System-1 vision reflex nodes.
 - [x] **Task 1.5:** Create end-to-end test verification in `tests/test_vision_pipeline.py` (7/7 unit tests passing).
+- [x] **Task 1.6:** Provide turnkey Live GPU verification script (`scripts/run_live_pipeline.py`) and Colab notebook (`notebooks/00_colab_live_gpu_verification.ipynb`).
 
 ---
 
