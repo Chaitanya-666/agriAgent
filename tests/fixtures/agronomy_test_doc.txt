@@ -1,0 +1,3 @@
+SYNTHETIC TEST FIXTURE - NOT REAL AGRONOMIC ADVICE.
+Weed: Testweed alpha in cotton, vegetative stage. Herbicide: ExampleChem-X at 1 unit per hectare. Pre-harvest interval: 99 days.
+Weed: Fakegrass beta in sugarbeet, seedling stage. Herbicide: ExampleChem-Y at 2 units per hectare.

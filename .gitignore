@@ -29,6 +29,7 @@ venv.bak/
 .DS_Store
 
 # Large Datasets & Model Weights
+data/chroma_db/
 data/datasets/*
 !data/datasets/*.md
 !data/datasets/sample/
