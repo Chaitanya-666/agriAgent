@@ -50,16 +50,18 @@
 **Owner:** Sahil Chavan (`sahil/cotton-datasets`) — **STATUS: IN PROGRESS**
 - [ ] Build automated dataset downloader script (`data/download_datasets.sh`) for Indian CottonWeeds and SugarBeets.
 - [ ] Stage 20 curated test sample images with ground-truth masks in `tests/fixtures/`.
-- [ ] Implement metric test suite (`tests/test_metrics.py`) verifying IoU, Dice, and chemical savings calculation.
+- [x] Implement metric test suite (`tests/test_metrics.py`) verifying IoU, Dice, and chemical savings calculation (6/6 tests passing).
 
 ### 🗺️ Track 4: Geospatial Systems & Full-Stack Deployment
-**Owner:** Amit Ingle (`amit/streamlit-ui`) — **STATUS: IN PROGRESS**
-- [ ] Build OpenCV mask overlay compositor in `src/vision/visualization.py` (Green = Crop, Red = Weed).
-- [ ] Construct responsive dual-panel Streamlit dashboard in `app/app.py`:
-  - Upload widget, confidence slider, spray buffer slider.
+**Owner:** Amit Ingle (`amit/streamlit-ui`) — **STATUS: 100% COMPLETED & MERGED (PR #1)**
+- [x] Build OpenCV/PIL mask overlay compositor in `src/vision/visualization.py` (Green = Crop, Red = Weed, Yellow = Disease).
+- [x] Construct responsive dual-panel Streamlit dashboard in `app/app.py`:
+  - Upload widget, application selector, confidence slider, nozzle buffer slider.
   - Side-by-side comparison: Raw Field Photo vs. Precision Spray Map.
-  - KPI Cards: Weed infestation % and Chemical savings %.
-- [ ] Local launch verification (`streamlit run app/app.py`).
+  - Dynamic KPI Cards: Weed infestation % and Chemical savings %.
+  - Downloadable GeoJSON precision spot-spray prescription.
+- [x] Local launch verification (`streamlit run app/app.py`).
+- [x] Author comprehensive unit tests in `tests/test_visualization.py` (6/6 tests passing).
 
 ---
 

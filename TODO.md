@@ -53,18 +53,20 @@
 **Owner:** Sahil Chavan (`sahil/cotton-datasets`)
 - [ ] **Task 3.1:** Create automated dataset downloader script (`data/download_datasets.sh`) for Indian CottonWeeds and SugarBeets.
 - [ ] **Task 3.2:** Stage 20 curated test sample images with ground-truth masks in `tests/fixtures/`.
-- [ ] **Task 3.3:** Implement standalone metric test suite (`tests/test_metrics.py`) verifying IoU, Dice, and chemical savings calculation.
+- [x] **Task 3.3:** Implement standalone metric test suite (`tests/test_metrics.py`) verifying IoU, Dice, and chemical savings calculation (6/6 tests passing).
 
 ---
 
 ### 🗺️ Track 4: Geospatial Systems & Full-Stack Deployment
-**Owner:** Amit Ingle (`amit/streamlit-ui`)
-- [ ] **Task 4.1:** Build OpenCV mask overlay compositor in `src/vision/visualization.py` (Green = Crop, Red = Weed).
-- [ ] **Task 4.2:** Construct responsive dual-panel Streamlit dashboard in `app/app.py`:
-  - [ ] Sidebar controls (image upload, confidence slider, spray buffer distance).
-  - [ ] Dual columns: Original Field Photo vs. Precision Spray Map.
-  - [ ] Dynamic KPI metrics cards (Weed % and Chemical Savings %).
-- [ ] **Task 4.3:** Verify live interactive local launch: `streamlit run app/app.py`.
+**Owner:** Amit Ingle (`amit/streamlit-ui`) — **STATUS: MERGED INTO MAIN (PR #1)**
+- [x] **Task 4.1:** Build OpenCV/PIL mask overlay compositor in `src/vision/visualization.py` (Green = Crop, Red = Weed, Yellow = Disease).
+- [x] **Task 4.2:** Construct responsive dual-panel Streamlit dashboard in `app/app.py`:
+  - [x] Sidebar controls (image upload, confidence slider, spray nozzle buffer distance).
+  - [x] Dual columns: Original Field Photo vs. Precision Spray Map.
+  - [x] Dynamic KPI metrics cards (Weed % and Chemical Savings %).
+  - [x] Exportable GeoJSON precision spot-spray prescription download.
+- [x] **Task 4.3:** Verify live interactive local launch: `streamlit run app/app.py`.
+- [x] **Task 4.4:** Author unit tests in `tests/test_visualization.py` (6/6 tests passing).
 
 ---
 

@@ -542,7 +542,7 @@ Crucially, AgriAgent Week 1 was verified through *two independent validation pip
   [Target Environment], [Local Developer Laptop (CPU, 0 network, 0 GPU)], [Kaggle Cloud (Nvidia Tesla T4 15.3 GB, CUDA 13.0)],
   [Model Weights], [Deterministic synthetic procedural generation], [Real HuggingFace checkpoints: Grounding DINO (689 MB) + SAM 2 (156 MB)],
   [Triage Router], [Native calibrated heuristic fallback], [Official ConvAI Innovations `laya` package],
-  [Unit Test Suite], [*7/7 Tests Passed in 0.014 seconds*], [*7/7 Tests Passed in 0.449 seconds*],
+  [Unit Test Suite], [*19/19 Tests Passed in 0.013s (Vision, Metrics, Viz)*], [*7/7 Tests Passed in 0.449 seconds*],
   [Synthetic Patch Run], [Detected 3 weeds, 84.9% chemical savings], [Detected weed (`cotton broadleaf plant`, conf 0.36), *IoU: 0.99*, *97.4% chemical savings*],
   [Real Agricultural Photo], [Simulated organic leaf mask], [Real USDA ARS Cotton Field Photo (`vegetation`, conf 0.61), *IoU: 0.99*, *19.5% chemical savings* (78.9% canopy)],
   [Output Artifacts], [In-memory binary mask ndarrays], [Exported high-res 3-panel visualizations (`Figure 1` & `Figure 2`)],
