@@ -34,7 +34,6 @@ Provides a dual-execution architecture:
 """
 
 import logging
-from src.agronomy.system2_node import System2Reasoner
 from typing import Any, Dict, List, Optional, Tuple, Union
 import numpy as np
 from PIL import Image
@@ -66,13 +65,21 @@ class VisionWorkflowRunner:
         max_refinements: int = 2,
         buffer_pixels: int = 10,
         mock_mode: bool = False,
-        system2: Optional[System2Reasoner] = None
+        system2: Optional[Any] = None,
     ):
         self.mock_mode = mock_mode
         self.detector = detector or GroundingDINOEngine(mock_mode=mock_mode)
         self.segmenter = segmenter or SAM2Segmenter(mock_mode=mock_mode)
         self.laya_router = laya_router or LayaTriageRouter()
-        self.system2 = system2 or System2Reasoner(mock_mode=mock_mode)
+        if system2 is not None:
+            self.system2 = system2
+        else:
+            try:
+                from src.agronomy.system2_node import System2Reasoner
+                self.system2 = System2Reasoner(mock_mode=mock_mode)
+            except Exception as e:
+                logger.debug("System2Reasoner unavailable: %s", e)
+                self.system2 = None
         self.iou_threshold = iou_threshold
         self.max_refinements = max_refinements
         self.buffer_pixels = buffer_pixels
@@ -260,7 +267,7 @@ class VisionWorkflowRunner:
                 state["vlm_reasoning"] = f"Laya Triage Alert: {reason}"
                 break
 
-        if state.get("system2_needed"):
+        if state.get("system2_needed") and self.system2 is not None:
             state.update(self.system2.system2_node(state))
         
         return state

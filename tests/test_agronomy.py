@@ -9,11 +9,19 @@ from src.agronomy.system2_node import System2Reasoner
 from src.agronomy.vlm_critic import parse_json
 from src.state import ArtifactType
 
+try:
+    import chromadb
+    HAS_CHROMADB = True
+except ImportError:
+    HAS_CHROMADB = False
+
 FIX = Path(__file__).parent / "fixtures"
 
 
 class TestAgronomy(unittest.TestCase):
     def setUp(self):
+        if not HAS_CHROMADB:
+            self.skipTest("chromadb is required for KnowledgeStore tests")
         self.tmp = tempfile.mkdtemp()
         self.store = KnowledgeStore(db_dir=self.tmp, embedding="hash")
         self.store.ingest(FIX, authority="ICAR")

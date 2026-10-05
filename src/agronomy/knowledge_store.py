@@ -16,7 +16,12 @@ import re
 from pathlib import Path
 from typing import Any, Dict, List, Optional
 
-import chromadb
+try:
+    import chromadb
+    EmbeddingFunction = chromadb.EmbeddingFunction
+except ImportError:
+    chromadb = None
+    EmbeddingFunction = object
 
 KB_DIR = Path("data/knowledge_base")
 DB_DIR = "data/chroma_db"
@@ -24,7 +29,7 @@ COLLECTION = "icar_cibrc"
 DIM = 384
 
 
-class HashEmbedding(chromadb.EmbeddingFunction):
+class HashEmbedding(EmbeddingFunction):
     """Offline fallback embedder: hashed bag-of-words, L2-normalised. Good enough for tests."""
 
     def __init__(self, dim: int = DIM):
@@ -62,6 +67,10 @@ def _embedder(embedding: str):
 
 class KnowledgeStore:
     def __init__(self, db_dir: str = DB_DIR, embedding: str = "bge"):
+        if chromadb is None:
+            raise ImportError(
+                "chromadb is required to use KnowledgeStore. Install it with `pip install chromadb`."
+            )
         self.client = chromadb.PersistentClient(path=db_dir)
         self.col = self.client.get_or_create_collection(COLLECTION, embedding_function=_embedder(embedding))
 

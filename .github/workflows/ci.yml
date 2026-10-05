@@ -27,8 +27,8 @@ jobs:
       - name: Install Core Test Dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install numpy pillow pyyaml pydantic
+          pip install numpy pillow pyyaml pydantic chromadb
 
-      - name: Execute Automated Test Suite (19 Tests)
+      - name: Execute Automated Test Suite (24 Tests)
         run: |
           PYTHONPATH=. python -m unittest discover tests -v
