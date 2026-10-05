@@ -48,3 +48,5 @@ data/outputs/*
 
 # Streamlit Local Runtime
 .streamlit/
+tests/fixtures/cotton/
+tests/fixtures/sugarbeet/
