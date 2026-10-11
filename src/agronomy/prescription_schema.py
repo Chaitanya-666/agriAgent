@@ -1,7 +1,7 @@
 """
 src/agronomy/prescription_schema.py
 Pydantic schemas for Agronomy Chemical Prescriptions and Citation Records.
-Adheres strictly to PROJECT.md Section 4 Interface Contracts.
+Defines the structured prescription contract used by System 2.
 """
 from typing import Any, Dict, List, Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field, model_validator
@@ -30,7 +30,7 @@ class CitationRecord(BaseModel):
 
 class ChemicalPrescription(BaseModel):
     """
-    Structured chemical prescription contract conforming to PROJECT.md Section 4.
+    Structured chemical prescription contract.
     Includes backward-compatible dictionary access for existing pipeline consumers.
     """
     model_config = ConfigDict(extra="allow", populate_by_name=True)

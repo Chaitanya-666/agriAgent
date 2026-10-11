@@ -1,7 +1,7 @@
 """
 src/agronomy/prescription.py
 Track 2 / Task 2.3: Structured Chemical Prescription and Statutory Safety Filter.
-Adheres strictly to PROJECT.md Milestone 3 and Section 4 Interface Contracts.
+Builds statutory herbicide prescriptions from the knowledge store.
 
 Guarantees:
 1. Grounded evidence extraction from ICAR / CIBRC knowledge store.
