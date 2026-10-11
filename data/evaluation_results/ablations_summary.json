@@ -1,0 +1,675 @@
+{
+  "metadata": {
+    "generated_at": "2026-10-11T13:00:05.795440+00:00",
+    "manifest_path": "data/manifests/eval_manifest_v1.json",
+    "split": "val",
+    "mock_mode": true,
+    "total_runtime_seconds": 5.16
+  },
+  "ablation_a": {
+    "ablation_name": "Ablation A",
+    "description": "Grounding DINO + SAM 2 baseline without morphological refinement",
+    "num_images": 10,
+    "mean_plant_iou": 0.08904736078610412,
+    "mean_plant_dice": 0.1605212130309502,
+    "mean_weed_iou": 0.0257694388287892,
+    "mean_weed_dice": 0.04891594753967715,
+    "detection_precision": 0.0,
+    "detection_recall": 0.0,
+    "detection_f1": 0.0,
+    "mean_box_iou": 0.0,
+    "mean_pred_chemical_savings_pct": 85.15145670572917,
+    "mean_gt_chemical_savings_pct": 90.93013509114584,
+    "mean_detection_latency_ms": 0.23724800012132619,
+    "mean_segmentation_latency_ms": 3.901274500094587,
+    "mean_refinement_latency_ms": 0.0,
+    "mean_total_latency_ms": 4.165880600339733,
+    "per_crop_metrics": {
+      "cotton": {
+        "num_images": 5,
+        "plant_iou": 0.0867568926141616,
+        "weed_iou": 0.03236620044810552,
+        "chemical_savings": 84.84954427083335
+      },
+      "sugarbeet": {
+        "num_images": 5,
+        "plant_iou": 0.09133782895804664,
+        "weed_iou": 0.019172677209472876,
+        "chemical_savings": 85.453369140625
+      }
+    },
+    "extra_details": {
+      "refinement_enabled": false,
+      "masks_refined": 0
+    }
+  },
+  "ablation_b": {
+    "ablation_name": "Ablation B",
+    "description": "Grounding DINO + SAM 2 with morphological refinement (refinement.py)",
+    "num_images": 10,
+    "mean_plant_iou": 0.0994977681618407,
+    "mean_plant_dice": 0.1774179400979587,
+    "mean_weed_iou": 0.02617002413180709,
+    "mean_weed_dice": 0.04950024288913927,
+    "detection_precision": 0.0,
+    "detection_recall": 0.0,
+    "detection_f1": 0.0,
+    "mean_box_iou": 0.0,
+    "mean_pred_chemical_savings_pct": 84.200048828125,
+    "mean_gt_chemical_savings_pct": 90.93013509114584,
+    "mean_detection_latency_ms": 0.3447369992500171,
+    "mean_segmentation_latency_ms": 3.5163363012543414,
+    "mean_refinement_latency_ms": 67.30473399984476,
+    "mean_total_latency_ms": 71.16895189974457,
+    "per_crop_metrics": {
+      "sugarbeet": {
+        "num_images": 5,
+        "plant_iou": 0.09102160518032479,
+        "weed_iou": 0.018335650254168116,
+        "chemical_savings": 84.61279296875
+      },
+      "cotton": {
+        "num_images": 5,
+        "plant_iou": 0.1079739311433566,
+        "weed_iou": 0.03400439800944606,
+        "chemical_savings": 83.7873046875
+      }
+    },
+    "extra_details": {
+      "refinement_enabled": true,
+      "iou_threshold": 0.9,
+      "total_masks": 30,
+      "masks_refined": 30,
+      "refinement_rate": 1.0
+    }
+  },
+  "comparison_ab_deltas": {
+    "delta_plant_iou": 0.01045,
+    "delta_plant_dice": 0.016897,
+    "delta_weed_iou": 0.000401,
+    "delta_weed_dice": 0.000584,
+    "delta_chemical_savings": -0.9514,
+    "latency_overhead_ms": 67.3047
+  },
+  "ablation_c": {
+    "num_combinations_evaluated": 36,
+    "best_config": {
+      "config": {
+        "iou_threshold": 0.9,
+        "kernel_radius": 3,
+        "erosion_iterations": 1,
+        "exg_weighting": true
+      },
+      "mean_plant_iou": 0.09738493649070579,
+      "mean_plant_dice": 0.17201762895394657,
+      "mean_weed_iou": 0.013953471484384736,
+      "mean_weed_dice": 0.026436229024332805,
+      "refinement_trigger_rate": 1.0,
+      "sweep_latency_ms": 334.06
+    },
+    "all_results": [
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 1,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 10.76
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 1,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 7.77
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 1,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 7.49
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 1,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 9.16
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 2,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 8.38
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 2,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 9.94
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 2,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 9.63
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 2,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 10.97
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 3,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 7.38
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 3,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 9.85
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 3,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 9.25
+      },
+      {
+        "config": {
+          "iou_threshold": 0.75,
+          "kernel_radius": 3,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 7.7
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 1,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 10.8
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 1,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 10.59
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 1,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 8.92
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 1,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 9.51
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 2,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 8.84
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 2,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 7.61
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 2,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 8.29
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 2,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 10.7
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 3,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 9.09
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 3,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 8.77
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 3,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 11.06
+      },
+      {
+        "config": {
+          "iou_threshold": 0.85,
+          "kernel_radius": 3,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09204204937508192,
+        "mean_plant_dice": 0.16326726626429078,
+        "mean_weed_iou": 0.01454283499277327,
+        "mean_weed_dice": 0.027491610001800646,
+        "refinement_trigger_rate": 0.0,
+        "sweep_latency_ms": 10.25
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 1,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.0940657315699499,
+        "mean_plant_dice": 0.16649554996127197,
+        "mean_weed_iou": 0.01395926376245375,
+        "mean_weed_dice": 0.026446624215061013,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 272.38
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 1,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.0940657315699499,
+        "mean_plant_dice": 0.16649554996127197,
+        "mean_weed_iou": 0.01395926376245375,
+        "mean_weed_dice": 0.026446624215061013,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 126.06
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 1,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.0940657315699499,
+        "mean_plant_dice": 0.16649554996127197,
+        "mean_weed_iou": 0.01395926376245375,
+        "mean_weed_dice": 0.026446624215061013,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 293.79
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 1,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.0940657315699499,
+        "mean_plant_dice": 0.16649554996127197,
+        "mean_weed_iou": 0.01395926376245375,
+        "mean_weed_dice": 0.026446624215061013,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 116.33
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 2,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09214083896175163,
+        "mean_plant_dice": 0.16372808826812232,
+        "mean_weed_iou": 0.013889009860195194,
+        "mean_weed_dice": 0.026320511360334087,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 295.05
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 2,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09214083896175163,
+        "mean_plant_dice": 0.16372808826812232,
+        "mean_weed_iou": 0.013889009860195194,
+        "mean_weed_dice": 0.026320511360334087,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 121.96
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 2,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09214083896175163,
+        "mean_plant_dice": 0.16372808826812232,
+        "mean_weed_iou": 0.013889009860195194,
+        "mean_weed_dice": 0.026320511360334087,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 271.71
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 2,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09214083896175163,
+        "mean_plant_dice": 0.16372808826812232,
+        "mean_weed_iou": 0.013889009860195194,
+        "mean_weed_dice": 0.026320511360334087,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 146.38
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 3,
+          "erosion_iterations": 1,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09738493649070579,
+        "mean_plant_dice": 0.17201762895394657,
+        "mean_weed_iou": 0.013953471484384736,
+        "mean_weed_dice": 0.026436229024332805,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 334.06
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 3,
+          "erosion_iterations": 1,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09738493649070579,
+        "mean_plant_dice": 0.17201762895394657,
+        "mean_weed_iou": 0.013953471484384736,
+        "mean_weed_dice": 0.026436229024332805,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 147.88
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 3,
+          "erosion_iterations": 2,
+          "exg_weighting": true
+        },
+        "mean_plant_iou": 0.09738493649070579,
+        "mean_plant_dice": 0.17201762895394657,
+        "mean_weed_iou": 0.013953471484384736,
+        "mean_weed_dice": 0.026436229024332805,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 301.44
+      },
+      {
+        "config": {
+          "iou_threshold": 0.9,
+          "kernel_radius": 3,
+          "erosion_iterations": 2,
+          "exg_weighting": false
+        },
+        "mean_plant_iou": 0.09738493649070579,
+        "mean_plant_dice": 0.17201762895394657,
+        "mean_weed_iou": 0.013953471484384736,
+        "mean_weed_dice": 0.026436229024332805,
+        "refinement_trigger_rate": 1.0,
+        "sweep_latency_ms": 122.77
+      }
+    ]
+  },
+  "ablation_d": {
+    "deterministic_router": {
+      "backend": "deterministic",
+      "total_queries": 250,
+      "decision_accuracy": 1.0,
+      "mean_latency_ms": 0.003948796,
+      "median_latency_ms": 0.003919,
+      "p95_latency_ms": 0.004848,
+      "p99_latency_ms": 0.006401,
+      "min_latency_ms": 0.003347,
+      "max_latency_ms": 0.01096,
+      "action_distribution": {
+        "ACCEPT": 50,
+        "REFINE": 50,
+        "ESCALATE_SYSTEM2": 100,
+        "SUPPRESS_SPRAY": 50
+      }
+    },
+    "laya_router": {
+      "backend": "laya",
+      "total_queries": 250,
+      "decision_accuracy": 1.0,
+      "mean_latency_ms": 0.00475878,
+      "median_latency_ms": 0.003841,
+      "p95_latency_ms": 0.007303,
+      "p99_latency_ms": 0.018309,
+      "min_latency_ms": 0.003018,
+      "max_latency_ms": 0.020714,
+      "action_distribution": {
+        "ACCEPT": 50,
+        "REFINE": 50,
+        "ESCALATE_SYSTEM2": 100,
+        "SUPPRESS_SPRAY": 50
+      }
+    },
+    "speedup_factor_deterministic_vs_laya": 1.21,
+    "adoption_recommendation": "Deterministic router strongly recommended for System-1 nozzle reflexes (<0.05 ms latency, zero external process dependency, 100% deterministic guardrails)."
+  },
+  "ablation_e": {
+    "clef_flash_normal": {
+      "multimodal_supported": true,
+      "model_parameters": "9B (Qwen3.5-9B)",
+      "decision_accuracy": 1.0,
+      "mean_latency_ms": 0.06649609007581603,
+      "min_latency_ms": 0.014602999726776034,
+      "max_latency_ms": 0.28916000155732036
+    },
+    "fail_safe_network_resilience": {
+      "simulated_dropouts": 100,
+      "fallback_success_rate": 1.0,
+      "fallback_backend_invoked": [
+        "clef_flash"
+      ],
+      "mean_fallback_latency_ms": 0.1353326900061802,
+      "unhandled_crashes": 0
+    },
+    "system_recommendation": "Cloudflare Clef Flash provides high parameter capacity (9B) and visual crop inspection, making it ideal for System-2 deliberative botanical triage. However, network latency and field dropouts mandate that real-time System-1 reflex spot-spraying remain on local DeterministicRouter with 100% fail-safe fallback."
+  }
+}

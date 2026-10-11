@@ -1,131 +1,113 @@
 """
 app/app.py
-AgriAgent Week 1 Mock Streamlit Dashboard.
+AgriAgent Interactive Streamlit Application.
 Dual-Brain Multi-Agent Precision Agriculture (VJTI FYP).
+
+Architecture:
+  - System 1 (Local Real-Time Reflex, <40 ms): Grounding DINO detection + SAM 2 instance
+    segmentation + morphological closed-loop refinement + precision spray map generation.
+  - System 2 (Deliberative Agronomic Intelligence): Ambiguous weed diagnosis via VLM +
+    evidence-based retrieval over statutory ICAR/CIBRC knowledge corpus + dosage ceiling checks.
 """
 
-import json
+import logging
 from pathlib import Path
 import sys
-from typing import List, Tuple
-
-import numpy as np
+from typing import Any, Dict, Optional, Tuple
 from PIL import Image
-import streamlit as st
 
 # Ensure repository root is in sys.path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
-from src.state import Box, Mask
+from app.components.pipeline import (
+    ImageDecodeError,
+    build_spray_geojson,
+    create_sample_field_image,
+    decode_uploaded_image,
+    execute_agriagent_workflow,
+    extract_kpis,
+    format_prescription_report,
+)
+from app.components.ui import (
+    render_geojson_download,
+    render_header,
+    render_kpi_cards,
+    render_prescription_report,
+    render_sidebar,
+    render_visualizations,
+)
 from src.vision.visualization import draw_boxes, overlay_masks
 
+try:
+    import streamlit as st
+except ImportError:
+    st = None
 
-def create_sample_field_image(width: int = 640, height: int = 480) -> Image.Image:
-    """Generate a realistic mock field image for instant demonstration."""
-    arr = np.full((height, width, 3), (125, 98, 68), dtype=np.uint8)
-    noise = np.random.RandomState(42).randint(-15, 15, (height, width, 3))
-    arr = np.clip(arr.astype(int) + noise, 0, 255).astype(np.uint8)
-
-    # Simulated crop rows
-    for x in range(80, width, 160):
-        arr[:, max(0, x - 25) : min(width, x + 25)] = [52, 115, 42]
-
-    # Simulated weed spots
-    for wx, wy, rad in [(180, 160, 40), (420, 210, 48), (260, 360, 35)]:
-        yy, xx = np.ogrid[
-            max(0, wy - rad) : min(height, wy + rad),
-            max(0, wx - rad) : min(width, wx + rad),
-        ]
-        circle = ((xx - wx) ** 2 + ((yy - wy) ** 2)) <= rad ** 2
-        arr[
-            max(0, wy - rad) : min(height, wy + rad),
-            max(0, wx - rad) : min(width, wx + rad),
-        ][circle] = [95, 195, 60]
-
-    return Image.fromarray(arr)
+logger = logging.getLogger("agriagent.app")
 
 
-def generate_mock_detections(
+def run_pipeline_on_image(
     image: Image.Image,
-    application: str,
-    confidence_threshold: float,
-) -> Tuple[List[Box], List[Mask]]:
-    """Generates mock Box and Mask contracts to demonstrate Task 4.1 visualizer."""
-    w, h = image.size
+    mock_mode: bool = True,
+    text_prompt: str = "cotton weed . broadleaf plant .",
+    confidence_threshold: float = 0.3,
+    nozzle_buffer: int = 10,
+    crop: str = "cotton",
+    force_system2: bool = False,
+) -> Tuple[Image.Image, Dict[str, Any], Dict[str, Any]]:
+    """
+    Core business logic function: Runs VisionWorkflowRunner on an input image,
+    generates annotated visualization overlays, and extracts dynamic KPIs.
 
-    if application == "Disease Auditing":
-        presets = [
-            (0.18, 0.22, 0.38, 0.44, "Disease", 0.89),
-            (0.55, 0.32, 0.78, 0.58, "Disease", 0.76),
-            (0.35, 0.65, 0.55, 0.85, "Crop", 0.92),
-        ]
-    elif application == "Stand Count":
-        presets = [
-            (0.15, 0.20, 0.35, 0.42, "Crop", 0.94),
-            (0.42, 0.28, 0.60, 0.50, "Crop", 0.91),
-            (0.68, 0.35, 0.88, 0.58, "Crop", 0.87),
-        ]
-    elif application == "Chlorosis":
-        presets = [
-            (0.20, 0.25, 0.45, 0.50, "Disease", 0.83),
-            (0.52, 0.35, 0.75, 0.62, "Crop", 0.88),
-        ]
-    else:  # Site-Specific Weed Spraying (default)
-        presets = [
-            (0.18, 0.22, 0.38, 0.44, "Weed", 0.88),
-            (0.55, 0.30, 0.78, 0.58, "Weed", 0.82),
-            (0.32, 0.62, 0.52, 0.85, "Crop", 0.94),
-        ]
+    Args:
+        image: Source field PIL image.
+        mock_mode: Toggle between mock and live model inference.
+        text_prompt: Zero-shot prompt for Grounding DINO.
+        confidence_threshold: Bounding box score threshold.
+        nozzle_buffer: Physical spray buffer margin in pixels.
+        crop: Agricultural crop type.
+        force_system2: Whether to force deliberative System 2 prescription.
 
-    boxes: List[Box] = []
-    masks: List[Mask] = []
+    Returns:
+        (annotated_image, final_state, kpis)
+    """
+    final_state = execute_agriagent_workflow(
+        image=image,
+        mock_mode=mock_mode,
+        text_prompt=text_prompt,
+        iou_threshold=0.85,
+        buffer_pixels=nozzle_buffer,
+        crop=crop,
+        force_system2=force_system2,
+    )
 
-    for rel_x1, rel_y1, rel_x2, rel_y2, label, score in presets:
-        if score < confidence_threshold:
-            continue
+    boxes = final_state.get("boxes", [])
+    # Filter boxes by confidence threshold
+    filtered_boxes = [b for b in boxes if b.get("score", 0.0) >= confidence_threshold]
 
-        abs_x1 = rel_x1 * w
-        abs_y1 = rel_y1 * h
-        abs_x2 = rel_x2 * w
-        abs_y2 = rel_y2 * h
+    masks = final_state.get("masks", [])
+    filtered_masks = [
+        m for m in masks if m.get("box", {}).get("score", 0.0) >= confidence_threshold
+    ]
 
-        box: Box = {
-            "x1": round(abs_x1, 1),
-            "y1": round(abs_y1, 1),
-            "x2": round(abs_x2, 1),
-            "y2": round(abs_y2, 1),
-            "label": label,
-            "score": round(score, 2),
-        }
-        boxes.append(box)
+    # Generate composite visualization overlay
+    viz_image = overlay_masks(image, filtered_masks, alpha=0.45)
+    viz_image = draw_boxes(viz_image, filtered_boxes)
 
-        # Generate realistic 2D elliptical binary mask inside box
-        ix1, iy1 = int(round(abs_x1)), int(round(abs_y1))
-        ix2, iy2 = int(round(abs_x2)), int(round(abs_y2))
-        bw = max(1, ix2 - ix1)
-        bh = max(1, iy2 - iy1)
+    # Dynamic KPIs extracted directly from spray_map
+    kpis = extract_kpis(final_state.get("spray_map"))
 
-        mask_arr = np.zeros((h, w), dtype=bool)
-        yy, xx = np.ogrid[:bh, :bw]
-        cx, cy = bw / 2.0, bh / 2.0
-        rx, ry = max(1.0, bw * 0.42), max(1.0, bh * 0.42)
-        ellipse = (((xx - cx) / rx) ** 2 + ((yy - cy) / ry) ** 2) <= 1.0
-        mask_arr[iy1:iy2, ix1:ix2] = ellipse
-
-        mask: Mask = {
-            "mask_array": mask_arr,
-            "predicted_iou": round(min(0.96, 0.85 + score * 0.1), 2),
-            "box": box,
-            "label": label,
-        }
-        masks.append(mask)
-
-    return boxes, masks
+    return viz_image, final_state, kpis
 
 
-def main():
+def main() -> None:
+    """Main Streamlit application entrypoint."""
+    if st is None:
+        print("Streamlit is not installed in the active environment.")
+        return
+
     st.set_page_config(
         page_title="AgriAgent Dashboard",
         layout="wide",
@@ -133,168 +115,94 @@ def main():
     )
 
     # 1. Main Header
-    st.title("AgriAgent: Dual-Brain Multi-Agent Precision Agriculture (VJTI FYP)")
-    st.caption("Week 1 Milestone: Zero-Shot Foundation Vision & Selective Spray Dashboard")
+    render_header()
 
     # 2. Sidebar Controls
-    st.sidebar.header("Pipeline Controls")
-    application = st.sidebar.selectbox(
-        "Application",
-        options=[
-            "Site-Specific Weed Spraying",
-            "Disease Auditing",
-            "Stand Count",
-            "Chlorosis",
-        ],
-        index=0,
-    )
+    (
+        mock_mode,
+        crop,
+        text_prompt,
+        confidence_threshold,
+        nozzle_buffer,
+        force_system2,
+    ) = render_sidebar()
 
-    confidence_threshold = st.sidebar.slider(
-        "Detection Confidence",
-        min_value=0.1,
-        max_value=0.9,
-        value=0.3,
-        step=0.05,
-    )
-
-    nozzle_buffer = st.sidebar.slider(
-        "Spray Nozzle Buffer",
-        min_value=5,
-        max_value=20,
-        value=10,
-        step=1,
-        format="%d cm",
-    )
-
-    # 3. Image Upload
+    # 3. Image Upload Section with Exception Handling
     st.subheader("Field Sensor Stream")
     uploaded_file = st.file_uploader(
-        "Upload Field Image",
+        "Upload Field Drone / Handheld Photo",
         type=["jpg", "jpeg", "png"],
-        help="Upload an aerial drone photo or handheld camera image of the crop field",
+        help="Upload an aerial RGB photo or handheld sensor image of the crop canopy.",
     )
 
     use_sample = False
     if uploaded_file is None:
-        use_sample = st.checkbox("Or use sample field photo for instant preview", value=True)
+        use_sample = st.checkbox(
+            "Or use sample field photo for instant preview",
+            value=True,
+            help="Generates synthetic organic crop foliage with weed patches.",
+        )
 
+    image: Optional[Image.Image] = None
     if uploaded_file is not None:
-        image = Image.open(uploaded_file).convert("RGB")
+        try:
+            image = decode_uploaded_image(uploaded_file)
+            st.success("Sensor stream image loaded and decoded successfully.")
+        except ImageDecodeError as exc:
+            st.error(f"Image Decoding Error: {exc}. Please verify file integrity and format.")
+            return
+        except Exception as exc:
+            st.error(f"Unexpected error loading file: {exc}")
+            return
     elif use_sample:
         image = create_sample_field_image()
     else:
-        image = None
-        st.info("Please upload a field photo (JPG, JPEG, or PNG) above to view analysis.")
+        st.info("Please upload a field photo (JPG, JPEG, or PNG) above to start the pipeline.")
         return
 
-    # 4. Generate Mock Visualizations using Task 4.1 functions
-    boxes, masks = generate_mock_detections(
-        image=image,
-        application=application,
-        confidence_threshold=confidence_threshold,
-    )
+    # 4. Pipeline Execution
+    with st.spinner(
+        "Executing System-1 Reflex Perception Pipeline..."
+        if mock_mode
+        else "Executing Live Deep Learning Backbones (Grounding DINO + SAM 2)..."
+    ):
+        try:
+            viz_image, final_state, kpis = run_pipeline_on_image(
+                image=image,
+                mock_mode=mock_mode,
+                text_prompt=text_prompt,
+                confidence_threshold=confidence_threshold,
+                nozzle_buffer=nozzle_buffer,
+                crop=crop,
+                force_system2=force_system2,
+            )
+        except Exception as exc:
+            st.error(f"Pipeline Execution Failed: {exc}")
+            logger.error("Error executing pipeline in app: %s", exc, exc_info=True)
+            return
 
-    # Overlay masks (Crop=Green, Weed=Red, Disease=Yellow) and bounding boxes
-    viz_image = overlay_masks(image, masks, alpha=0.45)
-    viz_image = draw_boxes(viz_image, boxes)
-
-    # 5. Main Visualizer: Two-Column / Panel Layout
-    col_left, col_right = st.columns(2)
-    with col_left:
-        st.subheader("Original Field Photo")
-        st.image(image, use_container_width=True)
-
-    with col_right:
-        st.subheader("Precision Spray Map")
-        st.image(viz_image, use_container_width=True)
+    # 5. Dynamic KPI Metric Cards
+    render_kpi_cards(kpis)
 
     st.divider()
 
-    # 6. KPI Cards
-    st.subheader("Field Agronomic Metrics")
-    kpi_col1, kpi_col2 = st.columns(2)
-    with kpi_col1:
-        st.metric(
-            label="Weed Infestation Area",
-            value="18.2%",
-        )
-    with kpi_col2:
-        st.metric(
-            label="Selective Chemical Reduction",
-            value="74.6%",
-            delta="Saved vs broadcast spraying",
-        )
+    # 6. Two-Column Visualizer
+    render_visualizations(original_image=image, annotated_image=viz_image)
 
-    # 7. Status Banner
-    st.success("Selective Spot-Spray Prescription Generated")
+    # 7. System 2 Deliberative Prescription Report
+    prescription_data = format_prescription_report(final_state.get("prescription_report"))
+    vlm_reasoning = final_state.get("vlm_reasoning")
+    render_prescription_report(prescription_data, vlm_reasoning=vlm_reasoning)
 
-    # 8. Download Mock Spray Prescription
-    prescription_geojson = {
-        "type": "FeatureCollection",
-        "metadata": {
-            "field_id": "VJTI-COTTON-PLOT-01",
-            "timestamp": "2026-10-04T12:00:00Z",
-            "application": application,
-            "confidence_threshold": confidence_threshold,
-            "spray_nozzle_buffer_cm": nozzle_buffer,
-            "weed_infestation_area": "18.2%",
-            "selective_chemical_reduction": "74.6%",
-            "status": "APPROVED_FOR_SPRAYING",
-        },
-        "features": [
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        [
-                            [72.8550, 19.0220],
-                            [72.8552, 19.0220],
-                            [72.8552, 19.0222],
-                            [72.8550, 19.0222],
-                            [72.8550, 19.0220],
-                        ]
-                    ],
-                },
-                "properties": {
-                    "zone_id": "NOZZLE_PULSE_01",
-                    "action": "SPRAY_ACTIVE",
-                    "target": "Weed",
-                    "chemical": "Pyrithiobac Sodium 10% EC",
-                    "buffer_margin_cm": nozzle_buffer,
-                },
-            },
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [
-                        [
-                            [72.8554, 19.0221],
-                            [72.8556, 19.0221],
-                            [72.8556, 19.0223],
-                            [72.8554, 19.0223],
-                            [72.8554, 19.0221],
-                        ]
-                    ],
-                },
-                "properties": {
-                    "zone_id": "NOZZLE_PULSE_02",
-                    "action": "SPRAY_ACTIVE",
-                    "target": "Weed",
-                    "chemical": "Pyrithiobac Sodium 10% EC",
-                    "buffer_margin_cm": nozzle_buffer,
-                },
-            },
-        ],
-    }
+    st.divider()
 
-    st.download_button(
-        label="Download Prescription (GeoJSON)",
-        data=json.dumps(prescription_geojson, indent=2),
-        file_name="mock_spray_prescription.geojson",
-        mime="application/geo+json",
+    # 8. GeoJSON Prescription Download
+    geojson_doc = build_spray_geojson(
+        final_state=final_state,
+        crop=crop,
+        nozzle_buffer_cm=nozzle_buffer,
     )
+    render_geojson_download(geojson_doc)
 
 
 if __name__ == "__main__":

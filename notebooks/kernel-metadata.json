@@ -1,0 +1,19 @@
+{
+  "id": "chaitanyapawar/agriagent-gpu-eval",
+  "title": "AgriAgent GPU Eval",
+  "code_file": "agriAgentShared.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "false",
+  "enable_gpu": "true",
+  "enable_tpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [
+    "yuzhenlu/cottonweeddet3",
+    "wangyongkun/sugarbeetsandweeds"
+  ],
+  "competition_sources": [],
+  "kernel_sources": [],
+  "model_sources": [],
+  "accelerator": "nvidia-tesla-t4"
+}

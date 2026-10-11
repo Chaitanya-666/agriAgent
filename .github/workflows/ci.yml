@@ -2,13 +2,13 @@ name: AgriAgent CI
 
 on:
   push:
-    branches: [ main, "chaitanya/*", "amit/*", "sumant/*", "sahil/*" ]
+    branches: [ main, "chaitanya/*", "amit/*", "sumant/*", "sahil/*", "worker/*" ]
   pull_request:
     branches: [ main ]
 
 jobs:
-  test:
-    name: Unit Tests & Verification
+  quality-gate:
+    name: Layered Quality Pipeline
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -24,11 +24,56 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
 
-      - name: Install Core Test Dependencies
+      - name: Install Dependencies & Quality Tooling
         run: |
           python -m pip install --upgrade pip
-          pip install numpy pillow pyyaml pydantic chromadb
+          pip install numpy pillow pyyaml pydantic chromadb ruff mypy streamlit
+          pip install -e . --no-deps
 
-      - name: Execute Automated Test Suite (24 Tests)
+      - name: "Layer 1: Linting and Formatting Check"
         run: |
-          PYTHONPATH=. python -m unittest discover tests -v
+          ruff check .
+          ruff format --check .
+
+      - name: "Layer 2: Type Checking and Syntax Verification"
+        run: |
+          python -m compileall src/ app/ tests/
+          mypy src/
+
+      - name: "Layer 3: Contract, Unit, and Safety Test Execution"
+        env:
+          PYTHONPATH: .
+        run: |
+          python3 -m unittest discover tests -v
+
+      - name: "Layer 4: End-to-End Test Suite Execution"
+        env:
+          PYTHONPATH: .
+        run: |
+          python3 tests/e2e/runner.py --all
+
+      - name: "Layer 5: Headless Streamlit Smoke Test"
+        env:
+          PYTHONPATH: .
+        run: |
+          nohup python -m streamlit run app/app.py --server.headless true --server.port 8501 > streamlit.log 2>&1 &
+          STREAMLIT_PID=$!
+          sleep 3
+          python -c "
+          import urllib.request, time
+          url = 'http://localhost:8501/_stcore/health'
+          for attempt in range(15):
+              try:
+                  with urllib.request.urlopen(url, timeout=2) as resp:
+                      if resp.status == 200:
+                          print('Streamlit headless smoke test passed (HTTP 200).')
+                          break
+              except Exception as e:
+                  print(f'Waiting for Streamlit server... ({e})')
+                  time.sleep(1)
+          else:
+              with open('streamlit.log') as f:
+                  print(f.read())
+              raise RuntimeError('Streamlit health check timed out.')
+          "
+          kill -TERM $STREAMLIT_PID || true

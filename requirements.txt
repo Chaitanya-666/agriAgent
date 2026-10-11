@@ -1,11 +1,13 @@
-# Core Framework
+# Core Framework & Multi-Agent StateGraph
 laya>=0.1.0
 langgraph>=0.2.0
 langchain>=0.3.0
+langchain-core>=0.3.0
 langchain-groq>=0.2.0
+langchain-openai>=0.2.0
 langchain-community>=0.3.0
 
-# Vision Models
+# Vision Models & Geometry
 torch>=2.1.0
 torchvision>=0.16.0
 transformers>=4.40.0
@@ -16,20 +18,28 @@ Pillow>=10.0.0
 # SAM 2 (install from source)
 # pip install git+https://github.com/facebookresearch/sam2.git
 
-# RAG
+# RAG & Table-Aware Statutory Knowledge Base
 chromadb>=0.5.0
+pypdf>=4.0.0
+sentence-transformers>=2.2.0
 
-# UI
+# UI & Interactive Dashboard
 streamlit>=1.30.0
 
-# Evaluation
+# Evaluation & Metrics
 scikit-image>=0.21.0
 scipy>=1.11.0
 matplotlib>=3.7.0
 numpy>=1.24.0
 pandas>=2.0.0
 
-# Utilities
+# Utilities & Data Models
 python-dotenv>=1.0.0
 pyyaml>=6.0
+pydantic>=2.0.0
 tqdm>=4.65.0
+
+# Quality Assurance & Testing
+ruff>=0.1.0
+mypy>=1.0.0
+pytest>=7.0.0

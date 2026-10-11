@@ -47,6 +47,9 @@ data/outputs/*
 *.log
 
 # Streamlit Local Runtime
-.streamlit/
-tests/fixtures/cotton/
-tests/fixtures/sugarbeet/
+# Build and distribution artifacts
+build/
+dist/
+*.egg-info/
+.agents/
+uv.lock

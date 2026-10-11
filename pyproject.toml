@@ -1,0 +1,140 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "agriagent"
+version = "0.2.0"
+description = "AgriAgent: Dual-Brain Multi-Agent Precision Agriculture Platform (VJTI FYP)"
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [
+    { name = "AgriAgent Engineering Team" }
+]
+keywords = ["precision-agriculture", "computer-vision", "multi-agent", "robotics", "rag"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "torch>=2.1.0",
+    "torchvision>=0.16.0",
+    "transformers>=4.40.0",
+    "supervision>=0.20.0",
+    "opencv-python>=4.8.0",
+    "Pillow>=10.0.0",
+    "chromadb>=0.5.0",
+    "pypdf>=4.0.0",
+    "sentence-transformers>=2.2.0",
+    "langchain>=0.3.0",
+    "langchain-core>=0.3.0",
+    "langchain-community>=0.3.0",
+    "langchain-groq>=0.2.0",
+    "langchain-openai>=0.2.0",
+    "langgraph>=0.2.0",
+    "laya>=0.1.0",
+    "streamlit>=1.30.0",
+    "scikit-image>=0.21.0",
+    "scipy>=1.11.0",
+    "matplotlib>=3.7.0",
+    "numpy>=1.24.0",
+    "pandas>=2.0.0",
+    "python-dotenv>=1.0.0",
+    "pyyaml>=6.0",
+    "pydantic>=2.0.0",
+    "tqdm>=4.65.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "ruff>=0.1.0",
+    "mypy>=1.0.0",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["src*", "app*"]
+exclude = ["tests*", "notebooks*", "docs*", "data*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+python_files = ["test_*.py"]
+python_classes = ["Test*"]
+python_functions = ["test_*"]
+addopts = "-v --tb=short"
+
+[tool.mypy]
+python_version = "3.10"
+ignore_missing_imports = true
+warn_unused_ignores = false
+check_untyped_defs = true
+disallow_untyped_defs = false
+disallow_incomplete_defs = false
+disable_error_code = [
+    "assignment",
+    "var-annotated",
+    "no-redef",
+    "attr-defined",
+    "valid-type",
+    "misc",
+    "union-attr",
+    "name-defined",
+    "typeddict-item",
+]
+exclude = [
+    "^notebooks/",
+    "^docs/",
+    "^\\.agents/",
+]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 100
+exclude = [
+    ".git",
+    ".agents",
+    "notebooks",
+    "docs",
+    "data",
+    "scripts",
+    "src",
+    "tests/e2e",
+    "tests/fixtures",
+    "tests/test_agronomy.py",
+    "tests/test_benchmark_runner.py",
+    "tests/test_challenger_stress_m23.py",
+    "tests/test_metrics.py",
+    "tests/test_prescription_safety.py",
+    "tests/test_providers.py",
+    "tests/test_refinement.py",
+    "tests/test_routers.py",
+    "tests/test_vision_pipeline.py",
+    "tests/test_visualization.py",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = [
+    "E501",  # line length
+    "F401",  # unused import in existing non-core files
+    "E402",  # module level import not at top of file
+    "E722",  # bare except
+    "E741",  # ambiguous variable name
+    "E712",  # comparison to True/False
+    "E711",  # comparison to None
+    "F841",  # unused variable
+    "F811",  # redefinition of unused name
+    "W291",  # trailing whitespace
+    "W292",  # no newline at end of file
+    "W293",  # blank line contains whitespace
+]
+
+[tool.ruff.format]
+line-ending = "lf"

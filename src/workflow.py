@@ -14,23 +14,28 @@ Orchestrates the fast visual reflex loop (<40 ms target on edge hardware):
   [Segmentation Node (SAM 2)] 
        │
        ▼
-  [Active Refinement Loop (IoU < 0.85, max 2 iterations)]
-       │
+  [Active Refinement Loop (IoU < 0.85, max 2 iterations)] ◄───┐ (Cyclic recursion)
+       │                                                      │
+       ├──────────────────────────────────────────────────────┘
        ▼
   [Spray Map & Agronomic Savings Compositor]
        │
        ▼
-  [GraphState Output & Spray Artifacts]
+  [System-1 vs System-2 Triage Arbitration]
+       │
+       ├─────────────────────────┐
+       ▼ (if escalated)          ▼ (standard reflex)
+  [System-2 Deliberative Brain] [GraphState Output & Spray Artifacts]
 
 Design & Resilience:
 --------------------
-Provides a dual-execution architecture:
+Provides a dual-execution architecture with identical operational topology:
 1. Direct Native State Machine (`VisionWorkflowRunner`):
    Executes the exact DAG without external framework dependencies, ensuring
-   rock-solid local testing, zero-dependency CI runs, and lightweight deployment.
+   rock-solid local testing, zero-dependency CI runs, and lightweight edge deployment.
 2. LangGraph StateGraph Compilation (`create_langgraph_workflow()`):
-   When `langgraph` is installed, compiles the identical nodes and conditional
-   edges into an official LangGraph executable graph with state checkpointing.
+   When `langgraph` is installed, compiles the identical nodes, cyclic refinement recursion,
+   and System 2 deliberative reasoning node into an official LangGraph executable graph.
 """
 
 import logging
@@ -43,6 +48,7 @@ from src.vision.grounding_dino import GroundingDINOEngine
 from src.vision.sam2_wrapper import SAM2Segmenter
 from src.vision.refinement import get_refinement_point
 from src.evaluation.iou_dice import compute_herbicide_savings
+from src.agents.router_contract import BaseRouter
 from src.agents.laya_router import LayaTriageRouter
 
 logger = logging.getLogger("agriagent.workflow")
@@ -53,14 +59,14 @@ class VisionWorkflowRunner:
     Production orchestrator for AgriAgent System-1 visual reasoning.
     
     Coordinates zero-shot detection, instance segmentation, closed-loop
-    error-centroid refinement, Laya-based triage, and herbicide savings calculation.
+    error-centroid refinement, triage arbitration, and herbicide savings calculation.
     """
 
     def __init__(
         self,
         detector: Optional[GroundingDINOEngine] = None,
         segmenter: Optional[SAM2Segmenter] = None,
-        laya_router: Optional[LayaTriageRouter] = None,
+        laya_router: Optional[Union[LayaTriageRouter, BaseRouter]] = None,
         iou_threshold: float = 0.85,
         max_refinements: int = 2,
         buffer_pixels: int = 10,
@@ -109,12 +115,13 @@ class VisionWorkflowRunner:
         return {"masks": masks}
 
     def refine_node(self, state: GraphState) -> Dict[str, Any]:
-        """Node 3: Active closed-loop refinement via error centroid point prompting."""
+        """Node 3: Active closed-loop refinement via morphological error centroid point prompting."""
         img = state.get("image") or state.get("image_path")
         masks = state.get("masks", [])
-        refinement_count = state.get("refinement_count", 0)
+        state["refinement_count"] = state.get("refinement_count", 0) + 1
+        refinement_count = state["refinement_count"]
 
-        if refinement_count >= self.max_refinements:
+        if refinement_count > self.max_refinements:
             return {"refinement_count": refinement_count}
 
         updated_masks: List[Mask] = []
@@ -130,14 +137,15 @@ class VisionWorkflowRunner:
                 current_iou, area_px, label, threshold=self.iou_threshold
             )
 
-            if needs_refine and refinement_count < self.max_refinements:
-                # Calculate geometric error centroid
+            if needs_refine and refinement_count <= self.max_refinements:
+                # Calculate morphological error centroid
                 box_coords = (box["x1"], box["y1"], box["x2"], box["y2"])
                 pt = get_refinement_point(
                     mask_dict["mask_array"],
                     box_coords,
                     predicted_iou=current_iou,
                     threshold=self.iou_threshold,
+                    image=img,
                 )
 
                 if pt is not None:
@@ -157,8 +165,7 @@ class VisionWorkflowRunner:
 
             updated_masks.append(mask_dict)
 
-        new_count = refinement_count + (1 if refined_any else 0)
-        return {"masks": updated_masks, "refinement_count": new_count}
+        return {"masks": updated_masks, "refinement_count": refinement_count}
 
     def spray_map_node(self, state: GraphState) -> Dict[str, Any]:
         """Node 4: Compute composite spray prescription, weed coverage %, and herbicide savings %."""
@@ -168,7 +175,6 @@ class VisionWorkflowRunner:
         if isinstance(img, Image.Image):
             h, w = img.size[1], img.size[0]
         else:
-            # Fallback dimensions
             h, w = (480, 640)
 
         composite_mask = np.zeros((h, w), dtype=bool)
@@ -216,15 +222,45 @@ class VisionWorkflowRunner:
             "artifacts": artifacts,
         }
 
+    def triage_node(self, state: GraphState) -> Dict[str, Any]:
+        """
+        Node 5: System-1 vs System-2 Triage Arbitration.
+        Evaluates whether detected foliage warrants escalation to deliberative System 2 reasoning.
+        """
+        boxes = state.get("boxes", [])
+        masks = state.get("masks", [])
+
+        for b, m in zip(boxes, masks):
+            escalate, reason = self.laya_router.evaluate_system2_escalation(
+                b.get("score", 1.0),
+                b.get("label", "weed"),
+                m.get("predicted_iou", 1.0),
+            )
+            if escalate:
+                logger.info("VisionWorkflow: Triage escalated to System 2 (%s)", reason)
+                return {
+                    "system2_needed": True,
+                    "vlm_reasoning": f"Laya Triage Alert: {reason}",
+                }
+
+        return {"system2_needed": False}
+
+    def system2_node(self, state: GraphState) -> Dict[str, Any]:
+        """
+        Node 6: Deliberative System 2 Agronomic Reasoner.
+        Executes multimodal diagnosis and ICAR/CIBRC RAG prescription when escalated.
+        """
+        if state.get("system2_needed") and self.system2 is not None:
+            logger.info("VisionWorkflow: Executing deliberative System 2 reasoning node.")
+            return self.system2.system2_node(state)
+        return {}
+
     def run(self, initial_state: GraphState) -> GraphState:
         """
         Execute the complete reflex state machine sequentially.
         
-        Args:
-            initial_state: GraphState initialized with image and text_prompt.
-
-        Returns:
-            GraphState: Fully populated state containing boxes, masks, and spray_map.
+        Topology matches create_langgraph_workflow() exactly:
+        Detect -> Segment -> Refine (cyclic recursion) -> Spray Map -> Triage -> System 2 (conditional).
         """
         state = initial_state.copy()
         state.setdefault("refinement_count", 0)
@@ -241,9 +277,8 @@ class VisionWorkflowRunner:
         seg_out = self.segment_node(state)
         state.update(seg_out)
 
-        # 3. Closed-Loop Refinement (conditional loop)
+        # 3. Closed-Loop Refinement (cyclic conditional loop)
         for _ in range(self.max_refinements):
-            # Check if any mask qualifies for refinement
             needs_refine = any(
                 m.get("predicted_iou", 1.0) < self.iou_threshold
                 for m in state.get("masks", [])
@@ -257,19 +292,15 @@ class VisionWorkflowRunner:
         spray_out = self.spray_map_node(state)
         state.update(spray_out)
 
-        # 5. System-1 vs System-2 Laya Triage Arbitration
-        for b, m in zip(state.get("boxes", []), state.get("masks", [])):
-            escalate, reason = self.laya_router.evaluate_system2_escalation(
-                b.get("score", 1.0), b.get("label", "weed"), m.get("predicted_iou", 1.0)
-            )
-            if escalate:
-                state["system2_needed"] = True
-                state["vlm_reasoning"] = f"Laya Triage Alert: {reason}"
-                break
+        # 5. Triage Arbitration
+        triage_out = self.triage_node(state)
+        state.update(triage_out)
 
-        if state.get("system2_needed") and self.system2 is not None:
-            state.update(self.system2.system2_node(state))
-        
+        # 6. Deliberative System 2 Execution (conditional)
+        if state.get("system2_needed"):
+            s2_out = self.system2_node(state)
+            state.update(s2_out)
+
         return state
 
 
@@ -302,6 +333,13 @@ def create_initial_state(
 def create_langgraph_workflow(runner: Optional[VisionWorkflowRunner] = None):
     """
     Compiles the workflow into an official LangGraph StateGraph instance.
+    
+    Topological Invariants:
+    1. Cyclic refinement recursion: 'refine' loops back to conditional check
+       until max_refinements is reached or all masks satisfy iou_threshold.
+    2. 'system2' node included in StateGraph when triage arbitrates escalation.
+    3. Exactly mirrors VisionWorkflowRunner.run() execution sequence.
+    
     Raises ImportError if langgraph is not installed in the active environment.
     """
     from langgraph.graph import StateGraph, START, END
@@ -313,10 +351,14 @@ def create_langgraph_workflow(runner: Optional[VisionWorkflowRunner] = None):
     builder.add_node("segment", wf_runner.segment_node)
     builder.add_node("refine", wf_runner.refine_node)
     builder.add_node("spray_map", wf_runner.spray_map_node)
+    builder.add_node("triage", wf_runner.triage_node)
+    builder.add_node("system2", wf_runner.system2_node)
 
+    # 1. Entry pipeline: START -> detect -> segment
     builder.add_edge(START, "detect")
     builder.add_edge("detect", "segment")
 
+    # 2. Cyclic refinement routing edge
     def should_refine_edge(state: GraphState) -> str:
         count = state.get("refinement_count", 0)
         if count >= wf_runner.max_refinements:
@@ -326,12 +368,36 @@ def create_langgraph_workflow(runner: Optional[VisionWorkflowRunner] = None):
                 return "refine"
         return "spray_map"
 
+    # From 'segment', conditionally enter 'refine' or skip to 'spray_map'
     builder.add_conditional_edges(
         "segment",
         should_refine_edge,
         {"refine": "refine", "spray_map": "spray_map"}
     )
-    builder.add_edge("refine", "spray_map")
-    builder.add_edge("spray_map", END)
+
+    # From 'refine', CYCLIC RECURSION back to condition (loops back to 'refine' or exits to 'spray_map')
+    builder.add_conditional_edges(
+        "refine",
+        should_refine_edge,
+        {"refine": "refine", "spray_map": "spray_map"}
+    )
+
+    # 3. Spray map -> Triage
+    builder.add_edge("spray_map", "triage")
+
+    # 4. Triage -> System 2 conditional routing edge
+    def should_escalate_edge(state: GraphState) -> str:
+        if state.get("system2_needed"):
+            return "system2"
+        return END
+
+    builder.add_conditional_edges(
+        "triage",
+        should_escalate_edge,
+        {"system2": "system2", END: END}
+    )
+
+    # 5. System 2 -> END
+    builder.add_edge("system2", END)
 
     return builder.compile()
