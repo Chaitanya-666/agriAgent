@@ -4,6 +4,7 @@ Track 2 / Task 2.2: Vector & In-Memory Store for ICAR & CIBRC weed-management do
 Implements table-aware structured document parsing and rich metadata storage.
 Adheres to PROJECT.md Milestone 3 requirements and interface contracts.
 """
+
 import argparse
 import hashlib
 import json
@@ -14,7 +15,9 @@ from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple, Union
 
 try:
-    import chromadb
+    from importlib import import_module
+
+    chromadb: Any = import_module("chromadb")
 except ImportError:
     chromadb = None
 
@@ -82,6 +85,14 @@ class HashEmbedding:
             out.append([x / norm for x in v])
         return out
 
+    def embed_query(self, input: List[str]) -> List[List[float]]:
+        """Chroma's current query protocol passes a list and expects one vector per query."""
+        return self(input)
+
+    def embed_documents(self, input: List[str]) -> List[List[float]]:
+        """Chroma's current document embedding protocol expects one vector per text."""
+        return self(input)
+
     @staticmethod
     def name() -> str:
         return "agri_hash_embedding"
@@ -98,7 +109,10 @@ def _embedder(embedding: str):
     if embedding == "hash":
         return HashEmbedding()
     from chromadb.utils import embedding_functions
-    return embedding_functions.SentenceTransformerEmbeddingFunction(model_name="BAAI/bge-small-en-v1.5")
+
+    return embedding_functions.SentenceTransformerEmbeddingFunction(
+        model_name="BAAI/bge-small-en-v1.5"
+    )
 
 
 # ==============================================================================
@@ -379,7 +393,9 @@ def format_table_row_document(row: Dict[str, Any]) -> str:
     )
 
 
-def parse_structured_text_document(text: str, filename: str, authority: str = "ICAR") -> List[Tuple[str, Dict[str, Any]]]:
+def parse_structured_text_document(
+    text: str, filename: str, authority: str = "ICAR"
+) -> List[Tuple[str, Dict[str, Any]]]:
     """
     Parse synthetic test documents or markdown tables into structured records with rich metadata.
     Handles lines like:
@@ -445,6 +461,7 @@ def read_pdf_pages(path: Path) -> List[str]:
         return []
     try:
         from pypdf import PdfReader
+
         return [(p.extract_text() or "") for p in PdfReader(str(path)).pages]
     except ImportError:
         pass
@@ -490,7 +507,11 @@ class InMemoryKnowledgeStore:
         count_before = len(self._entries)
 
         # 1. Ingest Canonical ICAR/CIBRC Tables if bulletin is present or by default
-        bulletin_exists = any("icar" in f.name.lower() and f.suffix.lower() == ".pdf" for f in kb_path.rglob("*")) if kb_path.exists() else True
+        bulletin_exists = (
+            any("icar" in f.name.lower() and f.suffix.lower() == ".pdf" for f in kb_path.rglob("*"))
+            if kb_path.exists()
+            else True
+        )
         if bulletin_exists or kb_path == KB_DIR:
             for row in CANONICAL_ICAR_TABLE_ROWS:
                 doc_text = format_table_row_document(row)
@@ -505,7 +526,13 @@ class InMemoryKnowledgeStore:
             for f in sorted(kb_path.rglob("*")):
                 if not f.is_file():
                     continue
-                auth = authority or ("CIBRC" if "cib" in f.name.lower() else "ICAR" if "icar" in f.name.lower() else "OTHER")
+                auth = authority or (
+                    "CIBRC"
+                    if "cib" in f.name.lower()
+                    else "ICAR"
+                    if "icar" in f.name.lower()
+                    else "OTHER"
+                )
                 if f.suffix.lower() in (".txt", ".md"):
                     content = f.read_text(encoding="utf-8", errors="ignore")
                     parsed = parse_structured_text_document(content, f.name, authority=auth)
@@ -515,7 +542,9 @@ class InMemoryKnowledgeStore:
 
         return len(self._entries) - count_before
 
-    def query(self, q: str, k: int = 4, distance_threshold: Optional[float] = 0.25) -> List[Dict[str, Any]]:
+    def query(
+        self, q: str, k: int = 4, distance_threshold: Optional[float] = 0.25
+    ) -> List[Dict[str, Any]]:
         """
         Query the in-memory documents using cosine distance on HashEmbedding vectors.
         Filters out hits where distance > distance_threshold.
@@ -588,7 +617,7 @@ class KnowledgeStore:
         text = re.sub(r"\s+", " ", text).strip()
         step = size - overlap
         for i in range(0, len(text), step):
-            piece = text[i:i + size]
+            piece = text[i : i + size]
             if len(piece) > 40:
                 yield piece
 
@@ -609,7 +638,11 @@ class KnowledgeStore:
         kb_path = Path(kb_dir)
 
         # 1. Ingest Canonical ICAR/CIBRC Tables
-        bulletin_exists = any("icar" in f.name.lower() and f.suffix.lower() == ".pdf" for f in kb_path.rglob("*")) if kb_path.exists() else True
+        bulletin_exists = (
+            any("icar" in f.name.lower() and f.suffix.lower() == ".pdf" for f in kb_path.rglob("*"))
+            if kb_path.exists()
+            else True
+        )
         if bulletin_exists or kb_path == KB_DIR:
             for idx, row in enumerate(CANONICAL_ICAR_TABLE_ROWS):
                 doc_text = format_table_row_document(row)
@@ -625,7 +658,13 @@ class KnowledgeStore:
             for f in sorted(kb_path.rglob("*")):
                 if not f.is_file():
                     continue
-                auth = authority or ("CIBRC" if "cib" in f.name.lower() else "ICAR" if "icar" in f.name.lower() else "OTHER")
+                auth = authority or (
+                    "CIBRC"
+                    if "cib" in f.name.lower()
+                    else "ICAR"
+                    if "icar" in f.name.lower()
+                    else "OTHER"
+                )
 
                 if f.suffix.lower() in (".txt", ".md"):
                     content = f.read_text(encoding="utf-8", errors="ignore")
@@ -639,7 +678,11 @@ class KnowledgeStore:
                     for pi, page in enumerate(pages):
                         for ci, chunk in enumerate(self._chunks(page)):
                             meta = {
-                                "crop": "cotton" if "cotton" in chunk.lower() else "wheat" if "wheat" in chunk.lower() else "general",
+                                "crop": "cotton"
+                                if "cotton" in chunk.lower()
+                                else "wheat"
+                                if "wheat" in chunk.lower()
+                                else "general",
                                 "weed_species": "weed",
                                 "chemical": "herbicide",
                                 "active_ingredient": "unknown",
@@ -659,7 +702,9 @@ class KnowledgeStore:
 
         return n
 
-    def query(self, q: str, k: int = 4, distance_threshold: Optional[float] = 0.25) -> List[Dict[str, Any]]:
+    def query(
+        self, q: str, k: int = 4, distance_threshold: Optional[float] = 0.25
+    ) -> List[Dict[str, Any]]:
         """
         Query vector store with similarity distance cutoff.
         Hits with distance > distance_threshold are filtered out, returning [] if none qualify.
@@ -667,12 +712,19 @@ class KnowledgeStore:
         if self.col.count() == 0:
             return []
         r = self.col.query(query_texts=[q], n_results=min(k, self.col.count()))
+        documents = r.get("documents")
+        metadatas = r.get("metadatas")
+        distances = r.get("distances")
+        if not documents or not metadatas or not distances:
+            return []
+        if not documents[0] or not metadatas[0] or not distances[0]:
+            return []
         hits = []
         q_lower = q.lower()
         q_tokens = set(re.findall(r"[a-z0-9]+", q_lower))
         q_specific = {t for t in q_tokens if len(t) > 2 and t not in TEMPLATE_BOILERPLATE_WORDS}
 
-        for d, m, dist in zip(r["documents"][0], r["metadatas"][0], r["distances"][0]):
+        for d, m, dist in zip(documents[0], metadatas[0], distances[0]):
             dist_val = float(dist)
             entry_specific = set()
             for field in ("weed_species", "chemical", "active_ingredient"):
@@ -707,4 +759,6 @@ if __name__ == "__main__":
         print(f"Indexed {ks.ingest()} chunks")
     if a.query:
         for h in ks.query(a.query):
-            print(f"[{h.get('authority')} | {h.get('source')} p.{h.get('page')}] {h['text'][:200]}...")
+            print(
+                f"[{h.get('authority')} | {h.get('source')} p.{h.get('page')}] {h['text'][:200]}..."
+            )

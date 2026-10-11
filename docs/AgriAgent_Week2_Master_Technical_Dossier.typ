@@ -28,7 +28,7 @@ The intended models are local `Cloudflare/clef-flash`, local `Qwen/Qwen3.5-4B`, 
   [Local Qwen3.5-4B], [Partial], [`src/agronomy/providers/local_qwen.py`, `src/agronomy/vlm_critic.py`, provider mock tests.], [Confirm serving stack compatibility and run a live local diagnosis with recorded model revision and device.],
   [Groq Qwen3.8-27B], [Partial], [`src/agronomy/providers/hosted_groq.py` defaults to requested model; provider mock/config tests.], [Verify model availability and response schema using an authorized live API key.],
   [Evaluation], [Mock and manifest-based code], [`src/evaluation/ablation_runner.py`, `data/manifests/eval_manifest_v1.json`; mock-mode runs do not measure model performance.], [Review labels/splits and rerun real models; retain provenance, revisions, device, and output metadata.],
-  [CI], [Local checks pass; target matrix pending], [Python 3.14: compileall, Ruff check/format, mypy (27 source files), 175 unit tests, and 35 E2E tests pass. Python 3.10 is not installed here; Python 3.11 lacks project test dependencies. Streamlit is unavailable locally.], [Confirm Python 3.10/3.11 GitHub Actions results and headless Streamlit health check in a dependency-complete environment.],
+  [CI], [Local Python 3.11 checks pass; GitHub run failed on prior commit], [CI run 38150770034 failed mypy on both Python 3.10 and 3.11 before later test steps. In the local Python 3.11 CI-equivalent environment, compileall, Ruff check/format, mypy (27 source files), 175 unit tests, and 35 E2E tests now pass.], [Commit and push the typing/runtime fixes, confirm a fresh Python 3.10/3.11 Actions run, and run the Streamlit smoke test; local socket binding was blocked by sandbox permissions.],
   [Documentation], [Mostly updated; final review pending], [`README.md`, `docs/models_and_runtime.md`, `docs/cleanup_execution_sprint.md`, Week 1 sources, this dossier; updated PDFs regenerated with Typst.], [Review active documentation and generated PDFs after the final CI matrix.],
 )
 
@@ -51,7 +51,7 @@ PYTHONPATH=. python -m unittest discover tests -v
 PYTHONPATH=. python tests/e2e/runner.py --all
 ```
 
-CI additionally runs a headless Streamlit health check. In this checkout the listed local checks passed on Python 3.14; Streamlit was not installed. Python 3.10 and 3.11 matrix results remain pending and must come from GitHub Actions.
+CI additionally runs a headless Streamlit health check. The local checks above passed in a Python 3.11 environment with the project and CI dependencies installed. The only completed GitHub run (38150770034, for the preceding commit) failed mypy on both matrix versions; this local fix set has not yet been pushed or rechecked by GitHub. The Streamlit smoke test remains unverified because the local sandbox denied binding a localhost socket.
 
 == Limitations
 

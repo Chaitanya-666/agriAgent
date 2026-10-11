@@ -4,6 +4,7 @@ Local Qwen inference provider connecting to an OpenAI-compatible endpoint.
 Default model: Qwen/Qwen3.5-4B.
 Supports structured JSON parsing, multimodal image inputs, and deterministic offline mock.
 """
+
 import base64
 import io
 import json
@@ -126,7 +127,7 @@ class LocalQwenProvider(BaseAgronomyProvider):
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.api_key}",
         }
-        payload = {
+        payload: Dict[str, Any] = {
             "model": self.model_name,
             "messages": messages,
             "temperature": request.temperature,

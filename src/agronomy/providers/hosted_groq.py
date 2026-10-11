@@ -4,6 +4,7 @@ Hosted Groq API provider for fast cloud agronomic deliberation.
 Default model: qwen/qwen3.8-27b.
 Supports rate-limit backoff, structured output parsing, and seamless fallback provider chain.
 """
+
 import json
 import logging
 import os
@@ -42,7 +43,7 @@ class HostedGroqProvider(BaseAgronomyProvider):
         mock_mode: bool = False,
     ):
         self.api_key = api_key or os.getenv("GROQ_API_KEY")
-        self.model_name = model_name or os.getenv("GROQ_MODEL_NAME", DEFAULT_GROQ_MODEL)
+        self.model_name: str = model_name or os.getenv("GROQ_MODEL_NAME") or DEFAULT_GROQ_MODEL
         self.fallback_provider = fallback_provider
         self.mock_mode = mock_mode
 
@@ -84,7 +85,7 @@ class HostedGroqProvider(BaseAgronomyProvider):
             "Content-Type": "application/json",
             "Authorization": f"Bearer {self.api_key}",
         }
-        payload = {
+        payload: Dict[str, Any] = {
             "model": self.model_name,
             "messages": messages,
             "temperature": request.temperature,

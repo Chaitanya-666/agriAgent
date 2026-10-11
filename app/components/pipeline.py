@@ -260,6 +260,14 @@ def execute_agriagent_workflow(
         logger.error("VisionWorkflowRunner failed during execution: %s", exc, exc_info=True)
         raise RuntimeError(f"Workflow execution failure: {exc}") from exc
 
+    # A forced System 2 request executes the same reasoning node as an escalation.
+    if force_system2 and runner.system2 is not None:
+        final_state["system2_needed"] = True
+        try:
+            final_state.update(runner.system2.system2_node(final_state))
+        except Exception as exc:
+            logger.warning("Forced System 2 reasoning failed: %s", exc)
+
     # If System 2 was requested or escalated, ensure prescription report is present
     should_run_s2 = force_system2 or final_state.get("system2_needed", False)
     if should_run_s2 and not final_state.get("prescription_report"):
@@ -278,6 +286,7 @@ def execute_agriagent_workflow(
                 weed_name=weed_name,
                 crop_stage="vegetative",
                 crop=crop_name,
+                store=getattr(runner.system2, "store", None),
             )
             final_state["prescription_report"] = prescription
             final_state["system2_needed"] = True

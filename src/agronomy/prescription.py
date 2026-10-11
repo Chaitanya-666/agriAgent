@@ -10,9 +10,10 @@ Guarantees:
 4. Statutory Dosage Ceiling Check (clamp dosages exceeding Table 4.3 upper bounds).
 5. Mandatory statutory advisory disclaimer.
 """
+
 import logging
 import re
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Literal, Optional, Tuple
 
 from src.agronomy.knowledge_store import InMemoryKnowledgeStore, KnowledgeStore
 from src.agronomy.prescription_schema import ChemicalPrescription, CitationRecord
@@ -73,7 +74,8 @@ STATUTORY_DOSAGE_CEILINGS_G_PER_HA: Dict[str, Dict[str, float]] = {
     },
 }
 
-TOXICITY_BANDS: Dict[str, str] = {
+ToxicityBand = Literal["RED", "YELLOW", "BLUE", "GREEN"]
+TOXICITY_BANDS: Dict[str, ToxicityBand] = {
     "pyrithiobac-sodium": "BLUE",
     "fenoxaprop-p-ethyl": "BLUE",
     "quizalofop-ethyl": "BLUE",
@@ -132,7 +134,11 @@ def extract_structured_fields_from_hit(hit: Dict[str, Any], crop: str) -> Dict[s
 
     # Fallback text extractors if fields are missing
     if not res["active_ingredient"]:
-        ai_match = re.search(r"(?:Active ingredient|Herbicide):\s*([A-Za-z0-9\-\s%]+?)(?:at|\||\.|\n|$)", text, re.IGNORECASE)
+        ai_match = re.search(
+            r"(?:Active ingredient|Herbicide):\s*([A-Za-z0-9\-\s%]+?)(?:at|\||\.|\n|$)",
+            text,
+            re.IGNORECASE,
+        )
         if ai_match:
             cand = ai_match.group(1).strip()
             if cand.lower() not in ("unknown", ""):
@@ -142,7 +148,11 @@ def extract_structured_fields_from_hit(hit: Dict[str, Any], crop: str) -> Dict[s
         res["formulation"] = res["active_ingredient"]
 
     if res["dosage_ai_g_per_ha"] in (0.0, None):
-        dose_match = re.search(r"([0-9\.]+)\s*(?:g|kg|units?)\s*(?:a\.i\.)?(?:\s*(?:per\s*hectare|/ha))?", text, re.IGNORECASE)
+        dose_match = re.search(
+            r"([0-9\.]+)\s*(?:g|kg|units?)\s*(?:a\.i\.)?(?:\s*(?:per\s*hectare|/ha))?",
+            text,
+            re.IGNORECASE,
+        )
         if dose_match:
             try:
                 res["dosage_ai_g_per_ha"] = float(dose_match.group(1))
@@ -150,7 +160,11 @@ def extract_structured_fields_from_hit(hit: Dict[str, Any], crop: str) -> Dict[s
                 pass
 
     if res["water_volume_l_per_ha"] in (0.0, None):
-        water_match = re.search(r"(?:dilut(?:e|ion)\s*(?:in)?|water)[\s:]*([0-9\.]+)\s*(?:liters?|l)", text, re.IGNORECASE)
+        water_match = re.search(
+            r"(?:dilut(?:e|ion)\s*(?:in)?|water)[\s:]*([0-9\.]+)\s*(?:liters?|l)",
+            text,
+            re.IGNORECASE,
+        )
         if water_match:
             try:
                 res["water_volume_l_per_ha"] = float(water_match.group(1))
@@ -158,7 +172,11 @@ def extract_structured_fields_from_hit(hit: Dict[str, Any], crop: str) -> Dict[s
                 pass
 
     if res["pre_harvest_interval_days"] in (0, None):
-        phi_match = re.search(r"(?:waiting period|pre-harvest interval|phi)[\s:]*([0-9]+)\s*days?", text, re.IGNORECASE)
+        phi_match = re.search(
+            r"(?:waiting period|pre-harvest interval|phi)[\s:]*([0-9]+)\s*days?",
+            text,
+            re.IGNORECASE,
+        )
         if phi_match:
             try:
                 res["pre_harvest_interval_days"] = int(phi_match.group(1))

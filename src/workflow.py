@@ -5,13 +5,13 @@ Central System-1 Reflex Workflow Orchestrator for AgriAgent.
 Architecture Rationale:
 -----------------------
 Orchestrates the fast visual reflex loop (<40 ms target on edge hardware):
-  [Input Image] 
+  [Input Image]
        │
        ▼
-  [Detection Node (Grounding DINO)] 
+  [Detection Node (Grounding DINO)]
        │
        ▼
-  [Segmentation Node (SAM 2)] 
+  [Segmentation Node (SAM 2)]
        │
        ▼
   [Active Refinement Loop (IoU < 0.85, max 2 iterations)] ◄───┐ (Cyclic recursion)
@@ -59,7 +59,7 @@ logger = logging.getLogger("agriagent.workflow")
 class VisionWorkflowRunner:
     """
     Production orchestrator for AgriAgent System-1 visual reasoning.
-    
+
     Coordinates zero-shot detection, instance segmentation, closed-loop
     error-centroid refinement, triage arbitration, and herbicide savings calculation.
     """
@@ -85,6 +85,7 @@ class VisionWorkflowRunner:
         else:
             try:
                 from src.agronomy.system2_node import System2Reasoner
+
                 self.system2 = System2Reasoner(mock_mode=mock_mode)
             except Exception as e:
                 logger.debug("System2Reasoner unavailable: %s", e)
@@ -112,6 +113,9 @@ class VisionWorkflowRunner:
         if not boxes:
             logger.info("VisionWorkflow: No bounding boxes to segment.")
             return {"masks": []}
+        if img is None:
+            logger.warning("VisionWorkflow: Cannot segment boxes without an input image.")
+            return {"masks": [], "error": "Cannot segment without an input image."}
 
         masks = self.segmenter.segment_to_state_masks(img, boxes)
         logger.info("VisionWorkflow: Segmented %d instance masks.", len(masks))
@@ -126,6 +130,9 @@ class VisionWorkflowRunner:
 
         if refinement_count > self.max_refinements:
             return {"refinement_count": refinement_count}
+        if img is None:
+            logger.warning("VisionWorkflow: Cannot refine masks without an input image.")
+            return {"masks": masks, "refinement_count": refinement_count}
 
         updated_masks: List[Mask] = []
         refined_any = False
@@ -148,7 +155,7 @@ class VisionWorkflowRunner:
                     box_coords,
                     predicted_iou=current_iou,
                     threshold=self.iou_threshold,
-                    image=img,
+                    image=img if isinstance(img, (Image.Image, np.ndarray)) else None,
                 )
 
                 if pt is not None:
@@ -183,12 +190,29 @@ class VisionWorkflowRunner:
         composite_mask = np.zeros((h, w), dtype=bool)
         # Strict explicit exclusion set for cash crops
         disallowed_crop_labels = {
-            "crop", "cotton", "sugarbeet", "sugar_beet", "beet", "cash_crop",
-            "plant", "broadleaf_plant", "cultivated", "soil", "background"
+            "crop",
+            "cotton",
+            "sugarbeet",
+            "sugar_beet",
+            "beet",
+            "cash_crop",
+            "plant",
+            "broadleaf_plant",
+            "cultivated",
+            "soil",
+            "background",
         }
         crop_name_tokens = ("cotton", "sugarbeet", "sugar_beet", "beet", "crop")
         # Recognized weed keywords
-        recognized_weed_keywords = ("weed", "invasive", "target", "grass", "pigweed", "carpetweed", "velvetleaf")
+        recognized_weed_keywords = (
+            "weed",
+            "invasive",
+            "target",
+            "grass",
+            "pigweed",
+            "carpetweed",
+            "velvetleaf",
+        )
         contributing_weeds = 0
         approved_zones: List[Dict[str, Any]] = []
 
@@ -197,16 +221,14 @@ class VisionWorkflowRunner:
             if raw_label is None:
                 continue
             normalized_label = str(raw_label).strip().lower().replace("-", "_")
-            
+
             # Explicit fail-closed policy: never spray any label in disallowed crops or containing crop
-            is_disallowed = (
-                normalized_label in disallowed_crop_labels or
-                any(token in normalized_label for token in crop_name_tokens)
+            is_disallowed = normalized_label in disallowed_crop_labels or any(
+                token in normalized_label for token in crop_name_tokens
             )
-            
-            is_recognized_weed = (
-                not is_disallowed and
-                any(kw in normalized_label for kw in recognized_weed_keywords)
+
+            is_recognized_weed = not is_disallowed and any(
+                kw in normalized_label for kw in recognized_weed_keywords
             )
 
             if is_recognized_weed:
@@ -219,7 +241,12 @@ class VisionWorkflowRunner:
                         {
                             "label": normalized_label,
                             "score": float(m["box"].get("score", 0.9)),
-                            "bbox": [int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1],
+                            "bbox": [
+                                int(xs.min()),
+                                int(ys.min()),
+                                int(xs.max()) + 1,
+                                int(ys.max()) + 1,
+                            ],
                             "mask": approved_mask.astype(np.uint8),
                         }
                     )
@@ -302,9 +329,8 @@ class VisionWorkflowRunner:
             normalized = label.replace(" ", "_")
             known_weeds = ("weed", "grass", "pigweed", "carpetweed", "velvetleaf", "invasive")
             crop_terms = ("cotton", "sugarbeet", "sugar_beet", "beet", "crop")
-            species_ambiguity = (
-                "ambig" in normalized
-                or not any(term in normalized for term in known_weeds + crop_terms)
+            species_ambiguity = "ambig" in normalized or not any(
+                term in normalized for term in known_weeds + crop_terms
             )
             confidence = float(b.get("score", 1.0))
             predicted_iou = float(m.get("predicted_iou", 1.0))
@@ -313,10 +339,7 @@ class VisionWorkflowRunner:
                 predicted_iou=predicted_iou,
                 label=label,
             )
-            if (
-                deterministic_decision.action == RouterAction.ESCALATE_SYSTEM2
-                or confidence < 0.70
-            ):
+            if deterministic_decision.action == RouterAction.ESCALATE_SYSTEM2 or confidence < 0.70:
                 logger.info(
                     "VisionWorkflow: Deterministic triage escalated to System 2 (%s)",
                     deterministic_decision.reason,
@@ -342,7 +365,9 @@ class VisionWorkflowRunner:
                     image_crop=image_crop,
                 )
                 if decision.action == RouterAction.ESCALATE_SYSTEM2:
-                    logger.info("VisionWorkflow: Local triage escalated to System 2 (%s)", decision.reason)
+                    logger.info(
+                        "VisionWorkflow: Local triage escalated to System 2 (%s)", decision.reason
+                    )
                     return {"system2_needed": True, "vlm_reasoning": decision.reason}
 
         return {"system2_needed": False}
@@ -360,7 +385,7 @@ class VisionWorkflowRunner:
     def run(self, initial_state: GraphState) -> GraphState:
         """
         Execute the complete reflex state machine sequentially.
-        
+
         Topology matches create_langgraph_workflow() exactly:
         Detect -> Segment -> Refine (cyclic recursion) -> Spray Map -> Triage -> System 2 (conditional).
         """
@@ -387,8 +412,7 @@ class VisionWorkflowRunner:
         # 3. Closed-Loop Refinement (cyclic conditional loop)
         for _ in range(self.max_refinements):
             needs_refine = any(
-                m.get("predicted_iou", 1.0) < self.iou_threshold
-                for m in state.get("masks", [])
+                m.get("predicted_iou", 1.0) < self.iou_threshold for m in state.get("masks", [])
             )
             if not needs_refine:
                 break
@@ -440,13 +464,13 @@ def create_initial_state(
 def create_langgraph_workflow(runner: Optional[VisionWorkflowRunner] = None):
     """
     Compiles the workflow into an official LangGraph StateGraph instance.
-    
+
     Topological Invariants:
     1. Cyclic refinement recursion: 'refine' loops back to conditional check
        until max_refinements is reached or all masks satisfy iou_threshold.
     2. 'system2' node included in StateGraph when triage arbitrates escalation.
     3. Exactly mirrors VisionWorkflowRunner.run() execution sequence.
-    
+
     Raises ImportError if langgraph is not installed in the active environment.
     """
     from langgraph.graph import StateGraph, START, END
@@ -477,16 +501,12 @@ def create_langgraph_workflow(runner: Optional[VisionWorkflowRunner] = None):
 
     # From 'segment', conditionally enter 'refine' or skip to 'spray_map'
     builder.add_conditional_edges(
-        "segment",
-        should_refine_edge,
-        {"refine": "refine", "spray_map": "spray_map"}
+        "segment", should_refine_edge, {"refine": "refine", "spray_map": "spray_map"}
     )
 
     # From 'refine', CYCLIC RECURSION back to condition (loops back to 'refine' or exits to 'spray_map')
     builder.add_conditional_edges(
-        "refine",
-        should_refine_edge,
-        {"refine": "refine", "spray_map": "spray_map"}
+        "refine", should_refine_edge, {"refine": "refine", "spray_map": "spray_map"}
     )
 
     # 3. Spray map -> Triage
@@ -498,11 +518,7 @@ def create_langgraph_workflow(runner: Optional[VisionWorkflowRunner] = None):
             return "system2"
         return END
 
-    builder.add_conditional_edges(
-        "triage",
-        should_escalate_edge,
-        {"system2": "system2", END: END}
-    )
+    builder.add_conditional_edges("triage", should_escalate_edge, {"system2": "system2", END: END})
 
     # 5. System 2 -> END
     builder.add_edge("system2", END)

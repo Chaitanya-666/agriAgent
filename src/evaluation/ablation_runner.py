@@ -208,6 +208,7 @@ def parameterized_error_centroid(
 @dataclass
 class AblationMetrics:
     """Summary metrics container for an individual ablation experiment."""
+
     ablation_name: str
     description: str
     num_images: int
@@ -282,7 +283,9 @@ class AblationRunner:
             items = items[:max_samples]
 
         if not items:
-            raise ValueError(f"No items found in manifest for split={split}, max_samples={max_samples}")
+            raise ValueError(
+                f"No items found in manifest for split={split}, max_samples={max_samples}"
+            )
 
         return items
 
@@ -296,7 +299,11 @@ class AblationRunner:
 
         Evaluates zero-shot detection and initial mask segmentation against verified ground truth.
         """
-        logger.info("Executing Ablation A: Baseline without refinement (split=%s, max_samples=%s)...", split, max_samples)
+        logger.info(
+            "Executing Ablation A: Baseline without refinement (split=%s, max_samples=%s)...",
+            split,
+            max_samples,
+        )
         items = self._load_manifest_items(split=split, max_samples=max_samples)
 
         per_image_results = [self.benchmark_runner.evaluate_image(item) for item in items]
@@ -307,7 +314,11 @@ class AblationRunner:
         total_fn = sum(r.detection_fn for r in per_image_results)
         precision = float(total_tp / (total_tp + total_fp)) if (total_tp + total_fp) > 0 else 0.0
         recall = float(total_tp / (total_tp + total_fn)) if (total_tp + total_fn) > 0 else 0.0
-        f1 = float(2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
+        f1 = (
+            float(2 * precision * recall / (precision + recall))
+            if (precision + recall) > 0
+            else 0.0
+        )
 
         crops = sorted(list(set(r.crop_type for r in per_image_results)))
         per_crop = {}
@@ -331,11 +342,21 @@ class AblationRunner:
             detection_precision=precision,
             detection_recall=recall,
             detection_f1=f1,
-            mean_box_iou=float(np.mean([r.mean_box_iou for r in per_image_results if r.mean_box_iou > 0] or [0.0])),
-            mean_pred_chemical_savings_pct=float(np.mean([r.pred_chemical_savings for r in per_image_results])),
-            mean_gt_chemical_savings_pct=float(np.mean([r.gt_chemical_savings for r in per_image_results])),
-            mean_detection_latency_ms=float(np.mean([r.detection_latency_ms for r in per_image_results])),
-            mean_segmentation_latency_ms=float(np.mean([r.segmentation_latency_ms for r in per_image_results])),
+            mean_box_iou=float(
+                np.mean([r.mean_box_iou for r in per_image_results if r.mean_box_iou > 0] or [0.0])
+            ),
+            mean_pred_chemical_savings_pct=float(
+                np.mean([r.pred_chemical_savings for r in per_image_results])
+            ),
+            mean_gt_chemical_savings_pct=float(
+                np.mean([r.gt_chemical_savings for r in per_image_results])
+            ),
+            mean_detection_latency_ms=float(
+                np.mean([r.detection_latency_ms for r in per_image_results])
+            ),
+            mean_segmentation_latency_ms=float(
+                np.mean([r.segmentation_latency_ms for r in per_image_results])
+            ),
             mean_refinement_latency_ms=0.0,
             mean_total_latency_ms=float(np.mean([r.total_latency_ms for r in per_image_results])),
             per_crop_metrics=per_crop,
@@ -358,8 +379,12 @@ class AblationRunner:
             (ablation_b_metrics, comparison_deltas)
         """
         # In mock mode, mock masks have predicted_iou=0.88; default threshold 0.90 ensures active trigger
-        threshold = iou_threshold if iou_threshold is not None else (0.90 if self.mock_mode else 0.85)
-        logger.info("Executing Ablation B: With morphological refinement (threshold=%.2f)...", threshold)
+        threshold = (
+            iou_threshold if iou_threshold is not None else (0.90 if self.mock_mode else 0.85)
+        )
+        logger.info(
+            "Executing Ablation B: With morphological refinement (threshold=%.2f)...", threshold
+        )
         items = self._load_manifest_items(split=split, max_samples=max_samples)
 
         total_masks_count = 0
@@ -391,7 +416,9 @@ class AblationRunner:
 
             # Detection
             t0 = time.perf_counter()
-            pred_boxes: List[Box] = self.detector.detect_to_state_boxes(pil_img, text_prompt=self.default_prompt)
+            pred_boxes: List[Box] = self.detector.detect_to_state_boxes(
+                pil_img, text_prompt=self.default_prompt
+            )
             t1 = time.perf_counter()
             det_lat = (t1 - t0) * 1000.0
 
@@ -478,15 +505,21 @@ class AblationRunner:
             total_fp += fp
             total_fn += fn
 
-            per_crop_data.setdefault(crop_type, []).append({
-                "plant_iou": plant_iou,
-                "weed_iou": weed_iou,
-                "chemical_savings": pred_savings,
-            })
+            per_crop_data.setdefault(crop_type, []).append(
+                {
+                    "plant_iou": plant_iou,
+                    "weed_iou": weed_iou,
+                    "chemical_savings": pred_savings,
+                }
+            )
 
         precision = float(total_tp / (total_tp + total_fp)) if (total_tp + total_fp) > 0 else 0.0
         recall = float(total_tp / (total_tp + total_fn)) if (total_tp + total_fn) > 0 else 0.0
-        f1 = float(2 * precision * recall / (precision + recall)) if (precision + recall) > 0 else 0.0
+        f1 = (
+            float(2 * precision * recall / (precision + recall))
+            if (precision + recall) > 0
+            else 0.0
+        )
 
         per_crop_summary = {
             c: {
@@ -522,7 +555,9 @@ class AblationRunner:
                 "iou_threshold": threshold,
                 "total_masks": total_masks_count,
                 "masks_refined": refined_masks_count,
-                "refinement_rate": float(refined_masks_count / total_masks_count) if total_masks_count > 0 else 0.0,
+                "refinement_rate": float(refined_masks_count / total_masks_count)
+                if total_masks_count > 0
+                else 0.0,
             },
         )
 
@@ -533,7 +568,10 @@ class AblationRunner:
             "delta_plant_dice": round(metrics_b.mean_plant_dice - metrics_a.mean_plant_dice, 6),
             "delta_weed_iou": round(metrics_b.mean_weed_iou - metrics_a.mean_weed_iou, 6),
             "delta_weed_dice": round(metrics_b.mean_weed_dice - metrics_a.mean_weed_dice, 6),
-            "delta_chemical_savings": round(metrics_b.mean_pred_chemical_savings_pct - metrics_a.mean_pred_chemical_savings_pct, 4),
+            "delta_chemical_savings": round(
+                metrics_b.mean_pred_chemical_savings_pct - metrics_a.mean_pred_chemical_savings_pct,
+                4,
+            ),
             "latency_overhead_ms": round(metrics_b.mean_refinement_latency_ms, 4),
         }
 
@@ -554,7 +592,11 @@ class AblationRunner:
         - erosion_iterations: [1, 2]
         - exg_weighting: [True, False]
         """
-        logger.info("Executing Ablation C: Parameter sweeps (split=%s, max_samples=%s)...", split, max_samples)
+        logger.info(
+            "Executing Ablation C: Parameter sweeps (split=%s, max_samples=%s)...",
+            split,
+            max_samples,
+        )
         items = self._load_manifest_items(split=split, max_samples=max_samples)
 
         if sweep_grid is None:
@@ -566,27 +608,31 @@ class AblationRunner:
             }
 
         # Cache initial detections and segmentations to make parameter sweep fast and pure
-        cached_samples = []
+        cached_samples: List[Dict[str, Any]] = []
         for item in items:
             img_path = self.benchmark_runner.resolve_image_path(item)
             pil_img = Image.open(img_path).convert("RGB")
             width, height = pil_img.size
             gt_annotations = item.get("annotations", [])
 
-            pred_boxes: List[Box] = self.detector.detect_to_state_boxes(pil_img, text_prompt=self.default_prompt)
+            pred_boxes: List[Box] = self.detector.detect_to_state_boxes(
+                pil_img, text_prompt=self.default_prompt
+            )
             raw_masks = self.segmenter.segment_boxes(pil_img, pred_boxes)
 
             gt_weed_mask = rasterize_ground_truth(gt_annotations, width, height, category="weed")
             gt_all_mask = rasterize_ground_truth(gt_annotations, width, height)
 
-            cached_samples.append({
-                "pil_img": pil_img,
-                "width": width,
-                "height": height,
-                "raw_masks": raw_masks,
-                "gt_all_mask": gt_all_mask,
-                "gt_weed_mask": gt_weed_mask,
-            })
+            cached_samples.append(
+                {
+                    "pil_img": pil_img,
+                    "width": width,
+                    "height": height,
+                    "raw_masks": raw_masks,
+                    "gt_all_mask": gt_all_mask,
+                    "gt_weed_mask": gt_weed_mask,
+                }
+            )
 
         sweep_results: List[Dict[str, Any]] = []
 
@@ -629,7 +675,9 @@ class AblationRunner:
                                         exg_weighting=exg,
                                         image=pil_img,
                                     )
-                                    ref_res = self.segmenter.refine_with_point(pil_img, m.box, m.mask_array, pt)
+                                    ref_res = self.segmenter.refine_with_point(
+                                        pil_img, m.box, m.mask_array, pt
+                                    )
                                     arr = ref_res.mask_array
                                 else:
                                     arr = m.mask_array
@@ -650,15 +698,19 @@ class AblationRunner:
                         t1 = time.perf_counter()
                         latency_ms = (t1 - t0) * 1000.0
 
-                        sweep_results.append({
-                            "config": config_desc,
-                            "mean_plant_iou": float(np.mean(plant_ious)),
-                            "mean_plant_dice": float(np.mean(plant_dices)),
-                            "mean_weed_iou": float(np.mean(weed_ious)),
-                            "mean_weed_dice": float(np.mean(weed_dices)),
-                            "refinement_trigger_rate": float(masks_triggered / masks_total) if masks_total > 0 else 0.0,
-                            "sweep_latency_ms": round(latency_ms, 2),
-                        })
+                        sweep_results.append(
+                            {
+                                "config": config_desc,
+                                "mean_plant_iou": float(np.mean(plant_ious)),
+                                "mean_plant_dice": float(np.mean(plant_dices)),
+                                "mean_weed_iou": float(np.mean(weed_ious)),
+                                "mean_weed_dice": float(np.mean(weed_dices)),
+                                "refinement_trigger_rate": float(masks_triggered / masks_total)
+                                if masks_total > 0
+                                else 0.0,
+                                "sweep_latency_ms": round(latency_ms, 2),
+                            }
+                        )
 
         # Rank configurations by mean plant IoU
         ranked = sorted(sweep_results, key=lambda x: x["mean_plant_iou"], reverse=True)
@@ -690,31 +742,57 @@ class AblationRunner:
             # 1. Clean high confidence weed
             {
                 "case_name": "clean_weed_spot_spray",
-                "inputs": {"detection_confidence": 0.94, "predicted_iou": 0.91, "area_pixels": 4500, "label": "weed"},
+                "inputs": {
+                    "detection_confidence": 0.94,
+                    "predicted_iou": 0.91,
+                    "area_pixels": 4500,
+                    "label": "weed",
+                },
                 "expected_action": RouterAction.ACCEPT,
             },
             # 2. Under-segmented mask
             {
                 "case_name": "sub_threshold_iou_refine",
-                "inputs": {"detection_confidence": 0.88, "predicted_iou": 0.72, "area_pixels": 3200, "iou_threshold": 0.85, "label": "weed"},
+                "inputs": {
+                    "detection_confidence": 0.88,
+                    "predicted_iou": 0.72,
+                    "area_pixels": 3200,
+                    "iou_threshold": 0.85,
+                    "label": "weed",
+                },
                 "expected_action": RouterAction.REFINE,
             },
             # 3. Species ambiguity
             {
                 "case_name": "botanical_species_ambiguity",
-                "inputs": {"detection_confidence": 0.85, "predicted_iou": 0.89, "species_ambiguity": True, "label": "unidentified_broadleaf"},
+                "inputs": {
+                    "detection_confidence": 0.85,
+                    "predicted_iou": 0.89,
+                    "species_ambiguity": True,
+                    "label": "unidentified_broadleaf",
+                },
                 "expected_action": RouterAction.ESCALATE_SYSTEM2,
             },
             # 4. Low detection confidence
             {
                 "case_name": "low_detector_confidence",
-                "inputs": {"detection_confidence": 0.42, "predicted_iou": 0.88, "min_confidence": 0.70, "label": "weed"},
+                "inputs": {
+                    "detection_confidence": 0.42,
+                    "predicted_iou": 0.88,
+                    "min_confidence": 0.70,
+                    "label": "weed",
+                },
                 "expected_action": RouterAction.ESCALATE_SYSTEM2,
             },
             # 5. Severe weed infestation (>85%)
             {
                 "case_name": "statutory_safety_infestation_ceiling",
-                "inputs": {"detection_confidence": 0.90, "predicted_iou": 0.92, "infestation_pct": 89.2, "max_allowed_infestation": 85.0},
+                "inputs": {
+                    "detection_confidence": 0.90,
+                    "predicted_iou": 0.92,
+                    "infestation_pct": 89.2,
+                    "max_allowed_infestation": 85.0,
+                },
                 "expected_action": RouterAction.SUPPRESS_SPRAY,
             },
         ]
@@ -797,11 +875,43 @@ class AblationRunner:
         normal_correct = 0
         total_normal = 0
 
-        eval_scenarios = [
-            ({"detection_confidence": 0.95, "predicted_iou": 0.92, "image_crop": synthetic_crop, "label": "weed"}, RouterAction.ACCEPT),
-            ({"detection_confidence": 0.88, "predicted_iou": 0.65, "image_crop": synthetic_crop, "iou_threshold": 0.85}, RouterAction.REFINE),
-            ({"detection_confidence": 0.85, "predicted_iou": 0.90, "species_ambiguity": True, "image_crop": synthetic_crop}, RouterAction.ESCALATE_SYSTEM2),
-            ({"detection_confidence": 0.92, "predicted_iou": 0.90, "infestation_pct": 92.0, "max_allowed_infestation": 85.0}, RouterAction.SUPPRESS_SPRAY),
+        eval_scenarios: List[Tuple[Dict[str, Any], RouterAction]] = [
+            (
+                {
+                    "detection_confidence": 0.95,
+                    "predicted_iou": 0.92,
+                    "image_crop": synthetic_crop,
+                    "label": "weed",
+                },
+                RouterAction.ACCEPT,
+            ),
+            (
+                {
+                    "detection_confidence": 0.88,
+                    "predicted_iou": 0.65,
+                    "image_crop": synthetic_crop,
+                    "iou_threshold": 0.85,
+                },
+                RouterAction.REFINE,
+            ),
+            (
+                {
+                    "detection_confidence": 0.85,
+                    "predicted_iou": 0.90,
+                    "species_ambiguity": True,
+                    "image_crop": synthetic_crop,
+                },
+                RouterAction.ESCALATE_SYSTEM2,
+            ),
+            (
+                {
+                    "detection_confidence": 0.92,
+                    "predicted_iou": 0.90,
+                    "infestation_pct": 92.0,
+                    "max_allowed_infestation": 85.0,
+                },
+                RouterAction.SUPPRESS_SPRAY,
+            ),
         ]
 
         for sc_inputs, expected_act in eval_scenarios:
@@ -838,7 +948,11 @@ class AblationRunner:
         """
         Executes complete ablation suite (A, B, C, D, E) and writes structured JSON summary.
         """
-        logger.info("Starting complete AgriAgent Ablation Suite (split=%s, max_samples=%s)...", split, max_samples)
+        logger.info(
+            "Starting complete AgriAgent Ablation Suite (split=%s, max_samples=%s)...",
+            split,
+            max_samples,
+        )
         start_time = time.perf_counter()
 
         metrics_a = self.run_ablation_a(split=split, max_samples=max_samples)
@@ -912,7 +1026,9 @@ def main() -> None:
 
     args = parser.parse_args()
 
-    logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s")
+    logging.basicConfig(
+        level=logging.INFO, format="%(asctime)s [%(levelname)s] %(name)s: %(message)s"
+    )
 
     runner = AblationRunner(
         manifest_path=args.manifest,
@@ -929,8 +1045,12 @@ def main() -> None:
     print("=" * 70)
     print(f"Manifest:   {args.manifest}")
     print(f"Output:     {args.output}")
-    print(f"Ablation A: mPlant IoU = {results['ablation_a']['mean_plant_iou']:.4f}, Latency = {results['ablation_a']['mean_total_latency_ms']:.2f} ms")
-    print(f"Ablation B: mPlant IoU = {results['ablation_b']['mean_plant_iou']:.4f}, Delta IoU = {results['comparison_ab_deltas']['delta_plant_iou']:+.4f}")
+    print(
+        f"Ablation A: mPlant IoU = {results['ablation_a']['mean_plant_iou']:.4f}, Latency = {results['ablation_a']['mean_total_latency_ms']:.2f} ms"
+    )
+    print(
+        f"Ablation B: mPlant IoU = {results['ablation_b']['mean_plant_iou']:.4f}, Delta IoU = {results['comparison_ab_deltas']['delta_plant_iou']:+.4f}"
+    )
     print("Ablations D and E: mocked router contract checks only; no live model result")
     print("=" * 70 + "\n")
 
