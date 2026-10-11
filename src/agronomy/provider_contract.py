@@ -1,7 +1,7 @@
 """
 src/agronomy/provider_contract.py
 Unified LLM / VLM Provider Interface for AgriAgent System-2 Reasoning.
-Conforms strictly to PROJECT.md Section 3 Interface Contracts.
+Defines the interface every agronomy model provider implements.
 """
 from abc import ABC, abstractmethod
 from typing import Any, Dict, Optional

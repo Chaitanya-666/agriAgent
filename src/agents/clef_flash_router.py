@@ -51,7 +51,7 @@ class ClefFlashRouter(BaseRouter):
         except ImportError as exc:
             raise RuntimeError(
                 "Local Clef Flash needs torch, transformers, and huggingface_hub. Install the local-model "
-                "extras and follow docs/models_and_runtime.md. No cloud or mock fallback is enabled."
+                "extras and see docs/AgriAgent_Project_Map.typ. No cloud or mock fallback is enabled."
             ) from exc
         try:
             if not torch.cuda.is_available():

@@ -11,7 +11,7 @@ from PIL import Image, ImageDraw
 try:
     import cv2
 except ImportError:
-    cv2 = None
+    cv2 = None  # type: ignore[assignment]
 
 from src.state import Box, Mask
 

@@ -2,7 +2,7 @@
 src/agronomy/knowledge_store.py
 Track 2 / Task 2.2: Vector & In-Memory Store for ICAR & CIBRC weed-management documents.
 Implements table-aware structured document parsing and rich metadata storage.
-Adheres to PROJECT.md Milestone 3 requirements and interface contracts.
+Indexes the ICAR/CIBRC knowledge base for retrieval.
 """
 
 import argparse

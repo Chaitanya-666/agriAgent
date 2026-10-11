@@ -116,7 +116,8 @@ class SAM2Segmenter:
 
                 logger.info("Using Hugging Face Transformers SAM2 implementation.")
                 self._processor = Sam2Processor.from_pretrained(self.model_id)
-                self._model = Sam2Model.from_pretrained(self.model_id).to(self.device)
+                hf_model: Any = Sam2Model.from_pretrained(self.model_id)
+                self._model = hf_model.to(self.device)
                 self._model.eval()
 
         except ImportError as err:
