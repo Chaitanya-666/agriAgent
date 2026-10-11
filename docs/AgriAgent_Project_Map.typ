@@ -7,7 +7,8 @@
 #note(title: "Read this first")[
   This is the single source of truth for the project. If another document, a code comment or an AI
   agent says something different, this document wins until the team agrees to change it. The
-  Week 1 and Week 2 dossiers record history; this map describes the plan.
+  Week 1 and Week 2 dossiers record history; this map describes the plan. To learn the project, start
+  with `docs/guides/00_Start_Here.pdf`.
 ]
 
 = The project in one paragraph
@@ -157,6 +158,10 @@ Found while writing this map. They are the core technical tasks for Track 1.
   `"cotton weed . broadleaf plant ."`. The gate treats any label containing "cotton" as crop and
   "plant" as non-weed, so with this prompt nothing would ever be sprayed. Prompt and label policy
   must be designed together.
++ *More issues found while writing the study guides.* Silent fallback to mock when weights fail to
+  load; mock refinement fakes an IoU gain; the app's confidence slider does not affect the spray map;
+  hard-coded fallback herbicide in the GeoJSON; savings differ with and without OpenCV; statutory tables
+  unchecked against the PDF. Full list with line numbers: Guide 2, Section 10.
 + *Unverified speed claims.* Code comments mention "< 40 ms" latency. Nothing has measured this. Treat
   as a target, not a fact.
 

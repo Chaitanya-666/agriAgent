@@ -35,6 +35,7 @@ AI models can advise, but only plain, tested Python rules decide what goes on th
 | [docs/AgriAgent_Project_Map.typ](docs/AgriAgent_Project_Map.typ) | Plan, deliverables, tracks, timeline (source of truth) |
 | [docs/AgriAgent_Week1_Dossier.typ](docs/AgriAgent_Week1_Dossier.typ) | What Week 1 built |
 | [docs/AgriAgent_Week2_Dossier.typ](docs/AgriAgent_Week2_Dossier.typ) | Week 2 cleanup, safety fix, the real result |
+| [docs/guides/](docs/guides/) | Study guides: 0 Start Here, 1 Concepts, 2 Codebase Walkthrough, 3 Viva Defence, 4 Demo Playbook |
 
 All documents are written in [Typst](https://typst.app). Rebuild a PDF with `typst compile docs/<file>.typ`.
 
