@@ -38,7 +38,7 @@ jobs:
       - name: "Layer 2: Type Checking and Syntax Verification"
         run: |
           python -m compileall src/ app/ tests/
-          mypy src/
+          mypy --config-file pyproject.toml src/
 
       - name: "Layer 3: Contract, Unit, and Safety Test Execution"
         env:

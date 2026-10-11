@@ -399,6 +399,81 @@ class TestWorkflowTopologyAndParity(unittest.TestCase):
             self.assertIn(("spray_map", "triage"), edge_calls)
             self.assertIn(("system2", "END"), edge_calls)
 
+    def test_workflow_runner_defaults_to_deterministic_router(self):
+        """Verify VisionWorkflowRunner defaults to DeterministicRouter."""
+        from src.workflow import VisionWorkflowRunner
+        runner = VisionWorkflowRunner(mock_mode=True)
+        self.assertIsInstance(runner.laya_router, DeterministicRouter)
+        self.assertEqual(runner.laya_router.backend, RouterBackend.DETERMINISTIC)
+
+    def test_spray_map_strict_weed_isolation_and_fail_closed(self):
+        """
+        Verify that crop masks, unknown labels, and missing labels are never sprayed.
+        Only explicitly recognized weed labels can enter the composite spray map.
+        """
+        from src.workflow import VisionWorkflowRunner
+
+        runner = VisionWorkflowRunner(mock_mode=True)
+        # Create test masks with crop, unknown, None, and weed labels
+        h, w = 100, 100
+        crop_mask = np.zeros((h, w), dtype=bool)
+        crop_mask[10:30, 10:30] = True
+
+        unknown_mask = np.zeros((h, w), dtype=bool)
+        unknown_mask[40:60, 40:60] = True
+
+        missing_label_mask = np.zeros((h, w), dtype=bool)
+        missing_label_mask[70:80, 70:80] = True
+
+        weed_mask = np.zeros((h, w), dtype=bool)
+        weed_mask[50:70, 10:30] = True
+
+        masks = [
+            {"mask_array": crop_mask, "label": "cotton", "predicted_iou": 0.95},
+            {"mask_array": crop_mask, "label": "sugarbeet", "predicted_iou": 0.95},
+            {"mask_array": crop_mask, "label": "cash_crop", "predicted_iou": 0.95},
+            {"mask_array": unknown_mask, "label": "unknown_foliage", "predicted_iou": 0.85},
+            {"mask_array": missing_label_mask, "label": None, "predicted_iou": 0.80},
+            {"mask_array": weed_mask, "label": "cotton weed", "predicted_iou": 0.92},
+        ]
+
+        test_state = {
+            "image": Image.new("RGB", (w, h), color=(128, 128, 128)),
+            "masks": masks,
+            "artifacts": {},
+        }
+
+        output = runner.spray_map_node(test_state)
+        spray_map = output["spray_map"]
+        composite = output["artifacts"]["spray_map"].payload["composite_mask"]
+
+        # Only the 1 weed mask should have contributed
+        self.assertEqual(spray_map["weed_count"], 1)
+        self.assertEqual(spray_map["total_masks_evaluated"], 6)
+
+        # Pixels in crop, unknown, and missing masks must NOT be in composite_mask
+        self.assertFalse(np.any(composite[10:30, 10:30]), "Crops must never be sprayed")
+        self.assertFalse(np.any(composite[40:60, 40:60]), "Unknown labels must fail closed")
+        self.assertFalse(np.any(composite[70:80, 70:80]), "Missing labels must fail closed")
+
+        # Weed pixels must be present
+        self.assertTrue(np.all(composite[50:70, 10:30]), "Weeds must be targeted in spray map")
+
+    def test_spray_map_empty_mask_handling(self):
+        """Empty mask list produces zero-infestation spray map safely."""
+        from src.workflow import VisionWorkflowRunner
+
+        runner = VisionWorkflowRunner(mock_mode=True)
+        test_state = {
+            "image": Image.new("RGB", (100, 100)),
+            "masks": [],
+            "artifacts": {},
+        }
+        output = runner.spray_map_node(test_state)
+        self.assertEqual(output["spray_map"]["weed_count"], 0)
+        self.assertEqual(output["spray_map"]["infestation_percentage"], 0.0)
+        self.assertEqual(output["spray_map"]["chemical_savings_percentage"], 100.0)
+
 
 if __name__ == "__main__":
     unittest.main()

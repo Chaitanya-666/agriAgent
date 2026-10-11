@@ -105,7 +105,7 @@ class TestProviders(unittest.TestCase):
         resp = provider.generate(req)
 
         self.assertEqual(resp.provider, "hosted_groq")
-        self.assertIn("llama", resp.model_name.lower())
+        self.assertTrue(any(sub in resp.model_name.lower() for sub in ["qwen", "llama"]))
         self.assertIsInstance(resp.parsed_json, dict)
         self.assertIn("crop", resp.parsed_json)
         self.assertGreater(resp.latency_ms, 0.0)

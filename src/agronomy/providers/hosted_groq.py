@@ -17,7 +17,7 @@ from src.agronomy.providers.local_qwen import extract_json
 logger = logging.getLogger("agriagent.providers.hosted_groq")
 
 GROQ_ENDPOINT = "https://api.groq.com/openai/v1/chat/completions"
-DEFAULT_GROQ_MODEL = "llama-3.3-70b-versatile"
+DEFAULT_GROQ_MODEL = "qwen/qwen3.8-27b"
 
 MOCK_GROQ_RESPONSE = {
     "crop": "cotton",

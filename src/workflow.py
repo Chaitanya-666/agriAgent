@@ -49,6 +49,7 @@ from src.vision.sam2_wrapper import SAM2Segmenter
 from src.vision.refinement import get_refinement_point
 from src.evaluation.iou_dice import compute_herbicide_savings
 from src.agents.router_contract import BaseRouter
+from src.agents.deterministic_router import DeterministicRouter
 from src.agents.laya_router import LayaTriageRouter
 
 logger = logging.getLogger("agriagent.workflow")
@@ -76,7 +77,7 @@ class VisionWorkflowRunner:
         self.mock_mode = mock_mode
         self.detector = detector or GroundingDINOEngine(mock_mode=mock_mode)
         self.segmenter = segmenter or SAM2Segmenter(mock_mode=mock_mode)
-        self.laya_router = laya_router or LayaTriageRouter()
+        self.laya_router = laya_router or DeterministicRouter()
         if system2 is not None:
             self.system2 = system2
         else:
@@ -178,8 +179,42 @@ class VisionWorkflowRunner:
             h, w = (480, 640)
 
         composite_mask = np.zeros((h, w), dtype=bool)
+        # Strict explicit exclusion set for cash crops
+        disallowed_crop_labels = {
+            "crop", "cotton", "sugarbeet", "sugar_beet", "beet", "cash_crop",
+            "plant", "broadleaf_plant", "cultivated", "soil", "background"
+        }
+        # Recognized weed keywords
+        recognized_weed_keywords = ("weed", "invasive", "target", "grass", "pigweed", "carpetweed", "velvetleaf")
+        contributing_weeds = 0
+
         for m in masks:
-            composite_mask |= m["mask_array"]
+            raw_label = m.get("label")
+            if raw_label is None:
+                continue
+            normalized_label = str(raw_label).strip().lower().replace("-", "_")
+            
+            # Explicit fail-closed policy: never spray any label in disallowed crops or containing crop
+            is_disallowed = (
+                normalized_label in disallowed_crop_labels or
+                normalized_label.startswith("crop") or
+                normalized_label.endswith("crop") or
+                normalized_label in ["cotton", "sugarbeet", "sugar_beet", "beet"]
+            )
+            
+            is_recognized_weed = (
+                not is_disallowed and
+                any(kw in normalized_label for kw in recognized_weed_keywords)
+            )
+
+            if is_recognized_weed:
+                composite_mask |= m["mask_array"]
+                contributing_weeds += 1
+            else:
+                logger.debug(
+                    "VisionWorkflow: Skipping non-weed mask (label: %s) from spray map.",
+                    raw_label,
+                )
 
         weed_pixel_count = int(composite_mask.sum())
         total_pixels = h * w
@@ -192,7 +227,8 @@ class VisionWorkflowRunner:
         spray_map_data = {
             "infestation_percentage": infestation_pct,
             "chemical_savings_percentage": round(chemical_savings_pct, 2),
-            "weed_count": len(masks),
+            "weed_count": contributing_weeds,
+            "total_masks_evaluated": len(masks),
             "buffer_pixels": self.buffer_pixels,
             "target_resolution": {"width": w, "height": h},
             "status": "Selective Spot-Spray Prescription Generated",
