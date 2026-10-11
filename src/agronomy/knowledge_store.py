@@ -11,14 +11,12 @@ import logging
 import re
 import subprocess
 from pathlib import Path
-from typing import Any, Dict, List, Optional, Tuple
+from typing import Any, Dict, List, Optional, Tuple, Union
 
 try:
     import chromadb
-    EmbeddingFunction = chromadb.EmbeddingFunction
 except ImportError:
     chromadb = None
-    EmbeddingFunction = object
 
 logger = logging.getLogger("agriagent.knowledge_store")
 
@@ -67,13 +65,13 @@ TEMPLATE_BOILERPLATE_WORDS = {
 }
 
 
-class HashEmbedding(EmbeddingFunction):
+class HashEmbedding:
     """Offline fallback embedder: hashed bag-of-words, L2-normalised. Good enough for tests."""
 
     def __init__(self, dim: int = DIM):
         self.dim = dim
 
-    def __call__(self, input):  # noqa: A002 (chromadb signature)
+    def __call__(self, input: List[str]) -> List[List[float]]:  # noqa: A002 (chromadb signature)
         out = []
         for text in input:
             v = [0.0] * self.dim
@@ -702,7 +700,7 @@ if __name__ == "__main__":
     ap.add_argument("--hash", action="store_true", help="use offline hash embeddings")
     a = ap.parse_args()
     if a.hash or chromadb is None:
-        ks = InMemoryKnowledgeStore()
+        ks: Union[InMemoryKnowledgeStore, KnowledgeStore] = InMemoryKnowledgeStore()
     else:
         ks = KnowledgeStore(embedding="bge")
     if a.ingest:

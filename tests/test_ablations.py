@@ -8,8 +8,8 @@ Verifies:
 - Ablation A (baseline Grounding DINO + SAM 2 without refinement).
 - Ablation B (Grounding DINO + SAM 2 with morphological refinement).
 - Ablation C (parameter sweeps over refinement thresholds and morphological operators).
-- Ablation D (Deterministic vs Laya router latency and decision benchmark).
-- Ablation E (Cloudflare Clef Flash vs local fail-safe network fallback).
+- Ablation D (Deterministic and mocked Clef contract comparison).
+- Ablation E (explicitly mocked Clef safety contract).
 - JSON summary serialization and schema compliance.
 - Defensive error handling (missing manifest, empty split).
 """
@@ -168,19 +168,19 @@ class TestAblationRunnerCore(unittest.TestCase):
         self.assertIn("refinement_trigger_rate", best)
 
     def test_run_ablation_d_router_comparison(self) -> None:
-        """Verify Ablation D router comparison between Deterministic and Laya routers."""
+        """Verify Ablation D compares deterministic and mock Clef decisions."""
         res_d = self.runner.run_ablation_d(num_trials=20)
         self.assertIn("deterministic_router", res_d)
-        self.assertIn("laya_router", res_d)
-        self.assertIn("speedup_factor_deterministic_vs_laya", res_d)
+        self.assertIn("clef_flash_mock_router", res_d)
+        self.assertIn("evaluation_mode", res_d)
 
         det = res_d["deterministic_router"]
-        laya = res_d["laya_router"]
+        clef = res_d["clef_flash_mock_router"]
 
         self.assertEqual(det["backend"], "deterministic")
-        self.assertEqual(laya["backend"], "laya")
+        self.assertEqual(clef["backend"], "clef_flash")
         self.assertEqual(det["decision_accuracy"], 1.0)
-        self.assertEqual(laya["decision_accuracy"], 1.0)
+        self.assertEqual(clef["decision_accuracy"], 1.0)
 
         # Verify action distribution coverage
         for act in [
@@ -190,26 +190,22 @@ class TestAblationRunnerCore(unittest.TestCase):
             RouterAction.SUPPRESS_SPRAY,
         ]:
             self.assertGreater(det["action_distribution"][act.value], 0)
-            self.assertGreater(laya["action_distribution"][act.value], 0)
+            self.assertGreater(clef["action_distribution"][act.value], 0)
 
         # Latency metrics exist and are positive
         self.assertGreater(det["mean_latency_ms"], 0.0)
-        self.assertGreater(laya["mean_latency_ms"], 0.0)
+        self.assertGreater(clef["mean_latency_ms"], 0.0)
 
-    def test_run_ablation_e_clef_flash_and_resilience(self) -> None:
-        """Verify Ablation E multimodal routing and fail-safe network drop fallback."""
-        res_e = self.runner.run_ablation_e(num_trials=10, simulate_network_failure=True)
+    def test_run_ablation_e_clef_mock_contract(self) -> None:
+        """Verify mock-mode contract behavior without presenting it as live inference."""
+        res_e = self.runner.run_ablation_e(num_trials=10)
         self.assertIn("clef_flash_normal", res_e)
-        self.assertIn("fail_safe_network_resilience", res_e)
 
         norm = res_e["clef_flash_normal"]
-        self.assertTrue(norm["multimodal_supported"])
+        self.assertTrue(norm["mock_mode"])
+        self.assertFalse(norm["multimodal_supported"])
         self.assertEqual(norm["decision_accuracy"], 1.0)
-
-        resilience = res_e["fail_safe_network_resilience"]
-        self.assertEqual(resilience["fallback_success_rate"], 1.0)
-        self.assertEqual(resilience["unhandled_crashes"], 0)
-        self.assertGreater(resilience["simulated_dropouts"], 0)
+        self.assertIn("mock_only", res_e["evaluation_mode"])
 
     def test_run_all_ablations_writes_valid_json(self) -> None:
         """Verify run_all_ablations produces structured, schema-compliant JSON artifact."""

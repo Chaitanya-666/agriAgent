@@ -11,10 +11,8 @@ Verifies major cross-feature interactions across AgriAgent subsystems:
    - Ambiguous or sub-confidence detections trigger triage escalation (ESCALATE_SYSTEM2), which
      activates the deliberative System-2 node, querying the ICAR/CIBRC statutory corpus and returning
      an evidence-grounded prescription report with citations.
-3. Ambiguous Weed Detection + Clef Flash Multimodal Router + Fail-Safe Local Fallback:
-   - Multimodal telemetry and image crop evaluation using Clef Flash router.
-   - Simulated cloud network timeout / connectivity loss triggers transparent, fail-safe fallback
-     to local DeterministicRouter without crashing the actuator pipeline.
+3. Ambiguous Weed Detection + Local Clef Mock + Deterministic Safety Gate:
+   - Explicit mock-mode contract checks, with deterministic spray suppression preserved.
 4. Ground-Truth Evaluation Harness + Benchmark Runner + JSON Metrics Serialization:
    - End-to-end benchmark evaluation over manifest items, computing precision, recall, F1, mean box IoU,
      weed mask IoU/Dice, and chemical savings, followed by lossless JSON serialization and Markdown reporting.
@@ -31,7 +29,6 @@ import io
 import json
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
 import numpy as np
 from PIL import Image
@@ -45,7 +42,6 @@ from app.components.pipeline import (
     format_prescription_report,
 )
 from src.agents.clef_flash_router import ClefFlashRouter
-from src.agents.deterministic_router import DeterministicRouter
 from src.agents.router_contract import RouterAction, RouterBackend, RouterDecision
 from src.agronomy.knowledge_store import InMemoryKnowledgeStore as StoreWithCanonicals
 from src.agronomy.prescription import (
@@ -107,7 +103,7 @@ class TestTier3CrossFeature(unittest.TestCase):
 
         initial_state = create_initial_state(
             image=self.test_image,
-            text_prompt="cotton weed . broadleaf plant .",
+            text_prompt="weed . broadleaf weed .",
         )
 
         final_state = runner.run(initial_state)
@@ -144,7 +140,10 @@ class TestTier3CrossFeature(unittest.TestCase):
         comp_mask = spray_artifact.payload["composite_mask"]
         self.assertEqual(comp_mask.shape, (480, 640))
         self.assertEqual(comp_mask.dtype, bool)
-        self.assertEqual(int(comp_mask.sum()), int(np.sum([m["mask_array"] for m in final_state["masks"]], axis=0).astype(bool).sum()))
+        self.assertEqual(
+            int(comp_mask.sum()),
+            int(np.sum([m["mask_array"] for m in final_state["masks"]], axis=0).astype(bool).sum()),
+        )
 
     def test_direct_morphological_refinement_to_spraymap_invariants(self):
         """
@@ -153,7 +152,7 @@ class TestTier3CrossFeature(unittest.TestCase):
         """
         h, w = 300, 400
         box_coords = (50.0, 50.0, 150.0, 150.0)
-        box = create_synthetic_box(50.0, 50.0, 150.0, 150.0, label="cotton_weed")
+        box = create_synthetic_box(50.0, 50.0, 150.0, 150.0, label="weed")
 
         # Initial under-segmented mask: small 20x20 core inside 100x100 box
         initial_mask = np.zeros((h, w), dtype=bool)
@@ -203,16 +202,27 @@ class TestTier3CrossFeature(unittest.TestCase):
         initial_state = create_initial_state(self.test_image)
         # Inject ambiguous weed detection that requires System 2 deliberation
         initial_state["boxes"] = [
-            create_synthetic_box(100.0, 100.0, 200.0, 200.0, label="ambiguous_weed_foliage", score=0.48)
+            create_synthetic_box(
+                100.0, 100.0, 200.0, 200.0, label="ambiguous_weed_foliage", score=0.48
+            )
         ]
         initial_state["masks"] = [
-            create_synthetic_mask(480, 640, box=initial_state["boxes"][0], predicted_iou=0.65, label="ambiguous_weed_foliage")
+            create_synthetic_mask(
+                480,
+                640,
+                box=initial_state["boxes"][0],
+                predicted_iou=0.65,
+                label="ambiguous_weed_foliage",
+            )
         ]
         initial_state["field_metadata"] = {"crop": "cotton"}
 
         # Run triage node
         triage_res = runner.triage_node(initial_state)
-        self.assertTrue(triage_res.get("system2_needed"), "Ambiguous / low score detection must trigger System 2 escalation")
+        self.assertTrue(
+            triage_res.get("system2_needed"),
+            "Ambiguous / low score detection must trigger System 2 escalation",
+        )
         self.assertIn("vlm_reasoning", triage_res)
 
         initial_state.update(triage_res)
@@ -235,10 +245,9 @@ class TestTier3CrossFeature(unittest.TestCase):
     # =========================================================================
     # 3. Ambiguous Weed + Clef Flash Router + Fail-Safe Local Fallback
     # =========================================================================
-    def test_cross_feature_clef_flash_multimodal_and_network_fallback(self):
+    def test_cross_feature_local_clef_mock_triage_and_safety_gate(self):
         """
-        Verify Clef Flash router processes multimodal telemetry and gracefully
-        falls back to local DeterministicRouter on network failure.
+        Verify explicit mock triage is distinct and cannot override safety rules.
         """
         # Crop sample for multimodal router
         crop_arr = np.array(self.test_image.crop((50, 50, 150, 150)))
@@ -251,43 +260,21 @@ class TestTier3CrossFeature(unittest.TestCase):
             area_pixels=3500,
             species_ambiguity=False,
             image_crop=crop_arr,
-            label="cotton_weed",
+            label="weed",
         )
         self.assertIsInstance(decision, RouterDecision)
         self.assertEqual(decision.backend, RouterBackend.CLEF_FLASH)
         self.assertEqual(decision.action, RouterAction.ACCEPT)
-        self.assertTrue(decision.metadata.get("multimodal_image_present"))
+        self.assertTrue(decision.metadata.get("mock_mode"))
         self.assertIn("ACCEPT", decision.probabilities)
 
-        # 2. Simulated Network Loss / Timeout -> Fail-safe local fallback
-        live_router = ClefFlashRouter(
-            mock_mode=False,
-            api_token="test_token_cf",
-            account_id="test_account_cf",
-            timeout_seconds=0.1,
-            fallback_router=DeterministicRouter(),
+        unsafe_decision = router.route(
+            detection_confidence=0.92,
+            predicted_iou=0.95,
+            infestation_pct=90.0,
+            image_crop=crop_arr,
         )
-
-        with patch.object(
-            live_router,
-            "_execute_cloud_inference",
-            side_effect=TimeoutError("Connection timed out to Cloudflare edge"),
-        ):
-            fallback_decision = live_router.route(
-                detection_confidence=0.92,
-                predicted_iou=0.95,
-                area_pixels=2000,
-                species_ambiguity=False,
-                image_crop=crop_arr,
-                label="cotton_weed",
-            )
-
-            # Fallback router completed decision safely without raising exception
-            self.assertIsInstance(fallback_decision, RouterDecision)
-            self.assertEqual(fallback_decision.backend, RouterBackend.CLEF_FLASH)
-            self.assertEqual(fallback_decision.action, RouterAction.ACCEPT)
-            self.assertIn("Clef Flash Fallback", fallback_decision.reason)
-            self.assertGreater(fallback_decision.latency_ms, 0.0)
+        self.assertEqual(unsafe_decision.action, RouterAction.SUPPRESS_SPRAY)
 
     # =========================================================================
     # 4. Ground-Truth Evaluation Harness + Benchmark Runner + JSON Serialization
@@ -396,9 +383,9 @@ class TestTier3CrossFeature(unittest.TestCase):
         for feature in geojson["features"]:
             self.assertEqual(feature["type"], "Feature")
             self.assertEqual(feature["geometry"]["type"], "Polygon")
-            # Must have closed polygon (at least 5 points for a bounding box: 4 corners + closing point)
+            # Mask geometry must be a closed ring with at least three vertices.
             coords = feature["geometry"]["coordinates"][0]
-            self.assertEqual(len(coords), 5)
+            self.assertGreaterEqual(len(coords), 4)
             self.assertEqual(coords[0], coords[-1], "Polygon must be closed")
             self.assertIn("zone_id", feature["properties"])
             self.assertIn("action", feature["properties"])
@@ -465,8 +452,14 @@ class TestTier3CrossFeature(unittest.TestCase):
         )
 
         self.assertEqual(presc_clamped.status, "ok")
-        self.assertTrue(presc_clamped.dosage_clamped, "Dosage exceeding 75 g a.i./ha must be flagged as clamped")
-        self.assertEqual(presc_clamped.dosage_ai_g_per_ha, 75.0, "Dosage must be clamped to statutory ceiling (75.0)")
+        self.assertTrue(
+            presc_clamped.dosage_clamped, "Dosage exceeding 75 g a.i./ha must be flagged as clamped"
+        )
+        self.assertEqual(
+            presc_clamped.dosage_ai_g_per_ha,
+            75.0,
+            "Dosage must be clamped to statutory ceiling (75.0)",
+        )
         self.assertEqual(presc_clamped.original_dosage_ai_g_per_ha, 180.0)
         self.assertIn("Statutory dosage ceiling exceeded", presc_clamped.safety_warning)
         self.assertEqual(presc_clamped.disclaimer, DISCLAIMER)

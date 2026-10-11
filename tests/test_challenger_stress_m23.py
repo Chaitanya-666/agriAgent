@@ -10,7 +10,7 @@ Adversarial Stress Scenarios:
    - Negative prompt points generation: guaranteed valid in-bounds coordinates.
 2. Milestone 2 Router Actions & Priorities:
    - Full matrix of all 4 RouterActions (ACCEPT, REFINE, ESCALATE_SYSTEM2, SUPPRESS_SPRAY)
-     across DeterministicRouter, LayaTriageRouter, and ClefFlashRouter.
+     across the deterministic safety gate and mocked local triage contract.
    - Statutory spray safety priority (suppression supersedes refinement and low confidence).
 3. Milestone 2 ClefFlashRouter Fail-Safe Network Fallback:
    - Simulated URLError (timeout, connection refused), TimeoutError, HTTPError (500),
@@ -23,8 +23,6 @@ Adversarial Stress Scenarios:
    - Out-of-distribution / fictitious weeds query with default parameters.
 """
 import unittest
-import urllib.error
-from unittest.mock import patch
 import numpy as np
 
 from src.vision.refinement import (
@@ -35,7 +33,6 @@ from src.vision.refinement import (
 )
 from src.agents.router_contract import RouterAction, RouterBackend
 from src.agents.deterministic_router import DeterministicRouter
-from src.agents.laya_router import LayaTriageRouter
 from src.agents.clef_flash_router import ClefFlashRouter
 from src.agronomy.knowledge_store import InMemoryKnowledgeStore, KB_DIR
 from src.agronomy.prescription import (
@@ -108,18 +105,16 @@ class TestMilestone2RefinementEdgeCases(unittest.TestCase):
             self.assertTrue(0 <= x < self.w and 0 <= y < self.h)
 
 
-class TestMilestone2RouterActionsAndFallback(unittest.TestCase):
-    """Stress tests for router decisions across all actions and Clef Flash fallback."""
+class TestMilestone2RouterActions(unittest.TestCase):
+    """Stress tests for deterministic and explicitly mocked router decisions."""
 
     def setUp(self):
         self.det = DeterministicRouter()
-        self.laya = LayaTriageRouter()
         self.clef_mock = ClefFlashRouter(mock_mode=True)
-        self.clef_live = ClefFlashRouter(api_token="dummy_token", account_id="dummy_acc", mock_mode=False)
 
     def test_all_four_router_actions(self):
-        """All three routers produce expected actions across all 4 discrete decisions."""
-        for r in (self.det, self.laya, self.clef_mock):
+        """Deterministic and mocked Clef paths preserve all safety actions."""
+        for r in (self.det, self.clef_mock):
             with self.subTest(router=r.backend.value):
                 # 1. ACCEPT
                 d_acc = r.route(detection_confidence=0.95, predicted_iou=0.92, infestation_pct=10.0, species_ambiguity=False)
@@ -143,31 +138,9 @@ class TestMilestone2RouterActionsAndFallback(unittest.TestCase):
 
     def test_safety_suppression_priority(self):
         """Excessive infestation must override refinement and confidence escalation."""
-        for r in (self.det, self.laya, self.clef_mock):
+        for r in (self.det, self.clef_mock):
             d = r.route(detection_confidence=0.30, predicted_iou=0.40, infestation_pct=95.0, species_ambiguity=True)
             self.assertEqual(d.action, RouterAction.SUPPRESS_SPRAY)
-
-    def test_clef_flash_simulated_network_error_fallbacks(self):
-        """ClefFlashRouter seamlessly falls back to DeterministicRouter on network faults."""
-        network_faults = [
-            urllib.error.URLError("Connection timed out"),
-            urllib.error.URLError("Connection refused"),
-            TimeoutError("Request timed out after 2.0s"),
-            RuntimeError("Cloudflare API returned error: Rate limit exceeded"),
-            urllib.error.HTTPError("https://api.cloudflare.com", 500, "Internal Server Error", {}, None),
-        ]
-        for fault in network_faults:
-            with self.subTest(fault=type(fault).__name__):
-                with patch.object(self.clef_live, "_execute_cloud_inference", side_effect=fault):
-                    decision = self.clef_live.route(
-                        detection_confidence=0.95,
-                        predicted_iou=0.90,
-                        infestation_pct=10.0,
-                    )
-                    self.assertEqual(decision.action, RouterAction.ACCEPT)
-                    self.assertTrue(decision.metadata.get("fallback_triggered"))
-                    self.assertIn("Fallback:", decision.reason)
-
 
 class TestMilestone3AgronomySafetyAndRetrieval(unittest.TestCase):
     """Stress tests for statutory safety, dosage clamping, and out-of-distribution queries."""

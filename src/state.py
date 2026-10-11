@@ -5,7 +5,7 @@ Production State Schema for AgriAgent.
 Defines the centralized LangGraph state, data models, and typed contracts
 for the dual-brain precision agriculture pipeline:
   - System-1: Fast reflex vision (Grounding DINO + SAM 2 + IoU refinement)
-  - System-2: Deliberative reasoning (Qwen2.5-VL + ICAR RAG knowledge engine)
+  - System-2: Deliberative reasoning (local Qwen3.5-4B + ICAR RAG knowledge engine)
 """
 
 from enum import Enum
@@ -61,7 +61,7 @@ class Mask(TypedDict):
     mask_array: Any        # 2D numpy.ndarray of shape [H, W], dtype bool or uint8
     predicted_iou: float   # SAM 2 internal confidence score
     box: Box               # Source bounding box that prompted SAM 2
-    label: str             # Classification label (e.g., 'cotton_weed', 'parthenium')
+    label: str             # Classification label (e.g., 'weed', 'grass', 'parthenium')
 
 
 # ── Central Pipeline Graph State ───────────────────────────────────────────────
@@ -85,7 +85,7 @@ class GraphState(TypedDict):
     # 2. Input Sensor Payloads
     image: Optional[Image.Image]            # In-memory PIL Image of field patch
     image_path: Optional[str]               # Path to source image file on disk
-    text_prompt: Optional[str]              # Detection prompt (e.g. "cotton weed . broadleaf plant")
+    text_prompt: Optional[str]              # Detection prompt (e.g. "weed . grass . pigweed")
     field_metadata: Optional[Dict[str, Any]] # Crop type, location, GPS, drone altitude
 
     # 3. System-1 Vision Pipeline Outputs (Fast Reflex)
@@ -95,7 +95,7 @@ class GraphState(TypedDict):
 
     # 4. System-2 Deliberative Reasoning (Slow Thinking)
     system2_needed: bool                    # Set True if confidence low or weed is unverified
-    vlm_reasoning: Optional[str]            # Visual explanation from Qwen2.5-VL / Florence-2
+    vlm_reasoning: Optional[str]            # Visual explanation from the configured local/cloud provider
     prescription_report: Optional[Dict[str, Any]] # ICAR herbicide, dosage, water dilution
 
     # 5. Downstream Actuator & Evaluation

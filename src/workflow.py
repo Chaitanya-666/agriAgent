@@ -39,7 +39,7 @@ Provides a dual-execution architecture with identical operational topology:
 """
 
 import logging
-from typing import Any, Dict, List, Optional, Tuple, Union
+from typing import Any, Dict, List, Optional, Tuple, cast
 import numpy as np
 from PIL import Image
 
@@ -49,8 +49,9 @@ from src.vision.sam2_wrapper import SAM2Segmenter
 from src.vision.refinement import get_refinement_point
 from src.evaluation.iou_dice import compute_herbicide_savings
 from src.agents.router_contract import BaseRouter
+from src.agents.router_contract import RouterAction
 from src.agents.deterministic_router import DeterministicRouter
-from src.agents.laya_router import LayaTriageRouter
+from src.agents.clef_flash_router import ClefFlashRouter
 
 logger = logging.getLogger("agriagent.workflow")
 
@@ -67,7 +68,7 @@ class VisionWorkflowRunner:
         self,
         detector: Optional[GroundingDINOEngine] = None,
         segmenter: Optional[SAM2Segmenter] = None,
-        laya_router: Optional[Union[LayaTriageRouter, BaseRouter]] = None,
+        router: Optional[BaseRouter] = None,
         iou_threshold: float = 0.85,
         max_refinements: int = 2,
         buffer_pixels: int = 10,
@@ -77,7 +78,8 @@ class VisionWorkflowRunner:
         self.mock_mode = mock_mode
         self.detector = detector or GroundingDINOEngine(mock_mode=mock_mode)
         self.segmenter = segmenter or SAM2Segmenter(mock_mode=mock_mode)
-        self.laya_router = laya_router or DeterministicRouter()
+        self.safety_router = DeterministicRouter()
+        self.router = router or ClefFlashRouter(mock_mode=mock_mode)
         if system2 is not None:
             self.system2 = system2
         else:
@@ -97,7 +99,7 @@ class VisionWorkflowRunner:
         if img is None:
             return {"error": "Missing input image in GraphState.", "boxes": []}
 
-        prompt = state.get("text_prompt") or "cotton weed . broadleaf plant ."
+        prompt = state.get("text_prompt") or "weed . grass . pigweed ."
         boxes = self.detector.detect_to_state_boxes(img, text_prompt=prompt)
         logger.info("VisionWorkflow: Detected %d candidate boxes.", len(boxes))
         return {"boxes": boxes}
@@ -134,7 +136,7 @@ class VisionWorkflowRunner:
             area_px = int(mask_dict["mask_array"].sum())
             label = box.get("label", "weed")
 
-            needs_refine = self.laya_router.evaluate_mask_refinement(
+            needs_refine = self.safety_router.evaluate_mask_refinement(
                 current_iou, area_px, label, threshold=self.iou_threshold
             )
 
@@ -184,9 +186,11 @@ class VisionWorkflowRunner:
             "crop", "cotton", "sugarbeet", "sugar_beet", "beet", "cash_crop",
             "plant", "broadleaf_plant", "cultivated", "soil", "background"
         }
+        crop_name_tokens = ("cotton", "sugarbeet", "sugar_beet", "beet", "crop")
         # Recognized weed keywords
         recognized_weed_keywords = ("weed", "invasive", "target", "grass", "pigweed", "carpetweed", "velvetleaf")
         contributing_weeds = 0
+        approved_zones: List[Dict[str, Any]] = []
 
         for m in masks:
             raw_label = m.get("label")
@@ -197,9 +201,7 @@ class VisionWorkflowRunner:
             # Explicit fail-closed policy: never spray any label in disallowed crops or containing crop
             is_disallowed = (
                 normalized_label in disallowed_crop_labels or
-                normalized_label.startswith("crop") or
-                normalized_label.endswith("crop") or
-                normalized_label in ["cotton", "sugarbeet", "sugar_beet", "beet"]
+                any(token in normalized_label for token in crop_name_tokens)
             )
             
             is_recognized_weed = (
@@ -208,8 +210,19 @@ class VisionWorkflowRunner:
             )
 
             if is_recognized_weed:
-                composite_mask |= m["mask_array"]
+                approved_mask = np.asarray(m["mask_array"], dtype=bool)
+                composite_mask |= approved_mask
                 contributing_weeds += 1
+                ys, xs = np.where(approved_mask)
+                if len(xs):
+                    approved_zones.append(
+                        {
+                            "label": normalized_label,
+                            "score": float(m["box"].get("score", 0.9)),
+                            "bbox": [int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1],
+                            "mask": approved_mask.astype(np.uint8),
+                        }
+                    )
             else:
                 logger.debug(
                     "VisionWorkflow: Skipping non-weed mask (label: %s) from spray map.",
@@ -219,6 +232,17 @@ class VisionWorkflowRunner:
         weed_pixel_count = int(composite_mask.sum())
         total_pixels = h * w
         infestation_pct = round((weed_pixel_count / total_pixels) * 100.0, 2)
+
+        safety_decision = DeterministicRouter().route(
+            detection_confidence=1.0,
+            predicted_iou=1.0,
+            infestation_pct=infestation_pct,
+            max_allowed_infestation=85.0,
+        )
+        spray_allowed = safety_decision.action != RouterAction.SUPPRESS_SPRAY
+        if not spray_allowed:
+            composite_mask[:] = False
+            approved_zones = []
 
         chemical_savings_pct = compute_herbicide_savings(
             composite_mask, (h, w), buffer_pixels=self.buffer_pixels
@@ -231,7 +255,13 @@ class VisionWorkflowRunner:
             "total_masks_evaluated": len(masks),
             "buffer_pixels": self.buffer_pixels,
             "target_resolution": {"width": w, "height": h},
-            "status": "Selective Spot-Spray Prescription Generated",
+            "spray_allowed": spray_allowed,
+            "safety_action": safety_decision.action.value,
+            "status": (
+                "Selective Spot-Spray Prescription Generated"
+                if spray_allowed
+                else "SUPPRESS_SPRAY: infestation exceeds safety ceiling"
+            ),
         }
 
         # Build serializable artifact
@@ -241,7 +271,7 @@ class VisionWorkflowRunner:
             title="Precision Herbicide Spray Map",
             description=f"Generated prescription saving {chemical_savings_pct:.1f}% chemical volume.",
             metadata=spray_map_data,
-            payload={"composite_mask": composite_mask},
+            payload={"composite_mask": composite_mask, "approved_spray_zones": approved_zones},
         )
 
         artifacts = state.get("artifacts", {}).copy()
@@ -265,19 +295,55 @@ class VisionWorkflowRunner:
         """
         boxes = state.get("boxes", [])
         masks = state.get("masks", [])
+        image = state.get("image")
 
         for b, m in zip(boxes, masks):
-            escalate, reason = self.laya_router.evaluate_system2_escalation(
-                b.get("score", 1.0),
-                b.get("label", "weed"),
-                m.get("predicted_iou", 1.0),
+            label = str(b.get("label", "weed")).strip().lower().replace("-", "_")
+            normalized = label.replace(" ", "_")
+            known_weeds = ("weed", "grass", "pigweed", "carpetweed", "velvetleaf", "invasive")
+            crop_terms = ("cotton", "sugarbeet", "sugar_beet", "beet", "crop")
+            species_ambiguity = (
+                "ambig" in normalized
+                or not any(term in normalized for term in known_weeds + crop_terms)
             )
-            if escalate:
-                logger.info("VisionWorkflow: Triage escalated to System 2 (%s)", reason)
+            confidence = float(b.get("score", 1.0))
+            predicted_iou = float(m.get("predicted_iou", 1.0))
+            deterministic_decision = self.safety_router.route(
+                detection_confidence=confidence,
+                predicted_iou=predicted_iou,
+                label=label,
+            )
+            if (
+                deterministic_decision.action == RouterAction.ESCALATE_SYSTEM2
+                or confidence < 0.70
+            ):
+                logger.info(
+                    "VisionWorkflow: Deterministic triage escalated to System 2 (%s)",
+                    deterministic_decision.reason,
+                )
                 return {
                     "system2_needed": True,
-                    "vlm_reasoning": f"Laya Triage Alert: {reason}",
+                    "vlm_reasoning": f"Deterministic triage: {deterministic_decision.reason}",
                 }
+            if species_ambiguity:
+                image_crop = None
+                if isinstance(image, Image.Image):
+                    x1 = max(0, int(b.get("x1", 0)))
+                    y1 = max(0, int(b.get("y1", 0)))
+                    x2 = min(image.width, int(b.get("x2", image.width)))
+                    y2 = min(image.height, int(b.get("y2", image.height)))
+                    if x2 > x1 and y2 > y1:
+                        image_crop = image.crop((x1, y1, x2, y2))
+                decision = self.router.route(
+                    detection_confidence=confidence,
+                    predicted_iou=predicted_iou,
+                    label=label,
+                    species_ambiguity=True,
+                    image_crop=image_crop,
+                )
+                if decision.action == RouterAction.ESCALATE_SYSTEM2:
+                    logger.info("VisionWorkflow: Local triage escalated to System 2 (%s)", decision.reason)
+                    return {"system2_needed": True, "vlm_reasoning": decision.reason}
 
         return {"system2_needed": False}
 
@@ -299,19 +365,24 @@ class VisionWorkflowRunner:
         Detect -> Segment -> Refine (cyclic recursion) -> Spray Map -> Triage -> System 2 (conditional).
         """
         state = initial_state.copy()
+
+        def merge_node_output(output: Dict[str, Any]) -> None:
+            # Node methods are dynamic graph boundaries; runtime state remains a GraphState.
+            state.update(cast(Any, output))
+
         state.setdefault("refinement_count", 0)
         state.setdefault("artifacts", {})
         state.setdefault("messages", [])
 
         # 1. Detection
         det_out = self.detect_node(state)
-        state.update(det_out)
+        merge_node_output(det_out)
         if state.get("error"):
             return state
 
         # 2. Segmentation
         seg_out = self.segment_node(state)
-        state.update(seg_out)
+        merge_node_output(seg_out)
 
         # 3. Closed-Loop Refinement (cyclic conditional loop)
         for _ in range(self.max_refinements):
@@ -322,27 +393,27 @@ class VisionWorkflowRunner:
             if not needs_refine:
                 break
             ref_out = self.refine_node(state)
-            state.update(ref_out)
+            merge_node_output(ref_out)
 
         # 4. Spray Map Generation
         spray_out = self.spray_map_node(state)
-        state.update(spray_out)
+        merge_node_output(spray_out)
 
         # 5. Triage Arbitration
         triage_out = self.triage_node(state)
-        state.update(triage_out)
+        merge_node_output(triage_out)
 
         # 6. Deliberative System 2 Execution (conditional)
         if state.get("system2_needed"):
             s2_out = self.system2_node(state)
-            state.update(s2_out)
+            merge_node_output(s2_out)
 
         return state
 
 
 def create_initial_state(
     image: Image.Image,
-    text_prompt: str = "cotton weed . broadleaf plant .",
+    text_prompt: str = "weed . grass . pigweed .",
     image_path: Optional[str] = None,
 ) -> GraphState:
     """Helper to instantiate a clean, properly typed initial GraphState."""

@@ -1,7 +1,7 @@
 """
 src/agronomy/providers/local_qwen.py
 Local Qwen inference provider connecting to an OpenAI-compatible endpoint.
-Default model: Qwen/Qwen2.5-VL-7B-Instruct.
+Default model: Qwen/Qwen3.5-4B.
 Supports structured JSON parsing, multimodal image inputs, and deterministic offline mock.
 """
 import base64
@@ -20,7 +20,7 @@ from src.agronomy.provider_contract import BaseAgronomyProvider, LLMRequest, LLM
 logger = logging.getLogger("agriagent.providers.local_qwen")
 
 DEFAULT_LOCAL_URL = "http://127.0.0.1:8888/v1"
-DEFAULT_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"
+DEFAULT_MODEL = "Qwen/Qwen3.5-4B"
 
 MOCK_LOCAL_RESPONSE = {
     "crop": "cotton",
@@ -88,7 +88,7 @@ class LocalQwenProvider(BaseAgronomyProvider):
         model_name: str = DEFAULT_MODEL,
         mock_mode: bool = False,
     ):
-        self.base_url = (base_url or os.getenv("LOCAL_BASE_URL", DEFAULT_LOCAL_URL)).rstrip("/")
+        self.base_url = (base_url or os.getenv("LOCAL_BASE_URL") or DEFAULT_LOCAL_URL).rstrip("/")
         self.api_key = api_key or os.getenv("LOCAL_API_KEY", "dummy")
         self.model_name = model_name or os.getenv("LOCAL_MODEL_NAME", DEFAULT_MODEL)
         self.mock_mode = mock_mode

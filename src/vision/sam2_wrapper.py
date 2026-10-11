@@ -227,12 +227,12 @@ class SAM2Segmenter:
 
         # Branch 1: Mock / Fallback execution
         if self.mock_mode or (self._predictor is None and not hasattr(self, "_model")):
-            results = []
+            mock_results: List[SegmentResult] = []
             for b in boxes:
                 seg = self._generate_mock_mask_from_box(b, h, w, target_iou=self.default_mock_iou)
-                results.append(seg)
-            logger.debug("SAM 2 generated %d mock masks.", len(results))
-            return results
+                mock_results.append(seg)
+            logger.debug("SAM 2 generated %d mock masks.", len(mock_results))
+            return mock_results
 
         # Branch 2: Live SAM 2 Inference
         import torch
@@ -266,6 +266,7 @@ class SAM2Segmenter:
             # Hugging Face transformers SAM 2 pipeline
             from PIL import Image as PILImage
 
+            assert self._processor is not None and self._model is not None
             pil_img = PILImage.fromarray(np_img)
             for b in boxes:
                 input_boxes = [[[b["x1"], b["y1"], b["x2"], b["y2"]]]]
@@ -341,12 +342,18 @@ class SAM2Segmenter:
         # Live SAM 2 point + box conditioning
         import torch
 
+        predictor = self._predictor
+        if predictor is None:
+            raise RuntimeError(
+                "Point-based SAM 2 refinement requires the official SAM2 image predictor runtime."
+            )
+
         input_box = np.array([box["x1"], box["y1"], box["x2"], box["y2"]])
         point_coords = np.array([[px, py]])
         point_labels = np.array([1 if is_positive else 0])
 
-        self._predictor.set_image(np_img)
-        masks, scores, _ = self._predictor.predict(
+        predictor.set_image(np_img)
+        masks, scores, _ = predictor.predict(
             point_coords=point_coords,
             point_labels=point_labels,
             box=input_box[None, :],

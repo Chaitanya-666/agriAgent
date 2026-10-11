@@ -8,11 +8,9 @@ Executes controlled scientific experiments over versioned dataset manifests
 - Ablation B: Grounding DINO + SAM 2 with morphological refinement (refinement.py).
 - Ablation C: Parameter sweeps over refinement thresholds and morphological operators
              (kernel_size / radius, erosion_iterations, Excess Green weighting).
-- Ablation D: Deterministic reflex router (<0.05 ms) vs Laya triage router
+- Ablation D: Deterministic router vs an explicitly mocked local triage contract
              (decision accuracy, latency distribution, action distribution).
-- Ablation E: Cloudflare Clef Flash (Qwen3.5-9B) vs Local triage router
-             (latency comparison, fail-safe fallback on simulated network drop,
-             multimodal decision accuracy).
+- Ablation E: explicitly mocked Clef safety contract only.
 
 Outputs structured, machine-readable summary metrics to
 data/evaluation_results/ablations_summary.json.
@@ -29,7 +27,6 @@ from pathlib import Path
 import sys
 import time
 from typing import Any, Dict, List, Optional, Tuple, Union
-from unittest.mock import patch
 
 import numpy as np
 from PIL import Image
@@ -41,7 +38,6 @@ if str(repo_root) not in sys.path:
 
 from src.agents.clef_flash_router import ClefFlashRouter
 from src.agents.deterministic_router import DeterministicRouter
-from src.agents.laya_router import LayaTriageRouter
 from src.agents.router_contract import (
     BaseRouter,
     RouterAction,
@@ -254,7 +250,7 @@ class AblationRunner:
         detector: Optional[GroundingDINOEngine] = None,
         segmenter: Optional[SAM2Segmenter] = None,
         mock_mode: bool = True,
-        default_prompt: str = "cotton weed . sugar beet weed . broadleaf weed . crop .",
+        default_prompt: str = "weed . grass . broadleaf weed .",
     ):
         self.manifest_path = Path(manifest_path)
         self.mock_mode = mock_mode
@@ -679,16 +675,16 @@ class AblationRunner:
         num_trials: int = 100,
     ) -> Dict[str, Any]:
         """
-        Ablation D: Deterministic reflex router (<0.05 ms) vs Laya triage router.
+        Ablation D: Deterministic rules vs explicitly mocked Clef triage.
 
         Evaluates:
         - Routing decision accuracy across standardized agricultural test cases.
         - Latency distribution (mean, median, p95, p99, min, max in ms).
         - Action distribution (ACCEPT, REFINE, ESCALATE_SYSTEM2, SUPPRESS_SPRAY).
         """
-        logger.info("Executing Ablation D: Deterministic vs Laya router benchmark (%d trials)...", num_trials)
+        logger.info("Executing Ablation D: deterministic vs mock Clef (%d trials)...", num_trials)
         det_router = DeterministicRouter()
-        laya_router = LayaTriageRouter()
+        clef_router = ClefFlashRouter(mock_mode=True)
 
         test_cases: List[Dict[str, Any]] = [
             # 1. Clean high confidence weed
@@ -771,34 +767,26 @@ class AblationRunner:
             }
 
         det_stats = evaluate_single_router(det_router)
-        laya_stats = evaluate_single_router(laya_router)
-
-        speedup = float(laya_stats["mean_latency_ms"] / det_stats["mean_latency_ms"]) if det_stats["mean_latency_ms"] > 0 else 1.0
+        clef_stats = evaluate_single_router(clef_router)
 
         return {
             "deterministic_router": det_stats,
-            "laya_router": laya_stats,
-            "speedup_factor_deterministic_vs_laya": round(speedup, 2),
-            "adoption_recommendation": (
-                "Deterministic router strongly recommended for System-1 nozzle reflexes "
-                "(<0.05 ms latency, zero external process dependency, 100% deterministic guardrails)."
-            ),
+            "clef_flash_mock_router": clef_stats,
+            "evaluation_mode": "mock_only; does not measure Clef model behavior or runtime",
         }
 
     def run_ablation_e(
         self,
         num_trials: int = 50,
-        simulate_network_failure: bool = True,
     ) -> Dict[str, Any]:
         """
-        Ablation E: Cloudflare Clef Flash (Qwen3.5-9B) vs Local Triage Router.
+        Ablation E: explicitly mocked local Clef triage contract check.
 
         Evaluates:
-        - Clef Flash multimodal classification latency and accuracy.
-        - Fail-safe fallback resiliency during simulated network dropout.
-        - Operational safety and edge trade-offs.
+        - Mock contract behavior only; no model latency or vision quality measurement.
+        - Deterministic outcomes and suppression behavior in mock mode.
         """
-        logger.info("Executing Ablation E: Clef Flash vs local routing (network drop simulation=%s)...", simulate_network_failure)
+        logger.info("Executing Ablation E: Clef mock contract")
         clef_router = ClefFlashRouter(mock_mode=True)
 
         synthetic_crop = np.zeros((64, 64, 3), dtype=np.uint8)
@@ -828,62 +816,17 @@ class AblationRunner:
 
         clef_normal_acc = float(normal_correct / total_normal) if total_normal > 0 else 0.0
 
-        # Simulated network drop and fail-safe fallback
-        fallback_successes = 0
-        fallback_latencies: List[float] = []
-        fallback_backends: List[str] = []
-
-        if simulate_network_failure:
-            # Create a router instance configured for live cloud calling
-            failing_clef_router = ClefFlashRouter(
-                api_token="simulated_token",
-                account_id="simulated_account",
-                fallback_router=DeterministicRouter(),
-                mock_mode=False,
-            )
-
-            # Mock _execute_cloud_inference to simulate instantaneous connection timeout/drop
-            def _simulated_drop(*args: Any, **kwargs: Any) -> Any:
-                raise ConnectionResetError("Simulated 4G field network dropout: Connection reset by peer")
-
-            with patch.object(failing_clef_router, "_execute_cloud_inference", side_effect=_simulated_drop):
-                for sc_inputs, expected_act in eval_scenarios:
-                    for _ in range(num_trials):
-                        t0 = time.perf_counter()
-                        try:
-                            dec = failing_clef_router.route(**sc_inputs)
-                            t1 = time.perf_counter()
-                            fallback_latencies.append((t1 - t0) * 1000.0)
-                            fallback_backends.append(dec.backend.value)
-                            if dec.action in [RouterAction.ACCEPT, RouterAction.REFINE, RouterAction.ESCALATE_SYSTEM2, RouterAction.SUPPRESS_SPRAY]:
-                                fallback_successes += 1
-                        except Exception as exc:
-                            logger.error("Clef Flash failed to catch network exception: %s", exc)
-
-        fallback_rate = float(fallback_successes / (len(eval_scenarios) * num_trials)) if simulate_network_failure else 1.0
-
         return {
             "clef_flash_normal": {
-                "multimodal_supported": True,
-                "model_parameters": "9B (Qwen3.5-9B)",
+                "multimodal_supported": False,
+                "model_parameters": "not loaded; deterministic mock",
                 "decision_accuracy": clef_normal_acc,
+                "mock_mode": True,
                 "mean_latency_ms": float(np.mean(normal_latencies)),
                 "min_latency_ms": float(np.min(normal_latencies)),
                 "max_latency_ms": float(np.max(normal_latencies)),
             },
-            "fail_safe_network_resilience": {
-                "simulated_dropouts": len(eval_scenarios) * num_trials,
-                "fallback_success_rate": fallback_rate,
-                "fallback_backend_invoked": list(set(fallback_backends)) if fallback_backends else ["clef_flash"],
-                "mean_fallback_latency_ms": float(np.mean(fallback_latencies)) if fallback_latencies else 0.0,
-                "unhandled_crashes": 0 if fallback_rate == 1.0 else (len(eval_scenarios) * num_trials - fallback_successes),
-            },
-            "system_recommendation": (
-                "Cloudflare Clef Flash provides high parameter capacity (9B) and visual crop inspection, "
-                "making it ideal for System-2 deliberative botanical triage. However, network latency "
-                "and field dropouts mandate that real-time System-1 reflex spot-spraying remain on "
-                "local DeterministicRouter with 100% fail-safe fallback."
-            ),
+            "evaluation_mode": "mock_only; no model runtime, vision capability, network resilience, or live latency measured",
         }
 
     def run_all_ablations(
@@ -902,7 +845,7 @@ class AblationRunner:
         metrics_b, deltas_ab = self.run_ablation_b(split=split, max_samples=max_samples)
         results_c = self.run_ablation_c(split=split, max_samples=min(max_samples or 10, 4))
         results_d = self.run_ablation_d(num_trials=50)
-        results_e = self.run_ablation_e(num_trials=25, simulate_network_failure=True)
+        results_e = self.run_ablation_e(num_trials=25)
 
         total_elapsed_s = time.perf_counter() - start_time
 
@@ -988,8 +931,7 @@ def main() -> None:
     print(f"Output:     {args.output}")
     print(f"Ablation A: mPlant IoU = {results['ablation_a']['mean_plant_iou']:.4f}, Latency = {results['ablation_a']['mean_total_latency_ms']:.2f} ms")
     print(f"Ablation B: mPlant IoU = {results['ablation_b']['mean_plant_iou']:.4f}, Delta IoU = {results['comparison_ab_deltas']['delta_plant_iou']:+.4f}")
-    print(f"Ablation D: Speedup Det vs Laya = {results['ablation_d']['speedup_factor_deterministic_vs_laya']}x")
-    print(f"Ablation E: Fail-safe fallback rate = {results['ablation_e']['fail_safe_network_resilience']['fallback_success_rate'] * 100:.1f}%")
+    print("Ablations D and E: mocked router contract checks only; no live model result")
     print("=" * 70 + "\n")
 
 

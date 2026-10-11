@@ -22,6 +22,123 @@ class ImageDecodeError(ValueError):
     pass
 
 
+def _mask_polygon_rings(mask: np.ndarray) -> List[List[List[int]]]:
+    """Trace exact pixel-cell boundaries without expanding them to a box."""
+    binary = np.asarray(mask, dtype=bool)
+    height, width = binary.shape
+    edges = set()
+    for y, x in np.argwhere(binary):
+        x, y = int(x), int(y)
+        if y == 0 or not binary[y - 1, x]:
+            edges.add(((x, y), (x + 1, y)))
+        if x == width - 1 or not binary[y, x + 1]:
+            edges.add(((x + 1, y), (x + 1, y + 1)))
+        if y == height - 1 or not binary[y + 1, x]:
+            edges.add(((x + 1, y + 1), (x, y + 1)))
+        if x == 0 or not binary[y, x - 1]:
+            edges.add(((x, y + 1), (x, y)))
+
+    outgoing: Dict[tuple, List[tuple]] = {}
+    for start, end in edges:
+        outgoing.setdefault(start, []).append(end)
+
+    remaining = set(edges)
+    rings: List[List[List[int]]] = []
+    while remaining:
+        start, current = min(remaining)
+        remaining.remove((start, current))
+        ring = [list(start), list(current)]
+        previous = start
+        while tuple(ring[-1]) != start:
+            vertex = tuple(ring[-1])
+            candidates = [
+                point for point in outgoing.get(vertex, []) if (vertex, point) in remaining
+            ]
+            if not candidates:
+                ring = []
+                break
+            incoming_direction = (
+                (vertex[0] - previous[0]),
+                (vertex[1] - previous[1]),
+            )
+            direction_rank = {(1, 0): 0, (0, 1): 1, (-1, 0): 2, (0, -1): 3}
+            incoming_rank = direction_rank[incoming_direction]
+            current = min(
+                candidates,
+                key=lambda point: (
+                    (direction_rank[(point[0] - vertex[0], point[1] - vertex[1])] - incoming_rank)
+                    % 4
+                ),
+            )
+            previous = vertex
+            remaining.remove((vertex, current))
+            ring.append(list(current))
+        if len(ring) >= 4:
+            rings.append(ring)
+    return rings
+
+
+def _signed_ring_area(ring: List[List[int]]) -> float:
+    return (
+        sum(
+            ring[index][0] * ring[index + 1][1] - ring[index + 1][0] * ring[index][1]
+            for index in range(len(ring) - 1)
+        )
+        / 2
+    )
+
+
+def _point_in_ring(point: tuple[float, float], ring: List[List[int]]) -> bool:
+    x, y = point
+    inside = False
+    for index in range(len(ring) - 1):
+        x1, y1 = ring[index]
+        x2, y2 = ring[index + 1]
+        if (y1 > y) != (y2 > y) and x < (x2 - x1) * (y - y1) / (y2 - y1) + x1:
+            inside = not inside
+    return inside
+
+
+def _mask_polygons(mask: np.ndarray) -> List[List[List[List[int]]]]:
+    """Group outer mask contours with enclosed holes; reject malformed traces."""
+    rings = _mask_polygon_rings(mask)
+    polygons: List[List[List[List[int]]]] = []
+    holes: List[List[List[int]]] = []
+    for ring in rings:
+        if _signed_ring_area(ring) > 0:
+            polygons.append([ring])
+        else:
+            holes.append(ring)
+    for hole in holes:
+        probe = (
+            sum(point[0] for point in hole[:-1]) / (len(hole) - 1),
+            sum(point[1] for point in hole[:-1]) / (len(hole) - 1),
+        )
+        containers = [polygon for polygon in polygons if _point_in_ring(probe, polygon[0])]
+        if not containers:
+            return []
+        min(containers, key=lambda polygon: abs(_signed_ring_area(polygon[0]))).append(hole)
+    return polygons
+
+
+def _simplify_ring(ring: List[List[int]]) -> List[List[int]]:
+    """Drop collinear pixel-edge vertices while preserving the exact boundary."""
+    points = ring[:-1]
+    simplified = []
+    for index, current in enumerate(points):
+        previous = points[index - 1]
+        following = points[(index + 1) % len(points)]
+        cross = (current[0] - previous[0]) * (following[1] - current[1]) - (
+            current[1] - previous[1]
+        ) * (following[0] - current[0])
+        if cross != 0:
+            simplified.append(current)
+    if len(simplified) < 3:
+        return []
+    simplified.append(simplified[0])
+    return simplified
+
+
 def decode_uploaded_image(file_or_bytes: Any) -> Image.Image:
     """
     Safely decode uploaded file buffers, bytes, or PIL Image instances.
@@ -96,7 +213,7 @@ def create_sample_field_image(width: int = 640, height: int = 480) -> Image.Imag
 def execute_agriagent_workflow(
     image: Image.Image,
     mock_mode: bool = True,
-    text_prompt: str = "cotton weed . broadleaf plant .",
+    text_prompt: str = "weed . grass . pigweed .",
     iou_threshold: float = 0.85,
     buffer_pixels: int = 10,
     crop: str = "cotton",
@@ -264,47 +381,55 @@ def build_spray_geojson(
     spray_map = final_state.get("spray_map") or {}
     kpis = extract_kpis(spray_map)
     prescription = final_state.get("prescription_report") or {}
-    boxes = final_state.get("boxes", [])
+    artifacts = final_state.get("artifacts") or {}
+    spray_artifact = artifacts.get("spray_map")
+    artifact_payload = getattr(spray_artifact, "payload", {}) or {}
+    approved_zones = artifact_payload.get("approved_spray_zones", [])
 
     features = []
     # Base GPS coordinate for research plot
     base_lon, base_lat = 72.8550, 19.0220
     scale = 0.00001
 
-    for idx, box in enumerate(boxes):
-        if "weed" not in box.get("label", "").lower():
+    if spray_map.get("safety_action") == "SUPPRESS_SPRAY" or not spray_map.get(
+        "spray_allowed", False
+    ):
+        approved_zones = []
+
+    for idx, zone in enumerate(approved_zones):
+        label = str(zone.get("label", ""))
+        zone_mask = zone.get("mask")
+        if not label or not isinstance(zone_mask, np.ndarray) or zone_mask.ndim != 2:
             continue
-
-        x1, y1 = box.get("x1", 0.0), box.get("y1", 0.0)
-        x2, y2 = box.get("x2", 0.0), box.get("y2", 0.0)
-
-        # Map pixel coordinates to GPS polygon
-        p1 = [round(base_lon + x1 * scale, 6), round(base_lat + y1 * scale, 6)]
-        p2 = [round(base_lon + x2 * scale, 6), round(base_lat + y1 * scale, 6)]
-        p3 = [round(base_lon + x2 * scale, 6), round(base_lat + y2 * scale, 6)]
-        p4 = [round(base_lon + x1 * scale, 6), round(base_lat + y2 * scale, 6)]
-
-        features.append(
-            {
-                "type": "Feature",
-                "geometry": {
-                    "type": "Polygon",
-                    "coordinates": [[p1, p2, p3, p4, p1]],
-                },
-                "properties": {
-                    "zone_id": f"NOZZLE_PULSE_{idx + 1:02d}",
-                    "action": "SPRAY_ACTIVE",
-                    "target": box.get("label", "Weed"),
-                    "confidence": round(float(box.get("score", 0.9)), 2),
-                    "active_ingredient": prescription.get(
-                        "active_ingredient", "Pyrithiobac-sodium"
-                    ),
-                    "formulation": prescription.get("formulation", "10% EC"),
-                    "dosage_ai_g_per_ha": prescription.get("dosage_ai_g_per_ha", 75.0),
-                    "buffer_margin_cm": nozzle_buffer_cm,
-                },
-            }
-        )
+        for polygon in _mask_polygons(zone_mask):
+            coordinates = [
+                [
+                    [round(base_lon + point[0] * scale, 6), round(base_lat + point[1] * scale, 6)]
+                    for point in _simplify_ring(ring)
+                ]
+                for ring in polygon
+            ]
+            if any(len(ring) < 4 for ring in coordinates):
+                continue
+            zone_id = len(features) + 1
+            features.append(
+                {
+                    "type": "Feature",
+                    "geometry": {"type": "Polygon", "coordinates": coordinates},
+                    "properties": {
+                        "zone_id": f"NOZZLE_PULSE_{zone_id:02d}",
+                        "action": "SPRAY_ACTIVE",
+                        "target": label,
+                        "confidence": round(float(zone.get("score", 0.9)), 2),
+                        "active_ingredient": prescription.get(
+                            "active_ingredient", "Pyrithiobac-sodium"
+                        ),
+                        "formulation": prescription.get("formulation", "10% EC"),
+                        "dosage_ai_g_per_ha": prescription.get("dosage_ai_g_per_ha", 75.0),
+                        "buffer_margin_cm": nozzle_buffer_cm,
+                    },
+                }
+            )
 
     geojson_doc = {
         "type": "FeatureCollection",

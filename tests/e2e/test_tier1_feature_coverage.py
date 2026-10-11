@@ -41,7 +41,7 @@ class TestTier1FeatureCoverage(unittest.TestCase):
         """Verify full perception-to-spray-map execution on synthetic field imagery."""
         initial_state = create_initial_state(
             image=self.test_image,
-            text_prompt="cotton weed . broadleaf plant .",
+            text_prompt="weed . broadleaf weed .",
         )
         final_state = self.runner.run(initial_state)
 
@@ -81,7 +81,7 @@ class TestTier1FeatureCoverage(unittest.TestCase):
 
         initial_state = create_initial_state(
             image=real_image,
-            text_prompt="cotton weed .",
+            text_prompt="weed .",
             image_path=str(img_path),
         )
         final_state = self.runner.run(initial_state)
@@ -104,7 +104,7 @@ class TestTier1FeatureCoverage(unittest.TestCase):
 
         initial_state = create_initial_state(
             image=real_image,
-            text_prompt="sugarbeet weed . grass .",
+            text_prompt="weed . grass .",
             image_path=str(img_path),
         )
         final_state = self.runner.run(initial_state)
@@ -120,10 +120,21 @@ class TestTier1FeatureCoverage(unittest.TestCase):
 
         # Check all core GraphState fields from src/state.py
         expected_keys = [
-            "messages", "artifacts", "error", "image", "image_path",
-            "text_prompt", "field_metadata", "boxes", "masks",
-            "refinement_count", "system2_needed", "vlm_reasoning",
-            "prescription_report", "spray_map", "ground_truth_masks",
+            "messages",
+            "artifacts",
+            "error",
+            "image",
+            "image_path",
+            "text_prompt",
+            "field_metadata",
+            "boxes",
+            "masks",
+            "refinement_count",
+            "system2_needed",
+            "vlm_reasoning",
+            "prescription_report",
+            "spray_map",
+            "ground_truth_masks",
             "evaluation_metrics",
         ]
         for key in expected_keys:
@@ -276,7 +287,14 @@ class TestTier1FeatureCoverage(unittest.TestCase):
         # Force escalation by introducing low score box
         initial_state = create_initial_state(self.test_image)
         initial_state["boxes"] = [
-            {"x1": 10.0, "y1": 10.0, "x2": 80.0, "y2": 80.0, "label": "ambiguous_foliage", "score": 0.45}
+            {
+                "x1": 10.0,
+                "y1": 10.0,
+                "x2": 80.0,
+                "y2": 80.0,
+                "label": "ambiguous_foliage",
+                "score": 0.45,
+            }
         ]
         initial_state["masks"] = [
             {
@@ -288,10 +306,10 @@ class TestTier1FeatureCoverage(unittest.TestCase):
         ]
 
         # Evaluate escalation directly through router
-        escalate, reason = runner.laya_router.evaluate_system2_escalation(
+        escalate, reason = runner.router.evaluate_system2_escalation(
             detection_confidence=0.45,
             label="ambiguous_foliage",
-            predicted_iou=0.60,
+            predicted_iou=0.90,
             min_confidence=0.70,
         )
         self.assertTrue(escalate, "Low confidence must trigger System-2 escalation")

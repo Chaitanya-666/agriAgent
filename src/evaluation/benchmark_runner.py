@@ -155,7 +155,7 @@ class BenchmarkRunner:
         detector: Optional[GroundingDINOEngine] = None,
         segmenter: Optional[SAM2Segmenter] = None,
         mock_mode: Optional[bool] = None,
-        default_prompt: str = "cotton weed . sugar beet weed . broadleaf weed . crop .",
+        default_prompt: str = "weed . grass . broadleaf weed .",
     ):
         self.manifest_path = Path(manifest_path)
         self.iou_threshold = iou_threshold
@@ -223,10 +223,7 @@ class BenchmarkRunner:
         detection_latency_ms = (t1 - t0) * 1000.0
 
         # Convert detections to standardized Box format
-        pred_boxes: List[Box] = [
-            d.to_dict() if hasattr(d, "to_dict") else d
-            for d in raw_detections
-        ]
+        pred_boxes: List[Box] = [d.to_dict() for d in raw_detections]
 
         # 2. Segmentation Stage
         t2 = time.perf_counter()
@@ -238,7 +235,7 @@ class BenchmarkRunner:
         # Extract predicted 2D boolean mask arrays
         pred_mask_arrays: List[np.ndarray] = []
         for m in raw_masks:
-            arr = m.mask_array if hasattr(m, "mask_array") else m.get("mask_array")
+            arr = m.mask_array
             if isinstance(arr, np.ndarray) and arr.shape == (height, width):
                 pred_mask_arrays.append(arr.astype(bool))
 

@@ -9,7 +9,7 @@ manually labeled bounding boxes for each specific weed species and are closed-vo
 Grounding DINO (IDEA-Research) performs open-vocabulary detection by fusing a
 Swin Transformer vision backbone with a BERT text encoder via cross-modality attention.
 This allows AgriAgent to detect arbitrary weeds and plant conditions using natural language
-prompts (e.g., "cotton weed . broadleaf plant . dry yellow grass .") with ZERO fine-tuning.
+prompts (e.g., "weed . broadleaf weed . dry yellow grass .") with ZERO fine-tuning.
 
 Operational Modes:
 ------------------
@@ -99,8 +99,9 @@ class GroundingDINOEngine:
 
             logger.info("Loading Grounding DINO [%s] on device [%s]...", self.model_id, self.device)
             self._processor = AutoProcessor.from_pretrained(self.model_id)
-            self._model = AutoModelForZeroShotObjectDetection.from_pretrained(self.model_id).to(self.device)
-            self._model.eval()
+            model = AutoModelForZeroShotObjectDetection.from_pretrained(self.model_id).to(self.device)
+            model.eval()
+            self._model = model
             logger.info("Grounding DINO initialized successfully.")
         except ImportError as err:
             logger.warning(
@@ -141,7 +142,7 @@ class GroundingDINOEngine:
         Extracts candidate labels from the prompt (separated by periods or commas)
         and places synthetic weed bounding boxes at realistic spatial positions.
         """
-        # Parse prompt categories (e.g. 'cotton weed . broadleaf plant' -> ['cotton weed', 'broadleaf plant'])
+        # Parse generic target categories from the dot-separated prompt.
         raw_tokens = [tok.strip().strip(".") for tok in text_prompt.replace(",", ".").split(".") if tok.strip()]
         primary_label = raw_tokens[0] if raw_tokens else "weed"
 
@@ -176,7 +177,7 @@ class GroundingDINOEngine:
     def detect(
         self,
         image: Union[str, Path, Image.Image, np.ndarray],
-        text_prompt: str = "cotton weed . broadleaf plant . unwanted vegetation .",
+        text_prompt: str = "weed . grass . pigweed . unwanted vegetation .",
         box_threshold: Optional[float] = None,
         text_threshold: Optional[float] = None,
     ) -> List[DetectionResult]:
@@ -187,7 +188,7 @@ class GroundingDINOEngine:
             image: Path to image file, PIL Image, or NumPy array.
             text_prompt: Dot-separated phrases describing target objects.
                          Grounding DINO convention requires trailing periods:
-                         e.g. "cotton weed . broadleaf plant ."
+                         e.g. "weed . grass . broadleaf weed ."
             box_threshold: Override instance default bounding box threshold.
             text_threshold: Override instance default text token threshold.
 
@@ -259,7 +260,7 @@ class GroundingDINOEngine:
     def detect_to_state_boxes(
         self,
         image: Union[str, Path, Image.Image, np.ndarray],
-        text_prompt: str = "cotton weed . broadleaf plant .",
+        text_prompt: str = "weed . grass . pigweed .",
         box_threshold: Optional[float] = None,
     ) -> List[Box]:
         """Convenience method returning detections directly formatted for LangGraph GraphState."""

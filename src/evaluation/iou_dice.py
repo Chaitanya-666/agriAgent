@@ -3,7 +3,7 @@ src/evaluation/iou_dice.py
 Compute IoU and Dice coefficient for segmentation evaluation.
 """
 import numpy as np
-from typing import Dict, List, Tuple
+from typing import Dict, List, Optional, Tuple
 
 
 def compute_iou(prediction: np.ndarray, ground_truth: np.ndarray) -> float:
@@ -27,7 +27,7 @@ def compute_dice(prediction: np.ndarray, ground_truth: np.ndarray) -> float:
 def evaluate_batch(
     predictions: List[np.ndarray],
     ground_truths: List[np.ndarray],
-    class_names: List[str] = None
+    class_names: Optional[List[str]] = None
 ) -> Dict[str, float]:
     """Compute mean IoU and Dice over a batch of masks."""
     ious = []

@@ -1,21 +1,24 @@
 """
 src/agronomy/vlm_critic.py
 Track 2 / Task 2.1: Multimodal VLM critic (System-2).
-Verified default model: Qwen/Qwen2.5-VL-7B-Instruct.
+Default model: Qwen/Qwen3.5-4B.
 Provides Pydantic schema validation for diagnoses and robust JSON parsing.
 mock_mode=True returns a deterministic diagnosis so the pipeline runs on CPU laptops / CI.
 """
 import json
 import logging
+import os
 import re
 from typing import Any, Dict, Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from PIL import Image
+from src.agronomy.provider_contract import BaseAgronomyProvider, LLMRequest
+from src.agronomy.providers.local_qwen import LocalQwenProvider
 
 logger = logging.getLogger("agriagent.vlm_critic")
 
-# Verified Hugging Face / vLLM model repository
-DEFAULT_MODEL = "Qwen/Qwen2.5-VL-7B-Instruct"
+# Local OpenAI-compatible endpoint model identifier.
+DEFAULT_MODEL = "Qwen/Qwen3.5-4B"
 
 DIAGNOSIS_PROMPT = (
     "You are an expert Indian agronomist. Look at this field photo"
@@ -77,43 +80,33 @@ def parse_json(text: str) -> Dict[str, Any]:
 class VLMCritic:
     """Multimodal System-2 agronomist critic evaluating field imagery."""
 
-    def __init__(self, model_name: str = DEFAULT_MODEL, mock_mode: bool = False):
-        self.model_name = model_name
+    def __init__(
+        self,
+        model_name: Optional[str] = None,
+        mock_mode: bool = False,
+        provider: Optional[BaseAgronomyProvider] = None,
+    ):
+        self.model_name = model_name or os.getenv("LOCAL_MODEL_NAME") or DEFAULT_MODEL
         self.mock_mode = mock_mode
-        self.model = None
-        self.processor = None
-
-    def _load(self):
-        try:
-            from transformers import AutoModelForImageTextToText, AutoProcessor
-            self.processor = AutoProcessor.from_pretrained(self.model_name)
-            self.model = AutoModelForImageTextToText.from_pretrained(
-                self.model_name, torch_dtype="auto", device_map="auto"
-            )
-        except Exception as exc:
-            logger.error("Failed to load VLM model %s: %s", self.model_name, exc)
-            raise
+        self.provider = provider or LocalQwenProvider(
+            model_name=self.model_name,
+            mock_mode=mock_mode,
+        )
 
     def diagnose(self, image: Image.Image, crop_hint: Optional[str] = None) -> Dict[str, Any]:
         if self.mock_mode:
             return dict(MOCK_RESULT)
-        if self.model is None:
-            self._load()
         ctx = f" (crop reported by farmer: {crop_hint})" if crop_hint else ""
-        messages = [{
-            "role": "user",
-            "content": [
-                {"type": "image", "image": image},
-                {"type": "text", "text": DIAGNOSIS_PROMPT.format(ctx=ctx)},
-            ],
-        }]
-        inputs = self.processor.apply_chat_template(
-            messages,
-            tokenize=True,
-            add_generation_prompt=True,
-            return_dict=True,
-            return_tensors="pt",
-        ).to(self.model.device)
-        out = self.model.generate(**inputs, max_new_tokens=256)
-        text = self.processor.batch_decode(out[:, inputs["input_ids"].shape[1]:], skip_special_tokens=True)[0]
-        return parse_json(text)
+        response = self.provider.generate(
+            LLMRequest(
+                system_prompt="Return an evidence-based crop and weed diagnosis as JSON.",
+                user_prompt=DIAGNOSIS_PROMPT.format(ctx=ctx),
+                image=image,
+            )
+        )
+        if response.error:
+            raise RuntimeError(f"Local Qwen diagnosis failed: {response.error}")
+        if response.parsed_json is not None:
+            diagnosis = VLMDiagnosis.model_validate(response.parsed_json)
+            return diagnosis.model_dump()
+        return parse_json(response.text_content)

@@ -1,7 +1,7 @@
 """
 src/agronomy/providers/hosted_groq.py
 Hosted Groq API provider for fast cloud agronomic deliberation.
-Default model: llama-3.3-70b-versatile.
+Default model: qwen/qwen3.8-27b.
 Supports rate-limit backoff, structured output parsing, and seamless fallback provider chain.
 """
 import json
@@ -37,7 +37,7 @@ class HostedGroqProvider(BaseAgronomyProvider):
     def __init__(
         self,
         api_key: Optional[str] = None,
-        model_name: str = DEFAULT_GROQ_MODEL,
+        model_name: Optional[str] = None,
         fallback_provider: Optional[BaseAgronomyProvider] = None,
         mock_mode: bool = False,
     ):
@@ -49,11 +49,7 @@ class HostedGroqProvider(BaseAgronomyProvider):
     def generate(self, request: LLMRequest) -> LLMResponse:
         start_time = time.time()
 
-        if self.mock_mode or not self.api_key:
-            if not self.mock_mode and not self.api_key and self.fallback_provider:
-                logger.info("GROQ_API_KEY not found; triggering fallback provider.")
-                return self.fallback_provider.generate(request)
-
+        if self.mock_mode:
             latency_ms = (time.time() - start_time) * 1000.0
             return LLMResponse(
                 provider="hosted_groq",
@@ -63,6 +59,20 @@ class HostedGroqProvider(BaseAgronomyProvider):
                 prompt_tokens=48,
                 completion_tokens=38,
                 latency_ms=max(1.0, latency_ms),
+            )
+        if not self.api_key:
+            if self.fallback_provider:
+                logger.info("GROQ_API_KEY is absent; using explicitly configured local provider.")
+                return self.fallback_provider.generate(request)
+            return LLMResponse(
+                provider="hosted_groq",
+                model_name=self.model_name,
+                text_content="",
+                parsed_json=None,
+                prompt_tokens=0,
+                completion_tokens=0,
+                latency_ms=(time.time() - start_time) * 1000.0,
+                error="GROQ_API_KEY is required for live Groq inference; mock_mode is disabled.",
             )
 
         messages = []

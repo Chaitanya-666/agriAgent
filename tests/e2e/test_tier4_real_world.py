@@ -7,21 +7,18 @@ Verifies end-to-end operational scenarios modeled on real-world agricultural con
 - Scenario 2: Late-season sugar beet field with heavy grass weed infestation (dense spray zones, safe bounds clamping, and >85% saturation safety suppression).
 - Scenario 3: Banned chemical interception scenario (attempted unapproved herbicide query intercepted by statutory safety filter).
 - Scenario 4: Unknown / out-of-distribution invasive weed scenario (graceful no-knowledge-found fallback without hallucination).
-- Scenario 5: Edge actuator network loss scenario (Clef Flash router simulated timeout falls back safely to local deterministic reflex).
 """
 
 import io
 import unittest
 from pathlib import Path
-from unittest.mock import patch
 
 import numpy as np
 from PIL import Image
 
 from src.agents.clef_flash_router import ClefFlashRouter
 from src.agents.deterministic_router import DeterministicRouter
-from src.agents.laya_router import LayaTriageRouter
-from src.agents.router_contract import RouterAction, RouterBackend, RouterDecision
+from src.agents.router_contract import RouterAction
 from src.agronomy.knowledge_store import InMemoryKnowledgeStore as StoreWithCanonicals
 from src.agronomy.prescription import (
     BANNED_HERBICIDES,
@@ -74,7 +71,7 @@ class TestTier4RealWorld(unittest.TestCase):
 
         initial_state = create_initial_state(
             image=cotton_image,
-            text_prompt="cotton weed . broadleaf weed .",
+            text_prompt="weed . broadleaf weed .",
             image_path=str(sample_path),
         )
         initial_state["field_metadata"] = {
@@ -150,7 +147,7 @@ class TestTier4RealWorld(unittest.TestCase):
             ]
 
             runner = VisionWorkflowRunner(mock_mode=True, buffer_pixels=10)
-            initial_state = create_initial_state(beet_image, text_prompt="sugarbeet weed . grass .")
+            initial_state = create_initial_state(beet_image, text_prompt="weed . grass .")
             initial_state["boxes"] = dense_boxes
             initial_state["masks"] = dense_masks
 
@@ -192,15 +189,7 @@ class TestTier4RealWorld(unittest.TestCase):
             )
             self.assertIn("exceeds statutory safety ceiling (85.0%)", det_decision.reason)
 
-            # 2. Test Laya router safety method
-            laya_router = LayaTriageRouter()
-            is_safe = laya_router.verify_spray_safety(
-                infestation_pct=saturated_infestation_pct,
-                max_allowed_infestation=85.0,
-            )
-            self.assertFalse(is_safe, "verify_spray_safety must return False when infestation > 85%")
-
-            # 3. Test Clef Flash router safety suppression
+            # Clef triage must preserve the deterministic safety suppression.
             cf_router = ClefFlashRouter(mock_mode=True)
             cf_decision = cf_router.route(
                 detection_confidence=0.95,
@@ -312,65 +301,6 @@ class TestTier4RealWorld(unittest.TestCase):
 
                 # 3. Disclaimer must be present
                 self.assertEqual(presc.disclaimer, DISCLAIMER)
-
-    # =========================================================================
-    # Scenario 5: Edge Actuator Network Loss Scenario
-    # =========================================================================
-    def test_scenario5_edge_actuator_network_loss_scenario(self):
-        """
-        Scenario 5: Edge actuator network loss scenario.
-        Verifies that when cloud VLM / Clef Flash experiences network dropouts,
-        simulated timeouts, or connection errors, the router automatically activates
-        the local deterministic reflex fallback in sub-millisecond to low ms time.
-        """
-        crop_image = Image.new("RGB", (100, 100), color=(80, 140, 50))
-        crop_np = np.array(crop_image)
-
-        # Instantiate live-configured router with credentials
-        router = ClefFlashRouter(
-            api_token="cloudflare_edge_token_12345",
-            account_id="cf_agri_account_67890",
-            model_name="@cf/meta/clef-flash",
-            timeout_seconds=0.05,
-            fallback_router=DeterministicRouter(),
-            mock_mode=False,
-        )
-
-        simulated_exceptions = [
-            TimeoutError("Cloudflare Workers AI gateway request timed out after 50ms"),
-            ConnectionResetError("Remote socket connection abruptly reset by edge peer"),
-            RuntimeError("DNS resolution failed for cloudflare-ai-endpoint.internal"),
-        ]
-
-        for exc in simulated_exceptions:
-            with self.subTest(exception_type=type(exc).__name__):
-                with patch.object(router, "_execute_cloud_inference", side_effect=exc):
-                    # Edge reflex triage call
-                    decision: RouterDecision = router.route(
-                        detection_confidence=0.89,
-                        predicted_iou=0.92,
-                        area_pixels=1500,
-                        species_ambiguity=False,
-                        image_crop=crop_np,
-                        label="cotton_weed",
-                    )
-
-                    # 1. Decision produced safely without throwing unhandled exception
-                    self.assertIsInstance(decision, RouterDecision)
-                    self.assertEqual(decision.backend, RouterBackend.CLEF_FLASH)
-
-                    # 2. Reflex decision accurately made by local fallback
-                    self.assertEqual(decision.action, RouterAction.ACCEPT)
-                    self.assertIn("Clef Flash Fallback", decision.reason)
-                    self.assertIn(str(exc), decision.reason)
-
-                    # 3. Decision completed with low latency
-                    self.assertLess(
-                        decision.latency_ms,
-                        50.0,
-                        f"Reflex fallback decision must complete in <50ms, took {decision.latency_ms:.2f}ms",
-                    )
-
 
 if __name__ == "__main__":
     unittest.main()

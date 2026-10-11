@@ -4,16 +4,13 @@ Standardized Triage & Routing Interface Contract for AgriAgent.
 
 Defines the core contracts, data models, and abstract base classes for System-1
 fast triage and System-2 escalation across different decision backends:
-- DETERMINISTIC: Sub-millisecond hard real-time reflex rules (<0.05 ms).
-- LAYA: Non-autoregressive calibrated text triage engine (ConvAI Innovations).
-- CLEF_FLASH: 9B parameter multimodal decision model (Cloudflare Workers AI / Qwen3.5-9B).
+- DETERMINISTIC: Rules that remain the final spray safety authority.
+- CLEF_FLASH: Local Cloudflare/Clef Flash model used only for triage.
 """
 
 from abc import ABC, abstractmethod
 from enum import Enum
-import time
-from typing import Any, Dict, List, Optional, Tuple, Union
-import numpy as np
+from typing import Any, Dict, Optional, Tuple
 from pydantic import BaseModel, Field
 
 
@@ -26,9 +23,8 @@ class RouterAction(str, Enum):
 
 
 class RouterBackend(str, Enum):
-    """Supported triage routing engine backends."""
+    """Supported local triage routing engines."""
     DETERMINISTIC = "deterministic"
-    LAYA = "laya"
     CLEF_FLASH = "clef_flash"
 
 
@@ -49,7 +45,7 @@ class BaseRouter(ABC):
     """
     Abstract Base Class for all AgriAgent routing engines.
     
-    Guarantees a unified contract across Deterministic, Laya, and Clef Flash routers.
+    Guarantees a unified contract across deterministic and local Clef triage.
     """
 
     @property

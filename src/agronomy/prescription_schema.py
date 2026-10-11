@@ -34,6 +34,7 @@ class ChemicalPrescription(BaseModel):
     Includes backward-compatible dictionary access for existing pipeline consumers.
     """
     model_config = ConfigDict(extra="allow", populate_by_name=True)
+    __pydantic_extra__: Dict[str, Any] = Field(default_factory=dict, init=False)
 
     status: Literal["ok", "no_knowledge_found", "unapproved_chemical_flagged"]
     crop: str

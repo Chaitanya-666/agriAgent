@@ -29,7 +29,7 @@ class TestGroundingDINO(unittest.TestCase):
         self.image = Image.new("RGB", (640, 480), color=(110, 160, 80))
 
     def test_mock_detection_generates_boxes(self):
-        detections = self.engine.detect(self.image, text_prompt="cotton weed . broadleaf plant .")
+        detections = self.engine.detect(self.image, text_prompt="weed . broadleaf weed .")
         self.assertGreater(len(detections), 0)
         for det in detections:
             self.assertIsInstance(det, DetectionResult)
@@ -112,7 +112,7 @@ class TestVisionWorkflowRunner(unittest.TestCase):
         self.image = Image.new("RGB", (640, 480), color=(100, 150, 70))
 
     def test_end_to_end_execution(self):
-        initial_state = create_initial_state(self.image, text_prompt="cotton weed . broadleaf .")
+        initial_state = create_initial_state(self.image, text_prompt="weed . broadleaf weed .")
         final_state = self.runner.run(initial_state)
 
         # Assert detections and segmentations are present

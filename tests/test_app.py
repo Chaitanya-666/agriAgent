@@ -21,6 +21,7 @@ from app.components.pipeline import (
     extract_kpis,
     format_prescription_report,
 )
+from src.state import Artifact, ArtifactType
 
 
 class TestImageDecoding(unittest.TestCase):
@@ -235,6 +236,27 @@ class TestPrescriptionFormattingAndGeoJSON(unittest.TestCase):
                 "chemical_savings_percentage": 82.0,
                 "weed_count": 2,
                 "status": "Approved",
+                "spray_allowed": True,
+                "safety_action": "ACCEPT",
+            },
+            "artifacts": {
+                "spray_map": Artifact(
+                    id="approved",
+                    type=ArtifactType.SPRAY_MAP,
+                    title="Approved zones",
+                    payload={
+                        "approved_spray_zones": [
+                            {
+                                "label": "weed",
+                                "score": 0.88,
+                                "mask": np.pad(
+                                    np.ones((120, 100), dtype=np.uint8),
+                                    ((60, 300), (50, 490)),
+                                ),
+                            }
+                        ]
+                    },
+                )
             },
             "boxes": [
                 {"x1": 50.0, "y1": 60.0, "x2": 150.0, "y2": 180.0, "label": "weed", "score": 0.88},
@@ -257,7 +279,7 @@ class TestPrescriptionFormattingAndGeoJSON(unittest.TestCase):
         self.assertEqual(geojson["type"], "FeatureCollection")
         self.assertIn("metadata", geojson)
         self.assertEqual(geojson["metadata"]["crop"], "cotton")
-        # Only weed boxes become active spray features
+        # The approved spray-map artifact supplies the sole export geometry.
         self.assertEqual(len(geojson["features"]), 1)
         feat = geojson["features"][0]
         self.assertEqual(feat["type"], "Feature")
@@ -299,7 +321,7 @@ class TestAppMainFlow(unittest.TestCase):
             st_mock.sidebar.warning = MagicMock()
             st_mock.sidebar.checkbox = MagicMock(return_value=True)  # mock mode
             st_mock.sidebar.selectbox = MagicMock(return_value="Cotton")
-            st_mock.sidebar.text_input = MagicMock(return_value="cotton weed . broadleaf plant .")
+            st_mock.sidebar.text_input = MagicMock(return_value="weed . broadleaf weed .")
             st_mock.sidebar.slider = MagicMock(side_effect=[0.3, 10])  # threshold, buffer
             st_mock.columns = MagicMock(
                 side_effect=lambda spec: [
@@ -350,7 +372,7 @@ class TestAppMainFlow(unittest.TestCase):
             st_mock.sidebar.warning = MagicMock()
             st_mock.sidebar.checkbox = MagicMock(return_value=True)
             st_mock.sidebar.selectbox = MagicMock(return_value="Cotton")
-            st_mock.sidebar.text_input = MagicMock(return_value="cotton weed . broadleaf plant .")
+            st_mock.sidebar.text_input = MagicMock(return_value="weed . broadleaf weed .")
             st_mock.sidebar.slider = MagicMock(side_effect=[0.3, 10])
             st_mock.columns = MagicMock(
                 side_effect=lambda spec: [

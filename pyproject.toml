@@ -26,6 +26,7 @@ dependencies = [
     "torch>=2.1.0",
     "torchvision>=0.16.0",
     "transformers>=4.40.0",
+    "requests>=2.31.0",
     "supervision>=0.20.0",
     "opencv-python>=4.8.0",
     "Pillow>=10.0.0",
@@ -38,7 +39,6 @@ dependencies = [
     "langchain-groq>=0.2.0",
     "langchain-openai>=0.2.0",
     "langgraph>=0.2.0",
-    "laya>=0.1.0",
     "streamlit>=1.30.0",
     "scikit-image>=0.21.0",
     "scipy>=1.11.0",
@@ -56,6 +56,13 @@ dev = [
     "pytest>=7.0.0",
     "ruff>=0.1.0",
     "mypy>=1.0.0",
+]
+clef = [
+    "torch>=2.11.0",
+    "transformers>=5.10.2",
+    "accelerate>=1.0.0",
+    "huggingface-hub>=0.34.0",
+    "safetensors>=0.4.0",
 ]
 
 [tool.setuptools.packages.find]
@@ -77,17 +84,6 @@ warn_unused_ignores = false
 check_untyped_defs = true
 disallow_untyped_defs = false
 disallow_incomplete_defs = false
-disable_error_code = [
-    "assignment",
-    "var-annotated",
-    "no-redef",
-    "attr-defined",
-    "valid-type",
-    "misc",
-    "union-attr",
-    "name-defined",
-    "typeddict-item",
-]
 exclude = [
     "^notebooks/",
     "^docs/",

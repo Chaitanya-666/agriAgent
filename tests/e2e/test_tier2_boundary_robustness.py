@@ -7,7 +7,7 @@ Verifies:
 2. Zero-infestation field scenario (0% weed coverage -> 100% herbicide savings).
 3. 100% saturated infestation field scenario (100% weed coverage -> 0% savings -> spray safety suppression).
 4. Corrupt and malformed image bytes, non-existent files, and missing GraphState payloads.
-5. Missing optional dependencies (laya, chromadb, cv2) activate documented fallback paths without crash.
+5. Missing optional dependencies (chromadb, cv2) activate documented fallback paths without crash.
 6. Agronomy RAG safe no-knowledge handling with completely empty knowledge stores.
 7. Strict mathematical invariants of spray map and herbicide savings functions:
    - Monotonicity: Area(Weeds) increases -> Herbicide Savings non-increases.
@@ -26,7 +26,7 @@ from src.state import Artifact, ArtifactType, GraphState
 from src.workflow import VisionWorkflowRunner, create_initial_state
 from src.vision.grounding_dino import GroundingDINOEngine
 from src.vision.sam2_wrapper import SAM2Segmenter
-from src.agents.laya_router import LayaTriageRouter
+from src.agents.deterministic_router import DeterministicRouter
 from src.agronomy.prescription import get_herbicide_prescription, DISCLAIMER
 from src.agronomy.system2_node import System2Reasoner
 from src.evaluation.iou_dice import compute_herbicide_savings, compute_iou, compute_dice
@@ -164,33 +164,6 @@ class TestTier2BoundaryRobustness(unittest.TestCase):
         self.assertIn("error", out)
         self.assertIn("needs an in-memory PIL image", out["error"])
 
-    def test_missing_laya_dependency_deterministic_fallback(self):
-        """Verify Laya router fallback mode provides strict deterministic behavior."""
-        router = LayaTriageRouter()
-        # Force fallback mode to verify execution path
-        router.fallback_mode = True
-        router._router = None
-
-        # Mask refinement: should refine if IoU < threshold
-        self.assertTrue(router.evaluate_mask_refinement(0.84, 500, "weed", threshold=0.85))
-        self.assertFalse(router.evaluate_mask_refinement(0.85, 500, "weed", threshold=0.85))
-        self.assertFalse(router.evaluate_mask_refinement(0.92, 500, "weed", threshold=0.85))
-
-        # System-2 escalation: low confidence (< 0.70) escalates
-        esc, reason = router.evaluate_system2_escalation(0.65, "weed", 0.90, min_confidence=0.70)
-        self.assertTrue(esc)
-        self.assertIn("Low detection confidence", reason)
-
-        # System-2 escalation: low mask IoU (< 0.80) escalates
-        esc, reason = router.evaluate_system2_escalation(0.85, "weed", 0.75, min_confidence=0.70)
-        self.assertTrue(esc)
-        self.assertIn("Sub-optimal mask quality", reason)
-
-        # System-2 escalation: high confidence and clean mask does NOT escalate
-        esc, reason = router.evaluate_system2_escalation(0.85, "weed", 0.90, min_confidence=0.70)
-        self.assertFalse(esc)
-        self.assertIn("System-1 reflex approved", reason)
-
     def test_missing_chromadb_raises_clean_importerror(self):
         """Verify KnowledgeStore raises clean ImportError with install instructions if chromadb is None."""
         from src.agronomy import knowledge_store
@@ -210,7 +183,7 @@ class TestTier2BoundaryRobustness(unittest.TestCase):
         self.assertEqual(savings, 0.0, "100% weed coverage must yield exactly 0.0% herbicide savings")
 
         # Verify router spray safety guardrail (max allowed infestation 85%)
-        router = LayaTriageRouter()
+        router = DeterministicRouter()
         is_safe = router.verify_spray_safety(infestation_pct=100.0, buffer_pixels=10, max_allowed_infestation=85.0)
         self.assertFalse(is_safe, "Spot spraying must be suppressed when infestation exceeds 85%")
 

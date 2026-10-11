@@ -69,7 +69,7 @@ def create_synthetic_box(
     y1: float = 60.0,
     x2: float = 200.0,
     y2: float = 220.0,
-    label: str = "cotton_weed",
+    label: str = "weed",
     score: float = 0.88,
 ) -> Box:
     """Create a validated Box dictionary conforming to the Vision Perception contract."""
@@ -88,7 +88,7 @@ def create_synthetic_mask(
     width: int = 640,
     box: Optional[Box] = None,
     predicted_iou: float = 0.89,
-    label: str = "cotton_weed",
+    label: str = "weed",
 ) -> Mask:
     """Create a validated Mask dictionary conforming to the Vision Perception contract."""
     if box is None:

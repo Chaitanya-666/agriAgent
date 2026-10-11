@@ -33,7 +33,7 @@ def render_sidebar() -> Tuple[bool, str, str, float, int, bool]:
         (mock_mode, crop, prompt, confidence_threshold, nozzle_buffer, force_system2)
     """
     if st is None:
-        return True, "Cotton", "cotton weed . broadleaf plant .", 0.3, 10, False
+        return True, "Cotton", "weed . grass . pigweed .", 0.3, 10, False
 
     st.sidebar.header("Execution Controls")
 
@@ -64,7 +64,7 @@ def render_sidebar() -> Tuple[bool, str, str, float, int, bool]:
 
     text_prompt = st.sidebar.text_input(
         "Zero-Shot Detection Prompt",
-        value=f"{crop.lower()} weed . broadleaf plant .",
+        value="weed . grass . pigweed .",
         help="Natural language prompt provided to Grounding DINO zero-shot detector.",
     )
 

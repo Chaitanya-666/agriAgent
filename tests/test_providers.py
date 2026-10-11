@@ -105,7 +105,7 @@ class TestProviders(unittest.TestCase):
         resp = provider.generate(req)
 
         self.assertEqual(resp.provider, "hosted_groq")
-        self.assertTrue(any(sub in resp.model_name.lower() for sub in ["qwen", "llama"]))
+        self.assertEqual(resp.model_name, "qwen/qwen3.8-27b")
         self.assertIsInstance(resp.parsed_json, dict)
         self.assertIn("crop", resp.parsed_json)
         self.assertGreater(resp.latency_ms, 0.0)
@@ -143,8 +143,7 @@ class TestProviders(unittest.TestCase):
 
     def test_vlm_critic_model_identifier(self):
         """Verify VLMCritic uses verified model identifier and valid Pydantic diagnosis."""
-        self.assertIn("Qwen2.5", VLM_DEFAULT_MODEL)
-        self.assertNotIn("Qwen3", VLM_DEFAULT_MODEL)
+        self.assertIn("Qwen3.5", VLM_DEFAULT_MODEL)
 
         critic = VLMCritic(mock_mode=True)
         diag = critic.diagnose(Image.new("RGB", (64, 64)))

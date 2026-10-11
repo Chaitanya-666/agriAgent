@@ -1,247 +1,126 @@
-"""
-src/agents/clef_flash_router.py
-Cloudflare Clef Flash (Qwen3.5-9B) Multimodal Decision Router for AgriAgent.
+"""Local Clef Flash triage adapter.
 
-Architecture Rationale:
------------------------
-Cloudflare Clef Flash is a 9-billion parameter decision model based on Qwen3.5-9B,
-specialized for high-throughput single-pass classification and routing.
-Unlike text-only routers (such as Laya), Clef Flash supports multimodal inputs:
-numerical telemetry paired with real field image crops.
-
-This adapter provides:
-1. Multimodal payload formatting (visual crops + numeric telemetry).
-2. Schema-conforming prompt formulation with candidate action set.
-3. Probability output parsing across candidate actions.
-4. Fail-safe edge fallback: If cloud requests fail, time out, or lose connectivity,
-   execution immediately falls back to local DeterministicRouter (<0.05 ms).
+This module never contacts Cloudflare. Clef may recommend escalation, but a
+DeterministicRouter remains the authority for every spray safety decision.
 """
 
-import base64
-import io
-import json
+import importlib
 import logging
 import os
+import sys
 import time
-from typing import Any, Dict, List, Optional, Tuple, Union
-import numpy as np
-from PIL import Image
+from typing import Any, Dict, Optional
 
+from src.agents.deterministic_router import DeterministicRouter
 from src.agents.router_contract import (
     BaseRouter,
     RouterAction,
     RouterBackend,
     RouterDecision,
 )
-from src.agents.deterministic_router import DeterministicRouter
 
 logger = logging.getLogger("agriagent.clef_flash")
+DEFAULT_MODEL = "Cloudflare/clef-flash"
 
 
 class ClefFlashRouter(BaseRouter):
-    """
-    Cloudflare Clef Flash (Qwen3.5-9B) Multimodal Decision Router.
-    """
+    """Use local Clef Flash for ambiguity triage, with explicit mock mode."""
 
     def __init__(
         self,
-        api_token: Optional[str] = None,
-        account_id: Optional[str] = None,
-        model_name: str = "@cf/meta/clef-flash",
-        timeout_seconds: float = 2.0,
-        fallback_router: Optional[BaseRouter] = None,
+        model_name: Optional[str] = None,
         mock_mode: bool = False,
-    ):
-        self.api_token = api_token or os.environ.get("CLOUDFLARE_API_TOKEN")
-        self.account_id = account_id or os.environ.get("CLOUDFLARE_ACCOUNT_ID")
-        self.model_name = model_name
-        self.timeout_seconds = timeout_seconds
-        self.fallback_router = fallback_router or DeterministicRouter()
-        self.mock_mode = mock_mode or (not self.api_token and not self.account_id)
+    ) -> None:
+        self.model_name = model_name or os.environ.get("CLEF_FLASH_MODEL", DEFAULT_MODEL)
+        self.mock_mode = mock_mode
+        self._model: Any = None
+        self._processor: Any = None
+        self._model_module: Any = None
+        self.safety_router = DeterministicRouter()
 
     @property
     def backend(self) -> RouterBackend:
         return RouterBackend.CLEF_FLASH
 
-    def _encode_image_crop(self, image_crop: Any) -> Optional[str]:
-        """Encodes an image crop into base64 JPEG string for multimodal VLM prompt."""
-        if image_crop is None:
-            return None
+    def _load_model(self) -> None:
+        if self._model is not None:
+            return
         try:
-            if isinstance(image_crop, np.ndarray):
-                # Ensure uint8 RGB
-                if image_crop.dtype != np.uint8:
-                    if image_crop.max() <= 1.0:
-                        image_crop = (image_crop * 255).astype(np.uint8)
-                    else:
-                        image_crop = image_crop.astype(np.uint8)
-                if image_crop.ndim == 2:
-                    pil_img = Image.fromarray(image_crop)
-                elif image_crop.shape[2] == 3:
-                    pil_img = Image.fromarray(image_crop, "RGB")
-                else:
-                    pil_img = Image.fromarray(image_crop[..., :3], "RGB")
-            elif isinstance(image_crop, Image.Image):
-                pil_img = image_crop.convert("RGB")
-            elif isinstance(image_crop, str) and os.path.exists(image_crop):
-                pil_img = Image.open(image_crop).convert("RGB")
-            elif isinstance(image_crop, str):
-                # Assume already base64 string
-                return image_crop
-            else:
-                return None
+            import torch
+            from huggingface_hub import snapshot_download
+        except ImportError as exc:
+            raise RuntimeError(
+                "Local Clef Flash needs torch, transformers, and huggingface_hub. Install the local-model "
+                "extras and follow docs/models_and_runtime.md. No cloud or mock fallback is enabled."
+            ) from exc
+        try:
+            if not torch.cuda.is_available():
+                raise RuntimeError(
+                    "Clef Flash GPU runtime is unavailable. Its published local example was tested "
+                    "on an H200; CPU inference has not been validated for this project."
+                )
+            snapshot_path = snapshot_download(
+                repo_id=self.model_name,
+                revision=os.environ.get("CLEF_FLASH_REVISION") or None,
+                local_files_only=True,
+            )
+            if snapshot_path not in sys.path:
+                sys.path.insert(0, snapshot_path)
+            self._model_module = importlib.import_module("joint_schema_model")
+            device = torch.device("cuda")
+            dtype = torch.bfloat16 if torch.cuda.is_bf16_supported() else torch.float16
+            self._model, self._processor = self._model_module.load_release_model(
+                snapshot_path, device=device, dtype=dtype
+            )
+        except Exception as exc:
+            self._processor = None
+            self._model_module = None
+            self._model = None
+            if isinstance(exc, RuntimeError):
+                raise
+            raise RuntimeError(
+                f"Local Clef Flash model '{self.model_name}' is unavailable or could not be "
+                "loaded. Download the weights and verify hardware/runtime setup."
+            ) from exc
 
-            buf = io.BytesIO()
-            pil_img.save(buf, format="JPEG", quality=85)
-            return base64.b64encode(buf.getvalue()).decode("utf-8")
-        except Exception as err:
-            logger.debug("Failed to encode image crop for Clef Flash: %s", err)
-            return None
-
-    def _execute_mock_inference(
-        self,
-        detection_confidence: float,
-        predicted_iou: float,
-        area_pixels: int,
-        species_ambiguity: bool,
-        has_image: bool,
-        infestation_pct: Optional[float],
-        max_allowed_infestation: float,
-        iou_threshold: float,
-        min_confidence: float,
-        label: str,
-    ) -> Dict[str, Any]:
-        """
-        Simulates Qwen3.5-9B Clef Flash calibrated decision probabilities.
-        """
-        # 1. Statutory spray safety check
-        if infestation_pct is not None and float(infestation_pct) > float(max_allowed_infestation):
-            return {
-                "action": RouterAction.SUPPRESS_SPRAY,
-                "probabilities": {
-                    RouterAction.SUPPRESS_SPRAY.value: 0.98,
-                    RouterAction.ACCEPT.value: 0.01,
-                    RouterAction.REFINE.value: 0.005,
-                    RouterAction.ESCALATE_SYSTEM2.value: 0.005,
-                },
-                "confidence": 0.98,
-                "reason": (
-                    f"Clef Flash safety guardrail: Infestation {infestation_pct:.1f}% exceeds "
-                    f"ceiling {max_allowed_infestation:.1f}%. Suppressing spot spray."
-                ),
-            }
-
-        # 2. Geometric refinement check
-        if float(predicted_iou) < float(iou_threshold):
-            prob = 0.91 if has_image else 0.88
-            return {
-                "action": RouterAction.REFINE,
-                "probabilities": {
-                    RouterAction.REFINE.value: prob,
-                    RouterAction.ACCEPT.value: round(1.0 - prob - 0.04, 3),
-                    RouterAction.ESCALATE_SYSTEM2.value: 0.03,
-                    RouterAction.SUPPRESS_SPRAY.value: 0.01,
-                },
-                "confidence": prob,
-                "reason": (
-                    f"Clef Flash visual evaluation: Instance mask IoU ({predicted_iou:.2f}) "
-                    f"below threshold ({iou_threshold:.2f}). Triggering contour refinement."
-                ),
-            }
-
-        # 3. Deliberative System 2 escalation
-        if species_ambiguity or float(detection_confidence) < float(min_confidence) or float(predicted_iou) < 0.80:
-            prob = 0.94 if has_image else 0.89
-            reason_details = []
-            if species_ambiguity:
-                reason_details.append(f"species ambiguity for '{label}'")
-            if float(detection_confidence) < float(min_confidence):
-                reason_details.append(f"low confidence {detection_confidence:.2f}")
-            if float(predicted_iou) < 0.80:
-                reason_details.append(f"marginal IoU {predicted_iou:.2f}")
-
-            return {
-                "action": RouterAction.ESCALATE_SYSTEM2,
-                "probabilities": {
-                    RouterAction.ESCALATE_SYSTEM2.value: prob,
-                    RouterAction.ACCEPT.value: round(1.0 - prob - 0.02, 3),
-                    RouterAction.REFINE.value: 0.015,
-                    RouterAction.SUPPRESS_SPRAY.value: 0.005,
-                },
-                "confidence": prob,
-                "reason": f"Clef Flash VLM inspection: Escalating to System 2 due to {', '.join(reason_details)}.",
-            }
-
-        # 4. Fast reflex approved
-        prob = 0.95
-        return {
-            "action": RouterAction.ACCEPT,
-            "probabilities": {
-                RouterAction.ACCEPT.value: prob,
-                RouterAction.REFINE.value: 0.02,
-                RouterAction.ESCALATE_SYSTEM2.value: 0.02,
-                RouterAction.SUPPRESS_SPRAY.value: 0.01,
+    def _classify_ambiguity(self, telemetry: Dict[str, Any], image_crop: Any = None) -> bool:
+        if self.mock_mode:
+            # Mock mode stands in for an ambiguous label only; it cannot approve spraying.
+            return bool(telemetry["species_ambiguity"])
+        self._load_model()
+        assert self._processor is not None and self._model is not None
+        assert self._model_module is not None
+        record: Dict[str, Any] = {
+            "model": self.model_name,
+            "state": telemetry,
+            "questions": {
+                "triage": {
+                    "type": "choice",
+                    "instructions": "Does this image or telemetry leave the target vegetation identity ambiguous?",
+                    "criteria": {
+                        "escalate": "The plant identity or target status is uncertain; require System 2 review.",
+                        "clear": "The target status is sufficiently clear for downstream deterministic checks.",
+                    },
+                }
             },
-            "confidence": prob,
-            "reason": "Clef Flash multimodal validation confirmed high confidence and clean foliage boundaries.",
         }
+        if image_crop is not None:
+            try:
+                from PIL import Image
+                import numpy as np
 
-    def _execute_cloud_inference(
-        self,
-        payload: Dict[str, Any],
-    ) -> Dict[str, Any]:
-        """
-        Executes HTTP POST request against Cloudflare Workers AI API endpoint.
-        """
-        import urllib.request
-        import urllib.error
-
-        url = f"https://api.cloudflare.com/client/v4/accounts/{self.account_id}/ai/run/{self.model_name}"
-        headers = {
-            "Authorization": f"Bearer {self.api_token}",
-            "Content-Type": "application/json",
-        }
-        data = json.dumps(payload).encode("utf-8")
-
-        req = urllib.request.Request(url, data=data, headers=headers, method="POST")
-        with urllib.request.urlopen(req, timeout=self.timeout_seconds) as resp:
-            raw_body = resp.read().decode("utf-8")
-            response_json = json.loads(raw_body)
-            if not response_json.get("success", False):
-                raise RuntimeError(f"Cloudflare API returned error: {response_json.get('errors')}")
-            return response_json.get("result", {})
-
-    def _parse_probabilities(
-        self,
-        raw_result: Dict[str, Any],
-    ) -> Tuple[RouterAction, Dict[str, float], float, str]:
-        """
-        Parses calibrated probability output from Clef Flash response.
-        """
-        action_str = str(raw_result.get("action", "")).upper().strip()
-        probabilities = raw_result.get("probabilities", {})
-        reason = str(raw_result.get("reason", "Clef Flash automated decision"))
-
-        # Map to valid RouterAction
-        try:
-            action = RouterAction(action_str)
-        except ValueError:
-            # Fallback to action with highest probability if available
-            if probabilities:
-                best_act = max(probabilities.items(), key=lambda kv: kv[1])[0]
-                action = RouterAction(best_act)
-            else:
-                action = RouterAction.ACCEPT
-
-        # Normalize probability dictionary
-        norm_probs: Dict[str, float] = {}
-        total = sum(probabilities.values()) if probabilities else 0.0
-        for act in RouterAction:
-            val = float(probabilities.get(act.value, 0.0))
-            norm_probs[act.value] = round(val / total, 4) if total > 0 else (1.0 if act == action else 0.0)
-
-        confidence = norm_probs.get(action.value, float(raw_result.get("confidence", 0.90)))
-        return (action, norm_probs, confidence, reason)
+                if isinstance(image_crop, np.ndarray):
+                    image_crop = Image.fromarray(image_crop.astype("uint8")).convert("RGB")
+                elif isinstance(image_crop, Image.Image):
+                    image_crop = image_crop.convert("RGB")
+                else:
+                    raise TypeError("image_crop must be a PIL image or NumPy array")
+                record["images"] = [image_crop]
+            except ImportError as exc:
+                raise RuntimeError("Pillow and NumPy are required for image triage.") from exc
+        result = self._model_module.systemone(self._model, self._processor, record)
+        choice = result["answers"]["triage"]["choice"]
+        return choice != "clear"
 
     def route(
         self,
@@ -257,96 +136,55 @@ class ClefFlashRouter(BaseRouter):
         label: str = "weed",
         **kwargs: Any,
     ) -> RouterDecision:
-        """
-        Evaluate perception state using Cloudflare Clef Flash with fail-safe local fallback.
-        """
-        t0 = time.perf_counter()
-        encoded_image = self._encode_image_crop(image_crop)
-        has_image = (encoded_image is not None)
+        """Return deterministic safety/refinement outcomes or local triage advice."""
+        started = time.perf_counter()
+        safety = self.safety_router.route(
+            detection_confidence=detection_confidence,
+            predicted_iou=predicted_iou,
+            area_pixels=area_pixels,
+            species_ambiguity=False,
+            infestation_pct=infestation_pct,
+            max_allowed_infestation=max_allowed_infestation,
+            iou_threshold=iou_threshold,
+            min_confidence=min_confidence,
+            label=label,
+        )
+        if safety.action != RouterAction.ACCEPT:
+            return safety.model_copy(update={"backend": self.backend})
 
         telemetry = {
-            "detection_confidence": round(float(detection_confidence), 3),
-            "predicted_iou": round(float(predicted_iou), 3),
-            "area_pixels": int(area_pixels),
-            "species_ambiguity": bool(species_ambiguity),
-            "infestation_percentage": float(infestation_pct) if infestation_pct is not None else None,
+            "detection_confidence": detection_confidence,
+            "predicted_iou": predicted_iou,
+            "area_pixels": area_pixels,
+            "species_ambiguity": species_ambiguity,
             "label": label,
-            "iou_threshold": iou_threshold,
-            "min_confidence": min_confidence,
         }
-
         try:
-            if self.mock_mode or not self.api_token or not self.account_id:
-                raw_result = self._execute_mock_inference(
-                    detection_confidence=detection_confidence,
-                    predicted_iou=predicted_iou,
-                    area_pixels=area_pixels,
-                    species_ambiguity=species_ambiguity,
-                    has_image=has_image,
-                    infestation_pct=infestation_pct,
-                    max_allowed_infestation=max_allowed_infestation,
-                    iou_threshold=iou_threshold,
-                    min_confidence=min_confidence,
-                    label=label,
-                )
-            else:
-                prompt_payload = {
-                    "model": self.model_name,
-                    "prompt": (
-                        f"Evaluate precision agriculture robotic spot-spray telemetry: {json.dumps(telemetry)}. "
-                        "Candidate actions: ['ACCEPT', 'REFINE', 'ESCALATE_SYSTEM2', 'SUPPRESS_SPRAY']. "
-                        "Return JSON with 'action', 'probabilities', and 'reason'."
-                    ),
-                    "image": encoded_image,
-                }
-                raw_result = self._execute_cloud_inference(prompt_payload)
-
-            action, probs, confidence, reason = self._parse_probabilities(raw_result)
-            latency = (time.perf_counter() - t0) * 1000.0
-
+            escalate = self._classify_ambiguity(telemetry, image_crop=image_crop)
+        except Exception as exc:
+            logger.exception("Local Clef Flash triage unavailable; escalating safely to System 2.")
+            elapsed = (time.perf_counter() - started) * 1000
             return RouterDecision(
-                action=action,
-                reason=reason,
-                latency_ms=round(latency, 4),
+                action=RouterAction.ESCALATE_SYSTEM2,
+                reason=f"Local Clef Flash unavailable; System 2 review required: {exc}",
+                latency_ms=round(elapsed, 4),
                 backend=self.backend,
-                confidence=confidence,
-                probabilities=probs,
-                metadata={
-                    "multimodal_image_present": has_image,
-                    "model_name": self.model_name,
-                    "mock_mode": self.mock_mode,
-                },
+                confidence=0.0,
+                probabilities={RouterAction.ESCALATE_SYSTEM2.value: 1.0},
+                metadata={"model_name": self.model_name, "mock_mode": False, "runtime_error": str(exc)},
             )
-
-        except Exception as err:
-            # FAIL-SAFE FALLBACK: Never drop an agricultural actuator decision due to network outage!
-            latency = (time.perf_counter() - t0) * 1000.0
-            logger.warning(
-                "Clef Flash network/inference failure (%s). Triggering fail-safe local deterministic router.",
-                err,
-            )
-            fallback_decision = self.fallback_router.route(
-                detection_confidence=detection_confidence,
-                predicted_iou=predicted_iou,
-                area_pixels=area_pixels,
-                species_ambiguity=species_ambiguity,
-                image_crop=image_crop,
-                infestation_pct=infestation_pct,
-                max_allowed_infestation=max_allowed_infestation,
-                iou_threshold=iou_threshold,
-                min_confidence=min_confidence,
-                label=label,
-            )
-            return RouterDecision(
-                action=fallback_decision.action,
-                reason=f"[Clef Flash Fallback: {err}] {fallback_decision.reason}",
-                latency_ms=round(latency + fallback_decision.latency_ms, 4),
-                backend=self.backend,
-                confidence=fallback_decision.confidence,
-                probabilities=fallback_decision.probabilities,
-                metadata={
-                    "fallback_triggered": True,
-                    "fallback_reason": str(err),
-                    "fallback_backend": fallback_decision.backend.value,
-                },
-            )
+        action = RouterAction.ESCALATE_SYSTEM2 if escalate else RouterAction.ACCEPT
+        elapsed = (time.perf_counter() - started) * 1000
+        return RouterDecision(
+            action=action,
+            reason=(
+                "Local Clef Flash recommends System 2 review."
+                if escalate
+                else "Local Clef Flash triage found no additional ambiguity; deterministic safety gate remains authoritative."
+            ),
+            latency_ms=round(elapsed, 4),
+            backend=self.backend,
+            confidence=1.0 if self.mock_mode else 0.0,
+            probabilities={action.value: 1.0},
+            metadata={"model_name": self.model_name, "mock_mode": self.mock_mode},
+        )

@@ -51,7 +51,7 @@ logger = logging.getLogger("agriagent.app")
 def run_pipeline_on_image(
     image: Image.Image,
     mock_mode: bool = True,
-    text_prompt: str = "cotton weed . broadleaf plant .",
+    text_prompt: str = "weed . grass . pigweed .",
     confidence_threshold: float = 0.3,
     nozzle_buffer: int = 10,
     crop: str = "cotton",
