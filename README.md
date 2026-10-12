@@ -33,6 +33,7 @@ AI models can advise, but only plain, tested Python rules decide what goes on th
 | File | Purpose |
 |---|---|
 | [docs/AgriAgent_Project_Map.typ](docs/AgriAgent_Project_Map.typ) | Plan, deliverables, tracks, timeline (source of truth) |
+| [docs/AgriAgent_Schedule.typ](docs/AgriAgent_Schedule.typ) | Week-by-week schedule to the November submission: tasks per member, testing roles, checkpoints |
 | [docs/AgriAgent_Week1_Dossier.typ](docs/AgriAgent_Week1_Dossier.typ) | What Week 1 built |
 | [docs/AgriAgent_Week2_Dossier.typ](docs/AgriAgent_Week2_Dossier.typ) | Week 2 cleanup, safety fix, the real result |
 | [docs/guides/](docs/guides/) | Study guides: 0 Start Here, 1 Concepts, 2 Codebase Walkthrough, 3 Viva Defence, 4 Demo Playbook |
@@ -62,7 +63,8 @@ Use Python 3.10 or 3.11.
 ```bash
 python -m venv .venv && source .venv/bin/activate
 python -m pip install -e '.[dev]'
-cp .env.example .env      # add GROQ_API_KEY for real agronomy reasoning
+cp .env.example .env      # add your Groq and Cloudflare keys (Schedule, Appendix A)
+python scripts/check_providers.py                              # check every model back-end answers
 
 streamlit run app/app.py                                       # dashboard
 python scripts/run_live_pipeline.py --image path/to/field.jpg  # real models on one image

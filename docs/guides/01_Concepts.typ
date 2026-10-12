@@ -158,8 +158,15 @@ malformed answers are rejected rather than silently used.
 might name a chemical that is banned or give a wrong dose. That is why AgriAgent never lets the model
 choose the chemical; see the next section.
 
-Our models: Groq `qwen/qwen3.8-27b` in the cloud and `Qwen/Qwen3.5-4B` locally. Groq is a company that
-hosts models on fast hardware; we call it over the internet with an API key.
+Our models: Groq `qwen/qwen3.8-27b` in the cloud and `Qwen3.5-4B` locally. Groq is a company that
+hosts models on fast hardware; we call it over the internet with an API key. Locally we run models with
+*llama.cpp* (`llama-server`), which loads a compressed *GGUF* file and offers the same kind of web API on
+our own machine.
+
+*Clef Flash* is different: a *decision model*. It does not write text. Given a state and typed questions
+("is this safe to spray?" with options), it returns a probability for every option in one pass. That
+makes it a natural triage model. We use it hosted on Cloudflare Workers AI (free daily allowance, accepts
+images) or locally through llama.cpp (text only).
 
 = RAG: retrieval-augmented generation
 
@@ -210,7 +217,8 @@ A model's weights must fit in GPU memory (VRAM). Roughly, memory $approx$ parame
 parameter. At 16-bit precision that is 2 bytes each: a 9-billion-parameter model needs about 18 GB, and
 a 4-billion one about 8 GB, plus working memory. *Quantization* stores weights in fewer bits (4-bit
 $approx$ 0.5 byte), shrinking memory at a small accuracy cost. Our laptop GPU has 8 GB. So Grounding
-DINO-tiny and SAM 2-tiny fit easily, Qwen3.5-4B needs 4-bit, and Clef Flash (9B) does not fit.
+DINO-tiny and SAM 2-tiny fit easily; Qwen3.5-4B at 4-bit (about 3 GB) fits beside them; Clef Flash (9B)
+at 4-bit is about 6.5 GB, so it fits only on its own, which is why we prefer the hosted version.
 
 = Self-check
 
@@ -224,4 +232,4 @@ DINO-tiny and SAM 2-tiny fit easily, Qwen3.5-4B needs 4-bit, and Clef Flash (9B)
 + Explain RAG to a non-technical friend in three sentences.
 + In AgriAgent, does the language model choose the herbicide? What does?
 + Why does mock-mode output say nothing about accuracy?
-+ Why can't Clef Flash 9B run on our laptop?
++ Clef Flash 9B needs about 18 GB at 16-bit. How can it run on our 8 GB laptop, and what is the catch?

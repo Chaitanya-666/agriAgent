@@ -158,7 +158,9 @@ anything below 0.80 is already below 0.85. Be ready to say so if asked; it is ha
 
 Runs the deterministic checks *first* (line 141); only if those say `ACCEPT` does it ask Clef. If the
 model cannot load (our case: no 24 GB+ GPU), it returns `ESCALATE_SYSTEM2` (line 168): *it fails safe,
-never towards spraying.* In mock mode it simply echoes the ambiguity flag.
+never towards spraying.* In mock mode it simply echoes the ambiguity flag. [Being rewritten in Week 4
+(schedule task T2.8) to call Clef Flash over HTTP, on Cloudflare or a local `llama-server`; the
+fail-safe rule stays.]
 
 = Agronomy (System 2)
 

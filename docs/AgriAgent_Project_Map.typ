@@ -66,9 +66,9 @@ Every claim in this project must carry one of these labels.
   [Safety gate + GeoJSON export], [#partial], [Tested with fake masks (175 unit + 35 end-to-end tests pass, CI green). Never tested on real masks.],
   [Streamlit app], [#mock], [Starts in CI. Nobody on the team has opened it and used it yet.],
   [Agronomy (VLM + RAG + prescription)], [#mock], [Logic exists and is tested offline. Never called a real model.],
-  [Groq `qwen/qwen3.8-27b`], [#partial], [Client code exists. Needs an API key. Never called.],
-  [Local `Qwen/Qwen3.5-4B`], [#partial], [Client code exists. Weights not downloaded. Might fit 8 GB at 4-bit.],
-  [Local `Cloudflare/clef-flash` (9B)], [#blocked], [Too large for our laptop GPU (8 GB). Model card was tested on an H200.],
+  [Groq `qwen/qwen3.8-27b`], [#partial], [Client code exists. Needs an API key. Never called from the pipeline. Accepts images (checked 12 Oct). Marked Preview on Groq.],
+  [Local `Qwen3.5-4B` (llama-server)], [#partial], [Client code exists (OpenAI-compatible). Runs as a 4-bit GGUF with vision file in about 3.5 GB; team has run Qwen3.5 4B/9B GGUFs before.],
+  [Clef Flash (Cloudflare or local)], [#planned], [*No longer blocked* (12 Oct): hosted free on Cloudflare Workers AI with images; locally as a 6.5 GB GGUF through llama.cpp (text only). Adapter must be rewritten (schedule task T2.8).],
   [Evaluation numbers], [#mock], [All previous metric files had `mock_mode: true`. We have no real accuracy numbers yet.],
 )
 
@@ -116,19 +116,22 @@ Changing models repeatedly is what confused this project. These choices are now 
   [Role], [Model], [Decision],
   [Detection], [`IDEA-Research/grounding-dino-tiny`], [Core. Runs locally.],
   [Segmentation], [`facebook/sam2-hiera-tiny`], [Core. Runs locally.],
-  [Reasoning (cloud)], [Groq `qwen/qwen3.8-27b`], [Primary reasoning model for the demo.],
-  [Reasoning (local)], [`Qwen/Qwen3.5-4B`], [Optional. Try only after the vision demo works.],
-  [Ambiguity triage], [`Cloudflare/clef-flash`], [Adapter stays in code, documented as designed but not runnable on our hardware. The deterministic gate works without it.],
+  [Reasoning (cloud)], [Groq `qwen/qwen3.8-27b`], [Primary for diagnosis and prescription text. Backup: Groq `openai/gpt-oss-120b` (text only).],
+  [Reasoning (local)], [`Qwen3.5-4B` GGUF via `llama-server`], [Offline backup, and one of the three candidates for the crop-or-weed image check.],
+  [Ambiguity triage], [Clef Flash: Cloudflare Workers AI `@cf/cloudflare/clef-flash`], [Primary (free tier, images). Backup: local GGUF via `llama-server` (text only). Advisory only.],
 )
 
-No new model is added before the deadline unless the whole team agrees in writing.
+*Updated 12 October:* Clef Flash moved from "not runnable" to the triage model, and the crop-or-weed
+check compares three back-ends; details and setup steps in `docs/AgriAgent_Schedule.pdf` (Section 3 and
+Appendix A). No other model is added before the deadline unless the whole team agrees in writing.
 
 = Our hardware
 
 Measured on 11 October 2026: Intel i5-13450HX (16 threads), 15 GB RAM, NVIDIA RTX 5050 Laptop GPU
 with *8 GB VRAM*, about 33 GB free disk. Grounding DINO-tiny and SAM 2-tiny together fit
-comfortably. Qwen3.5-4B needs 4-bit quantization and cannot share the GPU with the vision models.
-Clef Flash 9B does not fit. Kaggle (free T4, 16 GB) remains available for heavier runs.
+comfortably. A 4-bit Qwen3.5-4B (about 3.5 GB with its vision file) fits beside them. A 4-bit Clef Flash (6.5 GB)
+fits only on its own, so it runs after the vision models, or hosted on Cloudflare. Kaggle (free T4,
+16 GB) remains available for heavier runs.
 
 = Team tracks
 
@@ -138,7 +141,7 @@ Names follow the Git branches. Each track owns one part of the deliverable.
   columns: (auto, 1fr, 1fr),
   [Track], [Owns], [Delivers by November],
   [1 · Chaitanya \ Core vision + safety], [`src/vision/`, `src/workflow.py`, `src/agents/`], [First real local run; weed-vs-crop improvement; gate design fixes (Section 9).],
-  [2 · Sumant \ Agronomy], [`src/agronomy/`], [Real Groq call end to end; prescription checked against the ICAR bulletin for 3–5 weeds.],
+  [2 · Sumant \ Agronomy], [`src/agronomy/`], [All model back-ends (Groq, Cloudflare Clef Flash, local llama-server); real Groq call end to end; prescriptions checked against the ICAR bulletin for 5 weeds.],
   [3 · Sahil \ Data + evaluation], [`data/`, `src/evaluation/`], [Fixed real evaluation set with annotations; real metrics table incl. crop protection.],
   [4 · Amit \ UI + integration], [`app/`, `.github/`, `tests/e2e/`], [Demo-ready Streamlit app on real images; demo video; CI stays green.],
 )
@@ -167,15 +170,18 @@ Found while writing this map. They are the core technical tasks for Track 1.
 
 = Timeline
 
+The detailed week-by-week plan, with every member's tasks, testing roles and checkpoints, is in
+`docs/AgriAgent_Schedule.pdf`. Summary:
+
 #table(
   columns: (auto, 1fr),
   [When], [Goal],
   [12–14 Oct], [Repo frozen. Everyone studies this map and their own track's code.],
-  [15–18 Oct], [First real local run of DINO + SAM 2 on the laptop. Open the Streamlit app for the first time.],
-  [19–25 Oct], [Fixed real evaluation set. Baseline real metrics. Start weed-vs-crop improvement.],
-  [26 Oct – 1 Nov], [Improvement measured. Groq agronomy live. Gate design fixes. App runs on real images.],
-  [2–8 Nov], [Report, slides, demo video. Code freeze on 6 Nov.],
-  [9–13 Nov], [Submission and viva.],
+  [15–18 Oct], [First real local run of DINO + SAM 2 on the laptop. Evaluation annotations audited. Test plans written.],
+  [19–25 Oct], [Evaluation set frozen (21 Oct). Baseline real metrics incl. crop on the spray map. Gate issues 1, 4, 5 fixed. Groq live.],
+  [26 Oct – 1 Nov], [Weed-vs-crop improvement measured. Gate issue 2 fixed. Test cycle 1.],
+  [2–8 Nov], [Defect fixes, regression cycle 2, code freeze on *Thu 5 Nov*, demo video, full report draft. Diwali weekend off.],
+  [9–13 Nov], [Final report and slides, mock viva, submission and viva.],
 )
 
 = Rules for working with AI coding agents
@@ -186,7 +192,7 @@ These rules exist because uncontrolled agents caused most of the confusion so fa
 - Agents must not write status claims ("complete", "verified", "100%") unless a command was run and
   its output is pasted as evidence.
 - Agents must not change model choices or add dependencies without a team decision.
-- No new documents. Update this map, the README, or the current week's dossier.
+- No new documents. Update this map, the schedule, the README, or the current week's dossier.
 - Every change goes through a pull request that a human on the team has read and understood.
 
 = Commands

@@ -122,10 +122,11 @@ infestation rule really applies at that point; and escalation happens after the 
 withdrawing it. [update: fixed in commit ...] Naming these is part of our evaluation.
 
 *Q: What is Clef Flash, and does it run?* \
-A local typed decision model meant to flag ambiguous cases for escalation. It is 9 billion parameters
-and does not fit our 8 GB GPU, so it has not run. The adapter is written so that if it cannot load it
-escalates, which is the safe direction, and the deterministic gate works without it. We report it as
-designed but unverified.
+A 9-billion-parameter decision model from Cloudflare, built on Qwen3.5-9B. It answers typed questions
+with a probability per option instead of writing text, which suits triage: "spray, escalate or skip?".
+We call it on Cloudflare Workers AI (free allowance, accepts images), with a 4-bit local copy through
+llama.cpp as an offline backup. It only advises: deterministic checks run first, and if Clef fails or is
+unsure, the mask is escalated, never sprayed. [update: say whether it ran in your results.]
 
 = Agronomy and RAG
 
@@ -148,7 +149,8 @@ date ...; or: verification is pending, and that is a stated limitation.]
 they run without downloads.
 
 *Q: Which LLM do you use?* \
-Groq-hosted `qwen/qwen3.8-27b` in the cloud and optionally `Qwen/Qwen3.5-4B` locally. [update: say
+Groq-hosted `qwen/qwen3.8-27b` in the cloud and `Qwen3.5-4B` locally through llama.cpp, plus Clef Flash
+for triage. [update: say
 which one actually ran in your results.]
 
 = Evaluation and results
