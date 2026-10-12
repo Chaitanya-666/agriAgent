@@ -32,7 +32,7 @@ Reading is not understanding. Use this loop for every section:
 + *Read* the guide section.
 + *Open* the file it points to and find the lines.
 + *Close both* and explain it out loud, or on paper, as if to a friend who is not technical.
-+ *Check* where you got stuck. That gap is exactly what an examiner will find. Go back, or ask Claude.
++ *Check* where you got stuck. That gap is exactly what an examiner will find. Go back and fix it.
 
 Each guide ends with *self-check questions*. If you cannot answer one without looking, you are not done
 with that section.
@@ -45,7 +45,7 @@ with that section.
   [Sun 11 Oct, night], [Project Map (whole). Guide 1, sections 1–4. Self-check.],
   [Mon 12 Oct], [Guide 1 rest. Guide 2 parts 1–3 with `src/state.py`, `src/workflow.py` open.],
   [Tue 13 Oct], [Guide 2 rest (vision, safety gate, agronomy, app). Run the app in mock mode (Guide 4, section 2).],
-  [Wed 14 Oct], [Guide 3: answer every question out loud. Mark the ones you cannot answer. Ask Claude about each one.],
+  [Wed 14 Oct], [Guide 3: answer every question out loud. Mark the ones you cannot answer. Work through each one.],
 )
 
 = The five sentences you must always be able to say
