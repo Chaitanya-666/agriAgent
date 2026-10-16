@@ -37,7 +37,7 @@ AI models can advise, but only plain, tested Python rules decide what goes on th
 | [docs/AgriAgent_Week1_Dossier.typ](docs/AgriAgent_Week1_Dossier.typ) | What Week 1 built |
 | [docs/AgriAgent_Week2_Dossier.typ](docs/AgriAgent_Week2_Dossier.typ) | Week 2 cleanup, safety fix, the real result |
 | [docs/testing/](docs/testing/) | Test runbooks: step-by-step system test cycles with expected results |
-| [docs/guides/](docs/guides/) | Study guides: 0 Start Here, 1 Concepts, 2 Codebase Walkthrough, 3 Viva Defence, 4 Demo Playbook |
+| [docs/guides/](docs/guides/) | Study guides: 0 Start Here, 1 Concepts, 2 Codebase Walkthrough, 3 Viva Defence, 4 Demo Playbook, 5 Free AI Coding Tools |
 
 All documents are written in [Typst](https://typst.app). Rebuild a PDF with `typst compile docs/<file>.typ`.
 
