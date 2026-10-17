@@ -142,9 +142,9 @@ Content doc. The viva will ask the same things.
 #task("SA-4", "Judge the 20 crop-or-weed patches blind (T2.2 follow-up)",
   [We compared three back-ends on 20 patches (Groq 16/20, Clef Flash 14/20, a row rule 13/20). A human baseline tells us how hard the patches really are.],
   [
-    + Chaitanya puts the 20 patch images (`data/outputs/t2_2/*.png`) in `Drive/shared/t2_2_patches` *without* the answers.
-    + For each patch write `crop`, `weed` or `can't tell` *before* looking at any answer. Use only the picture.
-    + Then open `docs/images/t2_2_patches.jpg` (answers) and fill the last two columns.
+    + Open `Drive/shared/t2_2_patches`: 20 images named `patch_01_sugarbeet_field.png` … `patch_20_cotton_field.png`. The name tells you only which field the plant came from; the order is shuffled.
+    + For each patch write `crop`, `weed` or `can't tell`. Use only the picture; do not look at `docs/images/t2_2_patches.jpg` or `data/outputs/t2_2/` in the repository, they contain the answers.
+    + Post "SA-4 answers submitted" in the group. Chaitanya then sends you the answer key; fill the last two columns.
   ],
   [Tab SA-4: `patch` · `your answer` · `true answer` · `you were right (yes/no)` · `what made it hard`.],
   [20 rows; your score posted in the group.],
