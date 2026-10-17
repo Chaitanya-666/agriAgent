@@ -26,6 +26,17 @@
   *how and when*. If the two ever disagree, raise it in the group. Do not silently pick one.
 ]
 
+#warn(title: "Update 17 October (overrides this document where they differ)")[
+  Decided on 17 October; details and evidence in `docs/AgriAgent_Week3_Dossier.pdf`.
+  *Final submission and viva: Tuesday 10 November* (code freeze stays Thursday 5 November).
+  *Models:* only Grounding DINO-tiny and SAM 2-tiny run locally; reasoning uses Groq and Cloudflare.
+  Local Qwen and local Clef are dropped, and so is Kaggle compute (Kaggle only hosts downloads).
+  *Evaluation set:* `eval_manifest_v1` failed the audit (fabricated labels); `eval_manifest_v2`
+  (30 sugar beet + 8 cotton, official labels) is frozen. *Testing:* Sahil = validation, Sumant =
+  system; Amit moves to development and the demo. *Hard deadline for the team hand-off tasks
+  (dossier Section 5): Wednesday 21 October.* Known issues in Guide 2 §10 are now called K1–K12.
+]
+
 = Key dates
 
 #table(
@@ -41,7 +52,7 @@
   [Wed 4 Nov], [Regression test cycle 2 (re-test all fixes).],
   [*Thu 5 Nov*], [*Code freeze*, release tag `v1.0.0`, demo video recorded, full report draft.],
   [Fri 6 – Sun 8 Nov], [Diwali weekend (check dates). Light load: personal viva preparation only.],
-  [Mon 9 – Fri 13 Nov], [Final report and slides, mock viva, submission and viva.],
+  [Mon 9 – Tue 10 Nov], [Final checks; *submission and viva on Tue 10 Nov* (updated 17 Oct).],
 )
 
 #warn(title: "Why the freeze is Thursday 5 November, not the 6th")[
