@@ -77,6 +77,10 @@ def render_sidebar() -> Tuple[bool, str, str, float, int, bool]:
         max_value=0.9,
         value=0.3,
         step=0.05,
+        help=(
+            "Hides weaker boxes on screen and raises the spray gate to the same value. "
+            "The gate never sprays below 0.70, so values under 0.70 only change the drawing."
+        ),
     )
 
     nozzle_buffer = st.sidebar.slider(
@@ -96,6 +100,19 @@ def render_sidebar() -> Tuple[bool, str, str, float, int, bool]:
     )
 
     return mock_mode, crop, text_prompt, confidence_threshold, nozzle_buffer, force_system2
+
+
+def render_mode_badge(mock_mode: bool) -> None:
+    """Say on every result screen whether the numbers come from real models (T4.3, #10, #12)."""
+    if st is None:
+        return
+    if mock_mode:
+        st.warning(
+            "MOCK OUTPUT: these boxes, masks and the diagnosis are synthetic test data at fixed "
+            "positions. They do not look at your image and must not be used for spraying."
+        )
+    else:
+        st.success("REAL OUTPUT: Grounding DINO and SAM 2 ran on this image.")
 
 
 def render_kpi_cards(kpis: Dict[str, Any]) -> None:
@@ -149,13 +166,14 @@ def render_visualizations(original_image: Image.Image, annotated_image: Image.Im
         st.image(original_image, use_container_width=True)
 
     with col_right:
-        st.subheader("Precision Spray Map & Segmented Foliage")
+        st.subheader("Detections (boxes) and approved spray zones (colour)")
         st.image(annotated_image, use_container_width=True)
 
 
 def render_prescription_report(
     prescription: Optional[Dict[str, Any]],
     vlm_reasoning: Optional[str] = None,
+    mock_mode: bool = False,
 ) -> None:
     """
     Render System 2 deliberative agronomy prescription report with statutory citations,
@@ -176,8 +194,14 @@ def render_prescription_report(
 
     status = prescription.get("status", "ok")
 
-    if status == "ok":
-        st.success("Status: VERIFIED & APPROVED UNDER STATUTORY ICAR / CIBRC PROTOCOLS")
+    if status == "ok" and mock_mode:
+        # A mock diagnosis must never look like an approval (#10).
+        st.warning(
+            "Status: MOCK DIAGNOSIS. The herbicide row below is a real ICAR table entry, but it was "
+            "selected for a synthetic diagnosis. Not a recommendation."
+        )
+    elif status == "ok":
+        st.success("Status: ICAR table entry found for the declared crop (advisory only)")
     elif status == "unapproved_chemical_flagged":
         st.error("Status: BANNED OR UNAPPROVED CHEMICAL INTERCEPTED")
     elif status == "no_knowledge_found":
@@ -262,5 +286,5 @@ def render_geojson_download(geojson_data: Dict[str, Any]) -> None:
         data=json.dumps(geojson_data, indent=2),
         file_name="agriagent_spray_prescription.geojson",
         mime="application/geo+json",
-        help="Export GPS-referenced nozzle pulse coordinates for autonomous drone or tractor sprayers.",
+        help="Approved weed zones only. Coordinates are placeholders, not GPS (research prototype).",
     )

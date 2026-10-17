@@ -286,7 +286,8 @@ class TestPrescriptionFormattingAndGeoJSON(unittest.TestCase):
         self.assertEqual(len(geojson["features"]), 1)
         feat = geojson["features"][0]
         self.assertEqual(feat["type"], "Feature")
-        self.assertEqual(feat["geometry"]["type"], "Polygon")
+        # One feature per approved zone; its pieces form a MultiPolygon.
+        self.assertEqual(feat["geometry"]["type"], "MultiPolygon")
         self.assertEqual(feat["properties"]["action"], "SPRAY_ACTIVE")
         self.assertEqual(feat["properties"]["active_ingredient"], "Pyrithiobac-sodium")
 

@@ -85,6 +85,36 @@ class SprayExportSafetyTests(unittest.TestCase):
         output = self.runner.spray_map_node({"masks": [self._mask("cotton")]})
         self.assertTrue(output["spray_map"]["status"].startswith("No weed zones approved"))
 
+    def test_speck_fragments_are_dropped_and_zone_is_one_feature(self):
+        # A mock run exported 1,394 features for 3 weeds: every 1-pixel island became a spray order.
+        mask = np.zeros((480, 640), dtype=np.uint8)
+        mask[100:200, 100:200] = 1
+        for x in range(300, 600, 10):
+            mask[50, x] = 1  # thirty isolated single pixels
+        zone = {"label": "weed", "score": 0.9, "mask": mask}
+        artifact = Artifact(
+            id="spray",
+            type=ArtifactType.SPRAY_MAP,
+            title="Approved masks",
+            payload={"approved_spray_zones": [zone]},
+        )
+        features = build_spray_geojson(
+            {"spray_map": {"spray_allowed": True}, "artifacts": {"spray_map": artifact}}
+        )["features"]
+        self.assertEqual(len(features), 1)
+        self.assertEqual(len(features[0]["geometry"]["coordinates"]), 1)
+
+    def test_no_herbicide_in_export_without_a_prescription(self):
+        # Issue #7: a hard-coded Pyrithiobac-sodium appeared when System 2 never ran.
+        output = self.runner.spray_map_node({"masks": [self._mask("weed")]})
+        geojson = build_spray_geojson(
+            {"spray_map": output["spray_map"], "artifacts": output["artifacts"]}
+        )
+        self.assertEqual(len(geojson["features"]), 1)
+        self.assertNotIn("active_ingredient", geojson["features"][0]["properties"])
+        self.assertEqual(geojson["metadata"]["statutory_status"], "no_prescription")
+        self.assertIn("Not GPS", geojson["metadata"]["coordinate_note"])
+
     def test_raw_unapproved_box_cannot_reach_export(self):
         approved_mask = np.zeros((12, 12), dtype=np.uint8)
         approved_mask[3:9, 2:7] = 1
@@ -105,7 +135,7 @@ class SprayExportSafetyTests(unittest.TestCase):
         self.assertEqual(len(features), 1)
         self.assertEqual(features[0]["properties"]["target"], "grass")
         self.assertNotEqual(features[0]["properties"]["target"], "weed")
-        polygon_points = features[0]["geometry"]["coordinates"][0]
+        polygon_points = features[0]["geometry"]["coordinates"][0][0]
         longitudes = [point[0] for point in polygon_points]
         self.assertLess(max(longitudes) - min(longitudes), 0.0001)
 

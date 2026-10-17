@@ -13,6 +13,8 @@ Architecture:
 import logging
 from pathlib import Path
 import sys
+
+import numpy as np
 from typing import Any, Dict, Optional, Tuple
 from PIL import Image
 
@@ -35,6 +37,7 @@ from app.components.pipeline import (
 )
 from app.components.ui import (
     render_geojson_download,
+    render_mode_badge,
     render_header,
     render_kpi_cards,
     render_prescription_report,
@@ -84,19 +87,24 @@ def run_pipeline_on_image(
         buffer_pixels=nozzle_buffer,
         crop=crop,
         force_system2=force_system2,
+        min_confidence=confidence_threshold,
     )
 
     boxes = final_state.get("boxes", [])
     # Filter boxes by confidence threshold
     filtered_boxes = [b for b in boxes if b.get("score", 0.0) >= confidence_threshold]
 
-    masks = final_state.get("masks", [])
-    filtered_masks = [
-        m for m in masks if m.get("box", {}).get("score", 0.0) >= confidence_threshold
+    # Paint only the zones the safety gate approved: painting every mask made crop or
+    # withheld plants look sprayed.
+    spray_artifact = (final_state.get("artifacts") or {}).get("spray_map")
+    approved = (getattr(spray_artifact, "payload", None) or {}).get("approved_spray_zones", [])
+    approved_masks = [
+        {"mask_array": np.asarray(zone["mask"], dtype=bool), "label": zone["label"]}
+        for zone in approved
     ]
 
     # Generate composite visualization overlay
-    viz_image = overlay_masks(image, filtered_masks, alpha=0.45)
+    viz_image = overlay_masks(image, approved_masks, alpha=0.45)
     viz_image = draw_boxes(viz_image, filtered_boxes)
 
     # Dynamic KPIs extracted directly from spray_map
@@ -195,6 +203,7 @@ def main() -> None:
         return
 
     # 5. Dynamic KPI Metric Cards
+    render_mode_badge(mock_mode)
     render_kpi_cards(kpis)
 
     st.divider()
@@ -205,7 +214,7 @@ def main() -> None:
     # 7. System 2 Deliberative Prescription Report
     prescription_data = format_prescription_report(final_state.get("prescription_report"))
     vlm_reasoning = final_state.get("vlm_reasoning")
-    render_prescription_report(prescription_data, vlm_reasoning=vlm_reasoning)
+    render_prescription_report(prescription_data, vlm_reasoning=vlm_reasoning, mock_mode=mock_mode)
 
     st.divider()
 

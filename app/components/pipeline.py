@@ -219,6 +219,7 @@ def execute_agriagent_workflow(
     crop: str = "cotton",
     force_system2: bool = False,
     target_weed_hint: Optional[str] = None,
+    min_confidence: float = 0.70,
 ) -> Dict[str, Any]:
     """
     Execute the dual-brain AgriAgent workflow from input image to spray map and prescription.
@@ -232,6 +233,7 @@ def execute_agriagent_workflow(
         crop: Agricultural crop context ("cotton", "sugar beet", "wheat", etc.).
         force_system2: Whether to unconditionally execute System 2 deliberative RAG.
         target_weed_hint: Optional weed species hint for System 2 prescription.
+        min_confidence: Lowest detection score the spray gate accepts (never below 0.70).
 
     Returns:
         final_state: Comprehensive GraphState dictionary.
@@ -242,6 +244,7 @@ def execute_agriagent_workflow(
         mock_mode=mock_mode,
         iou_threshold=iou_threshold,
         buffer_pixels=buffer_pixels,
+        min_confidence=min_confidence,
     )
 
     initial_state = create_initial_state(
@@ -383,20 +386,29 @@ def build_spray_geojson(
     crop: str = "cotton",
     nozzle_buffer_cm: int = 10,
     field_id: str = "VJTI-FIELD-PLOT-01",
+    min_fragment_fraction: float = 0.0005,
 ) -> Dict[str, Any]:
     """
-    Generate valid GeoJSON FeatureCollection prescription from pipeline execution state.
+    Generate a GeoJSON FeatureCollection with one feature per approved weed zone.
+
+    Pieces of a zone smaller than min_fragment_fraction of the image (default 0.05%) are
+    dropped: jagged mask edges otherwise produced hundreds of speck features per weed.
+    Herbicide fields appear only when System 2 produced a real prescription (#7).
+    Coordinates are NOT GPS: pixel positions are offset from a fixed placeholder point.
     """
     spray_map = final_state.get("spray_map") or {}
     kpis = extract_kpis(spray_map)
     prescription = final_state.get("prescription_report") or {}
+    has_prescription = prescription.get("status") == "ok" and bool(
+        prescription.get("active_ingredient")
+    )
     artifacts = final_state.get("artifacts") or {}
     spray_artifact = artifacts.get("spray_map")
     artifact_payload = getattr(spray_artifact, "payload", {}) or {}
     approved_zones = artifact_payload.get("approved_spray_zones", [])
 
     features = []
-    # Base GPS coordinate for research plot
+    # Placeholder reference point and scale (about 1.1 m per pixel); see metadata.
     base_lon, base_lat = 72.8550, 19.0220
     scale = 0.00001
 
@@ -405,12 +417,16 @@ def build_spray_geojson(
     ):
         approved_zones = []
 
-    for idx, zone in enumerate(approved_zones):
+    for zone in approved_zones:
         label = str(zone.get("label", ""))
         zone_mask = zone.get("mask")
         if not label or not isinstance(zone_mask, np.ndarray) or zone_mask.ndim != 2:
             continue
+        min_area = min_fragment_fraction * zone_mask.size
+        polygons = []
         for polygon in _mask_polygons(zone_mask):
+            if abs(_signed_ring_area(polygon[0])) < min_area:
+                continue
             coordinates = [
                 [
                     [round(base_lon + point[0] * scale, 6), round(base_lat + point[1] * scale, 6)]
@@ -418,27 +434,28 @@ def build_spray_geojson(
                 ]
                 for ring in polygon
             ]
-            if any(len(ring) < 4 for ring in coordinates):
-                continue
-            zone_id = len(features) + 1
-            features.append(
-                {
-                    "type": "Feature",
-                    "geometry": {"type": "Polygon", "coordinates": coordinates},
-                    "properties": {
-                        "zone_id": f"NOZZLE_PULSE_{zone_id:02d}",
-                        "action": "SPRAY_ACTIVE",
-                        "target": label,
-                        "confidence": round(float(zone.get("score", 0.9)), 2),
-                        "active_ingredient": prescription.get(
-                            "active_ingredient", "Pyrithiobac-sodium"
-                        ),
-                        "formulation": prescription.get("formulation", "10% EC"),
-                        "dosage_ai_g_per_ha": prescription.get("dosage_ai_g_per_ha", 75.0),
-                        "buffer_margin_cm": nozzle_buffer_cm,
-                    },
-                }
-            )
+            if not any(len(ring) < 4 for ring in coordinates):
+                polygons.append(coordinates)
+        if not polygons:
+            continue
+        properties: Dict[str, Any] = {
+            "zone_id": f"NOZZLE_PULSE_{len(features) + 1:02d}",
+            "action": "SPRAY_ACTIVE",
+            "target": label,
+            "confidence": round(float(zone.get("score", 0.0)), 2),
+            "buffer_margin_cm": nozzle_buffer_cm,
+        }
+        if has_prescription:
+            properties["active_ingredient"] = prescription["active_ingredient"]
+            properties["formulation"] = prescription.get("formulation")
+            properties["dosage_ai_g_per_ha"] = prescription.get("dosage_ai_g_per_ha")
+        features.append(
+            {
+                "type": "Feature",
+                "geometry": {"type": "MultiPolygon", "coordinates": polygons},
+                "properties": properties,
+            }
+        )
 
     geojson_doc = {
         "type": "FeatureCollection",
@@ -450,7 +467,11 @@ def build_spray_geojson(
             "weed_count": kpis["weed_count"],
             "spray_nozzle_buffer_cm": nozzle_buffer_cm,
             "status": kpis["status"],
-            "statutory_status": prescription.get("status", "ok"),
+            "statutory_status": prescription.get("status", "no_prescription"),
+            "coordinate_note": (
+                "Not GPS: pixel positions offset from a fixed placeholder point at "
+                f"{scale} degrees per pixel. Research prototype output only."
+            ),
         },
         "features": features,
     }

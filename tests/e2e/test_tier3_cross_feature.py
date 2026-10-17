@@ -384,9 +384,9 @@ class TestTier3CrossFeature(unittest.TestCase):
 
         for feature in geojson["features"]:
             self.assertEqual(feature["type"], "Feature")
-            self.assertEqual(feature["geometry"]["type"], "Polygon")
+            self.assertEqual(feature["geometry"]["type"], "MultiPolygon")
             # Mask geometry must be a closed ring with at least three vertices.
-            coords = feature["geometry"]["coordinates"][0]
+            coords = feature["geometry"]["coordinates"][0][0]
             self.assertGreaterEqual(len(coords), 4)
             self.assertEqual(coords[0], coords[-1], "Polygon must be closed")
             self.assertIn("zone_id", feature["properties"])
