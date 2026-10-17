@@ -59,6 +59,19 @@ class TestAgronomy(unittest.TestCase):
         self.assertTrue(r["evidence"])
         self.assertIn("disclaimer", r)
 
+    def test_cotton_evidence_never_used_for_another_crop(self):
+        """Issue #11: wheat, rice and sugar beet all received the cotton herbicide."""
+        store = InMemoryKnowledgeStore()
+        store.ingest()  # the built-in ICAR table: cotton, wheat, rice, beet root, banned rows
+        cotton = get_herbicide_prescription("Trianthema", "vegetative", crop="cotton", store=store)
+        self.assertEqual(cotton["crop"], "cotton")
+        for crop in ("wheat", "rice", "sugar beet"):
+            with self.subTest(crop=crop):
+                r = get_herbicide_prescription("Trianthema", "vegetative", crop=crop, store=store)
+                self.assertNotEqual(r.get("active_ingredient"), cotton.get("active_ingredient"))
+                for citation in r["evidence"]:
+                    self.assertNotIn("cotton", citation["text"].lower())
+
     def test_empty_store_does_not_invent(self):
         """Verify querying an empty knowledge store yields safe no_knowledge_found status."""
         if HAS_CHROMADB:

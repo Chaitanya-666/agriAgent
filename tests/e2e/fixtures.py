@@ -125,6 +125,7 @@ class InMemoryKnowledgeStore:
                         "Pre-harvest interval is 99 days. Ensure targeted spot spraying."
                     ),
                     "source": "agronomy_test_doc.txt",
+                    "crop": "cotton",
                     "page": 1,
                     "authority": "ICAR",
                     "weed_keywords": ["testweed", "testweed alpha"],
@@ -136,6 +137,7 @@ class InMemoryKnowledgeStore:
                         "Dilute in 500 liters of water per hectare. Pre-harvest interval: 60 days."
                     ),
                     "source": "cibrc_approved_herbicides_2024.pdf",
+                    "crop": "cotton",
                     "page": 4,
                     "authority": "CIBRC",
                     "weed_keywords": ["parthenium", "parthenium hysterophorus"],
@@ -146,6 +148,7 @@ class InMemoryKnowledgeStore:
                         "Herbicide: ExampleChem-Y at 2 units per hectare. Maximum single dose: 250 g a.i./ha."
                     ),
                     "source": "sugarbeet_weed_manual.pdf",
+                    "crop": "sugarbeet",
                     "page": 2,
                     "authority": "ICAR",
                     "weed_keywords": ["fakegrass", "fakegrass beta"],
@@ -168,6 +171,9 @@ class InMemoryKnowledgeStore:
                     "source": doc["source"],
                     "page": doc["page"],
                     "authority": doc["authority"],
+                    # Real stores label every row with its crop; the prescription keeps only
+                    # rows for the requested crop (#11).
+                    "crop": doc.get("crop", ""),
                     "distance": 0.15,
                 })
 

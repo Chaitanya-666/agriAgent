@@ -439,6 +439,7 @@ class TestTier3CrossFeature(unittest.TestCase):
                         "for resistant Trianthema in cotton. Dilute in 500 liters water."
                     ),
                     "source": "icar_experimental_bulletin.pdf",
+                    "crop": "cotton",
                     "page": 12,
                     "authority": "ICAR",
                     "weed_keywords": ["trianthema"],
