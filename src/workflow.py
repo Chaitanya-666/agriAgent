@@ -119,8 +119,11 @@ class VisionWorkflowRunner:
         buffer_pixels: int = 10,
         mock_mode: bool = False,
         system2: Optional[Any] = None,
+        min_confidence: float = 0.70,
     ):
         self.mock_mode = mock_mode
+        # The gate never sprays below 0.70; a caller (the app's slider) may only raise it.
+        self.min_confidence = max(0.70, float(min_confidence))
         self.detector = detector or GroundingDINOEngine(mock_mode=mock_mode)
         self.segmenter = segmenter or SAM2Segmenter(mock_mode=mock_mode)
         self.safety_router = DeterministicRouter()
@@ -306,6 +309,7 @@ class VisionWorkflowRunner:
                 predicted_iou=float(m.get("predicted_iou", 0.0)),
                 label=normalized_label,
                 iou_threshold=self.iou_threshold,
+                min_confidence=self.min_confidence,
             )
             if decision.action != RouterAction.ACCEPT:
                 withheld.append({"label": normalized_label, "reason": decision.reason})
