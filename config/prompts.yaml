@@ -2,7 +2,9 @@ applications:
   weed_spraying:
     id: 1
     name: "Site-Specific Weed Spraying"
-    grounding_prompt: "weed. crop."
+    # Same default as src/workflow.py default_prompt(): name the weed AND the crop, so crop
+    # plants get their own phrase and label_policy keeps them off the spray map (T1.4).
+    grounding_prompt: "weed . {crop} plant ."
     description: "Find all weeds and spare the crops"
     classes: ["weed", "crop"]
 

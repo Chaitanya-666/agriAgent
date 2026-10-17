@@ -13,10 +13,10 @@ class SprayExportSafetyTests(unittest.TestCase):
     def setUp(self) -> None:
         self.runner = VisionWorkflowRunner(mock_mode=True)
 
-    def _mask(self, label: str, fill: float = 0.05):
+    def _mask(self, label: str, fill: float = 0.05, score: float = 0.9, iou: float = 0.95):
         pixels = np.zeros((480, 640), dtype=bool)
         pixels[: int(480 * fill), :640] = True
-        return {"label": label, "mask_array": pixels, "predicted_iou": 0.95, "box": {}}
+        return {"label": label, "mask_array": pixels, "predicted_iou": iou, "box": {"score": score}}
 
     def _features(self, workflow_output, boxes=None):
         return build_spray_geojson(
@@ -54,6 +54,36 @@ class SprayExportSafetyTests(unittest.TestCase):
         self.assertEqual(output["spray_map"]["safety_action"], "SUPPRESS_SPRAY")
         self.assertFalse(output["spray_map"]["spray_allowed"])
         self.assertEqual(self._features(output), [])
+
+    def test_low_confidence_weed_is_withheld(self):
+        # Known issue K1: the gate used to be called with confidence 1.0 for every mask.
+        output = self.runner.spray_map_node({"masks": [self._mask("weed", score=0.5)]})
+        self.assertEqual(self._features(output), [])
+        self.assertIn(
+            "Low detection confidence", output["spray_map"]["withheld_masks"][0]["reason"]
+        )
+
+    def test_poor_quality_mask_is_withheld(self):
+        output = self.runner.spray_map_node({"masks": [self._mask("weed", iou=0.6)]})
+        self.assertEqual(self._features(output), [])
+
+    def test_mask_without_confidence_is_withheld(self):
+        mask = self._mask("weed")
+        mask["box"] = {}
+        output = self.runner.spray_map_node({"masks": [mask]})
+        self.assertEqual(self._features(output), [])
+
+    def test_label_mixing_weed_and_crop_prompt_words_is_withheld(self):
+        # Real run, 17 Oct: prompt "weed . cotton plant ." produced the label "weed plant".
+        state = {"masks": [self._mask("weed plant")], "text_prompt": "weed . cotton plant ."}
+        output = self.runner.spray_map_node(state)
+        self.assertEqual(self._features(output), [])
+        self.assertEqual(output["spray_map"]["withheld_masks"][0]["label"], "weed plant")
+
+    def test_status_says_nothing_to_spray_when_no_zone_is_approved(self):
+        # Issue #8: the status claimed a prescription when the map was empty.
+        output = self.runner.spray_map_node({"masks": [self._mask("cotton")]})
+        self.assertTrue(output["spray_map"]["status"].startswith("No weed zones approved"))
 
     def test_raw_unapproved_box_cannot_reach_export(self):
         approved_mask = np.zeros((12, 12), dtype=np.uint8)

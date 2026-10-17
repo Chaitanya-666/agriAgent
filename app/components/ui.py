@@ -8,6 +8,8 @@ import json
 from typing import Any, Dict, Optional, Tuple
 from PIL import Image
 
+from src.workflow import default_prompt
+
 try:
     import streamlit as st
 except ImportError:
@@ -33,7 +35,7 @@ def render_sidebar() -> Tuple[bool, str, str, float, int, bool]:
         (mock_mode, crop, prompt, confidence_threshold, nozzle_buffer, force_system2)
     """
     if st is None:
-        return True, "Cotton", "weed . grass . pigweed .", 0.3, 10, False
+        return True, "Cotton", default_prompt("Cotton"), 0.3, 10, False
 
     st.sidebar.header("Execution Controls")
 
@@ -64,7 +66,8 @@ def render_sidebar() -> Tuple[bool, str, str, float, int, bool]:
 
     text_prompt = st.sidebar.text_input(
         "Zero-Shot Detection Prompt",
-        value="weed . grass . pigweed .",
+        value=default_prompt(crop),
+        key=f"prompt_{crop}",  # a new crop resets the box to that crop's default prompt
         help="Natural language prompt provided to Grounding DINO zero-shot detector.",
     )
 

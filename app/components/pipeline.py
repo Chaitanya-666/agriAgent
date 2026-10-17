@@ -213,7 +213,7 @@ def create_sample_field_image(width: int = 640, height: int = 480) -> Image.Imag
 def execute_agriagent_workflow(
     image: Image.Image,
     mock_mode: bool = True,
-    text_prompt: str = "weed . grass . pigweed .",
+    text_prompt: Optional[str] = None,
     iou_threshold: float = 0.85,
     buffer_pixels: int = 10,
     crop: str = "cotton",
@@ -226,7 +226,7 @@ def execute_agriagent_workflow(
     Args:
         image: RGB PIL Image of field patch.
         mock_mode: If True, uses deterministic fast laptop reflex models.
-        text_prompt: Zero-shot prompt for Grounding DINO detection.
+        text_prompt: Zero-shot prompt for Grounding DINO; None means default_prompt(crop).
         iou_threshold: IoU threshold triggering active morphological refinement.
         buffer_pixels: Spray nozzle expansion margin.
         crop: Agricultural crop context ("cotton", "sugar beet", "wheat", etc.).
