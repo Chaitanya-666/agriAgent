@@ -209,4 +209,12 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+    # `streamlit run` executes this file as __main__; tests import it and never load .env.
+    # Provider keys (GROQ_API_KEY, ...) live there; without them System 2 cannot answer.
+    try:
+        from dotenv import load_dotenv
+
+        load_dotenv(Path(PROJECT_ROOT) / ".env")
+    except ImportError:
+        pass
     main()

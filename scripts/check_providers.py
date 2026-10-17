@@ -1,8 +1,11 @@
 """Check that each model provider in .env answers a real request.
 
 Usage:
-    python scripts/check_providers.py              # check every provider configured in .env
+    python scripts/check_providers.py              # the cloud providers we use: groq, cloudflare
     python scripts/check_providers.py groq         # one provider: groq, cloudflare, local, clef-local
+
+The local llama-server back-ends are not part of our plan (team decision, 17 Oct), so they
+are checked only when named explicitly.
 
 Keys are read from .env (see .env.example) and are never printed.
 """
@@ -125,6 +128,7 @@ CHECKS: Dict[str, Callable[[], Tuple[bool, str]]] = {
     "local": check_local,
     "clef-local": check_clef_local,
 }
+CLOUD_CHECKS = ["groq", "cloudflare"]
 
 
 def main() -> int:
@@ -134,7 +138,9 @@ def main() -> int:
     parser.add_argument("provider", nargs="?", choices=[*CHECKS, "all"], default="all")
     args = parser.parse_args()
 
-    names = list(CHECKS) if args.provider == "all" else [args.provider]
+    names = CLOUD_CHECKS if args.provider == "all" else [args.provider]
+    if args.provider == "all":
+        print("[SKIP] local, clef-local: not used; name one explicitly to check it")
     failures = 0
     for name in names:
         start = time.time()

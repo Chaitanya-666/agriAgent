@@ -1,7 +1,8 @@
 """
 src/agronomy/vlm_critic.py
 Track 2 / Task 2.1: Multimodal VLM critic (System-2).
-Default model: Qwen/Qwen3.5-4B.
+Default back-end: Groq qwen/qwen3.8-27b (cloud, sees the image). The local llama-server
+provider is used only when passed in explicitly (team decision, 17 Oct).
 Provides Pydantic schema validation for diagnoses and robust JSON parsing.
 mock_mode=True returns a deterministic diagnosis so the pipeline runs on CPU laptops / CI.
 """
@@ -13,12 +14,12 @@ from typing import Any, Dict, Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from PIL import Image
 from src.agronomy.provider_contract import BaseAgronomyProvider, LLMRequest
-from src.agronomy.providers.local_qwen import LocalQwenProvider
+from src.agronomy.providers.hosted_groq import DEFAULT_GROQ_MODEL, HostedGroqProvider
 
 logger = logging.getLogger("agriagent.vlm_critic")
 
-# Local OpenAI-compatible endpoint model identifier.
-DEFAULT_MODEL = "Qwen/Qwen3.5-4B"
+# Groq model identifier; GROQ_MODEL_NAME in .env overrides it.
+DEFAULT_MODEL = DEFAULT_GROQ_MODEL
 
 DIAGNOSIS_PROMPT = (
     "You are an expert Indian agronomist. Look at this field photo"
@@ -86,9 +87,9 @@ class VLMCritic:
         mock_mode: bool = False,
         provider: Optional[BaseAgronomyProvider] = None,
     ):
-        self.model_name = model_name or os.getenv("LOCAL_MODEL_NAME") or DEFAULT_MODEL
+        self.model_name = model_name or os.getenv("GROQ_MODEL_NAME") or DEFAULT_MODEL
         self.mock_mode = mock_mode
-        self.provider = provider or LocalQwenProvider(
+        self.provider = provider or HostedGroqProvider(
             model_name=self.model_name,
             mock_mode=mock_mode,
         )
@@ -105,7 +106,7 @@ class VLMCritic:
             )
         )
         if response.error:
-            raise RuntimeError(f"Local Qwen diagnosis failed: {response.error}")
+            raise RuntimeError(f"VLM diagnosis failed ({response.provider}): {response.error}")
         if response.parsed_json is not None:
             diagnosis = VLMDiagnosis.model_validate(response.parsed_json)
             return diagnosis.model_dump()

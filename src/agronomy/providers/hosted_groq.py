@@ -13,7 +13,7 @@ from typing import Any, Dict, Optional
 import requests
 
 from src.agronomy.provider_contract import BaseAgronomyProvider, LLMRequest, LLMResponse
-from src.agronomy.providers.local_qwen import extract_json
+from src.agronomy.providers.local_qwen import extract_json, image_to_base64_url
 
 logger = logging.getLogger("agriagent.providers.hosted_groq")
 
@@ -79,7 +79,15 @@ class HostedGroqProvider(BaseAgronomyProvider):
         messages = []
         if request.system_prompt:
             messages.append({"role": "system", "content": request.system_prompt})
-        messages.append({"role": "user", "content": request.user_prompt})
+        user_content: Any = request.user_prompt
+        img_url = image_to_base64_url(request.image)
+        if img_url:
+            # Without this block the model never sees the photo and diagnoses blind.
+            user_content = [
+                {"type": "image_url", "image_url": {"url": img_url}},
+                {"type": "text", "text": request.user_prompt},
+            ]
+        messages.append({"role": "user", "content": user_content})
 
         headers = {
             "Content-Type": "application/json",
@@ -91,6 +99,12 @@ class HostedGroqProvider(BaseAgronomyProvider):
             "temperature": request.temperature,
             "max_tokens": 1024,
         }
+        if self.model_name.startswith("qwen/"):
+            # Qwen 3 thinks out loud by default; that spends tokens and can break JSON parsing.
+            payload["reasoning_effort"] = "none"
+        if "json" in f"{request.system_prompt} {request.user_prompt}".lower():
+            # Groq's JSON mode rejects requests whose prompt never mentions JSON.
+            payload["response_format"] = {"type": "json_object"}
 
         try:
             resp = requests.post(

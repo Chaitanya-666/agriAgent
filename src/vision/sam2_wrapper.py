@@ -204,6 +204,35 @@ class SAM2Segmenter:
             area_pixels=int(mask.sum()),
         )
 
+    def _hf_segment(
+        self,
+        pil_img: Image.Image,
+        box: Box,
+        corrective_point: Optional[Tuple[int, int, bool]] = None,
+    ) -> Tuple[np.ndarray, float]:
+        """
+        Segment one box with Hugging Face SAM 2, optionally adding one corrective point.
+
+        Asks for a single mask (multimask_output=False) so the returned mask and its
+        predicted IoU belong together. transformers 5.x post-processes masks from
+        original_sizes alone; it no longer returns reshaped_input_sizes.
+        """
+        import torch
+
+        prompts: Dict[str, Any] = {"input_boxes": [[[box["x1"], box["y1"], box["x2"], box["y2"]]]]}
+        if corrective_point is not None:
+            px, py, is_positive = corrective_point
+            prompts["input_points"] = [[[[px, py]]]]
+            prompts["input_labels"] = [[[1 if is_positive else 0]]]
+
+        inputs = self._processor(images=pil_img, return_tensors="pt", **prompts).to(self.device)
+        with torch.no_grad():
+            outputs = self._model(**inputs, multimask_output=False)
+        masks = self._processor.post_process_masks(outputs.pred_masks.cpu(), inputs["original_sizes"])[0]
+        mask = masks[0, 0].numpy().astype(bool)
+        score = float(outputs.iou_scores[0, 0, 0].cpu().item())
+        return mask, score
+
     def segment_boxes(
         self,
         image: Union[str, Path, Image.Image, np.ndarray],
@@ -236,8 +265,6 @@ class SAM2Segmenter:
             return mock_results
 
         # Branch 2: Live SAM 2 Inference
-        import torch
-
         results: List[SegmentResult] = []
 
         if self._predictor is not None:
@@ -265,20 +292,9 @@ class SAM2Segmenter:
                 )
         else:
             # Hugging Face transformers SAM 2 pipeline
-            from PIL import Image as PILImage
-
-            assert self._processor is not None and self._model is not None
-            pil_img = PILImage.fromarray(np_img)
+            pil_img = Image.fromarray(np_img)
             for b in boxes:
-                input_boxes = [[[b["x1"], b["y1"], b["x2"], b["y2"]]]]
-                inputs = self._processor(pil_img, input_boxes=input_boxes, return_tensors="pt").to(self.device)
-                with torch.no_grad():
-                    outputs = self._model(**inputs)
-                masks = self._processor.post_process_masks(
-                    outputs.pred_masks, inputs["original_sizes"], inputs["reshaped_input_sizes"]
-                )[0]
-                best_mask = masks[0, 0].cpu().numpy().astype(bool)
-                best_score = float(outputs.iou_predictions[0, 0].cpu().item()) if hasattr(outputs, "iou_predictions") else 0.88
+                best_mask, best_score = self._hf_segment(pil_img, b)
 
                 results.append(
                     SegmentResult(
@@ -341,12 +357,15 @@ class SAM2Segmenter:
             )
 
         # Live SAM 2 point + box conditioning
-        import torch
-
         predictor = self._predictor
         if predictor is None:
-            raise RuntimeError(
-                "Point-based SAM 2 refinement requires the official SAM2 image predictor runtime."
+            mask, score = self._hf_segment(Image.fromarray(np_img), box, corrective_point)
+            return SegmentResult(
+                mask_array=mask,
+                predicted_iou=score,
+                box=box,
+                label=box.get("label", "weed"),
+                area_pixels=int(mask.sum()),
             )
 
         input_box = np.array([box["x1"], box["y1"], box["x2"], box["y2"]])

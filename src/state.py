@@ -97,6 +97,7 @@ class GraphState(TypedDict):
     system2_needed: bool                    # Set True if confidence low or weed is unverified
     vlm_reasoning: Optional[str]            # Visual explanation from the configured local/cloud provider
     prescription_report: Optional[Dict[str, Any]] # ICAR herbicide, dosage, water dilution
+    system2_error: Optional[str]            # Why System 2 could not answer (provider down, no key)
 
     # 5. Downstream Actuator & Evaluation
     spray_map: Optional[Dict[str, Any]]     # Nozzle on/off pulses, GeoJSON polygons, savings %

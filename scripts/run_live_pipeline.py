@@ -25,6 +25,14 @@ from PIL import Image
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+# Provider keys (GROQ_API_KEY, ...) live in .env; without this System 2 never sees them.
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(PROJECT_ROOT / ".env")
+except ImportError:
+    pass
+
 from src.workflow import VisionWorkflowRunner, create_initial_state
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -54,12 +62,22 @@ def create_synthetic_field_image(width: int = 640, height: int = 480) -> Image.I
     return Image.fromarray(arr)
 
 
+def approved_spray_mask(state: dict, height: int, width: int) -> np.ndarray:
+    """The spray map the safety gate actually approved (not every SAM 2 mask)."""
+    artifact = (state.get("artifacts") or {}).get("spray_map")
+    payload = getattr(artifact, "payload", None) or {}
+    composite = payload.get("composite_mask")
+    if composite is None:
+        return np.zeros((height, width), dtype=bool)
+    return np.asarray(composite, dtype=bool)
+
+
 def plot_and_save_results(
     image: Image.Image,
     state: dict,
     output_path: str = "output_spray_map.png"
 ) -> None:
-    """Generates a 3-panel visualization: Original, Bounding Boxes, and Precision Spray Map."""
+    """Saves a 4-panel figure: original, DINO boxes, all SAM 2 masks by label, gated spray map."""
     try:
         import matplotlib.pyplot as plt
         import matplotlib.patches as patches
@@ -71,12 +89,13 @@ def plot_and_save_results(
     boxes = state.get("boxes", [])
     masks = state.get("masks", [])
     spray_info = state.get("spray_map", {})
+    h, w = np_img.shape[:2]
 
-    fig, axes = plt.subplots(1, 3, figsize=(18, 6))
+    fig, axes = plt.subplots(1, 4, figsize=(24, 6))
 
     # Panel 1: Raw Field Photo
     axes[0].imshow(np_img)
-    axes[0].set_title("1. Original Sensor Stream", fontsize=12, fontweight="bold")
+    axes[0].set_title("1. Original", fontsize=12, fontweight="bold")
     axes[0].axis("off")
 
     # Panel 2: Grounding DINO Bounding Boxes
@@ -97,32 +116,34 @@ def plot_and_save_results(
             bbox=dict(facecolor="red", alpha=0.7, edgecolor="none", pad=2)
         )
 
-    # Panel 3: SAM 2 Precision Spray Map
+    # Panel 3: every SAM 2 mask, coloured by its label (red = weed label, blue = anything else)
     overlay = np_img.copy()
-    h, w = np_img.shape[:2]
-    composite_mask = np.zeros((h, w), dtype=bool)
-
     for m in masks:
-        mask_arr = m["mask_array"]
-        composite_mask |= mask_arr
-        # Paint weed foliage in red semi-transparent overlay
-        overlay[mask_arr] = [220, 30, 30]
-
-    # Blend original and mask overlay
-    blended = (0.55 * np_img + 0.45 * overlay).astype(np.uint8)
-    axes[2].imshow(blended)
-
-    savings = spray_info.get("chemical_savings_percentage", 0.0)
-    infest = spray_info.get("infestation_percentage", 0.0)
+        is_weed_label = "weed" in str(m.get("label", "")).lower()
+        overlay[m["mask_array"]] = [220, 30, 30] if is_weed_label else [30, 90, 220]
+    axes[2].imshow((0.55 * np_img + 0.45 * overlay).astype(np.uint8))
     axes[2].set_title(
-        f"3. SAM 2 Spray Map\n[Weeds: {infest}% | SAVINGS: {savings:.1f}%]",
-        fontsize=12, fontweight="bold", color="darkgreen"
+        f"3. SAM 2 masks ({len(masks)})\nred = weed label, blue = other label",
+        fontsize=12, fontweight="bold",
     )
     axes[2].axis("off")
 
+    # Panel 4: what the safety gate approved for spraying
+    sprayed = approved_spray_mask(state, h, w)
+    overlay = np_img.copy()
+    overlay[sprayed] = [220, 30, 30]
+    axes[3].imshow((0.55 * np_img + 0.45 * overlay).astype(np.uint8))
+    savings = spray_info.get("chemical_savings_percentage", 0.0)
+    infest = spray_info.get("infestation_percentage", 0.0)
+    axes[3].set_title(
+        f"4. Gated spray map\n[Sprayed: {infest}% | Savings: {savings:.1f}%]",
+        fontsize=12, fontweight="bold", color="darkgreen"
+    )
+    axes[3].axis("off")
+
     plt.tight_layout()
     plt.savefig(output_path, dpi=200, bbox_inches="tight")
-    logger.info("Saved 3-panel visualization to: %s", output_path)
+    logger.info("Saved 4-panel visualization to: %s", output_path)
     plt.close()
 
 
@@ -135,7 +156,9 @@ def main():
     args = parser.parse_args()
 
     # 1. Load or synthesize test image
-    if args.image and Path(args.image).exists():
+    if args.image and not Path(args.image).exists():
+        sys.exit(f"Image not found: {args.image}")
+    if args.image:
         logger.info("Loading image from disk: %s", args.image)
         img = Image.open(args.image).convert("RGB")
     else:
@@ -152,16 +175,38 @@ def main():
     final_state = runner.run(initial_state)
 
     # 4. Display Results
+    detector_mode = "MOCK" if runner.detector.mock_mode else "REAL"
+    segmenter_mode = "MOCK" if runner.segmenter.mock_mode else "REAL"
     print("\n" + "=" * 65)
     print("🌾 AGRIAGENT SYSTEM-1 REFLEX RESULTS")
     print("=" * 65)
+    print(f"• MODE USED                : detector={detector_mode}, segmenter={segmenter_mode}")
     print(f"• Candidate Bounding Boxes : {len(final_state['boxes'])}")
     for i, b in enumerate(final_state["boxes"], 1):
         print(f"  [{i}] {b['label']} (conf: {b['score']:.2f}) -> [{b['x1']:.1f}, {b['y1']:.1f}, {b['x2']:.1f}, {b['y2']:.1f}]")
 
+    h, w = img.size[1], img.size[0]
+    sprayed = approved_spray_mask(final_state, h, w)
     print(f"\n• Segmented Instance Masks : {len(final_state['masks'])}")
     for i, m in enumerate(final_state["masks"], 1):
-        print(f"  [{i}] Area: {m['mask_array'].sum()} px | Predicted IoU: {m['predicted_iou']:.2f}")
+        on_map = "SPRAYED" if (m["mask_array"] & sprayed).any() else "not sprayed"
+        print(
+            f"  [{i}] {m['label']} | Area: {m['mask_array'].sum()} px "
+            f"| Predicted IoU: {m['predicted_iou']:.2f} | {on_map}"
+        )
+
+    # Pixels the model itself labelled as non-weed that still sit on the spray map
+    # (masks can overlap). Uses the model's own labels, not ground truth.
+    other_pixels = np.zeros((h, w), dtype=bool)
+    for m in final_state["masks"]:
+        if "weed" not in str(m["label"]).lower():
+            other_pixels |= m["mask_array"]
+    if other_pixels.any():
+        overlap = int((other_pixels & sprayed).sum())
+        print(
+            f"• Non-weed-labelled pixels on spray map: {overlap} of {int(other_pixels.sum())} "
+            f"({100.0 * overlap / other_pixels.sum():.1f}%)"
+        )
 
     print(f"\n• Refinement Iterations    : {final_state['refinement_count']}")
     
@@ -169,6 +214,19 @@ def main():
     print(f"• Weed Infestation Area    : {spray_info.get('infestation_percentage', 0.0)}%")
     print(f"• Chemical Volume Saved    : {spray_info.get('chemical_savings_percentage', 0.0):.1f}% vs Broadcast")
     print(f"• Status                   : {spray_info.get('status', 'Complete')}")
+
+    if final_state.get("system2_needed"):
+        report = final_state.get("prescription_report") or {}
+        print("\n• System 2 (escalated)     :")
+        if final_state.get("system2_error"):
+            print(f"  FAILED: {final_state['system2_error']}")
+        else:
+            diagnosis = report.get("vlm_diagnosis", {})
+            print(f"  Diagnosis    : {diagnosis}")
+            print(
+                f"  Prescription : {report.get('status')} | {report.get('active_ingredient')} "
+                f"{report.get('dosage_ai_g_per_ha')} g/ha | crop={report.get('crop')}"
+            )
     print("=" * 65 + "\n")
 
     # 5. Export visualization

@@ -9,7 +9,11 @@ Verifies:
 4. End-to-end VisionWorkflowRunner state transitions and herbicide savings calculations.
 """
 
+import contextlib
+import sys
+from types import SimpleNamespace
 import unittest
+from unittest import mock
 import numpy as np
 from PIL import Image
 
@@ -85,6 +89,93 @@ class TestSAM2Segmenter(unittest.TestCase):
         self.assertGreater(refined.predicted_iou, initial_iou)
 
 
+class _FakeTensor:
+    """Just enough of a torch tensor for the Hugging Face SAM 2 code path."""
+
+    def __init__(self, array):
+        self.array = np.asarray(array)
+
+    def __getitem__(self, index):
+        return _FakeTensor(self.array[index])
+
+    def cpu(self):
+        return self
+
+    def numpy(self):
+        return self.array
+
+    def item(self):
+        return self.array.item()
+
+
+class _FakeBatch(dict):
+    def to(self, device):
+        return self
+
+
+class _FakeSam2Processor:
+    def __init__(self):
+        self.prompts = []
+
+    def __call__(self, images=None, return_tensors=None, **prompts):
+        self.prompts.append(prompts)
+        height, width = images.size[1], images.size[0]
+        return _FakeBatch(pixel_values=_FakeTensor(0), original_sizes=[(height, width)], **prompts)
+
+    def post_process_masks(self, masks, original_sizes):
+        # transformers 5.x signature: there is no reshaped_input_sizes argument (issue #13).
+        height, width = original_sizes[0]
+        mask = np.zeros((1, 1, height, width), dtype=bool)
+        mask[0, 0, 10:20, 10:30] = True
+        return [_FakeTensor(mask)]
+
+
+class _FakeSam2Model:
+    def __init__(self):
+        self.kwargs = {}
+
+    def __call__(self, **kwargs):
+        self.kwargs = kwargs
+        return SimpleNamespace(
+            pred_masks=_FakeTensor(np.zeros((1, 1, 1, 4, 4))),
+            iou_scores=_FakeTensor([[[0.62]]]),
+        )
+
+
+class TestSAM2HuggingFaceBackend(unittest.TestCase):
+    """The live transformers path, with the model and processor faked so no weights are needed."""
+
+    def setUp(self):
+        self.segmenter = SAM2Segmenter(mock_mode=True)
+        self.segmenter.mock_mode = False
+        self.segmenter.device = "cpu"
+        self.segmenter._processor = _FakeSam2Processor()
+        self.segmenter._model = _FakeSam2Model()
+        self.image = Image.new("RGB", (64, 48))
+        self.box: Box = {"x1": 5.0, "y1": 5.0, "x2": 40.0, "y2": 30.0, "label": "weed", "score": 0.7}
+        self.fake_torch = mock.patch.dict(
+            sys.modules, {"torch": SimpleNamespace(no_grad=contextlib.nullcontext)}
+        )
+        self.fake_torch.start()
+        self.addCleanup(self.fake_torch.stop)
+
+    def test_segment_boxes_returns_model_score_and_single_mask(self):
+        seg = self.segmenter.segment_boxes(self.image, [self.box])[0]
+        self.assertEqual(seg.mask_array.shape, (48, 64))
+        self.assertEqual(seg.area_pixels, 200)
+        self.assertAlmostEqual(seg.predicted_iou, 0.62)
+        self.assertFalse(self.segmenter._model.kwargs["multimask_output"])
+
+    def test_refine_with_point_sends_point_prompt(self):
+        refined = self.segmenter.refine_with_point(
+            self.image, self.box, np.zeros((48, 64), dtype=bool), (15, 12, False)
+        )
+        prompts = self.segmenter._processor.prompts[-1]
+        self.assertEqual(prompts["input_points"], [[[[15, 12]]]])
+        self.assertEqual(prompts["input_labels"], [[[0]]])
+        self.assertAlmostEqual(refined.predicted_iou, 0.62)
+
+
 class TestRefinementHeuristic(unittest.TestCase):
     """Test suite for IoU calculation and error centroid geometry."""
 
@@ -128,6 +219,18 @@ class TestVisionWorkflowRunner(unittest.TestCase):
 
         # Assert artifact created
         self.assertIn("spray_map", final_state["artifacts"])
+
+    def test_system2_failure_keeps_vision_results(self):
+        failing_system2 = mock.Mock()
+        failing_system2.system2_node.side_effect = RuntimeError("provider unreachable")
+        runner = VisionWorkflowRunner(mock_mode=True, system2=failing_system2)
+        state = create_initial_state(self.image, text_prompt="weed .")
+        state["system2_needed"] = True
+
+        out = runner.system2_node(state)
+
+        self.assertEqual(out["system2_error"], "provider unreachable")
+        self.assertIsNone(out["prescription_report"])
 
 
 if __name__ == "__main__":
