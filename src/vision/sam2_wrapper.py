@@ -19,7 +19,7 @@ Operational Modes:
 1. Live Mode (GPU / PyTorch / Meta SAM 2):
    Loads SAM 2 weights (`facebook/sam2-hiera-tiny` or official checkpoint).
    Runs GPU-accelerated image embedding and prompt mask decoding in <35 ms.
-2. Mock / Fallback Mode (`mock_mode=True` or when PyTorch/SAM 2 are missing):
+2. Mock Mode (`mock_mode=True` only; real mode raises if the model cannot load):
    Synthesizes realistic, non-rectangular foliage contours inside each box prior.
    Simulates active point refinement by organically growing masks around corrective clicks.
    Enables 100% test coverage and UI testing on lightweight developer laptops without GPU.
@@ -120,18 +120,12 @@ class SAM2Segmenter:
                 self._model = hf_model.to(self.device)
                 self._model.eval()
 
-        except ImportError as err:
-            logger.warning(
-                "PyTorch / SAM 2 libraries not installed (%s). Falling back to mock_mode=True.",
-                err,
-            )
-            self.mock_mode = True
         except Exception as err:
-            logger.warning(
-                "Failed to initialize SAM 2 model (%s). Falling back to mock_mode=True.",
-                err,
-            )
-            self.mock_mode = True
+            # Real mode was asked for; never fall back to synthetic masks silently (known issue K5).
+            raise RuntimeError(
+                f"Real mode requested but SAM 2 [{self.model_id}] could not be loaded: {err}. "
+                "Install torch/transformers and the weights, or choose mock mode explicitly."
+            ) from err
 
     def _normalize_image_input(self, image_input: Union[str, Path, Image.Image, np.ndarray]) -> np.ndarray:
         """Ensure input is converted into an RGB NumPy uint8 array of shape [H, W, 3]."""

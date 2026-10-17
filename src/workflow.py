@@ -55,6 +55,51 @@ from src.agents.clef_flash_router import ClefFlashRouter
 
 logger = logging.getLogger("agriagent.workflow")
 
+# Words that name a weed. A detected label is a weed only when it uses these words and
+# nothing taken from a crop phrase of the prompt (see label_policy).
+WEED_WORDS = ("weed", "weeds", "grass", "pigweed", "carpetweed", "velvetleaf", "invasive", "target")
+
+
+def default_prompt(crop: str = "cotton") -> str:
+    """One default for the script, the app and the workflow: name the weed AND the crop.
+
+    Naming the crop gives Grounding DINO a phrase to put crop plants under, so label_policy
+    can keep them off the spray map (task T1.4).
+    """
+    return f"weed . {crop.strip().lower()} plant ."
+
+
+def spray_status(spray_allowed: bool, approved: int, withheld: int) -> str:
+    """Status text that matches what is actually on the map (#8)."""
+    if not spray_allowed:
+        return "SUPPRESS_SPRAY: infestation exceeds safety ceiling"
+    if approved == 0:
+        suffix = f" ({withheld} withheld for review)" if withheld else ""
+        return f"No weed zones approved: nothing to spray{suffix}"
+    suffix = f"; {withheld} withheld for review" if withheld else ""
+    return f"Selective Spot-Spray Prescription Generated ({approved} zones{suffix})"
+
+
+def label_policy(label: str, prompt: Optional[str]) -> str:
+    """Classify a detected label as 'weed', 'crop' or 'ambiguous' using the prompt it came from.
+
+    Grounding DINO can merge words from different prompt phrases ("weed . cotton plant ." can
+    yield "weed plant"). A label that contains any word from a crop phrase is not trusted as a
+    weed: crop if it has no weed word, ambiguous if it mixes both. Only 'weed' is sprayed.
+    """
+    words = set(label.lower().replace("-", " ").replace("_", " ").split())
+    crop_words: set = set()
+    for phrase in (prompt or "").replace(",", ".").split("."):
+        phrase_words = set(phrase.lower().split())
+        if phrase_words and not phrase_words & set(WEED_WORDS):
+            crop_words |= phrase_words
+    has_weed_word = any(w in words for w in WEED_WORDS) or any(
+        weed in w for w in words for weed in WEED_WORDS
+    )
+    if words & crop_words:
+        return "ambiguous" if has_weed_word else "crop"
+    return "weed" if has_weed_word else "crop"
+
 
 class VisionWorkflowRunner:
     """
@@ -100,10 +145,17 @@ class VisionWorkflowRunner:
         if img is None:
             return {"error": "Missing input image in GraphState.", "boxes": []}
 
-        prompt = state.get("text_prompt") or "weed . grass . pigweed ."
+        prompt = state.get("text_prompt")
+        if prompt is None:
+            crop = (state.get("field_metadata") or {}).get("crop", "cotton")
+            prompt = default_prompt(crop)
+        elif not prompt.strip(" ."):
+            # An empty prompt asks for nothing; silently using a default would invent weeds (#6).
+            return {"error": "Empty detection prompt: nothing to detect.", "boxes": []}
         boxes = self.detector.detect_to_state_boxes(img, text_prompt=prompt)
         logger.info("VisionWorkflow: Detected %d candidate boxes.", len(boxes))
-        return {"boxes": boxes}
+        # Keep the prompt actually used: the spray gate reads crop phrases from it.
+        return {"boxes": boxes, "text_prompt": prompt}
 
     def segment_node(self, state: GraphState) -> Dict[str, Any]:
         """Node 2: Convert candidate boxes into pixel-accurate SAM 2 binary masks."""
@@ -215,6 +267,8 @@ class VisionWorkflowRunner:
         )
         contributing_weeds = 0
         approved_zones: List[Dict[str, Any]] = []
+        withheld: List[Dict[str, Any]] = []
+        prompt = state.get("text_prompt")
 
         for m in masks:
             raw_label = m.get("label")
@@ -226,40 +280,61 @@ class VisionWorkflowRunner:
             is_disallowed = normalized_label in disallowed_crop_labels or any(
                 token in normalized_label for token in crop_name_tokens
             )
-
-            is_recognized_weed = not is_disallowed and any(
-                kw in normalized_label for kw in recognized_weed_keywords
+            policy = label_policy(str(raw_label), prompt)
+            is_recognized_weed = (
+                not is_disallowed
+                and policy == "weed"
+                and any(kw in normalized_label for kw in recognized_weed_keywords)
             )
-
-            if is_recognized_weed:
-                approved_mask = np.asarray(m["mask_array"], dtype=bool)
-                composite_mask |= approved_mask
-                contributing_weeds += 1
-                ys, xs = np.where(approved_mask)
-                if len(xs):
-                    approved_zones.append(
-                        {
-                            "label": normalized_label,
-                            "score": float(m["box"].get("score", 0.9)),
-                            "bbox": [
-                                int(xs.min()),
-                                int(ys.min()),
-                                int(xs.max()) + 1,
-                                int(ys.max()) + 1,
-                            ],
-                            "mask": approved_mask.astype(np.uint8),
-                        }
+            if not is_recognized_weed:
+                if policy == "ambiguous":
+                    withheld.append(
+                        {"label": normalized_label, "reason": "label mixes weed and crop words"}
                     )
-            else:
                 logger.debug(
                     "VisionWorkflow: Skipping non-weed mask (label: %s) from spray map.",
                     raw_label,
+                )
+                continue
+
+            # Each weed mask passes the safety router with its own detection confidence and
+            # mask quality (known issue K1: these used to be hard-coded to 1.0). Anything but
+            # ACCEPT, e.g. low confidence escalated to System 2, stays off the spray map.
+            score = float(m["box"].get("score", 0.0))
+            decision = self.safety_router.route(
+                detection_confidence=score,
+                predicted_iou=float(m.get("predicted_iou", 0.0)),
+                label=normalized_label,
+                iou_threshold=self.iou_threshold,
+            )
+            if decision.action != RouterAction.ACCEPT:
+                withheld.append({"label": normalized_label, "reason": decision.reason})
+                continue
+
+            approved_mask = np.asarray(m["mask_array"], dtype=bool)
+            composite_mask |= approved_mask
+            contributing_weeds += 1
+            ys, xs = np.where(approved_mask)
+            if len(xs):
+                approved_zones.append(
+                    {
+                        "label": normalized_label,
+                        "score": score,
+                        "bbox": [
+                            int(xs.min()),
+                            int(ys.min()),
+                            int(xs.max()) + 1,
+                            int(ys.max()) + 1,
+                        ],
+                        "mask": approved_mask.astype(np.uint8),
+                    }
                 )
 
         weed_pixel_count = int(composite_mask.sum())
         total_pixels = h * w
         infestation_pct = round((weed_pixel_count / total_pixels) * 100.0, 2)
 
+        # Map-level rule only: per-mask confidence and quality were checked above.
         safety_decision = DeterministicRouter().route(
             detection_confidence=1.0,
             predicted_iou=1.0,
@@ -284,11 +359,8 @@ class VisionWorkflowRunner:
             "target_resolution": {"width": w, "height": h},
             "spray_allowed": spray_allowed,
             "safety_action": safety_decision.action.value,
-            "status": (
-                "Selective Spot-Spray Prescription Generated"
-                if spray_allowed
-                else "SUPPRESS_SPRAY: infestation exceeds safety ceiling"
-            ),
+            "status": spray_status(spray_allowed, len(approved_zones), len(withheld)),
+            "withheld_masks": withheld,
         }
 
         # Build serializable artifact
@@ -443,7 +515,7 @@ class VisionWorkflowRunner:
 
 def create_initial_state(
     image: Image.Image,
-    text_prompt: str = "weed . grass . pigweed .",
+    text_prompt: Optional[str] = None,
     image_path: Optional[str] = None,
 ) -> GraphState:
     """Helper to instantiate a clean, properly typed initial GraphState."""

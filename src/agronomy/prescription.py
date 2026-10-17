@@ -186,6 +186,11 @@ def extract_structured_fields_from_hit(hit: Dict[str, Any], crop: str) -> Dict[s
     return res
 
 
+def _crop_key(name: str) -> str:
+    """'Sugar Beet', 'sugar_beet' and 'sugarbeet' compare equal."""
+    return "".join(ch for ch in name.lower() if ch.isalnum())
+
+
 def create_chemical_prescription(
     weed_name: str,
     crop_stage: str,
@@ -226,19 +231,28 @@ def create_chemical_prescription(
 
     # 2. Query knowledge store
     q = f"{weed_name} control in {crop} at {crop_stage} stage herbicide dose pre-harvest interval"
+    # Fetch extra candidates: rows for other crops are dropped below and must not crowd out
+    # the rows for this crop.
     try:
-        raw_hits = store.query(q, k=k, distance_threshold=distance_threshold)
+        raw_hits = store.query(q, k=k * 5, distance_threshold=distance_threshold)
     except TypeError:
         # Fallback for store implementations that don't accept distance_threshold argument
-        raw_hits = store.query(q, k=k)
+        raw_hits = store.query(q, k=k * 5)
 
-    # 3. Filter distance if store did not filter
+    # 3. Filter distance if store did not filter, and keep only evidence for this crop.
+    # Similarity search alone returned cotton rows for wheat, rice and sugar beet (#11);
+    # a herbicide that is safe in one crop can destroy another. Rows for "all" crops are the
+    # banned-chemical table, kept so that step 7 can refuse them.
     hits = []
     for h in raw_hits:
         if distance_threshold is not None and "distance" in h:
             if float(h["distance"]) > distance_threshold:
                 continue
+        hit_crop = _crop_key(str(h.get("crop", "")))
+        if hit_crop not in (_crop_key(crop), "all"):
+            continue
         hits.append(h)
+    hits = hits[:k]
 
     # 4. Safe fallback if zero relevant knowledge hits
     if not hits:

@@ -54,7 +54,7 @@ logger = logging.getLogger("agriagent.app")
 def run_pipeline_on_image(
     image: Image.Image,
     mock_mode: bool = True,
-    text_prompt: str = "weed . grass . pigweed .",
+    text_prompt: Optional[str] = None,
     confidence_threshold: float = 0.3,
     nozzle_buffer: int = 10,
     crop: str = "cotton",
@@ -67,7 +67,7 @@ def run_pipeline_on_image(
     Args:
         image: Source field PIL image.
         mock_mode: Toggle between mock and live model inference.
-        text_prompt: Zero-shot prompt for Grounding DINO.
+        text_prompt: Zero-shot prompt for Grounding DINO; None means default_prompt(crop).
         confidence_threshold: Bounding box score threshold.
         nozzle_buffer: Physical spray buffer margin in pixels.
         crop: Agricultural crop type.
@@ -163,6 +163,12 @@ def main() -> None:
         st.info("Please upload a field photo (JPG, JPEG, or PNG) above to start the pipeline.")
         return
 
+    if not text_prompt.strip(" ."):
+        st.error(
+            "The detection prompt is empty. Enter what to look for, e.g. 'weed . cotton plant .'"
+        )
+        return
+
     # 4. Pipeline Execution
     with st.spinner(
         "Executing System-1 Reflex Perception Pipeline..."
@@ -183,6 +189,10 @@ def main() -> None:
             st.error(f"Pipeline Execution Failed: {exc}")
             logger.error("Error executing pipeline in app: %s", exc, exc_info=True)
             return
+
+    if final_state.get("error"):
+        st.error(f"Pipeline stopped: {final_state['error']}")
+        return
 
     # 5. Dynamic KPI Metric Cards
     render_kpi_cards(kpis)

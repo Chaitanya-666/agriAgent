@@ -150,7 +150,10 @@ def plot_and_save_results(
 def main():
     parser = argparse.ArgumentParser(description="Run AgriAgent Grounded-SAM 2 Pipeline")
     parser.add_argument("--image", type=str, default=None, help="Path to input image file")
-    parser.add_argument("--prompt", type=str, default="cotton weed . broadleaf plant .", help="Detection prompt")
+    parser.add_argument("--crop", type=str, default="cotton", help="Crop grown in the field (told to System 2)")
+    parser.add_argument(
+        "--prompt", type=str, default=None, help="Detection prompt (default: 'weed . <crop> plant .')"
+    )
     parser.add_argument("--mock", action="store_true", help="Force mock mode even if GPU/PyTorch are available")
     parser.add_argument("--output", type=str, default="output_spray_map.png", help="Output visualization path")
     args = parser.parse_args()
@@ -171,8 +174,10 @@ def main():
 
     # 3. Execute
     initial_state = create_initial_state(img, text_prompt=args.prompt)
-    logger.info("Executing pipeline on prompt: '%s'", args.prompt)
+    initial_state["field_metadata"] = {"crop": args.crop}
     final_state = runner.run(initial_state)
+    if final_state.get("error"):
+        sys.exit(f"Pipeline stopped: {final_state['error']}")
 
     # 4. Display Results
     detector_mode = "MOCK" if runner.detector.mock_mode else "REAL"
@@ -181,6 +186,7 @@ def main():
     print("🌾 AGRIAGENT SYSTEM-1 REFLEX RESULTS")
     print("=" * 65)
     print(f"• MODE USED                : detector={detector_mode}, segmenter={segmenter_mode}")
+    print(f"• Crop / prompt            : {args.crop} / '{final_state['text_prompt']}'")
     print(f"• Candidate Bounding Boxes : {len(final_state['boxes'])}")
     for i, b in enumerate(final_state["boxes"], 1):
         print(f"  [{i}] {b['label']} (conf: {b['score']:.2f}) -> [{b['x1']:.1f}, {b['y1']:.1f}, {b['x2']:.1f}, {b['y2']:.1f}]")
@@ -214,6 +220,8 @@ def main():
     print(f"• Weed Infestation Area    : {spray_info.get('infestation_percentage', 0.0)}%")
     print(f"• Chemical Volume Saved    : {spray_info.get('chemical_savings_percentage', 0.0):.1f}% vs Broadcast")
     print(f"• Status                   : {spray_info.get('status', 'Complete')}")
+    for item in spray_info.get("withheld_masks", []):
+        print(f"  withheld: {item['label']}: {item['reason']}")
 
     if final_state.get("system2_needed"):
         report = final_state.get("prescription_report") or {}

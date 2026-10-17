@@ -11,6 +11,17 @@
   with `docs/guides/00_Start_Here.pdf`.
 ]
 
+#warn(title: "Update 17 October (overrides this document where they differ)")[
+  Decided on 17 October; details and evidence in `docs/AgriAgent_Week3_Dossier.pdf`.
+  *Final submission and viva: Tuesday 10 November* (code freeze stays Thursday 5 November).
+  *Models:* only Grounding DINO-tiny and SAM 2-tiny run locally; reasoning uses Groq and Cloudflare.
+  Local Qwen and local Clef are dropped, and so is Kaggle compute (Kaggle only hosts downloads).
+  *Evaluation set:* `eval_manifest_v1` failed the audit (fabricated labels); `eval_manifest_v2`
+  (30 sugar beet + 8 cotton, official labels) is frozen. *Testing:* Sahil = validation, Sumant =
+  system; Amit moves to development and the demo. *Hard deadline for the team hand-off tasks
+  (dossier Section 5): Wednesday 21 October.* Known issues in Guide 2 §10 are now called K1–K12.
+]
+
 = The project in one paragraph
 
 A farmer's field contains a crop (for example cotton) and weeds. Spraying herbicide over the whole

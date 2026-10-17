@@ -99,7 +99,9 @@ class TestTier3CrossFeature(unittest.TestCase):
             max_refinements=2,
             buffer_pixels=10,
         )
-        runner.segmenter.default_mock_iou = 0.70  # Sub-threshold to trigger active refinement
+        # Sub-threshold to trigger refinement; mock refinement adds 0.08, which lifts masks
+        # over the 0.85 bar so the gate (which now checks mask quality, K1) accepts them.
+        runner.segmenter.default_mock_iou = 0.80
 
         initial_state = create_initial_state(
             image=self.test_image,
@@ -120,7 +122,7 @@ class TestTier3CrossFeature(unittest.TestCase):
         for m in final_state["masks"]:
             self.assertGreater(
                 m["predicted_iou"],
-                0.70,
+                0.80,
                 "Refinement must improve mask predicted IoU above initial sub-threshold value",
             )
 
@@ -437,6 +439,7 @@ class TestTier3CrossFeature(unittest.TestCase):
                         "for resistant Trianthema in cotton. Dilute in 500 liters water."
                     ),
                     "source": "icar_experimental_bulletin.pdf",
+                    "crop": "cotton",
                     "page": 12,
                     "authority": "ICAR",
                     "weed_keywords": ["trianthema"],

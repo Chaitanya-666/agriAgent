@@ -176,6 +176,20 @@ class TestSAM2HuggingFaceBackend(unittest.TestCase):
         self.assertAlmostEqual(refined.predicted_iou, 0.62)
 
 
+class TestRealModeFailsLoudly(unittest.TestCase):
+    """Known issue K5: real mode must never fall back to mock output silently."""
+
+    def test_detector_raises_when_model_cannot_load(self):
+        with mock.patch.dict(sys.modules, {"torch": None}):
+            with self.assertRaisesRegex(RuntimeError, "Real mode requested but Grounding DINO"):
+                GroundingDINOEngine(mock_mode=False)
+
+    def test_segmenter_raises_when_model_cannot_load(self):
+        with mock.patch.dict(sys.modules, {"torch": None}):
+            with self.assertRaisesRegex(RuntimeError, "Real mode requested but SAM 2"):
+                SAM2Segmenter(mock_mode=False)
+
+
 class TestRefinementHeuristic(unittest.TestCase):
     """Test suite for IoU calculation and error centroid geometry."""
 
@@ -219,6 +233,19 @@ class TestVisionWorkflowRunner(unittest.TestCase):
 
         # Assert artifact created
         self.assertIn("spray_map", final_state["artifacts"])
+
+    def test_empty_prompt_is_refused(self):
+        # Issue #6: an empty prompt used to fall back to the default weed prompt.
+        for prompt in ("", "   ", " . "):
+            with self.subTest(prompt=prompt):
+                final_state = self.runner.run(create_initial_state(self.image, text_prompt=prompt))
+                self.assertEqual(final_state["boxes"], [])
+                self.assertIn("Empty detection prompt", final_state["error"])
+
+    def test_missing_prompt_uses_crop_default(self):
+        state = create_initial_state(self.image)
+        state["field_metadata"] = {"crop": "Sugar Beet"}
+        self.assertEqual(self.runner.detect_node(state)["text_prompt"], "weed . sugar beet plant .")
 
     def test_system2_failure_keeps_vision_results(self):
         failing_system2 = mock.Mock()

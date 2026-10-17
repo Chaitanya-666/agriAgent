@@ -33,10 +33,16 @@ class System2Reasoner:
         diag = self.critic.diagnose(img, crop_hint=crop)
         weed = diag.get("weed_or_disease", "unknown weed")
         stage = diag.get("crop_stage", "vegetative")
-        report = get_herbicide_prescription(
-            weed, stage, crop=diag.get("crop", crop), store=self.store
-        )
+        # The farmer's declared crop decides which herbicides are legal; the VLM's guess must not
+        # (on 17 Oct Groq called a sugar beet field "cotton"). A disagreement is reported instead.
+        report = get_herbicide_prescription(weed, stage, crop=crop, store=self.store)
         report["vlm_diagnosis"] = diag
+        seen_crop = str(diag.get("crop", "")).strip().lower()
+        if seen_crop and seen_crop.replace(" ", "") != str(crop).strip().lower().replace(" ", ""):
+            report["crop_mismatch_warning"] = (
+                f"The VLM saw '{seen_crop}' but the field is declared as '{crop}'. "
+                "The prescription follows the declared crop; check the photo."
+            )
 
         artifacts = dict(state.get("artifacts", {}))
         artifacts["prescription_report"] = Artifact(
