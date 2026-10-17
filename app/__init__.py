@@ -1,0 +1,1 @@
+"""AgriAgent Streamlit application package."""

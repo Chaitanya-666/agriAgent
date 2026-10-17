@@ -16,10 +16,13 @@ import sys
 from typing import Any, Dict, Optional, Tuple
 from PIL import Image
 
-# Ensure repository root is in sys.path
-PROJECT_ROOT = Path(__file__).resolve().parent.parent
-if str(PROJECT_ROOT) not in sys.path:
-    sys.path.insert(0, str(PROJECT_ROOT))
+# Put the repository root first on sys.path. `streamlit run app/app.py` puts app/ first,
+# where `import app` would find this file instead of the app package. An editable install
+# may already list the root later in sys.path, so it must be moved, not only added.
+PROJECT_ROOT = str(Path(__file__).resolve().parent.parent)
+if PROJECT_ROOT in sys.path:
+    sys.path.remove(PROJECT_ROOT)
+sys.path.insert(0, PROJECT_ROOT)
 
 from app.components.pipeline import (
     ImageDecodeError,

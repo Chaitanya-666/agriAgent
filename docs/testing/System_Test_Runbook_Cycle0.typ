@@ -153,7 +153,8 @@ and `clef-local` checks will FAIL on your laptop. That is expected; skip them.)
 #tc("TC-02", "Sample photo, default settings",
   [nothing; the sample runs automatically. Scroll through the page.],
   [left image: a green synthetic field; right image: same field with *3 boxes* labelled `weed` and
-  coloured masks. KPI cards: *9.4%* · *87.8%* · *3* · *10 px*.])
+  coloured masks. KPI cards: *9.4%* · *87.8%* · *3* · *10 px*. (If you see *84.9%* instead of 87.8%, OpenCV is
+  not installed: that is known issue 10. Record it, but do not file a new issue.)])
 
 #tc("TC-03", "GeoJSON download contains only approved weed zones",
   [click *Download Field Prescription (GeoJSON)*. Open the file in a text editor (Notepad / VS Code).],

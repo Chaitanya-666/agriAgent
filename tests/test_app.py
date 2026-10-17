@@ -6,6 +6,9 @@ and mock execution.
 """
 
 import io
+import os
+import subprocess
+import sys
 import unittest
 from unittest.mock import MagicMock, patch
 import numpy as np
@@ -394,3 +397,21 @@ class TestAppMainFlow(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestStreamlitLaunchPath(unittest.TestCase):
+    """Regression for issue #5: `streamlit run app/app.py` crashed when the repo root was already
+    on sys.path (editable install), because app/ comes first and `app` resolved to app/app.py."""
+
+    def test_app_imports_when_script_dir_is_first_on_path(self):
+        root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        code = (
+            "import runpy, sys; "
+            f"sys.path[:] = [{os.path.join(root, 'app')!r}] + sys.path + [{root!r}]; "
+            f"runpy.run_path({os.path.join(root, 'app', 'app.py')!r}, run_name='not_main')"
+        )
+        env = {k: v for k, v in os.environ.items() if k != "PYTHONPATH"}
+        result = subprocess.run(
+            [sys.executable, "-c", code], cwd=root, env=env, capture_output=True, text=True
+        )
+        self.assertEqual(result.returncode, 0, result.stderr[-2000:])
