@@ -220,6 +220,18 @@ class TestVisionWorkflowRunner(unittest.TestCase):
         # Assert artifact created
         self.assertIn("spray_map", final_state["artifacts"])
 
+    def test_system2_failure_keeps_vision_results(self):
+        failing_system2 = mock.Mock()
+        failing_system2.system2_node.side_effect = RuntimeError("provider unreachable")
+        runner = VisionWorkflowRunner(mock_mode=True, system2=failing_system2)
+        state = create_initial_state(self.image, text_prompt="weed .")
+        state["system2_needed"] = True
+
+        out = runner.system2_node(state)
+
+        self.assertEqual(out["system2_error"], "provider unreachable")
+        self.assertIsNone(out["prescription_report"])
+
 
 if __name__ == "__main__":
     unittest.main()

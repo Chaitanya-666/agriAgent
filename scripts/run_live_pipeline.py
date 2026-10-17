@@ -25,6 +25,14 @@ from PIL import Image
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
+# Provider keys (GROQ_API_KEY, ...) live in .env; without this System 2 never sees them.
+try:
+    from dotenv import load_dotenv
+
+    load_dotenv(PROJECT_ROOT / ".env")
+except ImportError:
+    pass
+
 from src.workflow import VisionWorkflowRunner, create_initial_state
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s [%(levelname)s] %(message)s")
@@ -206,6 +214,19 @@ def main():
     print(f"• Weed Infestation Area    : {spray_info.get('infestation_percentage', 0.0)}%")
     print(f"• Chemical Volume Saved    : {spray_info.get('chemical_savings_percentage', 0.0):.1f}% vs Broadcast")
     print(f"• Status                   : {spray_info.get('status', 'Complete')}")
+
+    if final_state.get("system2_needed"):
+        report = final_state.get("prescription_report") or {}
+        print("\n• System 2 (escalated)     :")
+        if final_state.get("system2_error"):
+            print(f"  FAILED: {final_state['system2_error']}")
+        else:
+            diagnosis = report.get("vlm_diagnosis", {})
+            print(f"  Diagnosis    : {diagnosis}")
+            print(
+                f"  Prescription : {report.get('status')} | {report.get('active_ingredient')} "
+                f"{report.get('dosage_ai_g_per_ha')} g/ha | crop={report.get('crop')}"
+            )
     print("=" * 65 + "\n")
 
     # 5. Export visualization

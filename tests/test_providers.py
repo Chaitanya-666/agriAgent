@@ -7,6 +7,7 @@ Verifies:
 3. HostedGroqProvider (mock mode, rate limit / error fallback chaining).
 4. VLM Critic valid model identifier and Pydantic parsing.
 """
+import os
 import unittest
 from unittest.mock import MagicMock, patch
 from PIL import Image
@@ -114,14 +115,38 @@ class TestProviders(unittest.TestCase):
         """Verify fallback provider executes when primary Groq key is absent."""
         fallback = LocalQwenProvider(mock_mode=True)
         # Instantiate Groq provider with no key and not in mock mode
-        groq_provider = HostedGroqProvider(api_key="", fallback_provider=fallback, mock_mode=False)
-
-        req = LLMRequest(user_prompt="Diagnose field")
-        resp = groq_provider.generate(req)
+        # A key exported in the shell or loaded from .env must not leak into this test.
+        with patch.dict(os.environ, {"GROQ_API_KEY": ""}):
+            groq_provider = HostedGroqProvider(
+                api_key="", fallback_provider=fallback, mock_mode=False
+            )
+            resp = groq_provider.generate(LLMRequest(user_prompt="Diagnose field"))
 
         # Response must come from the fallback provider
         self.assertEqual(resp.provider, "local_qwen")
         self.assertIsNotNone(resp.parsed_json)
+
+    def test_hosted_groq_sends_image_and_json_mode(self):
+        """The photo must reach Groq; otherwise the diagnosis is made blind."""
+        provider = HostedGroqProvider(api_key="gsk_test", model_name="qwen/qwen3.8-27b")
+        reply = MagicMock(status_code=200)
+        reply.json.return_value = {
+            "choices": [{"message": {"content": '{"crop": "cotton"}'}}],
+            "usage": {"prompt_tokens": 1830, "completion_tokens": 5},
+        }
+        req = LLMRequest(user_prompt="Reply ONLY with JSON.", image=Image.new("RGB", (32, 32)))
+
+        with patch("requests.post", return_value=reply) as post:
+            resp = provider.generate(req)
+
+        payload = post.call_args.kwargs["json"]
+        content = payload["messages"][-1]["content"]
+        self.assertEqual(content[0]["type"], "image_url")
+        self.assertTrue(content[0]["image_url"]["url"].startswith("data:image/jpeg;base64,"))
+        self.assertEqual(content[1], {"type": "text", "text": "Reply ONLY with JSON."})
+        self.assertEqual(payload["reasoning_effort"], "none")
+        self.assertEqual(payload["response_format"], {"type": "json_object"})
+        self.assertEqual(resp.parsed_json, {"crop": "cotton"})
 
     def test_hosted_groq_fallback_chaining_on_api_error(self):
         """Verify fallback provider executes when Groq endpoint raises an exception."""
@@ -142,10 +167,11 @@ class TestProviders(unittest.TestCase):
         self.assertIsNotNone(resp.parsed_json)
 
     def test_vlm_critic_model_identifier(self):
-        """Verify VLMCritic uses verified model identifier and valid Pydantic diagnosis."""
-        self.assertIn("Qwen3.5", VLM_DEFAULT_MODEL)
+        """Verify VLMCritic defaults to Groq and returns a valid Pydantic diagnosis."""
+        self.assertEqual(VLM_DEFAULT_MODEL, "qwen/qwen3.8-27b")
 
         critic = VLMCritic(mock_mode=True)
+        self.assertIsInstance(critic.provider, HostedGroqProvider)
         diag = critic.diagnose(Image.new("RGB", (64, 64)))
         self.assertEqual(diag["crop"], "cotton")
         self.assertIn("Parthenium", diag["weed_or_disease"])

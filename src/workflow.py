@@ -379,7 +379,13 @@ class VisionWorkflowRunner:
         """
         if state.get("system2_needed") and self.system2 is not None:
             logger.info("VisionWorkflow: Executing deliberative System 2 reasoning node.")
-            return self.system2.system2_node(state)
+            try:
+                return self.system2.system2_node(state)
+            except Exception as exc:
+                # A failed reasoning call must not discard the vision results; record why
+                # no diagnosis or prescription exists instead of crashing the run.
+                logger.error("VisionWorkflow: System 2 failed: %s", exc)
+                return {"system2_error": str(exc), "prescription_report": None}
         return {}
 
     def run(self, initial_state: GraphState) -> GraphState:
@@ -455,6 +461,7 @@ def create_initial_state(
         "system2_needed": False,
         "vlm_reasoning": None,
         "prescription_report": None,
+        "system2_error": None,
         "spray_map": None,
         "ground_truth_masks": None,
         "evaluation_metrics": None,
