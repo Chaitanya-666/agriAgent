@@ -16,7 +16,7 @@ Operational Modes:
 1. Live Mode (GPU / PyTorch):
    Uses Hugging Face `transformers` with `IDEA-Research/grounding-dino-tiny`.
    Executes multimodal cross-attention to produce precise bounding boxes.
-2. Mock / Fallback Mode (`mock_mode=True` or when PyTorch/Transformers are missing):
+2. Mock Mode (`mock_mode=True` only; real mode raises if the model cannot load):
    Synthesizes deterministic, realistic bounding boxes on any input image.
    Enables teammates (UI dashboard, Data test harness) and unit tests to run
    frictionless on standard development laptops without downloading 1.5 GB weights.
@@ -103,18 +103,13 @@ class GroundingDINOEngine:
             model.eval()
             self._model = model
             logger.info("Grounding DINO initialized successfully.")
-        except ImportError as err:
-            logger.warning(
-                "PyTorch or Transformers not installed (%s). Falling back to mock_mode=True.",
-                err,
-            )
-            self.mock_mode = True
         except Exception as err:
-            logger.warning(
-                "Failed to download/load model weights (%s). Falling back to mock_mode=True.",
-                err,
-            )
-            self.mock_mode = True
+            # Real mode was asked for. Silently drawing mock boxes instead would let a demo
+            # or an evaluation pass fake detections off as real ones (known issue K5).
+            raise RuntimeError(
+                f"Real mode requested but Grounding DINO [{self.model_id}] could not be loaded: "
+                f"{err}. Install torch/transformers and the weights, or choose mock mode explicitly."
+            ) from err
 
     def _normalize_image_input(self, image_input: Union[str, Path, Image.Image, np.ndarray]) -> Image.Image:
         """Ensure input is converted into a standard RGB PIL Image."""
