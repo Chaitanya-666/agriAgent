@@ -229,23 +229,31 @@ All tests run in mock mode. They prove the *logic*; they do not prove the *model
 
 = Known issues
 
+#note(title: "Updated 17 October")[
+  Line numbers below refer to the code of 11 October. Since then: the gate checks each mask's real
+  confidence and quality (`spray_map_node`, `label_policy`, `default_prompt`, `spray_status` in
+  `src/workflow.py`), real mode raises instead of falling back to mock, System 2 uses Groq with the
+  image and the declared crop, and the GeoJSON export has one feature per approved zone. See
+  `docs/AgriAgent_Week3_Dossier.pdf`.
+]
+
 Name these yourself before anyone else does. Each is also a concrete improvement for the final weeks.
 
 #table(
-  columns: (auto, 1fr, auto),
-  [ID], [Issue and location], [Severity],
-  [K1], [Gate called with confidence and IoU hard-coded to `1.0` (`workflow.py:264–265`). Only the 85% rule applies to the final map; a low-confidence weed is still sprayed.], [high],
-  [K2], [Triage (step 5) runs after the spray map (step 4) and never withdraws it.], [high],
-  [K3], [Weed/crop labels are just the matched prompt words. Nothing visually distinguishes weed from crop. The core research problem.], [high],
-  [K4], [`scripts/run_live_pipeline.py` default prompt `"cotton weed . broadleaf plant ."` is rejected by the crop rule. Verified: 3 weeds found, 0% sprayed, status still says "Spray Prescription Generated".], [medium],
-  [K5], [Vision wrappers silently switch to mock if weights fail to load (`grounding_dino.py:106–118`, `sam2_wrapper.py:125–131`). A "live" demo could show mock boxes without warning.], [high for demo],
-  [K6], [Mock refinement adds a fixed +0.08 to IoU (`sam2_wrapper.py:333`). Any mock result "showing refinement helps" is built into the mock.], [medium],
-  [K7], [The app's confidence slider filters only what is drawn (`app.py:88–93`), not the spray map or GeoJSON.], [medium],
-  [K8], [GeoJSON falls back to `Pyrithiobac-sodium` 75 g/ha when no prescription exists (`pipeline.py:434`), and the forced System 2 path falls back to weed `"Trianthema"` (line 279–281). Hard-coded advice contradicts "no advice without evidence".], [medium],
-  [K9], [GeoJSON coordinates are fake: fixed point plus pixel scale (`pipeline.py:400`).], [known limit],
-  [K10], [`compute_herbicide_savings` uses a different buffer size with and without OpenCV (`iou_dice.py:64` vs `71`), so savings depend on what is installed.], [low],
-  [K11], [Speed claims in comments ("< 40 ms", "< 35 ms") were never measured.], [claim],
-  [K12], [Banned list and dose ceilings in `prescription.py` are hand-transcribed and unchecked against the PDF.], [medium],
+  columns: (auto, 1fr, auto, auto),
+  [ID], [Issue and location], [Severity], [Status],
+  [K1], [Gate called with confidence and IoU hard-coded to `1.0` (`workflow.py:264–265`). Only the 85% rule applies to the final map; a low-confidence weed is still sprayed.], [high], [fixed 17 Oct (PR \#15)],
+  [K2], [Triage (step 5) runs after the spray map (step 4) and never withdraws it.], [high], [open (T1.7)],
+  [K3], [Weed/crop labels are just the matched prompt words. Nothing visually distinguishes weed from crop. The core research problem.], [high], [open: the research question],
+  [K4], [`scripts/run_live_pipeline.py` default prompt `"cotton weed . broadleaf plant ."` is rejected by the crop rule. Verified: 3 weeds found, 0% sprayed, status still says "Spray Prescription Generated".], [medium], [fixed 17 Oct (PR \#15)],
+  [K5], [Vision wrappers silently switch to mock if weights fail to load (`grounding_dino.py:106–118`, `sam2_wrapper.py:125–131`). A "live" demo could show mock boxes without warning.], [high for demo], [fixed 17 Oct (PR \#15)],
+  [K6], [Mock refinement adds a fixed +0.08 to IoU (`sam2_wrapper.py:333`). Any mock result "showing refinement helps" is built into the mock.], [medium], [open (mock only)],
+  [K7], [The app's confidence slider filters only what is drawn (`app.py:88–93`), not the spray map or GeoJSON.], [medium], [fixed 17 Oct (PR \#16)],
+  [K8], [GeoJSON falls back to `Pyrithiobac-sodium` 75 g/ha when no prescription exists (`pipeline.py:434`), and the forced System 2 path falls back to weed `"Trianthema"` (line 279–281). Hard-coded advice contradicts "no advice without evidence".], [medium], [GeoJSON part fixed (PR \#16); 'Trianthema' fallback open],
+  [K9], [GeoJSON coordinates are fake: fixed point plus pixel scale (`pipeline.py:400`).], [known limit], [labelled as placeholder (PR \#16)],
+  [K10], [`compute_herbicide_savings` uses a different buffer size with and without OpenCV (`iou_dice.py:64` vs `71`), so savings depend on what is installed.], [low], [open],
+  [K11], [Speed claims in comments ("< 40 ms", "< 35 ms") were never measured.], [claim], [open (T1.8)],
+  [K12], [Banned list and dose ceilings in `prescription.py` are hand-transcribed and unchecked against the PDF.], [medium], [open (SU-2)],
 )
 
 = Self-check

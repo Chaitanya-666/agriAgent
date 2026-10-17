@@ -116,80 +116,35 @@ about 4.5 × 3.4 km. Both go to Amit (Section 6).
 
 = Hand-off: tasks until Wednesday 21 October
 
-Chaitanya and Claude did Week 3 and part of Week 4 so the rest of the team can work without a GPU or
-coding tools. *Hard deadline for everything in this section: Wednesday 21 October, 23:59.* Post
-evidence (screenshot, link or file) in the group for each item.
+The step-by-step tasks for every member are in *`docs/AgriAgent_Team_Tasks.pdf`* (updated 17 Oct,
+evening). Summary: everyone first sets up the project and answers ten understanding questions
+(E-1, E-2); *Sahil* checks the new labels by eye, hand-computes the metric examples, writes the
+validation test plan, judges the crop-or-weed patches, picks hard test images and collects report
+content (SA-1 to SA-6); *Sumant* gets the report format, checks the herbicide table against the ICAR
+PDF, runs the new system test cases in mock and real mode, repeats the crop-or-weed comparison and
+collects report content (SU-1 to SU-6); *Amit* re-tests and confirms the closed issues, repeats his
+Cycle 0 cases, records a real-mode video, dry-runs the demo and sets up the slide deck (AM-1 to AM-5).
+Teammates collect evidence and fill sheets; all Typst writing is done by Chaitanya. Sahil's and
+Sumant's lists include about 20% of their Week 5 work because their Week 3 deliverables were not
+submitted.
 
-== Everyone (Sat 18 Oct)
+= Cycle 0 bugs: all fixed, re-tested and closed
 
-+ Pull `main`; set up Python as in the README; create *your own* Groq key (console.groq.com/keys) and
-  put it in `.env`; run `python scripts/check_providers.py groq` and post the PASS line (hide the key).
-+ Read this dossier, then Guide 2 §10 (K1–K12) and Guide 4 (demo playbook).
-
-== Sahil: validation tester
-
-#table(
-  columns: (auto, 1fr, 1fr),
-  [ID], [Task], [Done when],
-  [V1], [Check `eval_manifest_v2` by eye: for 10 beet and 4 cotton images, draw the official boxes (ask Chaitanya for the figure script) and confirm they sit on the right plants.], [Table image / ok / problem, posted.],
-  [V2], [Hand-compute 3 crop-on-spray-map examples on paper (crop pixels sprayed ÷ all crop pixels) for tiny 10×10 masks.], [Photo of the working; used as unit-test values for T3.5.],
-  [V3], [Validation test plan: 12–15 cases (input, expected result, how measured), starting from Chaitanya's Lab02 sheet.], [Typst or sheet shared.],
-  [V4], [Run test D: open the 20 patches in `data/outputs/t2_2/` (Chaitanya sends them) and judge each yourself before looking at the model answers.], [Your 20 answers next to the three back-ends.],
-  [V5], [Execute the validation cases on `main` once the baseline numbers exist (Sun 25); file a GitHub issue for every failure.], [Results sheet; issues filed.],
-  [V6], [Report chapter 6 (results) outline and chapter 4c (data and evaluation) first draft, using Section 3 of this dossier.], [Draft in `docs/report/`.],
-)
-
-== Sumant: system tester and report lead
+Every issue was fixed, then re-tested by repeating Amit's exact steps with
+`scripts/verify_cycle0_issues.py`, which drives `app/app.py` headlessly (9 of 9 checks pass,
+including two in real mode on the GPU). Each issue on GitHub has a comment with the cause, the fix
+and the re-test result. Amit confirms them by hand (task AM-1).
 
 #table(
-  columns: (auto, 1fr, 1fr),
-  [ID], [Task], [Done when],
-  [S1], [Get the department's report format; send it to Chaitanya, who commits the report skeleton.], [Format file posted.],
-  [S2], [T2.4: from `data/knowledge_base/icar_dwr_herbicide_use_bulletin22.pdf`, a table of 5 cotton weeds: herbicide, dose (g a.i./ha), water volume, waiting period, *page number*. Then compare with the rows in `src/agronomy/knowledge_store.py` and the banned list in `src/agronomy/prescription.py` (K12).], [Table posted; every mismatch filed as an issue.],
-  [S3], [System test cycle 1 on `main` (app in mock mode): every case of Amit's TC-01…16 plus test C: clear the prompt box (\#6), prompt `cotton . weed .` (\#8), Force System 2 with Wheat, Rice, Sugar Beet (\#11).], [Results sheet pass/fail; issues filed.],
-  [S4], [Add 6–8 system test cases for real mode (untick Mock Mode; needs no GPU, only patience on CPU): what the screen must say, error messages, timing.], [Cases added to the sheet.],
-  [S5], [Report chapters 1 (introduction, problem) and 2 (literature: Grounding DINO, SAM 2, Chong et al. IROS 2025) first draft.], [Draft in `docs/report/`.],
-)
-
-== Amit: development and demo
-
-#table(
-  columns: (auto, 1fr, 1fr),
-  [ID], [Task], [Done when],
-  [A1], [T4.3: REAL / MOCK badge on every result screen, read from the mode the models actually ran in, not from the checkbox. Remove "VERIFIED & APPROVED" when the diagnosis is mock (\#10).], [PR merged, screenshot of both modes.],
-  [A2], [T4.4: no herbicide fields in the GeoJSON unless a real prescription exists (\#7); the confidence slider passes its value into the workflow (\#9); label coordinates as pixel-based, not GPS (K9).], [PR merged with e2e tests.],
-  [A3], [GeoJSON fragments: one feature per approved zone (MultiPolygon) and drop pieces smaller than a nozzle footprint (Section 3.4).], [PR merged; the same mock run exports 3 features.],
-  [A4], [Re-test and close \#6, \#8, \#11, \#13 on `main` (fixed on 17 Oct). Reopen with a comment if any fails.], [Issues closed or reopened.],
-  [A5], [Slide deck skeleton in one style; each member's 2–3 slides as placeholders.], [Deck link posted.],
-)
-
-== Chaitanya and Claude (in parallel, Week 4–5 core)
-
-T3.5 crop-on-spray-map metric (with Sahil's V2 values) · T3.6 baseline real run over v2 on the laptop
-GPU (*Checkpoint 2, Sun 25*) · real ICAR knowledge store in real mode (prescriptions are empty today) ·
-T1.6 crop-exclusion improvement · T1.7 triage before the map · T2.8 Clef adapter · T2.5 crop-or-weed
-comparison on more patches · report skeleton and PR reviews.
-
-== Rules that still apply
-
-- One pull request per task, from your own branch; CI must be green; someone else reviews.
-- The tester who filed a defect closes it; developers never close their own defects.
-- No "done", "verified" or "100%" without a pasted command output or screenshot.
-- Do not change models, add dependencies or edit `eval_manifest_v2` without a team decision.
-- AI agents: one at a time, and read their changes before you push.
-
-= Open bugs: severity and owner
-
-#table(
-  columns: (auto, 1fr, auto, auto, auto),
-  [Issue], [Problem], [Severity], [Owner], [Status],
-  [\#13], [Real mode crashed in SAM 2 (TC-15).], [high], [Chaitanya], [fixed, Amit re-tests],
-  [\#6], [Empty prompt still produced weeds.], [high], [Chaitanya], [fixed, Amit re-tests],
-  [\#8], [Status claimed a prescription with 0 zones.], [medium], [Chaitanya], [fixed, Amit re-tests],
-  [\#11], [Cotton herbicide recommended for wheat, rice, sugar beet.], [high], [Chaitanya], [fixed, Amit re-tests],
-  [\#9], [Confidence slider ignored by the GeoJSON.], [high], [Amit (app) + Chaitanya (gate, fixed)], [app part open],
-  [\#7], [Herbicide in GeoJSON with System 2 off.], [high], [Amit], [open (A2)],
-  [\#10], [Mock diagnosis shown as "VERIFIED & APPROVED".], [high], [Amit], [open (A1)],
-  [\#12], [Blank image gets a spray map. A blank JPG is a valid image; the real fault is mock boxes on any image (as \#10).], [medium], [Amit], [open (A1)],
-  [new], [GeoJSON exports 1,394 features for 3 weeds; fake GPS scale.], [medium], [Amit], [open (A3, A2)],
+  columns: (auto, 1fr, auto, auto),
+  [Issue], [Problem → fix], [Severity], [Fixed in],
+  [\#13], [Real mode crashed in SAM 2 → updated for transformers 5; fake 0.88 scores and the refinement crash fixed too.], [high], [PR \#14],
+  [\#6], [Empty prompt produced weeds → refused, red error.], [high], [PR \#15],
+  [\#8], [Status claimed a prescription with 0 zones → "No weed zones approved".], [medium], [PR \#15],
+  [\#11], [Cotton herbicide for wheat, rice, sugar beet → only evidence for the declared crop.], [high], [PR \#15],
+  [\#9], [Slider ignored by the GeoJSON → gate uses real confidence; slider raises it.], [high], [PR \#15, \#16],
+  [\#7], [Herbicide in GeoJSON with System 2 off → only with a real prescription.], [high], [PR \#16],
+  [\#10], [Mock diagnosis shown as "VERIFIED & APPROVED" → REAL/MOCK banner; mock never shown as approved.], [high], [PR \#16],
+  [\#12], [Blank image got a spray map → mock output labelled MOCK; in real mode the blank image gets 0 sprayed zones.], [medium], [PR \#16],
+  [-], [GeoJSON had 1,394 features for 3 weeds and fake GPS → one feature per zone, specks dropped, coordinates labelled as placeholders.], [medium], [PR \#16],
 )
