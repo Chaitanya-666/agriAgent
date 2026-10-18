@@ -57,6 +57,9 @@ logger = logging.getLogger("agriagent.workflow")
 
 # Words that name a weed. A detected label is a weed only when it uses these words and
 # nothing taken from a crop phrase of the prompt (see label_policy).
+# A single plant mask larger than this share of the photo is treated as a whole-scene box.
+MAX_PLANT_FRACTION = 0.5
+
 WEED_WORDS = ("weed", "weeds", "grass", "pigweed", "carpetweed", "velvetleaf", "invasive", "target")
 
 
@@ -340,6 +343,18 @@ class VisionWorkflowRunner:
                 )
                 continue
 
+            # One plant does not cover half the photo: such a mask is a whole-scene box
+            # (Grounding DINO often draws one), and spraying it would broadcast-spray the field.
+            mask_fraction = float(np.asarray(m["mask_array"], dtype=bool).mean())
+            if mask_fraction > MAX_PLANT_FRACTION:
+                withheld.append(
+                    {
+                        "label": normalized_label,
+                        "reason": f"mask covers {100 * mask_fraction:.0f}% of the photo; not one plant",
+                    }
+                )
+                continue
+
             # Each weed mask passes the safety router with its own detection confidence and
             # mask quality (known issue K1: these used to be hard-coded to 1.0). Anything but
             # ACCEPT, e.g. low confidence escalated to System 2, stays off the spray map.
@@ -381,7 +396,10 @@ class VisionWorkflowRunner:
             m = masks[review["index"]]
             # The gate's rule for escalated plants: the agent must call it a weed with
             # P(weed) >= its decision level, and SAM 2's mask must be good enough to spray.
-            if review["verdict"] != "weed" or float(m.get("predicted_iou", 0.0)) < self.iou_threshold:
+            if (
+                review["verdict"] != "weed"
+                or float(m.get("predicted_iou", 0.0)) < self.iou_threshold
+            ):
                 continue
             approved_mask = np.asarray(m["mask_array"], dtype=bool)
             composite_mask |= approved_mask
@@ -392,7 +410,12 @@ class VisionWorkflowRunner:
                     {
                         "label": review["label"],
                         "score": float(m["box"].get("score", 0.0)),
-                        "bbox": [int(xs.min()), int(ys.min()), int(xs.max()) + 1, int(ys.max()) + 1],
+                        "bbox": [
+                            int(xs.min()),
+                            int(ys.min()),
+                            int(xs.max()) + 1,
+                            int(ys.max()) + 1,
+                        ],
                         "mask": approved_mask.astype(np.uint8),
                         "approved_by": "escalation_agent",
                     }

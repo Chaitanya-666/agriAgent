@@ -50,7 +50,10 @@ class SprayExportSafetyTests(unittest.TestCase):
         self.assertEqual(features[0]["properties"]["target"], "grass")
 
     def test_high_infestation_suppresses_spray(self):
-        output = self.runner.spray_map_node({"masks": [self._mask("weed", fill=0.90)]})
+        # Two separate weed masks of 45% each: no single plant is too large, together 90%.
+        top, bottom = self._mask("weed", fill=0.45), self._mask("weed", fill=0.45)
+        bottom["mask_array"] = np.flipud(bottom["mask_array"]).copy()
+        output = self.runner.spray_map_node({"masks": [top, bottom]})
         self.assertEqual(output["spray_map"]["safety_action"], "SUPPRESS_SPRAY")
         self.assertFalse(output["spray_map"]["spray_allowed"])
         self.assertEqual(self._features(output), [])
@@ -79,6 +82,13 @@ class SprayExportSafetyTests(unittest.TestCase):
         output = self.runner.spray_map_node(state)
         self.assertEqual(self._features(output), [])
         self.assertEqual(output["spray_map"]["withheld_masks"][0]["label"], "weed plant")
+
+    def test_mask_covering_most_of_the_photo_is_not_one_plant(self):
+        # 18 Oct: with tiling, crop exclusion turned a whole-photo "weed" mask from
+        # suppressed (above 85%) into a 61% spray of the field.
+        output = self.runner.spray_map_node({"masks": [self._mask("weed", fill=0.6)]})
+        self.assertEqual(self._features(output), [])
+        self.assertIn("not one plant", output["spray_map"]["withheld_masks"][0]["reason"])
 
     def test_status_says_nothing_to_spray_when_no_zone_is_approved(self):
         # Issue #8: the status claimed a prescription when the map was empty.

@@ -253,6 +253,12 @@ def main() -> int:
     parser.add_argument(
         "--exclusion", action="store_true", help="also score gates with crop exclusion (T1.6)"
     )
+    parser.add_argument(
+        "--tiles", type=int, default=1, help="also detect on a tiles x tiles grid (small weeds)"
+    )
+    parser.add_argument(
+        "--box-threshold", type=float, default=None, help="detector score cut-off (default 0.35)"
+    )
     args = parser.parse_args()
 
     manifest = json.loads(Path(args.manifest).read_text())
@@ -275,6 +281,9 @@ def main() -> int:
 
         agent = EscalationAgent(max_plants=args.agent_plants)
     load_seconds = time.perf_counter() - load_start
+    runner.detector.tiles = args.tiles
+    if args.box_threshold is not None:
+        runner.detector.box_threshold = args.box_threshold
     detect_times: List[float] = []
     segment_times: List[float] = []
     runner.detector.detect_to_state_boxes = timed(
@@ -378,6 +387,7 @@ def main() -> int:
             "buffer_pixels": args.buffer,
             "gates": keys,
             "detector_box_threshold": runner.detector.box_threshold,
+            "detector_tiles": runner.detector.tiles,
             "system2": "not called",
         },
     }

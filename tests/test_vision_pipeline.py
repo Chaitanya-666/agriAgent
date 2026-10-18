@@ -152,7 +152,14 @@ class TestSAM2HuggingFaceBackend(unittest.TestCase):
         self.segmenter._processor = _FakeSam2Processor()
         self.segmenter._model = _FakeSam2Model()
         self.image = Image.new("RGB", (64, 48))
-        self.box: Box = {"x1": 5.0, "y1": 5.0, "x2": 40.0, "y2": 30.0, "label": "weed", "score": 0.7}
+        self.box: Box = {
+            "x1": 5.0,
+            "y1": 5.0,
+            "x2": 40.0,
+            "y2": 30.0,
+            "label": "weed",
+            "score": 0.7,
+        }
         self.fake_torch = mock.patch.dict(
             sys.modules, {"torch": SimpleNamespace(no_grad=contextlib.nullcontext)}
         )
@@ -262,3 +269,47 @@ class TestVisionWorkflowRunner(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestTiledDetection(unittest.TestCase):
+    """Small-weed detection: tiles are mapped back to the full photo and merged."""
+
+    def test_nms_keeps_best_box_per_label(self):
+        from src.vision.grounding_dino import non_max_suppression
+
+        boxes = [
+            DetectionResult(
+                box=(0, 0, 10, 10), normalized_box=(0, 0, 0.1, 0.1), label="weed", confidence=0.4
+            ),
+            DetectionResult(
+                box=(1, 1, 10, 10), normalized_box=(0, 0, 0.1, 0.1), label="weed", confidence=0.6
+            ),
+            DetectionResult(
+                box=(1, 1, 10, 10), normalized_box=(0, 0, 0.1, 0.1), label="crop", confidence=0.5
+            ),
+        ]
+        kept = non_max_suppression(boxes)
+        self.assertEqual(
+            sorted((d.label, d.confidence) for d in kept), [("crop", 0.5), ("weed", 0.6)]
+        )
+
+    def test_tile_boxes_are_offset_to_the_full_photo(self):
+        engine = GroundingDINOEngine(mock_mode=True, tiles=2)
+        engine.mock_mode = False
+        engine._model, engine._processor = object(), object()
+        sizes = []
+
+        def fake_infer(img, prompt, box_th, text_th):
+            sizes.append(img.size)
+            return [
+                DetectionResult(
+                    box=(2, 2, 6, 6), normalized_box=(0, 0, 0, 0), label="weed", confidence=0.5
+                )
+            ]
+
+        engine._infer = fake_infer
+        detections = engine.detect(Image.new("RGB", (100, 80)), text_prompt="weed .")
+        self.assertEqual(sizes, [(100, 80), (50, 40), (50, 40), (50, 40), (50, 40)])
+        corners = sorted(d.box[:2] for d in detections)
+        # The full-photo box and the top-left tile box coincide and are merged.
+        self.assertEqual(corners, [(2, 2), (2, 42), (52, 2), (52, 42)])
