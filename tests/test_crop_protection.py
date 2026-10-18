@@ -140,7 +140,9 @@ class TestSprayFootprint(unittest.TestCase):
             without_cv2 = spray_footprint(self.mask, buffer_pixels=4)
             savings_without = compute_herbicide_savings(self.mask, (30, 30), buffer_pixels=4)
         np.testing.assert_array_equal(with_cv2, without_cv2)
-        self.assertEqual(compute_herbicide_savings(self.mask, (30, 30), buffer_pixels=4), savings_without)
+        self.assertEqual(
+            compute_herbicide_savings(self.mask, (30, 30), buffer_pixels=4), savings_without
+        )
 
 
 if __name__ == "__main__":
