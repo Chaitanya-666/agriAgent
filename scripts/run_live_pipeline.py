@@ -50,14 +50,18 @@ def create_synthetic_field_image(width: int = 640, height: int = 480) -> Image.I
 
     # Draw simulated crop rows (dark green)
     for x in range(80, width, 160):
-        arr[:, max(0, x - 25):min(width, x + 25)] = [50, 110, 40]
+        arr[:, max(0, x - 25) : min(width, x + 25)] = [50, 110, 40]
 
     # Draw simulated weed patches (bright lime green)
     weed_centers = [(180, 160, 35), (380, 240, 45), (260, 380, 30)]
     for wx, wy, rad in weed_centers:
-        yy, xx = np.ogrid[max(0, wy - rad):min(height, wy + rad), max(0, wx - rad):min(width, wx + rad)]
-        circle = ((xx - wx) ** 2 + ((yy - wy) ** 2)) <= rad ** 2
-        arr[max(0, wy - rad):min(height, wy + rad), max(0, wx - rad):min(width, wx + rad)][circle] = [90, 195, 55]
+        yy, xx = np.ogrid[
+            max(0, wy - rad) : min(height, wy + rad), max(0, wx - rad) : min(width, wx + rad)
+        ]
+        circle = ((xx - wx) ** 2 + ((yy - wy) ** 2)) <= rad**2
+        arr[max(0, wy - rad) : min(height, wy + rad), max(0, wx - rad) : min(width, wx + rad)][
+            circle
+        ] = [90, 195, 55]
 
     return Image.fromarray(arr)
 
@@ -73,9 +77,7 @@ def approved_spray_mask(state: dict, height: int, width: int) -> np.ndarray:
 
 
 def plot_and_save_results(
-    image: Image.Image,
-    state: dict,
-    output_path: str = "output_spray_map.png"
+    image: Image.Image, state: dict, output_path: str = "output_spray_map.png"
 ) -> None:
     """Saves a 4-panel figure: original, DINO boxes, all SAM 2 masks by label, gated spray map."""
     try:
@@ -100,20 +102,30 @@ def plot_and_save_results(
 
     # Panel 2: Grounding DINO Bounding Boxes
     axes[1].imshow(np_img)
-    axes[1].set_title(f"2. Grounding DINO ({len(boxes)} Detections)", fontsize=12, fontweight="bold")
+    axes[1].set_title(
+        f"2. Grounding DINO ({len(boxes)} Detections)", fontsize=12, fontweight="bold"
+    )
     axes[1].axis("off")
     for b in boxes:
         x1, y1, x2, y2 = b["x1"], b["y1"], b["x2"], b["y2"]
         rect = patches.Rectangle(
-            (x1, y1), x2 - x1, y2 - y1,
-            linewidth=2, edgecolor="red", facecolor="none", linestyle="--"
+            (x1, y1),
+            x2 - x1,
+            y2 - y1,
+            linewidth=2,
+            edgecolor="red",
+            facecolor="none",
+            linestyle="--",
         )
         axes[1].add_patch(rect)
         axes[1].text(
-            x1, max(0, y1 - 6),
+            x1,
+            max(0, y1 - 6),
             f"{b['label']} ({b['score']:.2f})",
-            color="white", fontsize=9, fontweight="bold",
-            bbox=dict(facecolor="red", alpha=0.7, edgecolor="none", pad=2)
+            color="white",
+            fontsize=9,
+            fontweight="bold",
+            bbox=dict(facecolor="red", alpha=0.7, edgecolor="none", pad=2),
         )
 
     # Panel 3: every SAM 2 mask, coloured by its label (red = weed label, blue = anything else)
@@ -124,7 +136,8 @@ def plot_and_save_results(
     axes[2].imshow((0.55 * np_img + 0.45 * overlay).astype(np.uint8))
     axes[2].set_title(
         f"3. SAM 2 masks ({len(masks)})\nred = weed label, blue = other label",
-        fontsize=12, fontweight="bold",
+        fontsize=12,
+        fontweight="bold",
     )
     axes[2].axis("off")
 
@@ -137,7 +150,9 @@ def plot_and_save_results(
     infest = spray_info.get("infestation_percentage", 0.0)
     axes[3].set_title(
         f"4. Gated spray map\n[Sprayed: {infest}% | Savings: {savings:.1f}%]",
-        fontsize=12, fontweight="bold", color="darkgreen"
+        fontsize=12,
+        fontweight="bold",
+        color="darkgreen",
     )
     axes[3].axis("off")
 
@@ -150,12 +165,27 @@ def plot_and_save_results(
 def main():
     parser = argparse.ArgumentParser(description="Run AgriAgent Grounded-SAM 2 Pipeline")
     parser.add_argument("--image", type=str, default=None, help="Path to input image file")
-    parser.add_argument("--crop", type=str, default="cotton", help="Crop grown in the field (told to System 2)")
     parser.add_argument(
-        "--prompt", type=str, default=None, help="Detection prompt (default: 'weed . <crop> plant .')"
+        "--crop", type=str, default="cotton", help="Crop grown in the field (told to System 2)"
     )
-    parser.add_argument("--mock", action="store_true", help="Force mock mode even if GPU/PyTorch are available")
-    parser.add_argument("--output", type=str, default="output_spray_map.png", help="Output visualization path")
+    parser.add_argument(
+        "--agent", action="store_true", help="Let the escalation agent review withheld plants"
+    )
+    parser.add_argument(
+        "--language", default="English", help="Farmer summary language: English, Hindi, Marathi"
+    )
+    parser.add_argument(
+        "--prompt",
+        type=str,
+        default=None,
+        help="Detection prompt (default: 'weed . <crop> plant .')",
+    )
+    parser.add_argument(
+        "--mock", action="store_true", help="Force mock mode even if GPU/PyTorch are available"
+    )
+    parser.add_argument(
+        "--output", type=str, default="output_spray_map.png", help="Output visualization path"
+    )
     args = parser.parse_args()
 
     # 1. Load or synthesize test image
@@ -170,7 +200,12 @@ def main():
 
     # 2. Initialize Pipeline
     logger.info("Initializing AgriAgent System-1 (mock_mode=%s)...", args.mock)
-    runner = VisionWorkflowRunner(mock_mode=args.mock, iou_threshold=0.85)
+    agent = None
+    if args.agent:
+        from src.agents.escalation_agent import EscalationAgent
+
+        agent = EscalationAgent()
+    runner = VisionWorkflowRunner(mock_mode=args.mock, iou_threshold=0.85, escalation_agent=agent)
 
     # 3. Execute
     initial_state = create_initial_state(img, text_prompt=args.prompt)
@@ -189,7 +224,9 @@ def main():
     print(f"• Crop / prompt            : {args.crop} / '{final_state['text_prompt']}'")
     print(f"• Candidate Bounding Boxes : {len(final_state['boxes'])}")
     for i, b in enumerate(final_state["boxes"], 1):
-        print(f"  [{i}] {b['label']} (conf: {b['score']:.2f}) -> [{b['x1']:.1f}, {b['y1']:.1f}, {b['x2']:.1f}, {b['y2']:.1f}]")
+        print(
+            f"  [{i}] {b['label']} (conf: {b['score']:.2f}) -> [{b['x1']:.1f}, {b['y1']:.1f}, {b['x2']:.1f}, {b['y2']:.1f}]"
+        )
 
     h, w = img.size[1], img.size[0]
     sprayed = approved_spray_mask(final_state, h, w)
@@ -215,13 +252,26 @@ def main():
         )
 
     print(f"\n• Refinement Iterations    : {final_state['refinement_count']}")
-    
+
     spray_info = final_state.get("spray_map", {})
     print(f"• Weed Infestation Area    : {spray_info.get('infestation_percentage', 0.0)}%")
-    print(f"• Chemical Volume Saved    : {spray_info.get('chemical_savings_percentage', 0.0):.1f}% vs Broadcast")
+    print(
+        f"• Chemical Volume Saved    : {spray_info.get('chemical_savings_percentage', 0.0):.1f}% vs Broadcast"
+    )
     print(f"• Status                   : {spray_info.get('status', 'Complete')}")
     for item in spray_info.get("withheld_masks", []):
-        print(f"  withheld: {item['label']}: {item['reason']}")
+        print(
+            f"  withheld: {item['label']}: {item['reason']}"
+            + (f" | agent: {item['agent']}" if "agent" in item else "")
+        )
+    for review in spray_info.get("escalation", []):
+        print(
+            f"\n• Agent review of '{review['label']}': {review['verdict']} (P(weed) = {review['p_weed']})"
+        )
+        for step in review["trace"]:
+            print(
+                f"    {step['source']:10s} {str(step['verdict']):5s} ({step['confidence']})  {step['detail']}"
+            )
 
     if final_state.get("system2_needed"):
         report = final_state.get("prescription_report") or {}
@@ -235,6 +285,17 @@ def main():
                 f"  Prescription : {report.get('status')} | {report.get('active_ingredient')} "
                 f"{report.get('dosage_ai_g_per_ha')} g/ha | crop={report.get('crop')}"
             )
+    from src.agronomy.farmer_summary import farmer_summary
+    from src.agronomy.providers.hosted_groq import HostedGroqProvider
+
+    summary = farmer_summary(
+        final_state,
+        args.crop,
+        args.mock,
+        args.language,
+        None if args.mock else HostedGroqProvider(),
+    )
+    print(f"\n• Summary for the farmer ({summary['source']}): {summary['text']}")
     print("=" * 65 + "\n")
 
     # 5. Export visualization

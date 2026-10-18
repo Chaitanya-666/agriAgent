@@ -5,9 +5,11 @@ Renders KPI metric cards, two-column visualizers, and System 2 statutory prescri
 """
 
 import json
+import os
 from typing import Any, Dict, Optional, Tuple
 from PIL import Image
 
+from src.agronomy.farmer_summary import LANGUAGES, farmer_summary
 from src.workflow import default_prompt
 
 try:
@@ -274,6 +276,40 @@ def render_prescription_report(
     disclaimer = prescription.get("disclaimer")
     if disclaimer:
         st.caption(f"⚖️ **Statutory Notice:** {disclaimer}")
+
+
+def render_farmer_summary(final_state: Dict[str, Any], crop: str, mock_mode: bool) -> None:
+    """Plain-language summary for a farmer; the model only rewords the pipeline's facts."""
+    if st is None:
+        return
+    st.subheader("Summary for the farmer")
+    language = st.selectbox("Language", options=list(LANGUAGES), index=0, key="summary_language")
+    provider = None
+    if not mock_mode and os.getenv("GROQ_API_KEY"):
+        from src.agronomy.providers.hosted_groq import HostedGroqProvider
+
+        provider = HostedGroqProvider()
+    summary = farmer_summary(final_state, crop.lower(), mock_mode, str(language), provider)
+    st.info(summary["text"])
+    st.caption(
+        "Reworded by the Groq model from the result above."
+        if summary["source"] == "groq"
+        else "Built directly from the result above."
+    )
+
+    reviews = (final_state.get("spray_map") or {}).get("escalation") or []
+    if reviews:
+        with st.expander(
+            f"Escalation agent: {len(reviews)} withheld plant(s) reviewed", expanded=False
+        ):
+            for review in reviews:
+                st.markdown(
+                    f"**{review['label']}**: {review['verdict']} (P(weed) = {review['p_weed']})"
+                )
+                for step in review["trace"]:
+                    st.caption(
+                        f"{step['source']}: {step['verdict']} ({step['confidence']}) · {step['detail']}"
+                    )
 
 
 def render_geojson_download(geojson_data: Dict[str, Any]) -> None:

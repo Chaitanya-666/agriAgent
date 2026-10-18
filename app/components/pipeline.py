@@ -210,6 +210,12 @@ def create_sample_field_image(width: int = 640, height: int = 480) -> Image.Imag
     return Image.fromarray(arr)
 
 
+def _escalation_agent() -> Any:
+    from src.agents.escalation_agent import EscalationAgent
+
+    return EscalationAgent()
+
+
 def execute_agriagent_workflow(
     image: Image.Image,
     mock_mode: bool = True,
@@ -220,6 +226,7 @@ def execute_agriagent_workflow(
     force_system2: bool = False,
     target_weed_hint: Optional[str] = None,
     min_confidence: float = 0.70,
+    use_agent: bool = False,
 ) -> Dict[str, Any]:
     """
     Execute the dual-brain AgriAgent workflow from input image to spray map and prescription.
@@ -234,6 +241,7 @@ def execute_agriagent_workflow(
         force_system2: Whether to unconditionally execute System 2 deliberative RAG.
         target_weed_hint: Optional weed species hint for System 2 prescription.
         min_confidence: Lowest detection score the spray gate accepts (never below 0.70).
+        use_agent: Let the escalation agent review withheld plants (real mode; calls Groq/Clef).
 
     Returns:
         final_state: Comprehensive GraphState dictionary.
@@ -245,6 +253,7 @@ def execute_agriagent_workflow(
         iou_threshold=iou_threshold,
         buffer_pixels=buffer_pixels,
         min_confidence=min_confidence,
+        escalation_agent=_escalation_agent() if use_agent and not mock_mode else None,
     )
 
     initial_state = create_initial_state(
