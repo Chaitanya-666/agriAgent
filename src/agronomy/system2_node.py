@@ -18,9 +18,11 @@ logger = logging.getLogger("agriagent.system2")
 class System2Reasoner:
     def __init__(self, critic: Optional[VLMCritic] = None, store=None, mock_mode: bool = False):
         self.critic = critic or VLMCritic(mock_mode=mock_mode)
-        if store is None and mock_mode:
-            # Mock CI/demo mode stays offline and deterministic even when ChromaDB
-            # happens to be installed in the environment.
+        if store is None:
+            # Herbicide advice comes from the ICAR table rows transcribed with page numbers
+            # (CANONICAL_ICAR_TABLE_ROWS), in mock and real mode alike. The ChromaDB store was
+            # never filled, so every real-mode lookup returned "no_knowledge_found", and its
+            # raw PDF chunks carry no structured dose to prescribe from.
             store = InMemoryKnowledgeStore()
             store.ingest()
         self.store = store
