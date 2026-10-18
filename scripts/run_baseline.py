@@ -40,7 +40,8 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 from src.evaluation.crop_protection import ground_truth_masks, spray_metrics, vegetation_mask  # noqa: E402
 from src.evaluation.iou_dice import spray_footprint  # noqa: E402
-from src.workflow import VisionWorkflowRunner, create_initial_state  # noqa: E402
+from src.vision.plant_candidates import classify_plants  # noqa: E402
+from src.workflow import VisionWorkflowRunner, create_initial_state, label_policy  # noqa: E402
 
 CROP_NAMES = {"sugarbeet": "sugar beet", "cotton": "cotton"}
 GATE_SETTINGS = [0.35, 0.50, 0.70]
@@ -107,7 +108,29 @@ def spray_masks(
     every = np.zeros((h, w), dtype=bool)
     for m in state.get("masks", []):
         every |= np.asarray(m["mask_array"], dtype=bool)
-    footprints = {"every_mask": spray_footprint(every, buffer)}
+    plants = np.zeros((h, w), dtype=bool)
+    for m in state.get("masks", []):
+        mask = np.asarray(m["mask_array"], dtype=bool)
+        if mask.mean() <= 0.5:  # skip whole-photo masks, as the gate does
+            plants |= mask
+    footprints = {
+        "every_mask": spray_footprint(every, buffer),
+        "every_plant_mask": spray_footprint(plants, buffer),
+    }
+    # Every green patch as a candidate, classified by rules (src/vision/plant_candidates.py).
+    crop_masks = [
+        np.asarray(m["mask_array"], dtype=bool)
+        for m in state.get("masks", [])
+        if np.asarray(m["mask_array"], dtype=bool).mean() <= 0.5
+        and label_policy(str(m.get("label", "")), state.get("text_prompt")) == "crop"
+    ]
+    weed_patches, crop_patches, _ = classify_plants(np.asarray(state["image"]), crop_masks)
+    footprints["plant_rules"] = spray_footprint(weed_patches, buffer)
+    # The nozzle stays off over any plant classified as crop: the buffer is clipped there.
+    known_crop = crop_patches.copy()
+    for mask in crop_masks:
+        known_crop |= mask
+    footprints["plant_rules+crop_guard"] = footprints["plant_rules"] & ~known_crop
     deployed = runner.min_confidence
     for limit in GATE_SETTINGS:
         # Evaluation only: the constructor never allows a limit below 0.70.
@@ -353,7 +376,7 @@ def main() -> int:
         )
 
     keys = (
-        ["every_mask"]
+        ["every_mask", "every_plant_mask", "plant_rules", "plant_rules+crop_guard"]
         + [f"gate_{t:.2f}" for t in GATE_SETTINGS]
         + (["gate_0.35+exclusion", "gate_0.50+exclusion"] if args.exclusion else [])
         + ([AGENT] if agent else [])
