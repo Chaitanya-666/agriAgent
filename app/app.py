@@ -36,6 +36,7 @@ from app.components.pipeline import (
     format_prescription_report,
 )
 from app.components.ui import (
+    render_farmer_summary,
     render_geojson_download,
     render_mode_badge,
     render_header,
@@ -88,6 +89,7 @@ def run_pipeline_on_image(
         crop=crop,
         force_system2=force_system2,
         min_confidence=confidence_threshold,
+        use_agent=not mock_mode,
     )
 
     boxes = final_state.get("boxes", [])
@@ -215,6 +217,7 @@ def main() -> None:
     prescription_data = format_prescription_report(final_state.get("prescription_report"))
     vlm_reasoning = final_state.get("vlm_reasoning")
     render_prescription_report(prescription_data, vlm_reasoning=vlm_reasoning, mock_mode=mock_mode)
+    render_farmer_summary(final_state, crop=crop, mock_mode=mock_mode)
 
     st.divider()
 

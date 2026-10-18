@@ -1,0 +1,7081 @@
+{
+  "environment": {
+    "date_utc": "2026-10-18T08:32:46Z",
+    "mode": "REAL",
+    "detector": "IDEA-Research/grounding-dino-tiny",
+    "segmenter": "facebook/sam2-hiera-tiny",
+    "python": "3.11.15",
+    "git_commit": "418ba6a",
+    "torch": "2.11.0+cu128",
+    "device": "NVIDIA GeForce RTX 5050 Laptop GPU"
+  },
+  "manifest": {
+    "path": "/mnt/Windows_D/College-work/finalYearProjectAgriAgent/data/manifests/eval_manifest_v2.json",
+    "version": "2.0.0"
+  },
+  "settings": {
+    "prompt": "weed . {crop} plant .",
+    "buffer_pixels": 10,
+    "gates": [
+      "every_mask",
+      "gate_0.35",
+      "gate_0.50",
+      "gate_0.70",
+      "gate_0.35+exclusion",
+      "gate_0.50+exclusion"
+    ],
+    "detector_box_threshold": 0.2,
+    "detector_tiles": 2,
+    "system2": "not called"
+  },
+  "summary": {
+    "sugarbeet": {
+      "every_mask": {
+        "images": 30,
+        "crop_sprayed_pct": 100.0,
+        "weed_recall_pct": 99.99,
+        "savings_pct_mean": 3.38,
+        "crop_plants_damaged": "93/93",
+        "weed_plants_hit": "282/282"
+      },
+      "gate_0.35": {
+        "images": 30,
+        "crop_sprayed_pct": 74.57,
+        "weed_recall_pct": 10.12,
+        "savings_pct_mean": 92.4,
+        "crop_plants_damaged": "49/93",
+        "weed_plants_hit": "10/282"
+      },
+      "gate_0.50": {
+        "images": 30,
+        "crop_sprayed_pct": 22.51,
+        "weed_recall_pct": 6.77,
+        "savings_pct_mean": 97.74,
+        "crop_plants_damaged": "11/93",
+        "weed_plants_hit": "1/282"
+      },
+      "gate_0.70": {
+        "images": 30,
+        "crop_sprayed_pct": 0.0,
+        "weed_recall_pct": 0.0,
+        "savings_pct_mean": 100.0,
+        "crop_plants_damaged": "0/93",
+        "weed_plants_hit": "0/282"
+      },
+      "gate_0.35+exclusion": {
+        "images": 30,
+        "crop_sprayed_pct": 28.14,
+        "weed_recall_pct": 3.07,
+        "savings_pct_mean": 96.81,
+        "crop_plants_damaged": "40/93",
+        "weed_plants_hit": "6/282"
+      },
+      "gate_0.50+exclusion": {
+        "images": 30,
+        "crop_sprayed_pct": 1.18,
+        "weed_recall_pct": 0.0,
+        "savings_pct_mean": 99.86,
+        "crop_plants_damaged": "4/93",
+        "weed_plants_hit": "0/282"
+      }
+    },
+    "cotton": {
+      "every_mask": {
+        "images": 8,
+        "crop_sprayed_pct": null,
+        "weed_recall_pct": 97.53,
+        "savings_pct_mean": 37.29,
+        "crop_plants_damaged": "0/0",
+        "weed_plants_hit": "19/19"
+      },
+      "gate_0.35": {
+        "images": 8,
+        "crop_sprayed_pct": null,
+        "weed_recall_pct": 0.0,
+        "savings_pct_mean": 100.0,
+        "crop_plants_damaged": "0/0",
+        "weed_plants_hit": "0/19"
+      },
+      "gate_0.50": {
+        "images": 8,
+        "crop_sprayed_pct": null,
+        "weed_recall_pct": 0.0,
+        "savings_pct_mean": 100.0,
+        "crop_plants_damaged": "0/0",
+        "weed_plants_hit": "0/19"
+      },
+      "gate_0.70": {
+        "images": 8,
+        "crop_sprayed_pct": null,
+        "weed_recall_pct": 0.0,
+        "savings_pct_mean": 100.0,
+        "crop_plants_damaged": "0/0",
+        "weed_plants_hit": "0/19"
+      },
+      "gate_0.35+exclusion": {
+        "images": 8,
+        "crop_sprayed_pct": null,
+        "weed_recall_pct": 0.0,
+        "savings_pct_mean": 100.0,
+        "crop_plants_damaged": "0/0",
+        "weed_plants_hit": "0/19"
+      },
+      "gate_0.50+exclusion": {
+        "images": 8,
+        "crop_sprayed_pct": null,
+        "weed_recall_pct": 0.0,
+        "savings_pct_mean": 100.0,
+        "crop_plants_damaged": "0/0",
+        "weed_plants_hit": "0/19"
+      }
+    },
+    "speed": {
+      "model_load_seconds": 4.8,
+      "seconds_per_image_median_after_first": 7.43,
+      "seconds_per_image_mean_after_first": 8.38,
+      "detect_seconds_median": 1.45,
+      "segment_seconds_median": 2.81,
+      "first_image_seconds": 7.29
+    }
+  },
+  "images": [
+    {
+      "image_id": "beet_X2-10-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 7.29,
+      "detect_seconds": 2.19,
+      "segment_seconds": 2.14,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.715
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.553
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.541
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.512
+        },
+        {
+          "label": "weed",
+          "score": 0.506
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.5
+        },
+        {
+          "label": "weed",
+          "score": 0.306
+        },
+        {
+          "label": "weed",
+          "score": 0.304
+        },
+        {
+          "label": "weed",
+          "score": 0.29
+        },
+        {
+          "label": "weed",
+          "score": 0.26
+        },
+        {
+          "label": "",
+          "score": 0.248
+        },
+        {
+          "label": "",
+          "score": 0.24
+        },
+        {
+          "label": "",
+          "score": 0.232
+        },
+        {
+          "label": "",
+          "score": 0.218
+        },
+        {
+          "label": "",
+          "score": 0.205
+        },
+        {
+          "label": "",
+          "score": 0.201
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 2973,
+          "crop_pixels_sprayed": 2973,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 632,
+          "weed_pixels_sprayed": 632,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 4,
+          "crop_plants_damaged": 4,
+          "weed_plants": 22,
+          "weed_plants_hit": 22
+        },
+        "gate_0.35": {
+          "crop_pixels": 2973,
+          "crop_pixels_sprayed": 1412,
+          "crop_sprayed_pct": 47.49,
+          "weed_pixels": 632,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.88,
+          "savings_pct": 98.12,
+          "crop_plants": 4,
+          "crop_plants_damaged": 1,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 2973,
+          "crop_pixels_sprayed": 1412,
+          "crop_sprayed_pct": 47.49,
+          "weed_pixels": 632,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.88,
+          "savings_pct": 98.12,
+          "crop_plants": 4,
+          "crop_plants_damaged": 1,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 2973,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 632,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 4,
+          "crop_plants_damaged": 0,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 2973,
+          "crop_pixels_sprayed": 1412,
+          "crop_sprayed_pct": 47.49,
+          "weed_pixels": 632,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.87,
+          "savings_pct": 98.13,
+          "crop_plants": 4,
+          "crop_plants_damaged": 1,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 2973,
+          "crop_pixels_sprayed": 1412,
+          "crop_sprayed_pct": 47.49,
+          "weed_pixels": 632,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.87,
+          "savings_pct": 98.13,
+          "crop_plants": 4,
+          "crop_plants_damaged": 1,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-30-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.56,
+      "detect_seconds": 1.39,
+      "segment_seconds": 2.2,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.573
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.525
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.517
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.508
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.502
+        },
+        {
+          "label": "weed",
+          "score": 0.447
+        },
+        {
+          "label": "weed",
+          "score": 0.411
+        },
+        {
+          "label": "weed",
+          "score": 0.394
+        },
+        {
+          "label": "weed",
+          "score": 0.342
+        },
+        {
+          "label": "beet plant",
+          "score": 0.288
+        },
+        {
+          "label": "weed",
+          "score": 0.278
+        },
+        {
+          "label": "weed",
+          "score": 0.252
+        },
+        {
+          "label": "",
+          "score": 0.248
+        },
+        {
+          "label": "",
+          "score": 0.244
+        },
+        {
+          "label": "",
+          "score": 0.234
+        },
+        {
+          "label": "",
+          "score": 0.232
+        },
+        {
+          "label": "",
+          "score": 0.23
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 2166,
+          "crop_pixels_sprayed": 2166,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 904,
+          "weed_pixels_sprayed": 904,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 24,
+          "weed_plants_hit": 24
+        },
+        "gate_0.35": {
+          "crop_pixels": 2166,
+          "crop_pixels_sprayed": 1648,
+          "crop_sprayed_pct": 76.08,
+          "weed_pixels": 904,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 3.31,
+          "savings_pct": 96.69,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 2166,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 904,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 2166,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 904,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 2166,
+          "crop_pixels_sprayed": 1192,
+          "crop_sprayed_pct": 55.03,
+          "weed_pixels": 904,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 2.29,
+          "savings_pct": 97.71,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 2166,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 904,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-50-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 7.52,
+      "detect_seconds": 1.33,
+      "segment_seconds": 2.35,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.652
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.636
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.565
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.527
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.516
+        },
+        {
+          "label": "weed",
+          "score": 0.31
+        },
+        {
+          "label": "weed",
+          "score": 0.299
+        },
+        {
+          "label": "weed",
+          "score": 0.285
+        },
+        {
+          "label": "weed",
+          "score": 0.27
+        },
+        {
+          "label": "",
+          "score": 0.247
+        },
+        {
+          "label": "",
+          "score": 0.244
+        },
+        {
+          "label": "",
+          "score": 0.238
+        },
+        {
+          "label": "",
+          "score": 0.224
+        },
+        {
+          "label": "",
+          "score": 0.214
+        },
+        {
+          "label": "",
+          "score": 0.209
+        },
+        {
+          "label": "",
+          "score": 0.205
+        },
+        {
+          "label": "",
+          "score": 0.203
+        },
+        {
+          "label": "",
+          "score": 0.202
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 1897,
+          "crop_pixels_sprayed": 1897,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 649,
+          "weed_pixels_sprayed": 649,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 24,
+          "weed_plants_hit": 24
+        },
+        "gate_0.35": {
+          "crop_pixels": 1897,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 649,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 1897,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 649,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 1897,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 649,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 1897,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 649,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 1897,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 649,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 24,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-50-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.96,
+      "detect_seconds": 1.33,
+      "segment_seconds": 2.09,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.661
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.563
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.535
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.521
+        },
+        {
+          "label": "weed",
+          "score": 0.519
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.485
+        },
+        {
+          "label": "weed",
+          "score": 0.453
+        },
+        {
+          "label": "weed",
+          "score": 0.321
+        },
+        {
+          "label": "weed",
+          "score": 0.273
+        },
+        {
+          "label": "weed",
+          "score": 0.271
+        },
+        {
+          "label": "",
+          "score": 0.25
+        },
+        {
+          "label": "",
+          "score": 0.246
+        },
+        {
+          "label": "",
+          "score": 0.219
+        },
+        {
+          "label": "",
+          "score": 0.216
+        },
+        {
+          "label": "",
+          "score": 0.212
+        },
+        {
+          "label": "",
+          "score": 0.203
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 1696,
+          "crop_pixels_sprayed": 1696,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 642,
+          "weed_pixels_sprayed": 642,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 18,
+          "weed_plants_hit": 18
+        },
+        "gate_0.35": {
+          "crop_pixels": 1696,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 642,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 18,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 1696,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 642,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 18,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 1696,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 642,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 18,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 1696,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 642,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 18,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 1696,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 642,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 18,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-70-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.36,
+      "detect_seconds": 1.35,
+      "segment_seconds": 2.26,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.628
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.561
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.531
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.526
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.487
+        },
+        {
+          "label": "weed",
+          "score": 0.425
+        },
+        {
+          "label": "weed",
+          "score": 0.359
+        },
+        {
+          "label": "weed",
+          "score": 0.293
+        },
+        {
+          "label": "weed",
+          "score": 0.282
+        },
+        {
+          "label": "weed",
+          "score": 0.254
+        },
+        {
+          "label": "",
+          "score": 0.245
+        },
+        {
+          "label": "",
+          "score": 0.242
+        },
+        {
+          "label": "",
+          "score": 0.237
+        },
+        {
+          "label": "",
+          "score": 0.234
+        },
+        {
+          "label": "",
+          "score": 0.223
+        },
+        {
+          "label": "",
+          "score": 0.211
+        },
+        {
+          "label": "",
+          "score": 0.209
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 3490,
+          "crop_pixels_sprayed": 3490,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 785,
+          "weed_pixels_sprayed": 785,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 17,
+          "weed_plants_hit": 17
+        },
+        "gate_0.35": {
+          "crop_pixels": 3490,
+          "crop_pixels_sprayed": 2726,
+          "crop_sprayed_pct": 78.11,
+          "weed_pixels": 785,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 4.55,
+          "savings_pct": 95.45,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 17,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 3490,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 785,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 17,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 3490,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 785,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 17,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 3490,
+          "crop_pixels_sprayed": 2726,
+          "crop_sprayed_pct": 78.11,
+          "weed_pixels": 785,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 4.54,
+          "savings_pct": 95.46,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 17,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 3490,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 785,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 17,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-90-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 8.31,
+      "detect_seconds": 1.37,
+      "segment_seconds": 2.53,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.66
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.652
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.586
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.583
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.539
+        },
+        {
+          "label": "weed",
+          "score": 0.303
+        },
+        {
+          "label": "weed",
+          "score": 0.287
+        },
+        {
+          "label": "weed",
+          "score": 0.283
+        },
+        {
+          "label": "weed",
+          "score": 0.27
+        },
+        {
+          "label": "weed",
+          "score": 0.264
+        },
+        {
+          "label": "weed",
+          "score": 0.26
+        },
+        {
+          "label": "weed",
+          "score": 0.254
+        },
+        {
+          "label": "weed",
+          "score": 0.253
+        },
+        {
+          "label": "weed",
+          "score": 0.251
+        },
+        {
+          "label": "",
+          "score": 0.246
+        },
+        {
+          "label": "",
+          "score": 0.233
+        },
+        {
+          "label": "",
+          "score": 0.226
+        },
+        {
+          "label": "",
+          "score": 0.217
+        },
+        {
+          "label": "",
+          "score": 0.201
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 1377,
+          "crop_pixels_sprayed": 1377,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 1239,
+          "weed_pixels_sprayed": 1239,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 23,
+          "weed_plants_hit": 23
+        },
+        "gate_0.35": {
+          "crop_pixels": 1377,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1239,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 23,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 1377,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1239,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 23,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 1377,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1239,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 23,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 1377,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1239,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 23,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 1377,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1239,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 23,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-110-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.75,
+      "detect_seconds": 1.4,
+      "segment_seconds": 2.01,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.629
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.582
+        },
+        {
+          "label": "weed",
+          "score": 0.579
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.573
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.528
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.521
+        },
+        {
+          "label": "weed",
+          "score": 0.279
+        },
+        {
+          "label": "weed",
+          "score": 0.279
+        },
+        {
+          "label": "weed",
+          "score": 0.275
+        },
+        {
+          "label": "",
+          "score": 0.25
+        },
+        {
+          "label": "",
+          "score": 0.246
+        },
+        {
+          "label": "",
+          "score": 0.244
+        },
+        {
+          "label": "",
+          "score": 0.24
+        },
+        {
+          "label": "",
+          "score": 0.239
+        },
+        {
+          "label": "",
+          "score": 0.208
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 796,
+          "crop_pixels_sprayed": 796,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 614,
+          "weed_pixels_sprayed": 614,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 99.88,
+          "savings_pct": 0.12,
+          "crop_plants": 1,
+          "crop_plants_damaged": 1,
+          "weed_plants": 11,
+          "weed_plants_hit": 11
+        },
+        "gate_0.35": {
+          "crop_pixels": 796,
+          "crop_pixels_sprayed": 796,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 614,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.41,
+          "savings_pct": 98.59,
+          "crop_plants": 1,
+          "crop_plants_damaged": 1,
+          "weed_plants": 11,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 796,
+          "crop_pixels_sprayed": 796,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 614,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.41,
+          "savings_pct": 98.59,
+          "crop_plants": 1,
+          "crop_plants_damaged": 1,
+          "weed_plants": 11,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 796,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 614,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 1,
+          "crop_plants_damaged": 0,
+          "weed_plants": 11,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 796,
+          "crop_pixels_sprayed": 796,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 614,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.34,
+          "savings_pct": 98.66,
+          "crop_plants": 1,
+          "crop_plants_damaged": 1,
+          "weed_plants": 11,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 796,
+          "crop_pixels_sprayed": 796,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 614,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.34,
+          "savings_pct": 98.66,
+          "crop_plants": 1,
+          "crop_plants_damaged": 1,
+          "weed_plants": 11,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-130-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 9.1,
+      "detect_seconds": 1.36,
+      "segment_seconds": 2.94,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.589
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.581
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.525
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.515
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.513
+        },
+        {
+          "label": "weed",
+          "score": 0.403
+        },
+        {
+          "label": "weed",
+          "score": 0.357
+        },
+        {
+          "label": "weed",
+          "score": 0.315
+        },
+        {
+          "label": "weed",
+          "score": 0.31
+        },
+        {
+          "label": "weed",
+          "score": 0.301
+        },
+        {
+          "label": "weed",
+          "score": 0.297
+        },
+        {
+          "label": "weed",
+          "score": 0.281
+        },
+        {
+          "label": "weed",
+          "score": 0.25
+        },
+        {
+          "label": "",
+          "score": 0.232
+        },
+        {
+          "label": "",
+          "score": 0.224
+        },
+        {
+          "label": "",
+          "score": 0.221
+        },
+        {
+          "label": "",
+          "score": 0.221
+        },
+        {
+          "label": "",
+          "score": 0.216
+        },
+        {
+          "label": "",
+          "score": 0.212
+        },
+        {
+          "label": "",
+          "score": 0.207
+        },
+        {
+          "label": "",
+          "score": 0.204
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 1240,
+          "crop_pixels_sprayed": 1240,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 1919,
+          "weed_pixels_sprayed": 1919,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 25,
+          "weed_plants_hit": 25
+        },
+        "gate_0.35": {
+          "crop_pixels": 1240,
+          "crop_pixels_sprayed": 749,
+          "crop_sprayed_pct": 60.4,
+          "weed_pixels": 1919,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.39,
+          "savings_pct": 98.61,
+          "crop_plants": 2,
+          "crop_plants_damaged": 1,
+          "weed_plants": 25,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 1240,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1919,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 25,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 1240,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1919,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 25,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 1240,
+          "crop_pixels_sprayed": 749,
+          "crop_sprayed_pct": 60.4,
+          "weed_pixels": 1919,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.38,
+          "savings_pct": 98.62,
+          "crop_plants": 2,
+          "crop_plants_damaged": 1,
+          "weed_plants": 25,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 1240,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1919,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 25,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-150-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 7.12,
+      "detect_seconds": 1.56,
+      "segment_seconds": 2.46,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.645
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.631
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.584
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.565
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.512
+        },
+        {
+          "label": "weed",
+          "score": 0.435
+        },
+        {
+          "label": "weed",
+          "score": 0.416
+        },
+        {
+          "label": "weed",
+          "score": 0.321
+        },
+        {
+          "label": "weed",
+          "score": 0.303
+        },
+        {
+          "label": "weed",
+          "score": 0.269
+        },
+        {
+          "label": "weed",
+          "score": 0.261
+        },
+        {
+          "label": "",
+          "score": 0.24
+        },
+        {
+          "label": "",
+          "score": 0.225
+        },
+        {
+          "label": "",
+          "score": 0.22
+        },
+        {
+          "label": "",
+          "score": 0.218
+        },
+        {
+          "label": "",
+          "score": 0.216
+        },
+        {
+          "label": "",
+          "score": 0.204
+        },
+        {
+          "label": "",
+          "score": 0.203
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 1773,
+          "crop_pixels_sprayed": 1773,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 1196,
+          "weed_pixels_sprayed": 1196,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 22,
+          "weed_plants_hit": 22
+        },
+        "gate_0.35": {
+          "crop_pixels": 1773,
+          "crop_pixels_sprayed": 1769,
+          "crop_sprayed_pct": 99.77,
+          "weed_pixels": 1196,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 2.94,
+          "savings_pct": 97.06,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 1773,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1196,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 1773,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1196,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 1773,
+          "crop_pixels_sprayed": 1769,
+          "crop_sprayed_pct": 99.77,
+          "weed_pixels": 1196,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 2.94,
+          "savings_pct": 97.06,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 1773,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 1196,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 22,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-170-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 8.11,
+      "detect_seconds": 1.4,
+      "segment_seconds": 2.74,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.617
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.608
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.605
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.578
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.496
+        },
+        {
+          "label": "weed",
+          "score": 0.323
+        },
+        {
+          "label": "weed",
+          "score": 0.319
+        },
+        {
+          "label": "weed",
+          "score": 0.304
+        },
+        {
+          "label": "weed",
+          "score": 0.289
+        },
+        {
+          "label": "weed",
+          "score": 0.283
+        },
+        {
+          "label": "weed",
+          "score": 0.276
+        },
+        {
+          "label": "weed",
+          "score": 0.257
+        },
+        {
+          "label": "weed",
+          "score": 0.255
+        },
+        {
+          "label": "",
+          "score": 0.244
+        },
+        {
+          "label": "",
+          "score": 0.224
+        },
+        {
+          "label": "",
+          "score": 0.223
+        },
+        {
+          "label": "",
+          "score": 0.218
+        },
+        {
+          "label": "",
+          "score": 0.213
+        },
+        {
+          "label": "",
+          "score": 0.208
+        },
+        {
+          "label": "",
+          "score": 0.203
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 3118,
+          "crop_pixels_sprayed": 3118,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 5609,
+          "weed_pixels_sprayed": 5609,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 36,
+          "weed_plants_hit": 36
+        },
+        "gate_0.35": {
+          "crop_pixels": 3118,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 5609,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 36,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 3118,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 5609,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 36,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 3118,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 5609,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 36,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 3118,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 5609,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 36,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 3118,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 5609,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 36,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-190-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 5.02,
+      "detect_seconds": 1.38,
+      "segment_seconds": 1.38,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.64
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.63
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.622
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.614
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.597
+        },
+        {
+          "label": "weed",
+          "score": 0.365
+        },
+        {
+          "label": "weed",
+          "score": 0.358
+        },
+        {
+          "label": "weed",
+          "score": 0.347
+        },
+        {
+          "label": "weed",
+          "score": 0.308
+        },
+        {
+          "label": "weed",
+          "score": 0.292
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 2033,
+          "crop_pixels_sprayed": 2033,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 10279,
+          "weed_pixels_sprayed": 10279,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 31,
+          "weed_plants_hit": 31
+        },
+        "gate_0.35": {
+          "crop_pixels": 2033,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 10279,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 31,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 2033,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 10279,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 31,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 2033,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 10279,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 31,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 2033,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 10279,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 31,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 2033,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 10279,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 31,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-210-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 5.5,
+      "detect_seconds": 1.43,
+      "segment_seconds": 1.5,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.66
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.631
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.627
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.598
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.557
+        },
+        {
+          "label": "weed",
+          "score": 0.363
+        },
+        {
+          "label": "weed",
+          "score": 0.356
+        },
+        {
+          "label": "weed",
+          "score": 0.318
+        },
+        {
+          "label": "weed",
+          "score": 0.316
+        },
+        {
+          "label": "weed",
+          "score": 0.313
+        },
+        {
+          "label": "",
+          "score": 0.219
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 4031,
+          "crop_pixels_sprayed": 4031,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 13839,
+          "weed_pixels_sprayed": 13839,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 4,
+          "crop_plants_damaged": 4,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 4031,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13839,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 4,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 4031,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13839,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 4,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 4031,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13839,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 4,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 4031,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13839,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 4,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 4031,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13839,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 4,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-230-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.39,
+      "detect_seconds": 1.45,
+      "segment_seconds": 1.79,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.632
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.631
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.62
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.555
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.523
+        },
+        {
+          "label": "weed",
+          "score": 0.352
+        },
+        {
+          "label": "weed",
+          "score": 0.346
+        },
+        {
+          "label": "weed",
+          "score": 0.298
+        },
+        {
+          "label": "weed",
+          "score": 0.288
+        },
+        {
+          "label": "weed",
+          "score": 0.287
+        },
+        {
+          "label": "weed",
+          "score": 0.275
+        },
+        {
+          "label": "weed",
+          "score": 0.263
+        },
+        {
+          "label": "",
+          "score": 0.224
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 4251,
+          "crop_pixels_sprayed": 4251,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 17840,
+          "weed_pixels_sprayed": 17840,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 4251,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 17840,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 4251,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 17840,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 4251,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 17840,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 4251,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 17840,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 4251,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 17840,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-250-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 7.81,
+      "detect_seconds": 1.42,
+      "segment_seconds": 2.36,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.627
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.612
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.593
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.569
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.552
+        },
+        {
+          "label": "weed",
+          "score": 0.357
+        },
+        {
+          "label": "weed",
+          "score": 0.315
+        },
+        {
+          "label": "weed",
+          "score": 0.302
+        },
+        {
+          "label": "weed",
+          "score": 0.292
+        },
+        {
+          "label": "weed",
+          "score": 0.282
+        },
+        {
+          "label": "weed",
+          "score": 0.28
+        },
+        {
+          "label": "weed",
+          "score": 0.265
+        },
+        {
+          "label": "",
+          "score": 0.233
+        },
+        {
+          "label": "",
+          "score": 0.221
+        },
+        {
+          "label": "",
+          "score": 0.218
+        },
+        {
+          "label": "",
+          "score": 0.209
+        },
+        {
+          "label": "",
+          "score": 0.209
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 1766,
+          "crop_pixels_sprayed": 1766,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 13808,
+          "weed_pixels_sprayed": 13808,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 1766,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13808,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 1766,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13808,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 1766,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13808,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 1766,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13808,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 1766,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 13808,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-270-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.36,
+      "detect_seconds": 1.5,
+      "segment_seconds": 1.99,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.628
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.625
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.616
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.615
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.554
+        },
+        {
+          "label": "weed",
+          "score": 0.35
+        },
+        {
+          "label": "weed",
+          "score": 0.347
+        },
+        {
+          "label": "weed",
+          "score": 0.314
+        },
+        {
+          "label": "weed",
+          "score": 0.297
+        },
+        {
+          "label": "weed",
+          "score": 0.28
+        },
+        {
+          "label": "weed",
+          "score": 0.268
+        },
+        {
+          "label": "",
+          "score": 0.244
+        },
+        {
+          "label": "",
+          "score": 0.232
+        },
+        {
+          "label": "",
+          "score": 0.205
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 2572,
+          "crop_pixels_sprayed": 2572,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 7629,
+          "weed_pixels_sprayed": 7629,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 2572,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 7629,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 2572,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 7629,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 2572,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 7629,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 2572,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 7629,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 2572,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 7629,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X2-270-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.26,
+      "detect_seconds": 1.4,
+      "segment_seconds": 1.97,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.666
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.638
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.63
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.618
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.599
+        },
+        {
+          "label": "weed",
+          "score": 0.38
+        },
+        {
+          "label": "weed",
+          "score": 0.367
+        },
+        {
+          "label": "weed",
+          "score": 0.362
+        },
+        {
+          "label": "weed",
+          "score": 0.357
+        },
+        {
+          "label": "weed",
+          "score": 0.326
+        },
+        {
+          "label": "weed",
+          "score": 0.29
+        },
+        {
+          "label": "weed",
+          "score": 0.264
+        },
+        {
+          "label": "",
+          "score": 0.239
+        },
+        {
+          "label": "",
+          "score": 0.204
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 1230,
+          "crop_pixels_sprayed": 1230,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 7125,
+          "weed_pixels_sprayed": 7125,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 1,
+          "crop_plants_damaged": 1,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 1230,
+          "crop_pixels_sprayed": 1230,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 7125,
+          "weed_pixels_sprayed": 270,
+          "weed_recall_pct": 3.79,
+          "sprayed_pct": 2.48,
+          "savings_pct": 97.52,
+          "crop_plants": 1,
+          "crop_plants_damaged": 1,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 1230,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 7125,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 1,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 1230,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 7125,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 1,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 1230,
+          "crop_pixels_sprayed": 1230,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 7125,
+          "weed_pixels_sprayed": 260,
+          "weed_recall_pct": 3.65,
+          "sprayed_pct": 2.2,
+          "savings_pct": 97.8,
+          "crop_plants": 1,
+          "crop_plants_damaged": 1,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 1230,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 7125,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 1,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X3-70-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 5.29,
+      "detect_seconds": 1.46,
+      "segment_seconds": 3.4,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weedt plant",
+          "score": 0.574
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.517
+        },
+        {
+          "label": "weed plant",
+          "score": 0.505
+        },
+        {
+          "label": "weed beet plant",
+          "score": 0.5
+        },
+        {
+          "label": "weed",
+          "score": 0.461
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.45
+        },
+        {
+          "label": "weed",
+          "score": 0.433
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.424
+        },
+        {
+          "label": "sugar beet",
+          "score": 0.423
+        },
+        {
+          "label": "weed",
+          "score": 0.386
+        },
+        {
+          "label": "weed beet plant",
+          "score": 0.374
+        },
+        {
+          "label": "weed",
+          "score": 0.329
+        },
+        {
+          "label": "sugar beet",
+          "score": 0.305
+        },
+        {
+          "label": "weed",
+          "score": 0.288
+        },
+        {
+          "label": "sugar bee",
+          "score": 0.278
+        },
+        {
+          "label": "sugar",
+          "score": 0.268
+        },
+        {
+          "label": "",
+          "score": 0.241
+        },
+        {
+          "label": "",
+          "score": 0.241
+        },
+        {
+          "label": "",
+          "score": 0.231
+        },
+        {
+          "label": "",
+          "score": 0.231
+        },
+        {
+          "label": "",
+          "score": 0.227
+        },
+        {
+          "label": "",
+          "score": 0.217
+        },
+        {
+          "label": "",
+          "score": 0.211
+        },
+        {
+          "label": "",
+          "score": 0.208
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 24385,
+          "crop_pixels_sprayed": 24385,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 18,
+          "weed_pixels_sprayed": 18,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 46.71,
+          "savings_pct": 53.29,
+          "crop_plants": 7,
+          "crop_plants_damaged": 7,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 24385,
+          "crop_pixels_sprayed": 9483,
+          "crop_sprayed_pct": 38.89,
+          "weed_pixels": 18,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 11.82,
+          "savings_pct": 88.18,
+          "crop_plants": 7,
+          "crop_plants_damaged": 4,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 24385,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 18,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 7,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 24385,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 18,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 7,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 24385,
+          "crop_pixels_sprayed": 5593,
+          "crop_sprayed_pct": 22.94,
+          "weed_pixels": 18,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 6.33,
+          "savings_pct": 93.67,
+          "crop_plants": 7,
+          "crop_plants_damaged": 2,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 24385,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 18,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 7,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X3-430-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 7.96,
+      "detect_seconds": 1.45,
+      "segment_seconds": 4.78,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weedt plant",
+          "score": 0.513
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.501
+        },
+        {
+          "label": "weed",
+          "score": 0.475
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.451
+        },
+        {
+          "label": "weed",
+          "score": 0.443
+        },
+        {
+          "label": "weed beet plant",
+          "score": 0.441
+        },
+        {
+          "label": "weed",
+          "score": 0.436
+        },
+        {
+          "label": "weed beet plant",
+          "score": 0.428
+        },
+        {
+          "label": "weed",
+          "score": 0.413
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.409
+        },
+        {
+          "label": "weed",
+          "score": 0.407
+        },
+        {
+          "label": "weed",
+          "score": 0.395
+        },
+        {
+          "label": "weed beet plant",
+          "score": 0.379
+        },
+        {
+          "label": "weedt plant",
+          "score": 0.377
+        },
+        {
+          "label": "weed",
+          "score": 0.361
+        },
+        {
+          "label": "weed",
+          "score": 0.349
+        },
+        {
+          "label": "weed",
+          "score": 0.34
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.335
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.309
+        },
+        {
+          "label": "weed",
+          "score": 0.302
+        },
+        {
+          "label": "weed",
+          "score": 0.298
+        },
+        {
+          "label": "sugar bee",
+          "score": 0.274
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.273
+        },
+        {
+          "label": "weed",
+          "score": 0.273
+        },
+        {
+          "label": "sugar bee plant",
+          "score": 0.262
+        },
+        {
+          "label": "sugar",
+          "score": 0.251
+        },
+        {
+          "label": "",
+          "score": 0.243
+        },
+        {
+          "label": "",
+          "score": 0.243
+        },
+        {
+          "label": "",
+          "score": 0.235
+        },
+        {
+          "label": "",
+          "score": 0.226
+        },
+        {
+          "label": "",
+          "score": 0.225
+        },
+        {
+          "label": "",
+          "score": 0.222
+        },
+        {
+          "label": "",
+          "score": 0.212
+        },
+        {
+          "label": "",
+          "score": 0.208
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 20023,
+          "crop_pixels_sprayed": 20023,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 6,
+          "weed_pixels_sprayed": 6,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 51.92,
+          "savings_pct": 48.08,
+          "crop_plants": 9,
+          "crop_plants_damaged": 9,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 20023,
+          "crop_pixels_sprayed": 15751,
+          "crop_sprayed_pct": 78.66,
+          "weed_pixels": 6,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 21.11,
+          "savings_pct": 78.89,
+          "crop_plants": 9,
+          "crop_plants_damaged": 6,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 20023,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 6,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 9,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 20023,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 6,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 9,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 20023,
+          "crop_pixels_sprayed": 2770,
+          "crop_sprayed_pct": 13.83,
+          "weed_pixels": 6,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 4.03,
+          "savings_pct": 95.97,
+          "crop_plants": 9,
+          "crop_plants_damaged": 4,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 20023,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 6,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 9,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X5-110-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.44,
+      "detect_seconds": 1.52,
+      "segment_seconds": 2.92,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.501
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.479
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.446
+        },
+        {
+          "label": "weed",
+          "score": 0.426
+        },
+        {
+          "label": "weed",
+          "score": 0.426
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.42
+        },
+        {
+          "label": "weedt plant",
+          "score": 0.39
+        },
+        {
+          "label": "weed",
+          "score": 0.374
+        },
+        {
+          "label": "weed",
+          "score": 0.373
+        },
+        {
+          "label": "weed",
+          "score": 0.347
+        },
+        {
+          "label": "weed",
+          "score": 0.344
+        },
+        {
+          "label": "weed",
+          "score": 0.336
+        },
+        {
+          "label": "weed",
+          "score": 0.333
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.329
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.301
+        },
+        {
+          "label": "beet",
+          "score": 0.274
+        },
+        {
+          "label": "bee",
+          "score": 0.263
+        },
+        {
+          "label": "",
+          "score": 0.243
+        },
+        {
+          "label": "",
+          "score": 0.212
+        },
+        {
+          "label": "",
+          "score": 0.212
+        },
+        {
+          "label": "",
+          "score": 0.21
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 39981,
+          "crop_pixels_sprayed": 39981,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35": {
+          "crop_pixels": 39981,
+          "crop_pixels_sprayed": 37397,
+          "crop_sprayed_pct": 93.54,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 29.11,
+          "savings_pct": 70.89,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 39981,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 39981,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 39981,
+          "crop_pixels_sprayed": 8664,
+          "crop_sprayed_pct": 21.67,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 9.14,
+          "savings_pct": 90.86,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 39981,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-10-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.04,
+      "detect_seconds": 1.51,
+      "segment_seconds": 2.52,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed",
+          "score": 0.627
+        },
+        {
+          "label": "weed",
+          "score": 0.538
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.499
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.494
+        },
+        {
+          "label": "weed",
+          "score": 0.48
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.444
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.435
+        },
+        {
+          "label": "weed",
+          "score": 0.435
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.375
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.36
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.307
+        },
+        {
+          "label": "beet",
+          "score": 0.272
+        },
+        {
+          "label": "bee",
+          "score": 0.265
+        },
+        {
+          "label": "weed",
+          "score": 0.261
+        },
+        {
+          "label": "",
+          "score": 0.233
+        },
+        {
+          "label": "",
+          "score": 0.229
+        },
+        {
+          "label": "",
+          "score": 0.218
+        },
+        {
+          "label": "",
+          "score": 0.213
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 14371,
+          "crop_pixels_sprayed": 14371,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 27,
+          "weed_pixels_sprayed": 27,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 14371,
+          "crop_pixels_sprayed": 12589,
+          "crop_sprayed_pct": 87.6,
+          "weed_pixels": 27,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 11.09,
+          "savings_pct": 88.91,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 14371,
+          "crop_pixels_sprayed": 12589,
+          "crop_sprayed_pct": 87.6,
+          "weed_pixels": 27,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 11.06,
+          "savings_pct": 88.94,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 14371,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 27,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 14371,
+          "crop_pixels_sprayed": 2130,
+          "crop_sprayed_pct": 14.82,
+          "weed_pixels": 27,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.96,
+          "savings_pct": 98.04,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 14371,
+          "crop_pixels_sprayed": 987,
+          "crop_sprayed_pct": 6.87,
+          "weed_pixels": 27,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.8,
+          "savings_pct": 99.2,
+          "crop_plants": 2,
+          "crop_plants_damaged": 1,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-50-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 7.43,
+      "detect_seconds": 1.47,
+      "segment_seconds": 3.49,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.594
+        },
+        {
+          "label": "weed",
+          "score": 0.556
+        },
+        {
+          "label": "weed",
+          "score": 0.54
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.511
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.5
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.489
+        },
+        {
+          "label": "weed",
+          "score": 0.442
+        },
+        {
+          "label": "weed",
+          "score": 0.438
+        },
+        {
+          "label": "weed",
+          "score": 0.425
+        },
+        {
+          "label": "weed",
+          "score": 0.417
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.387
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.308
+        },
+        {
+          "label": "weed",
+          "score": 0.289
+        },
+        {
+          "label": "weed",
+          "score": 0.285
+        },
+        {
+          "label": "bee",
+          "score": 0.26
+        },
+        {
+          "label": "",
+          "score": 0.248
+        },
+        {
+          "label": "",
+          "score": 0.237
+        },
+        {
+          "label": "",
+          "score": 0.236
+        },
+        {
+          "label": "",
+          "score": 0.236
+        },
+        {
+          "label": "",
+          "score": 0.234
+        },
+        {
+          "label": "",
+          "score": 0.226
+        },
+        {
+          "label": "",
+          "score": 0.22
+        },
+        {
+          "label": "",
+          "score": 0.21
+        },
+        {
+          "label": "",
+          "score": 0.208
+        },
+        {
+          "label": "",
+          "score": 0.2
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 16609,
+          "crop_pixels_sprayed": 16609,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35": {
+          "crop_pixels": 16609,
+          "crop_pixels_sprayed": 16609,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 15.22,
+          "savings_pct": 84.78,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 16609,
+          "crop_pixels_sprayed": 7685,
+          "crop_sprayed_pct": 46.27,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 7.2,
+          "savings_pct": 92.8,
+          "crop_plants": 3,
+          "crop_plants_damaged": 1,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 16609,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 16609,
+          "crop_pixels_sprayed": 9759,
+          "crop_sprayed_pct": 58.76,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 8.96,
+          "savings_pct": 91.04,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 16609,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-90-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 8.81,
+      "detect_seconds": 1.53,
+      "segment_seconds": 3.68,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.643
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.587
+        },
+        {
+          "label": "weed",
+          "score": 0.525
+        },
+        {
+          "label": "weed",
+          "score": 0.481
+        },
+        {
+          "label": "weedt plant",
+          "score": 0.478
+        },
+        {
+          "label": "weed plant",
+          "score": 0.426
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.42
+        },
+        {
+          "label": "weedt plant",
+          "score": 0.395
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.388
+        },
+        {
+          "label": "weed",
+          "score": 0.385
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.37
+        },
+        {
+          "label": "weed",
+          "score": 0.314
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.313
+        },
+        {
+          "label": "weed",
+          "score": 0.295
+        },
+        {
+          "label": "weed",
+          "score": 0.265
+        },
+        {
+          "label": "bee",
+          "score": 0.252
+        },
+        {
+          "label": "",
+          "score": 0.249
+        },
+        {
+          "label": "",
+          "score": 0.244
+        },
+        {
+          "label": "",
+          "score": 0.242
+        },
+        {
+          "label": "",
+          "score": 0.224
+        },
+        {
+          "label": "",
+          "score": 0.223
+        },
+        {
+          "label": "",
+          "score": 0.218
+        },
+        {
+          "label": "",
+          "score": 0.217
+        },
+        {
+          "label": "",
+          "score": 0.209
+        },
+        {
+          "label": "",
+          "score": 0.204
+        },
+        {
+          "label": "",
+          "score": 0.204
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 13028,
+          "crop_pixels_sprayed": 13028,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35": {
+          "crop_pixels": 13028,
+          "crop_pixels_sprayed": 13028,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 12.61,
+          "savings_pct": 87.39,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 13028,
+          "crop_pixels_sprayed": 5623,
+          "crop_sprayed_pct": 43.16,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 5.79,
+          "savings_pct": 94.21,
+          "crop_plants": 3,
+          "crop_plants_damaged": 1,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 13028,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 13028,
+          "crop_pixels_sprayed": 7405,
+          "crop_sprayed_pct": 56.84,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 6.82,
+          "savings_pct": 93.18,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 13028,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-110-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.96,
+      "detect_seconds": 1.42,
+      "segment_seconds": 2.9,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.573
+        },
+        {
+          "label": "weed",
+          "score": 0.567
+        },
+        {
+          "label": "weed plant",
+          "score": 0.524
+        },
+        {
+          "label": "weed",
+          "score": 0.518
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.496
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.447
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.393
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.368
+        },
+        {
+          "label": "weed",
+          "score": 0.34
+        },
+        {
+          "label": "weed",
+          "score": 0.335
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.297
+        },
+        {
+          "label": "sugar beet",
+          "score": 0.282
+        },
+        {
+          "label": "beet plant",
+          "score": 0.274
+        },
+        {
+          "label": "weed",
+          "score": 0.264
+        },
+        {
+          "label": "weed",
+          "score": 0.25
+        },
+        {
+          "label": "",
+          "score": 0.248
+        },
+        {
+          "label": "",
+          "score": 0.231
+        },
+        {
+          "label": "",
+          "score": 0.216
+        },
+        {
+          "label": "",
+          "score": 0.214
+        },
+        {
+          "label": "",
+          "score": 0.214
+        },
+        {
+          "label": "",
+          "score": 0.201
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 15303,
+          "crop_pixels_sprayed": 15303,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35": {
+          "crop_pixels": 15303,
+          "crop_pixels_sprayed": 6366,
+          "crop_sprayed_pct": 41.6,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 6.72,
+          "savings_pct": 93.28,
+          "crop_plants": 3,
+          "crop_plants_damaged": 1,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 15303,
+          "crop_pixels_sprayed": 6366,
+          "crop_sprayed_pct": 41.6,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 6.72,
+          "savings_pct": 93.28,
+          "crop_plants": 3,
+          "crop_plants_damaged": 1,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 15303,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 15303,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 15303,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 0,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": null,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 0,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-170-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 5.78,
+      "detect_seconds": 1.48,
+      "segment_seconds": 2.41,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.579
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.542
+        },
+        {
+          "label": "weed plant",
+          "score": 0.463
+        },
+        {
+          "label": "weed",
+          "score": 0.453
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.451
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.383
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.365
+        },
+        {
+          "label": "weed",
+          "score": 0.359
+        },
+        {
+          "label": "weed",
+          "score": 0.349
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.326
+        },
+        {
+          "label": "weed",
+          "score": 0.305
+        },
+        {
+          "label": "weed",
+          "score": 0.253
+        },
+        {
+          "label": "",
+          "score": 0.249
+        },
+        {
+          "label": "",
+          "score": 0.245
+        },
+        {
+          "label": "",
+          "score": 0.239
+        },
+        {
+          "label": "",
+          "score": 0.208
+        },
+        {
+          "label": "",
+          "score": 0.207
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 13683,
+          "crop_pixels_sprayed": 13683,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 208,
+          "weed_pixels_sprayed": 208,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 13683,
+          "crop_pixels_sprayed": 13683,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 208,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 13.05,
+          "savings_pct": 86.95,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 13683,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 208,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 13683,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 208,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 13683,
+          "crop_pixels_sprayed": 2462,
+          "crop_sprayed_pct": 17.99,
+          "weed_pixels": 208,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 2.46,
+          "savings_pct": 97.54,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 13683,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 208,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-210-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.69,
+      "detect_seconds": 1.39,
+      "segment_seconds": 3.25,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed",
+          "score": 0.533
+        },
+        {
+          "label": "weed",
+          "score": 0.523
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.507
+        },
+        {
+          "label": "weedt plant",
+          "score": 0.495
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.475
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.465
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.358
+        },
+        {
+          "label": "weed",
+          "score": 0.357
+        },
+        {
+          "label": "weedt plant",
+          "score": 0.352
+        },
+        {
+          "label": "weed",
+          "score": 0.34
+        },
+        {
+          "label": "weed",
+          "score": 0.338
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.324
+        },
+        {
+          "label": "beet plant",
+          "score": 0.316
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.308
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.29
+        },
+        {
+          "label": "weed beet plant",
+          "score": 0.276
+        },
+        {
+          "label": "weed",
+          "score": 0.258
+        },
+        {
+          "label": "",
+          "score": 0.245
+        },
+        {
+          "label": "",
+          "score": 0.235
+        },
+        {
+          "label": "",
+          "score": 0.228
+        },
+        {
+          "label": "",
+          "score": 0.227
+        },
+        {
+          "label": "",
+          "score": 0.213
+        },
+        {
+          "label": "",
+          "score": 0.207
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 14353,
+          "crop_pixels_sprayed": 14353,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 6602,
+          "weed_pixels_sprayed": 6602,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 2,
+          "weed_plants_hit": 2
+        },
+        "gate_0.35": {
+          "crop_pixels": 14353,
+          "crop_pixels_sprayed": 8908,
+          "crop_sprayed_pct": 62.06,
+          "weed_pixels": 6602,
+          "weed_pixels_sprayed": 6477,
+          "weed_recall_pct": 98.11,
+          "sprayed_pct": 14.13,
+          "savings_pct": 85.87,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 2,
+          "weed_plants_hit": 1
+        },
+        "gate_0.50": {
+          "crop_pixels": 14353,
+          "crop_pixels_sprayed": 5439,
+          "crop_sprayed_pct": 37.89,
+          "weed_pixels": 6602,
+          "weed_pixels_sprayed": 6477,
+          "weed_recall_pct": 98.11,
+          "sprayed_pct": 11.27,
+          "savings_pct": 88.73,
+          "crop_plants": 3,
+          "crop_plants_damaged": 1,
+          "weed_plants": 2,
+          "weed_plants_hit": 1
+        },
+        "gate_0.70": {
+          "crop_pixels": 14353,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 6602,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 14353,
+          "crop_pixels_sprayed": 3740,
+          "crop_sprayed_pct": 26.06,
+          "weed_pixels": 6602,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 3.05,
+          "savings_pct": 96.95,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 14353,
+          "crop_pixels_sprayed": 271,
+          "crop_sprayed_pct": 1.89,
+          "weed_pixels": 6602,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.2,
+          "savings_pct": 99.8,
+          "crop_plants": 3,
+          "crop_plants_damaged": 1,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-230-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 7.95,
+      "detect_seconds": 1.53,
+      "segment_seconds": 3.68,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed plant",
+          "score": 0.517
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.504
+        },
+        {
+          "label": "weed",
+          "score": 0.495
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.474
+        },
+        {
+          "label": "weed",
+          "score": 0.456
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.454
+        },
+        {
+          "label": "weed beet plant",
+          "score": 0.452
+        },
+        {
+          "label": "weedt plant",
+          "score": 0.434
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.394
+        },
+        {
+          "label": "weed",
+          "score": 0.392
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.339
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.324
+        },
+        {
+          "label": "weed",
+          "score": 0.311
+        },
+        {
+          "label": "weed",
+          "score": 0.305
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.298
+        },
+        {
+          "label": "weed",
+          "score": 0.295
+        },
+        {
+          "label": "weed",
+          "score": 0.263
+        },
+        {
+          "label": "bee",
+          "score": 0.259
+        },
+        {
+          "label": "weed",
+          "score": 0.254
+        },
+        {
+          "label": "",
+          "score": 0.25
+        },
+        {
+          "label": "",
+          "score": 0.248
+        },
+        {
+          "label": "",
+          "score": 0.236
+        },
+        {
+          "label": "",
+          "score": 0.232
+        },
+        {
+          "label": "",
+          "score": 0.229
+        },
+        {
+          "label": "",
+          "score": 0.206
+        },
+        {
+          "label": "",
+          "score": 0.201
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 10323,
+          "crop_pixels_sprayed": 10323,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 998,
+          "weed_pixels_sprayed": 998,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 2,
+          "weed_plants_hit": 2
+        },
+        "gate_0.35": {
+          "crop_pixels": 10323,
+          "crop_pixels_sprayed": 6459,
+          "crop_sprayed_pct": 62.57,
+          "weed_pixels": 998,
+          "weed_pixels_sprayed": 892,
+          "weed_recall_pct": 89.38,
+          "sprayed_pct": 8.78,
+          "savings_pct": 91.22,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 2,
+          "weed_plants_hit": 1
+        },
+        "gate_0.50": {
+          "crop_pixels": 10323,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 998,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 10323,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 998,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 10323,
+          "crop_pixels_sprayed": 1704,
+          "crop_sprayed_pct": 16.51,
+          "weed_pixels": 998,
+          "weed_pixels_sprayed": 892,
+          "weed_recall_pct": 89.38,
+          "sprayed_pct": 4.41,
+          "savings_pct": 95.59,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 2,
+          "weed_plants_hit": 1
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 10323,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 998,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-250-0.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 8.45,
+      "detect_seconds": 1.43,
+      "segment_seconds": 3.65,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.577
+        },
+        {
+          "label": "weed",
+          "score": 0.444
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.434
+        },
+        {
+          "label": "weed",
+          "score": 0.419
+        },
+        {
+          "label": "weed",
+          "score": 0.418
+        },
+        {
+          "label": "weed sugar beet plant",
+          "score": 0.415
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.392
+        },
+        {
+          "label": "weed",
+          "score": 0.386
+        },
+        {
+          "label": "weed",
+          "score": 0.374
+        },
+        {
+          "label": "weed",
+          "score": 0.366
+        },
+        {
+          "label": "weed",
+          "score": 0.358
+        },
+        {
+          "label": "weed",
+          "score": 0.35
+        },
+        {
+          "label": "weed",
+          "score": 0.348
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.317
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.313
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.303
+        },
+        {
+          "label": "weed",
+          "score": 0.273
+        },
+        {
+          "label": "weed",
+          "score": 0.257
+        },
+        {
+          "label": "",
+          "score": 0.24
+        },
+        {
+          "label": "",
+          "score": 0.236
+        },
+        {
+          "label": "",
+          "score": 0.222
+        },
+        {
+          "label": "",
+          "score": 0.218
+        },
+        {
+          "label": "",
+          "score": 0.215
+        },
+        {
+          "label": "",
+          "score": 0.214
+        },
+        {
+          "label": "",
+          "score": 0.208
+        },
+        {
+          "label": "",
+          "score": 0.204
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 19954,
+          "crop_pixels_sprayed": 19954,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 635,
+          "weed_pixels_sprayed": 635,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 8,
+          "weed_plants_hit": 8
+        },
+        "gate_0.35": {
+          "crop_pixels": 19954,
+          "crop_pixels_sprayed": 19954,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 635,
+          "weed_pixels_sprayed": 579,
+          "weed_recall_pct": 91.18,
+          "sprayed_pct": 20.44,
+          "savings_pct": 79.56,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 8,
+          "weed_plants_hit": 5
+        },
+        "gate_0.50": {
+          "crop_pixels": 19954,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 635,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 8,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 19954,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 635,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 8,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 19954,
+          "crop_pixels_sprayed": 4436,
+          "crop_sprayed_pct": 22.23,
+          "weed_pixels": 635,
+          "weed_pixels_sprayed": 324,
+          "weed_recall_pct": 51.02,
+          "sprayed_pct": 6.83,
+          "savings_pct": 93.17,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 8,
+          "weed_plants_hit": 2
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 19954,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 635,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 8,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-250-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.19,
+      "detect_seconds": 1.41,
+      "segment_seconds": 3.02,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed",
+          "score": 0.602
+        },
+        {
+          "label": "weed plant",
+          "score": 0.537
+        },
+        {
+          "label": "weed",
+          "score": 0.521
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.497
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.469
+        },
+        {
+          "label": "weed plant",
+          "score": 0.468
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.462
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.442
+        },
+        {
+          "label": "weed",
+          "score": 0.393
+        },
+        {
+          "label": "weed",
+          "score": 0.358
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.349
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.326
+        },
+        {
+          "label": "beet plant",
+          "score": 0.302
+        },
+        {
+          "label": "weed",
+          "score": 0.3
+        },
+        {
+          "label": "weed",
+          "score": 0.268
+        },
+        {
+          "label": "bee",
+          "score": 0.26
+        },
+        {
+          "label": "",
+          "score": 0.242
+        },
+        {
+          "label": "",
+          "score": 0.226
+        },
+        {
+          "label": "",
+          "score": 0.223
+        },
+        {
+          "label": "",
+          "score": 0.215
+        },
+        {
+          "label": "",
+          "score": 0.201
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 12138,
+          "crop_pixels_sprayed": 12138,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 797,
+          "weed_pixels_sprayed": 797,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 12138,
+          "crop_pixels_sprayed": 8245,
+          "crop_sprayed_pct": 67.93,
+          "weed_pixels": 797,
+          "weed_pixels_sprayed": 797,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 9.65,
+          "savings_pct": 90.35,
+          "crop_plants": 3,
+          "crop_plants_damaged": 2,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.50": {
+          "crop_pixels": 12138,
+          "crop_pixels_sprayed": 6630,
+          "crop_sprayed_pct": 54.62,
+          "weed_pixels": 797,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 5.75,
+          "savings_pct": 94.25,
+          "crop_plants": 3,
+          "crop_plants_damaged": 1,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 12138,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 797,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 12138,
+          "crop_pixels_sprayed": 1615,
+          "crop_sprayed_pct": 13.31,
+          "weed_pixels": 797,
+          "weed_pixels_sprayed": 797,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 3.9,
+          "savings_pct": 96.1,
+          "crop_plants": 3,
+          "crop_plants_damaged": 1,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 12138,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 797,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-270-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 7.72,
+      "detect_seconds": 1.42,
+      "segment_seconds": 3.24,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.509
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.491
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.43
+        },
+        {
+          "label": "weed",
+          "score": 0.414
+        },
+        {
+          "label": "weed",
+          "score": 0.395
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.393
+        },
+        {
+          "label": "weed",
+          "score": 0.384
+        },
+        {
+          "label": "weed",
+          "score": 0.382
+        },
+        {
+          "label": "weed plant",
+          "score": 0.371
+        },
+        {
+          "label": "weed",
+          "score": 0.312
+        },
+        {
+          "label": "weed",
+          "score": 0.298
+        },
+        {
+          "label": "weed",
+          "score": 0.292
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.291
+        },
+        {
+          "label": "weed",
+          "score": 0.287
+        },
+        {
+          "label": "weed",
+          "score": 0.277
+        },
+        {
+          "label": "weed",
+          "score": 0.265
+        },
+        {
+          "label": "",
+          "score": 0.242
+        },
+        {
+          "label": "",
+          "score": 0.217
+        },
+        {
+          "label": "",
+          "score": 0.214
+        },
+        {
+          "label": "",
+          "score": 0.213
+        },
+        {
+          "label": "",
+          "score": 0.212
+        },
+        {
+          "label": "",
+          "score": 0.21
+        },
+        {
+          "label": "",
+          "score": 0.201
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 24355,
+          "crop_pixels_sprayed": 24355,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 683,
+          "weed_pixels_sprayed": 683,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 100.0,
+          "savings_pct": 0.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 5,
+          "weed_plants_hit": 5
+        },
+        "gate_0.35": {
+          "crop_pixels": 24355,
+          "crop_pixels_sprayed": 21276,
+          "crop_sprayed_pct": 87.36,
+          "weed_pixels": 683,
+          "weed_pixels_sprayed": 667,
+          "weed_recall_pct": 97.66,
+          "sprayed_pct": 19.64,
+          "savings_pct": 80.36,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 5,
+          "weed_plants_hit": 2
+        },
+        "gate_0.50": {
+          "crop_pixels": 24355,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 683,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 24355,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 683,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 24355,
+          "crop_pixels_sprayed": 21276,
+          "crop_sprayed_pct": 87.36,
+          "weed_pixels": 683,
+          "weed_pixels_sprayed": 667,
+          "weed_recall_pct": 97.66,
+          "sprayed_pct": 19.64,
+          "savings_pct": 80.36,
+          "crop_plants": 3,
+          "crop_plants_damaged": 3,
+          "weed_plants": 5,
+          "weed_plants_hit": 2
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 24355,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 683,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 3,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "beet_X-290-1.png",
+      "crop_type": "sugarbeet",
+      "size": [
+        512,
+        512
+      ],
+      "seconds": 6.31,
+      "detect_seconds": 1.44,
+      "segment_seconds": 2.53,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "sugar beet plant",
+          "score": 0.569
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.541
+        },
+        {
+          "label": "weed",
+          "score": 0.539
+        },
+        {
+          "label": "weed",
+          "score": 0.537
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.474
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.417
+        },
+        {
+          "label": "weed",
+          "score": 0.401
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.36
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.327
+        },
+        {
+          "label": "beet plant",
+          "score": 0.32
+        },
+        {
+          "label": "weed",
+          "score": 0.302
+        },
+        {
+          "label": "sugar beet plant",
+          "score": 0.297
+        },
+        {
+          "label": "weed",
+          "score": 0.261
+        },
+        {
+          "label": "",
+          "score": 0.241
+        },
+        {
+          "label": "",
+          "score": 0.227
+        },
+        {
+          "label": "",
+          "score": 0.219
+        },
+        {
+          "label": "",
+          "score": 0.208
+        },
+        {
+          "label": "",
+          "score": 0.204
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 19999,
+          "crop_pixels_sprayed": 19999,
+          "crop_sprayed_pct": 100.0,
+          "weed_pixels": 984,
+          "weed_pixels_sprayed": 976,
+          "weed_recall_pct": 99.19,
+          "sprayed_pct": 99.99,
+          "savings_pct": 0.01,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 2,
+          "weed_plants_hit": 2
+        },
+        "gate_0.35": {
+          "crop_pixels": 19999,
+          "crop_pixels_sprayed": 19833,
+          "crop_sprayed_pct": 99.17,
+          "weed_pixels": 984,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 16.8,
+          "savings_pct": 83.2,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 19999,
+          "crop_pixels_sprayed": 19833,
+          "crop_sprayed_pct": 99.17,
+          "weed_pixels": 984,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 16.78,
+          "savings_pct": 83.22,
+          "crop_plants": 2,
+          "crop_plants_damaged": 2,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 19999,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 984,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 19999,
+          "crop_pixels_sprayed": 1565,
+          "crop_sprayed_pct": 7.83,
+          "weed_pixels": 984,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 1.6,
+          "savings_pct": 98.4,
+          "crop_plants": 2,
+          "crop_plants_damaged": 1,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 19999,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": 0.0,
+          "weed_pixels": 984,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 2,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "cotton_20190613_6062W_CM_11.jpg",
+      "crop_type": "cotton",
+      "size": [
+        4096,
+        3072
+      ],
+      "seconds": 12.97,
+      "detect_seconds": 1.94,
+      "segment_seconds": 2.81,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed plant",
+          "score": 0.679
+        },
+        {
+          "label": "weed plant",
+          "score": 0.663
+        },
+        {
+          "label": "weed cotton plant",
+          "score": 0.514
+        },
+        {
+          "label": "plant",
+          "score": 0.502
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.492
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.488
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.478
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.468
+        },
+        {
+          "label": "plant",
+          "score": 0.409
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.354
+        },
+        {
+          "label": "cotton",
+          "score": 0.332
+        },
+        {
+          "label": "plant",
+          "score": 0.304
+        },
+        {
+          "label": "weed",
+          "score": 0.302
+        },
+        {
+          "label": "plant",
+          "score": 0.266
+        },
+        {
+          "label": "",
+          "score": 0.242
+        },
+        {
+          "label": "",
+          "score": 0.24
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1276950,
+          "weed_pixels_sprayed": 1276886,
+          "weed_recall_pct": 99.99,
+          "sprayed_pct": 44.18,
+          "savings_pct": 55.82,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1276950,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1276950,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1276950,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1276950,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1276950,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "cotton_20190613_6062W_CM_17.jpg",
+      "crop_type": "cotton",
+      "size": [
+        3072,
+        4096
+      ],
+      "seconds": 14.32,
+      "detect_seconds": 1.78,
+      "segment_seconds": 6.25,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed plant",
+          "score": 0.654
+        },
+        {
+          "label": "weed plant",
+          "score": 0.605
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.513
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.496
+        },
+        {
+          "label": "weed plant",
+          "score": 0.468
+        },
+        {
+          "label": "cotton",
+          "score": 0.407
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.404
+        },
+        {
+          "label": "cotton",
+          "score": 0.401
+        },
+        {
+          "label": "weed plant",
+          "score": 0.389
+        },
+        {
+          "label": "weed plant",
+          "score": 0.377
+        },
+        {
+          "label": "weed plant",
+          "score": 0.366
+        },
+        {
+          "label": "cotton",
+          "score": 0.365
+        },
+        {
+          "label": "weed plant",
+          "score": 0.354
+        },
+        {
+          "label": "weed plant",
+          "score": 0.348
+        },
+        {
+          "label": "weed",
+          "score": 0.344
+        },
+        {
+          "label": "cotton",
+          "score": 0.337
+        },
+        {
+          "label": "weed plant",
+          "score": 0.329
+        },
+        {
+          "label": "weed",
+          "score": 0.325
+        },
+        {
+          "label": "weed",
+          "score": 0.323
+        },
+        {
+          "label": "plant",
+          "score": 0.318
+        },
+        {
+          "label": "cotton",
+          "score": 0.316
+        },
+        {
+          "label": "weed",
+          "score": 0.305
+        },
+        {
+          "label": "cotton",
+          "score": 0.291
+        },
+        {
+          "label": "cotton",
+          "score": 0.26
+        },
+        {
+          "label": "weed",
+          "score": 0.26
+        },
+        {
+          "label": "plant",
+          "score": 0.259
+        },
+        {
+          "label": "cotton",
+          "score": 0.258
+        },
+        {
+          "label": "",
+          "score": 0.247
+        },
+        {
+          "label": "",
+          "score": 0.247
+        },
+        {
+          "label": "",
+          "score": 0.225
+        },
+        {
+          "label": "",
+          "score": 0.222
+        },
+        {
+          "label": "",
+          "score": 0.212
+        },
+        {
+          "label": "",
+          "score": 0.208
+        },
+        {
+          "label": "",
+          "score": 0.205
+        },
+        {
+          "label": "",
+          "score": 0.205
+        },
+        {
+          "label": "",
+          "score": 0.205
+        },
+        {
+          "label": "",
+          "score": 0.204
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 489691,
+          "weed_pixels_sprayed": 489645,
+          "weed_recall_pct": 99.99,
+          "sprayed_pct": 47.69,
+          "savings_pct": 52.31,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 5
+        },
+        "gate_0.35": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 489691,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 489691,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 489691,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 489691,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 489691,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 5,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "cotton_20190613_6062W_CM_21.jpg",
+      "crop_type": "cotton",
+      "size": [
+        3072,
+        4096
+      ],
+      "seconds": 15.41,
+      "detect_seconds": 1.85,
+      "segment_seconds": 7.42,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed plant",
+          "score": 0.683
+        },
+        {
+          "label": "weed plant",
+          "score": 0.586
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.498
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.49
+        },
+        {
+          "label": "weed cotton plant",
+          "score": 0.463
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.44
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.42
+        },
+        {
+          "label": "weed plant",
+          "score": 0.415
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.41
+        },
+        {
+          "label": "weed plant",
+          "score": 0.409
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.403
+        },
+        {
+          "label": "weed plant",
+          "score": 0.389
+        },
+        {
+          "label": "weed plant",
+          "score": 0.374
+        },
+        {
+          "label": "weed plant",
+          "score": 0.369
+        },
+        {
+          "label": "weed plant",
+          "score": 0.368
+        },
+        {
+          "label": "cotton",
+          "score": 0.354
+        },
+        {
+          "label": "weed plant",
+          "score": 0.348
+        },
+        {
+          "label": "weed plant",
+          "score": 0.348
+        },
+        {
+          "label": "cotton",
+          "score": 0.34
+        },
+        {
+          "label": "weed plant",
+          "score": 0.316
+        },
+        {
+          "label": "weed plant",
+          "score": 0.302
+        },
+        {
+          "label": "cotton",
+          "score": 0.298
+        },
+        {
+          "label": "cotton",
+          "score": 0.285
+        },
+        {
+          "label": "cotton",
+          "score": 0.281
+        },
+        {
+          "label": "plant",
+          "score": 0.271
+        },
+        {
+          "label": "cotton",
+          "score": 0.257
+        },
+        {
+          "label": "",
+          "score": 0.248
+        },
+        {
+          "label": "",
+          "score": 0.246
+        },
+        {
+          "label": "",
+          "score": 0.241
+        },
+        {
+          "label": "",
+          "score": 0.222
+        },
+        {
+          "label": "",
+          "score": 0.221
+        },
+        {
+          "label": "",
+          "score": 0.219
+        },
+        {
+          "label": "",
+          "score": 0.217
+        },
+        {
+          "label": "",
+          "score": 0.213
+        },
+        {
+          "label": "",
+          "score": 0.212
+        },
+        {
+          "label": "",
+          "score": 0.205
+        },
+        {
+          "label": "",
+          "score": 0.205
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 562742,
+          "weed_pixels_sprayed": 562642,
+          "weed_recall_pct": 99.98,
+          "sprayed_pct": 26.26,
+          "savings_pct": 73.74,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 6,
+          "weed_plants_hit": 6
+        },
+        "gate_0.35": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 562742,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 6,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 562742,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 6,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 562742,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 6,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 562742,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 6,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 562742,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 6,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "cotton_20190613_6062W_CM_30.jpg",
+      "crop_type": "cotton",
+      "size": [
+        4096,
+        3072
+      ],
+      "seconds": 19.51,
+      "detect_seconds": 1.78,
+      "segment_seconds": 3.98,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed cotton plant",
+          "score": 0.634
+        },
+        {
+          "label": "plant",
+          "score": 0.531
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.505
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.475
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.472
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.469
+        },
+        {
+          "label": "plant",
+          "score": 0.461
+        },
+        {
+          "label": "plant",
+          "score": 0.427
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.409
+        },
+        {
+          "label": "weed cotton plant",
+          "score": 0.408
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.385
+        },
+        {
+          "label": "weed",
+          "score": 0.342
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.33
+        },
+        {
+          "label": "weed",
+          "score": 0.292
+        },
+        {
+          "label": "plant",
+          "score": 0.266
+        },
+        {
+          "label": "cotton",
+          "score": 0.262
+        },
+        {
+          "label": "",
+          "score": 0.242
+        },
+        {
+          "label": "",
+          "score": 0.24
+        },
+        {
+          "label": "",
+          "score": 0.223
+        },
+        {
+          "label": "",
+          "score": 0.22
+        },
+        {
+          "label": "",
+          "score": 0.213
+        },
+        {
+          "label": "",
+          "score": 0.204
+        },
+        {
+          "label": "",
+          "score": 0.203
+        },
+        {
+          "label": "",
+          "score": 0.203
+        },
+        {
+          "label": "",
+          "score": 0.2
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1693982,
+          "weed_pixels_sprayed": 1693907,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 82.86,
+          "savings_pct": 17.14,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1693982,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1693982,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1693982,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1693982,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1693982,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "cotton_20190613_6062W_CM_33.jpg",
+      "crop_type": "cotton",
+      "size": [
+        3072,
+        4096
+      ],
+      "seconds": 9.57,
+      "detect_seconds": 1.72,
+      "segment_seconds": 2.41,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed plant",
+          "score": 0.675
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.654
+        },
+        {
+          "label": "weed plant",
+          "score": 0.576
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.529
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.508
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.495
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.477
+        },
+        {
+          "label": "weed",
+          "score": 0.323
+        },
+        {
+          "label": "plant",
+          "score": 0.321
+        },
+        {
+          "label": "plant",
+          "score": 0.286
+        },
+        {
+          "label": "cotton",
+          "score": 0.282
+        },
+        {
+          "label": "weed",
+          "score": 0.269
+        },
+        {
+          "label": "weed",
+          "score": 0.252
+        },
+        {
+          "label": "",
+          "score": 0.239
+        },
+        {
+          "label": "",
+          "score": 0.211
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 759921,
+          "weed_pixels_sprayed": 759921,
+          "weed_recall_pct": 100.0,
+          "sprayed_pct": 99.95,
+          "savings_pct": 0.05,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 759921,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 759921,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 759921,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 759921,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 759921,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "cotton_20190613_6062W_CM_36.jpg",
+      "crop_type": "cotton",
+      "size": [
+        3072,
+        4096
+      ],
+      "seconds": 12.49,
+      "detect_seconds": 1.72,
+      "segment_seconds": 4.56,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed cotton plant",
+          "score": 0.625
+        },
+        {
+          "label": "plant",
+          "score": 0.473
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.461
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.46
+        },
+        {
+          "label": "plant",
+          "score": 0.446
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.419
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.384
+        },
+        {
+          "label": "weed plant",
+          "score": 0.375
+        },
+        {
+          "label": "plant",
+          "score": 0.368
+        },
+        {
+          "label": "plant",
+          "score": 0.352
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.348
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.343
+        },
+        {
+          "label": "weed plant",
+          "score": 0.34
+        },
+        {
+          "label": "weed plant",
+          "score": 0.339
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.324
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.308
+        },
+        {
+          "label": "cotton",
+          "score": 0.308
+        },
+        {
+          "label": "plant",
+          "score": 0.28
+        },
+        {
+          "label": "weed",
+          "score": 0.277
+        },
+        {
+          "label": "plant",
+          "score": 0.269
+        },
+        {
+          "label": "weed plant",
+          "score": 0.268
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.255
+        },
+        {
+          "label": "",
+          "score": 0.249
+        },
+        {
+          "label": "",
+          "score": 0.249
+        },
+        {
+          "label": "",
+          "score": 0.234
+        },
+        {
+          "label": "",
+          "score": 0.231
+        },
+        {
+          "label": "",
+          "score": 0.226
+        },
+        {
+          "label": "",
+          "score": 0.22
+        },
+        {
+          "label": "",
+          "score": 0.215
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1568429,
+          "weed_pixels_sprayed": 1559424,
+          "weed_recall_pct": 99.43,
+          "sprayed_pct": 50.43,
+          "savings_pct": 49.57,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 2
+        },
+        "gate_0.35": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1568429,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1568429,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1568429,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1568429,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1568429,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "cotton_20190613_6062W_CM_37.jpg",
+      "crop_type": "cotton",
+      "size": [
+        4096,
+        3072
+      ],
+      "seconds": 12.66,
+      "detect_seconds": 1.72,
+      "segment_seconds": 3.03,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed cotton plant",
+          "score": 0.616
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.519
+        },
+        {
+          "label": "plant",
+          "score": 0.503
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.492
+        },
+        {
+          "label": "weed plant",
+          "score": 0.431
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.424
+        },
+        {
+          "label": "plant",
+          "score": 0.386
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.385
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.356
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.34
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.324
+        },
+        {
+          "label": "weed",
+          "score": 0.313
+        },
+        {
+          "label": "plant",
+          "score": 0.309
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.292
+        },
+        {
+          "label": "weed cotton plant",
+          "score": 0.29
+        },
+        {
+          "label": "weed",
+          "score": 0.265
+        },
+        {
+          "label": "cotton",
+          "score": 0.256
+        },
+        {
+          "label": "",
+          "score": 0.224
+        },
+        {
+          "label": "",
+          "score": 0.203
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 3514992,
+          "weed_pixels_sprayed": 3249161,
+          "weed_recall_pct": 92.44,
+          "sprayed_pct": 84.48,
+          "savings_pct": 15.52,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 1
+        },
+        "gate_0.35": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 3514992,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 3514992,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 3514992,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 3514992,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 3514992,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 1,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    },
+    {
+      "image_id": "cotton_20190613_6062W_CM_39.jpg",
+      "crop_type": "cotton",
+      "size": [
+        3072,
+        4096
+      ],
+      "seconds": 11.0,
+      "detect_seconds": 1.72,
+      "segment_seconds": 2.89,
+      "refinements": 2,
+      "boxes": [
+        {
+          "label": "weed plant",
+          "score": 0.68
+        },
+        {
+          "label": "weed plant",
+          "score": 0.624
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.516
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.487
+        },
+        {
+          "label": "cotton plant",
+          "score": 0.454
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.441
+        },
+        {
+          "label": "plant",
+          "score": 0.42
+        },
+        {
+          "label": "cotton",
+          "score": 0.372
+        },
+        {
+          "label": "weed",
+          "score": 0.362
+        },
+        {
+          "label": "weed cotton plant",
+          "score": 0.347
+        },
+        {
+          "label": "cotton",
+          "score": 0.303
+        },
+        {
+          "label": "plant",
+          "score": 0.292
+        },
+        {
+          "label": "plant",
+          "score": 0.281
+        },
+        {
+          "label": "weed cotton",
+          "score": 0.273
+        },
+        {
+          "label": "plant",
+          "score": 0.267
+        },
+        {
+          "label": "weed",
+          "score": 0.256
+        },
+        {
+          "label": "",
+          "score": 0.231
+        },
+        {
+          "label": "",
+          "score": 0.206
+        }
+      ],
+      "metrics": {
+        "every_mask": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1281540,
+          "weed_pixels_sprayed": 1281473,
+          "weed_recall_pct": 99.99,
+          "sprayed_pct": 65.83,
+          "savings_pct": 34.17,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 2
+        },
+        "gate_0.35": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1281540,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1281540,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.70": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1281540,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.35+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1281540,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        },
+        "gate_0.50+exclusion": {
+          "crop_pixels": 0,
+          "crop_pixels_sprayed": 0,
+          "crop_sprayed_pct": null,
+          "weed_pixels": 1281540,
+          "weed_pixels_sprayed": 0,
+          "weed_recall_pct": 0.0,
+          "sprayed_pct": 0.0,
+          "savings_pct": 100.0,
+          "crop_plants": 0,
+          "crop_plants_damaged": 0,
+          "weed_plants": 2,
+          "weed_plants_hit": 0
+        }
+      },
+      "agent_reviews": []
+    }
+  ]
+}

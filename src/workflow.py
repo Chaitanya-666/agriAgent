@@ -57,6 +57,9 @@ logger = logging.getLogger("agriagent.workflow")
 
 # Words that name a weed. A detected label is a weed only when it uses these words and
 # nothing taken from a crop phrase of the prompt (see label_policy).
+# A single plant mask larger than this share of the photo is treated as a whole-scene box.
+MAX_PLANT_FRACTION = 0.5
+
 WEED_WORDS = ("weed", "weeds", "grass", "pigweed", "carpetweed", "velvetleaf", "invasive", "target")
 
 
@@ -78,6 +81,37 @@ def spray_status(spray_allowed: bool, approved: int, withheld: int) -> str:
         return f"No weed zones approved: nothing to spray{suffix}"
     suffix = f"; {withheld} withheld for review" if withheld else ""
     return f"Selective Spot-Spray Prescription Generated ({approved} zones{suffix})"
+
+
+def crop_pixels(
+    masks: List[Mask], prompt: Optional[str], shape: Tuple[int, int], max_fraction: float = 0.4
+) -> np.ndarray:
+    """
+    Union of masks whose label names the crop and no weed (T1.6 crop exclusion).
+
+    Masks covering more than max_fraction of the image are ignored: Grounding DINO often draws
+    one "crop" box around the whole photo, and subtracting it would erase every weed.
+    """
+    crop_area = np.zeros(shape, dtype=bool)
+    for m in masks:
+        if label_policy(str(m.get("label", "")), prompt) != "crop" or not _names_crop(
+            str(m.get("label", "")), prompt
+        ):
+            continue
+        mask = np.asarray(m["mask_array"], dtype=bool)
+        if mask.shape == shape and mask.mean() <= max_fraction:
+            crop_area |= mask
+    return crop_area
+
+
+def _names_crop(label: str, prompt: Optional[str]) -> bool:
+    """True when the label shares a word with a crop phrase of the prompt."""
+    words = set(label.lower().replace("-", " ").replace("_", " ").split())
+    for phrase in (prompt or "").replace(",", ".").split("."):
+        phrase_words = set(phrase.lower().split())
+        if phrase_words and not phrase_words & set(WEED_WORDS) and words & phrase_words:
+            return True
+    return False
 
 
 def label_policy(label: str, prompt: Optional[str]) -> str:
@@ -120,8 +154,15 @@ class VisionWorkflowRunner:
         mock_mode: bool = False,
         system2: Optional[Any] = None,
         min_confidence: float = 0.70,
+        escalation_agent: Optional[Any] = None,
+        crop_exclusion: bool = False,
     ):
         self.mock_mode = mock_mode
+        # Optional reviewer for withheld plants (src/agents/escalation_agent.py); None keeps
+        # the gate's own decision only.
+        self.escalation_agent = escalation_agent
+        # T1.6: remove pixels of crop-labelled masks from the weed masks before spraying.
+        self.crop_exclusion = crop_exclusion
         # The gate never sprays below 0.70; a caller (the app's slider) may only raise it.
         self.min_confidence = max(0.70, float(min_confidence))
         self.detector = detector or GroundingDINOEngine(mock_mode=mock_mode)
@@ -271,9 +312,10 @@ class VisionWorkflowRunner:
         contributing_weeds = 0
         approved_zones: List[Dict[str, Any]] = []
         withheld: List[Dict[str, Any]] = []
+        escalatable: List[Dict[str, Any]] = []
         prompt = state.get("text_prompt")
 
-        for m in masks:
+        for index, m in enumerate(masks):
             raw_label = m.get("label")
             if raw_label is None:
                 continue
@@ -294,9 +336,22 @@ class VisionWorkflowRunner:
                     withheld.append(
                         {"label": normalized_label, "reason": "label mixes weed and crop words"}
                     )
+                    escalatable.append({"index": index, "label": normalized_label})
                 logger.debug(
                     "VisionWorkflow: Skipping non-weed mask (label: %s) from spray map.",
                     raw_label,
+                )
+                continue
+
+            # One plant does not cover half the photo: such a mask is a whole-scene box
+            # (Grounding DINO often draws one), and spraying it would broadcast-spray the field.
+            mask_fraction = float(np.asarray(m["mask_array"], dtype=bool).mean())
+            if mask_fraction > MAX_PLANT_FRACTION:
+                withheld.append(
+                    {
+                        "label": normalized_label,
+                        "reason": f"mask covers {100 * mask_fraction:.0f}% of the photo; not one plant",
+                    }
                 )
                 continue
 
@@ -313,6 +368,8 @@ class VisionWorkflowRunner:
             )
             if decision.action != RouterAction.ACCEPT:
                 withheld.append({"label": normalized_label, "reason": decision.reason})
+                if decision.action == RouterAction.ESCALATE_SYSTEM2:
+                    escalatable.append({"index": index, "label": normalized_label})
                 continue
 
             approved_mask = np.asarray(m["mask_array"], dtype=bool)
@@ -333,6 +390,45 @@ class VisionWorkflowRunner:
                         "mask": approved_mask.astype(np.uint8),
                     }
                 )
+
+        reviews = self._escalate(state, masks, escalatable, withheld)
+        for review in reviews:
+            m = masks[review["index"]]
+            # The gate's rule for escalated plants: the agent must call it a weed with
+            # P(weed) >= its decision level, and SAM 2's mask must be good enough to spray.
+            if (
+                review["verdict"] != "weed"
+                or float(m.get("predicted_iou", 0.0)) < self.iou_threshold
+            ):
+                continue
+            approved_mask = np.asarray(m["mask_array"], dtype=bool)
+            composite_mask |= approved_mask
+            contributing_weeds += 1
+            ys, xs = np.where(approved_mask)
+            if len(xs):
+                approved_zones.append(
+                    {
+                        "label": review["label"],
+                        "score": float(m["box"].get("score", 0.0)),
+                        "bbox": [
+                            int(xs.min()),
+                            int(ys.min()),
+                            int(xs.max()) + 1,
+                            int(ys.max()) + 1,
+                        ],
+                        "mask": approved_mask.astype(np.uint8),
+                        "approved_by": "escalation_agent",
+                    }
+                )
+
+        if self.crop_exclusion:
+            crop_area = crop_pixels(masks, prompt, (h, w))
+            if crop_area.any():
+                composite_mask &= ~crop_area
+                for zone in approved_zones:
+                    zone["mask"] = (zone["mask"].astype(bool) & ~crop_area).astype(np.uint8)
+                approved_zones = [zone for zone in approved_zones if zone["mask"].any()]
+                contributing_weeds = len(approved_zones)
 
         weed_pixel_count = int(composite_mask.sum())
         total_pixels = h * w
@@ -365,6 +461,7 @@ class VisionWorkflowRunner:
             "safety_action": safety_decision.action.value,
             "status": spray_status(spray_allowed, len(approved_zones), len(withheld)),
             "withheld_masks": withheld,
+            "escalation": reviews,
         }
 
         # Build serializable artifact
@@ -390,6 +487,35 @@ class VisionWorkflowRunner:
             "spray_map": spray_map_data,
             "artifacts": artifacts,
         }
+
+    def _escalate(
+        self,
+        state: GraphState,
+        masks: List[Mask],
+        escalatable: List[Dict[str, Any]],
+        withheld: List[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
+        """Ask the escalation agent about withheld plants; returns its reviews as dicts."""
+        image = state.get("image")
+        if self.escalation_agent is None or not escalatable or not isinstance(image, Image.Image):
+            return []
+        crop = (state.get("field_metadata") or {}).get("crop", "cotton")
+        candidates = []
+        for c in escalatable:
+            b = masks[c["index"]]["box"]
+            candidates.append({**c, "box": [b["x1"], b["y1"], b["x2"], b["y2"]]})
+        try:
+            reviews = [r.to_dict() for r in self.escalation_agent.review(image, candidates, crop)]
+        except Exception as exc:
+            # Any failure means the plants stay withheld: never spray on an error.
+            logger.error("VisionWorkflow: escalation agent failed: %s", exc)
+            return []
+        for review in reviews:
+            for item in withheld:
+                if item["label"] == review["label"] and "agent" not in item:
+                    item["agent"] = f"{review['verdict']} (P(weed)={review['p_weed']})"
+                    break
+        return reviews
 
     def triage_node(self, state: GraphState) -> Dict[str, Any]:
         """

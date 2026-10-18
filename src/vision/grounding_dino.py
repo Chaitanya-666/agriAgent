@@ -39,6 +39,7 @@ logger = logging.getLogger("agriagent.vision.grounding_dino")
 @dataclass
 class DetectionResult:
     """Strongly typed container for an individual detected object."""
+
     box: Tuple[float, float, float, float]  # (x1, y1, x2, y2) in pixel coordinates
     normalized_box: Tuple[float, float, float, float]  # (x1, y1, x2, y2) in [0, 1] range
     label: str
@@ -59,7 +60,7 @@ class DetectionResult:
 class GroundingDINOEngine:
     """
     Production wrapper for Grounding DINO open-vocabulary zero-shot detection.
-    
+
     Attributes:
         model_id (str): Hugging Face model repository ID.
         box_threshold (float): Confidence threshold for bounding box extraction.
@@ -73,12 +74,15 @@ class GroundingDINOEngine:
         model_id: str = "IDEA-Research/grounding-dino-tiny",
         box_threshold: float = 0.35,
         text_threshold: float = 0.25,
+        tiles: int = 1,
         mock_mode: bool = False,
         device: Optional[str] = None,
     ):
         self.model_id = model_id
         self.box_threshold = box_threshold
         self.text_threshold = text_threshold
+        # tiles > 1 also runs the detector on a tiles x tiles grid of crops (small weeds).
+        self.tiles = tiles
         self.mock_mode = mock_mode
 
         self._model = None
@@ -99,7 +103,9 @@ class GroundingDINOEngine:
 
             logger.info("Loading Grounding DINO [%s] on device [%s]...", self.model_id, self.device)
             self._processor = AutoProcessor.from_pretrained(self.model_id)
-            model = AutoModelForZeroShotObjectDetection.from_pretrained(self.model_id).to(self.device)
+            model = AutoModelForZeroShotObjectDetection.from_pretrained(self.model_id).to(
+                self.device
+            )
             model.eval()
             self._model = model
             logger.info("Grounding DINO initialized successfully.")
@@ -111,7 +117,9 @@ class GroundingDINOEngine:
                 f"{err}. Install torch/transformers and the weights, or choose mock mode explicitly."
             ) from err
 
-    def _normalize_image_input(self, image_input: Union[str, Path, Image.Image, np.ndarray]) -> Image.Image:
+    def _normalize_image_input(
+        self, image_input: Union[str, Path, Image.Image, np.ndarray]
+    ) -> Image.Image:
         """Ensure input is converted into a standard RGB PIL Image."""
         if isinstance(image_input, (str, Path)):
             path = Path(image_input)
@@ -133,12 +141,16 @@ class GroundingDINOEngine:
     ) -> List[DetectionResult]:
         """
         Generate deterministic, realistic bounding boxes for development/testing.
-        
+
         Extracts candidate labels from the prompt (separated by periods or commas)
         and places synthetic weed bounding boxes at realistic spatial positions.
         """
         # Parse generic target categories from the dot-separated prompt.
-        raw_tokens = [tok.strip().strip(".") for tok in text_prompt.replace(",", ".").split(".") if tok.strip()]
+        raw_tokens = [
+            tok.strip().strip(".")
+            for tok in text_prompt.replace(",", ".").split(".")
+            if tok.strip()
+        ]
         primary_label = raw_tokens[0] if raw_tokens else "weed"
 
         # Deterministic relative coordinates for mock weed patches in a typical field photo
@@ -178,7 +190,7 @@ class GroundingDINOEngine:
     ) -> List[DetectionResult]:
         """
         Execute zero-shot detection on the input image using natural language query.
-        
+
         Args:
             image: Path to image file, PIL Image, or NumPy array.
             text_prompt: Dot-separated phrases describing target objects.
@@ -207,9 +219,54 @@ class GroundingDINOEngine:
             return self._generate_mock_detections(w, h, formatted_prompt)
 
         # Branch 2: Live Deep Learning Inference
+        detections = self._infer(pil_img, formatted_prompt, effective_box_th, effective_text_th)
+        if self.tiles > 1:
+            # Small weeds (about 16 px in the sugar beet set) are often never proposed on the
+            # whole photo. Each tile is enlarged by the processor, so they become easier to find.
+            tile_w, tile_h = w / self.tiles, h / self.tiles
+            for row in range(self.tiles):
+                for col in range(self.tiles):
+                    left, top = col * tile_w, row * tile_h
+                    tile = pil_img.crop(
+                        (round(left), round(top), round(left + tile_w), round(top + tile_h))
+                    )
+                    for d in self._infer(
+                        tile, formatted_prompt, effective_box_th, effective_text_th
+                    ):
+                        x1, y1, x2, y2 = d.box
+                        box = (x1 + round(left), y1 + round(top), x2 + round(left), y2 + round(top))
+                        detections.append(
+                            DetectionResult(
+                                box=box,
+                                normalized_box=(box[0] / w, box[1] / h, box[2] / w, box[3] / h),
+                                label=d.label,
+                                confidence=d.confidence,
+                            )
+                        )
+            detections = non_max_suppression(detections)
+
+        logger.info(
+            "Grounding DINO detected %d instances for query: '%s'",
+            len(detections),
+            formatted_prompt,
+        )
+        return detections
+
+    def _infer(
+        self,
+        pil_img: Image.Image,
+        formatted_prompt: str,
+        effective_box_th: float,
+        effective_text_th: float,
+    ) -> List[DetectionResult]:
+        """One Grounding DINO pass on one image; boxes in that image's pixel frame."""
         import torch
 
-        inputs = self._processor(images=pil_img, text=formatted_prompt, return_tensors="pt").to(self.device)
+        w, h = pil_img.size
+        assert self._processor is not None and self._model is not None
+        inputs = self._processor(images=pil_img, text=formatted_prompt, return_tensors="pt").to(
+            self.device
+        )
 
         with torch.no_grad():
             outputs = self._model(**inputs)
@@ -248,8 +305,6 @@ class GroundingDINOEngine:
                     confidence=conf,
                 )
             )
-
-        logger.info("Grounding DINO detected %d instances for query: '%s'", len(detections), formatted_prompt)
         return detections
 
     def detect_to_state_boxes(
@@ -261,6 +316,25 @@ class GroundingDINOEngine:
         """Convenience method returning detections directly formatted for LangGraph GraphState."""
         detections = self.detect(image, text_prompt=text_prompt, box_threshold=box_threshold)
         return [d.to_dict() for d in detections]
+
+
+def box_iou(a: Tuple[float, float, float, float], b: Tuple[float, float, float, float]) -> float:
+    ix = max(0.0, min(a[2], b[2]) - max(a[0], b[0]))
+    iy = max(0.0, min(a[3], b[3]) - max(a[1], b[1]))
+    inter = ix * iy
+    union = (a[2] - a[0]) * (a[3] - a[1]) + (b[2] - b[0]) * (b[3] - b[1]) - inter
+    return inter / union if union > 0 else 0.0
+
+
+def non_max_suppression(
+    detections: List[DetectionResult], iou_limit: float = 0.5
+) -> List[DetectionResult]:
+    """Keep the highest-scoring box among same-label boxes that overlap by more than iou_limit."""
+    kept: List[DetectionResult] = []
+    for d in sorted(detections, key=lambda d: d.confidence, reverse=True):
+        if all(k.label != d.label or box_iou(k.box, d.box) <= iou_limit for k in kept):
+            kept.append(d)
+    return kept
 
 
 # Alias for backwards and forwards naming compatibility
