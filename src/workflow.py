@@ -80,6 +80,37 @@ def spray_status(spray_allowed: bool, approved: int, withheld: int) -> str:
     return f"Selective Spot-Spray Prescription Generated ({approved} zones{suffix})"
 
 
+def crop_pixels(
+    masks: List[Mask], prompt: Optional[str], shape: Tuple[int, int], max_fraction: float = 0.4
+) -> np.ndarray:
+    """
+    Union of masks whose label names the crop and no weed (T1.6 crop exclusion).
+
+    Masks covering more than max_fraction of the image are ignored: Grounding DINO often draws
+    one "crop" box around the whole photo, and subtracting it would erase every weed.
+    """
+    crop_area = np.zeros(shape, dtype=bool)
+    for m in masks:
+        if label_policy(str(m.get("label", "")), prompt) != "crop" or not _names_crop(
+            str(m.get("label", "")), prompt
+        ):
+            continue
+        mask = np.asarray(m["mask_array"], dtype=bool)
+        if mask.shape == shape and mask.mean() <= max_fraction:
+            crop_area |= mask
+    return crop_area
+
+
+def _names_crop(label: str, prompt: Optional[str]) -> bool:
+    """True when the label shares a word with a crop phrase of the prompt."""
+    words = set(label.lower().replace("-", " ").replace("_", " ").split())
+    for phrase in (prompt or "").replace(",", ".").split("."):
+        phrase_words = set(phrase.lower().split())
+        if phrase_words and not phrase_words & set(WEED_WORDS) and words & phrase_words:
+            return True
+    return False
+
+
 def label_policy(label: str, prompt: Optional[str]) -> str:
     """Classify a detected label as 'weed', 'crop' or 'ambiguous' using the prompt it came from.
 
@@ -121,11 +152,14 @@ class VisionWorkflowRunner:
         system2: Optional[Any] = None,
         min_confidence: float = 0.70,
         escalation_agent: Optional[Any] = None,
+        crop_exclusion: bool = False,
     ):
         self.mock_mode = mock_mode
         # Optional reviewer for withheld plants (src/agents/escalation_agent.py); None keeps
         # the gate's own decision only.
         self.escalation_agent = escalation_agent
+        # T1.6: remove pixels of crop-labelled masks from the weed masks before spraying.
+        self.crop_exclusion = crop_exclusion
         # The gate never sprays below 0.70; a caller (the app's slider) may only raise it.
         self.min_confidence = max(0.70, float(min_confidence))
         self.detector = detector or GroundingDINOEngine(mock_mode=mock_mode)
@@ -363,6 +397,15 @@ class VisionWorkflowRunner:
                         "approved_by": "escalation_agent",
                     }
                 )
+
+        if self.crop_exclusion:
+            crop_area = crop_pixels(masks, prompt, (h, w))
+            if crop_area.any():
+                composite_mask &= ~crop_area
+                for zone in approved_zones:
+                    zone["mask"] = (zone["mask"].astype(bool) & ~crop_area).astype(np.uint8)
+                approved_zones = [zone for zone in approved_zones if zone["mask"].any()]
+                contributing_weeds = len(approved_zones)
 
         weed_pixel_count = int(composite_mask.sum())
         total_pixels = h * w

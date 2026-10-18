@@ -100,6 +100,7 @@ def spray_masks(
     buffer: int,
     agent: Any = None,
     reviews: Any = None,
+    exclusion: bool = False,
 ) -> Dict[str, np.ndarray]:
     """Spray footprint of every setting, replaying the gate on the same detections."""
     h, w = state["image"].size[1], state["image"].size[0]
@@ -113,6 +114,16 @@ def spray_masks(
         runner.min_confidence = limit
         payload = runner.spray_map_node(state)["artifacts"]["spray_map"].payload
         footprints[f"gate_{limit:.2f}"] = spray_footprint(payload["composite_mask"], buffer)
+    if exclusion:
+        # T1.6: the same gates with crop-labelled pixels removed from the weed masks.
+        runner.crop_exclusion = True
+        for limit in (0.35, 0.50):
+            runner.min_confidence = limit
+            payload = runner.spray_map_node(state)["artifacts"]["spray_map"].payload
+            footprints[f"gate_{limit:.2f}+exclusion"] = spray_footprint(
+                payload["composite_mask"], buffer
+            )
+        runner.crop_exclusion = False
     runner.min_confidence = deployed
     if agent is not None:
         # The deployed gate plus the escalation agent reviewing what it withheld (T1.7, RQ2).
@@ -239,6 +250,9 @@ def main() -> int:
     parser.add_argument(
         "--agent-plants", type=int, default=3, help="plants the agent reviews per photo"
     )
+    parser.add_argument(
+        "--exclusion", action="store_true", help="also score gates with crop exclusion (T1.6)"
+    )
     args = parser.parse_args()
 
     manifest = json.loads(Path(args.manifest).read_text())
@@ -285,7 +299,7 @@ def main() -> int:
             item["annotations"], vegetation
         )
         reviews: List[Dict[str, Any]] = []
-        footprints = spray_masks(runner, state, args.buffer, agent, reviews)
+        footprints = spray_masks(runner, state, args.buffer, agent, reviews, args.exclusion)
         metrics = {
             key: spray_metrics(sprayed, crop_px, weed_px, crop_objects, weed_objects)
             for key, sprayed in footprints.items()
@@ -329,7 +343,12 @@ def main() -> int:
             flush=True,
         )
 
-    keys = ["every_mask"] + [f"gate_{t:.2f}" for t in GATE_SETTINGS] + ([AGENT] if agent else [])
+    keys = (
+        ["every_mask"]
+        + [f"gate_{t:.2f}" for t in GATE_SETTINGS]
+        + (["gate_0.35+exclusion", "gate_0.50+exclusion"] if args.exclusion else [])
+        + ([AGENT] if agent else [])
+    )
     beet = [r for r in rows if r["crop_type"] == "sugarbeet"]
     cotton = [r for r in rows if r["crop_type"] == "cotton"]
     warm = [r["seconds"] for r in rows[1:]] or [r["seconds"] for r in rows]

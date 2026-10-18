@@ -162,3 +162,47 @@ class TestGateWithAgent(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestCropExclusion(unittest.TestCase):
+    """T1.6: crop-labelled pixels are removed from weed masks before spraying."""
+
+    def masks(self, crop_rows):
+        weed = np.zeros((100, 100), dtype=bool)
+        weed[20:40, 20:40] = True
+        crop = np.zeros((100, 100), dtype=bool)
+        crop[crop_rows] = True
+        box = {"x1": 0.0, "y1": 0.0, "x2": 100.0, "y2": 100.0, "score": 0.9}
+        return [
+            {
+                "label": "weed",
+                "mask_array": weed,
+                "predicted_iou": 0.95,
+                "box": {**box, "label": "weed"},
+            },
+            {
+                "label": "cotton plant",
+                "mask_array": crop,
+                "predicted_iou": 0.95,
+                "box": {**box, "label": "cotton plant"},
+            },
+        ]
+
+    def sprayed_pixels(self, exclusion, crop_rows):
+        runner = VisionWorkflowRunner(mock_mode=True, crop_exclusion=exclusion)
+        state = {
+            "image": IMAGE,
+            "masks": self.masks(crop_rows),
+            "text_prompt": "weed . cotton plant .",
+        }
+        return int(
+            runner.spray_map_node(state)["artifacts"]["spray_map"].payload["composite_mask"].sum()
+        )
+
+    def test_overlap_with_crop_is_removed(self):
+        overlap = slice(30, 50)  # rows 30-39 overlap the weed
+        self.assertEqual(self.sprayed_pixels(False, overlap), 400)
+        self.assertEqual(self.sprayed_pixels(True, overlap), 200)
+
+    def test_whole_photo_crop_mask_is_ignored(self):
+        self.assertEqual(self.sprayed_pixels(True, slice(0, 100)), 400)
