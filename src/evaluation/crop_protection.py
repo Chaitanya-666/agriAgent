@@ -110,6 +110,6 @@ def spray_metrics(
         plants = [p for p in weed_objects if p.any()]
         result["weed_plants"] = len(plants)
         result["weed_plants_hit"] = sum(
-            (p & sprayed).sum() >= object_hit_fraction * p.sum() for p in plants
+            bool((p & sprayed).sum() >= object_hit_fraction * p.sum()) for p in plants
         )
     return result
