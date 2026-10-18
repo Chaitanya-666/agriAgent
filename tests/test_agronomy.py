@@ -6,6 +6,7 @@ Runs unconditionally without skipping when ChromaDB is not installed.
 import shutil
 import tempfile
 import unittest
+from unittest import mock
 from pathlib import Path
 
 from PIL import Image
@@ -97,6 +98,26 @@ class TestAgronomy(unittest.TestCase):
         })
         self.assertIn("prescription_report", out)
         self.assertEqual(out["artifacts"]["prescription_report"].type, ArtifactType.PRESCRIPTION_REPORT)
+
+    def test_real_mode_uses_the_icar_table(self):
+        """Real mode used an empty ChromaDB store, so every lookup said 'no_knowledge_found'."""
+        critic = mock.Mock()
+        critic.diagnose.return_value = {
+            "crop": "cotton",
+            "weed_or_disease": "Trianthema portulacastrum",
+            "crop_stage": "vegetative",
+        }
+        s2 = System2Reasoner(critic=critic, mock_mode=False)
+        self.assertGreater(s2.store.count(), 0)
+        out = s2.system2_node({
+            "image": Image.new("RGB", (64, 64)),
+            "artifacts": {},
+            "field_metadata": {"crop": "cotton"},
+        })
+        report = out["prescription_report"]
+        self.assertEqual(report["status"], "ok")
+        self.assertEqual(report["crop"], "cotton")
+        self.assertTrue(report["evidence"])
 
     def test_table_aware_metadata_extraction(self):
         """Verify table-aware ingestion indexes rich statutory metadata fields."""
