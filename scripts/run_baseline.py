@@ -216,7 +216,8 @@ def save_figure(
         )
     axes[1].set_title(f"2. Grounding DINO ({len(state.get('boxes', []))} boxes)")
 
-    last = AGENT if AGENT in footprints else DEPLOYED
+    # Panel 4 shows what the product runs: the gate with plant rules, when measured.
+    last = "pipeline_plant_rules" if "pipeline_plant_rules" in footprints else AGENT if AGENT in footprints else DEPLOYED
     for ax, key in ((axes[2], "gate_0.35"), (axes[3], last)):
         sprayed = shrink(footprints[key])
         overlay = rgb.copy()

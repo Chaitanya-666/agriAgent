@@ -2,7 +2,7 @@
 
 AgriAgent looks at a photo of a crop field, finds the plants, and produces a map of only the weed areas, so a sprayer could treat weeds without spraying the crop. It is a Final Year Project and a **research prototype**: it asks how well zero-shot foundation models tell weeds from crop plants, and whether a safety gate plus a reasoning model keeps the crop off the spray map. It does not control real spraying equipment.
 
-**Start here:** [docs/AgriAgent_Progress_Report_Guide.pdf](docs/AgriAgent_Progress_Report_Guide.pdf) (the whole story to 17 October) and [docs/AgriAgent_Team_Tasks.pdf](docs/AgriAgent_Team_Tasks.pdf) (who does what until 21 October).
+**Start here:** [docs/AgriAgent_Progress_Report_Guide.pdf](docs/AgriAgent_Progress_Report_Guide.pdf) (the whole story to 17 October) and [docs/AgriAgent_Team_Tasks.pdf](docs/AgriAgent_Team_Tasks.pdf) (team tasks and test cycle 1, due 27 October) and [docs/AgriAgent_Week4_Dossier.pdf](docs/AgriAgent_Week4_Dossier.pdf) (latest results).
 
 ## How it works
 
@@ -21,25 +21,27 @@ field photo + crop name
 
 AI models can advise, but only plain, tested Python rules decide what goes on the spray map.
 
-## Status (17 October 2026)
+## Status (20 October 2026, feature freeze from 22 October)
 
 | Part | Status |
 |---|---|
-| Grounding DINO + SAM 2 on our laptop (RTX 5050) | **Real**: both models run, 2.4 GB peak GPU memory |
-| Safety gate with real confidence | **Real**: withholds low-confidence masks on real images; 192 unit + 35 end-to-end tests |
-| System 2 with Groq (sees the image) | **Real** diagnosis; real-mode ICAR store not loaded yet, so most prescriptions say "no evidence" |
-| Clef Flash (Cloudflare) triage | Answers on its own (14/20 patches); not yet in the workflow |
-| Evaluation set | **Real**: `data/manifests/eval_manifest_v2.json`, 38 images with official labels. `eval_manifest_v1` was fabricated and must not be used |
-| Evaluation numbers | Crop-or-weed on 20 patches: Groq 16/20, Clef 14/20, row rule 13/20. Full baseline due 25 October |
+| Grounding DINO + SAM 2 on our laptop (RTX 5050) | **Real**: 0.56 s per image after warm-up |
+| Safety gate | **Real**: real confidence, label policy, whole-photo masks withheld, crop exclusion |
+| Rule-based plant classifier (`src/vision/plant_candidates.py`) | **Real**: on 90 held-out sugar beet photos, weed recall 1.8% → 77.9% with 8.8% of crop pixels sprayed; cotton 10.4% |
+| Escalation agent (`src/agents/escalation_agent.py`) | **Real**: never approved spraying a crop plant, but added no weed recall (RQ2) |
+| System 2 with Groq + ICAR table | **Real**: diagnosis from the photo; herbicide rows checked against the bulletin |
+| Farmer summary (English / Hindi / Marathi) | **Real** in real mode; template in mock mode |
+| Evaluation sets | `eval_manifest_v2.json` (38 images) and `eval_manifest_v2_holdout.json` (90 images), official labels only |
 
-The main finding so far: text prompts alone do not separate weed from crop (on a sugar beet photo all four crop plants were labelled "weed"). Details and figures in the progress report.
+All numbers and the commands that produced them are in [docs/results/](docs/results/). Main finding: text prompts alone do not separate weed from crop; foundation models plus simple, explainable rules do, on sugar beet.
 
 ## Documents
 
 | File | Purpose |
 |---|---|
 | [docs/AgriAgent_Progress_Report_Guide.typ](docs/AgriAgent_Progress_Report_Guide.typ) | Full progress report for the guide: proposal vs today, history, mistakes, evidence, related work, plan |
-| [docs/AgriAgent_Team_Tasks.typ](docs/AgriAgent_Team_Tasks.typ) | Step-by-step tasks per member until 21 October |
+| [docs/AgriAgent_Team_Tasks.typ](docs/AgriAgent_Team_Tasks.typ) | Team tasks and test cycle 1 (ST-01…22, VT-01…13, RT-01…05), version 2 |
+| [docs/AgriAgent_Week4_Dossier.typ](docs/AgriAgent_Week4_Dossier.typ) | Week 4: baseline, improvements, held-out test, escalation answer, feature freeze |
 | [docs/AgriAgent_Week3_Dossier.typ](docs/AgriAgent_Week3_Dossier.typ) | Week 3: first real run, label audit, fixes, bugs closed |
 | [docs/AgriAgent_Project_Map.typ](docs/AgriAgent_Project_Map.typ) | Plan, deliverables and frozen decisions (with the 17 October update) |
 | [docs/AgriAgent_Schedule.typ](docs/AgriAgent_Schedule.typ) | Week-by-week schedule to the submission on 10 November |
@@ -76,6 +78,7 @@ config/           Thresholds and prompts
 | `python scripts/audit_eval_manifest.py` | Compares `eval_manifest_v1` with the official labels (why v1 was dropped) |
 | `python scripts/compare_crop_or_weed.py` | Asks Groq, Clef Flash and a row rule "crop or weed?" on 20 labelled patches |
 | `python scripts/verify_cycle0_issues.py [--real]` | Re-runs the Cycle 0 failing test cases by driving the app headlessly |
+| `python scripts/run_baseline.py [--manifest M] [--agent] [--exclusion]` | Real run over an evaluation set; scores every gate setting and the plant rules against the official labels |
 
 ## Setup
 

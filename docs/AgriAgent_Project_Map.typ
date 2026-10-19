@@ -11,6 +11,28 @@
   with `docs/guides/00_Start_Here.pdf`.
 ]
 
+#warn(title: "Update 20 October (overrides this document and the 17 October update where they differ)")[
+  *Status.* Ahead of plan on engineering and evidence: the baseline (Checkpoint 2, due 25 Oct) was
+  done on 18 Oct; two improvements were measured, one on a 90-photo held-out set (weed recall 1.8% →
+  77.9% with the rule-based plant classifier, 8.8% of crop pixels sprayed); the escalation question
+  was answered (safe, not effective); the ICAR table was checked against the bulletin (K12). Details:
+  `docs/AgriAgent_Week4_Dossier.pdf`. Not started: report, slides, demo video; no team test results yet.
+
+  #table(
+    columns: (auto, 1fr),
+    [Date], [What happens (revised)],
+    [Wed 21 Oct], [Team set-up and understanding tasks due (E-1, E-2, SU-1).],
+    [Thu 22 Oct], [*Feature freeze.* One last measurement before it: the frozen rules on an independent dataset.],
+    [Sun 25 Oct], [Team remaining Week 4 tasks due (label check, hand computations, blind patches, hard images, report content).],
+    [Tue 27 Oct], [*Test cycle 1 complete* (system + validation, every case run, defects filed).],
+    [Sun 1 Nov], [Defects from cycle 1 fixed; report full draft.],
+    [Wed 4 Nov], [*Regression cycle* (every cycle 1 case re-run on `main`).],
+    [Thu 5 Nov], [*Code freeze, `v1.0.0`, demo video.*],
+    [Fri 6 – Mon 9 Nov], [Slides, mock viva, corrections (Diwali 7–8 Nov light).],
+    [Tue 10 Nov], [Submission and viva.],
+  )
+]
+
 #warn(title: "Update 17 October (overrides this document where they differ)")[
   Decided on 17 October; details and evidence in `docs/AgriAgent_Week3_Dossier.pdf`.
   *Final submission and viva: Tuesday 10 November* (code freeze stays Thursday 5 November).

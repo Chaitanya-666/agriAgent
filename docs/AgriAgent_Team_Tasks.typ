@@ -1,8 +1,8 @@
 #import "template.typ": *
 #show: doc.with(
-  title: "AgriAgent Team Tasks until 21 October",
-  subtitle: "Step-by-step instructions for Sahil, Sumant and Amit · hard deadline Wednesday 21 October, 23:59",
-  date: "17 October 2026",
+  title: "AgriAgent Team Tasks and Test Cycle 1",
+  subtitle: "Step-by-step instructions for Sahil, Sumant and Amit · version 2 · test cycle 1 due Tuesday 27 October",
+  date: "20 October 2026",
 )
 
 #show table: set par(justify: false)
@@ -25,292 +25,183 @@
   *Done when:* #done
 ]
 
-#note(title: "Read this first")[
-  Chaitanya and Claude finished Week 3 and part of Week 4 on 17 October: the real pipeline runs on
-  the team laptop, the fake evaluation labels were replaced with official ones, and all eight Cycle 0
-  bugs were fixed, re-tested and closed. What happened and why is in
-  `docs/AgriAgent_Week3_Dossier.pdf`. *This document tells you exactly what to do next.* Every task
-  has steps, what to submit, and when it counts as done. You do *not* write Typst or code: you run
-  commands, look at results, test the app, and fill in sheets. Chaitanya turns your sheets into the
-  report.
+#let cases(..rows) = table(
+  columns: (auto, 1.25fr, 1fr),
+  [ID], [Steps], [Expected result (pass if all of it is true)],
+  ..rows,
+)
+
+#note(title: "Read this first (version 2, 20 October)")[
+  Since 17 October the project gained a measured improvement (weed recall on unseen photos from
+  1.8% to 77.9%), an escalation agent, a farmer summary in English/Hindi/Marathi, and a corrected
+  herbicide table. What happened and why: `docs/AgriAgent_Week4_Dossier.pdf`. *Testing is now the
+  team's job*: this document gives every test case with exact steps and the exact expected result.
+  You do not write code or Typst: you run commands, use the app, compare with the expected result,
+  record what you saw, and file a GitHub issue for every difference. Version 1 tasks that are already
+  done (the herbicide table check SU-2, the agent re-run SU-5) are removed; the others are kept below.
 ]
 
-#warn(title: "Deadline and workload")[
-  *Everything here is due Wednesday 21 October, 23:59.* Post a short progress note in the WhatsApp
-  group on *Monday 19 October by 21:00* (done / not done / blocked). Sahil's and Sumant's Week 3
-  deliverables were not submitted, so their lists also carry about *20% of their Week 5 work*.
-  Amit's list is his Week 4 testing work plus about 10% of Week 5. If you are blocked for more than
-  two hours, say so in the group with the exact error message; do not wait.
+#warn(title: "Deadlines")[
+  *Part A, set-up and understanding: Wednesday 21 October, 23:59* (unchanged). *Part B, remaining
+  Week 4 tasks: Sunday 25 October.* *Part C, test cycle 1: Tuesday 27 October, 23:59.* *Part D,
+  regression cycle: Wednesday 4 November.* Code freeze is Thursday 5 November. Post progress in the
+  group every evening you work on this (done / not done / blocked). Blocked for more than two hours:
+  post the exact error message.
 ]
 
 = Where to put your work
 
 #table(
   columns: (auto, 1fr),
-  [What], [Where],
-  [Screenshots, photos, videos], [Google Drive folder *AgriAgent Evidence*, sub-folder with your name, one folder per task ID (for example `Sahil/SA-1`). Chaitanya shares the link in the group.],
-  [Sheets (results, test cases, label checks)], [Google Sheet *AgriAgent Test Results*, one tab per task ID. Use exactly the columns given in the task.],
-  [Text content for the report], [Google Doc *AgriAgent Report Content*, one heading per task ID. Plain bullet points are fine.],
-  [A defect you found], [A GitHub issue (template in Section 7). One defect per issue.],
-  [Progress], [WhatsApp: Monday 19 Oct by 21:00 and Wednesday 21 Oct by 23:59.],
+  [What], [Where (shared Drive folder `agriAgentShared`, called "AgriAgent Evidence" below)],
+  [Test results], [Google Sheet *AgriAgent Test Cycle 1* (in the shared folder): one row per test case is already there. Fill `result` (pass / fail / blocked), `what you saw`, `evidence file`, `issue no.`, `tester`, `date`.],
+  [Screenshots, videos], [Your own sub-folder (`Sahil/`, `Sumant/`, `Amit/`), file name = test ID, e.g. `ST-07.png`.],
+  [Other sheets], [Google Sheet *AgriAgent Test Results*, one tab per task ID (SA-1, SA-2, …).],
+  [Report content], [Google Doc *AgriAgent Report Content*, one heading per task ID.],
+  [Test photos], [`shared/test_photos/` in the Drive folder: six real field photos used by the test cases.],
+  [Defects], [A GitHub issue per defect (template in Section 7).],
 )
 
-= Day 0 for everyone (Saturday 18 – Sunday 19 October): set up, then understand
+= Part A · everyone · set-up and understanding (Wednesday 21 October)
 
-== E-1 · Set up the project on your laptop (about 1.5 h)
+== E-1 · Set up the project (about 1.5 h)
 
-+ Open a terminal (Windows: *Command Prompt*). If you already have the repository, go into it and run
-  `git pull`. If not: `git clone https://github.com/Chaitanya-666/agriAgent.git` then `cd agriAgent`.
-+ Create a Python environment (Python 3.11 or 3.12): `python -m venv .venv`
-+ Activate it. Windows: `.venv\Scripts\activate` · Linux/macOS: `source .venv/bin/activate`
-+ Install: `python -m pip install -e ".[dev]"` (takes 15–20 minutes the first time).
-+ Copy the settings file. Windows: `copy .env.example .env` · Linux/macOS: `cp .env.example .env`
-+ Create *your own* free Groq key at `console.groq.com/keys`. Open `.env` in a text editor and put it
-  after `GROQ_API_KEY=` (no spaces, no quotes). Never post or commit this file.
-+ Run `python scripts/check_providers.py groq`. You should see `[PASS] groq`.
-+ Run the tests: `python -m unittest discover tests`. The last line must be `OK`.
-+ Start the app: `streamlit run app/app.py`. A browser tab opens; you should see a yellow
-  *MOCK OUTPUT* banner and four number cards.
++ Terminal (Windows: Command Prompt). If you have the repository: `git checkout main` then `git pull`. If not: `git clone https://github.com/Chaitanya-666/agriAgent.git` and `cd agriAgent`.
++ `python -m venv .venv`, then activate (Windows `.venv\Scripts\activate`, Linux/macOS `source .venv/bin/activate`).
++ `python -m pip install -e ".[dev]"` (15–20 minutes the first time).
++ Copy the settings file (Windows `copy .env.example .env`, Linux/macOS `cp .env.example .env`); put *your own* free Groq key from `console.groq.com/keys` after `GROQ_API_KEY=`. Never share or commit `.env`.
++ `python scripts/check_providers.py` must show `[PASS] groq`.
++ `python -m unittest discover tests` must end with `OK`.
++ `streamlit run app/app.py` must open a browser tab with a yellow *MOCK OUTPUT* banner.
 
-*Submit:* one screenshot of the `[PASS] groq` line (hide the key), one of the test `OK` line, one of the
-app with the MOCK banner, in `Drive/<name>/E-1`. *Done when:* all three are there.
+*Submit:* three screenshots (PASS line with the key hidden, the test `OK` line, the app) in your
+Drive folder as `E-1a.png`, `E-1b.png`, `E-1c.png`. *Done when:* all three are there.
 
-== E-2 · Recollect and understand the project (about 3 h)
+== E-2 · Understand the project (about 3 h)
 
-Read, in this order: `docs/AgriAgent_Week3_Dossier.pdf` (all), `docs/AgriAgent_Project_Map.pdf`,
-`docs/guides/01_Concepts.pdf`, `docs/guides/02_Codebase_Walkthrough.pdf` §10 (known issues K1–K12),
-and the questions for your own track in `docs/guides/03_Viva_Defence.pdf`.
+Read `docs/AgriAgent_Week4_Dossier.pdf`, `docs/AgriAgent_Week3_Dossier.pdf`,
+`docs/AgriAgent_Project_Map.pdf` and Guide 2 §10. Then answer in your own words (3–5 lines each)
+under heading E-2 in the Report Content doc:
 
-Then answer these ten questions *in your own words* (3–5 lines each) under heading E-2 in the Report
-Content doc. The viva will ask the same things.
++ Name the pipeline stages. Which are AI models, which are plain rules?
++ Why does a Grounding DINO label "weed" not mean the model understood the plant is a weed?
++ A weed mask has confidence 0.60. Is it sprayed by the gate alone? Which file decides?
++ Why was `eval_manifest_v1` thrown away, and what is `eval_manifest_v2_holdout` for?
++ What do "crop pixels sprayed" and "weed recall" measure? Why only sugar beet for the first?
++ How do the plant rules decide crop or weed for a green patch? Name the four cases.
++ Why do the plant rules work on sugar beet but not on the cotton close-ups?
++ What does the escalation agent do, and why did it never approve a weed?
++ Why did one wrong rice row in the herbicide table matter (dose and waiting period)?
++ How can you tell on screen whether a result is REAL or MOCK?
 
-+ Name the five stages of the pipeline. Which ones are AI models and which are plain rules?
-+ Grounding DINO labels a box "weed". Did it understand that the plant is a weed? Explain where the label comes from.
-+ A weed mask has detection confidence 0.60. Is it sprayed? Which file and which rule decides?
-+ Why was `eval_manifest_v1` thrown away, and what replaced it?
-+ What does "crop pixels on the spray map" measure, and why can we only measure it on sugar beet images?
-+ How can you tell on screen whether a result is REAL or MOCK? Why does it matter?
-+ What does System 2 do, which model does it call today, and what happens when that call fails?
-+ Why did one GeoJSON export contain 1,394 spray zones for 3 weeds, and what was changed?
-+ The best published zero-shot method (Chong et al., IROS 2025) reaches about 12% weed IoU, a supervised network about 63%. What does that tell us about our own results?
-+ List your own tasks in this document with their "done when" lines.
+*Done when:* all ten answers are in the doc.
 
-*Done when:* all ten answers are in the doc by Sunday 19 Oct, 23:59.
+== SU-1 · Report format (Sumant, overdue)
 
-= Sahil · validation tester (Week 4 + about 20% of Week 5)
+Get the department's report format (template or written rules) and upload it to `Sumant/SU-1`.
 
-#task("SA-1", "Check the new evaluation labels by eye (T3.4)",
-  [Every number we report is measured against these labels. A wrong label means a wrong number.],
-  [
-    + Make a free Kaggle account. Settings → API → *Generate New Token*; save the token text in a file named `access_token` inside a folder `.kaggle` in your home folder (Windows: `C:\Users\<you>\.kaggle\access_token`).
-    + In the activated environment: `python -m pip install kaggle`
-    + Build the evaluation set (downloads about 110 MB): `python scripts/build_eval_manifest_v2.py`
-    + Draw the labels: `python scripts/show_manifest_labels.py`. Pictures appear in `data/outputs/manifest_labels/` (green box = crop, red box = weed).
-    + Open each of the 38 pictures. For each, fill one row in tab *SA-1*.
-  ],
-  [Tab SA-1 with columns: `image_id` · `every crop plant has a green box (yes/no)` · `every visible weed has a red box (yes/no)` · `any box on bare soil (yes/no)` · `notes`.],
-  [38 rows filled; every "no" has a note saying which plant.],
-  3)
+= Part B · remaining Week 4 tasks (Sunday 25 October)
 
-#task("SA-2", "Hand-compute three crop-protection examples (for T3.5 tests)",
-  [The new metric code will be tested against numbers you compute by hand, so a coding mistake cannot hide.],
-  [
-    Each example is a 5 × 5 image. *Truth:* `C` = crop pixel, `W` = weed pixel, `.` = soil. *Spray:* `1` = sprayed, `0` = not sprayed.
-    For each example compute: (a) crop protection failure = crop pixels sprayed ÷ all crop pixels, (b) weed recall = weed pixels sprayed ÷ all weed pixels, (c) herbicide savings = 1 − sprayed pixels ÷ 25. Show your working.
+#table(
+  columns: (auto, auto, 1fr),
+  [ID], [Owner], [Task (full steps as in version 1, unchanged)],
+  [SA-1], [Sahil], [Check the 38 evaluation images' labels by eye (`python scripts/build_eval_manifest_v2.py`, then `python scripts/show_manifest_labels.py`; needs a Kaggle token in `.kaggle/access_token`). Tab SA-1: image id, every crop has a green box, every weed a red box, any box on bare soil, notes.],
+  [SA-2], [Sahil], [Hand-compute the three 5 × 5 examples (crop pixels sprayed, weed recall, savings) and post a photo of the working; then compare with test case VT-02.],
+  [SA-4], [Sahil], [Judge the 20 blind patches in `shared/t2_2_patches/t2_2_blind/` as crop / weed / can't tell, post "SA-4 answers submitted", then fill the answers from the key Chaitanya sends.],
+  [SA-5], [Sahil], [Pick 15 hard sugar beet photos not in the evaluation set (weed touching crop, very small weeds, shadow, crop at the edge, many weeds); tab SA-5. They are used in VT-13.],
+  [SA-6], [Sahil], [Report content: data and evaluation (datasets, why v1 was rejected, how v2 and the held-out set were built, the metrics, the size bias), with sources.],
+  [SU-6], [Sumant], [Report content: problem statement (5 bullets with sources) and the six papers listed in version 1 (what they did, dataset, key number, how we differ).],
+  [AM-1], [Amit], [Re-test closed issues \#6–\#13 with your own steps on `main`; comment PASS or FAIL with a screenshot on each issue, reopen on FAIL (now test case RT-01).],
+  [AM-3], [Amit], [Screen recording of one real-mode run in the app (Win + G), start to GeoJSON download.],
+  [AM-5], [Amit], [Google Slides skeleton: Problem · Research question · Pipeline · Safety gate · Plant rules · Data · Results · Escalation · Testing · Limits · Team.],
+)
 
-    #grid(columns: (1fr, 1fr, 1fr), gutter: 10pt,
-      [*Example A* \ Truth: \ `C C . . .` \ `C C . W .` \ `. . . W W` \ `. . . . .` \ `W . . C C` \ Spray: \ `1 0 0 0 0` \ `0 0 0 1 0` \ `0 0 0 1 1` \ `0 0 0 0 0` \ `0 0 0 1 0`],
-      [*Example B* \ Truth: \ `. C C . .` \ `. C C . .` \ `. . . . W` \ `W . . . .` \ `. . . . .` \ Spray: \ `0 0 0 0 0` \ `0 0 0 0 0` \ `0 0 0 0 0` \ `0 0 0 0 0` \ `0 0 0 0 0`],
-      [*Example C* \ Truth: \ `C . . . W` \ `C . . . W` \ `. . W . .` \ `. . . . .` \ `. C . . .` \ Spray: \ `1 1 1 1 1` \ `1 1 1 1 1` \ `1 1 1 1 1` \ `1 1 1 1 1` \ `1 1 1 1 1`],
-    )
-  ],
-  [Photo of your handwritten working in `Drive/Sahil/SA-2`, and the nine results in tab SA-2.],
-  [Nine numbers, each with working.],
-  1)
+= Part C · test cycle 1 (Tuesday 27 October)
 
-#task("SA-3", "Validation test plan: 15 cases",
-  [The report needs a test chapter; validation asks "is the output correct?", not "does the app run?".],
-  [
-    In tab *SA-3* write one row per case with columns `ID` · `what is checked` · `input` · `expected result` · `how measured` · `can run now (yes/no)`. Cover at least these 15:
-    V-01 labels match plants (SA-1) · V-02 crop-protection formula (SA-2) · V-03 weed recall formula · V-04 herbicide savings formula · V-05 a crop-only image must give 0% crop sprayed · V-06 a blank image must give 0 sprayed zones in real mode · V-07 a low-confidence weed (below 0.70) must not be sprayed · V-08 a label mixing weed and crop words is withheld · V-09 cotton images are excluded from crop-protection numbers · V-10 the same image twice gives the same result · V-11 System 2 prescription matches the declared crop · V-12 no herbicide without a real prescription · V-13 crop-or-weed patch answers are compared with official labels · V-14 every reported number states model, device and REAL · V-15 savings never above 100% or below 0%.
-    For cases you can run now (V-01, V-02, V-10, V-15 in the app with the sample photo), run them and add `result` and `evidence` columns.
-  ],
-  [Tab SA-3.],
-  [15 rows; every "can run now = yes" row has a result and a screenshot in `Drive/Sahil/SA-3`.],
-  3)
+Run every case assigned to you on the latest `main` (`git pull` first) and fill its row in the
+*AgriAgent Test Cycle 1* sheet. *Mock* = the "Mock Mode" box in the sidebar ticked; *real* =
+unticked (the first real run downloads about 1.6 GB of model weights; on a laptop without an NVIDIA
+GPU each photo takes about 10–60 seconds). Test photos are in Drive `shared/test_photos/`:
+`beet_X-10-0.png` (4 beets, 2 tiny weeds: the rules work well here), `beet_X2-30-0.png` (3 beets,
+many tiny weeds: a *known failure*, two beets are partly sprayed), `beet_X3-430-0.png` (two clear crop
+rows), `beet_X3-130-0.png` (beets only, no weeds), `cotton_CM_17.jpg` and `cotton_CM_11.jpg`
+(cotton-field close-ups of weeds).
 
-#task("SA-4", "Judge the 20 crop-or-weed patches blind (T2.2 follow-up)",
-  [We compared three back-ends on 20 patches (Groq 16/20, Clef Flash 14/20, a row rule 13/20). A human baseline tells us how hard the patches really are.],
-  [
-    + Open `Drive/shared/t2_2_patches`: 20 images named `patch_01_sugarbeet_field.png` … `patch_20_cotton_field.png`. The name tells you only which field the plant came from; the order is shuffled.
-    + For each patch write `crop`, `weed` or `can't tell`. Use only the picture; do not look at `docs/images/t2_2_patches.jpg` or `data/outputs/t2_2/` in the repository, they contain the answers.
-    + Post "SA-4 answers submitted" in the group. Chaitanya then sends you the answer key; fill the last two columns.
-  ],
-  [Tab SA-4: `patch` · `your answer` · `true answer` · `you were right (yes/no)` · `what made it hard`.],
-  [20 rows; your score posted in the group.],
-  1)
+== Sumant · system tests (does it work for a user?)
 
-#task("SA-5", "Pick the hard test images for weekly escalation (Week 5 work)",
-  [Each week we make the test harder: more images and harder cases. You choose the hard cases.],
-  [
-    + After SA-1's build step, open the 120 sugar beet images in `data/datasets/sugarbeets_weeds_official/data/train/image/` with any image viewer.
-    + Pick 15 images that are hard for weed-versus-crop, at least 3 of each kind: weed touching or under a crop plant · very small weeds · strong shadow or glare · crop plant cut off at the image edge · many weeds close together.
-    + Do not pick images that are already in `eval_manifest_v2` (the list is the `image_id` column of SA-1).
-  ],
-  [Tab SA-5: `file name` · `kind of difficulty` · `one sentence why`.],
-  [15 rows, at least 3 per kind.],
-  2)
+#cases(
+  [ST-01], [Start the app, mock, sample photo.], [Yellow banner starting "MOCK OUTPUT: these boxes, masks and the diagnosis are synthetic test data" above the four number cards.],
+  [ST-02], [Same screen, scroll to "Summary for the farmer".], [Blue box starting "This is test data, not a real field result." and a "Language" selector.],
+  [ST-03], [Mock. Clear the "Zero-Shot Detection Prompt" box completely, press Enter.], [Red error "The detection prompt is empty. Enter what to look for, e.g. 'weed . cotton plant .'"; no number cards.],
+  [ST-04], [Mock. Change "Crop Context" to Sugar Beet, then Wheat, then Rice.], [Prompt box changes to `weed . sugar beet plant .`, then `weed . wheat plant .`, then `weed . rice plant .`.],
+  [ST-05], [Mock. Prompt `cotton . weed .`, download the GeoJSON, open it in a text editor.], [`"features": []` and `"status"` starting "No weed zones approved".],
+  [ST-06], [Mock. Confidence slider to 0.90, download GeoJSON.], ["Target Weed Clusters" card shows 1; GeoJSON has exactly one feature with `"confidence": 0.91`.],
+  [ST-07], [Mock, default settings, download GeoJSON.], [No feature has `active_ingredient`; metadata `"statutory_status": "no_prescription"`; `"coordinate_note"` starts "Not GPS".],
+  [ST-08], [Mock. Tick "Force System 2", crop Cotton.], [Status box says "MOCK DIAGNOSIS"; the word "VERIFIED" appears nowhere on the page.],
+  [ST-09], [Mock. Force System 2 with Wheat, then Rice, then Sugar Beet.], [Each shows "Status: NO STATUTORY EVIDENCE FOUND — ZERO CHEMICALS PRESCRIBED"; "Pyrithiobac" appears nowhere.],
+  [ST-10], [Rename any `.txt` file to `test.jpg` and upload it.], [Red "Image Decoding Error: …"; the app does not crash.],
+  [ST-11], [Upload a phone photo larger than 5 MB (mock).], [Result appears without a crash; note the seconds.],
+  [ST-12], [Untick Mock Mode, keep the sample photo (first real run).], [Green banner "REAL OUTPUT: Grounding DINO and SAM 2 ran on this image."; no red error; note the total minutes including the download.],
+  [ST-13], [Real. Crop Sugar Beet, upload `beet_X-10-0.png`.], [REAL banner; the farmer summary says weed patches are marked; in the right-hand picture colour appears only on tiny plants, *not* on the four large beets. Screenshot.],
+  [ST-14], [Real. Crop Sugar Beet, upload `beet_X3-130-0.png` (no weeds).], ["Weed Infestation Area" below 2% and no colour on the beets. Then upload `beet_X2-30-0.png` and record which beets are coloured (known failure; record, do not file as a new defect).],
+  [ST-15], [Real. Crop Cotton, upload `cotton_CM_17.jpg`.], [No crash; record what is marked and what the summary says. (Known limit: few weeds are found on cotton.)],
+  [ST-16], [Real, after ST-13: "Language" selector to Hindi, then Marathi.], [Summary text changes to that language; caption "Reworded by the Groq model from the result above." (Without a Groq key: English and "Built directly from the result above.")],
+  [ST-17], [Real, after ST-13: download GeoJSON and open it at `geojson.io`.], [At least one feature with `"target": "weed patches (plant rules)"`; shapes appear; `coordinate_note` says not GPS.],
+  [ST-18], [Real. Look for the expander "Escalation agent: … withheld plant(s) reviewed" after ST-13 or ST-15 and open it.], [If present: each plant shows a verdict (weed / crop / unsure), P(weed) and its evidence lines. Record whether it appeared.],
+  [ST-19], [Real. Turn Wi-Fi off (models already downloaded), run `beet_X-10-0.png` again.], [Vision still runs (REAL banner); the summary falls back to English text; no crash. A crash or endless spinner is a defect.],
+  [ST-20], [Real. In `.env` set `GROQ_API_KEY=` (empty), restart the app, run ST-13 with "Force System 2".], [No crash; the page shows a result; any message about the missing diagnosis is acceptable. Restore your key afterwards.],
+  [ST-21], [Terminal: `python scripts/run_live_pipeline.py --image <path to beet_X-10-0.png> --crop "sugar beet" --output st21.png`], [Lines "MODE USED : detector=REAL, segmenter=REAL", "Plant rules (green patches): {…}" and "Summary for the farmer"; `st21.png` has four panels.],
+  [ST-22], [Same command with `--no-plant-rules`.], [Status "No weed zones approved: nothing to spray …" (the old behaviour). Compare with ST-21 in one sentence.],
+)
 
-#task("SA-6", "Report content: data and evaluation (Week 5 work)",
-  [Chaitanya writes the chapter; you collect the facts.],
-  [
-    Under heading SA-6 in the Report Content doc, write bullet points for: the two datasets (name, source link, number of images, image size, which labels exist); why `eval_manifest_v1` was rejected (from the dossier §3.2, in your words); how `eval_manifest_v2` was built (selection rule); the three metrics (crop protection, weed recall, herbicide savings) with the formulas from SA-2; the dataset bias (beet weeds median 16 px, crops 68 px) and why it matters.
-  ],
-  [Heading SA-6 in the Report Content doc.],
-  [All five bullets present, with sources for every number.],
-  2)
+== Sahil · validation tests (is the output correct?)
 
-= Sumant · system tester and report content lead (Week 4 + about 20% of Week 5)
+#cases(
+  [VT-01], [= task SA-1 (label check by eye).], [All 38 rows filled; every problem described.],
+  [VT-02], [After SA-2: `python -m unittest tests.test_crop_protection -v`.], [11 tests "ok". Your hand results equal the test values: A 33.33 / 75.0 / 80.0, B 0.0 / 0.0 / 100.0, C 100.0 / 100.0 / 0.0. Any difference: say which is wrong and why.],
+  [VT-03], [`python scripts/run_baseline.py --limit 10 --name repro_sahil` (needs SA-1's download).], [For each of the 10 images, `plant_rules` and `gate_0.35` numbers in `data/outputs/baseline/repro_sahil/results.json` are within 1 percentage point of the same image in `docs/results/plant_rules_v3_20261018.json`.],
+  [VT-04], [`python scripts/run_baseline.py --manifest data/manifests/eval_manifest_v2_holdout.json --name repro_holdout_sahil` (all 90 held-out photos; about 30–60 minutes on a laptop without an NVIDIA GPU).], [The summary table in `data/outputs/baseline/repro_holdout_sahil/summary.md` matches `docs/results/holdout_plant_rules_v3_20261018.md` within 1 point for `plant_rules` and `gate_0.35` (77.9% weed recall, 8.8% crop pixels sprayed).],
+  [VT-05], [Open the 10 figures of VT-03 (`figures/`). Panel 4 is the product setting (`pipeline_plant_rules`). For each, count large beets (green boxes in panel 1) that have any red in panel 4.], [Your count matches `crop_plants_damaged` of `pipeline_plant_rules` in `results.json`; record every mismatch with the image name.],
+  [VT-06], [In VT-04's `results.json`, find the images that have no weed (`weed_pixels` = 0). For each, note `crop_sprayed_pct` and `crop_plants_damaged` of `pipeline_plant_rules`, and look at its figure.], [Each value matches the same image in `docs/results/holdout_plant_rules_v3_20261018.json` within 1 point. Also write one sentence per image on what the figure shows (beets coloured or not). Known failures elsewhere in the held-out set: `X2-290-0` (6 of 8 beets touched) and `X5-510-0` (4 of 4).],
+  [VT-07], [Run VT-03 a second time with `--name repro_sahil_2`.], [Every metric identical to the first run.],
+  [VT-08], [In VT-03's `results.json` check every `metrics` entry.], [`savings_pct` between 0 and 100; `sprayed_pct + savings_pct` = 100 (±0.01); percentages never above 100.],
+  [VT-09], [Pick 4 rows of `docs/results/icar_table_check_20261020.md` (include rice pyrazosulfuron) and open the PDF at the printed page (PDF page = printed page + 8).], [Dose, water, waiting period and weeds in the PDF match the "fix" column. Any mismatch is a high-severity defect.],
+  [VT-10], [For ST-13's or ST-21's run, check every number and claim in the farmer summary against the printed results.], [Nothing in the summary is absent from the results; no chemical or dose appears unless a prescription was printed.],
+  [VT-11], [Open `docs/results/agent_v2_20261018.json`; take 10 entries of `agent_reviews`.], [Verdict "weed" only when `p_weed` ≥ 0.85, "crop" only when ≤ 0.15, otherwise "unsure".],
+  [VT-12], [= task SA-4 (blind patches).], [20 answers and your score posted.],
+  [VT-13], [Run `run_live_pipeline.py --crop "sugar beet"` on each of SA-5's 15 hard photos; look at panel 4.], [Per photo: crop plants coloured (count), visible weeds missed (count), one sentence. This is evidence, not pass/fail.],
+)
 
-#task("SU-1", "Department report format (Week 3 T2.6, overdue)",
-  [The final report must follow the department format; without it the report cannot start.],
-  [Get the official report format (template file or written rules: margins, font, chapters, front pages, citation style) from the department or a senior batch, and upload it.],
-  [The file or photos in `Drive/Sumant/SU-1`; one message in the group.],
-  [Chaitanya confirms he has what he needs.],
-  1)
+== Amit · regression and demo (mostly testing)
 
-#task("SU-2", "Check our herbicide table against the ICAR bulletin (T2.4, K12)",
-  [The app recommends herbicides from a table someone typed by hand. If it is wrong, the app gives wrong chemical advice.],
-  [
-    + Open `data/knowledge_base/icar_dwr_herbicide_use_bulletin22.pdf`.
-    + Find the cotton herbicide table (Table 4.3, around pages 34–35) and the banned/withdrawn herbicide table (Table 3.3, around page 18). Write down the real page numbers you see.
-    + For 5 cotton weeds (start with Trianthema portulacastrum, Parthenium hysterophorus, Echinochloa colona, Digera arvensis, Cyperus rotundus) copy from the PDF: herbicide, dose in g a.i./ha, water volume, waiting period, page number.
-    + Open `src/agronomy/knowledge_store.py` on GitHub and search (Ctrl+F) for `Table 4.3`. Compare each row with what you copied. Do the same for the banned list: search `BANNED` in `src/agronomy/prescription.py`.
-  ],
-  [Tab SU-2: `weed` · `herbicide (PDF)` · `dose (PDF)` · `water (PDF)` · `waiting period (PDF)` · `page` · `same in our code? (yes/no)` · `difference`. One GitHub issue per difference.],
-  [5 weeds and the banned list checked; every difference filed as an issue.],
-  3)
+#cases(
+  [RT-01], [= task AM-1 (re-test \#6–\#13 with your own steps).], [A PASS or FAIL comment with a screenshot on each issue.],
+  [RT-02], [Run TC-01…TC-16 of `docs/testing/System_Test_Runbook_Cycle0.pdf` again on `main`.], [Fixed cases now pass: TC-03 (no herbicide in GeoJSON), TC-04 ("No weed zones approved"), TC-07 (empty-prompt error), TC-08 (one feature at 0.90), TC-10 (MOCK DIAGNOSIS), TC-11 ("no statutory evidence"), TC-13 (MOCK banner), TC-15 (real mode runs). Others unchanged.],
+  [RT-03], [On Windows: `python -m unittest discover tests`, `python tests/e2e/runner.py --all`, `python scripts/verify_cycle0_issues.py`.], [`OK`; "Passed: 35"; seven `[PASS]` lines.],
+  [RT-04], [= task AM-3 (real-mode screen recording).], [One complete recording in `Amit/`.],
+  [RT-05], [Go through `docs/guides/04_Demo_Playbook.pdf` step by step on your laptop.], [Every step marked ok / problem; steps that no longer match the app listed.],
+)
 
-#task("SU-3", "System test cycle 1: new cases (mock mode)",
-  [The app changed on 17 October. These cases check the new behaviour like a user would.],
-  [
-    Start the app (`streamlit run app/app.py`), keep Mock Mode ticked, sample photo on. For each case write expected and actual, and take a screenshot.
-    TC-17 the yellow MOCK OUTPUT banner is shown above the numbers ·
-    TC-18 clear the prompt box completely and press Enter: a red error, no numbers ·
-    TC-19 prompt `cotton . weed .`: the GeoJSON status says "No weed zones approved" ·
-    TC-20 slider at 0.90: the screen shows 1 weed cluster and the GeoJSON has exactly 1 feature ·
-    TC-21 default settings: the downloaded GeoJSON has no `active_ingredient` field ·
-    TC-22 tick Force System 2 with Cotton: the status says MOCK DIAGNOSIS, never "verified" ·
-    TC-23 Force System 2 with Wheat, then Rice, then Sugar Beet: no Pyrithiobac anywhere ·
-    TC-24 change Crop Context: the prompt box changes to `weed . <crop> plant .` ·
-    TC-25 upload a text file renamed to `.jpg`: "Image Decoding Error" ·
-    TC-26 the GeoJSON metadata has a `coordinate_note` saying it is not GPS ·
-    TC-27 open a downloaded GeoJSON at `geojson.io`: count the shapes and compare with the weed clusters on screen.
-  ],
-  [Tab SU-3: `TC` · `steps` · `expected` · `actual` · `pass/fail` · `screenshot file`. Screenshots in `Drive/Sumant/SU-3`. A GitHub issue for every fail.],
-  [11 rows with results and screenshots.],
-  3)
+= Part D · regression cycle (Wednesday 4 November)
 
-#task("SU-4", "System tests in real mode (no GPU needed)",
-  [The demo runs in real mode; we must know what a user sees and how long it takes on a normal laptop.],
-  [
-    + Untick Mock Mode. The first run downloads about 1.6 GB of model weights; wait.
-    + Run the sample photo, then one cotton photo from `data/datasets/cottonweeddet3_official/images/` (after SA-1's build step, or ask Sahil for one).
-    + For each run note: total seconds (use a phone stopwatch), the green REAL OUTPUT banner, the status text, how many weed clusters, any error.
-    + Write 6 test cases (TC-28 to TC-33) for real mode from what you saw: what must be on screen, acceptable time, error messages.
-  ],
-  [Tab SU-4 with the runs and the 6 cases; screenshots in `Drive/Sumant/SU-4`.],
-  [Two real runs recorded and 6 cases written.],
-  2)
-
-#task("SU-5", "Run the crop-or-weed comparison yourself (Week 5 T2.5, first round)",
-  [T2.5 decides which model checks uncertain plants. A second run on another machine shows whether the result repeats.],
-  [
-    + Create a free Cloudflare account; in the dashboard open AI → Workers AI → "Use REST API"; copy the Account ID and create an API token with the Workers AI template. Put them in `.env` as `CLOUDFLARE_ACCOUNT_ID=` and `CLOUDFLARE_API_TOKEN=`.
-    + Check: `python scripts/check_providers.py` must show two PASS lines.
-    + After the build step of SA-1 (needs the Kaggle token): `python scripts/compare_crop_or_weed.py`. It takes about 10 minutes because Groq allows only a few image calls per minute.
-    + Upload `data/outputs/t2_2/results.json` and copy the final table from the terminal.
-  ],
-  [`Drive/Sumant/SU-5/results.json` and the table in tab SU-5.],
-  [Your table posted; differences from Chaitanya's run (Groq 16/20, Clef 14/20, row rule 13/20) noted.],
-  2)
-
-#task("SU-6", "Report content: introduction and related work (Week 5 T2.7)",
-  [Chaitanya writes chapters 1 and 2 from your notes.],
-  [
-    Under heading SU-6 in the Report Content doc: (1) the problem in five bullets (blanket spraying, cost, why weed-versus-crop is hard) with a source for every number; (2) for each paper below: what they did, the dataset, the key number, one line on how we differ.
-    Grounding DINO (Liu et al., ECCV 2024, arxiv.org/abs/2303.05499) · SAM 2 (Ravi et al., 2024, arxiv.org/abs/2408.00714) · Grounded SAM (Ren et al., 2024, arxiv.org/abs/2401.14159) · Milioto, Lottes, Stachniss (ICRA 2018, arxiv.org/abs/1709.06764) · Chong et al. (IROS 2025, github.com/PRBonn/WeedsAreWeird) · Nasir, Rehman, Hussain (Frontiers in Plant Science 2026, doi 10.3389/fpls.2025.1735096).
-  ],
-  [Heading SU-6 in the Report Content doc.],
-  [Five problem bullets and six paper summaries, each with its source.],
-  3)
-
-= Amit · tester (Week 4 + about 10% of Week 5)
-
-#task("AM-1", "Re-test and confirm the eight closed issues",
-  [You found these bugs; you confirm the fixes. That is how the defect life cycle ends.],
-  [
-    + `git pull`, then start the app.
-    + Repeat *your own steps* from issues \#6, \#7, \#8, \#9, \#10, \#11, \#12 and \#13 (each issue page has the steps and Chaitanya's re-test comment).
-    + On each issue add a comment: "Re-tested by tester on (date), Windows, commit (first 7 characters of `git log -1`): PASS" with a screenshot, or "FAIL" with what you saw. If it fails, click *Reopen*.
-  ],
-  [Eight GitHub comments with screenshots.],
-  [All eight issues have your comment.],
-  2)
-
-#task("AM-2", "Regression: repeat TC-01 to TC-16 on the new main",
-  [Fixes can break other things. Re-running your Cycle 0 cases shows whether anything regressed.],
-  [Follow `docs/testing/System_Test_Runbook_Cycle0.pdf` Part C exactly as on 16 October, on the latest `main`. Note any case whose result changed and why.],
-  [New tab *AM-2* in the results sheet (same columns as Cycle 0); screenshots in `Drive/Amit/AM-2`; an issue for every new failure.],
-  [16 rows with results.],
-  3)
-
-#task("AM-3", "Record the app in real mode (T4.5)",
-  [We need a backup video of a real run in case the demo laptop fails.],
-  [
-    + Untick Mock Mode and run one cotton or sugar beet photo (CPU is fine, only slow).
-    + Record the screen (Windows: Win + G, Xbox Game Bar, "Start recording"): upload, wait, result with the green REAL banner, scroll through, download the GeoJSON.
-    + Note the total time.
-  ],
-  [Video in `Drive/Amit/AM-3`, time in the group.],
-  [One complete real-mode recording.],
-  1)
-
-#task("AM-4", "Demo dry run (Week 5 work)",
-  [The demo must not surprise us on the viva day.],
-  [Go through `docs/guides/04_Demo_Playbook.pdf` step by step on your laptop as if presenting. Mark every step that fails, is confusing, or no longer matches the app.],
-  [Tab AM-4: `step` · `ok / problem` · `what happened`.],
-  [Every playbook step has a row.],
-  1)
-
-#task("AM-5", "Slide deck skeleton (Google Slides)",
-  [Each member will add 2–3 slides; one shared style avoids a patchwork deck.],
-  [Make a Google Slides deck with one clean style and these empty sections: Problem · Research question · Pipeline · Safety gate · Data and ground truth · Results · Testing · Limitations and future work · Team. Share edit access with the group.],
-  [Link in the group.],
-  [Deck exists with all sections.],
-  1)
-
-= Chaitanya and Claude (in parallel, for context)
-
-Crop-protection metric and weed recall in `src/evaluation/` (tested with SA-2's numbers) · baseline
-real run over the 38 images on the laptop GPU (*Checkpoint 2, Sunday 25 October*) · loading the real
-ICAR knowledge store so prescriptions work in real mode · crop-exclusion improvement (T1.6) and
-triage before the map (T1.7) · Clef Flash inside the workflow (T2.8) · report and slides in Typst from
-your sheets · reviewing and merging all changes.
+After the defects from cycle 1 are fixed: every tester re-runs every case that failed, plus five
+cases that passed (your choice), on the latest `main`, and adds a `regression result` column to the
+same sheet. The tester who filed a defect closes its issue after the re-test passes.
 
 = Templates and rules
 
 == GitHub issue for a defect
 
-Title: `[TC-xx] what goes wrong, in one line`. Body:
-*Steps:* numbered, so anyone can repeat them · *Expected:* · *Actual:* · *Severity:* high (crop could be
-sprayed, mock shown as real, or the demo crashes) / medium (wrong number or misleading screen) /
-low (cosmetic) · *Environment:* Windows/Linux, Python version, commit (`git log -1`), Mock or Real ·
-*Evidence:* screenshot attached.
+Title `[ST-07] what goes wrong, in one line` (use the test ID). Body: *Steps* (numbered),
+*Expected* (copy from this document), *Actual*, *Severity* (high: crop could be sprayed, mock shown
+as real, wrong chemical or dose, or the demo crashes; medium: wrong number or misleading screen;
+low: cosmetic), *Environment* (Windows/Linux, Python version, `git log -1` first 7 characters,
+mock or real), *Evidence* (screenshot attached).
 
 == Rules
 
-- No "done", "verified" or "100%" without a screenshot or pasted output.
+- No "pass", "done" or "verified" without a screenshot or pasted output.
+- Record what you saw even when it passes; "pass" alone is not evidence.
 - The tester who filed a defect closes it; nobody closes their own fix.
-- Do not edit `eval_manifest_v2`, change models or add packages.
-- If an AI tool helps you, read and understand what it wrote before you submit it; you will be asked about it in the viva.
+- Do not edit the manifests, change models, or add packages.
+- If an AI tool helps you, understand what it did before you submit; the viva will ask.
