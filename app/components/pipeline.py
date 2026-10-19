@@ -227,6 +227,7 @@ def execute_agriagent_workflow(
     target_weed_hint: Optional[str] = None,
     min_confidence: float = 0.70,
     use_agent: bool = False,
+    plant_rules: bool = False,
 ) -> Dict[str, Any]:
     """
     Execute the dual-brain AgriAgent workflow from input image to spray map and prescription.
@@ -242,6 +243,7 @@ def execute_agriagent_workflow(
         target_weed_hint: Optional weed species hint for System 2 prescription.
         min_confidence: Lowest detection score the spray gate accepts (never below 0.70).
         use_agent: Let the escalation agent review withheld plants (real mode; calls Groq/Clef).
+        plant_rules: Classify every green patch by rules (real mode; no model calls).
 
     Returns:
         final_state: Comprehensive GraphState dictionary.
@@ -254,6 +256,7 @@ def execute_agriagent_workflow(
         buffer_pixels=buffer_pixels,
         min_confidence=min_confidence,
         escalation_agent=_escalation_agent() if use_agent and not mock_mode else None,
+        plant_rules=plant_rules and not mock_mode,
     )
 
     initial_state = create_initial_state(
@@ -395,13 +398,14 @@ def build_spray_geojson(
     crop: str = "cotton",
     nozzle_buffer_cm: int = 10,
     field_id: str = "VJTI-FIELD-PLOT-01",
-    min_fragment_fraction: float = 0.0005,
+    min_fragment_px: int = 16,
 ) -> Dict[str, Any]:
     """
     Generate a GeoJSON FeatureCollection with one feature per approved weed zone.
 
-    Pieces of a zone smaller than min_fragment_fraction of the image (default 0.05%) are
-    dropped: jagged mask edges otherwise produced hundreds of speck features per weed.
+    Pieces of a zone smaller than min_fragment_px pixels (default 16) are dropped: jagged
+    mask edges produced hundreds of speck features per weed. A fixed size, not a share of
+    the image, so real small weeds (about 80 px in the sugar beet photos) are kept.
     Herbicide fields appear only when System 2 produced a real prescription (#7).
     Coordinates are NOT GPS: pixel positions are offset from a fixed placeholder point.
     """
@@ -431,7 +435,7 @@ def build_spray_geojson(
         zone_mask = zone.get("mask")
         if not label or not isinstance(zone_mask, np.ndarray) or zone_mask.ndim != 2:
             continue
-        min_area = min_fragment_fraction * zone_mask.size
+        min_area = min_fragment_px
         polygons = []
         for polygon in _mask_polygons(zone_mask):
             if abs(_signed_ring_area(polygon[0])) < min_area:

@@ -172,6 +172,11 @@ def main():
         "--agent", action="store_true", help="Let the escalation agent review withheld plants"
     )
     parser.add_argument(
+        "--no-plant-rules",
+        action="store_true",
+        help="Spray only what the detector labels (the old behaviour)",
+    )
+    parser.add_argument(
         "--language", default="English", help="Farmer summary language: English, Hindi, Marathi"
     )
     parser.add_argument(
@@ -205,7 +210,12 @@ def main():
         from src.agents.escalation_agent import EscalationAgent
 
         agent = EscalationAgent()
-    runner = VisionWorkflowRunner(mock_mode=args.mock, iou_threshold=0.85, escalation_agent=agent)
+    runner = VisionWorkflowRunner(
+        mock_mode=args.mock,
+        iou_threshold=0.85,
+        escalation_agent=agent,
+        plant_rules=not args.mock and not args.no_plant_rules,
+    )
 
     # 3. Execute
     initial_state = create_initial_state(img, text_prompt=args.prompt)
@@ -259,6 +269,8 @@ def main():
         f"• Chemical Volume Saved    : {spray_info.get('chemical_savings_percentage', 0.0):.1f}% vs Broadcast"
     )
     print(f"• Status                   : {spray_info.get('status', 'Complete')}")
+    if spray_info.get("plant_rules"):
+        print(f"• Plant rules (green patches): {spray_info['plant_rules']}")
     for item in spray_info.get("withheld_masks", []):
         print(
             f"  withheld: {item['label']}: {item['reason']}"

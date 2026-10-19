@@ -80,3 +80,50 @@ class TestRules(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestPlantRulesInTheGate(unittest.TestCase):
+    """The workflow's gate with plant_rules on, and the GeoJSON export of what it finds."""
+
+    def run_gate(self, plant_rules):
+        from PIL import Image
+
+        from app.components.pipeline import build_spray_geojson
+        from src.workflow import VisionWorkflowRunner
+
+        image = field()
+        image[20:80, 20:80] = GREEN  # crop plant found by the detector
+        image[150:159, 150:159] = GREEN  # small weed the detector never boxed (81 px)
+        crop = np.zeros((200, 200), dtype=bool)
+        crop[15:85, 15:85] = True
+        box = {
+            "x1": 15.0,
+            "y1": 15.0,
+            "x2": 85.0,
+            "y2": 85.0,
+            "label": "sugar beet plant",
+            "score": 0.6,
+        }
+        state = {
+            "image": Image.fromarray(image),
+            "masks": [
+                {"label": "sugar beet plant", "mask_array": crop, "predicted_iou": 0.95, "box": box}
+            ],
+            "text_prompt": "weed . sugar beet plant .",
+        }
+        out = VisionWorkflowRunner(mock_mode=True, plant_rules=plant_rules).spray_map_node(state)
+        composite = out["artifacts"]["spray_map"].payload["composite_mask"]
+        return out, composite, build_spray_geojson({**state, **out})
+
+    def test_small_weed_is_sprayed_and_crop_is_not(self):
+        out, composite, geojson = self.run_gate(plant_rules=True)
+        self.assertTrue(composite[155, 155])
+        self.assertFalse(composite[50, 50])
+        self.assertEqual(out["spray_map"]["plant_rules"]["weed"], 1)
+        # An 81-pixel weed must survive the GeoJSON fragment filter.
+        self.assertEqual(len(geojson["features"]), 1)
+
+    def test_switch_off_keeps_the_old_behaviour(self):
+        out, composite, _ = self.run_gate(plant_rules=False)
+        self.assertFalse(composite.any())
+        self.assertEqual(out["spray_map"]["plant_rules"], {})

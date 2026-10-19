@@ -137,6 +137,12 @@ def spray_masks(
         runner.min_confidence = limit
         payload = runner.spray_map_node(state)["artifacts"]["spray_map"].payload
         footprints[f"gate_{limit:.2f}"] = spray_footprint(payload["composite_mask"], buffer)
+    # The workflow's own gate with the plant rules switched on (what the app and demo run).
+    runner.plant_rules = True
+    runner.min_confidence = deployed
+    payload = runner.spray_map_node(state)["artifacts"]["spray_map"].payload
+    footprints["pipeline_plant_rules"] = spray_footprint(payload["composite_mask"], buffer)
+    runner.plant_rules = False
     if exclusion:
         # T1.6: the same gates with crop-labelled pixels removed from the weed masks.
         runner.crop_exclusion = True
@@ -376,7 +382,13 @@ def main() -> int:
         )
 
     keys = (
-        ["every_mask", "every_plant_mask", "plant_rules", "plant_rules+crop_guard"]
+        [
+            "every_mask",
+            "every_plant_mask",
+            "plant_rules",
+            "plant_rules+crop_guard",
+            "pipeline_plant_rules",
+        ]
         + [f"gate_{t:.2f}" for t in GATE_SETTINGS]
         + (["gate_0.35+exclusion", "gate_0.50+exclusion"] if args.exclusion else [])
         + ([AGENT] if agent else [])
