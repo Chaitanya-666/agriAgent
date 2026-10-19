@@ -90,6 +90,7 @@ def run_pipeline_on_image(
         force_system2=force_system2,
         min_confidence=confidence_threshold,
         use_agent=not mock_mode,
+        plant_rules=not mock_mode,
     )
 
     boxes = final_state.get("boxes", [])

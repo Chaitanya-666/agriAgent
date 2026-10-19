@@ -52,6 +52,7 @@ from src.agents.router_contract import BaseRouter
 from src.agents.router_contract import RouterAction
 from src.agents.deterministic_router import DeterministicRouter
 from src.agents.clef_flash_router import ClefFlashRouter
+from src.vision.plant_candidates import classify_plants
 
 logger = logging.getLogger("agriagent.workflow")
 
@@ -80,7 +81,23 @@ def spray_status(spray_allowed: bool, approved: int, withheld: int) -> str:
         suffix = f" ({withheld} withheld for review)" if withheld else ""
         return f"No weed zones approved: nothing to spray{suffix}"
     suffix = f"; {withheld} withheld for review" if withheld else ""
-    return f"Selective Spot-Spray Prescription Generated ({approved} zones{suffix})"
+    return f"Selective Spot-Spray Prescription Generated ({approved} weed patch(es){suffix})"
+
+
+def crop_reference_masks(
+    masks: List[Mask], prompt: Optional[str], shape: Tuple[int, int], max_fraction: float = 0.5
+) -> List[np.ndarray]:
+    """Crop-labelled masks the plant rules compare against (whole-photo masks left out)."""
+    out = []
+    for m in masks:
+        mask = np.asarray(m["mask_array"], dtype=bool)
+        if (
+            mask.shape == shape
+            and mask.mean() <= max_fraction
+            and label_policy(str(m.get("label", "")), prompt) == "crop"
+        ):
+            out.append(mask)
+    return out
 
 
 def crop_pixels(
@@ -156,6 +173,7 @@ class VisionWorkflowRunner:
         min_confidence: float = 0.70,
         escalation_agent: Optional[Any] = None,
         crop_exclusion: bool = False,
+        plant_rules: bool = False,
     ):
         self.mock_mode = mock_mode
         # Optional reviewer for withheld plants (src/agents/escalation_agent.py); None keeps
@@ -163,6 +181,9 @@ class VisionWorkflowRunner:
         self.escalation_agent = escalation_agent
         # T1.6: remove pixels of crop-labelled masks from the weed masks before spraying.
         self.crop_exclusion = crop_exclusion
+        # Classify every green patch by rules (src/vision/plant_candidates.py, frozen "v3"):
+        # on held-out sugar beet photos weed recall rose from 1.8% to 77.9%.
+        self.plant_rules = plant_rules
         # The gate never sprays below 0.70; a caller (the app's slider) may only raise it.
         self.min_confidence = max(0.70, float(min_confidence))
         self.detector = detector or GroundingDINOEngine(mock_mode=mock_mode)
@@ -421,6 +442,36 @@ class VisionWorkflowRunner:
                     }
                 )
 
+        plant_rule_summary: Dict[str, int] = {}
+        if self.plant_rules and isinstance(img, Image.Image):
+            weed_patches, crop_patches, patches = classify_plants(
+                np.asarray(img.convert("RGB")), crop_reference_masks(masks, prompt, (h, w))
+            )
+            # The nozzle never fires over a plant classified as crop.
+            weed_patches &= ~crop_patches
+            weed_patches &= ~crop_pixels(masks, prompt, (h, w))
+            plant_rule_summary = {
+                v: sum(p["verdict"] == v for p in patches) for v in ("weed", "crop", "unsure")
+            }
+            if weed_patches.any():
+                composite_mask |= weed_patches
+                contributing_weeds += plant_rule_summary["weed"]
+                ys, xs = np.where(weed_patches)
+                approved_zones.append(
+                    {
+                        "label": "weed patches (plant rules)",
+                        "score": 0.0,
+                        "bbox": [
+                            int(xs.min()),
+                            int(ys.min()),
+                            int(xs.max()) + 1,
+                            int(ys.max()) + 1,
+                        ],
+                        "mask": weed_patches.astype(np.uint8),
+                        "approved_by": "plant_rules",
+                    }
+                )
+
         if self.crop_exclusion:
             crop_area = crop_pixels(masks, prompt, (h, w))
             if crop_area.any():
@@ -459,9 +510,12 @@ class VisionWorkflowRunner:
             "target_resolution": {"width": w, "height": h},
             "spray_allowed": spray_allowed,
             "safety_action": safety_decision.action.value,
-            "status": spray_status(spray_allowed, len(approved_zones), len(withheld)),
+            "status": spray_status(
+                spray_allowed, contributing_weeds if approved_zones else 0, len(withheld)
+            ),
             "withheld_masks": withheld,
             "escalation": reviews,
+            "plant_rules": plant_rule_summary,
         }
 
         # Build serializable artifact
