@@ -7,6 +7,7 @@ Statutory Safety & Guardrail Test Suite:
 4. Statutory Dosage Ceiling Check (Table 4.3 upper limits).
 5. Mandatory Statutory Disclaimer presence.
 """
+
 import unittest
 from typing import Any, Dict, List
 
@@ -81,7 +82,9 @@ class TestPrescriptionSafety(unittest.TestCase):
 
     def test_empty_store_returns_no_knowledge_zero_chemicals(self):
         """Verify querying an empty store yields no_knowledge_found with zero chemicals."""
-        report = get_herbicide_prescription("Parthenium", "vegetative", crop="cotton", store=self.empty_store)
+        report = get_herbicide_prescription(
+            "Parthenium", "vegetative", crop="cotton", store=self.empty_store
+        )
         self.assertEqual(report["status"], "no_knowledge_found")
         self.assertIsNone(report["active_ingredient"])
         self.assertIsNone(report["formulation"])
@@ -105,7 +108,9 @@ class TestPrescriptionSafety(unittest.TestCase):
 
     def test_banned_chemical_filter_nitrofen(self):
         """Verify CIBRC banned chemical Nitrofen triggers unapproved_chemical_flagged."""
-        report = get_herbicide_prescription("Nitrofen", "vegetative", crop="cotton", store=self.store)
+        report = get_herbicide_prescription(
+            "Nitrofen", "vegetative", crop="cotton", store=self.store
+        )
         self.assertEqual(report["status"], "unapproved_chemical_flagged")
         self.assertIsNone(report["active_ingredient"])
         self.assertIsNotNone(report["safety_warning"])
@@ -119,7 +124,9 @@ class TestPrescriptionSafety(unittest.TestCase):
                 self.assertIsNotNone(match, f"Failed to identify banned chemical: {banned_chem}")
                 self.assertEqual(match[0], banned_chem)
 
-                report = get_herbicide_prescription(banned_chem, "vegetative", crop="cotton", store=self.store)
+                report = get_herbicide_prescription(
+                    banned_chem, "vegetative", crop="cotton", store=self.store
+                )
                 self.assertEqual(report["status"], "unapproved_chemical_flagged")
                 self.assertIsNone(report["active_ingredient"])
 
@@ -129,45 +136,57 @@ class TestPrescriptionSafety(unittest.TestCase):
         self.assertEqual(ceiling, 75.0)
 
         # Compliant custom store document: 70 g a.i./ha
-        compliant_doc = [{
-            "text": "ICAR Recommendation: Crop: cotton | Weed: Trianthema | Herbicide: Pyrithiobac-sodium 10% EC | Active ingredient: Pyrithiobac-sodium | Dosage a.i.: 70.0 g/ha | Dilution in water: 500 L | Waiting period: 160 days | Source: bulletin.pdf p.35",
-            "crop": "cotton",
-            "weed_species": "Trianthema",
-            "chemical": "Pyrithiobac-sodium 10% EC",
-            "active_ingredient": "Pyrithiobac-sodium",
-            "dosage_ai_g_per_ha": 70.0,
-            "water_l_per_ha": 500.0,
-            "waiting_period_days": 160,
-            "authority": "ICAR",
-            "source": "bulletin.pdf",
-            "page": 35,
-        }]
+        compliant_doc = [
+            {
+                "text": "ICAR Recommendation: Crop: cotton | Weed: Trianthema | Herbicide: Pyrithiobac-sodium 10% EC | Active ingredient: Pyrithiobac-sodium | Dosage a.i.: 70.0 g/ha | Dilution in water: 500 L | Waiting period: 160 days | Source: bulletin.pdf p.35",
+                "crop": "cotton",
+                "weed_species": "Trianthema",
+                "chemical": "Pyrithiobac-sodium 10% EC",
+                "active_ingredient": "Pyrithiobac-sodium",
+                "dosage_ai_g_per_ha": 70.0,
+                "water_l_per_ha": 500.0,
+                "waiting_period_days": 160,
+                "authority": "ICAR",
+                "source": "bulletin.pdf",
+                "page": 35,
+            }
+        ]
         comp_store = InMemoryKnowledgeStore(documents=compliant_doc)
-        presc_comp = create_chemical_prescription("Trianthema", "vegetative", crop="cotton", store=comp_store)
+        presc_comp = create_chemical_prescription(
+            "Trianthema", "vegetative", crop="cotton", store=comp_store
+        )
         self.assertEqual(presc_comp.status, "ok")
         self.assertEqual(presc_comp.dosage_ai_g_per_ha, 70.0)
         self.assertFalse(presc_comp.dosage_clamped)
 
         # Excessive dosage custom store document: 150 g a.i./ha (exceeds 75 g ceiling)
-        excessive_doc = [{
-            "text": "ICAR Recommendation: Crop: cotton | Weed: Trianthema | Herbicide: Pyrithiobac-sodium 10% EC | Active ingredient: Pyrithiobac-sodium | Dosage a.i.: 150.0 g/ha | Dilution in water: 500 L | Waiting period: 160 days | Source: bulletin.pdf p.35",
-            "crop": "cotton",
-            "weed_species": "Trianthema",
-            "chemical": "Pyrithiobac-sodium 10% EC",
-            "active_ingredient": "Pyrithiobac-sodium",
-            "dosage_ai_g_per_ha": 150.0,
-            "water_l_per_ha": 500.0,
-            "waiting_period_days": 160,
-            "authority": "ICAR",
-            "source": "bulletin.pdf",
-            "page": 35,
-        }]
+        excessive_doc = [
+            {
+                "text": "ICAR Recommendation: Crop: cotton | Weed: Trianthema | Herbicide: Pyrithiobac-sodium 10% EC | Active ingredient: Pyrithiobac-sodium | Dosage a.i.: 150.0 g/ha | Dilution in water: 500 L | Waiting period: 160 days | Source: bulletin.pdf p.35",
+                "crop": "cotton",
+                "weed_species": "Trianthema",
+                "chemical": "Pyrithiobac-sodium 10% EC",
+                "active_ingredient": "Pyrithiobac-sodium",
+                "dosage_ai_g_per_ha": 150.0,
+                "water_l_per_ha": 500.0,
+                "waiting_period_days": 160,
+                "authority": "ICAR",
+                "source": "bulletin.pdf",
+                "page": 35,
+            }
+        ]
         excess_store = InMemoryKnowledgeStore(documents=excessive_doc)
-        presc_excess = create_chemical_prescription("Trianthema", "vegetative", crop="cotton", store=excess_store)
+        presc_excess = create_chemical_prescription(
+            "Trianthema", "vegetative", crop="cotton", store=excess_store
+        )
         self.assertEqual(presc_excess.status, "ok")
         self.assertTrue(presc_excess.dosage_clamped)
         self.assertEqual(presc_excess.original_dosage_ai_g_per_ha, 150.0)
-        self.assertEqual(presc_excess.dosage_ai_g_per_ha, 75.0, "Over-dosage must be clamped to statutory ceiling of 75.0 g/ha")
+        self.assertEqual(
+            presc_excess.dosage_ai_g_per_ha,
+            75.0,
+            "Over-dosage must be clamped to statutory ceiling of 75.0 g/ha",
+        )
         self.assertIsNotNone(presc_excess.safety_warning)
         self.assertIn("ceiling exceeded", presc_excess.safety_warning.lower())
 
@@ -192,3 +211,43 @@ class TestPrescriptionSafety(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestIcarTableMatchesBulletin(unittest.TestCase):
+    """K12: values checked against icar_dwr_herbicide_use_bulletin22.pdf on 20 Oct 2026."""
+
+    def row(self, crop, chemical):
+        from src.agronomy.knowledge_store import CANONICAL_ICAR_TABLE_ROWS
+
+        return next(
+            r for r in CANONICAL_ICAR_TABLE_ROWS if r["crop"] == crop and r["chemical"] == chemical
+        )
+
+    def test_rice_pyrazosulfuron_row(self):
+        # The old row said 20 g and 75 days: above the approved dose, 20 days short on waiting.
+        r = self.row("rice", "Pyrazosulfuron-ethyl 10% WP")
+        self.assertEqual(
+            (r["dosage_ai_g_per_ha"], r["waiting_period_days"], r["page"]), (15.0, 95, 33)
+        )
+        self.assertNotIn("Echinochloa", r["weed_species"])
+
+    def test_dose_ceilings(self):
+        from src.agronomy.prescription import get_dosage_ceiling
+
+        self.assertEqual(get_dosage_ceiling("rice", "pyrazosulfuron-ethyl"), 15.0)
+        self.assertEqual(get_dosage_ceiling("rice", "bispyribac-sodium"), 20.0)
+        self.assertEqual(get_dosage_ceiling("wheat", "2,4-d"), 750.0)
+
+    def test_missing_waiting_period_is_not_zero_days(self):
+        from src.agronomy.knowledge_store import format_table_row_document
+
+        r = self.row("cotton", "Diuron 80% WP")
+        self.assertIsNone(r["waiting_period_days"])
+        self.assertIn(
+            "Waiting period (PHI): not stated in the bulletin", format_table_row_document(r)
+        )
+
+    def test_clodinafop_lists_only_the_bulletin_weed(self):
+        self.assertEqual(
+            self.row("wheat", "Clodinafop-propargyl 15% WP")["weed_species"], "Phalaris minor"
+        )

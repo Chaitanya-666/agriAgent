@@ -117,6 +117,9 @@ def _embedder(embedding: str):
 
 # ==============================================================================
 # CANONICAL STRUCTURED ICAR / CIBRC TABLES (Bulletin No. 22)
+# Checked row by row against the PDF on 20 Oct 2026 (K12, task SU-2); see
+# docs/results/icar_table_check_20261020.md. Where the bulletin gives a range, the upper
+# value is stored; None means the bulletin states no value ("-").
 # ==============================================================================
 CANONICAL_ICAR_TABLE_ROWS: List[Dict[str, Any]] = [
     # Table 4.3: Cotton Herbicide Recommendations (pp. 34-35)
@@ -139,8 +142,8 @@ CANONICAL_ICAR_TABLE_ROWS: List[Dict[str, Any]] = [
         "chemical": "Alachlor 10% Gr",
         "active_ingredient": "Alachlor",
         "dosage_ai_g_per_ha": 2500.0,
-        "water_l_per_ha": 0.0,
-        "waiting_period_days": 0,
+        "water_l_per_ha": None,  # not stated in the bulletin ("-")
+        "waiting_period_days": None,  # not stated in the bulletin ("-")
         "authority": "ICAR",
         "source": "icar_dwr_herbicide_use_bulletin22.pdf",
         "page": 34,
@@ -153,7 +156,7 @@ CANONICAL_ICAR_TABLE_ROWS: List[Dict[str, Any]] = [
         "active_ingredient": "Diuron",
         "dosage_ai_g_per_ha": 1500.0,
         "water_l_per_ha": 625.0,
-        "waiting_period_days": 0,
+        "waiting_period_days": None,  # not stated in the bulletin ("-")
         "authority": "ICAR",
         "source": "icar_dwr_herbicide_use_bulletin22.pdf",
         "page": 34,
@@ -240,56 +243,56 @@ CANONICAL_ICAR_TABLE_ROWS: List[Dict[str, Any]] = [
     # Table 4.8: Beet root (p. 47)
     {
         "crop": "beet root",
-        "weed_species": "Chenopodium album, Amaranthus viridis, Portulaca oleracea",
+        "weed_species": "Digitaria sanguinalis, Echinochloa crus-galli, Chenopodium sp., Argemone mexicana, Amaranthus spinosus, Portulaca sp.",
         "chemical": "Pendimethalin 30% EC",
         "active_ingredient": "Pendimethalin",
         "dosage_ai_g_per_ha": 1000.0,
-        "water_l_per_ha": 500.0,
-        "waiting_period_days": 60,
+        "water_l_per_ha": 600.0,
+        "waiting_period_days": None,  # not stated in the bulletin ("-")
         "authority": "ICAR",
         "source": "icar_dwr_herbicide_use_bulletin22.pdf",
         "page": 47,
         "table": "Table 4.8",
     },
-    # Table 4.1: Wheat (pp. 25-26)
+    # Table 4.1: Wheat (pp. 25-27)
     {
         "crop": "wheat",
-        "weed_species": "Phalaris minor, Chenopodium album",
+        "weed_species": "Phalaris minor, Chenopodium sp., Melilotus alba",
         "chemical": "Sulfosulfuron 75% WG",
         "active_ingredient": "Sulfosulfuron",
         "dosage_ai_g_per_ha": 25.0,
-        "water_l_per_ha": 300.0,
+        "water_l_per_ha": 250.0,
         "waiting_period_days": 110,
         "authority": "ICAR",
         "source": "icar_dwr_herbicide_use_bulletin22.pdf",
-        "page": 25,
+        "page": 27,
         "table": "Table 4.1",
     },
     {
         "crop": "wheat",
-        "weed_species": "Phalaris minor, Avena ludoviciana",
+        "weed_species": "Phalaris minor",
         "chemical": "Clodinafop-propargyl 15% WP",
         "active_ingredient": "Clodinafop-propargyl",
         "dosage_ai_g_per_ha": 60.0,
-        "water_l_per_ha": 375.0,
+        "water_l_per_ha": 400.0,
         "waiting_period_days": 110,
         "authority": "ICAR",
         "source": "icar_dwr_herbicide_use_bulletin22.pdf",
         "page": 25,
         "table": "Table 4.1",
     },
-    # Table 4.2: Rice (pp. 28-29)
+    # Table 4.2: Rice (p. 33)
     {
         "crop": "rice",
-        "weed_species": "Echinochloa spp., Cyperus spp.",
+        "weed_species": "Cyperus iria, Cyperus difformis, Fimbristylis miliacea, Monochoria vaginalis, Ludwigia parviflora",
         "chemical": "Pyrazosulfuron-ethyl 10% WP",
         "active_ingredient": "Pyrazosulfuron-ethyl",
-        "dosage_ai_g_per_ha": 20.0,
-        "water_l_per_ha": 500.0,
-        "waiting_period_days": 75,
+        "dosage_ai_g_per_ha": 15.0,
+        "water_l_per_ha": 600.0,
+        "waiting_period_days": 95,
         "authority": "ICAR",
         "source": "icar_dwr_herbicide_use_bulletin22.pdf",
-        "page": 28,
+        "page": 33,
         "table": "Table 4.2",
     },
     # Table 3.3: Banned / Withdrawn Herbicides (p. 18)
@@ -380,6 +383,10 @@ CANONICAL_ICAR_TABLE_ROWS: List[Dict[str, Any]] = [
 ]
 
 
+def _stated(value: Any, unit: str) -> str:
+    return "not stated in the bulletin" if value is None else f"{value} {unit}"
+
+
 def format_table_row_document(row: Dict[str, Any]) -> str:
     """Format a table row into a structured document text for embedding."""
     return (
@@ -387,8 +394,8 @@ def format_table_row_document(row: Dict[str, Any]) -> str:
         f"Weed species: {row.get('weed_species')} | Chemical: {row.get('chemical')} | "
         f"Active ingredient: {row.get('active_ingredient')} | "
         f"Dosage a.i.: {row.get('dosage_ai_g_per_ha')} g/ha | "
-        f"Water volume: {row.get('water_l_per_ha')} L/ha | "
-        f"Waiting period (PHI): {row.get('waiting_period_days')} days | "
+        f"Water volume: {_stated(row.get('water_l_per_ha'), 'L/ha')} | "
+        f"Waiting period (PHI): {_stated(row.get('waiting_period_days'), 'days')} | "
         f"Authority: {row.get('authority')} | Source: {row.get('source')} p.{row.get('page')}"
     )
 

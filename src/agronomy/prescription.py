@@ -39,7 +39,8 @@ BANNED_HERBICIDES: Dict[str, str] = {
     "tca": "Registration refused in India (Table 3.3, Insecticides Act 1968)",
 }
 
-# Table 4.1 to 4.8: Statutory maximum active ingredient dosage ceilings (g a.i. / ha)
+# Table 4.1 to 4.8: Statutory maximum active ingredient dosage ceilings (g a.i. / ha).
+# Upper values of the bulletin's ranges; checked against the PDF on 20 Oct 2026 (K12).
 STATUTORY_DOSAGE_CEILINGS_G_PER_HA: Dict[str, Dict[str, float]] = {
     "cotton": {
         "pyrithiobac-sodium": 75.0,
@@ -62,15 +63,15 @@ STATUTORY_DOSAGE_CEILINGS_G_PER_HA: Dict[str, Dict[str, float]] = {
         "sulfosulfuron": 25.0,
         "clodinafop-propargyl": 60.0,
         "metsulfuron-methyl": 4.0,
-        "2,4-d": 500.0,
+        "2,4-d": 750.0,
         "isoproturon": 1000.0,
-        "pendimethalin": 1000.0,
+        "pendimethalin": 1500.0,  # 1.0 / 1.25 / 1.5 kg for light / medium / heavy soil
     },
     "rice": {
-        "pyrazosulfuron-ethyl": 20.0,
-        "bispyribac-sodium": 25.0,
+        "pyrazosulfuron-ethyl": 15.0,
+        "bispyribac-sodium": 20.0,
         "pretilachlor": 750.0,
-        "butachlor": 1500.0,
+        "butachlor": 2000.0,
     },
 }
 
