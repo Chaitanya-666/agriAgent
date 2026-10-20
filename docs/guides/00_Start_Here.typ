@@ -21,9 +21,10 @@ These guides close that gap. They are written to be read *next to the code*, wit
   [2 · Codebase Walkthrough], [The code in reading order. One image traced through every function. The 12 known issues with line numbers.], [3–4 h],
   [3 · Viva Defence], [The questions you will be asked, with strong answers, including the uncomfortable ones.], [2 h + practice],
   [4 · Demo Playbook], [How to run the demo, what to say at each step, what can go wrong, and the backup plan.], [1 h + rehearsal],
+  [5 · Code Reading Drills], [A method for understanding any codebase fast, practised hands-on: eight drills with the terminal open, from tracing the pipeline to breaking the safety gate on purpose and writing the missing tests.], [8 sessions],
 )
 
-Also keep open: `docs/AgriAgent_Project_Map.pdf` (the plan) and the Week 1 and Week 2 dossiers (history).
+Also keep open: `docs/AgriAgent_Project_Map.pdf` (the plan) and the Week 1–4 dossiers (history and measured results).
 
 = How to study (the method)
 
@@ -37,15 +38,18 @@ Reading is not understanding. Use this loop for every section:
 Each guide ends with *self-check questions*. If you cannot answer one without looking, you are not done
 with that section.
 
-= Study plan until Wednesday 14 October
+= Study plan until the viva (Tuesday 10 November)
+
+Updated 20 October. The first plan (11–14 October) is done. Features are now frozen, so the code
+you study will not change under you except for bug fixes.
 
 #table(
   columns: (auto, 1fr),
   [When], [Do],
-  [Sun 11 Oct, night], [Project Map (whole). Guide 1, sections 1–4. Self-check.],
-  [Mon 12 Oct], [Guide 1 rest. Guide 2 parts 1–3 with `src/state.py`, `src/workflow.py` open.],
-  [Tue 13 Oct], [Guide 2 rest (vision, safety gate, agronomy, app). Run the app in mock mode (Guide 4, section 2).],
-  [Wed 14 Oct], [Guide 3: answer every question out loud. Mark the ones you cannot answer. Work through each one.],
+  [Week of 21 Oct], [Guide 5, Drills 1–2 (pipeline, safety gate), each with the matching part of Guide 2. Refresh Guide 1 where a drill shows a gap.],
+  [Week of 26 Oct], [Drills 3–5 (plant rules, metrics, escalation agent) next to the Week 4 dossier's results.],
+  [Week of 2 Nov], [Drills 6–7 (System 2 and ICAR, library code). Guide 3: answer every question out loud. Drill 8 on an unseen project.],
+  [Thu 5 – Mon 9 Nov], [Guide 4 rehearsal on the frozen `v1.0.0`; mock viva on Fri 6 Nov.],
 )
 
 = The five sentences you must always be able to say
