@@ -59,9 +59,47 @@ Log noise that is expected: "You are using a model of type `sam2_video` to insta
 type `sam2`" (the image model loads from the video checkpoint) and Grounding DINO's
 `labels`→`text_labels` FutureWarning.
 
+## F1 measured: what protecting large off-row plants costs
+
+`scripts/experiment_f1_row_rule.py`, development set only (the held-out set was not read). Rule 4
+("off the crop row → weed", used when a photo has no crop masks) was changed to "off the row → weed
+only if smaller than LIMIT × the median plant on the row, otherwise unsure". Both rule versions are
+applied to the same detections, in the product's own way, with the 10 px buffer. Every photo is
+scored as taken and rotated 90° (labels rotated). The v3 rows reproduce the committed development
+result exactly (`pipeline_plant_rules_dev_20261020`).
+
+Sugar beet, 30 photos, 93 beets, 282 weeds ("mostly sprayed" = at least half of the beet's pixels;
+"weeds hit" = at least half of the weed's pixels):
+
+| Rule | View | Crop pixels sprayed | Weed recall | Beets touched | Beets mostly sprayed | Weeds hit |
+|---|---|---|---|---|---|---|
+| **v3 (frozen)** | as taken | 4.55% | **71.47%** | 21 | 11 | 219 |
+| v3 | rotated | 8.46% | 71.47% | 23 | 14 | 219 |
+| limit 0.25 | as taken | 0.25% | 12.92% | 9 | 0 | 150 |
+| limit 0.5 | as taken | 0.32% | 21.97% | 10 | 1 | 172 |
+| limit 1.0 | as taken | 0.98% | 31.30% | 14 | 3 | 191 |
+| limit 1.5 | as taken | 1.20% | 39.08% | 16 | 4 | 202 |
+| limit 1.5 | rotated | 4.28% | 39.08% | 17 | 6 | 202 |
+
+Cotton (8 photos): v3 10.40% weed recall; limits 0.25 to 1.0 give about 4.2%; limit 1.5 is the same as v3.
+
+What this shows:
+
+- There is no free fix. Rule 4 produces most of v3's weed recall *and* most of its crop damage:
+  many real weeds in this dataset are not smaller than the beets on the row. Protecting large
+  off-row plants removes the fully sprayed beets (11 → 0 to 4) but loses 32 to 59 points of weed
+  recall.
+- Crop damage depends on whether Grounding DINO happens to box the crop: the same photos rotated
+  give 4.55% → 8.46% crop sprayed under v3, while weed recall is unchanged (the row test itself
+  works in both orientations).
+- Recommendation: **option A**. Keep v3 frozen (its held-out numbers stay valid), report F1 as the
+  main limitation, and report this table as the safety-versus-recall trade-off of the row rule. A
+  stricter "safe mode" setting (limit 1.5) is possible future work; adopting it now would need a new
+  held-out test that we no longer have.
+
 ## For Sunday
 
-1. F1: option A or B.
+1. F1: option A (recommended, see the measurement above) or B.
 2. Which of F2–F9 to fix before the code freeze (all small; F2, F4 and F5 matter most).
 3. ST-14 wording (F11), so the team's results are judged against what can be measured.
 4. A demo photo that shows a real prescription (F10), or say why there is none.
