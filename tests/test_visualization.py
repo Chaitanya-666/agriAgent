@@ -3,6 +3,7 @@ tests/test_visualization.py
 Unit tests for visualization utilities (masks and bounding box overlays).
 """
 
+import importlib.util
 import unittest
 import numpy as np
 from PIL import Image
@@ -101,13 +102,12 @@ class TestVisualization(unittest.TestCase):
         self.assertEqual(result.size, self.img.size)
 
 
-if __name__ == "__main__":
-    unittest.main()
-
-
 class TestOutlineMasks(unittest.TestCase):
     """F5: a tiny approved patch must be visible on screen."""
 
+    @unittest.skipUnless(
+        importlib.util.find_spec("cv2"), "OpenCV not installed (CI installs a minimal set)"
+    )
     def test_tiny_patch_gets_a_visible_ring(self):
         from src.vision.visualization import outline_masks
 
@@ -123,3 +123,7 @@ class TestOutlineMasks(unittest.TestCase):
 
         image = Image.new("RGB", (50, 50), (1, 2, 3))
         self.assertEqual(np.array(outline_masks(image, [])).tolist(), np.array(image).tolist())
+
+
+if __name__ == "__main__":
+    unittest.main()
