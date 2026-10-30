@@ -55,7 +55,7 @@ Reasoning now runs on Cloudflare (no Groq rate limit). Real runs take about 15 s
 | MT-06 | | | |
 | MT-07 | | | |
 | MT-08 | 30 Oct 21:40 | Covered in MT-02 (agent ticked): 6 reviews, all qwen_vlm answers from Cloudflare, no 429. F25: Cloudflare Qwen 12/20 on the T2.2 patches vs 16/20 on Groq (beets called crop 5/10 vs 9/10); agent kept all unsure | see MT-02 files; data/outputs/t2_2_cloudflare_20261030/ |
-| MT-09 | | | |
+| MT-09 | 30 Oct 21:57 | PASS for safety and System 2, weak detection (known F12): DINO boxed the 3 large palmer amaranth weeds as cotton (green), so the gate protected them; only 0.06% sprayed (specks at the edges). System 2 named Amaranthus (pigweed), correct genus, and matched a real ICAR cotton row: Pyrithiobac-sodium 10% EC, 75 g a.i./ha, PHI 160 days, bulletin p.35 (first real prescription on a test photo; F10 partly answered). F28: masks that were not sprayed are invisible, so 'no segmentation' is what a viewer sees. F29: Hindi summary turned the advisory dose into an instruction and dropped 'read the label' | MT-09-01-DASHBOARD.pdf, MT-09-02-GEOJSON.geojson |
 | MT-10 | 30 Oct 21:03 | PASS (run by Claude): cloudflare-qwen replied OK in 6.1 s; Clef Flash answered | terminal |
 
 Earlier, before the fixes (30 Oct, 20:16–20:31): `AgriAgent Dashboard.pdf` runs in ~/Downloads
