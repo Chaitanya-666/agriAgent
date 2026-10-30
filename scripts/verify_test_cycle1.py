@@ -7,7 +7,7 @@ official labels of the photo in eval_manifest_v2 / eval_manifest_v2_holdout.
 
 Usage:
     python scripts/verify_test_cycle1.py            # mock-mode cases (seconds, no GPU, no network)
-    python scripts/verify_test_cycle1.py --real     # also the real-mode cases (GPU, Groq, minutes)
+    python scripts/verify_test_cycle1.py --real     # also the real-mode cases (GPU, cloud reasoning, minutes)
 
 Each case prints PASS / FAIL / INFO (INFO: a measurement with no fixed expected value) and one
 line of detail. The exit code is the number of failures.
@@ -62,8 +62,9 @@ PHOTOS = {
     "cotton_CM_17": (f"{COTTON}/20190613_6062W_CM_17.jpg", "Cotton"),
     "cotton_CM_11": (f"{COTTON}/20190613_6062W_CM_11.jpg", "Cotton"),
 }
-# Pause before cases that call Groq: the free tier allows about 8,000 tokens per minute.
-GROQ_PAUSE_S = 30
+# Pause before cases that call the reasoning model. Groq's free tier allowed about 8,000 tokens per
+# minute; since 30 Oct the default is Cloudflare (daily allowance), so a short pause is enough.
+GROQ_PAUSE_S = 30 if os.getenv("REASONING_PROVIDER", "cloudflare").lower() == "groq" else 2
 
 Result = Tuple[str, str]  # (PASS | FAIL | INFO, detail)
 
@@ -310,18 +311,18 @@ def st15() -> Result:
 
 def st16() -> Result:
     from src.agronomy.farmer_summary import farmer_summary
-    from src.agronomy.providers.hosted_groq import HostedGroqProvider
+    from src.agronomy.providers import reasoning_provider
 
     _, state, _, _ = real_photo("beet_X-10-0")
     rows = []
     for language in ("Hindi", "Marathi"):
         time.sleep(GROQ_PAUSE_S)
         s = farmer_summary(
-            state, "sugar beet", mock_mode=False, language=language, provider=HostedGroqProvider()
+            state, "sugar beet", mock_mode=False, language=language, provider=reasoning_provider()
         )
         devanagari = any("ऀ" <= ch <= "ॿ" for ch in s["text"])
         rows.append((language, s["source"], devanagari))
-    ok = all(src == "groq" and dev for _, src, dev in rows)
+    ok = all(src == "model" and dev for _, src, dev in rows)  # "groq" before 30 Oct
     return verdict(
         ok, "; ".join(f"{lang}: source={src}, Devanagari={dev}" for lang, src, dev in rows)
     )
@@ -393,7 +394,11 @@ def st19() -> Result:
 
 
 def st20() -> Result:
-    rc, line = _subprocess_case({"GROQ_API_KEY": ""}, force_system2=True)
+    # Since 30 Oct the reasoning key is Cloudflare's; empty both so no provider can answer.
+    rc, line = _subprocess_case(
+        {"GROQ_API_KEY": "", "CLOUDFLARE_API_TOKEN": "", "CLOUDFLARE_ACCOUNT_ID": ""},
+        force_system2=True,
+    )
     return verdict(rc == 0 and str(line).startswith("RESULT"), f"exit {rc}: {line}")
 
 
@@ -457,7 +462,7 @@ def main() -> int:
             ("ST-17 real GeoJSON", st17),
             ("ST-18 escalation agent", st18),
             ("ST-19 no network", st19),
-            ("ST-20 empty GROQ_API_KEY + force System 2", st20),
+            ("ST-20 empty reasoning keys + force System 2", st20),
             ("ST-21/22 CLI with and without plant rules", st21_22),
         ]
     failures = 0
