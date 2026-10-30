@@ -34,18 +34,27 @@ def git(*args: str) -> str:
     return subprocess.run(["git", *args], cwd=ROOT, check=True, capture_output=True, text=True).stdout.strip()
 
 
+def read_env(path: Path) -> dict:
+    if not path.exists():
+        return {}
+    pairs = {}
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        if "=" in line and not line.lstrip().startswith("#"):
+            key, value = line.split("=", 1)
+            pairs[key.strip()] = value.strip().strip("'\"")
+    return pairs
+
+
 def local_env_values(env: Path) -> list:
-    """Secret values from the local .env (8+ characters, placeholders skipped)."""
-    if not env.exists():
-        return []
-    values = []
-    for line in env.read_text(encoding="utf-8", errors="replace").splitlines():
-        if "=" not in line or line.lstrip().startswith("#"):
-            continue
-        value = line.split("=", 1)[1].strip().strip("'\"")
-        if len(value) >= 8 and "your" not in value.lower() and not value.startswith(("http", "@cf/")):
-            values.append(value.encode())
-    return values
+    """Values of secret keys (KEY, TOKEN, SECRET, PASSWORD, ACCOUNT) in the local .env, 8+
+    characters, skipping any still equal to the .env.example placeholder."""
+    placeholders = read_env(ROOT / ".env.example")
+    secret_name = re.compile(r"KEY|TOKEN|SECRET|PASSWORD|ACCOUNT")
+    return [
+        value.encode()
+        for key, value in read_env(env).items()
+        if secret_name.search(key) and len(value) >= 8 and value != placeholders.get(key)
+    ]
 
 
 def scan(zip_path: Path, env: Path) -> list:
