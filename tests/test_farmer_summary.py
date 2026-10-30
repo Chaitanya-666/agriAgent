@@ -68,6 +68,11 @@ class TestFarmerSummary(unittest.TestCase):
         )
         self.assertEqual(out["source"], "model")
 
+    def test_hindi_prompt_names_the_crop_correctly(self):
+        provider = FakeProvider("ठीक")
+        farmer_summary(SPRAYED, "sugar beet", False, "Hindi", provider)
+        self.assertIn("sugar beet = चुकंदर", provider.requests[0].user_prompt)
+
     def test_model_error_falls_back_to_template(self):
         out = farmer_summary(SPRAYED, "cotton", False, "Hindi", FakeProvider(error="429"))
         self.assertEqual(out["source"], "template")

@@ -16,6 +16,11 @@ from src.agronomy.provider_contract import BaseAgronomyProvider, LLMRequest
 logger = logging.getLogger("agriagent.farmer_summary")
 
 LANGUAGES = ("English", "Hindi", "Marathi")
+# F23: without these the model wrote "शकरकंद" (sweet potato) for sugar beet (manual test, 30 Oct).
+GLOSSARY = {
+    "Hindi": "sugar beet = चुकंदर, cotton = कपास, weed = खरपतवार, crop = फसल, spray = छिड़काव",
+    "Marathi": "sugar beet = साखर बीट, cotton = कापूस, weed = तण, crop = पीक, spray = फवारणी",
+}
 DOSE_WORDS = ("g/ha", "g a.i", "ml", "litre", "liter", "kg/ha", "grams")
 
 
@@ -97,6 +102,7 @@ def farmer_summary(
         f"Rewrite this field result for a farmer in {language}, in at most three short sentences of "
         "plain words. Use only these facts; add no advice, chemical or dose that is not in them.\n"
         f"Facts: {facts}\nEnglish version: {template}"
+        + (f"\nUse these words: {GLOSSARY[language]}." if language in GLOSSARY else "")
     )
     response = provider.generate(
         LLMRequest(user_prompt=prompt, temperature=0.2, timeout_seconds=30)
