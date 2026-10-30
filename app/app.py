@@ -10,6 +10,7 @@ Architecture:
     evidence-based retrieval over statutory ICAR/CIBRC knowledge corpus + dosage ceiling checks.
 """
 
+import hashlib
 import logging
 from pathlib import Path
 import sys
@@ -39,6 +40,8 @@ from app.components.ui import (
     render_farmer_summary,
     render_geojson_download,
     render_mode_badge,
+    render_agent_toggle,
+    render_crop_warning,
     render_header,
     render_kpi_cards,
     render_prescription_report,
@@ -63,6 +66,7 @@ def run_pipeline_on_image(
     nozzle_buffer: int = 10,
     crop: str = "cotton",
     force_system2: bool = False,
+    use_agent: bool = False,
 ) -> Tuple[Image.Image, Dict[str, Any], Dict[str, Any]]:
     """
     Core business logic function: Runs VisionWorkflowRunner on an input image,
@@ -76,6 +80,7 @@ def run_pipeline_on_image(
         nozzle_buffer: Physical spray buffer margin in pixels.
         crop: Agricultural crop type.
         force_system2: Whether to force deliberative System 2 prescription.
+        use_agent: Let the escalation agent review withheld plants (real mode only).
 
     Returns:
         (annotated_image, final_state, kpis)
@@ -89,7 +94,7 @@ def run_pipeline_on_image(
         crop=crop,
         force_system2=force_system2,
         min_confidence=confidence_threshold,
-        use_agent=not mock_mode,
+        use_agent=use_agent and not mock_mode,
         plant_rules=not mock_mode,
     )
 
@@ -140,6 +145,7 @@ def main() -> None:
         nozzle_buffer,
         force_system2,
     ) = render_sidebar()
+    use_agent = render_agent_toggle(mock_mode)
 
     # 3. Image Upload Section with Exception Handling
     st.subheader("Field Sensor Stream")
@@ -187,15 +193,35 @@ def main() -> None:
         else "Executing Live Deep Learning Backbones (Grounding DINO + SAM 2)..."
     ):
         try:
-            viz_image, final_state, kpis = run_pipeline_on_image(
-                image=image,
-                mock_mode=mock_mode,
-                text_prompt=text_prompt,
-                confidence_threshold=confidence_threshold,
-                nozzle_buffer=nozzle_buffer,
-                crop=crop,
-                force_system2=force_system2,
+            # F20: Streamlit reruns this script on every click (language, download, ...). Reuse
+            # the last result unless the photo or a setting changed, so a click costs no model
+            # calls and no GPU time.
+            run_key = (
+                hashlib.sha256(image.tobytes()).hexdigest(),
+                image.size,
+                mock_mode,
+                text_prompt,
+                confidence_threshold,
+                nozzle_buffer,
+                crop,
+                force_system2,
+                use_agent,
             )
+            cached = st.session_state.get("last_run")
+            if cached and cached[0] == run_key:
+                viz_image, final_state, kpis = cached[1]
+            else:
+                viz_image, final_state, kpis = run_pipeline_on_image(
+                    image=image,
+                    mock_mode=mock_mode,
+                    text_prompt=text_prompt,
+                    confidence_threshold=confidence_threshold,
+                    nozzle_buffer=nozzle_buffer,
+                    crop=crop,
+                    force_system2=force_system2,
+                    use_agent=use_agent,
+                )
+                st.session_state["last_run"] = (run_key, (viz_image, final_state, kpis))
         except Exception as exc:
             st.error(f"Pipeline Execution Failed: {exc}")
             logger.error("Error executing pipeline in app: %s", exc, exc_info=True)
@@ -207,6 +233,7 @@ def main() -> None:
 
     # 5. Dynamic KPI Metric Cards
     render_mode_badge(mock_mode)
+    render_crop_warning(final_state, crop)
     render_kpi_cards(kpis)
 
     st.divider()
