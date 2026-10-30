@@ -293,19 +293,21 @@ def main():
         else:
             diagnosis = report.get("vlm_diagnosis", {})
             print(f"  Diagnosis    : {diagnosis}")
-            print(
-                f"  Prescription : {report.get('status')} | {report.get('active_ingredient')} "
-                f"{report.get('dosage_ai_g_per_ha')} g/ha | crop={report.get('crop')}"
-            )
+            dose = (
+                f"{report.get('active_ingredient')} {report.get('dosage_ai_g_per_ha')} g/ha"
+                if report.get("active_ingredient")
+                else "no herbicide (no ICAR row for this crop and weed)"
+            )  # F7: was "None None g/ha"
+            print(f"  Prescription : {report.get('status')} | {dose} | crop={report.get('crop')}")
     from src.agronomy.farmer_summary import farmer_summary
-    from src.agronomy.providers.hosted_groq import HostedGroqProvider
+    from src.agronomy.providers import reasoning_provider
 
     summary = farmer_summary(
         final_state,
         args.crop,
         args.mock,
         args.language,
-        None if args.mock else HostedGroqProvider(),
+        None if args.mock else reasoning_provider(),
     )
     print(f"\n• Summary for the farmer ({summary['source']}): {summary['text']}")
     print("=" * 65 + "\n")

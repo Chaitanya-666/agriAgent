@@ -31,7 +31,13 @@ def build_facts(state: Dict[str, Any], crop: str, mock_mode: bool) -> Dict[str, 
         "crop": crop,
         "zones_to_spray": int(spray.get("weed_count", 0)),
         "spray_allowed": bool(spray.get("spray_allowed", False)),
-        "plants_withheld": len(spray.get("withheld_masks") or []),
+        # F4: with the plant rules on, "unsure" patches are the plants left for the farmer to check;
+        # withheld detector masks are mostly crop plants the gate protected (and overlap).
+        "plants_unsure": (
+            int(spray["plant_rules"].get("unsure", 0))
+            if spray.get("plant_rules")
+            else len(spray.get("withheld_masks") or [])
+        ),
         "agent_weed": sum(r.get("verdict") == "weed" for r in reviews),
         "agent_crop_or_unsure": sum(r.get("verdict") != "weed" for r in reviews),
         "sprayed_area_pct": spray.get("infestation_percentage", 0.0),
@@ -58,9 +64,9 @@ def template_summary(facts: Dict[str, Any]) -> str:
             f"{facts['zones_to_spray']} weed patch(es) in this {facts['crop']} photo are marked for spraying, "
             f"about {facts['sprayed_area_pct']}% of the photo; the rest, including the crop, is left alone."
         )
-    if facts["plants_withheld"]:
+    if facts["plants_unsure"]:
         lines.append(
-            f"{facts['plants_withheld']} plant(s) were not sprayed because the system was unsure; "
+            f"{facts['plants_unsure']} plant(s) were not sprayed because the system was unsure; "
             "check them by eye."
         )
     if facts["herbicide"]:

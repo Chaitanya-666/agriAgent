@@ -39,6 +39,16 @@ class TestFarmerSummary(unittest.TestCase):
         self.assertIn("1 plant(s) were not sprayed", text)
         self.assertNotIn("test data", text)
 
+    def test_unsure_count_comes_from_plant_rules_not_withheld_masks(self):
+        # F4: 7 detector masks withheld by the gate (crop plants it protected), 0 unsure patches.
+        base = {"weed_count": 2, "spray_allowed": True, "withheld_masks": [{}] * 7}
+        quiet = {"spray_map": {**base, "plant_rules": {"weed": 2, "crop": 9, "unsure": 0}}}
+        self.assertNotIn("not sprayed", farmer_summary(quiet, "sugar beet", False)["text"])
+        unsure = {"spray_map": {**base, "plant_rules": {"weed": 2, "crop": 9, "unsure": 3}}}
+        self.assertIn(
+            "3 plant(s) were not sprayed", farmer_summary(unsure, "sugar beet", False)["text"]
+        )
+
     def test_nothing_sprayed_says_so(self):
         state = {"spray_map": {"weed_count": 0, "spray_allowed": True, "withheld_masks": []}}
         self.assertIn(

@@ -9,6 +9,7 @@ import os
 from typing import Any, Dict, Optional, Tuple
 from PIL import Image
 
+from src.agronomy.providers import reasoning_provider
 from src.agronomy.farmer_summary import LANGUAGES, farmer_summary
 from src.workflow import default_prompt
 
@@ -284,18 +285,23 @@ def render_farmer_summary(final_state: Dict[str, Any], crop: str, mock_mode: boo
         return
     st.subheader("Summary for the farmer")
     language = st.selectbox("Language", options=list(LANGUAGES), index=0, key="summary_language")
-    provider = None
-    if not mock_mode and os.getenv("GROQ_API_KEY"):
-        from src.agronomy.providers.hosted_groq import HostedGroqProvider
-
-        provider = HostedGroqProvider()
+    provider = None if mock_mode else reasoning_provider()
     summary = farmer_summary(final_state, crop.lower(), mock_mode, str(language), provider)
     st.info(summary["text"])
-    st.caption(
-        "Reworded by the Groq model from the result above."
-        if summary["source"] == "groq"
-        else "Built directly from the result above."
-    )
+    if summary["source"] == "model":
+        st.caption(
+            f"Reworded by {getattr(provider, 'model_name', 'the model')} from the result above."
+        )
+    else:
+        st.caption("Built directly from the result above.")
+        if language != "English":
+            # F17/F19: say why the text is English instead of looking broken.
+            st.warning(
+                f"{language} needs real mode; mock mode shows the English template."
+                if mock_mode
+                else f"The reasoning model did not return a {language} version (no key, no "
+                "network or a rate limit), so the English template is shown."
+            )
 
     reviews = (final_state.get("spray_map") or {}).get("escalation") or []
     if reviews:
