@@ -253,7 +253,7 @@ def main() -> None:
     geojson_doc = build_spray_geojson(
         final_state=final_state,
         crop=crop,
-        nozzle_buffer_cm=nozzle_buffer,
+        nozzle_buffer_px=nozzle_buffer,
     )
     render_geojson_download(geojson_doc)
 

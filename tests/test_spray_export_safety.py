@@ -150,5 +150,59 @@ class SprayExportSafetyTests(unittest.TestCase):
         self.assertLess(max(longitudes) - min(longitudes), 0.0001)
 
 
+class TestGeoJsonGeometry(unittest.TestCase):
+    """F14, F15, F16, F21 (manual test, 30 Oct 2026)."""
+
+    def export(self, zones):
+        artifact = Artifact(
+            id="spray",
+            type=ArtifactType.SPRAY_MAP,
+            title="Approved masks",
+            payload={"approved_spray_zones": zones},
+        )
+        return build_spray_geojson(
+            {
+                "spray_map": {"spray_allowed": True, "safety_action": "ACCEPT"},
+                "artifacts": {"spray_map": artifact},
+            },
+            nozzle_buffer_px=12,
+        )
+
+    @staticmethod
+    def zone(rows, label="weed", approved_by=None):
+        mask = np.zeros((100, 100), dtype=np.uint8)
+        mask[rows, 40:60] = 1
+        zone = {"label": label, "score": 0.9, "mask": mask}
+        if approved_by:
+            zone["approved_by"] = approved_by
+        return zone
+
+    def test_lower_in_the_photo_is_further_south(self):
+        doc = self.export([self.zone(slice(5, 25), "top"), self.zone(slice(75, 95), "bottom")])
+        lat = {
+            f["properties"]["target"]: max(p[1] for p in f["geometry"]["coordinates"][0][0])
+            for f in doc["features"]
+        }
+        self.assertGreater(lat["top"], lat["bottom"])
+
+    def test_scale_is_a_close_up_not_a_field(self):
+        doc = self.export([self.zone(slice(0, 100))])
+        lats = [p[1] for p in doc["features"][0]["geometry"]["coordinates"][0][0]]
+        metres = (max(lats) - min(lats)) * 111_320
+        self.assertAlmostEqual(metres, 0.5, delta=0.05)  # 100 px at 5 mm per pixel
+
+    def test_buffer_is_labelled_in_pixels(self):
+        doc = self.export([self.zone(slice(10, 30))])
+        self.assertEqual(doc["metadata"]["spray_nozzle_buffer_px"], 12)
+        self.assertEqual(doc["features"][0]["properties"]["buffer_margin_px"], 12)
+        self.assertNotIn("spray_nozzle_buffer_cm", doc["metadata"])
+
+    def test_plant_rule_zone_has_no_fake_confidence(self):
+        doc = self.export([self.zone(slice(10, 30), "weed patches (plant rules)", "plant_rules")])
+        props = doc["features"][0]["properties"]
+        self.assertIsNone(props["confidence"])
+        self.assertEqual(props["approved_by"], "plant_rules")
+
+
 if __name__ == "__main__":
     unittest.main()
