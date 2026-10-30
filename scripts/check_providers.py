@@ -1,8 +1,11 @@
 """Check that each model provider in .env answers a real request.
 
 Usage:
-    python scripts/check_providers.py              # the cloud providers we use: groq, cloudflare
-    python scripts/check_providers.py groq         # one provider: groq, cloudflare, local, clef-local
+    python scripts/check_providers.py              # what we use: cloudflare-qwen, cloudflare (Clef Flash)
+    python scripts/check_providers.py groq         # one provider: cloudflare-qwen, cloudflare, groq, local, clef-local
+
+Since 30 Oct 2026 the reasoning model (Qwen) runs on Cloudflare; Groq is kept but switched off
+(REASONING_PROVIDER=groq brings it back), so it is checked only when named.
 
 The local llama-server back-ends are not part of our plan (team decision, 17 Oct), so they
 are checked only when named explicitly.
@@ -17,6 +20,8 @@ import time
 from typing import Callable, Dict, Tuple
 
 import requests
+
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 try:
     from dotenv import load_dotenv
@@ -55,6 +60,18 @@ def check_groq() -> Tuple[bool, str]:
     text = resp.json()["choices"][0]["message"]["content"].strip()
     left = resp.headers.get("x-ratelimit-remaining-requests", "?")
     return True, f"{model} replied {text!r}; requests left today: {left}"
+
+
+def check_cloudflare_qwen() -> Tuple[bool, str]:
+    """The reasoning model through the provider the app uses (HostedCloudflareProvider)."""
+    from src.agronomy.provider_contract import LLMRequest
+    from src.agronomy.providers import HostedCloudflareProvider
+
+    provider = HostedCloudflareProvider()
+    resp = provider.generate(LLMRequest(user_prompt="Reply with the single word OK.", timeout_seconds=TIMEOUT))
+    if resp.error:
+        return False, resp.error[:300]
+    return True, f"{provider.model_name} replied {resp.text_content.strip()!r}"
 
 
 def check_cloudflare() -> Tuple[bool, str]:
@@ -123,12 +140,13 @@ def check_clef_local() -> Tuple[bool, str]:
 
 
 CHECKS: Dict[str, Callable[[], Tuple[bool, str]]] = {
-    "groq": check_groq,
+    "cloudflare-qwen": check_cloudflare_qwen,
     "cloudflare": check_cloudflare,
+    "groq": check_groq,
     "local": check_local,
     "clef-local": check_clef_local,
 }
-CLOUD_CHECKS = ["groq", "cloudflare"]
+CLOUD_CHECKS = ["cloudflare-qwen", "cloudflare"]
 
 
 def main() -> int:
@@ -140,7 +158,7 @@ def main() -> int:
 
     names = CLOUD_CHECKS if args.provider == "all" else [args.provider]
     if args.provider == "all":
-        print("[SKIP] local, clef-local: not used; name one explicitly to check it")
+        print("[SKIP] groq, local, clef-local: switched off; name one explicitly to check it")
     failures = 0
     for name in names:
         start = time.time()

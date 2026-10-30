@@ -9,6 +9,7 @@ import os
 from typing import Any, Dict, Optional, Tuple
 from PIL import Image
 
+from src.agronomy.providers import reasoning_provider
 from src.agronomy.farmer_summary import LANGUAGES, farmer_summary
 from src.workflow import default_prompt
 
@@ -104,6 +105,32 @@ def render_sidebar() -> Tuple[bool, str, str, float, int, bool]:
     return mock_mode, crop, text_prompt, confidence_threshold, nozzle_buffer, force_system2
 
 
+def render_agent_toggle(mock_mode: bool) -> bool:
+    """Escalation agent on or off; off by default (one model call per reviewed plant, slower)."""
+    if st is None or mock_mode:
+        return False
+    return st.sidebar.checkbox(
+        "Review unsure plants with the escalation agent",
+        value=False,
+        help=(
+            "Asks the row rule, Clef Flash and the Qwen model about each withheld plant. Adds "
+            "about 10 s per plant. In our tests it never turned an unsure plant into a weed."
+        ),
+    )
+
+
+def render_crop_warning(final_state: Dict[str, Any], crop: str) -> None:
+    """F18: no plant matched the declared crop, so the plant rules had no crop example."""
+    if st is None:
+        return
+    spray = final_state.get("spray_map") or {}
+    if spray.get("crop_examples") == 0:
+        st.warning(
+            f"No plant in this photo was recognised as {crop}. Check the Crop Context setting: "
+            "with the wrong crop, whole crop plants off the main row can be marked as weeds."
+        )
+
+
 def render_mode_badge(mock_mode: bool) -> None:
     """Say on every result screen whether the numbers come from real models (T4.3, #10, #12)."""
     if st is None:
@@ -165,11 +192,11 @@ def render_visualizations(original_image: Image.Image, annotated_image: Image.Im
     col_left, col_right = st.columns(2)
     with col_left:
         st.subheader("Original Field Sensor Stream")
-        st.image(original_image, use_container_width=True)
+        st.image(original_image, width="stretch")
 
     with col_right:
         st.subheader("Detections (boxes) and approved spray zones (colour)")
-        st.image(annotated_image, use_container_width=True)
+        st.image(annotated_image, width="stretch")
 
 
 def render_prescription_report(
@@ -284,18 +311,23 @@ def render_farmer_summary(final_state: Dict[str, Any], crop: str, mock_mode: boo
         return
     st.subheader("Summary for the farmer")
     language = st.selectbox("Language", options=list(LANGUAGES), index=0, key="summary_language")
-    provider = None
-    if not mock_mode and os.getenv("GROQ_API_KEY"):
-        from src.agronomy.providers.hosted_groq import HostedGroqProvider
-
-        provider = HostedGroqProvider()
+    provider = None if mock_mode else reasoning_provider()
     summary = farmer_summary(final_state, crop.lower(), mock_mode, str(language), provider)
     st.info(summary["text"])
-    st.caption(
-        "Reworded by the Groq model from the result above."
-        if summary["source"] == "groq"
-        else "Built directly from the result above."
-    )
+    if summary["source"] == "model":
+        st.caption(
+            f"Reworded by {getattr(provider, 'model_name', 'the model')} from the result above."
+        )
+    else:
+        st.caption("Built directly from the result above.")
+        if language != "English":
+            # F17/F19: say why the text is English instead of looking broken.
+            st.warning(
+                f"{language} needs real mode; mock mode shows the English template."
+                if mock_mode
+                else f"The reasoning model did not return a {language} version (no key, no "
+                "network or a rate limit), so the English template is shown."
+            )
 
     reviews = (final_state.get("spray_map") or {}).get("escalation") or []
     if reviews:
@@ -322,5 +354,6 @@ def render_geojson_download(geojson_data: Dict[str, Any]) -> None:
         data=json.dumps(geojson_data, indent=2),
         file_name="agriagent_spray_prescription.geojson",
         mime="application/geo+json",
+        on_click="ignore",  # F20: downloading must not rerun the pipeline
         help="Approved weed zones only. Coordinates are placeholders, not GPS (research prototype).",
     )

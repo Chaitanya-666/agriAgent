@@ -443,9 +443,14 @@ class VisionWorkflowRunner:
                 )
 
         plant_rule_summary: Dict[str, int] = {}
+        crop_examples: Optional[int] = None
         if self.plant_rules and isinstance(img, Image.Image):
+            crop_refs = crop_reference_masks(masks, prompt, (h, w))
+            # F18: with no crop-labelled mask the rules fall back to "off the row = weed", which
+            # sprays whole crop plants when the declared crop is wrong; the app warns on 0.
+            crop_examples = len(crop_refs)
             weed_patches, crop_patches, patches = classify_plants(
-                np.asarray(img.convert("RGB")), crop_reference_masks(masks, prompt, (h, w))
+                np.asarray(img.convert("RGB")), crop_refs
             )
             # The nozzle never fires over a plant classified as crop.
             weed_patches &= ~crop_patches
@@ -516,6 +521,7 @@ class VisionWorkflowRunner:
             "withheld_masks": withheld,
             "escalation": reviews,
             "plant_rules": plant_rule_summary,
+            "crop_examples": crop_examples,
         }
 
         # Build serializable artifact

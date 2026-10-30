@@ -14,7 +14,7 @@ field photo + crop name
 2. Segment   SAM 2-tiny (local GPU)            boxes → pixel masks + predicted quality; corrective point if quality < 0.85
 3. Gate      DeterministicRouter (rules)       spray a mask only if: weed label (no crop words), confidence ≥ 0.70,
                                                quality ≥ 0.85; suppress the whole map above 85% infestation
-4. Escalate  System 2 (Groq, cloud)            when unsure: qwen3.8-27b looks at the photo; herbicide only from the
+4. Escalate  System 2 (Cloudflare, cloud)      when unsure: qwen3.8-27b looks at the photo; herbicide only from the
                                                ICAR table row for the declared crop, otherwise "no evidence"
 5. Output    Streamlit app + GeoJSON           REAL/MOCK banner, approved zones only, placeholder (not GPS) coordinates
 ```
@@ -29,7 +29,7 @@ AI models can advise, but only plain, tested Python rules decide what goes on th
 | Safety gate | **Real**: real confidence, label policy, whole-photo masks withheld, crop exclusion |
 | Rule-based plant classifier (`src/vision/plant_candidates.py`) | **Real**: on 90 held-out sugar beet photos, weed recall 1.8% → 77.9% with 8.8% of crop pixels sprayed; cotton 10.4% |
 | Escalation agent (`src/agents/escalation_agent.py`) | **Real**: never approved spraying a crop plant, but added no weed recall (RQ2) |
-| System 2 with Groq + ICAR table | **Real**: diagnosis from the photo; herbicide rows checked against the bulletin |
+| System 2 with Qwen (Cloudflare) + ICAR table | **Real**: diagnosis from the photo; herbicide rows checked against the bulletin |
 | Farmer summary (English / Hindi / Marathi) | **Real** in real mode; template in mock mode |
 | Evaluation sets | `eval_manifest_v2.json` (38 images) and `eval_manifest_v2_holdout.json` (90 images), official labels only |
 
@@ -51,12 +51,21 @@ All numbers and the commands that produced them are in [docs/results/](docs/resu
 
 All documents are written in [Typst](https://typst.app). Rebuild a PDF with `typst compile docs/<file>.typ` (guides: `typst compile --root docs docs/guides/<file>.typ`).
 
+## Reasoning provider
+
+Since 30 October 2026 the reasoning model, Qwen 3.8 27B, runs on **Cloudflare Workers AI**
+(`@cf/qwen/qwen3.8-27b`, the same model we used on Groq). It serves System 2, the escalation
+agent's photo check and the farmer summary. Groq's free tier allows about 8,000 tokens per minute,
+and one app run used most of it, so runs failed with HTTP 429. The Groq adapter is kept and comes
+back with `REASONING_PROVIDER=groq` in `.env`. Photos are shrunk to 768 px before sending
+(a full-size phone photo cost 12,349 tokens; at 512 px, 247).
+
 ## Repository layout
 
 ```text
 src/vision/       Grounding DINO and SAM 2 wrappers (real mode fails loudly, never falls back to mock), refinement
 src/agents/       DeterministicRouter (safety gate rules) and the Clef Flash triage adapter
-src/agronomy/     VLM critic (Groq by default), ICAR knowledge store, crop-checked herbicide prescription
+src/agronomy/     VLM critic (Qwen on Cloudflare; Groq kept, off), ICAR knowledge store, crop-checked herbicide prescription
 src/evaluation/   IoU/Dice metrics, benchmark and ablation runners
 src/workflow.py   Pipeline, default_prompt(), label_policy(), spray_status(); detect → segment → refine →
                   spray map → triage → System 2
@@ -71,7 +80,7 @@ config/           Thresholds and prompts
 
 | Command | What it does |
 |---|---|
-| `python scripts/check_providers.py` | Checks that Groq and Cloudflare answer with your `.env` keys |
+| `python scripts/check_providers.py [groq]` | Checks that the Qwen model and Clef Flash on Cloudflare answer with your `.env` keys (Groq only when named) |
 | `python scripts/run_live_pipeline.py --image F --crop cotton` | Real models on one image; prints the mode used, every mask and whether it was sprayed; saves a 4-panel figure |
 | `python scripts/build_eval_manifest_v2.py` | Downloads the official labels and images (about 110 MB, needs a Kaggle token) and writes `eval_manifest_v2.json` |
 | `python scripts/show_manifest_labels.py` | Draws the manifest boxes on each image for checking by eye |
@@ -79,21 +88,41 @@ config/           Thresholds and prompts
 | `python scripts/compare_crop_or_weed.py` | Asks Groq, Clef Flash and a row rule "crop or weed?" on 20 labelled patches |
 | `python scripts/verify_cycle0_issues.py [--real]` | Re-runs the Cycle 0 failing test cases by driving the app headlessly |
 | `python scripts/run_baseline.py [--manifest M] [--agent] [--exclusion]` | Real run over an evaluation set; scores every gate setting and the plant rules against the official labels |
+| `python scripts/download_models.py [--check]` | Downloads the three model weights, or checks offline that they are cached |
+| `python scripts/package_release.py [--ref TAG]` | Builds the submission source zip from one commit and checks it for secrets |
 
 ## Setup
 
-Use Python 3.10–3.12.
+Use Python 3.10–3.12 (every result was verified on 3.11).
 
 ```bash
 python -m venv .venv && source .venv/bin/activate       # Windows: .venv\Scripts\activate
-python -m pip install -e '.[dev]'
-cp .env.example .env      # add your Groq key (and Cloudflare for Clef Flash); never commit .env
+python -m pip install -r requirements-lock.txt           # exact versions we verified with
+python -m pip install -e . --no-deps
+cp .env.example .env      # add your Cloudflare account ID and Workers AI token; never commit .env
 python scripts/check_providers.py
+python scripts/download_models.py                        # model weights, about 1.7 GB, once
 
 streamlit run app/app.py                                 # dashboard (Mock Mode on by default)
 ```
 
-Real mode downloads Grounding DINO-tiny and SAM 2-tiny (about 1.6 GB) from Hugging Face on the first run. A Kaggle token (`~/.kaggle/access_token`) is needed only to download the evaluation data.
+`requirements-lock.txt` pins every package to the version the tests and the held-out run used
+(snapshot of 30 October 2026; with `uv pip` add `--index-strategy unsafe-best-match`). `pyproject.toml` and `requirements.txt` give only ranges, so a plain
+`pip install -e .` can pull newer, untested versions. Before a demo without reliable internet, run
+`python scripts/download_models.py --check`: if it passes, real mode starts offline (Cloudflare
+still needs a network; without one the app says so and continues). A Kaggle token
+(`~/.kaggle/access_token`) is needed only to download the evaluation data.
+
+## Packaging for submission
+
+```bash
+python scripts/package_release.py --ref v1.0.0           # after the code freeze tag
+```
+
+This writes `dist/AgriAgent-<version>-<ref>-source.zip` from the tagged commit only (git archive:
+no `.env`, datasets, weights or outputs), scans it for keys and for every value in your local
+`.env` without printing them, and writes a SHA-256 checksum next to it. Share the zip only if it
+prints PASS.
 
 ## Checks (same as CI)
 

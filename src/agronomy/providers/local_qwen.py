@@ -59,14 +59,25 @@ def extract_json(text: str) -> Optional[Dict[str, Any]]:
     return None
 
 
+MAX_IMAGE_SIDE = 768
+
+
 def image_to_base64_url(image: Any) -> Optional[str]:
-    """Convert PIL image or bytes into base64 data URL."""
+    """
+    Convert PIL image or bytes into base64 data URL. PIL images are shrunk so the long side is at
+    most MAX_IMAGE_SIDE px: a full-size phone photo cost 12,349 prompt tokens, the same photo at
+    512 px 247 tokens with the same answer (measured 30 Oct 2026, finding F22).
+    """
     if image is None:
         return None
     try:
         if isinstance(image, Image.Image):
+            image = image.convert("RGB")
+            if max(image.size) > MAX_IMAGE_SIDE:
+                image = image.copy()
+                image.thumbnail((MAX_IMAGE_SIDE, MAX_IMAGE_SIDE))
             buf = io.BytesIO()
-            image.convert("RGB").save(buf, format="JPEG", quality=85)
+            image.save(buf, format="JPEG", quality=85)
             b64_str = base64.b64encode(buf.getvalue()).decode("utf-8")
             return f"data:image/jpeg;base64,{b64_str}"
         if isinstance(image, (bytes, bytearray)):

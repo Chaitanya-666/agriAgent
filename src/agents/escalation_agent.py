@@ -24,10 +24,11 @@ from typing import Any, Dict, List, Optional, Sequence
 
 from PIL import Image
 
-from src.agents.evidence import ClefEvidence, Evidence, GroqEvidence, RowRuleEvidence
+from src.agents.evidence import ClefEvidence, Evidence, QwenVlmEvidence, RowRuleEvidence
 
-# Measured accuracy of each source on the 20 labelled patches of T2.2.
-DEFAULT_WEIGHTS = {"row_rule": 0.65, "clef_flash": 0.70, "groq_vlm": 0.80}
+# Measured accuracy of each source on the 20 labelled patches of T2.2. qwen_vlm was measured as
+# "groq_vlm": the same Qwen model, then served by Groq.
+DEFAULT_WEIGHTS = {"row_rule": 0.65, "clef_flash": 0.70, "qwen_vlm": 0.80}
 
 
 @dataclass
@@ -78,7 +79,7 @@ class EscalationAgent:
         self.sources: List[Any] = (
             list(sources)
             if sources is not None
-            else [RowRuleEvidence(), ClefEvidence(), GroqEvidence()]
+            else [RowRuleEvidence(), ClefEvidence(), QwenVlmEvidence()]
         )
         self.weights = weights or DEFAULT_WEIGHTS
         self.decide_at = decide_at

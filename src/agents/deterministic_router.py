@@ -112,7 +112,7 @@ class DeterministicRouter(BaseRouter):
             latency = (time.perf_counter() - t0) * 1000.0
             return RouterDecision(
                 action=RouterAction.ESCALATE_SYSTEM2,
-                reason=f"Low detection confidence ({detection_confidence:.2f} < {min_confidence:.2f}). Escalating to VLM critic.",
+                reason=f"Low detection confidence ({detection_confidence:.2f} < {min_confidence:.2f}). Withheld for review.",
                 latency_ms=round(latency, 4),
                 backend=self.backend,
                 confidence=1.0,
@@ -180,7 +180,7 @@ class DeterministicRouter(BaseRouter):
         if float(detection_confidence) >= float(min_confidence) and float(predicted_iou) >= 0.80:
             return (False, "High confidence detection. System-1 reflex approved for direct spot-spraying.")
         if float(detection_confidence) < float(min_confidence):
-            return (True, f"Low detection confidence ({detection_confidence:.2f} < {min_confidence:.2f}). Escalating to VLM critic.")
+            return (True, f"Low detection confidence ({detection_confidence:.2f} < {min_confidence:.2f}). Withheld for review.")
         return (True, f"Sub-optimal mask quality (IoU {predicted_iou:.2f}). Escalating to agronomy advisor.")
 
     def verify_spray_safety(

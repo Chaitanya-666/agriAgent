@@ -95,6 +95,33 @@ def overlay_masks(
     return Image.fromarray(result)
 
 
+def outline_masks(
+    image: Image.Image,
+    masks: List[np.ndarray],
+    color: Tuple[int, int, int] = (255, 0, 255),
+    small_px: int = 150,
+) -> Image.Image:
+    """
+    Draws a 2 px outline around each approved spray region, and a ring around regions smaller
+    than small_px pixels, so tiny weed patches are visible on screen (F5: a 0.05% spray map
+    looked empty). Drawing only; the spray map itself is unchanged.
+    """
+    if cv2 is None or not masks:
+        return image.copy()
+    canvas = np.array(image.convert("RGB"))
+    for mask in masks:
+        binary = np.asarray(mask, dtype=np.uint8)
+        if binary.shape != canvas.shape[:2] or not binary.any():
+            continue
+        contours, _ = cv2.findContours(binary, cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
+        cv2.drawContours(canvas, contours, -1, color, 2)
+        for contour in contours:
+            if cv2.contourArea(contour) < small_px:
+                (cx, cy), radius = cv2.minEnclosingCircle(contour)
+                cv2.circle(canvas, (int(cx), int(cy)), int(radius) + 10, color, 2)
+    return Image.fromarray(canvas)
+
+
 def draw_boxes(
     image: Image.Image,
     boxes: List[Box],

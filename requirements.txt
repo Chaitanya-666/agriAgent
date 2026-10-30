@@ -1,3 +1,6 @@
+# Version ranges only. For the exact versions every result was verified with, use
+# requirements-lock.txt (see README, Setup).
+
 # Core Framework & Multi-Agent StateGraph
 langgraph>=0.2.0
 langchain>=0.3.0
@@ -9,7 +12,7 @@ langchain-community>=0.3.0
 # Vision Models & Geometry
 torch>=2.1.0
 torchvision>=0.16.0
-transformers>=4.40.0
+transformers>=5.0,<6  # SAM 2 post-processing uses the 5.x API (TC-15)
 requests>=2.31.0
 supervision>=0.20.0
 opencv-python>=4.8.0
