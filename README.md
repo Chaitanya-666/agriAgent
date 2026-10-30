@@ -98,7 +98,7 @@ streamlit run app/app.py                                 # dashboard (Mock Mode 
 ```
 
 `requirements-lock.txt` pins every package to the version the tests and the held-out run used
-(snapshot of 30 October 2026). `pyproject.toml` and `requirements.txt` give only ranges, so a plain
+(snapshot of 30 October 2026; with `uv pip` add `--index-strategy unsafe-best-match`). `pyproject.toml` and `requirements.txt` give only ranges, so a plain
 `pip install -e .` can pull newer, untested versions. Before a demo without reliable internet, run
 `python scripts/download_models.py --check`: if it passes, real mode starts offline (Groq and
 Cloudflare still need a network; without one the app says so and continues). A Kaggle token

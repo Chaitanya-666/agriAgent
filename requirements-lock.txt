@@ -7,7 +7,8 @@
 # requirements.txt and pyproject.toml give only version ranges; install from this file to get
 # the versions the tests and the held-out run used. The torch and torchvision wheels come from
 # the PyTorch CUDA 12.8 index below. On a machine without an NVIDIA GPU they still install and
-# run on the CPU, only slower.
+# run on the CPU, only slower. With uv instead of pip, add --index-strategy unsafe-best-match
+# (uv otherwise looks for every package on the PyTorch index only).
 --extra-index-url https://download.pytorch.org/whl/cu128
 
 aiohappyeyeballs==2.7.1
