@@ -104,4 +104,4 @@ def farmer_summary(
             "Farmer summary mentioned a dose without a prescription; using the template."
         )
         return {"text": template, "source": "template"}
-    return {"text": text, "source": "groq"}
+    return {"text": text, "source": "model"}

@@ -56,7 +56,7 @@ class TestFarmerSummary(unittest.TestCase):
         out = farmer_summary(
             SPRAYED, "cotton", False, "Marathi", FakeProvider("दोन तण भाग फवारणीसाठी चिन्हांकित.")
         )
-        self.assertEqual(out["source"], "groq")
+        self.assertEqual(out["source"], "model")
 
     def test_model_error_falls_back_to_template(self):
         out = farmer_summary(SPRAYED, "cotton", False, "Hindi", FakeProvider(error="429"))

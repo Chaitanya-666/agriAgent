@@ -14,7 +14,8 @@ from typing import Any, Dict, Literal, Optional
 from pydantic import BaseModel, ConfigDict, Field, ValidationError
 from PIL import Image
 from src.agronomy.provider_contract import BaseAgronomyProvider, LLMRequest
-from src.agronomy.providers.hosted_groq import DEFAULT_GROQ_MODEL, HostedGroqProvider
+from src.agronomy.providers import reasoning_provider
+from src.agronomy.providers.hosted_groq import DEFAULT_GROQ_MODEL, HostedGroqProvider  # noqa: F401
 
 logger = logging.getLogger("agriagent.vlm_critic")
 
@@ -89,10 +90,9 @@ class VLMCritic:
     ):
         self.model_name = model_name or os.getenv("GROQ_MODEL_NAME") or DEFAULT_MODEL
         self.mock_mode = mock_mode
-        self.provider = provider or HostedGroqProvider(
-            model_name=self.model_name,
-            mock_mode=mock_mode,
-        )
+        # Cloudflare by default; REASONING_PROVIDER=groq brings back HostedGroqProvider.
+        self.provider = provider or reasoning_provider(mock_mode=mock_mode)
+        self.model_name = model_name or str(getattr(self.provider, "model_name", self.model_name))
 
     def diagnose(self, image: Image.Image, crop_hint: Optional[str] = None) -> Dict[str, Any]:
         if self.mock_mode:

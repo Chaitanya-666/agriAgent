@@ -35,18 +35,18 @@ class TestAgentDecisions(unittest.TestCase):
         self.assertIsNone(agent.p_weed([Evidence("a", None, 0.0, 0)]))
 
     def test_agreeing_sources_multiply_disagreeing_cancel(self):
-        agent = EscalationAgent(sources=[], weights={"clef_flash": 0.7, "groq_vlm": 0.8})
-        clef, groq = Evidence("clef_flash", "weed", 0.95, 1), Evidence("groq_vlm", "weed", 0.95, 3)
+        agent = EscalationAgent(sources=[], weights={"clef_flash": 0.7, "qwen_vlm": 0.8})
+        clef, groq = Evidence("clef_flash", "weed", 0.95, 1), Evidence("qwen_vlm", "weed", 0.95, 3)
         self.assertLess(agent.p_weed([groq]), 0.85)  # one source never decides
         self.assertGreaterEqual(agent.p_weed([clef, groq]), 0.85)  # two strongly agreeing do
         # At 0.9 confidence each, Clef + Groq give 0.847: just short, so the plant stays withheld.
-        lukewarm = [Evidence("clef_flash", "weed", 0.9, 1), Evidence("groq_vlm", "weed", 0.9, 3)]
+        lukewarm = [Evidence("clef_flash", "weed", 0.9, 1), Evidence("qwen_vlm", "weed", 0.9, 3)]
         self.assertLess(agent.p_weed(lukewarm), 0.85)
-        self.assertAlmostEqual(agent.p_weed([groq, Evidence("groq_vlm", "crop", 0.95, 3)]), 0.5)
+        self.assertAlmostEqual(agent.p_weed([groq, Evidence("qwen_vlm", "crop", 0.95, 3)]), 0.5)
 
     def test_default_weights_need_two_sources(self):
         agent = EscalationAgent(sources=[])
-        for source in ("row_rule", "clef_flash", "groq_vlm"):
+        for source in ("row_rule", "clef_flash", "qwen_vlm"):
             self.assertLess(agent.p_weed([Evidence(source, "weed", 1.0, 0)]), 0.85)
 
     def test_stops_once_decisive(self):
