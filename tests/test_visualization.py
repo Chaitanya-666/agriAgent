@@ -103,3 +103,23 @@ class TestVisualization(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class TestOutlineMasks(unittest.TestCase):
+    """F5: a tiny approved patch must be visible on screen."""
+
+    def test_tiny_patch_gets_a_visible_ring(self):
+        from src.vision.visualization import outline_masks
+
+        image = Image.new("RGB", (200, 200), (90, 70, 50))
+        mask = np.zeros((200, 200), dtype=np.uint8)
+        mask[100:104, 100:104] = 1  # 16 px, about 0.04% of the photo
+        out = np.array(outline_masks(image, [mask]))
+        changed = int((out != np.array(image)).any(axis=2).sum())
+        self.assertGreater(changed, 100)  # ring plus outline, far more than the 16 px patch
+
+    def test_no_masks_leaves_the_image_unchanged(self):
+        from src.vision.visualization import outline_masks
+
+        image = Image.new("RGB", (50, 50), (1, 2, 3))
+        self.assertEqual(np.array(outline_masks(image, [])).tolist(), np.array(image).tolist())

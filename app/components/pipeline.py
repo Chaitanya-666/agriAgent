@@ -291,10 +291,11 @@ def execute_agriagent_workflow(
         if not weed_name:
             boxes = final_state.get("boxes", [])
             weed_boxes = [b for b in boxes if "weed" in b.get("label", "").lower()]
-            if weed_boxes:
-                weed_name = weed_boxes[0].get("label", "Trianthema")
-            else:
-                weed_name = "Trianthema"
+            # F8/K8: never invent a species. The old fallback "Trianthema" could pull a cotton
+            # herbicide row for a photo where no weed was named at all.
+            weed_name = "unidentified weed"
+            if weed_boxes and weed_boxes[0].get("label"):
+                weed_name = weed_boxes[0]["label"]
 
         try:
             crop_name = crop.lower().strip()

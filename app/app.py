@@ -48,7 +48,7 @@ from app.components.ui import (
     render_sidebar,
     render_visualizations,
 )
-from src.vision.visualization import draw_boxes, overlay_masks
+from src.vision.visualization import draw_boxes, outline_masks, overlay_masks
 
 try:
     import streamlit as st
@@ -114,6 +114,8 @@ def run_pipeline_on_image(
     # Generate composite visualization overlay
     viz_image = overlay_masks(image, approved_masks, alpha=0.45)
     viz_image = draw_boxes(viz_image, filtered_boxes)
+    # F5: outline (and ring the tiny) approved regions last, so boxes never hide them.
+    viz_image = outline_masks(viz_image, [m["mask_array"] for m in approved_masks])
 
     # Dynamic KPIs extracted directly from spray_map
     kpis = extract_kpis(final_state.get("spray_map"))
