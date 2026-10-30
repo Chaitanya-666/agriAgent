@@ -16,6 +16,11 @@ from src.agronomy.provider_contract import BaseAgronomyProvider, LLMRequest
 logger = logging.getLogger("agriagent.farmer_summary")
 
 LANGUAGES = ("English", "Hindi", "Marathi")
+# F23: without these the model wrote "शकरकंद" (sweet potato) for sugar beet (manual test, 30 Oct).
+GLOSSARY = {
+    "Hindi": "sugar beet = चुकंदर, cotton = कपास, weed = खरपतवार, crop = फसल, spray = छिड़काव",
+    "Marathi": "sugar beet = साखर बीट, cotton = कापूस, weed = तण, crop = पीक, spray = फवारणी",
+}
 DOSE_WORDS = ("g/ha", "g a.i", "ml", "litre", "liter", "kg/ha", "grams")
 
 
@@ -31,7 +36,13 @@ def build_facts(state: Dict[str, Any], crop: str, mock_mode: bool) -> Dict[str, 
         "crop": crop,
         "zones_to_spray": int(spray.get("weed_count", 0)),
         "spray_allowed": bool(spray.get("spray_allowed", False)),
-        "plants_withheld": len(spray.get("withheld_masks") or []),
+        # F4: with the plant rules on, "unsure" patches are the plants left for the farmer to check;
+        # withheld detector masks are mostly crop plants the gate protected (and overlap).
+        "plants_unsure": (
+            int(spray["plant_rules"].get("unsure", 0))
+            if spray.get("plant_rules")
+            else len(spray.get("withheld_masks") or [])
+        ),
         "agent_weed": sum(r.get("verdict") == "weed" for r in reviews),
         "agent_crop_or_unsure": sum(r.get("verdict") != "weed" for r in reviews),
         "sprayed_area_pct": spray.get("infestation_percentage", 0.0),
@@ -58,9 +69,9 @@ def template_summary(facts: Dict[str, Any]) -> str:
             f"{facts['zones_to_spray']} weed patch(es) in this {facts['crop']} photo are marked for spraying, "
             f"about {facts['sprayed_area_pct']}% of the photo; the rest, including the crop, is left alone."
         )
-    if facts["plants_withheld"]:
+    if facts["plants_unsure"]:
         lines.append(
-            f"{facts['plants_withheld']} plant(s) were not sprayed because the system was unsure; "
+            f"{facts['plants_unsure']} plant(s) were not sprayed because the system was unsure; "
             "check them by eye."
         )
     if facts["herbicide"]:
@@ -91,6 +102,7 @@ def farmer_summary(
         f"Rewrite this field result for a farmer in {language}, in at most three short sentences of "
         "plain words. Use only these facts; add no advice, chemical or dose that is not in them.\n"
         f"Facts: {facts}\nEnglish version: {template}"
+        + (f"\nUse these words: {GLOSSARY[language]}." if language in GLOSSARY else "")
     )
     response = provider.generate(
         LLMRequest(user_prompt=prompt, temperature=0.2, timeout_seconds=30)
@@ -104,4 +116,4 @@ def farmer_summary(
             "Farmer summary mentioned a dose without a prescription; using the template."
         )
         return {"text": template, "source": "template"}
-    return {"text": text, "source": "groq"}
+    return {"text": text, "source": "model"}

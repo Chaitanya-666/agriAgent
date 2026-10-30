@@ -167,7 +167,7 @@ class TestProviders(unittest.TestCase):
         self.assertIsNotNone(resp.parsed_json)
 
     def test_vlm_critic_model_identifier(self):
-        """Verify VLMCritic defaults to Groq and returns a valid Pydantic diagnosis."""
+        """Verify VLMCritic in mock mode uses the Groq adapter's canned reply and a valid diagnosis."""
         self.assertEqual(VLM_DEFAULT_MODEL, "qwen/qwen3.8-27b")
 
         critic = VLMCritic(mock_mode=True)

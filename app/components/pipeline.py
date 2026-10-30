@@ -6,6 +6,7 @@ Connects Streamlit UI directly to VisionWorkflowRunner and System 2 Agronomy Eng
 
 import io
 import logging
+import math
 from typing import Any, Dict, List, Optional
 import numpy as np
 from PIL import Image
@@ -290,10 +291,11 @@ def execute_agriagent_workflow(
         if not weed_name:
             boxes = final_state.get("boxes", [])
             weed_boxes = [b for b in boxes if "weed" in b.get("label", "").lower()]
-            if weed_boxes:
-                weed_name = weed_boxes[0].get("label", "Trianthema")
-            else:
-                weed_name = "Trianthema"
+            # F8/K8: never invent a species. The old fallback "Trianthema" could pull a cotton
+            # herbicide row for a photo where no weed was named at all.
+            weed_name = "unidentified weed"
+            if weed_boxes and weed_boxes[0].get("label"):
+                weed_name = weed_boxes[0]["label"]
 
         try:
             crop_name = crop.lower().strip()
@@ -396,8 +398,10 @@ def format_prescription_report(prescription: Optional[Dict[str, Any]]) -> Option
 def build_spray_geojson(
     final_state: Dict[str, Any],
     crop: str = "cotton",
-    nozzle_buffer_cm: int = 10,
+    nozzle_buffer_cm: Optional[int] = None,
     field_id: str = "VJTI-FIELD-PLOT-01",
+    nozzle_buffer_px: int = 10,
+    metres_per_pixel: float = 0.005,
     min_fragment_px: int = 16,
 ) -> Dict[str, Any]:
     """
@@ -407,8 +411,13 @@ def build_spray_geojson(
     mask edges produced hundreds of speck features per weed. A fixed size, not a share of
     the image, so real small weeds (about 80 px in the sugar beet photos) are kept.
     Herbicide fields appear only when System 2 produced a real prescription (#7).
-    Coordinates are NOT GPS: pixel positions are offset from a fixed placeholder point.
+    Coordinates are NOT GPS: pixel positions are offset from a fixed placeholder point (the VJTI
+    campus), at an assumed metres_per_pixel (5 mm, a close-up field photo). Image rows grow
+    downward and latitude grows northward, so rows are subtracted (F14: the map was upside down).
+    The buffer is in pixels (F15); nozzle_buffer_cm is the old, mislabelled name of the same value.
     """
+    if nozzle_buffer_cm is not None:
+        nozzle_buffer_px = nozzle_buffer_cm
     spray_map = final_state.get("spray_map") or {}
     kpis = extract_kpis(spray_map)
     prescription = final_state.get("prescription_report") or {}
@@ -421,9 +430,11 @@ def build_spray_geojson(
     approved_zones = artifact_payload.get("approved_spray_zones", [])
 
     features = []
-    # Placeholder reference point and scale (about 1.1 m per pixel); see metadata.
+    # Placeholder reference point (top-left pixel) and scale; see metadata. F16: was 1.1 m per
+    # pixel, which turned a 512 px close-up into a 560 m field.
     base_lon, base_lat = 72.8550, 19.0220
-    scale = 0.00001
+    lat_per_px = metres_per_pixel / 111_320.0
+    lon_per_px = lat_per_px / math.cos(math.radians(base_lat))
 
     if spray_map.get("safety_action") == "SUPPRESS_SPRAY" or not spray_map.get(
         "spray_allowed", False
@@ -442,8 +453,12 @@ def build_spray_geojson(
                 continue
             coordinates = [
                 [
-                    [round(base_lon + point[0] * scale, 6), round(base_lat + point[1] * scale, 6)]
-                    for point in _simplify_ring(ring)
+                    [
+                        round(base_lon + point[0] * lon_per_px, 9),
+                        round(base_lat - point[1] * lat_per_px, 9),
+                    ]
+                    # Flipping y mirrors the ring; reversing keeps its original winding.
+                    for point in reversed(_simplify_ring(ring))
                 ]
                 for ring in polygon
             ]
@@ -455,8 +470,14 @@ def build_spray_geojson(
             "zone_id": f"NOZZLE_PULSE_{len(features) + 1:02d}",
             "action": "SPRAY_ACTIVE",
             "target": label,
-            "confidence": round(float(zone.get("score", 0.0)), 2),
-            "buffer_margin_cm": nozzle_buffer_cm,
+            # F21: plant-rule zones have no model confidence; say who approved them instead.
+            "approved_by": zone.get("approved_by", "safety_gate"),
+            "confidence": (
+                None
+                if zone.get("approved_by") == "plant_rules"
+                else round(float(zone.get("score", 0.0)), 2)
+            ),
+            "buffer_margin_px": nozzle_buffer_px,
         }
         if has_prescription:
             properties["active_ingredient"] = prescription["active_ingredient"]
@@ -478,12 +499,13 @@ def build_spray_geojson(
             "weed_infestation_area": f"{kpis['infestation_percentage']}%",
             "selective_chemical_reduction": f"{kpis['chemical_savings_percentage']}%",
             "weed_count": kpis["weed_count"],
-            "spray_nozzle_buffer_cm": nozzle_buffer_cm,
+            "spray_nozzle_buffer_px": nozzle_buffer_px,
             "status": kpis["status"],
             "statutory_status": prescription.get("status", "no_prescription"),
             "coordinate_note": (
-                "Not GPS: pixel positions offset from a fixed placeholder point at "
-                f"{scale} degrees per pixel. Research prototype output only."
+                "Not GPS: the photo's top-left corner is pinned to a placeholder point (VJTI "
+                f"campus) and each pixel is assumed to be {metres_per_pixel * 1000:g} mm on the "
+                "ground. Research prototype output only."
             ),
         },
         "features": features,

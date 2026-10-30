@@ -21,7 +21,8 @@ import requests
 from PIL import Image
 
 from src.agronomy.provider_contract import LLMRequest
-from src.agronomy.providers.hosted_groq import HostedGroqProvider
+from src.agronomy.provider_contract import BaseAgronomyProvider
+from src.agronomy.providers import reasoning_provider
 from src.evaluation.crop_protection import vegetation_mask
 
 logger = logging.getLogger("agriagent.evidence")
@@ -154,14 +155,17 @@ class ClefEvidence:
         )
 
 
-class GroqEvidence:
-    """Groq vision-language model (qwen3.8-27b) on the plant patch, told the field's crop."""
+class QwenVlmEvidence:
+    """
+    Qwen vision-language model (qwen3.8-27b) on the plant patch, told the field's crop. Served by
+    Cloudflare by default (REASONING_PROVIDER); until 30 Oct 2026 by Groq as "groq_vlm".
+    """
 
-    name = "groq_vlm"
+    name = "qwen_vlm"
     cost = 3
 
-    def __init__(self, provider: Optional[HostedGroqProvider] = None, max_retries: int = 4):
-        self.provider = provider or HostedGroqProvider()
+    def __init__(self, provider: Optional[BaseAgronomyProvider] = None, max_retries: int = 4):
+        self.provider = provider or reasoning_provider()
         self.max_retries = max_retries
 
     def __call__(self, image: Image.Image, box: List[float], crop: str) -> Evidence:
@@ -176,7 +180,7 @@ class GroqEvidence:
                 LLMRequest(user_prompt=prompt, image=patch, timeout_seconds=60)
             )
             if resp.error and "429" in resp.error and attempt < self.max_retries:
-                time.sleep(15 * (attempt + 1))  # free tier: about 8,000 tokens per minute
+                time.sleep(15 * (attempt + 1))  # Groq free tier: about 8,000 tokens per minute
                 continue
             if resp.error:
                 return Evidence(self.name, None, 0.0, self.cost, f"error: {resp.error}")
@@ -192,3 +196,6 @@ class GroqEvidence:
                 confidence = 0.7
             return Evidence(self.name, answer, confidence, self.cost, resp.text_content[:200])
         return Evidence(self.name, None, 0.0, self.cost, "rate limited")
+
+
+GroqEvidence = QwenVlmEvidence  # earlier name, kept for scripts/compare_crop_or_weed.py

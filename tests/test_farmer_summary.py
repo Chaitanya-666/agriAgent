@@ -39,6 +39,16 @@ class TestFarmerSummary(unittest.TestCase):
         self.assertIn("1 plant(s) were not sprayed", text)
         self.assertNotIn("test data", text)
 
+    def test_unsure_count_comes_from_plant_rules_not_withheld_masks(self):
+        # F4: 7 detector masks withheld by the gate (crop plants it protected), 0 unsure patches.
+        base = {"weed_count": 2, "spray_allowed": True, "withheld_masks": [{}] * 7}
+        quiet = {"spray_map": {**base, "plant_rules": {"weed": 2, "crop": 9, "unsure": 0}}}
+        self.assertNotIn("not sprayed", farmer_summary(quiet, "sugar beet", False)["text"])
+        unsure = {"spray_map": {**base, "plant_rules": {"weed": 2, "crop": 9, "unsure": 3}}}
+        self.assertIn(
+            "3 plant(s) were not sprayed", farmer_summary(unsure, "sugar beet", False)["text"]
+        )
+
     def test_nothing_sprayed_says_so(self):
         state = {"spray_map": {"weed_count": 0, "spray_allowed": True, "withheld_masks": []}}
         self.assertIn(
@@ -56,7 +66,12 @@ class TestFarmerSummary(unittest.TestCase):
         out = farmer_summary(
             SPRAYED, "cotton", False, "Marathi", FakeProvider("दोन तण भाग फवारणीसाठी चिन्हांकित.")
         )
-        self.assertEqual(out["source"], "groq")
+        self.assertEqual(out["source"], "model")
+
+    def test_hindi_prompt_names_the_crop_correctly(self):
+        provider = FakeProvider("ठीक")
+        farmer_summary(SPRAYED, "sugar beet", False, "Hindi", provider)
+        self.assertIn("sugar beet = चुकंदर", provider.requests[0].user_prompt)
 
     def test_model_error_falls_back_to_template(self):
         out = farmer_summary(SPRAYED, "cotton", False, "Hindi", FakeProvider(error="429"))
