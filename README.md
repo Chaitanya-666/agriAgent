@@ -79,21 +79,41 @@ config/           Thresholds and prompts
 | `python scripts/compare_crop_or_weed.py` | Asks Groq, Clef Flash and a row rule "crop or weed?" on 20 labelled patches |
 | `python scripts/verify_cycle0_issues.py [--real]` | Re-runs the Cycle 0 failing test cases by driving the app headlessly |
 | `python scripts/run_baseline.py [--manifest M] [--agent] [--exclusion]` | Real run over an evaluation set; scores every gate setting and the plant rules against the official labels |
+| `python scripts/download_models.py [--check]` | Downloads the three model weights, or checks offline that they are cached |
+| `python scripts/package_release.py [--ref TAG]` | Builds the submission source zip from one commit and checks it for secrets |
 
 ## Setup
 
-Use Python 3.10–3.12.
+Use Python 3.10–3.12 (every result was verified on 3.11).
 
 ```bash
 python -m venv .venv && source .venv/bin/activate       # Windows: .venv\Scripts\activate
-python -m pip install -e '.[dev]'
+python -m pip install -r requirements-lock.txt           # exact versions we verified with
+python -m pip install -e . --no-deps
 cp .env.example .env      # add your Groq key (and Cloudflare for Clef Flash); never commit .env
 python scripts/check_providers.py
+python scripts/download_models.py                        # model weights, about 1.7 GB, once
 
 streamlit run app/app.py                                 # dashboard (Mock Mode on by default)
 ```
 
-Real mode downloads Grounding DINO-tiny and SAM 2-tiny (about 1.6 GB) from Hugging Face on the first run. A Kaggle token (`~/.kaggle/access_token`) is needed only to download the evaluation data.
+`requirements-lock.txt` pins every package to the version the tests and the held-out run used
+(snapshot of 30 October 2026). `pyproject.toml` and `requirements.txt` give only ranges, so a plain
+`pip install -e .` can pull newer, untested versions. Before a demo without reliable internet, run
+`python scripts/download_models.py --check`: if it passes, real mode starts offline (Groq and
+Cloudflare still need a network; without one the app says so and continues). A Kaggle token
+(`~/.kaggle/access_token`) is needed only to download the evaluation data.
+
+## Packaging for submission
+
+```bash
+python scripts/package_release.py --ref v1.0.0           # after the code freeze tag
+```
+
+This writes `dist/AgriAgent-<version>-<ref>-source.zip` from the tagged commit only (git archive:
+no `.env`, datasets, weights or outputs), scans it for keys and for every value in your local
+`.env` without printing them, and writes a SHA-256 checksum next to it. Share the zip only if it
+prints PASS.
 
 ## Checks (same as CI)
 
