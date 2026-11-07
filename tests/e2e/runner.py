@@ -14,6 +14,7 @@ Usage:
 
 import argparse
 import json
+import os
 import sys
 import time
 import unittest
@@ -24,6 +25,9 @@ from typing import Any, Dict, List, Optional
 REPO_ROOT = Path(__file__).resolve().parent.parent.parent
 if str(REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(REPO_ROOT))
+# The fixtures and manifests are addressed relative to the repository root; run from there, so the
+# result does not depend on the folder the runner was started from.
+os.chdir(REPO_ROOT)
 
 
 class JSONTestResult(unittest.TestResult):

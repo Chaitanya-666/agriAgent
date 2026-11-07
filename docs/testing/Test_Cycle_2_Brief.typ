@@ -24,7 +24,7 @@
 #table(
   columns: (1fr, 1.8fr),
   [Thing], [Where],
-  [Code], [GitHub `Chaitanya-666/agriAgent`, branch `main`. The 7 November fixes (pull request \#29) are merged; any commit from `e5f8a5b` onwards is correct. Write `git log --oneline -1` into every report.],
+  [Code], [GitHub `Chaitanya-666/agriAgent`, branch `main`, always the latest (`git pull` before each day's testing). Write the output of `git log --oneline -1` into every report.],
   [Test photos], [Drive `agriAgentShared/shared/test_photos/` (six photos). Their official labels are in the Appendix at the end of this guide.],
   [Results table], [Google Sheet *AgriAgent Test Cycle 2* at the top of `agriAgentShared`: one row per test case is already there.],
   [Screenshots, videos], [Drive `agriAgentShared/Amit/cycle2/`, named after the case, e.g. `R2_second_run.png`.],
@@ -60,25 +60,44 @@ sprayed. It is a research prototype and never drives a real sprayer.
   [Download Field Prescription (GeoJSON)], [The approved zones as a map file. Coordinates are placeholders near VJTI, not GPS.],
 )
 
-Mock Mode is *on* by default. "Real mode" in this guide always means the *Mock Mode* switch in the
-sidebar is *off*. The first real run after starting the app takes longer (the models load once,
+*The sidebar controls, by their exact names:* *Mock Mode (Fast Laptop Demo)* (a checkbox, ticked by
+default), *Crop Context* (Cotton, Sugar Beet, Wheat, Rice), *Zero-Shot Detection Prompt* (leave it as it
+is), *Detection Confidence Threshold*, *Spray Nozzle Buffer (pixels)*, *Force System 2 Statutory
+Consultation* (checkbox) and, in real mode only, *Review unsure plants with the escalation agent*
+(checkbox, leave it unticked unless a case says otherwise). Under the upload box there is a checkbox
+*Or use sample field photo for instant preview* (a synthetic picture, used only when no photo is
+uploaded). In this guide "Crop" means *Crop Context*, "Force System 2" means *Force System 2 Statutory
+Consultation*, and *real mode* means *Mock Mode (Fast Laptop Demo)* is *unticked*. To remove an uploaded
+photo, click the × next to its name under the upload box. The first real run after starting the app takes longer (the models load once,
 10–40 s depending on your laptop); later runs are faster.
 
 = Setup on Windows
 
-Use a *new, empty folder*, so you test the install a new user would do. Python 3.10, 3.11 or 3.12
-(3.11 is what we verified; check with `python --version`). Run everything in PowerShell. *Time each
-step* with your phone's stopwatch and note the times in row A1 of the Sheet.
+*Before you start (once).*
+- *Python 3.11.* Check with `py -3.11 --version` in PowerShell. Missing: download "Python 3.11" (64-bit) from #link("https://www.python.org/downloads/windows/")[python.org], run the installer and tick "Add python.exe to PATH". Python 3.12 and 3.13 also work; *3.10 does not* (a package needs 3.11 or newer).
+- *Git for Windows* (`git --version`). Missing: install it from #link("https://git-scm.com/download/win")[git-scm.com] with the default options.
+- *NVIDIA driver 570 or newer* (needed for your RTX 3050 with our CUDA 12.8 build of PyTorch). Check with `nvidia-smi`: the top line shows "Driver Version" and "CUDA Version"; you need CUDA Version 12.8 or higher. Older: update through the NVIDIA App (or GeForce Experience) or from #link("https://www.nvidia.com/Download/index.aspx")[nvidia.com], then restart.
+- *About 10 GB free disk* (PyTorch 2.5 GB, models 1.7 GB, pip cache) and a stable connection for the first install.
+- *A short folder path*, e.g. `C:\agri`. Some packages have very long file names and fail to install deep inside `Downloads` or `OneDrive` folders.
 
-+ Get the code: `git clone https://github.com/Chaitanya-666/agriAgent agriAgent-tc2`, then `cd agriAgent-tc2`.
+*Your RTX 3050 (4 GB) is enough.* AgriAgent only runs the models (no training). Measured on 7 November
+over all six test photos: peak GPU memory 2.0 GB in use, 2.6 GB reserved, 0.4–2 s per photo after the
+first. Without a working GPU everything still runs on the CPU, about 11–18 s per photo; that is slower,
+not a failure.
+
+*Install.* Run everything in PowerShell. Time each step with your phone's stopwatch and note the times
+in row A1 of the Sheet.
+
++ Make the folder and get the code: `mkdir C:\agri`, `cd C:\agri`, `git clone https://github.com/Chaitanya-666/agriAgent`, `cd agriAgent`.
 + Note the commit: `git log --oneline -1`.
-+ Virtual environment: `python -m venv .venv`, then `.venv\Scripts\activate`. The prompt now starts with `(.venv)`. If PowerShell refuses to run the script, run once: `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`.
-+ Packages, exact tested versions: `python -m pip install -r requirements-lock.txt`. This downloads PyTorch with CUDA (about 2.5 GB). It also works on a laptop without an NVIDIA GPU, only slower.
++ Virtual environment with Python 3.11: `py -3.11 -m venv .venv`, then `.venv\Scripts\activate`. The prompt now starts with `(.venv)`. If PowerShell refuses to run the script, run once `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned`, answer `Y`, and activate again. Every new PowerShell window needs `cd C:\agri\agriAgent` and `.venv\Scripts\activate` again.
++ Packages, exact tested versions: `python -m pip install --upgrade pip`, then `python -m pip install -r requirements-lock.txt`. Takes 10–30 minutes (PyTorch with CUDA is about 2.5 GB). Lines saying a package was skipped because of `sys_platform == "linux"` are expected: those exist only on Linux.
 + The project itself: `python -m pip install -e . --no-deps`
++ *GPU check:* `python -c "import torch; print(torch.__version__, torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU only')"`. Expected: `2.11.0+cu128 True NVIDIA GeForce RTX 3050 …`. `False` / `CPU only`: update the driver (above), restart Windows, check again; if it stays `False`, carry on (CPU) and write "CPU only" in the Sheet's A1 row.
 + Settings file: `copy .env.example .env`
-+ Model weights, about 1.7 GB, once: `python scripts\download_models.py`. Then `python scripts\download_models.py --check` should say the models are present.
-+ Test photos: download the six photos from Drive into a folder you can find, e.g. `Downloads\test_photos`.
-+ Start the app: `streamlit run app\app.py`. A browser tab opens at `http://localhost:8501`. To stop it, press Ctrl + C in PowerShell.
++ Model weights, about 1.7 GB, once: `python scripts\download_models.py`. Then `python scripts\download_models.py --check`: every line starts with `OK` and the last line says "All models are on this machine".
++ Test photos: download the six photos from Drive into `C:\agri\test_photos`.
++ Start the app: `streamlit run app\app.py`. The *first time ever*, Streamlit asks for an e-mail in PowerShell: just press Enter. If Windows Firewall asks about Python, allow it on private networks. A browser tab opens at `http://localhost:8501` (if not, open that address yourself). To stop the app, press Ctrl + C in PowerShell.
 
 *Cloudflare key (optional, recommended).* Hindi/Marathi summaries and the System 2 diagnosis need a
 reasoning model in the cloud. Create a free Cloudflare account; open Dashboard → AI → Workers AI →
@@ -138,7 +157,7 @@ Run these in the activated `.venv`, from the project folder.
   [A1], [The whole setup of Section 3, timed.], [Every step finishes without an error. If one fails, copy the full error into the issue.],
   [A2], [`python -m unittest discover -s tests`], [The last line is `OK` (about 270 tests, under a minute). A few lines of warnings above it are fine.],
   [A3], [`python tests\e2e\runner.py --all`], [`Passed: 35`, `Failed: 0`.],
-  [A4], [`python scripts\verify_cycle0_issues.py`], [Every result line starts with `[PASS]`. It drives the app headlessly and may take a few minutes.],
+  [A4], [`python scripts\verify_cycle0_issues.py`, then `python scripts\verify_cycle0_issues.py --real` (the second also runs the real models: slower, up to a few minutes).], [Every result line starts with `[PASS]` in both runs (7 lines, then 9).],
   [A5], [`python scripts\verify_test_cycle1.py` (mock cases only, seconds)], [ST-01 … ST-11 all `[PASS]`.],
   [A6], [*(keys)* `python scripts\check_providers.py`], [Two PASS lines (cloudflare-qwen, cloudflare). Without keys: a clear "missing key" message, no crash.],
 )
@@ -146,14 +165,14 @@ Run these in the activated `.venv`, from the project folder.
 = Part B: regression of the 7 November fixes (about 1.5 hours)
 
 Each case checks one fix made on 7 November. Start the app (`streamlit run app\app.py`). Before each
-case, set the sidebar back to: Crop as stated, Language English, agent off, Force System 2 off.
+case, set the sidebar back to: *Crop Context* as the case says, the summary *Language* English, *Review unsure plants…* unticked, *Force System 2 Statutory Consultation* unticked, and remove the previous photo (× under the upload box).
 
 #table(
   [ID], [Do], [Pass if],
-  [R1 (F24)], [1. Mock Mode on, tick the sample photo, wait for the yellow MOCK banner. 2. Switch Mock Mode *off*. 3. Watch the page while the real run starts.], [The old MOCK result disappears at once; only the spinner is visible until the new REAL result appears. Before the fix, the old MOCK page stayed visible, greyed out.],
+  [R1 (F24)], [1. *Mock Mode (Fast Laptop Demo)* ticked, no photo uploaded, *Or use sample field photo for instant preview* ticked; wait for the yellow MOCK banner. 2. Untick *Mock Mode (Fast Laptop Demo)*. 3. Watch the page while the real run starts.], [The old MOCK result disappears at once; only the spinner is visible until the new REAL result appears. Before the fix, the old MOCK page stayed visible, greyed out.],
   [R2 (F26)], [1. Restart the app (Ctrl + C, start again). 2. Real mode, Crop *Sugar Beet*, upload `beet_X3-130-0.png`; time the run. 3. *While the spinner is still running*, change Crop to Cotton and back to Sugar Beet, three times quickly. 4. Upload `beet_X-10-0.png`; time this run too.], [No error at any point; in particular no "Cannot copy out of meta tensor". The second photo is clearly faster than the first run (the models now load once per app start). Write both times in the Sheet.],
   [R3 (F27)], [1. Real mode, upload `beet_X3-130-0.png`. 2. Set Crop to *Cotton* (wrong on purpose). 3. Scroll to "Summary for the farmer". 4. Read it in English, then *(keys)* Hindi and Marathi.], [An orange warning at the top says no plant was recognised as Cotton. The summary also contains the warning — English: "Warning: no plant in this photo was recognised as cotton…"; Hindi (usually at the end): "चेतावनी: इस फ़ोटो में कोई भी पौधा कपास के रूप में नहीं पहचाना गया…"; Marathi: "इशारा: या फोटोमधील कोणतेही रोप कापूस म्हणून ओळखले गेले नाही…".],
-  [R4 (F29)], [*(keys)* 1. Real mode, Crop *Cotton*, tick *Force System 2*. 2. Upload `cotton_CM_17.jpg`. 3. Read the System 2 report. 4. Read the farmer summary in English, then Hindi.], [If a herbicide is shown, the summary *ends* with the caveat — English: "…not an instruction: read the product label and ask your local agriculture officer before spraying."; Hindi: "यह ICAR तालिका का सुझाव है, निर्देश नहीं: …". The summary never orders the farmer to spray a dose. If no herbicide is shown, write "no prescription" (allowed).],
+  [R4 (F29)], [*(keys)* 1. Real mode, Crop *Cotton*, tick *Force System 2 Statutory Consultation*. 2. Upload `cotton_CM_17.jpg`. 3. Read the System 2 report. 4. Read the farmer summary in English, then Hindi.], [If a herbicide is shown, the summary *ends* with the caveat — English: "…not an instruction: read the product label and ask your local agriculture officer before spraying."; Hindi: "यह ICAR तालिका का सुझाव है, निर्देश नहीं: …". The summary never orders the farmer to spray a dose. If no herbicide is shown, write "no prescription" (allowed).],
   [R5 (F28)], [1. Real mode, Sugar Beet, upload `beet_X2-30-0.png`. 2. Under the two images tick *Show every plant and what the system decided*. 3. Compare with the labels in the Appendix.], [A third image appears: soil darker, plants red, green or yellow, and a caption with three percentages. Expect *two of the three beets red* (known failure F1, Section 13) and small red specks on weeds. Screenshot it.],
   [R6 (F28)], [Same as R5 with `cotton_CM_17.jpg`, Crop Cotton.], [The large palmer amaranth weeds are *green* (the detector called them cotton: known limitation); small specks red. Screenshot it; it is a report figure.],
 )
@@ -191,7 +210,7 @@ expected, what happened, and a screenshot if anything looks wrong.
 *E1, screen recording (our backup if the live demo fails).* Win + G (Xbox Game Bar) or OBS, 3–5
 minutes, with your voice. Script:
 
-+ Say: "AgriAgent, real mode, sugar beet." Show the sidebar with Mock Mode off.
++ Say: "AgriAgent, real mode, sugar beet." Show the sidebar: *Mock Mode (Fast Laptop Demo)* unticked, *Crop Context* Sugar Beet.
 + Upload `beet_X-10-0.png`. Point at the REAL banner and the KPI cards.
 + Show the spray map next to the photo: the two weeds are marked, the four beets are not.
 + Tick "Show every plant…": explain red, green, yellow.
@@ -208,6 +227,8 @@ In the Sheet, mark each step ok or problem, and list the steps that no longer ma
 Every FAIL you filed becomes yours to fix, one pull request per issue. Chaitanya reviews and merges;
 nothing reaches `main` without that review. If you cannot find the fix, a comment on the issue that
 names the cause (file, line, why) is still a contribution.
+
+*Once, before your first commit:* `git config --global user.name "Amit Ingle"` and `git config --global user.email "aringle_b23@ce.vjti.ac.in"` (the address GitHub already knows for you, so the commits count as yours). The first `git push` opens a GitHub login window (Git Credential Manager): sign in as `Amit123-coder`.
 
 *Workflow for each issue*
 
@@ -245,8 +266,8 @@ When all fix PRs are merged and Chaitanya says "go":
 #table(
   [ID], [Do], [Pass if],
   [G1], [On the latest `main`, run Part A again (A2–A5).], [All pass; write the commit in the Sheet.],
-  [G2], [Branch `amit/release-1.0.0`: set `version = "1.0.0"` in `pyproject.toml`; run `python scripts/contributions.py` (it rewrites `CONTRIBUTIONS.md` with the latest counts); write `RELEASE_NOTES.md` (what the release contains, the fixes from Test Cycle 2 with their issue numbers, known limitations from Section 13). Open the PR.], [CI green; Chaitanya merges and creates the tag `v1.0.0`.],
-  [G3], [`python scripts\package_release.py --ref v1.0.0`], [Prints OK; writes `dist\AgriAgent-…-source.zip` and a `.sha256` file. Upload both to Drive `Amit/release/`.],
+  [G2], [Branch `amit/release-1.0.0`: change the line `version = "0.2.0"` to `version = "1.0.0"` in `pyproject.toml`; run `python scripts/contributions.py` (it rewrites `CONTRIBUTIONS.md` with the latest counts); write `RELEASE_NOTES.md` (what the release contains, the fixes from Test Cycle 2 with their issue numbers, known limitations from Section 13). Open the PR.], [CI green; Chaitanya merges and creates the tag `v1.0.0`.],
+  [G3], [`python scripts\package_release.py --ref v1.0.0`], [Run `git fetch --tags` first so the tag is known. The last line starts with `PASS:` (never share a package whose output says `FAIL:`); it writes `dist\AgriAgent-…-source.zip` and a `.sha256` file. Upload both files to Drive `Amit/release/`.],
   [G4], [Unzip into a *new* folder and do the setup of Section 3 from the zip (not from git), then A2.], [`OK`. This proves the submitted zip works on its own.],
   [G5], [On GitHub → Releases → "Draft a new release" for tag `v1.0.0`: title "AgriAgent v1.0.0", paste the release notes, attach the zip and `.sha256`. Save as *draft*.], [Chaitanya publishes it after a look.],
 )
@@ -287,6 +308,11 @@ is *worse* than described here.
   [Port already in use], [Another app is running: close the old PowerShell window, or `streamlit run app\app.py --server.port 8502`.],
   [Red "Real mode requested but … could not be loaded"], [Run `python scripts\download_models.py` again; if it repeats, that is a FAIL.],
   [Hindi/Marathi stays English], [No keys, a wrong key, or no network. The orange note under the summary says which. With keys set, restart the app.],
+  [`py -3.11` not found, or "requires Python 3.11" / "No matching distribution"], [Install Python 3.11 (Section 3) and recreate the `.venv` with `py -3.11 -m venv .venv` (delete the old `.venv` folder first).],
+  [`pip install` fails with "No such file or directory" or a very long path], [The folder path is too long: use `C:\agri` (Section 3), or enable long paths once in an *administrator* PowerShell: `New-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\FileSystem" -Name LongPathsEnabled -Value 1 -PropertyType DWORD -Force`, restart, and retry.],
+  [`torch.cuda.is_available()` is `False`], [Driver older than 570: update and restart. Still `False`: continue on the CPU and write "CPU only" in A1; it is not a FAIL.],
+  [Red "CUDA out of memory"], [Close games, video apps and other browser tabs, stop and restart the app, try again. Repeats: FAIL, and paste the output of `nvidia-smi` into the issue.],
+  [Streamlit waits for an e-mail in PowerShell], [Press Enter (first run only).],
   [Anything else], [Screenshot + PowerShell output → WhatsApp Chaitanya, then file it.],
 )
 

@@ -286,7 +286,7 @@ class TestTier3CrossFeature(unittest.TestCase):
         Verify BenchmarkRunner loads manifests, computes detection/segmentation metrics,
         and serializes results to JSON and Markdown reports.
         """
-        manifest_path = Path("data/manifests/eval_manifest_v1.json")
+        manifest_path = Path(__file__).resolve().parents[2] / "data/manifests/eval_manifest_v1.json"
         self.assertTrue(manifest_path.exists(), "Evaluation manifest must exist")
 
         runner = BenchmarkRunner(
