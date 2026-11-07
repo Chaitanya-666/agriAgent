@@ -910,11 +910,14 @@ python scripts/run_baseline.py --manifest data/manifests/eval_manifest_v2_holdou
 
 #heading(numbering: none)[Appendix B: Team contributions]
 
+Counted from the repository history up to 7 November 2026 (commits without merge commits; pull
+requests and issues on GitHub).
+
 #table(
-  columns: (auto, 1fr),
-  [Member], [Contribution],
-  [Chaitanya Shinde (lead)], [Vision pipeline, safety gate, plant rules, escalation agent, evaluation and all measurements, integration, fixes, documentation, test sign-off.],
-  [Sumant Vetal], [Early System 2 code (VLM critic, ICAR knowledge store, prescription); agronomy track; report content.],
-  [Sahil Chavan], [Dataset downloader and fixture images; data and evaluation track.],
-  [Amit Ingle], [Streamlit dashboard (first version); system test cycle 0 and later test cycles.],
+  columns: (1fr, auto, auto, 2.4fr),
+  [Member], [Commits], [PRs / issues], [Contribution],
+  [Chaitanya Shinde (lead)], [93 of 96], [20 / 1], [Project direction and research questions; the vision pipeline (Grounding DINO, SAM 2, refinement) on the local GPU; the deterministic safety gate and its fixes; plant rules v3; the escalation agent; System 2 integration with Cloudflare and Groq; ICAR table check against the bulletin; the farmer summary in three languages; GeoJSON export; evaluation sets rebuilt from the official labels; every measurement and result in Chapter 6; the verification run and the manual test cycle; fixes for all findings F1–F29; the application's later versions; this report, the slides and all project documents.],
+  [Amit Ingle], [1], [1 / 8], [First version of the Streamlit dashboard (4 October); system test cycle 0 on a fresh Windows install (16 test cases, 8 issues filed); test cycle 2 on the final build.],
+  [Sumant Vetal], [1], [1 / 0], [First version of the System 2 code (VLM critic, ICAR knowledge store, prescription; 5 October).],
+  [Sahil Chavan], [1], [1 / 0], [Dataset downloader and a small fixture sample (4 October).],
 )

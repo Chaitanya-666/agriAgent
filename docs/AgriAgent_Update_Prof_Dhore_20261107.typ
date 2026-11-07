@@ -20,7 +20,7 @@
   On 30 October we asked about the base paper and the department's report format. We have
   continued meanwhile, and the project is now close to final: code frozen except for fixes, final
   report drafted, slides ready, last test cycle running. Before we freeze on *Sunday 15 November*
-  (lab exams start on 16 November) we need your decisions on the questions in Section 6. Each
+  (lab exams start on 16 November) we need your decisions on the questions in Section 7. Each
   question has a number, so a short reply such as "Q1 Monday 23 Nov, Q4 yes" is enough.
 ]
 
@@ -110,6 +110,20 @@ verification run from a fresh clone (held-out numbers reproduced exactly; 13 fin
   [Demo], [Live app on our laptop (needs internet only for the Hindi/Marathi summary and diagnosis); a recorded backup video by 12 November.],
 )
 
+= Who did what
+
+Counted from the repository history up to 7 November (commits without merge commits; pull requests
+and issues on GitHub). The same table is Appendix B of the report.
+
+#table(
+  columns: (1fr, auto, auto, 2.4fr),
+  [Member], [Commits], [PRs / issues], [Contribution],
+  [Chaitanya Shinde (lead)], [93 of 96], [20 / 1], [Research questions and direction; vision pipeline on the local GPU; safety gate; plant rules; escalation agent; System 2 integration; ICAR table check; farmer summary; GeoJSON; evaluation sets from official labels; all measurements; verification and manual test cycles; fixes F1–F29; final report, slides and all documents.],
+  [Amit Ingle], [1], [1 / 8], [First Streamlit dashboard (4 Oct); system test cycle 0 on a fresh Windows install (8 issues filed); test cycle 2 on the final build (7–12 Nov).],
+  [Sumant Vetal], [1], [1 / 0], [First version of the System 2 code (VLM critic, ICAR store, prescription; 5 Oct).],
+  [Sahil Chavan], [1], [1 / 0], [Dataset downloader and a small fixture sample (4 Oct).],
+)
+
 = Questions for you
 
 *Report and submission (repeated from 30 October)*
@@ -128,7 +142,7 @@ verification run from a fresh clone (held-out numbers reproduced exactly; 13 fin
 #qtable(
   [Q7], [Viva format: presentation length, demo expected, does each member present a part, who is on the panel (external examiner)?],
   [Q8], [Is a live demo on our own laptop fine, with a recorded video as backup? Will internet be available in the room (needed only for the cloud reasoning model)?],
-  [Q9], [How are individual contributions assessed? Should the report contain a contribution table per member (we have one in an appendix)?],
+  [Q9], [How are individual contributions assessed in the viva and in the marks? Is the evidence-based table in Section 6 (also Appendix B of the report) the right way to show them, or do you need a separate signed contribution statement per member?],
 )
 
 *Packaging and keeping the project available*
