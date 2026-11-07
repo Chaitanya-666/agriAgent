@@ -1,7 +1,7 @@
 #import "../template.typ": *
 #show: doc.with(
   title: "Test Cycle 2: testing and release guide for Amit",
-  subtitle: "Test the final build, fix what you find, prepare the v1.0.0 release, run the viva demo · 7–15 November 2026",
+  subtitle: "Test the final build, fix what you find, prepare the v1.0.0 release, run the viva demo · 7–13 November 2026",
   date: "7 November 2026",
 )
 #show table: set par(justify: false)
@@ -9,10 +9,10 @@
 
 #note(title: "In one paragraph")[
   You test the *final build* of AgriAgent on your own Windows laptop and report every problem by
-  *Thursday 12 November, 23:59*. From then on *the remaining work is yours*: you fix what you found
+  *Tuesday 10 November, 23:59*. From then on *the remaining work is yours*: you fix what you found
   as your own pull requests (Part F), prepare the `v1.0.0` release (Part G) and run the demo in the
-  viva (Part H). Chaitanya reviews, merges and tags. On *Sunday 15 November* the project is frozen
-  and lab exams start the next day. *File each FAIL as soon as you see it.* Everything you deliver
+  viva (Part H). Chaitanya reviews, merges and tags. The release is published on
+  *Wednesday 11 November* and everything is final on *Friday 13 November*. *File each FAIL as soon as you see it.* Everything you deliver
   is counted in the contribution record (`CONTRIBUTIONS.md`), which is regenerated from git and
   GitHub after the freeze. Schedule in Section 15.
 ]
@@ -203,7 +203,7 @@ Save it as `E1_demo_recording.mp4` in `Amit/cycle2/`.
 *E2, demo playbook.* Open `docs/guides/04_Demo_Playbook.pdf` and do it step by step on your laptop.
 In the Sheet, mark each step ok or problem, and list the steps that no longer match the app.
 
-= Part F: fix what you found (Fri 13 – Sat 14 Nov)
+= Part F: fix what you found (Wed 11 Nov, morning)
 
 Every FAIL you filed becomes yours to fix, one pull request per issue. Chaitanya reviews and merges;
 nothing reaches `main` without that review. If you cannot find the fix, a comment on the issue that
@@ -238,7 +238,7 @@ plant rules in `src/vision/plant_candidates.py`; the gate thresholds (0.70 confi
 quality, 85% infestation); anything in `data/manifests/` or `docs/results/`. Never commit `.env`,
 photos or model weights; add no new package without asking.
 
-= Part G: prepare the v1.0.0 release (Sat 14 – Sun 15 Nov)
+= Part G: prepare the v1.0.0 release (Wed 11 Nov, evening)
 
 When all fix PRs are merged and Chaitanya says "go":
 
@@ -255,7 +255,7 @@ When all fix PRs are merged and Chaitanya says "go":
 
 - *Live demo.* You run it on your laptop, following the E1 script. Keep the E1 recording open in a second window as the backup.
 - *Testing slide.* You present the "Testing" slide: what Test Cycles 0 and 2 found and how each was fixed. Use your own issues as examples.
-- *Rehearsal.* Two full run-throughs with Chaitanya on Saturday 14 November, timed.
+- *Rehearsal.* Two full run-throughs with Chaitanya on Thursday 12 and Friday 13 November, timed.
 
 = Known limitations: not bugs, but note what you see
 
@@ -296,12 +296,11 @@ is *worse* than described here.
   columns: (1fr, 1.8fr),
   [When], [What],
   [Sun 8 Nov], [Part A. Report install problems the same day (they block everything else).],
-  [Mon 9 – Tue 10 Nov], [Parts B and C.],
-  [Wed 11 Nov], [Part D.],
-  [Thu 12 Nov], [Part E; Sheet complete by 23:59; WhatsApp Chaitanya "TC2 done" with the number of FAILs. For Parts F–H, add your own rows at the bottom of the Sheet as you go: `F-<issue number>` per fix PR, `G1`–`G5`, `H1`–`H3` (demo, testing slide, rehearsals).],
-  [Fri 13 Nov], [Part F: a fix PR for each of your FAIL issues.],
-  [Sat 14 Nov], [Part F review rounds; Part G1–G2 (release PR); two viva rehearsals (Part H).],
-  [Sun 15 Nov], [Part G3–G5 after the tag; freeze.],
+  [Mon 9 Nov], [Parts B and C.],
+  [Tue 10 Nov], [Parts D and E; Sheet complete by 23:59; WhatsApp Chaitanya "TC2 done" with the number of FAILs. For Parts F–H, add your own rows at the bottom of the Sheet as you go: `F-<issue number>` per fix PR, `G1`–`G5`, `H1`–`H3` (demo, testing slide, rehearsals).],
+  [Wed 11 Nov], [Morning: Part F, a fix PR for each of your FAIL issues, review rounds. Evening: Part G (release PR, tag, package, verify, draft release).],
+  [Thu 12 Nov], [Viva rehearsal 1 (Part H); final numbers in report and slides (Chaitanya).],
+  [Fri 13 Nov], [Viva rehearsal 2. Everything final.],
 )
 
 = Appendix: official labels of the six test photos
