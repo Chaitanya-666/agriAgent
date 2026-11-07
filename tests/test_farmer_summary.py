@@ -5,7 +5,7 @@ The farmer summary uses only pipeline facts; the model may reword them but never
 
 import unittest
 
-from src.agronomy.farmer_summary import farmer_summary, template_summary, build_facts
+from src.agronomy.farmer_summary import LABEL_NOTE, build_facts, farmer_summary, template_summary
 from src.agronomy.provider_contract import LLMResponse
 
 
@@ -32,7 +32,50 @@ SPRAYED = {
 }
 
 
+WRONG_CROP = {
+    "spray_map": {"weed_count": 3, "spray_allowed": True, "crop_examples": 0, "plant_rules": {}}
+}
+PRESCRIBED = {
+    **SPRAYED,
+    "prescription_report": {
+        "status": "ok",
+        "active_ingredient": "Pyrithiobac-sodium",
+        "dosage_ai_g_per_ha": 75,
+        "target_weed": "Amaranthus",
+    },
+}
+
+
 class TestFarmerSummary(unittest.TestCase):
+    def test_wrong_crop_warning_in_template(self):
+        # F27: MT-03 (beet photo, crop set to cotton) gave a summary silent about the warning.
+        text = farmer_summary(WRONG_CROP, "cotton", False)["text"]
+        self.assertIn("no plant in this photo was recognised as cotton", text)
+
+    def test_wrong_crop_warning_survives_model_rewording(self):
+        out = farmer_summary(WRONG_CROP, "cotton", False, "Hindi", FakeProvider("तीन खरपतवार।"))
+        self.assertEqual(out["source"], "model")
+        self.assertIn("कपास के रूप में नहीं पहचाना गया", out["text"])
+
+    def test_no_wrong_crop_warning_when_crop_found(self):
+        state = {"spray_map": {**WRONG_CROP["spray_map"], "crop_examples": 4}}
+        self.assertNotIn("recognised", farmer_summary(state, "cotton", False)["text"])
+
+    def test_label_caveat_added_after_model_text(self):
+        # F29: MT-09 Hindi summary turned the ICAR dose into an instruction, without the label line.
+        out = farmer_summary(
+            PRESCRIBED, "cotton", False, "Hindi", FakeProvider("पाइरिथायोबैक 75 ग्राम डालें।")
+        )
+        self.assertTrue(out["text"].endswith(LABEL_NOTE["Hindi"]))
+        prompt = FakeProvider("x")
+        farmer_summary(PRESCRIBED, "cotton", False, "Marathi", prompt)
+        self.assertIn("never as an instruction", prompt.requests[0].user_prompt)
+
+    def test_english_template_has_label_caveat(self):
+        text = farmer_summary(PRESCRIBED, "cotton", False)["text"]
+        self.assertIn("Pyrithiobac-sodium at 75 g a.i./ha", text)
+        self.assertIn("read the product label", text)
+
     def test_template_states_zones_and_withheld_plants(self):
         text = template_summary(build_facts(SPRAYED, "cotton", mock_mode=False))
         self.assertIn("2 weed patch(es)", text)
