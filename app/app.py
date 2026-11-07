@@ -46,6 +46,7 @@ from app.components.ui import (
     render_kpi_cards,
     render_prescription_report,
     render_sidebar,
+    render_verdict_view,
     render_visualizations,
 )
 from src.vision.visualization import draw_boxes, outline_masks, overlay_masks
@@ -248,11 +249,14 @@ def main() -> None:
 
         # 6. Two-Column Visualizer
         render_visualizations(original_image=image, annotated_image=viz_image)
+        render_verdict_view(image, final_state)
 
         # 7. System 2 Deliberative Prescription Report
         prescription_data = format_prescription_report(final_state.get("prescription_report"))
         vlm_reasoning = final_state.get("vlm_reasoning")
-        render_prescription_report(prescription_data, vlm_reasoning=vlm_reasoning, mock_mode=mock_mode)
+        render_prescription_report(
+            prescription_data, vlm_reasoning=vlm_reasoning, mock_mode=mock_mode
+        )
         render_farmer_summary(final_state, crop=crop, mock_mode=mock_mode)
 
         st.divider()

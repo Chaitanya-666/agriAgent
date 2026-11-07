@@ -11,7 +11,9 @@ from PIL import Image
 
 from src.agronomy.providers import reasoning_provider
 from src.agronomy.farmer_summary import LANGUAGES, farmer_summary
-from src.workflow import default_prompt
+from src.evaluation.crop_protection import vegetation_mask
+from src.vision.visualization import verdict_view
+from src.workflow import crop_pixels, default_prompt
 
 try:
     import streamlit as st
@@ -197,6 +199,46 @@ def render_visualizations(original_image: Image.Image, annotated_image: Image.Im
     with col_right:
         st.subheader("Detections (boxes) and approved spray zones (colour)")
         st.image(annotated_image, width="stretch")
+
+
+def plant_verdict_image(
+    image: Image.Image, final_state: Dict[str, Any]
+) -> Tuple[Image.Image, Dict[str, int]]:
+    """F28: every green pixel coloured by the decision: sprayed, protected as crop, or left alone."""
+    import numpy as np
+
+    shape = (image.size[1], image.size[0])
+    payload = getattr((final_state.get("artifacts") or {}).get("spray_map"), "payload", None) or {}
+    sprayed = np.asarray(payload.get("composite_mask", np.zeros(shape, dtype=bool)), dtype=bool)
+    crop = payload.get("protected_crop_mask")
+    if crop is None:
+        # Without the plant rules (mock mode) the crop is what the detector labelled as crop.
+        crop = crop_pixels(final_state.get("masks", []), final_state.get("text_prompt"), shape)
+    vegetation = vegetation_mask(np.asarray(image.convert("RGB")))
+    return verdict_view(image, sprayed, np.asarray(crop, dtype=bool), vegetation)
+
+
+def render_verdict_view(image: Image.Image, final_state: Dict[str, Any]) -> None:
+    """Optional view of what happened to every plant, for explaining a result (F28)."""
+    if st is None:
+        return
+    if not st.checkbox(
+        "Show every plant and what the system decided",
+        value=False,
+        key="show_verdicts",
+        help="Red: sprayed. Green: protected as crop. Yellow: green but left alone (unsure, too "
+        "small, or withheld by the safety gate).",
+    ):
+        return
+    view, counts = plant_verdict_image(image, final_state)
+    total = max(1, sum(counts.values()))
+    st.image(view, width="stretch")
+    st.caption(
+        f"Red, sprayed: {100 * counts['sprayed'] / total:.1f}% of plant pixels · "
+        f"Green, protected as crop: {100 * counts['crop'] / total:.1f}% · "
+        f"Yellow, left alone: {100 * counts['unsure'] / total:.1f}%. "
+        "Plant pixels are found by colour (excess green), so soil and shadows are not counted."
+    )
 
 
 def render_prescription_report(

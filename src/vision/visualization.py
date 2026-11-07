@@ -202,3 +202,50 @@ def draw_boxes(
         draw.text((x1 + 4, max(0, y1 - 15)), caption, fill=color)
 
     return out_img
+
+
+# F28: colours of the "every plant and its verdict" view. Text labels in the app carry the
+# meaning too, so colour is never the only cue.
+VERDICT_COLORS = {
+    "sprayed": (220, 40, 40),  # approved weed zones
+    "crop": (40, 170, 70),  # protected as crop
+    "unsure": (245, 190, 0),  # vegetation left alone: unsure, too small, or withheld
+}
+
+
+def verdict_view(
+    image: Image.Image,
+    sprayed: np.ndarray,
+    crop: np.ndarray,
+    vegetation: np.ndarray,
+    alpha: float = 0.6,
+    background: float = 0.45,
+) -> Tuple[Image.Image, dict]:
+    """
+    Colour every green pixel by what the system decided (F28: masks that were not sprayed were
+    invisible, so a viewer saw "no segmentation"). Sprayed wins over crop, crop over unsure.
+    Everything that is not a plant is dimmed to `background` brightness so green-on-green
+    stays readable. Returns the image and the pixel count of each class.
+    """
+    rgb = np.asarray(image.convert("RGB"), dtype=float)
+    shape = rgb.shape[:2]
+
+    def fit(mask: np.ndarray) -> np.ndarray:
+        out = np.zeros(shape, dtype=bool)
+        m = np.asarray(mask, dtype=bool)
+        h, w = min(shape[0], m.shape[0]), min(shape[1], m.shape[1])
+        out[:h, :w] = m[:h, :w]
+        return out
+
+    sprayed_m = fit(sprayed)
+    crop_m = fit(crop) & ~sprayed_m
+    unsure_m = fit(vegetation) & ~sprayed_m & ~crop_m
+    rgb[~(sprayed_m | crop_m | unsure_m)] *= background
+    for mask, key in ((unsure_m, "unsure"), (crop_m, "crop"), (sprayed_m, "sprayed")):
+        rgb[mask] = (1 - alpha) * rgb[mask] + alpha * np.array(VERDICT_COLORS[key], dtype=float)
+    counts = {
+        "sprayed": int(sprayed_m.sum()),
+        "crop": int(crop_m.sum()),
+        "unsure": int(unsure_m.sum()),
+    }
+    return Image.fromarray(rgb.clip(0, 255).astype(np.uint8)), counts

@@ -444,6 +444,7 @@ class VisionWorkflowRunner:
 
         plant_rule_summary: Dict[str, int] = {}
         crop_examples: Optional[int] = None
+        protected_crop: Optional[np.ndarray] = None
         if self.plant_rules and isinstance(img, Image.Image):
             crop_refs = crop_reference_masks(masks, prompt, (h, w))
             # F18: with no crop-labelled mask the rules fall back to "off the row = weed", which
@@ -455,6 +456,8 @@ class VisionWorkflowRunner:
             # The nozzle never fires over a plant classified as crop.
             weed_patches &= ~crop_patches
             weed_patches &= ~crop_pixels(masks, prompt, (h, w))
+            # F28: kept for the app's "every plant and its verdict" view; display only.
+            protected_crop = crop_patches | crop_pixels(masks, prompt, (h, w))
             plant_rule_summary = {
                 v: sum(p["verdict"] == v for p in patches) for v in ("weed", "crop", "unsure")
             }
@@ -531,7 +534,11 @@ class VisionWorkflowRunner:
             title="Precision Herbicide Spray Map",
             description=f"Generated prescription saving {chemical_savings_pct:.1f}% chemical volume.",
             metadata=spray_map_data,
-            payload={"composite_mask": composite_mask, "approved_spray_zones": approved_zones},
+            payload={
+                "composite_mask": composite_mask,
+                "approved_spray_zones": approved_zones,
+                "protected_crop_mask": protected_crop,
+            },
         )
 
         artifacts = state.get("artifacts", {}).copy()

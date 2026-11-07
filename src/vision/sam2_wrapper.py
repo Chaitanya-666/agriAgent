@@ -118,7 +118,8 @@ class SAM2Segmenter:
                 def load() -> Tuple[Any, Any]:
                     logger.info("Using Hugging Face Transformers SAM2 implementation.")
                     processor = Sam2Processor.from_pretrained(self.model_id)
-                    hf_model: Any = Sam2Model.from_pretrained(self.model_id).to(self.device)
+                    hf_model: Any = Sam2Model.from_pretrained(self.model_id)
+                    hf_model = hf_model.to(self.device)
                     hf_model.eval()
                     return processor, hf_model
 
