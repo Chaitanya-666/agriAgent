@@ -1,7 +1,7 @@
 #import "../template.typ": *
 #show: doc.with(
-  title: "Test Cycle 2: testing guide for Amit",
-  subtitle: "System and regression testing of the final build · results due Thursday 12 November 2026, 23:59",
+  title: "Test Cycle 2: testing and release guide for Amit",
+  subtitle: "Test the final build, fix what you find, prepare the v1.0.0 release, run the viva demo · 7–15 November 2026",
   date: "7 November 2026",
 )
 #show table: set par(justify: false)
@@ -9,10 +9,12 @@
 
 #note(title: "In one paragraph")[
   You test the *final build* of AgriAgent on your own Windows laptop and report every problem by
-  *Thursday 12 November, 23:59*. Chaitanya fixes what you find on 13–14 November; on *Sunday 15
-  November* the project is frozen and lab exams start the next day. A bug found on the 12th can
-  still be fixed; one found in the viva cannot. *File each FAIL as soon as you see it.* About 5–6
-  hours in total, spread over the days (schedule in Section 11).
+  *Thursday 12 November, 23:59*. From then on *the remaining work is yours*: you fix what you found
+  as your own pull requests (Part F), prepare the `v1.0.0` release (Part G) and run the demo in the
+  viva (Part H). Chaitanya reviews, merges and tags. On *Sunday 15 November* the project is frozen
+  and lab exams start the next day. *File each FAIL as soon as you see it.* Everything you deliver
+  is counted in the contribution record (`CONTRIBUTIONS.md`), which is regenerated from git and
+  GitHub after the freeze. Schedule in Section 15.
 ]
 
 #outline(title: [Contents], depth: 1, indent: auto)
@@ -152,7 +154,7 @@ case, set the sidebar back to: Crop as stated, Language English, agent off, Forc
   [R2 (F26)], [1. Restart the app (Ctrl + C, start again). 2. Real mode, Crop *Sugar Beet*, upload `beet_X3-130-0.png`; time the run. 3. *While the spinner is still running*, change Crop to Cotton and back to Sugar Beet, three times quickly. 4. Upload `beet_X-10-0.png`; time this run too.], [No error at any point; in particular no "Cannot copy out of meta tensor". The second photo is clearly faster than the first run (the models now load once per app start). Write both times in the Sheet.],
   [R3 (F27)], [1. Real mode, upload `beet_X3-130-0.png`. 2. Set Crop to *Cotton* (wrong on purpose). 3. Scroll to "Summary for the farmer". 4. Read it in English, then *(keys)* Hindi and Marathi.], [An orange warning at the top says no plant was recognised as Cotton. The summary also contains the warning — English: "Warning: no plant in this photo was recognised as cotton…"; Hindi (usually at the end): "चेतावनी: इस फ़ोटो में कोई भी पौधा कपास के रूप में नहीं पहचाना गया…"; Marathi: "इशारा: या फोटोमधील कोणतेही रोप कापूस म्हणून ओळखले गेले नाही…".],
   [R4 (F29)], [*(keys)* 1. Real mode, Crop *Cotton*, tick *Force System 2*. 2. Upload `cotton_CM_17.jpg`. 3. Read the System 2 report. 4. Read the farmer summary in English, then Hindi.], [If a herbicide is shown, the summary *ends* with the caveat — English: "…not an instruction: read the product label and ask your local agriculture officer before spraying."; Hindi: "यह ICAR तालिका का सुझाव है, निर्देश नहीं: …". The summary never orders the farmer to spray a dose. If no herbicide is shown, write "no prescription" (allowed).],
-  [R5 (F28)], [1. Real mode, Sugar Beet, upload `beet_X2-30-0.png`. 2. Under the two images tick *Show every plant and what the system decided*. 3. Compare with the labels in the Appendix.], [A third image appears: soil darker, plants red, green or yellow, and a caption with three percentages. Expect *two of the three beets red* (known failure F1, Section 10) and small red specks on weeds. Screenshot it.],
+  [R5 (F28)], [1. Real mode, Sugar Beet, upload `beet_X2-30-0.png`. 2. Under the two images tick *Show every plant and what the system decided*. 3. Compare with the labels in the Appendix.], [A third image appears: soil darker, plants red, green or yellow, and a caption with three percentages. Expect *two of the three beets red* (known failure F1, Section 13) and small red specks on weeds. Screenshot it.],
   [R6 (F28)], [Same as R5 with `cotton_CM_17.jpg`, Crop Cotton.], [The large palmer amaranth weeds are *green* (the detector called them cotton: known limitation); small specks red. Screenshot it; it is a report figure.],
 )
 
@@ -201,6 +203,60 @@ Save it as `E1_demo_recording.mp4` in `Amit/cycle2/`.
 *E2, demo playbook.* Open `docs/guides/04_Demo_Playbook.pdf` and do it step by step on your laptop.
 In the Sheet, mark each step ok or problem, and list the steps that no longer match the app.
 
+= Part F: fix what you found (Fri 13 – Sat 14 Nov)
+
+Every FAIL you filed becomes yours to fix, one pull request per issue. Chaitanya reviews and merges;
+nothing reaches `main` without that review. If you cannot find the fix, a comment on the issue that
+names the cause (file, line, why) is still a contribution.
+
+*Workflow for each issue*
+
++ Start from the latest code: `git switch main`, `git pull`, then a branch named after the issue: `git switch -c amit/fix-<issue number>-<short-name>` (e.g. `amit/fix-41-hindi-caveat`).
++ Reproduce the problem with the steps from your issue.
++ Find the code (table below). Write a test in `tests/` that fails because of the bug, then fix the code until it passes.
++ Run the checks: `python -m unittest discover -s tests` (OK), `ruff check .` and `ruff format .`.
++ Commit with a message like `fix(app): Hindi summary keeps the label caveat (TC2 #41)` and push: `git push -u origin amit/fix-41-hindi-caveat`.
++ Open a pull request into `main`; the description template asks what, why and how you tested. Write `Fixes #41` in it.
++ Answer review comments with more commits on the same branch. Chaitanya merges when it is right.
+
+*Where to look*
+
+#table(
+  columns: (1fr, 1.8fr),
+  [Symptom], [File],
+  [Screen layout, banners, KPI cards, buttons, language box], [`app/app.py`, `app/components/ui.py`],
+  [Upload, GeoJSON file, KPIs], [`app/components/pipeline.py`],
+  [Farmer summary text, Hindi/Marathi, safety sentences], [`src/agronomy/farmer_summary.py`],
+  [Herbicide advice, "no evidence"], [`src/agronomy/prescription.py`, `src/agronomy/knowledge_store.py`],
+  [Cloud model errors, keys], [`src/agronomy/providers/`, `scripts/check_providers.py`],
+  [Model loading, crashes before a result], [`src/vision/grounding_dino.py`, `src/vision/sam2_wrapper.py`, `src/vision/model_cache.py`],
+  [Coloured overlays, the "every plant" view], [`src/vision/visualization.py`],
+)
+
+*Do not change without asking Chaitanya first* (these are frozen and measured in the report): the
+plant rules in `src/vision/plant_candidates.py`; the gate thresholds (0.70 confidence, 0.85 mask
+quality, 85% infestation); anything in `data/manifests/` or `docs/results/`. Never commit `.env`,
+photos or model weights; add no new package without asking.
+
+= Part G: prepare the v1.0.0 release (Sat 14 – Sun 15 Nov)
+
+When all fix PRs are merged and Chaitanya says "go":
+
+#table(
+  [ID], [Do], [Pass if],
+  [G1], [On the latest `main`, run Part A again (A2–A5).], [All pass; write the commit in the Sheet.],
+  [G2], [Branch `amit/release-1.0.0`: set `version = "1.0.0"` in `pyproject.toml`; run `python scripts/contributions.py` (it rewrites `CONTRIBUTIONS.md` with the latest counts); write `RELEASE_NOTES.md` (what the release contains, the fixes from Test Cycle 2 with their issue numbers, known limitations from Section 13). Open the PR.], [CI green; Chaitanya merges and creates the tag `v1.0.0`.],
+  [G3], [`python scripts\package_release.py --ref v1.0.0`], [Prints OK; writes `dist\AgriAgent-…-source.zip` and a `.sha256` file. Upload both to Drive `Amit/release/`.],
+  [G4], [Unzip into a *new* folder and do the setup of Section 3 from the zip (not from git), then A2.], [`OK`. This proves the submitted zip works on its own.],
+  [G5], [On GitHub → Releases → "Draft a new release" for tag `v1.0.0`: title "AgriAgent v1.0.0", paste the release notes, attach the zip and `.sha256`. Save as *draft*.], [Chaitanya publishes it after a look.],
+)
+
+= Part H: your role in the viva
+
+- *Live demo.* You run it on your laptop, following the E1 script. Keep the E1 recording open in a second window as the backup.
+- *Testing slide.* You present the "Testing" slide: what Test Cycles 0 and 2 found and how each was fixed. Use your own issues as examples.
+- *Rehearsal.* Two full run-throughs with Chaitanya on Saturday 14 November, timed.
+
 = Known limitations: not bugs, but note what you see
 
 These are known and measured; they go in the report. Don't file them as new bugs unless something
@@ -242,9 +298,10 @@ is *worse* than described here.
   [Sun 8 Nov], [Part A. Report install problems the same day (they block everything else).],
   [Mon 9 – Tue 10 Nov], [Parts B and C.],
   [Wed 11 Nov], [Part D.],
-  [Thu 12 Nov], [Part E; Sheet complete by 23:59; WhatsApp Chaitanya "TC2 done" with the number of FAILs.],
-  [Fri 13 – Sat 14 Nov], [Chaitanya fixes; you re-test only the fixed issues and comment PASS or FAIL on each.],
-  [Sun 15 Nov], [Freeze.],
+  [Thu 12 Nov], [Part E; Sheet complete by 23:59; WhatsApp Chaitanya "TC2 done" with the number of FAILs. For Parts F–H, add your own rows at the bottom of the Sheet as you go: `F-<issue number>` per fix PR, `G1`–`G5`, `H1`–`H3` (demo, testing slide, rehearsals).],
+  [Fri 13 Nov], [Part F: a fix PR for each of your FAIL issues.],
+  [Sat 14 Nov], [Part F review rounds; Part G1–G2 (release PR); two viva rehearsals (Part H).],
+  [Sun 15 Nov], [Part G3–G5 after the tag; freeze.],
 )
 
 = Appendix: official labels of the six test photos
