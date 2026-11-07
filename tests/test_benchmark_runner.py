@@ -23,7 +23,7 @@ class TestBenchmarkRunner(unittest.TestCase):
     """Test suite for BenchmarkRunner, rasterization, box IoU, and metric aggregations."""
 
     def setUp(self):
-        self.manifest_path = Path("data/manifests/eval_manifest_v1.json")
+        self.manifest_path = Path(__file__).resolve().parents[1] / "data/manifests/eval_manifest_v1.json"
         self.runner = BenchmarkRunner(
             manifest_path=self.manifest_path,
             mock_mode=True,

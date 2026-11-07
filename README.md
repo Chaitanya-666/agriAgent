@@ -93,7 +93,7 @@ config/           Thresholds and prompts
 
 ## Setup
 
-Use Python 3.10–3.12 (every result was verified on 3.11).
+Use Python 3.11, 3.12 or 3.13 (every result was verified on 3.11; 3.10 cannot install the locked versions). The same lock file installs on Linux and Windows.
 
 ```bash
 python -m venv .venv && source .venv/bin/activate       # Windows: .venv\Scripts\activate
