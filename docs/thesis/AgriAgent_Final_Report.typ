@@ -490,7 +490,7 @@ slider (0.70 or higher), the nozzle buffer in pixels and two switches: force Sys
 unsure plants with the escalation agent (real mode, off by default). It shows the REAL/MOCK banner,
 a wrong-crop warning when no plant matched the declared crop, KPI cards (area sprayed, herbicide
 saved, zones), the photo beside the spray map with approved zones filled and outlined (tiny zones get
-a ring so they stay visible), the System 2 report, the farmer summary and a GeoJSON download. The last
+a ring so they stay visible), the System 2 report, the farmer summary and a GeoJSON download. An optional view colours every plant by the decision taken (red sprayed, green protected as crop, yellow left alone), so that withheld plants are visible when a result is explained. The last
 result is cached against the photo and settings, so changing the summary language or downloading
 does not rerun the models.
 
