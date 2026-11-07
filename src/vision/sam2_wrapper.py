@@ -35,6 +35,7 @@ from PIL import Image
 
 # Import typed contracts from centralized state
 from src.state import Box, Mask
+from src.vision.model_cache import load_once
 
 logger = logging.getLogger("agriagent.vision.sam2")
 
@@ -114,11 +115,17 @@ class SAM2Segmenter:
                 # Fallback to Hugging Face transformers SAM2 wrapper if installed
                 from transformers import Sam2Model, Sam2Processor
 
-                logger.info("Using Hugging Face Transformers SAM2 implementation.")
-                self._processor = Sam2Processor.from_pretrained(self.model_id)
-                hf_model: Any = Sam2Model.from_pretrained(self.model_id)
-                self._model = hf_model.to(self.device)
-                self._model.eval()
+                def load() -> Tuple[Any, Any]:
+                    logger.info("Using Hugging Face Transformers SAM2 implementation.")
+                    processor = Sam2Processor.from_pretrained(self.model_id)
+                    hf_model: Any = Sam2Model.from_pretrained(self.model_id).to(self.device)
+                    hf_model.eval()
+                    return processor, hf_model
+
+                # F26: one load per process, under a lock (see src/vision/model_cache.py).
+                self._processor, self._model = load_once(
+                    ("sam2_hf", self.model_id, str(self.device)), load
+                )
 
         except Exception as err:
             # Real mode was asked for; never fall back to synthetic masks silently (known issue K5).
