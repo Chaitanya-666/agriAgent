@@ -232,7 +232,7 @@ listed in our original proposal, are future work (Section 8.2). No model is trai
 + An honest measurement of the Grounded SAM pipeline on crop-versus-weed spraying, on two crops, with labels copied from the official dataset files and a held-out set evaluated once (Chapter 6).
 + A deterministic safety gate and a four-rule plant classifier that move the held-out result from 65.5% crop sprayed / 1.8% weed recall to 8.8% / 77.9%, with no training and no model calls (Section 6.4).
 + A bounded escalation agent whose verdicts are combined by measured source accuracy, and a negative but useful result: it is safe and precise but adds no weed recall (Section 6.6).
-+ A testing record: an automated suite of 267 tests (232 unit, 35 end-to-end), a system test cycle by a team member, a verification run, a manual test cycle, and 29 findings (F1–F29) traced to fixes or stated limitations (Chapter 7).
++ A testing record: an automated suite of 270 tests (235 unit, 35 end-to-end), a system test cycle by a team member, a verification run, a manual test cycle, and 29 findings (F1–F29) traced to fixes or stated limitations (Chapter 7).
 
 == Organisation of the report
 
@@ -470,7 +470,7 @@ to the model (findings F27 and F29).
     [`src/evaluation/`], [Metrics: crop pixels sprayed, weed recall, savings, IoU/Dice; benchmark runner.],
     [`app/`], [Streamlit dashboard, KPI cards, visualisation, GeoJSON export.],
     [`scripts/`], [Baseline runner, manifest builders, provider check, verification scripts.],
-    [`tests/`], [232 unit tests and 35 end-to-end tests.],
+    [`tests/`], [235 unit tests and 35 end-to-end tests.],
   ),
   caption: [Main modules.],
 )
@@ -778,7 +778,7 @@ the cloud diagnosis, takes about 15 s, or about 40 s with the escalation agent.
   table(
     columns: (auto, 1fr, auto),
     [Level], [What], [Result],
-    [Unit], [232 tests: gate rules, plant rules, metrics (hand-computed grids), ICAR rows vs bulletin, GeoJSON geometry, providers, farmer summary, model cache.], [all pass],
+    [Unit], [235 tests: gate rules, plant rules, metrics (hand-computed grids), ICAR rows vs bulletin, GeoJSON geometry, providers, farmer summary, model cache, verdict view.], [all pass],
     [End to end], [35 tests through the workflow and the app in mock mode.], [all pass],
     [Static], [ruff, ruff format, mypy on `src/`.], [clean],
     [CI], [GitHub Actions on every push, Python 3.10 and 3.11.], [green],
@@ -821,7 +821,7 @@ covered by a test, re-run with the tester's exact steps by a headless script, an
     [F25], [info], [Qwen 16/20 on Groq vs 12/20 on Cloudflare.], [reported],
     [F26], [medium], [Intermittent "Cannot copy out of meta tensor" when a rerun interrupted model loading.], [fixed: load once, under a lock],
     [F27], [medium], [Farmer summary silent about the wrong-crop warning.], [fixed: fixed-text warning],
-    [F28], [low], [Masks that were not sprayed are invisible, which looks like "no segmentation".], [open],
+    [F28], [low], [Masks that were not sprayed are invisible, which looks like "no segmentation".], [fixed: optional verdict view],
     [F29], [medium], [Hindi summary turned the ICAR suggestion into an instruction and dropped "read the label".], [fixed: fixed-text caveat],
   ),
   caption: [Selected findings (full list: `docs/testing/Verification_Report_20261023.md`, `Manual_Test_Cycle_20261030.md`).],
