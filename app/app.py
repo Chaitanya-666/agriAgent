@@ -46,6 +46,7 @@ from app.components.ui import (
     render_kpi_cards,
     render_prescription_report,
     render_sidebar,
+    render_verdict_view,
     render_visualizations,
 )
 from src.vision.visualization import draw_boxes, outline_masks, overlay_masks
@@ -188,6 +189,11 @@ def main() -> None:
         )
         return
 
+    # F24: everything below the controls lives in one slot. Creating the empty slot at the start
+    # of a run removes the previous result at once, instead of Streamlit showing the old page
+    # (even the old MOCK banner) greyed out until the new run finishes.
+    results_area = st.empty()
+
     # 4. Pipeline Execution
     with st.spinner(
         "Executing System-1 Reflex Perception Pipeline..."
@@ -229,35 +235,39 @@ def main() -> None:
             logger.error("Error executing pipeline in app: %s", exc, exc_info=True)
             return
 
-    if final_state.get("error"):
-        st.error(f"Pipeline stopped: {final_state['error']}")
-        return
+    with results_area.container():
+        if final_state.get("error"):
+            st.error(f"Pipeline stopped: {final_state['error']}")
+            return
 
-    # 5. Dynamic KPI Metric Cards
-    render_mode_badge(mock_mode)
-    render_crop_warning(final_state, crop)
-    render_kpi_cards(kpis)
+        # 5. Dynamic KPI Metric Cards
+        render_mode_badge(mock_mode)
+        render_crop_warning(final_state, crop)
+        render_kpi_cards(kpis)
 
-    st.divider()
+        st.divider()
 
-    # 6. Two-Column Visualizer
-    render_visualizations(original_image=image, annotated_image=viz_image)
+        # 6. Two-Column Visualizer
+        render_visualizations(original_image=image, annotated_image=viz_image)
+        render_verdict_view(image, final_state)
 
-    # 7. System 2 Deliberative Prescription Report
-    prescription_data = format_prescription_report(final_state.get("prescription_report"))
-    vlm_reasoning = final_state.get("vlm_reasoning")
-    render_prescription_report(prescription_data, vlm_reasoning=vlm_reasoning, mock_mode=mock_mode)
-    render_farmer_summary(final_state, crop=crop, mock_mode=mock_mode)
+        # 7. System 2 Deliberative Prescription Report
+        prescription_data = format_prescription_report(final_state.get("prescription_report"))
+        vlm_reasoning = final_state.get("vlm_reasoning")
+        render_prescription_report(
+            prescription_data, vlm_reasoning=vlm_reasoning, mock_mode=mock_mode
+        )
+        render_farmer_summary(final_state, crop=crop, mock_mode=mock_mode)
 
-    st.divider()
+        st.divider()
 
-    # 8. GeoJSON Prescription Download
-    geojson_doc = build_spray_geojson(
-        final_state=final_state,
-        crop=crop,
-        nozzle_buffer_px=nozzle_buffer,
-    )
-    render_geojson_download(geojson_doc)
+        # 8. GeoJSON Prescription Download
+        geojson_doc = build_spray_geojson(
+            final_state=final_state,
+            crop=crop,
+            nozzle_buffer_px=nozzle_buffer,
+        )
+        render_geojson_download(geojson_doc)
 
 
 if __name__ == "__main__":

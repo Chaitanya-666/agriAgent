@@ -22,6 +22,41 @@ GLOSSARY = {
     "Marathi": "sugar beet = साखर बीट, cotton = कापूस, weed = तण, crop = पीक, spray = फवारणी",
 }
 DOSE_WORDS = ("g/ha", "g a.i", "ml", "litre", "liter", "kg/ha", "grams")
+CROP_NAMES = {
+    "Hindi": {"sugar beet": "चुकंदर", "cotton": "कपास"},
+    "Marathi": {"sugar beet": "साखर बीट", "cotton": "कापूस"},
+}
+# Safety sentences are never left to the model (F27: the Hindi summary dropped the wrong-crop
+# warning; F29: it turned the ICAR suggestion into an instruction and dropped "read the label").
+# They are fixed text, appended after the model's wording, in the chosen language.
+WRONG_CROP_NOTE = {
+    "English": (
+        "Warning: no plant in this photo was recognised as {crop}. If the crop setting is wrong, "
+        "crop plants may be marked for spraying; do not use this map until it is checked."
+    ),
+    "Hindi": (
+        "चेतावनी: इस फ़ोटो में कोई भी पौधा {crop} के रूप में नहीं पहचाना गया। अगर फसल का चुनाव गलत "
+        "है, तो फसल के पौधों पर भी छिड़काव का निशान लग सकता है; जाँच से पहले इस नक्शे का उपयोग न करें।"
+    ),
+    "Marathi": (
+        "इशारा: या फोटोमधील कोणतेही रोप {crop} म्हणून ओळखले गेले नाही. पिकाची निवड चुकीची असल्यास "
+        "पिकाच्या रोपांवरही फवारणीची खूण होऊ शकते; तपासणीपूर्वी हा नकाशा वापरू नका."
+    ),
+}
+LABEL_NOTE = {
+    "English": (
+        "This is a suggestion from the ICAR table, not an instruction: read the product label "
+        "and ask your local agriculture officer before spraying."
+    ),
+    "Hindi": (
+        "यह ICAR तालिका का सुझाव है, निर्देश नहीं: छिड़काव से पहले उत्पाद का लेबल पढ़ें और अपने "
+        "स्थानीय कृषि अधिकारी से सलाह लें।"
+    ),
+    "Marathi": (
+        "हा ICAR तक्त्यातील सल्ला आहे, सूचना नाही: फवारणीपूर्वी उत्पादनाचे लेबल वाचा आणि स्थानिक "
+        "कृषी अधिकाऱ्यांचा सल्ला घ्या."
+    ),
+}
 
 
 def build_facts(state: Dict[str, Any], crop: str, mock_mode: bool) -> Dict[str, Any]:
@@ -34,6 +69,8 @@ def build_facts(state: Dict[str, Any], crop: str, mock_mode: bool) -> Dict[str, 
     return {
         "mode": "MOCK (test data, not a real result)" if mock_mode else "REAL",
         "crop": crop,
+        # F18/F27: the plant rules found no plant matching the declared crop.
+        "crop_not_recognised": spray.get("crop_examples") == 0,
         "zones_to_spray": int(spray.get("weed_count", 0)),
         "spray_allowed": bool(spray.get("spray_allowed", False)),
         # F4: with the plant rules on, "unsure" patches are the plants left for the farmer to check;
@@ -58,6 +95,8 @@ def template_summary(facts: Dict[str, Any]) -> str:
     lines = []
     if facts["mode"] != "REAL":
         lines.append("This is test data, not a real field result.")
+    if facts.get("crop_not_recognised"):
+        lines.append(WRONG_CROP_NOTE["English"].format(crop=facts["crop"]))
     if not facts["spray_allowed"]:
         lines.append("Weeds cover too much of this photo for spot spraying; do not use this map.")
     elif facts["zones_to_spray"] == 0:
@@ -77,9 +116,22 @@ def template_summary(facts: Dict[str, Any]) -> str:
     if facts["herbicide"]:
         lines.append(
             f"The ICAR table suggests {facts['herbicide']} at {facts['dose_g_per_ha']} g a.i./ha for "
-            f"{facts['weed_named']}; read the product label before use."
+            f"{facts['weed_named']}."
         )
+        lines.append(LABEL_NOTE["English"])
     return " ".join(lines)
+
+
+def safety_notes(facts: Dict[str, Any], language: str) -> str:
+    """The fixed warning sentences for these facts, in the given language."""
+    language = language if language in WRONG_CROP_NOTE else "English"
+    notes = []
+    if facts.get("crop_not_recognised"):
+        crop = CROP_NAMES.get(language, {}).get(facts["crop"], facts["crop"])
+        notes.append(WRONG_CROP_NOTE[language].format(crop=crop))
+    if facts["herbicide"]:
+        notes.append(LABEL_NOTE[language])
+    return " ".join(notes)
 
 
 def farmer_summary(
@@ -100,7 +152,9 @@ def farmer_summary(
         return {"text": template, "source": "template"}
     prompt = (
         f"Rewrite this field result for a farmer in {language}, in at most three short sentences of "
-        "plain words. Use only these facts; add no advice, chemical or dose that is not in them.\n"
+        "plain words. Use only these facts; add no advice, chemical or dose that is not in them. "
+        "Describe any herbicide only as what the ICAR table suggests, never as an instruction; "
+        "leave out warnings, they are added separately.\n"
         f"Facts: {facts}\nEnglish version: {template}"
         + (f"\nUse these words: {GLOSSARY[language]}." if language in GLOSSARY else "")
     )
@@ -116,4 +170,5 @@ def farmer_summary(
             "Farmer summary mentioned a dose without a prescription; using the template."
         )
         return {"text": template, "source": "template"}
-    return {"text": text, "source": "model"}
+    notes = safety_notes(facts, language)
+    return {"text": f"{text} {notes}".strip(), "source": "model"}

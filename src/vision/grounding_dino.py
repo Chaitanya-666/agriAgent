@@ -32,6 +32,7 @@ from PIL import Image
 
 # Import typed state schema
 from src.state import Box
+from src.vision.model_cache import load_once
 
 logger = logging.getLogger("agriagent.vision.grounding_dino")
 
@@ -101,14 +102,22 @@ class GroundingDINOEngine:
             if self.device is None:
                 self.device = "cuda" if torch.cuda.is_available() else "cpu"
 
-            logger.info("Loading Grounding DINO [%s] on device [%s]...", self.model_id, self.device)
-            self._processor = AutoProcessor.from_pretrained(self.model_id)
-            model = AutoModelForZeroShotObjectDetection.from_pretrained(self.model_id).to(
-                self.device
+            def load() -> Tuple[Any, Any]:
+                logger.info(
+                    "Loading Grounding DINO [%s] on device [%s]...", self.model_id, self.device
+                )
+                processor = AutoProcessor.from_pretrained(self.model_id)
+                model = AutoModelForZeroShotObjectDetection.from_pretrained(self.model_id).to(
+                    self.device
+                )
+                model.eval()
+                logger.info("Grounding DINO initialized successfully.")
+                return processor, model
+
+            # F26: one load per process, under a lock (see src/vision/model_cache.py).
+            self._processor, self._model = load_once(
+                ("grounding_dino", self.model_id, str(self.device)), load
             )
-            model.eval()
-            self._model = model
-            logger.info("Grounding DINO initialized successfully.")
         except Exception as err:
             # Real mode was asked for. Silently drawing mock boxes instead would let a demo
             # or an evaluation pass fake detections off as real ones (known issue K5).
