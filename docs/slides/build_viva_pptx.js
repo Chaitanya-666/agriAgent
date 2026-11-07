@@ -244,7 +244,21 @@ s.addText(list(["Weed IoU on PhenoBench, like-for-like with WaW", "BioCLIP plant
   { x: M + CW / 2 + 0.5, y: 3.0, w: CW / 2 - 0.8, h: 3.2, fontSize: 15, color: C.text2, paraSpaceAfter: 6, valign: "top", margin: 0, isTextBox: true });
 s.addNotes("A research prototype, not a sprayer controller. Biggest limits: the rules exploit young sugar beet's size difference, so they do not carry to cotton; and F1. Next step, suggested by WaW itself: species-aware features such as BioCLIP.");
 
-// 14 Closing
+// 14 Team and contributions (counted from the repository: CONTRIBUTIONS.md)
+s = pres.addSlide({ masterName: "CONTENT_ALT", sectionTitle: "Context and conclusion" });
+eyebrow(s, "Team and contributions");
+s.addText("Who built what, counted from the repository", { placeholder: "title" });
+s.addTable([
+  [hdr("Member"), hdr("Commits"), hdr("Current code"), hdr("Built")],
+  ["Chaitanya Shinde (lead)", "94 of 97", "97.4%", "Design, vision pipeline, safety gate, plant rules, agent, System 2 integration, all experiments, all fixes, report and slides"],
+  ["Amit Ingle", "1", "1.4%", "First dashboard (4 Oct); system test cycles 0 and 2 (8 issues filed in cycle 0)"],
+  ["Sumant Vetal", "1", "1.3%", "First version of the System 2 code (5 Oct)"],
+  ["Sahil Chavan", "1", "0%", "Dataset downloader and fixture sample (4 Oct)"],
+], { x: M, y: 2.2, w: CW, colW: [2.9, 1.3, 1.6, CW - 5.8], fontSize: 15, color: C.text2, border: { type: "solid", pt: 0.75, color: "C9D6CB" }, fill: { color: C.background1 }, margin: 0.1, valign: "middle" });
+note(s, "Commits without merges (git log); current Python code by last author (git blame); 7 Nov 2026, commit 6e2552a. Source: CONTRIBUTIONS.md");
+s.addNotes("Numbers are counted, not estimated, and reproducible with scripts/contributions.py. Chaitanya designed and built the system and ran every measurement; Amit built the first dashboard and ran the system test cycles; Sumant wrote the first System 2 code; Sahil wrote the dataset downloader.");
+
+// 15 Closing
 s = pres.addSlide({ masterName: "DARK", sectionTitle: "Context and conclusion" });
 eyebrow(s, "Conclusion", "9FC7A5");
 s.addText("Zero-shot prompts alone spray the crop or nothing. Transparent rules and a safety gate get to 77.9% of weeds at 8.8% crop, with no training.", { x: M, y: 1.6, w: 11.5, h: 2.6, fontFace: "Cambria", fontSize: 34, bold: true, color: C.background2, margin: 0, isTextBox: true });
