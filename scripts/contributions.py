@@ -63,7 +63,16 @@ COMPONENTS = [
     ("All experiments and results (`docs/results/`)", "Chaitanya", ""),
     ("Unit and end-to-end tests, CI, verification run, manual test cycle", "Chaitanya", ""),
     ("System test cycle 0 (16 cases, fresh Windows install, 8 issues filed)", "Amit", ""),
-    ("System test cycle 2 on the final build (7-12 Nov)", "Amit", ""),
+    (
+        "System test cycle 2 on the final build (7-8 Nov: 24 of 24 cases PASS on Windows)",
+        "Amit",
+        "",
+    ),
+    (
+        "Release v1.0.0: version bump, release notes, draft release; packaging bug report",
+        "Amit",
+        "notes and packaging fix finished in review by Chaitanya",
+    ),
     ("Fixes for all findings F1-F29", "Chaitanya", ""),
     ("Final report, slides, guides and all project documents (`docs/`)", "Chaitanya", ""),
 ]
@@ -152,7 +161,8 @@ def render() -> str:
             "",
             "- **Chaitanya Shinde** (lead) designed and built the system, ran every measurement, fixed every "
             "finding and wrote the report, the slides and the documents.",
-            "- **Amit Ingle** built the first dashboard and ran the system test cycles (cycle 0 and cycle 2).",
+            "- **Amit Ingle** built the first dashboard, ran the system test cycles (cycle 0 and cycle 2) and "
+            "prepared the v1.0.0 release.",
             "- **Sumant Vetal** wrote the first version of the System 2 code (5 October).",
             "- **Sahil Chavan** wrote the dataset downloader and added the fixture sample (4 October).",
             "",

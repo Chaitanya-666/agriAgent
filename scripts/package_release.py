@@ -31,7 +31,9 @@ EXPECTED = ["README.md", "requirements-lock.txt", "app/app.py", "src/workflow.py
 
 
 def git(*args: str) -> str:
-    return subprocess.run(["git", *args], cwd=ROOT, check=True, capture_output=True, text=True).stdout.strip()
+    return subprocess.run(
+        ["git", *args], cwd=ROOT, check=True, capture_output=True, text=True
+    ).stdout.strip()
 
 
 def read_env(path: Path) -> dict:
@@ -83,13 +85,19 @@ def scan(zip_path: Path, env: Path) -> list:
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    parser = argparse.ArgumentParser(
+        description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter
+    )
     parser.add_argument("--ref", default="HEAD", help="commit or tag to package (default HEAD)")
     parser.add_argument("--out", default=str(ROOT / "dist"), help="output folder (default dist/)")
-    parser.add_argument("--env", default=str(ROOT / ".env"), help="local .env whose values must not leak")
+    parser.add_argument(
+        "--env", default=str(ROOT / ".env"), help="local .env whose values must not leak"
+    )
     args = parser.parse_args()
 
-    commit = git("rev-parse", "--short", args.ref)
+    commit = git(
+        "rev-parse", "--short", f"{args.ref}^{{commit}}"
+    )  # the commit, also for an annotated tag
     version = re.search(r'^version = "([^"]+)"', git("show", f"{args.ref}:pyproject.toml"), re.M)
     # A branch such as amit/release-1.0.0 contains "/", which is not allowed in a file name
     # (reported in Test Cycle 2); keep only safe characters.

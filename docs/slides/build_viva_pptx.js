@@ -218,8 +218,8 @@ s = pres.addSlide({ masterName: "CONTENT_ALT", sectionTitle: "Context and conclu
 eyebrow(s, "Testing");
 s.addText("Every finding traced to a fix or a stated limit", { placeholder: "title" });
 [["270", "automated tests (235 unit, 35 end-to-end), CI on every push"],
- ["16", "system test cases on a fresh Windows install: 7 pass, 9 fail → 8 issues, all fixed"],
- ["29", "findings F1–F29 from a verification run and a manual cycle"],
+ ["24/24", "final-build system test cases pass on Windows (cycle 2); all 8 cycle-0 issues fixed"],
+ ["30", "findings F1–F30 from verification, manual and system test cycles"],
  ["1×", "held-out evaluation; rerun reproduces every number exactly"]].forEach(([n, l], i) => {
   const w = (CW - 3 * 0.3) / 4, x = M + i * (w + 0.3);
   card(s, x, 2.2, w, 2.3);
@@ -227,7 +227,7 @@ s.addText("Every finding traced to a fix or a stated limit", { placeholder: "tit
   s.addText(l, { x: x + 0.25, y: 3.3, w: w - 0.5, h: 1.4, fontSize: 14, color: C.text2, valign: "top", margin: 0, isTextBox: true });
 });
 s.addText("Examples: a rice herbicide dose above the ICAR maximum, corrected against the bulletin · GeoJSON upside down · Hindi summary called sugar beet “sweet potato” · a model-load crash on rerun.", { x: M, y: 4.9, w: CW, h: 1.0, fontSize: 16, color: C.text2, margin: 0, isTextBox: true });
-s.addNotes("Unit and e2e tests in CI, Amit's system test cycle on fresh Windows, headless app regression, a verification run from a fresh clone, a manual cycle on six photos. Worst non-method finding: rice pyrazosulfuron stored at 20 g / 75 days vs the bulletin's 15 g / 95 days. Test cycle 2 runs to 12 Nov.");
+s.addNotes("Unit and e2e tests in CI, Amit's system test cycle on fresh Windows, headless app regression, a verification run from a fresh clone, a manual cycle on six photos. Worst non-method finding: rice pyrazosulfuron stored at 20 g / 75 days vs the bulletin's 15 g / 95 days. Test cycle 2 (Amit, 7–8 Nov, Windows 11, RTX 3050 4 GB): 24 of 24 cases passed; X8 found F30, a text page detected as a sugar beet at 0.71, safely not sprayed. Released as v1.0.0.");
 
 // 13 Limits
 s = pres.addSlide({ masterName: "CONTENT", sectionTitle: "Context and conclusion" });
@@ -250,13 +250,13 @@ eyebrow(s, "Team and contributions");
 s.addText("Who built what, counted from the repository", { placeholder: "title" });
 s.addTable([
   [hdr("Member"), hdr("Commits"), hdr("Current code"), hdr("Built")],
-  ["Chaitanya Shinde (lead)", "94 of 97", "97.4%", "Design, vision pipeline, safety gate, plant rules, agent, System 2 integration, all experiments, all fixes, report and slides"],
-  ["Amit Ingle", "1", "1.4%", "First dashboard (4 Oct); system test cycles 0 and 2 (8 issues filed in cycle 0)"],
+  ["Chaitanya Shinde (lead)", "100 of 106", "97.4%", "Design, vision pipeline, safety gate, plant rules, agent, System 2 integration, all experiments, all fixes, report and slides"],
+  ["Amit Ingle", "4", "1.4%", "First dashboard (4 Oct); system test cycles 0 and 2; v1.0.0 release preparation"],
   ["Sumant Vetal", "1", "1.3%", "First version of the System 2 code (5 Oct)"],
   ["Sahil Chavan", "1", "0%", "Dataset downloader and fixture sample (4 Oct)"],
 ], { x: M, y: 2.2, w: CW, colW: [2.9, 1.3, 1.6, CW - 5.8], fontSize: 15, color: C.text2, border: { type: "solid", pt: 0.75, color: "C9D6CB" }, fill: { color: C.background1 }, margin: 0.1, valign: "middle" });
-note(s, "Commits without merges (git log); current Python code by last author (git blame); 7 Nov 2026, commit 6e2552a. Source: CONTRIBUTIONS.md");
-s.addNotes("Numbers are counted, not estimated, and reproducible with scripts/contributions.py. Chaitanya designed and built the system and ran every measurement; Amit built the first dashboard and ran the system test cycles; Sumant wrote the first System 2 code; Sahil wrote the dataset downloader.");
+note(s, "Commits without merges (git log); current Python code by last author (git blame); 8 Nov 2026, release v1.0.0 (8c4afe7). Source: CONTRIBUTIONS.md");
+s.addNotes("Numbers are counted, not estimated, and reproducible with scripts/contributions.py. Chaitanya designed and built the system and ran every measurement; Amit built the first dashboard, ran the system test cycles and prepared the release; Sumant wrote the first System 2 code; Sahil wrote the dataset downloader.");
 
 // 15 Closing
 s = pres.addSlide({ masterName: "DARK", sectionTitle: "Context and conclusion" });

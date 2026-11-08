@@ -232,7 +232,7 @@ listed in our original proposal, are future work (Section 8.2). No model is trai
 + An honest measurement of the Grounded SAM pipeline on crop-versus-weed spraying, on two crops, with labels copied from the official dataset files and a held-out set evaluated once (Chapter 6).
 + A deterministic safety gate and a four-rule plant classifier that move the held-out result from 65.5% crop sprayed / 1.8% weed recall to 8.8% / 77.9%, with no training and no model calls (Section 6.4).
 + A bounded escalation agent whose verdicts are combined by measured source accuracy, and a negative but useful result: it is safe and precise but adds no weed recall (Section 6.6).
-+ A testing record: an automated suite of 270 tests (235 unit, 35 end-to-end), a system test cycle by a team member, a verification run, a manual test cycle, and 29 findings (F1–F29) traced to fixes or stated limitations (Chapter 7).
++ A testing record: an automated suite of 270 tests (235 unit, 35 end-to-end), two system test cycles by a team member on a fresh Windows install, a verification run, a manual test cycle, and 30 findings (F1–F30) traced to fixes or stated limitations (Chapter 7). The final build is released as `v1.0.0`.
 
 == Organisation of the report
 
@@ -787,6 +787,7 @@ the cloud diagnosis, takes about 15 s, or about 40 s with the escalation agent.
     [Headless app regression], [`scripts/verify_cycle0_issues.py`, `scripts/verify_test_cycle1.py`: the app driven by Streamlit AppTest, mock and real mode.], [all pass (F11 reworded)],
     [Verification run (23 Oct)], [Fresh clone, data rebuild, held-out reproduction, determinism, 12 edge-case images, no-network run.], [reproduces exactly; 13 findings],
     [Manual cycle (30 Oct)], [MT-01 … MT-10 on six test photos, real mode.], [core cases pass; 16 findings],
+    [System, cycle 2 (7–8 Nov)], [Amit Ingle: the final build on Windows 11, Python 3.13, RTX 3050 (4 GB), real mode: install, automated checks, regression of F24–F29, manual and exploratory cases.], [24 of 24 executed cases pass; 1 finding (F30)],
   ),
   caption: [Testing summary.],
 )
@@ -824,6 +825,7 @@ covered by a test, re-run with the tester's exact steps by a headless script, an
     [F27], [medium], [Farmer summary silent about the wrong-crop warning.], [fixed: fixed-text warning],
     [F28], [low], [Masks that were not sprayed are invisible, which looks like "no segmentation".], [fixed: optional verdict view],
     [F29], [medium], [Hindi summary turned the ICAR suggestion into an instruction and dropped "read the label".], [fixed: fixed-text caveat],
+    [F30], [info], [On a screenshot of a text document Grounding DINO reported a "sugar beet plant" at 0.71 confidence.], [safe: the crop label is never sprayed (0.0%); shows why labels need a gate],
   ),
   caption: [Selected findings (full list: `docs/testing/Verification_Report_20261023.md`, `Manual_Test_Cycle_20261030.md`).],
 )
@@ -837,6 +839,28 @@ crop wrongly set to cotton the wrong-crop warning appears and one beet is spraye
 cotton CM_17 the detector boxed the three large palmer amaranth weeds as cotton, so the gate protected
 them and only 0.06% was sprayed, while System 2 produced the first real ICAR prescription on a test photo
 (MT-09). Results are recorded in `docs/testing/Manual_Test_Cycle_20261030.md`.
+
+== System test cycle 2 and the release
+
+On 7–8 November Amit Ingle installed the final build from scratch on his own laptop (Windows 11,
+Python 3.13.9, NVIDIA RTX 3050 with 4 GB, real mode with Cloudflare keys, commit `b9f6364`) and ran
+the 12-page Test Cycle 2 guide (`docs/testing/Test_Cycle_2_Brief.pdf`). All 24 executed cases passed:
+the install and automated checks (A1–A6: 270 tests, 35 end-to-end tests, the headless app checks in
+mock and real mode, both cloud providers), the regression of the 7 November fixes (R1–R6, F24–F29),
+four manual cases never run before (MT-04 to MT-07, including the GeoJSON on geojson.io and the known
+F1 failure) and eight exploratory cases (X1–X8: an unrelated flower photo, a photo with no plants, very
+large and very small images, transparent PNGs, two browser tabs at once, controls changed during a run,
+no network, and a screenshot of a text document). The first real run took 3.6 s on the 4 GB GPU.
+
+Before the cycle, preparing it exposed a release blocker: the lock file pinned CUDA libraries, `triton`
+and `uvloop` that exist only for Linux, so the documented install failed on Windows. They are now marked
+Linux-only, and the lock file was checked to resolve for Windows on Python 3.11–3.13 (Python 3.10 cannot
+install it, so the project now requires 3.11). The exploratory case X8 gave finding F30: Grounding DINO
+labelled a page of text "sugar beet plant" at 0.71 confidence. The gate sprayed nothing because the label
+names the crop, a small illustration of RQ1: detector labels are not evidence. Amit then prepared the
+release (version bump, release notes) and reported a bug in the packaging script (a branch name with
+`/` broke the file name), which was fixed in review. The final build is tagged `v1.0.0`; its source
+package is built by `scripts/package_release.py` from the tag and checked for secrets.
 
 = Discussion and conclusion
 
@@ -900,8 +924,8 @@ gets on this problem, not a product for real spraying.
 
 ```fish
 git clone https://github.com/Chaitanya-666/agriAgent && cd agriAgent
-python -m venv ~/.venvs/agriagent && source ~/.venvs/agriagent/bin/activate.fish
-pip install -r requirements-lock.txt && pip install -e .
+python3.11 -m venv ~/.venvs/agriagent && source ~/.venvs/agriagent/bin/activate.fish   # Python 3.11–3.13
+pip install -r requirements-lock.txt && pip install -e . --no-deps   # Linux and Windows
 python scripts/download_models.py            # Grounding DINO-tiny + SAM 2-tiny
 cp .env.example .env                          # add CLOUDFLARE_ACCOUNT_ID and CLOUDFLARE_API_TOKEN
 streamlit run app/app.py                      # dashboard
@@ -915,15 +939,15 @@ The numbers below are counted from the repository, not estimated: commits withou
 (`git log`), the current Python code by its last author (`git blame` over every tracked `.py` file in
 `src/`, `app/`, `tests/` and `scripts/`), and pull requests and issues on GitHub. The same record is
 kept in the repository as `CONTRIBUTIONS.md`, regenerated by `scripts/contributions.py`. Counted on
-7 November 2026 at commit `6e2552a`.
+8 November 2026 at commit `8c4afe7` (release `v1.0.0`).
 
 #figure(
   table(
     columns: (1.4fr, auto, auto, auto, auto),
     align: (left, right, right, right, right),
     [Member], [Commits], [Current code (lines)], [Pull requests], [Issues],
-    [Chaitanya Shinde (lead)], [94 of 97], [16,034 (97.4%)], [21], [1],
-    [Amit Ingle], [1], [225 (1.4%)], [1], [8],
+    [Chaitanya Shinde (lead)], [100 of 106], [16,220 (97.4%)], [25], [1],
+    [Amit Ingle], [4], [225 (1.4%)], [2], [8],
     [Sumant Vetal], [1], [210 (1.3%)], [1], [0],
     [Sahil Chavan], [1], [0], [1], [0],
   ),
@@ -947,14 +971,15 @@ kept in the repository as `CONTRIBUTIONS.md`, regenerated by `scripts/contributi
     [All experiments and results (Chapter 6)], [Chaitanya], [],
     [Unit and end-to-end tests, CI, verification run, manual test cycle], [Chaitanya], [],
     [System test cycle 0 (16 cases, fresh Windows install, 8 issues)], [Amit], [],
-    [System test cycle 2 on the final build (7–12 November)], [Amit], [],
-    [Fixes for all findings F1–F29], [Chaitanya], [],
+    [System test cycle 2 on the final build (7–8 November: 24 of 24 cases pass on Windows)], [Amit], [],
+    [Release v1.0.0: version bump, release notes, draft release; packaging bug report], [Amit], [notes and packaging fix finished in review by Chaitanya],
+    [Fixes for all findings F1–F30], [Chaitanya], [],
     [This report, the slides, the guides and all project documents], [Chaitanya], [],
   ),
   caption: [Components and their owners (owner = who built the current version).],
 )
 
 *In short:* Chaitanya Shinde designed and built the system, ran every measurement, fixed every
-finding and wrote this report and the slides. Amit Ingle built the first dashboard and ran the system
-test cycles. Sumant Vetal wrote the first version of the System 2 code. Sahil Chavan wrote the dataset
+finding and wrote this report and the slides. Amit Ingle built the first dashboard, ran the system
+test cycles and prepared the `v1.0.0` release. Sumant Vetal wrote the first version of the System 2 code. Sahil Chavan wrote the dataset
 downloader.
