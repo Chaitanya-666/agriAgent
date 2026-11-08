@@ -36,3 +36,11 @@
 
 \- GeoJSON coordinates are placeholders near VJTI, not actual GPS coordinates.
 
+
+
+
+
+\*Verified on Windows 11, Python 3.13.9, NVIDIA RTX 3050 (4GB) during Test Cycle 2.\*
+
+
+
