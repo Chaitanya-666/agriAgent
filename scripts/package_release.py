@@ -91,7 +91,10 @@ def main() -> int:
 
     commit = git("rev-parse", "--short", args.ref)
     version = re.search(r'^version = "([^"]+)"', git("show", f"{args.ref}:pyproject.toml"), re.M)
-    name = f"AgriAgent-{version.group(1) if version else 'unknown'}-{args.ref if args.ref != 'HEAD' else commit}"
+    # A branch such as amit/release-1.0.0 contains "/", which is not allowed in a file name
+    # (reported in Test Cycle 2); keep only safe characters.
+    label = re.sub(r"[^A-Za-z0-9._-]+", "-", args.ref if args.ref != "HEAD" else commit)
+    name = f"AgriAgent-{version.group(1) if version else 'unknown'}-{label}"
     if git("status", "--porcelain"):
         print("Note: the working tree has uncommitted changes; they are NOT in the package.")
 
