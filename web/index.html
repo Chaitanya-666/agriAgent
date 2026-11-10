@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AgriAgent Field Service</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌱</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="logo" aria-hidden="true">🌱</span>
+      <div>
+        <h1>AgriAgent Field Service</h1>
+        <p class="tagline">Weed detection and precision spray maps, with a safety gate</p>
+      </div>
+    </div>
+    <span class="pill" id="health" data-testid="health-status">checking…</span>
+  </header>
+
+  <nav class="tabs" role="tablist">
+    <a href="#analyze" class="tab" role="tab" data-tab="analyze" data-testid="tab-analyze">Analyze</a>
+    <a href="#history" class="tab" role="tab" data-tab="history" data-testid="tab-history">History</a>
+    <a href="#stats" class="tab" role="tab" data-tab="stats" data-testid="tab-stats">Stats</a>
+  </nav>
+
+  <main>
+    <!-- Analyze -->
+    <section id="view-analyze" class="view" data-testid="view-analyze">
+      <form id="analyze-form" class="card form" novalidate data-testid="analyze-form">
+        <h2>New analysis</h2>
+
+        <label class="field">
+          <span>Field photo (PNG or JPEG, up to 10 MiB)</span>
+          <input type="file" id="image-input" accept="image/png,image/jpeg" data-testid="image-input">
+        </label>
+        <div class="row">
+          <button type="button" class="btn ghost" id="use-sample" data-testid="use-sample">Use sample field image</button>
+          <span class="muted" id="file-name" data-testid="file-name">No file chosen</span>
+        </div>
+        <img id="preview" class="preview" alt="Selected photo" hidden data-testid="preview">
+
+        <div class="grid3">
+          <label class="field">
+            <span>Crop</span>
+            <select id="crop-select" data-testid="crop-select"></select>
+          </label>
+          <label class="field">
+            <span>Mode</span>
+            <select id="mode-select" data-testid="mode-select">
+              <option value="mock">Mock (fast, no GPU)</option>
+              <option value="real">Real (Grounding DINO + SAM 2)</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Min confidence (0.70–1.00)</span>
+            <input type="number" id="confidence-input" value="0.70" step="0.01" data-testid="confidence-input">
+          </label>
+        </div>
+
+        <p class="error" id="form-error" role="alert" hidden data-testid="form-error"></p>
+
+        <div class="row">
+          <button type="submit" class="btn primary" id="analyze-button" data-testid="analyze-button">Analyze</button>
+          <span class="muted" id="analyzing" hidden data-testid="analyzing">Analyzing…</span>
+        </div>
+      </form>
+
+      <article id="result" class="card result" hidden data-testid="result">
+        <div class="result-head">
+          <h2>Run <span id="result-run-id" data-testid="result-run-id"></span></h2>
+          <span class="badge" id="result-safety-action" data-testid="result-safety-action"></span>
+        </div>
+        <p id="result-status" data-testid="result-status"></p>
+        <div class="kpis">
+          <div class="kpi"><span class="kpi-label">Weeds approved</span><span class="kpi-value" id="kpi-weeds" data-testid="kpi-weeds"></span></div>
+          <div class="kpi"><span class="kpi-label">Withheld</span><span class="kpi-value" id="kpi-withheld" data-testid="kpi-withheld"></span></div>
+          <div class="kpi"><span class="kpi-label">Infestation</span><span class="kpi-value" id="kpi-infestation" data-testid="kpi-infestation"></span></div>
+          <div class="kpi"><span class="kpi-label">Chemical saved</span><span class="kpi-value" id="kpi-savings" data-testid="kpi-savings"></span></div>
+          <div class="kpi"><span class="kpi-label">Time</span><span class="kpi-value" id="kpi-duration" data-testid="kpi-duration"></span></div>
+        </div>
+        <img id="result-overlay" class="overlay" alt="Detections and approved spray zones" data-testid="result-overlay">
+        <a class="btn ghost" id="download-geojson" data-testid="download-geojson" download>Download spray map (GeoJSON)</a>
+      </article>
+    </section>
+
+    <!-- History -->
+    <section id="view-history" class="view" hidden data-testid="view-history">
+      <div class="card">
+        <div class="row between">
+          <h2>History <span class="muted" id="history-total" data-testid="history-total"></span></h2>
+          <label class="field inline">
+            <span>Crop</span>
+            <select id="history-crop-filter" data-testid="history-crop-filter">
+              <option value="">All crops</option>
+            </select>
+          </label>
+        </div>
+        <p class="muted" id="history-empty" hidden data-testid="history-empty">No runs yet. Analyze a photo first.</p>
+        <div class="table-wrap">
+          <table id="runs-table" data-testid="runs-table">
+            <thead>
+              <tr><th>#</th><th>When</th><th>File</th><th>Crop</th><th>Mode</th><th>Gate</th><th>Weeds</th><th>Infestation</th><th>Saved</th><th></th></tr>
+            </thead>
+            <tbody id="runs-body"></tbody>
+          </table>
+        </div>
+        <div class="row between">
+          <button class="btn ghost" id="page-prev" data-testid="page-prev">← Newer</button>
+          <span class="muted" id="page-label" data-testid="page-label"></span>
+          <button class="btn ghost" id="page-next" data-testid="page-next">Older →</button>
+        </div>
+      </div>
+
+      <article id="run-detail" class="card" hidden data-testid="run-detail">
+        <div class="result-head">
+          <h2>Run <span id="detail-run-id" data-testid="detail-run-id"></span></h2>
+          <button class="btn ghost" id="detail-close" data-testid="detail-close">Close</button>
+        </div>
+        <dl class="details" id="detail-fields" data-testid="detail-fields"></dl>
+        <img id="detail-overlay" class="overlay" alt="Result image" data-testid="detail-overlay">
+      </article>
+    </section>
+
+    <!-- Stats -->
+    <section id="view-stats" class="view" hidden data-testid="view-stats">
+      <div class="card">
+        <h2>Totals</h2>
+        <div class="kpis">
+          <div class="kpi"><span class="kpi-label">Runs</span><span class="kpi-value" id="stat-total-runs" data-testid="stat-total-runs"></span></div>
+          <div class="kpi"><span class="kpi-label">Weeds approved</span><span class="kpi-value" id="stat-total-weeds" data-testid="stat-total-weeds"></span></div>
+          <div class="kpi"><span class="kpi-label">Avg infestation</span><span class="kpi-value" id="stat-avg-infestation" data-testid="stat-avg-infestation"></span></div>
+          <div class="kpi"><span class="kpi-label">Avg chemical saved</span><span class="kpi-value" id="stat-avg-savings" data-testid="stat-avg-savings"></span></div>
+          <div class="kpi"><span class="kpi-label">Spray suppressed</span><span class="kpi-value" id="stat-suppressed" data-testid="stat-suppressed"></span></div>
+        </div>
+        <h3>By crop</h3>
+        <div class="table-wrap">
+          <table data-testid="stats-by-crop">
+            <thead><tr><th>Crop</th><th>Runs</th><th>Weeds</th><th>Avg infestation</th></tr></thead>
+            <tbody id="stats-crop-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot muted">AgriAgent · VJTI final-year project · Field Service <span id="version" data-testid="version"></span></footer>
+  <script src="app.js"></script>
+</body>
+</html>
