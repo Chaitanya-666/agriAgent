@@ -1,8 +1,9 @@
 """Coverage-driven tests for src/agents/evidence.py (Lab 5). IDs: CT-E-xx.
 
-The coverage report showed this module at 33%: only the row rule ran in other tests, and
-the two model-backed sources (Cloudflare Clef Flash over HTTP, Qwen through a provider)
-never ran because they need the network. Here the network is replaced by test doubles:
+The coverage report showed this module at 33%: only its imports and definitions ran (41 of
+106 statements). None of the three evidence sources was executed by any test: not the row
+rule, and not the two model-backed sources (Cloudflare Clef Flash over HTTP, Qwen through a
+provider), which need the network. Here the network is replaced by test doubles:
 `requests.post` is patched and the provider is a small fake, so every branch runs offline.
 
 Safety rule checked throughout: a source that cannot give a clear answer returns verdict

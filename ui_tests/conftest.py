@@ -11,6 +11,7 @@ public API), so tests never depend on each other or on their order.
 
 from __future__ import annotations
 
+import base64
 import io
 import os
 import socket
@@ -24,6 +25,7 @@ import httpx
 import pytest
 from PIL import Image
 from selenium import webdriver
+from selenium.common.exceptions import NoAlertPresentException, WebDriverException
 
 REPO = Path(__file__).resolve().parent.parent
 REPORT_DIR = REPO / "ui_tests" / "reports"
@@ -119,12 +121,21 @@ def driver(request):
     drv.quit()
 
 
+def full_page_screenshot(driver, path: Path, max_height: int = 2400) -> None:
+    """Whole page, not just the visible window (Chrome DevTools Protocol)."""
+    size = driver.execute_cdp_cmd("Page.getLayoutMetrics", {})["cssContentSize"]
+    clip = {"x": 0, "y": 0, "width": size["width"], "height": min(size["height"], max_height), "scale": 1}
+    shot = driver.execute_cdp_cmd(
+        "Page.captureScreenshot", {"format": "png", "captureBeyondViewport": True, "clip": clip})
+    path.write_bytes(base64.b64decode(shot["data"]))
+
+
 @pytest.fixture
 def snap(driver, request):
-    """snap("FT-02") saves an evidence screenshot as reports/screenshots/FT-02.png."""
+    """snap("FT-02") saves a full-page evidence screenshot as reports/screenshots/FT-02.png."""
     def take(name: str) -> Path:
         path = SHOT_DIR / f"{name}.png"
-        driver.save_screenshot(str(path))
+        full_page_screenshot(driver, path)
         request.node.user_properties.append(("evidence", str(path)))
         return path
     return take
@@ -140,10 +151,22 @@ def pytest_runtest_makereport(item, call):
     html = item.config.pluginmanager.getplugin("html")
     drv = item.funcargs.get("driver")
     if report.failed and drv is not None:
-        path = SHOT_DIR / f"FAILED_{item.name}.png"
-        drv.save_screenshot(str(path))
-        if html:
-            extras.append(html.extras.image(str(path.relative_to(REPORT_DIR))))
+        # A failing page may have an alert open (FT-21 catches injected script that way); a
+        # screenshot with an open alert raises, so close it first, and never let a screenshot
+        # problem replace the real test result.
+        try:
+            try:
+                alert = drv.switch_to.alert
+                report.sections.append(("browser alert", f"open alert closed: {alert.text!r}"))
+                alert.dismiss()
+            except NoAlertPresentException:
+                pass
+            path = SHOT_DIR / f"FAILED_{item.name}.png"
+            drv.save_screenshot(str(path))
+            if html:
+                extras.append(html.extras.image(str(path.relative_to(REPORT_DIR))))
+        except WebDriverException as exc:
+            report.sections.append(("screenshot", f"no screenshot: {exc.msg}"))
     elif html:
         for key, value in report.user_properties:
             if key == "evidence":
