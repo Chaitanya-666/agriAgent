@@ -56,3 +56,5 @@ uv.lock
 
 # Field Service runtime database
 data/service/
+# UI test run output (HTML report, screenshots)
+ui_tests/reports/
