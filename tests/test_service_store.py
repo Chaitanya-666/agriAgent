@@ -5,8 +5,10 @@ Each test gets its own temporary database file, so tests never share state.
 
 import sqlite3
 import tempfile
+import threading
 import unittest
 from pathlib import Path
+from unittest import mock
 
 from service.store import INSERT_COLUMNS, RunStore
 
@@ -66,6 +68,42 @@ class InitTests(StoreTestCase):
     def test_wal_mode_is_on(self):  # UT-S-03
         with sqlite3.connect(self.path) as conn:
             self.assertEqual(conn.execute("PRAGMA journal_mode").fetchone()[0], "wal")
+
+    def test_parallel_first_start_on_a_new_file(self):  # UT-S-19 (found by the Lab 6 load test)
+        # Several servers sharing one new database start at the same moment. Switching to WAL
+        # needs an exclusive lock and SQLite does not wait for it, so before the fix about one
+        # start in four crashed with "database is locked" (9 of 40 trials in a repro script).
+        failures = []
+        for trial in range(30):
+            path = Path(self._tmp.name) / f"race-{trial}.db"
+            barrier = threading.Barrier(4)
+
+            def start():
+                barrier.wait()
+                try:
+                    RunStore(path).init()
+                except sqlite3.Error as exc:
+                    failures.append((trial, repr(exc)))
+
+            threads = [threading.Thread(target=start) for _ in range(4)]
+            for t in threads:
+                t.start()
+            for t in threads:
+                t.join(timeout=30)
+        self.assertEqual(failures, [])
+
+    def test_other_database_errors_are_not_retried(self):  # UT-S-20
+        store = RunStore(Path(self._tmp.name) / "io.db")
+        with mock.patch.object(store, "_connect", side_effect=sqlite3.OperationalError("disk I/O error")) as c:
+            with self.assertRaises(sqlite3.OperationalError):
+                store.init()
+        self.assertEqual(c.call_count, 1)
+
+    def test_lock_that_never_clears_gives_up(self):  # UT-S-21
+        store = RunStore(Path(self._tmp.name) / "stuck.db")
+        with mock.patch.object(store, "_connect", side_effect=sqlite3.OperationalError("database is locked")):
+            with self.assertRaises(sqlite3.OperationalError):
+                store.init(max_wait_s=0.1)
 
     def test_ping(self):  # UT-S-04
         self.assertTrue(self.store.ping())

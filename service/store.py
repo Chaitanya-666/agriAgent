@@ -8,6 +8,7 @@ connection between them. WAL mode lets readers carry on while one request writes
 from __future__ import annotations
 
 import sqlite3
+import time
 from contextlib import closing
 from pathlib import Path
 from typing import Any, Dict, List, Optional
@@ -94,12 +95,26 @@ class RunStore:
         conn.execute("PRAGMA busy_timeout = 10000")
         return conn
 
-    def init(self) -> None:
-        """Create the folder, the table and the indexes if they are missing."""
+    def init(self, max_wait_s: float = 10.0) -> None:
+        """Create the folder, the table and the indexes if they are missing.
+
+        Several servers may start at the same moment on one new file (load-balanced setup).
+        Switching to WAL needs an exclusive lock, and SQLite answers "database is locked" at
+        once instead of waiting for the busy timeout, so that one error is retried briefly.
+        """
         self.path.parent.mkdir(parents=True, exist_ok=True)
-        with closing(self._connect()) as conn, conn:
-            conn.execute("PRAGMA journal_mode = WAL")
-            conn.executescript(SCHEMA)
+        deadline = time.monotonic() + max_wait_s
+        while True:
+            try:
+                with closing(self._connect()) as conn, conn:
+                    if conn.execute("PRAGMA journal_mode").fetchone()[0] != "wal":
+                        conn.execute("PRAGMA journal_mode = WAL")
+                    conn.executescript(SCHEMA)
+                return
+            except sqlite3.OperationalError as exc:
+                if "locked" not in str(exc) or time.monotonic() >= deadline:
+                    raise
+                time.sleep(0.02)  # another process holds the lock for a few milliseconds
 
     def ping(self) -> bool:
         try:
