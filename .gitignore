@@ -53,3 +53,6 @@ dist/
 *.egg-info/
 .agents/
 uv.lock
+
+# Field Service runtime database
+data/service/
