@@ -68,6 +68,7 @@ fi
 "$jmeter_bin" -n -t "$repo/perf/field_service_load.jmx" \
   -Jhost=127.0.0.1 -Jport="$target_port" -Jusers="$users" -Jrampup="$rampup" \
   -Jduration="$duration" -Jimage="$repo/perf/data/field_320.jpg" \
+  -Jjmeter.reportgenerator.overall_granularity=5000 \
   -l "$out/results.jtl" -j "$out/jmeter.log" -e -o "$out/dashboard" >"$out/jmeter-console.txt" 2>&1
 
 echo "finished=$(date -Iseconds)" >>"$out/meta.txt"

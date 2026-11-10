@@ -37,7 +37,7 @@ HOP_BY_HOP = {
 
 # keepalive_expiry must be SHORTER than the backend's keep-alive timeout (uvicorn: 5 s). With
 # both at 5 s (httpx's default) the proxy sometimes reused a connection at the moment uvicorn
-# closed it, and the request failed with ReadError -> 502 (Lab 6: 4 in ~60,000 requests).
+# closed it, and the request failed with ReadError -> 502 (Lab 6: 4 in 89,101 proxied requests).
 client = httpx.AsyncClient(
     timeout=httpx.Timeout(30.0),
     limits=httpx.Limits(max_connections=500, max_keepalive_connections=200, keepalive_expiry=2.0),
