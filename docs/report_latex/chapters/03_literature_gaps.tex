@@ -1,0 +1,49 @@
+\chapter{Literature Gaps}\label{ch:gaps}
+
+The survey in Chapter~\ref{ch:survey} leaves five gaps that AgriAgent addresses. Each is stated with
+the papers it rests on and the objective (Chapter~\ref{ch:objectives}) that responds to it.
+
+\begin{description}[style=nextline,leftmargin=0pt]
+\item[G1. Supervised accuracy depends on labels from the same field.]
+  Supervised networks separate crop and weed well~\cite{milioto2018realtime,lottes2018fcn,rahman2023cotton,dang2023yoloweeds},
+  but they need large labelled, crop-specific datasets~\cite{hasan2021survey,lu2020datasets} and lose
+  accuracy on new fields~\cite{weyler2023domain}. A method that needs \emph{no} labels from the target
+  field has not been shown to be accurate enough for spraying. \emph{Response: O1, RQ1.}
+
+\item[G2. Text-prompted zero-shot pipelines are untested on the spraying task.]
+  Grounded SAM~\cite{ren2024groundedsam} is evaluated on general images, and the closest agricultural
+  work~\cite{chong2025zeroshot} argues, without measuring it, that its text prompts are ill-defined for
+  crop and weed; few-shot work~\cite{singh2025fewshot} reports that zero-shot prompts struggle with
+  similar agricultural classes. No study we found measures Grounded SAM directly on crop-versus-weed
+  photos with official labels. \emph{Response: O1, O3, RQ1.}
+
+\item[G3. Segmentation metrics do not say what a sprayer needs to know.]
+  Published zero-shot and supervised work reports pixel IoU or detection mAP~\cite{chong2025zeroshot,milioto2018realtime,rahman2023cotton}.
+  A spot sprayer needs two different numbers: how much of the \emph{crop} lands on the spray map
+  (damage) and how many weeds are hit (recall), together with the herbicide saved. None of the surveyed
+  papers reports them for a zero-shot pipeline. \emph{Response: O3.}
+
+\item[G4. No transparent safety layer between the model and the nozzle.]
+  Smart sprayers act directly on the detector's output~\cite{partel2019sprayer}, and reviews identify
+  the decision step as the weak point~\cite{slaughter2008review,gerhards2022sswm}. Vision-language
+  models are useful second opinions but unreliable alone~\cite{nasir2026vlmweed}, and LLM agents act on
+  their own conclusions~\cite{wang2024agents}. No surveyed system places a deterministic, testable
+  gate, which withholds anything uncertain, between the models and the spraying decision.
+  Row-based methods~\cite{bah2018unsupervised,louargant2018rowcrops} show that simple agronomic
+  structure can replace labels, but they have not been combined with a zero-shot detector as a safety
+  layer. \emph{Response: O2, O4, RQ2, RQ3.}
+
+\item[G5. Advice from language models is not grounded in local regulation.]
+  Reviews of LLMs in agriculture~\cite{kuska2024llm,li2025llmagri,yin2025foundation} discuss their
+  promise for advisory work but also their reliability problems. A herbicide recommendation must come
+  from an approved national source with legal doses and waiting periods, here the ICAR
+  bulletin~\cite{choudhury2016icar}, not from the model. \emph{Response: O5, O6.}
+\end{description}
+
+\section{Base paper}
+The pipeline AgriAgent implements is Grounded SAM~\cite{ren2024groundedsam}, with SAM~2~\cite{ravi2025sam2}
+in place of SAM. Grounded SAM is an arXiv technical report, so we take Chong et
+al.~\cite{chong2025zeroshot} (IEEE/RSJ IROS 2025) as the peer-reviewed reference point: it addresses
+the same task, zero-shot, and names our pipeline's weakness. Our work fills gaps G2--G4 for that
+pipeline: we measure its weakness on the sprayer's metrics and test how much a transparent layer of
+rules and a gate recovers.

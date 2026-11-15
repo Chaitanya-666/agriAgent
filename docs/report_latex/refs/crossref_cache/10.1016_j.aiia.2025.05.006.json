@@ -1,0 +1,1307 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    10
+   ]
+  ],
+  "date-time": "2026-11-10T16:40:23Z",
+  "timestamp": 1794328823369,
+  "version": "4.9.0"
+ },
+ "reference-count": 117,
+ "publisher": "Elsevier BV",
+ "issue": "4",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2025,
+      12,
+      1
+     ]
+    ],
+    "date-time": "2025-12-01T00:00:00Z",
+    "timestamp": 1764547200000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2025,
+      12,
+      1
+     ]
+    ],
+    "date-time": "2025-12-01T00:00:00Z",
+    "timestamp": 1764547200000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2025,
+      5,
+      29
+     ]
+    ],
+    "date-time": "2025-05-29T00:00:00Z",
+    "timestamp": 1748476800000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100012166",
+   "name": "National Key Research and Development Program of China",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "2022YFD1600602"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "2022YFD1600602"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100012166",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/501100011798",
+   "name": "Ministry of Agriculture and Rural Affairs of the People's Republic of China",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "CARS-23-D07"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "CARS-23-D07"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100011798",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Artificial Intelligence in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2025,
+    12
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.aiia.2025.05.006",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    6,
+    4
+   ]
+  ],
+  "date-time": "2025-06-04T03:01:44Z",
+  "timestamp": 1749006104000
+ },
+ "page": "671-685",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 29,
+ "title": [
+  "A review on enhancing agricultural intelligence with large language models"
+ ],
+ "prefix": "10.1016",
+ "volume": "15",
+ "author": [
+  {
+   "given": "Hongda",
+   "family": "Li",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Huarui",
+   "family": "Wu",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Qingxue",
+   "family": "Li",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Chunjiang",
+   "family": "Zhao",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0005",
+   "article-title": "Generate then retrieve: conversational response retrieval using LLMs as answer and query generators",
+   "author": "Abbasiantaeb",
+   "year": "2024",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0010",
+   "series-title": "Agricultural Knowledge Management System Development for Knowledge Integration",
+   "author": "Alemu",
+   "year": "2018"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0015",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2020.105542",
+   "article-title": "Few-shot learning approach for plant disease classification using images taken in the field",
+   "volume": "175",
+   "author": "Arg\u00fceso",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0020",
+   "series-title": "Proceedings of COLING 2016, the 26th International Conference on Computational Linguistics: Technical Papers",
+   "first-page": "2503",
+   "article-title": "Constraint-based question answering with knowledge graph",
+   "author": "Bao",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0025",
+   "doi-asserted-by": "crossref",
+   "first-page": "1206",
+   "DOI": "10.14716/ijtech.v14i6.6640",
+   "article-title": "Detection and sizing of durian using zero-shot deep learning models",
+   "volume": "14",
+   "author": "Barakat",
+   "year": "2023",
+   "journal-title": "Int. J. Technol."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0030",
+   "doi-asserted-by": "crossref",
+   "first-page": "383",
+   "DOI": "10.13053/rcs-148-10-32",
+   "article-title": "Context pattern based agricultural named entity recognition",
+   "volume": "148",
+   "author": "Biswas",
+   "year": "2019",
+   "journal-title": "Res. Comput. Sci."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0035",
+   "series-title": "X-LoRA: Mixture of Low-Rank Adapter Experts, a Flexible Framework for Large Language Models with Applications in Protein Mechanics and Molecular Design",
+   "author": "Buehler",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0040",
+   "doi-asserted-by": "crossref",
+   "first-page": "935",
+   "DOI": "10.1177/01655515221110995",
+   "article-title": "Finding answers to COVID-19-specific questions: an information retrieval system based on latent keywords and adapted TF-IDF",
+   "volume": "50",
+   "author": "Chamorro-Padial",
+   "year": "2024",
+   "journal-title": "J. Inf. Sci."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0045",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1145/3641289",
+   "article-title": "A survey on evaluation of large language models",
+   "volume": "15",
+   "author": "Chang",
+   "year": "2023",
+   "journal-title": "ACM Trans. Intell. Syst. Technol."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0050",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.eswa.2019.112948",
+   "article-title": "A review: knowledge reasoning over knowledge graph",
+   "volume": "141",
+   "author": "Chen",
+   "year": "2020",
+   "journal-title": "Expert Syst. Appl."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0055",
+   "article-title": "Evaluating large language models trained on code",
+   "author": "Chen",
+   "year": "2021",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0060",
+   "series-title": "MindGPT: Interpreting What you See with Non-invasive Brain Recordings",
+   "author": "Chen",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0065",
+   "first-page": "63",
+   "article-title": "Vegetable crop growth modeling in digital twin platform based on large language model inference",
+   "volume": "6",
+   "author": "Chunjiang",
+   "year": "2024",
+   "journal-title": "Smart Agriculture"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0070",
+   "series-title": "BERT: Pre-Training of Deep Bidirectional Transformers for Language Understanding",
+   "author": "Devlin",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0075",
+   "series-title": "2024 2nd International Conference on Computer, Communication and Control (IC4)",
+   "first-page": "1",
+   "article-title": "Revolutionizing farming: Gan-enhanced imaging, cnn disease detection, and llm farmer assistant",
+   "author": "Dhavale",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0080",
+   "series-title": "AgriLLM: Harnessing Transformers for Farmer Queries",
+   "author": "Didwania",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0085",
+   "series-title": "GPT4Image: Can Large Pre-Trained Models Help Vision Models on Perception Tasks?",
+   "author": "Ding",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0090",
+   "doi-asserted-by": "crossref",
+   "first-page": "568",
+   "DOI": "10.3390/math12040568",
+   "article-title": "Leveraging chain-of-thought to enhance stance detection with prompt-tuning",
+   "volume": "12",
+   "author": "Ding",
+   "year": "2024",
+   "journal-title": "Mathematics"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0095",
+   "series-title": "Proceedings of the AAAI Conference on Artificial Intelligence.",
+   "first-page": "1173",
+   "article-title": "Maximum entropy context models for ranking biographical answers to open-domain definition questions",
+   "author": "Figueroa",
+   "year": "2011"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0100",
+   "article-title": "CLIP-adapter: better vision-language models with feature adapters",
+   "author": "Gao",
+   "year": "2023",
+   "journal-title": "Int. J. Comput. Vis."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0105",
+   "article-title": "LLaMA-adapter V2: parameter-efficient visual instruction model",
+   "author": "Gao",
+   "year": "2023",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0110",
+   "article-title": "Parameter-efficient fine-tuning with discrete Fourier transform",
+   "author": "Gao",
+   "year": "2024",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0115",
+   "doi-asserted-by": "crossref",
+   "first-page": "4704",
+   "DOI": "10.3390/app11104704",
+   "article-title": "Vi\u00f1amecum: a computer-aided method for diagnoses of pests and diseases in the vineyard",
+   "volume": "11",
+   "author": "Garc\u00eda-Garc\u00eda",
+   "year": "2021",
+   "journal-title": "Appl. Sci."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0120",
+   "series-title": "Chain of Thought Prompt Tuning in Vision Language Models",
+   "author": "Ge",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0125",
+   "doi-asserted-by": "crossref",
+   "first-page": "372",
+   "DOI": "10.3390/electronics12020372",
+   "article-title": "Extractive article summarization using integrated TextRank and BM25+ algorithm",
+   "volume": "12",
+   "author": "Gulati",
+   "year": "2023",
+   "journal-title": "Electronics"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0130",
+   "doi-asserted-by": "crossref",
+   "first-page": "109255",
+   "DOI": "10.1109/ACCESS.2024.3438848",
+   "article-title": "Efficient agricultural question classification with a BERT-enhanced DPCNN model",
+   "volume": "12",
+   "author": "Guo",
+   "year": "2024",
+   "journal-title": "IEEE Access"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0135",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2023.107756",
+   "article-title": "Joint agricultural intent detection and slot filling based on enhanced heterogeneous attention mechanism",
+   "volume": "207",
+   "author": "Hao",
+   "year": "2023",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0140",
+   "series-title": "E3S Web of Conferences",
+   "first-page": "13005",
+   "article-title": "Real time machine learning based voltage regulation model for smart agriculture",
+   "author": "Haval",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0145",
+   "series-title": "AIP Conference Proceedings",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1063/5.0140193",
+   "article-title": "Agricultural irrigation information system in internet of things (IoT) based screen house using rule based expert system algorithm",
+   "author": "Herindra",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0150",
+   "article-title": "Training compute-optimal large language models",
+   "author": "Hoffmann",
+   "year": "2022",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0155",
+   "doi-asserted-by": "crossref",
+   "first-page": "62199",
+   "DOI": "10.1109/ACCESS.2024.3395532",
+   "article-title": "Human-Centered AI in smart farming: toward agriculture 5.0",
+   "volume": "12",
+   "author": "Holzinger",
+   "year": "2024",
+   "journal-title": "IEEE Access"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0160",
+   "doi-asserted-by": "crossref",
+   "first-page": "59",
+   "DOI": "10.1016/j.nbt.2024.12.003",
+   "article-title": "Is human oversight to AI systems still possible?",
+   "volume": "85",
+   "author": "Holzinger",
+   "year": "2025",
+   "journal-title": "New Biotechnol."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0165",
+   "article-title": "LoRA: low-rank adaptation of large language models",
+   "author": "Hu",
+   "year": "2021",
+   "journal-title": "ICLR 1, 3."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0170",
+   "series-title": "Proceedings of the Twelfth ACM International Conference on Web Search and Data Mining",
+   "first-page": "105",
+   "article-title": "Knowledge graph embedding based question answering",
+   "author": "Huang",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0175",
+   "doi-asserted-by": "crossref",
+   "first-page": "2924",
+   "DOI": "10.3390/app13052924",
+   "article-title": "Chains-BERT: a high-performance semi-supervised and contrastive learning-based automatic question-and-answering model for agricultural scenarios",
+   "volume": "13",
+   "author": "Huang",
+   "year": "2023",
+   "journal-title": "Appl. Sci.-Basel"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0180",
+   "article-title": "FedPara: low-rank Hadamard product for communication-efficient federated learning",
+   "author": "Hyeon-Woo",
+   "year": "2023",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0185",
+   "series-title": "Proceedings of the IEEE/CVF International Conference on Computer Vision",
+   "first-page": "4015",
+   "article-title": "Segment anything",
+   "author": "Kirillov",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0190",
+   "series-title": "Grounding Language Models to Images for Multimodal Inputs and Outputs",
+   "author": "Koh",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0195",
+   "series-title": "Large Language Models are Zero-Shot Reasoners",
+   "author": "Kojima",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0200",
+   "series-title": "VeRA: Vector-Based Random Matrix Adaptation",
+   "author": "Kopiczko",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0205",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2024.109349",
+   "article-title": "AgXQA: a benchmark for advanced agricultural extension question answering",
+   "volume": "225",
+   "author": "Kpodo",
+   "year": "2024",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0210",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.engappai.2024.109561",
+   "article-title": "Fine-tuning language model embeddings to reveal domain knowledge: an explainable artificial intelligence perspective on medical decision making",
+   "volume": "139",
+   "author": "Kraisnikovic",
+   "year": "2025",
+   "journal-title": "Eng. Appl. Artif. Intell."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0215",
+   "doi-asserted-by": "crossref",
+   "first-page": "906",
+   "DOI": "10.1002/agj2.20622",
+   "article-title": "Intelligent pig-raising knowledge question-answering system based on neural network schemes",
+   "volume": "113",
+   "author": "Kung",
+   "year": "2021",
+   "journal-title": "Agron. J."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0220",
+   "doi-asserted-by": "crossref",
+   "first-page": "1449",
+   "DOI": "10.1109/JPROC.2015.2460697",
+   "article-title": "Multimodal data fusion: an overview of methods, challenges, and prospects",
+   "volume": "103",
+   "author": "Lahat",
+   "year": "2015",
+   "journal-title": "Proc. IEEE"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0225",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.jbi.2023.104392",
+   "article-title": "KEBLM: knowledge-enhanced biomedical language models",
+   "volume": "143",
+   "author": "Lai",
+   "year": "2023",
+   "journal-title": "J. Biomed. Inform."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0230",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.3389/fpls.2022.1064399",
+   "article-title": "Visual question answering model for fruit tree disease decision-making based on multimodal deep learning",
+   "volume": "13",
+   "author": "Lan",
+   "year": "2023",
+   "journal-title": "Front. Plant Sci."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0235",
+   "series-title": "The Power of Scale for Parameter-Efficient Prompt Tuning",
+   "author": "Lester",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0240",
+   "series-title": "Prefix-Tuning: Optimizing Continuous Prompts for Generation",
+   "author": "Li",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0245",
+   "doi-asserted-by": "crossref",
+   "first-page": "5765",
+   "DOI": "10.3390/app13095765",
+   "article-title": "Multi-hop question generation with knowledge graph-enhanced language model",
+   "volume": "13",
+   "author": "Li",
+   "year": "2023",
+   "journal-title": "Appl. Sci.-Basel"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0250",
+   "series-title": "BLIP-2: Bootstrapping Language-Image Pre-Training with Frozen Image Encoders and Large Language Models",
+   "author": "Li",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0255",
+   "series-title": "MIMIC-IT: Multi-Modal in-Context Instruction Tuning",
+   "author": "Li",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0260",
+   "series-title": "VB-LoRA: Extreme Parameter Efficient Fine-Tuning with Vector Banks",
+   "author": "Li",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0270",
+   "first-page": "174",
+   "article-title": "Engineering exploration and research on large language models",
+   "author": "Liang",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0275",
+   "series-title": "Proceedings of the 2022 CHI Conference on Human Factors in Computing Systems",
+   "first-page": "1",
+   "article-title": "Design guidelines for prompt engineering text-to-image generative models",
+   "author": "Liu",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0280",
+   "first-page": "61",
+   "article-title": "P-tuning: prompt tuning can be comparable to fine-tuning across scales and tasks",
+   "author": "Liu",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0285",
+   "first-page": "1950",
+   "article-title": "Few-shot parameter-efficient fine-tuning is better and cheaper than in-context learning",
+   "volume": "35",
+   "author": "Liu",
+   "year": "2022",
+   "journal-title": "Adv. Neural Inf. Proces. Syst."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0290",
+   "article-title": "GPT understands, too",
+   "author": "Liu",
+   "year": "2023",
+   "journal-title": "AI Open"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0295",
+   "doi-asserted-by": "crossref",
+   "first-page": "972",
+   "DOI": "10.3390/plants13070972",
+   "article-title": "Application of multimodal transformer model in intelligent agricultural disease detection and question-answering systems",
+   "volume": "13",
+   "author": "Lu",
+   "year": "2024",
+   "journal-title": "Plants-Basel"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0300",
+   "article-title": "Wizardmath: empowering mathematical reasoning for large language models via reinforced evol-instruct",
+   "author": "Luo",
+   "year": "2023",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0305",
+   "doi-asserted-by": "crossref",
+   "first-page": "01028",
+   "DOI": "10.1051/e3sconf/202448601028",
+   "article-title": "Application of machine learning methods for crop rotation selection in organic farming system",
+   "volume": "486",
+   "author": "Maksimovich",
+   "year": "2024",
+   "journal-title": "E3S Web Conf."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0310",
+   "series-title": "Embers of Autoregression: Understanding Large Language Models Through the Problem They are Trained to Solve",
+   "author": "McCoy",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0315",
+   "doi-asserted-by": "crossref",
+   "first-page": "835",
+   "DOI": "10.1038/s42003-024-06465-2",
+   "article-title": "A foundational large language model for edible plant genomes",
+   "volume": "7",
+   "author": "Mendoza-Revilla",
+   "year": "2024",
+   "journal-title": "Commun. Biol."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0320",
+   "doi-asserted-by": "crossref",
+   "first-page": "148",
+   "DOI": "10.3390/medicina60010148",
+   "article-title": "Chain of thought utilization in large language models and application in nephrology",
+   "volume": "60",
+   "author": "Miao",
+   "year": "2024",
+   "journal-title": "Medicina"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0325",
+   "series-title": "SKILL: Structured Knowledge Infusion for Large Language Models",
+   "author": "Moiseev",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0330",
+   "doi-asserted-by": "crossref",
+   "first-page": "629",
+   "DOI": "10.1177/0961000617742456",
+   "article-title": "A framework for strengthening agricultural knowledge systems for improved accessibility of agricultural knowledge in Morogoro region of Tanzania",
+   "volume": "51",
+   "author": "Mtega",
+   "year": "2019",
+   "journal-title": "J. Librariansh. Inf. Sci."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0335",
+   "series-title": "EmbodiedGPT: Vision-Language Pre-Training Via Embodied Chain of Thought",
+   "author": "Mu",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0340",
+   "series-title": "Decoding the Language of Chickens - An Innovative NLP Approach to Enhance Poultry Welfare",
+   "author": "Neethirajan",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0345",
+   "doi-asserted-by": "crossref",
+   "first-page": "14903",
+   "DOI": "10.1038/s41598-024-65322-8",
+   "article-title": "Deep learning-based prediction of plant height and crown area of vegetable crops using LiDAR point cloud",
+   "volume": "14",
+   "author": "Nidamanuri",
+   "year": "2024",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0350",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2024.109309",
+   "article-title": "End-to-end framework for agricultural entity extraction \u2013 a hybrid model with transformer",
+   "volume": "225",
+   "author": "Nismi Mol",
+   "year": "2024",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0355",
+   "series-title": "GPT-4 Technical Report",
+   "author": "OpenAI",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0360",
+   "doi-asserted-by": "crossref",
+   "first-page": "3580",
+   "DOI": "10.1109/TKDE.2024.3352100",
+   "article-title": "Unifying large language models and knowledge graphs: a roadmap",
+   "volume": "36",
+   "author": "Pan",
+   "year": "2024",
+   "journal-title": "IEEE Trans. Knowl. Data Eng."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0365",
+   "series-title": "Combining Modular Skills in Multitask Learning",
+   "author": "Ponti",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0370",
+   "series-title": "Fifth International Conference on Computer Information Science and Artificial Intelligence (CISAI 2022)",
+   "first-page": "525",
+   "article-title": "Agricultural text named entity recognition based on the BiLSTM-CRF model",
+   "author": "Qian",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0375",
+   "doi-asserted-by": "crossref",
+   "first-page": "8348",
+   "DOI": "10.1109/TMM.2023.3326616",
+   "article-title": "CroMIC-QA: the cross-modal information complementation based question answering",
+   "volume": "26",
+   "author": "Qian",
+   "year": "2024",
+   "journal-title": "IEEE Trans. Multimedia"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0380",
+   "series-title": "Learning Transferable Visual Models from Natural Language Supervision",
+   "author": "Radford",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0385",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1145/3485535",
+   "article-title": "Multi-modal program inference: a marriage of pre-trained language models and component-based synthesis",
+   "volume": "5",
+   "author": "Rahmani",
+   "year": "2021",
+   "journal-title": "Proc. ACM Program. Lang."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0390",
+   "doi-asserted-by": "crossref",
+   "first-page": "1937",
+   "DOI": "10.1007/s10115-022-01698-1",
+   "article-title": "Adapter-based fine-tuning of pre-trained multilingual language models for code-mixed and code-switched text classification",
+   "volume": "64",
+   "author": "Rathnayake",
+   "year": "2022",
+   "journal-title": "Knowl. Inf. Syst."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0395",
+   "series-title": "Proceedings of the 2022 ACM Conference on International Computing Education Research - Volume 1. Presented at the ICER 2022: ACM Conference on International Computing Education Research",
+   "first-page": "27",
+   "article-title": "Automatic generation of programming exercises and code explanations using large language models",
+   "author": "Sarsa",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0400",
+   "series-title": "Causal Machine Learning for Sustainable Agroecosystems",
+   "author": "Sitokonstantinou",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0405",
+   "series-title": "FiDeLiS: Faithful Reasoning in Large Language Model for Knowledge Graph Question Answering",
+   "author": "Sui",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0410",
+   "series-title": "Fuzzy Systems and Knowledge Discovery: Third International Conference, FSKD 2006, Xi\u2019an, China, September 24-28, 2006. Proceedings 3",
+   "first-page": "1239",
+   "article-title": "A maximum entropy model based answer extraction for Chinese question answering",
+   "author": "Sun",
+   "year": "2006"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0415",
+   "series-title": "COLING 2002: The 19th International Conference on Computational Linguistics",
+   "article-title": "SVM answer selection for open-domain question answering",
+   "author": "Suzuki",
+   "year": "2002"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0420",
+   "first-page": "1",
+   "article-title": "Design of agricultural question answering information extraction method based on improved BILSTM algorithm",
+   "volume": "14",
+   "author": "Tang",
+   "year": "2024",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0425",
+   "first-page": "1",
+   "article-title": "Large language models in medicine",
+   "author": "Thirunavukarasu",
+   "year": "2023",
+   "journal-title": "Nat. Med."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0430",
+   "series-title": "Proceedings of the International Conference on Innovative Computing & Communications (ICICC)",
+   "article-title": "A review on implementation issues of rule-based chatbot systems",
+   "author": "Thorat",
+   "year": "2020"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0435",
+   "first-page": "1",
+   "article-title": "Large language models and agricultural extension services",
+   "author": "Tzachor",
+   "year": "2023",
+   "journal-title": "Nat. Food"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0440",
+   "article-title": "Attention is all you need",
+   "volume": "30",
+   "author": "Vaswani",
+   "year": "2017",
+   "journal-title": "Adv. Neural Inf. Proces. Syst."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0445",
+   "article-title": "AGRONER: an unsupervised agriculture named entity recognition using weighted distributional semantic model",
+   "volume": "229",
+   "author": "Veena",
+   "year": "2023",
+   "journal-title": "Expert Syst. Appl."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0450",
+   "doi-asserted-by": "crossref",
+   "first-page": "115",
+   "DOI": "10.2478/jaiscr-2025-0007",
+   "article-title": "A comprehensive survey of retrieval-augmented large language models for decision making in agriculture: unsolved problems and research opportunities",
+   "volume": "15",
+   "author": "Vizniuk",
+   "year": "2025",
+   "journal-title": "J. Artific. Intellig. Soft Comp. Res."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0455",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.displa.2024.102820",
+   "article-title": "Knowledge graph of agricultural engineering technology based on large language model",
+   "volume": "85",
+   "author": "Wang",
+   "year": "2024",
+   "journal-title": "Displays"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0460",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.metrad.2023.100047",
+   "article-title": "Review of large vision models and visual prompt engineering",
+   "author": "Wang",
+   "year": "2023",
+   "journal-title": "Meta-Radiology"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0470",
+   "series-title": "Prompt Engineering for Healthcare: Methodologies and Applications",
+   "author": "Wang",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0475",
+   "doi-asserted-by": "crossref",
+   "first-page": "9",
+   "DOI": "10.56407/bs.agrarian/3.2023.09",
+   "article-title": "Agriculture in the face of new digitization technologies",
+   "volume": "3",
+   "author": "Wrzeci\u0144ska",
+   "year": "2023",
+   "journal-title": "UBSRAS"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0480",
+   "first-page": "1487",
+   "article-title": "Research on knowledge question answering system for agriculture disease and pests based on knowledge graph",
+   "volume": "21",
+   "author": "Xia",
+   "year": "2020",
+   "journal-title": "J. Nonlinear Convex Anal."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0490",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.resconrec.2024.107497",
+   "article-title": "Application of question answering systems for intelligent agriculture production and sustainable management: a review",
+   "volume": "204",
+   "author": "Yang",
+   "year": "2024",
+   "journal-title": "Resour. Conserv. Recycl."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0495",
+   "series-title": "GPT-4 as Evaluator: Evaluating Large Language Models on Pest Management in Agriculture",
+   "author": "Yang",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0485",
+   "article-title": "XLNet: generalized autoregressive pretraining for language understanding",
+   "author": "Yang",
+   "year": "2019",
+   "journal-title": "Advances in neural information processing systems 32"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0500",
+   "series-title": "Web Information Systems Engineering \u2013 WISE 2024, Lecture Notes in Computer Science",
+   "first-page": "284",
+   "article-title": "ShizishanGPT: An agricultural large language model integrating tools and resources",
+   "author": "Yang",
+   "year": "2025"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0505",
+   "doi-asserted-by": "crossref",
+   "first-page": "769",
+   "DOI": "10.1038/s41597-024-03578-5",
+   "article-title": "AgCNER, the first large-scale Chinese named entity recognition dataset for agricultural diseases and pests",
+   "volume": "11",
+   "author": "Yao",
+   "year": "2024",
+   "journal-title": "Sci. Data"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0510",
+   "article-title": "QA-GNN: reasoning with language models and knowledge graphs for question answering",
+   "author": "Yasunaga",
+   "year": "2021",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0515",
+   "series-title": "The Twelfth International Conference on Learning Representations",
+   "article-title": "Navigating text-to-image customization: From lycoris fine-tuning to model evaluation",
+   "author": "Yeh",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0520",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2025.110218",
+   "article-title": "Agricultural large language model for standardized production of distinctive agricultural products",
+   "volume": "234",
+   "author": "Yi",
+   "year": "2025",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0525",
+   "doi-asserted-by": "crossref",
+   "first-page": "5619014",
+   "DOI": "10.1109/TGRS.2023.3308969",
+   "article-title": "Parameter-efficient transfer learning for remote sensing image-text retrieval",
+   "volume": "61",
+   "author": "Yuan",
+   "year": "2023",
+   "journal-title": "IEEE Trans. Geosci. Remote Sens."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0530",
+   "doi-asserted-by": "crossref",
+   "first-page": "3151",
+   "DOI": "10.1007/s10115-022-01744-y",
+   "article-title": "Conversational question answering: a survey",
+   "volume": "64",
+   "author": "Zaib",
+   "year": "2022",
+   "journal-title": "Knowl. Inf. Syst."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0535",
+   "article-title": "M2ConceptBase: a fine-grained aligned multi-modal conceptual Knowledge Base",
+   "author": "Zha",
+   "year": "2023",
+   "journal-title": "CoRR"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0540",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhan, Y., Yuan, Y., Xiong, Z., 2023. Mono3dvg: 3d visual grounding in monocular images. in: Proceedings of the AAAI Conference on Artificial Intelligence. pp. 6988\u20136996.",
+   "DOI": "10.1609/aaai.v38i7.28525"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0545",
+   "doi-asserted-by": "crossref",
+   "first-page": "64",
+   "DOI": "10.1016/j.isprsjprs.2025.01.020",
+   "article-title": "SkyEyeGPT: unifying remote sensing vision-language tasks via instruction tuning with large language model",
+   "volume": "221",
+   "author": "Zhan",
+   "year": "2025",
+   "journal-title": "ISPRS-J. Photogramm. Remote Sens."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0550",
+   "series-title": "Proceedings of the AAAI Conference on Artificial Intelligence",
+   "article-title": "Variational reasoning for question answering with knowledge graph",
+   "author": "Zhang",
+   "year": "2018"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0555",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2021.106464",
+   "article-title": "Chinese named entity recognition for apple diseases and pests based on character augmentation",
+   "volume": "190",
+   "author": "Zhang",
+   "year": "2021",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0560",
+   "first-page": "1",
+   "article-title": "Knowledge graph relation path network for multi-hop intelligent question answering",
+   "author": "Zhang",
+   "year": "2023",
+   "journal-title": "Acta Electonica Sinica"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0570",
+   "series-title": "LLaMA-Adapter: Efficient Fine-Tuning of Language Models with Zero-Init Attention",
+   "author": "Zhang",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0575",
+   "series-title": "Tuning LayerNorm in Attention: Towards Efficient Multi-Modal LLM Finetuning",
+   "author": "Zhao",
+   "year": "2023"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0580",
+   "doi-asserted-by": "crossref",
+   "first-page": "1373",
+   "DOI": "10.14778/3236187.3236192",
+   "article-title": "Question answering over knowledge graphs: question understanding via template decomposition",
+   "volume": "11",
+   "author": "Zheng",
+   "year": "2018",
+   "journal-title": "Proc. VLDB Endowm."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0585",
+   "doi-asserted-by": "crossref",
+   "first-page": "432",
+   "DOI": "10.3390/agronomy14030432",
+   "article-title": "GRU\u2013transformer: a novel hybrid model for predicting soil moisture content in root zones",
+   "volume": "14",
+   "author": "Zheng",
+   "year": "2024",
+   "journal-title": "Agronomy"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0590",
+   "doi-asserted-by": "crossref",
+   "first-page": "2337",
+   "DOI": "10.1007/s11263-022-01653-1",
+   "article-title": "Learning to prompt for vision-language models",
+   "volume": "130",
+   "author": "Zhou",
+   "year": "2022",
+   "journal-title": "Int. J. Comput. Vis."
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0595",
+   "series-title": "FoodSky: A Food-oriented Large Language Model that Passes the Chef and Dietetic Examination",
+   "author": "Zhou",
+   "year": "2024"
+  },
+  {
+   "key": "10.1016/j.aiia.2025.05.006_bb0600",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2024.109824",
+   "article-title": "Potato disease detection and prevention using multimodal AI and large language model",
+   "volume": "229",
+   "author": "Zhu",
+   "year": "2025",
+   "journal-title": "Comput. Electron. Agric."
+  }
+ ],
+ "container-title": [
+  "Artificial Intelligence in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2589721725000613?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2589721725000613?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    11,
+    8
+   ]
+  ],
+  "date-time": "2025-11-08T20:13:01Z",
+  "timestamp": 1762632781000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S2589721725000613"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2025,
+    12
+   ]
+  ]
+ },
+ "references-count": 117,
+ "journal-issue": {
+  "issue": "4",
+  "published-print": {
+   "date-parts": [
+    [
+     2025,
+     12
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "S2589721725000613"
+ ],
+ "URL": "https://doi.org/10.1016/j.aiia.2025.05.006",
+ "relation": {},
+ "ISSN": [
+  "2589-7217"
+ ],
+ "issn-type": [
+  {
+   "value": "2589-7217",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2025,
+    12
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "A review on enhancing agricultural intelligence with large language models",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Artificial Intelligence in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.aiia.2025.05.006",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2025 The Authors. Publishing services by Elsevier B.V. on behalf of KeAi Communications Co., Ltd.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ]
+}

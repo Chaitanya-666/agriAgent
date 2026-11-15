@@ -1,0 +1,579 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    6
+   ]
+  ],
+  "date-time": "2026-11-06T21:19:09Z",
+  "timestamp": 1793999949764,
+  "version": "4.8.0"
+ },
+ "reference-count": 47,
+ "publisher": "Wiley",
+ "issue": "1",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      8,
+      11
+     ]
+    ],
+    "date-time": "2019-08-11T00:00:00Z",
+    "timestamp": 1565481600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://onlinelibrary.wiley.com/termsAndConditions#vor"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100000780",
+   "name": "European Commission",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "H2020\u2010ICT\u2010644227\u2010FLOURISH"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "H2020\u2010ICT\u2010644227\u2010FLOURISH"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100000780",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "onlinelibrary.wiley.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Journal of Field Robotics"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    1
+   ]
+  ]
+ },
+ "abstract": "<jats:title>Abstract</jats:title><jats:p>Conventional farming still relies on large quantities of agrochemicals for weed management which have several negative side\u2010effects on the environment. Autonomous robots offer the potential to reduce the amount of chemicals applied, as robots can monitor and treat each plant in the field individually and thereby circumventing the uniform chemical treatment of the whole field. Such agricultural robots need the ability to identify individual crops and weeds in the field using sensor data and must additionally select effective treatment methods based on the type of weed. For example, certain types of weeds can only be effectively treated mechanically due to their resistance to herbicides, whereas other types can be treated trough selective spraying. In this article, we present a novel system that provides the necessary information for effective plant\u2010specific treatment. It estimates the stem location for weeds, which enables the robots to perform precise mechanical treatment, and at the same time provides the pixel\u2010accurate area covered by weeds for treatment through selective spraying. The major challenge in developing such a system is the large variability in the visual appearance that occurs in different fields. Thus, an effective classification system has to robustly handle substantial environmental changes including varying weed pressure, various weed types, different growth stages, changing visual appearance of the plants and the soil. Our approach uses an end\u2010to\u2010end trainable fully convolutional network that simultaneously estimates plant stem positions as well as the spatial extent of crop plants and weeds. It jointly learns how to detect the stems and the pixel\u2010wise semantic segmentation and incorporates spatial information by considering image sequences of local field strips. The jointly learned feature representation for both tasks furthermore exploits the crop arrangement information that is often present in crop fields. This information is considered even if it is only observable from the image sequences and not a single image. Such image sequences, as typically provided by robots navigating over the field along crop rows, enable our approach to robustly estimate the semantic segmentation and stem positions despite the large variations encountered in different fields. We implemented and thoroughly tested our approach on images from multiple farms in different countries. The experiments show that our system generalizes well to previously unseen fields under varying environmental conditions\u2014a key capability to deploy such systems in the real world. Compared to state\u2010of\u2010the\u2010art approaches, our approach generalizes well to unseen fields and not only substantially improves the stem detection accuracy, that is, distinguishing crop and weed stems, but also improves the semantic segmentation performance.</jats:p>",
+ "DOI": "10.1002/rob.21901",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2019,
+    8,
+    12
+   ]
+  ],
+  "date-time": "2019-08-12T04:44:34Z",
+  "timestamp": 1565585074000
+ },
+ "page": "20-34",
+ "update-policy": "https://doi.org/10.1002/crossmark_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 98,
+ "title": [
+  "Robust joint stem detection and crop\u2010weed classification using image sequences for plant\u2010specific treatment in precision farming"
+ ],
+ "prefix": "10.1002",
+ "volume": "37",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-2619-7070",
+   "authenticated-orcid": false,
+   "given": "Philipp",
+   "family": "Lottes",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Photogrammetry &amp; Robotics Lab University of Bonn  Bonn Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Jens",
+   "family": "Behley",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Photogrammetry &amp; Robotics Lab University of Bonn  Bonn Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Nived",
+   "family": "Chebrolu",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Photogrammetry &amp; Robotics Lab University of Bonn  Bonn Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Andres",
+   "family": "Milioto",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Photogrammetry &amp; Robotics Lab University of Bonn  Bonn Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-1173-6972",
+   "authenticated-orcid": false,
+   "given": "Cyrill",
+   "family": "Stachniss",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Photogrammetry &amp; Robotics Lab University of Bonn  Bonn Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "311",
+ "published-online": {
+  "date-parts": [
+   [
+    2019,
+    8,
+    11
+   ]
+  ]
+ },
+ "reference": [
+  {
+   "key": "e_1_2_7_1_2_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2016.2644615"
+  },
+  {
+   "key": "e_1_2_7_1_3_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Behley J. Steinhage V. &Cremers A.(2013). Laser\u2010based segment classification using a mixture of bag\u2010of\u2010words. Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 4195\u20104200.",
+   "DOI": "10.1109/IROS.2013.6696957"
+  },
+  {
+   "key": "e_1_2_7_1_4_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Bogoslavskyi I. Vysotska O. Serafin J. Grisetti G. &Stachniss C.(2013). Efficient traversability analysis for mobile robots using the kinect sensor. Proceedings of the European Conference on Mobile Robotics (ECMR) Barcelona Spain pp. 158\u2010163.",
+   "DOI": "10.1109/ECMR.2013.6698836"
+  },
+  {
+   "key": "e_1_2_7_1_5_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Boser B. Guyon I. &Vapnik V.(1992). A training algorithm for optimal margin classifiers. Proceedings of the workshop on computational learning theory (COLT) pp. 144\u2010152.",
+   "DOI": "10.1145/130385.130401"
+  },
+  {
+   "key": "e_1_2_7_1_6_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1023/A:1010933404324"
+  },
+  {
+   "key": "e_1_2_7_1_7_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1177/0278364917720510"
+  },
+  {
+   "key": "e_1_2_7_1_8_1",
+   "unstructured": "Cicco M. Potena C. Grisetti G. &Pretto A.(2017). Automatic model based dataset generation for fast and accurate crop and weeds detection. Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) 5188\u20105195."
+  },
+  {
+   "key": "e_1_2_7_1_9_1",
+   "unstructured": "Dumoulin V. &Visin F.(2018).A guide to convolution arithmetic for deep learning. Retrieved fromhttps://arxiv.org/abs/1603.07285."
+  },
+  {
+   "key": "e_1_2_7_1_10_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-009-0275-4"
+  },
+  {
+   "key": "e_1_2_7_1_11_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1006/jcss.1997.1504"
+  },
+  {
+   "key": "e_1_2_7_1_12_1",
+   "unstructured": "Haug S. Biber P. Michaels A. &Ostermann J.(2014). Plant stem detection and position estimation using machine vision.Workshop Proceedings of Conference on Intelligent Autonomous Systems (IAS) 483\u2013490."
+  },
+  {
+   "key": "e_1_2_7_1_13_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Haug S. Michaels A. Biber P. &Ostermann J.(2014). Plant classification system for crop/weed discrimination without segmentation. IEEE Winter Conference on Applications of Computer Vision (WACV) pp. 1142\u20101149.",
+   "DOI": "10.1109/WACV.2014.6835733"
+  },
+  {
+   "key": "e_1_2_7_1_14_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "He K. Gkioxari G. Dollar P. &Girshick R.(2017). Mask R\u2010CNN.Proceedings of the IEEE International Conference on Computer Vision (ICCV).",
+   "DOI": "10.1109/ICCV.2017.322"
+  },
+  {
+   "key": "e_1_2_7_1_15_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "He K. Zhang X. Ren S. &Sun J.(2015). Delving deep into rectifiers: Surpassing human\u2010level performance on imagenet classification. Proceedings of the IEEE International Conference on Computer Vision (ICCV) pp. 1026\u20101034.",
+   "DOI": "10.1109/ICCV.2015.123"
+  },
+  {
+   "key": "e_1_2_7_1_16_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Huang G. Liu Z. Maaten L. &Weinberger K. Q.(2017). Densely connected convolutional networks. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) pp. 2261\u20102269.",
+   "DOI": "10.1109/CVPR.2017.243"
+  },
+  {
+   "key": "e_1_2_7_1_17_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "J\u00e9gou S. Drozdzal M. V\u00e1zquez D. Romero A. &Bengio Y.(2017). The one hundred layers tiramisu: Fully convolutional densenets for semantic segmentation. Retrieved fromhttps://arxiv.org/abs/1611.09326.",
+   "DOI": "10.1109/CVPRW.2017.156"
+  },
+  {
+   "key": "e_1_2_7_1_18_1",
+   "first-page": "755",
+   "article-title": "Crop detection and positioning in the field using discriminant analysis and neural networks based on shape features",
+   "volume": "14",
+   "author": "Kiani S.",
+   "year": "2012",
+   "journal-title": "Journal of Agricultural Science and Technology"
+  },
+  {
+   "key": "e_1_2_7_1_19_1",
+   "unstructured": "Kraemer F. Schaefer A. Eitel A. Vertens J. &Burgard W.(2017). From plants to landmarks: Time\u2010invariant plant localization that uses deep pose regression in agricultural fields. IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) Workshop Agri\u2010Food Robotics. Retrieved fromhttps://arxiv.org/abs/1709.04751"
+  },
+  {
+   "key": "e_1_2_7_1_20_1",
+   "unstructured": "Krizhevsky A. Sutskever I. &Hinton G.(2012). ImageNet classification with deep convolutional neural networks. Proceedings of the Advances in Neural Information Processing Systems (NIPS) pp. 1097\u20101105."
+  },
+  {
+   "key": "e_1_2_7_1_21_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "K\u00fcmmerle R. Ruhnke M. Steder B. Stachniss C. &Burgard W.(2013). A navigation system for robots operating in crowded urban environments. Proceedings of the IEEE International Conference on Robotics & Automation (ICRA) pp. 3225\u20103232.",
+   "DOI": "10.1109/ICRA.2013.6631026"
+  },
+  {
+   "key": "e_1_2_7_1_22_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-007-0095-3"
+  },
+  {
+   "key": "e_1_2_7_1_23_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Leibe B. Seemann E. &Schiele B.(2005). Pedestrian detection in crowded scenes. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) https://doi.org/10.1109/CVPR.2005.272",
+   "DOI": "10.1109/CVPR.2005.272"
+  },
+  {
+   "key": "e_1_2_7_1_24_1",
+   "unstructured": "Lin M. Chen Q. &Yan S.(2014). Network in network. Retrieved fromhttps://arxiv.org/abs/1312.4400"
+  },
+  {
+   "key": "e_1_2_7_1_25_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Long J. Shelhamer E. &Darrell T.(2015). Fully convolutional networks for semantic segmentation. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) https://doi.org/10.1109/CVPR.2015.7298965",
+   "DOI": "10.1109/CVPR.2015.7298965"
+  },
+  {
+   "key": "e_1_2_7_1_26_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lottes P. Behley J. Chebrolu N. Milioto A. &Stachniss C.(2018). Joint stem detection and crop\u2010weed classification for plant\u2010specific treatment in precision farming. Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) https://doi.org/10.1109/iros.2018.8593678",
+   "DOI": "10.1109/IROS.2018.8593678"
+  },
+  {
+   "key": "e_1_2_7_1_27_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2018.2846289"
+  },
+  {
+   "key": "e_1_2_7_1_28_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.21675"
+  },
+  {
+   "key": "e_1_2_7_1_29_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lottes P. Khanna R. Pfeifer J. Siegwart R. &Stachniss C.(2017). UAV\u2010based crop and weed classification for smart farming.Proceedings of the IEEE International Conference on Robotics & Automation (ICRA).",
+   "DOI": "10.1109/ICRA.2017.7989347"
+  },
+  {
+   "key": "e_1_2_7_1_30_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lottes P. &Stachniss C.(2017). Semi\u2010supervised online visual crop and weed classification in precision farming exploiting plant arrangement. Proceedings of the IEEE/RSJ International Conference on Intelligent Robots and Systems (IROS) https://doi.org/10.1109/iros.2017.8206403",
+   "DOI": "10.1109/IROS.2017.8206403"
+  },
+  {
+   "key": "e_1_2_7_1_31_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2017.2667039"
+  },
+  {
+   "key": "e_1_2_7_1_32_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.biosystemseng.2011.10.011"
+  },
+  {
+   "key": "e_1_2_7_1_33_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Milioto A. Lottes P. &Stachniss C.(2017). Real\u2010time blob\u2010wise sugar beets vs weeds classification for monitoring fields using convolutional neural networks. ISPRS Annals of Photogrammetry Remote Sensing and Spatial Information Sciences IV\u20102/W3 pp. 41\u201048.",
+   "DOI": "10.5194/isprs-annals-IV-2-W3-41-2017"
+  },
+  {
+   "key": "e_1_2_7_1_34_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Milioto A. Lottes P. &Stachniss C.(2018). Real\u2010time semantic segmentation of crop and weed for precision agriculture robots leveraging background knowledge in CNNs.Proceedings of the IEEE International Conference on Robotics & Automation (ICRA).",
+   "DOI": "10.1109/ICRA.2018.8460962"
+  },
+  {
+   "key": "e_1_2_7_1_35_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Milioto A. &Stachniss C.(2018). Bonnet: An open\u2010source training and deployment framework for semantic segmentation in robotics using CNNs. Worshop on Perception Inference and Learning for Joint Semantic Retrieved fromhttps://arxiv.org/abs/1802.08960",
+   "DOI": "10.1109/ICRA.2019.8793510"
+  },
+  {
+   "key": "e_1_2_7_1_36_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Mortensen A. K. Dyrmann M. Karstoft H. J\u00f6rgensen R. N. &Gislum R.(2016). Semantic segmentation of mixed crops using deep convolutional neural network. Proceedings of the International Conference of Agricultural Engineering (CIGR).",
+   "DOI": "10.1016/j.biosystemseng.2016.08.024"
+  },
+  {
+   "key": "e_1_2_7_1_37_1",
+   "unstructured": "Papageorgiou C. Oren M. &Poggio T.(1988). A general framework for object detection. Proceedings of the IEEE International Conference on Computer Vision (ICCV). 555."
+  },
+  {
+   "key": "e_1_2_7_1_38_1",
+   "unstructured": "Paszke A. Chaurasia A. Kim S. &Culurciello E.(2016).ENet: A deep neural network architecture for real\u2010time semantic segmentation. Retrieved fromhttps://arxiv.org/abs/1606.02147"
+  },
+  {
+   "key": "e_1_2_7_1_39_1",
+   "unstructured": "Potena C. Nardi D. &Pretto A.(2016). Fast and accurate crop and weed identification with summarized train sets for precision agriculture. Proceedings of International Conference on Intelligent Autonomous Systems (IAS) https://doi.org/10.1007/978\u20103\u2010319\u201048036\u20107_9"
+  },
+  {
+   "key": "e_1_2_7_1_40_1",
+   "unstructured": "Rahman M. A. &Wang Y.(2016). Optimizing intersection\u2010over\u2010union in deep neural networks for image segmentation. International Symposium on Visual Computing. https://doi.org/10.1007/978\u20103\u2010319\u201050835\u20101_22"
+  },
+  {
+   "key": "e_1_2_7_1_41_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Ronneberger O. Fischer P. &Brox T.(2015).U\u2010Net: Convolutional networks for biomedical image segmentation. Medical Image Computing and Computer\u2010Assisted Intervention vol. 9351 of LNCS Springer https://doi.org/10.1007/978\u20103\u2010319\u201024574\u20104_28. pp.234\u2013241.",
+   "DOI": "10.1007/978-3-319-24574-4_28"
+  },
+  {
+   "key": "e_1_2_7_1_42_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1038/323533a0"
+  },
+  {
+   "key": "e_1_2_7_1_43_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2007.05.008"
+  },
+  {
+   "key": "e_1_2_7_1_44_1",
+   "first-page": "1929",
+   "article-title": "Dropout: A simple way to prevent neural networks from overfitting",
+   "volume": "15",
+   "author": "Srivastava N.",
+   "year": "2014",
+   "journal-title": "Journal of Machine Learning Research"
+  },
+  {
+   "key": "e_1_2_7_1_45_1",
+   "unstructured": "Stachniss C. Mart\u00ednez\u2010Mozos O. Rottmann A. &Burgard W.(2005). Semantic labeling of places. Proceedings of the International Symposium on Robotic Research (ISRR) \u00a0San Francisco CA."
+  },
+  {
+   "key": "e_1_2_7_1_46_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Szegedy C. Vanhoucke V. Ioffe S. Shlens J. &Wojna Z.(2016). Rethinking the inception architecture for computer vision.Proceedings of the IEEE Conf. on Computer Vision and Pattern Recognition (CVPR) 2818\u20132826.",
+   "DOI": "10.1109/CVPR.2016.308"
+  },
+  {
+   "key": "e_1_2_7_1_47_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Viola P. &Jones M.(2001). Robust real\u2010time object detection. International Journal of Computer Vision 57 pp. 137\u2010154",
+   "DOI": "10.1023/B:VISI.0000013087.49260.fb"
+  },
+  {
+   "key": "e_1_2_7_1_48_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.robot.2012.10.003"
+  }
+ ],
+ "container-title": [
+  "Journal of Field Robotics"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://onlinelibrary.wiley.com/doi/pdf/10.1002/rob.21901",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://onlinelibrary.wiley.com/doi/full-xml/10.1002/rob.21901",
+   "content-type": "application/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://onlinelibrary.wiley.com/doi/pdf/10.1002/rob.21901",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    9,
+    6
+   ]
+  ],
+  "date-time": "2023-09-06T16:38:01Z",
+  "timestamp": 1694018281000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://onlinelibrary.wiley.com/doi/10.1002/rob.21901"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2019,
+    8,
+    11
+   ]
+  ]
+ },
+ "references-count": 47,
+ "journal-issue": {
+  "issue": "1",
+  "published-print": {
+   "date-parts": [
+    [
+     2020,
+     1
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1002/rob.21901"
+ ],
+ "URL": "https://doi.org/10.1002/rob.21901",
+ "archive": [
+  "Portico"
+ ],
+ "relation": {},
+ "ISSN": [
+  "1556-4959",
+  "1556-4967"
+ ],
+ "issn-type": [
+  {
+   "value": "1556-4959",
+   "type": "print"
+  },
+  {
+   "value": "1556-4967",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2019,
+    8,
+    11
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2018-10-19",
+   "order": 0,
+   "name": "received",
+   "label": "Received",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2019-07-05",
+   "order": 1,
+   "name": "accepted",
+   "label": "Accepted",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2019-08-11",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

@@ -1,0 +1,545 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    22
+   ]
+  ],
+  "date-time": "2026-10-22T16:55:34Z",
+  "timestamp": 1792688134995,
+  "version": "4.5.0"
+ },
+ "reference-count": 24,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      7,
+      1
+     ]
+    ],
+    "date-time": "2020-07-01T00:00:00Z",
+    "timestamp": 1593561600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      7,
+      1
+     ]
+    ],
+    "date-time": "2020-07-01T00:00:00Z",
+    "timestamp": 1593561600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100007129",
+   "name": "Natural Science Foundation of Shandong Province",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100007129",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/100014103",
+   "name": "Key Technology Research and Development Program of Shandong",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/100014103",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/100012905",
+   "name": "Department of Science and Technology of Shandong Province",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/100012905",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/501100002855",
+   "name": "Ministry of Science and Technology of the People's Republic of China",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100002855",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    7
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2020.105450",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2020,
+    5,
+    11
+   ]
+  ],
+  "date-time": "2020-05-11T11:08:08Z",
+  "timestamp": 1589195288000
+ },
+ "page": "105450",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 256,
+ "special_numbering": "C",
+ "title": [
+  "CNN feature based graph convolutional network for weed and crop recognition in smart farming"
+ ],
+ "prefix": "10.1016",
+ "volume": "174",
+ "author": [
+  {
+   "given": "Honghua",
+   "family": "Jiang",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Chuanyin",
+   "family": "Zhang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Yongliang",
+   "family": "Qiao",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Zhao",
+   "family": "Zhang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Wenjing",
+   "family": "Zhang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Changqing",
+   "family": "Song",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.compag.2020.105450_b0005",
+   "doi-asserted-by": "crossref",
+   "first-page": "1690",
+   "DOI": "10.3390/rs10111690",
+   "article-title": "Deep learning with unsupervised data labeling for weed detection in line crops in uav images",
+   "volume": "10",
+   "author": "Bah",
+   "year": "2018",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0010",
+   "doi-asserted-by": "crossref",
+   "first-page": "153",
+   "DOI": "10.1016/j.compag.2017.12.032",
+   "article-title": "Evaluation of support vector machine and artificial neural networks in weed detection using shape features",
+   "volume": "145",
+   "author": "Bakhshipour",
+   "year": "2018",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0015",
+   "doi-asserted-by": "crossref",
+   "first-page": "361",
+   "DOI": "10.1016/j.compag.2018.09.021",
+   "article-title": "Agroavnet for crops and weeds classification: a step forward in automatic farming",
+   "volume": "154",
+   "author": "Chavan",
+   "year": "2018",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0020",
+   "first-page": "182",
+   "article-title": "Weed recognition based on svm-ds multi-feature fusion",
+   "volume": "44",
+   "author": "Dongjian",
+   "year": "2013",
+   "journal-title": "Trans. Chinese Soc. Agric. Mach."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0025",
+   "doi-asserted-by": "crossref",
+   "first-page": "104963",
+   "DOI": "10.1016/j.compag.2019.104963",
+   "article-title": "Unsupervised deep learning and semi-automatic data labeling in weed discrimination",
+   "volume": "165",
+   "author": "dos Santos Ferreira",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0030",
+   "doi-asserted-by": "crossref",
+   "first-page": "842",
+   "DOI": "10.1017/S2040470017000206",
+   "article-title": "Roboweedsupport-detection of weed locations in leaf occluded cereal crops using a fully convolutional neural network",
+   "volume": "8",
+   "author": "Dyrmann",
+   "year": "2017",
+   "journal-title": "Adv. Anim. Biosci."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0035",
+   "doi-asserted-by": "crossref",
+   "first-page": "183",
+   "DOI": "10.1109/LGRS.2018.2869879",
+   "article-title": "Analysis of spectral bands and spatial resolutions for weed classification via deep convolutional neural network",
+   "volume": "16",
+   "author": "Farooq",
+   "year": "2019",
+   "journal-title": "IEEE Geosci. Remote Sens. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0040",
+   "doi-asserted-by": "crossref",
+   "unstructured": "He, K., Zhang, X., Ren, S., Sun, J., 2016. Deep residual learning for image recognition. In: Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, pp. 770\u2013778.",
+   "DOI": "10.1109/CVPR.2016.90"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0045",
+   "unstructured": "Kipf, T.N., Welling, M., 2016. Semi-supervised classification with graph convolutional networks, arXiv preprint arXiv:1609.02907."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0050",
+   "doi-asserted-by": "crossref",
+   "first-page": "9567",
+   "DOI": "10.1007/s11042-017-5337-y",
+   "article-title": "Image-based recognition framework for robotic weed control systems",
+   "volume": "77",
+   "author": "Kounalakis",
+   "year": "2018",
+   "journal-title": "Multimedia Tools Appl."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0055",
+   "unstructured": "Krizhevsky, A., Sutskever, I., Hinton, G.E., 2012. Imagenet classification with deep convolutional neural networks. In: Advances in Neural Information Processing Systems, pp. 1097\u20131105."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0060",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lameski, P., Zdravevski, E., Trajkovik, V., Kulakov, A., 2017. Weed detection dataset with rgb images taken under variable light conditions. In: International Conference on ICT Innovations, Springer, pp. 112\u2013119.",
+   "DOI": "10.1007/978-3-319-67597-8_11"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0065",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lottes, P., Khanna, R., Pfeifer, J., Siegwart, R., Stachniss, C., 2017. Uav-based crop and weed classification for smart farming. In: 2017 IEEE International Conference on Robotics and Automation (ICRA), IEEE, pp. 3024\u20133031.",
+   "DOI": "10.1109/ICRA.2017.7989347"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0070",
+   "doi-asserted-by": "crossref",
+   "first-page": "2058",
+   "DOI": "10.1038/s41598-018-38343-3",
+   "article-title": "Deepweeds: A multiclass weed species image dataset for deep learning",
+   "volume": "9",
+   "author": "Olsen",
+   "year": "2019",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0075",
+   "doi-asserted-by": "crossref",
+   "first-page": "104958",
+   "DOI": "10.1016/j.compag.2019.104958",
+   "article-title": "Cattle segmentation and contour extraction based on mask r-cnn for precision livestock farming",
+   "volume": "165",
+   "author": "Qiao",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0080",
+   "doi-asserted-by": "crossref",
+   "first-page": "2439",
+   "DOI": "10.3390/s19112439",
+   "article-title": "Convnet and LSH-based visual localization using localized sequence matching",
+   "volume": "19",
+   "author": "Qiao",
+   "year": "2019",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0085",
+   "doi-asserted-by": "crossref",
+   "first-page": "588",
+   "DOI": "10.1109/LRA.2017.2774979",
+   "article-title": "weednet: Dense semantic weed classification using multispectral images and mav for smart farming",
+   "volume": "3",
+   "author": "Sa",
+   "year": "2018",
+   "journal-title": "IEEE Robot. Automat. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0090",
+   "unstructured": "Simonyan, K., Zisserman, A., 2014. Very deep convolutional networks for large-scale image recognition, arXiv preprint arXiv:1409.1556."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0095",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "DOI": "10.1016/j.compag.2017.01.001",
+   "article-title": "Weed identification based on k-means feature learning combined with convolutional neural network",
+   "volume": "135",
+   "author": "Tang",
+   "year": "2017",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0100",
+   "doi-asserted-by": "crossref",
+   "first-page": "226",
+   "DOI": "10.1016/j.compag.2019.02.005",
+   "article-title": "A review on weed detection using ground-based machine vision and image processing techniques",
+   "volume": "158",
+   "author": "Wang",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0105",
+   "first-page": "165",
+   "article-title": "Recognition of weeds at seedling stage in paddy fields using multi-feature fusion and deep belief networks",
+   "volume": "34",
+   "author": "Xiangwu",
+   "year": "2018",
+   "journal-title": "Trans. Chinese Soc. Agric. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0110",
+   "doi-asserted-by": "crossref",
+   "first-page": "273",
+   "DOI": "10.3233/ICA-180596",
+   "article-title": "Multi-object tracking with discriminant correlation filter based deep learning tracker",
+   "volume": "26",
+   "author": "Yang",
+   "year": "2019",
+   "journal-title": "Integr. Comput.-Aided Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0115",
+   "doi-asserted-by": "crossref",
+   "first-page": "215",
+   "DOI": "10.1016/j.compag.2017.07.028",
+   "article-title": "Maize and weed classification using color indices with support vector data description in outdoor fields",
+   "volume": "141",
+   "author": "Zheng",
+   "year": "2017",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105450_b0120",
+   "doi-asserted-by": "crossref",
+   "first-page": "458",
+   "DOI": "10.1016/j.patcog.2019.05.004",
+   "article-title": "Joint graph based embedding and feature weighting for image classification",
+   "volume": "93",
+   "author": "Zhu",
+   "year": "2019",
+   "journal-title": "Pattern Recogn."
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169919321349?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169919321349?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    9,
+    29
+   ]
+  ],
+  "date-time": "2025-09-29T13:15:01Z",
+  "timestamp": 1759151701000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169919321349"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2020,
+    7
+   ]
+  ]
+ },
+ "references-count": 24,
+ "alternative-id": [
+  "S0168169919321349"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2020.105450",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2020,
+    7
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "CNN feature based graph convolutional network for weed and crop recognition in smart farming",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Computers and Electronics in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.compag.2020.105450",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2020 Elsevier B.V. All rights reserved.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ],
+ "article-number": "105450"
+}

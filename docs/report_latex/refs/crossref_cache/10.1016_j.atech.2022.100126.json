@@ -1,0 +1,973 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    1
+   ]
+  ],
+  "date-time": "2026-11-01T15:14:11Z",
+  "timestamp": 1793546051585,
+  "version": "4.5.0"
+ },
+ "reference-count": 74,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      10,
+      3
+     ]
+    ],
+    "date-time": "2022-10-03T00:00:00Z",
+    "timestamp": 1664755200000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/100007250",
+   "name": "Mississippi State University",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/100007250",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/100006481",
+   "name": "Cotton Inc",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "21\u2013005"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "21\u2013005"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/100006481",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Smart Agricultural Technology"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2023,
+    2
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.atech.2022.100126",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2022,
+    10,
+    4
+   ]
+  ],
+  "date-time": "2022-10-04T02:37:35Z",
+  "timestamp": 1664851055000
+ },
+ "page": "100126",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 89,
+ "special_numbering": "C",
+ "title": [
+  "Performance evaluation of deep learning object detectors for weed detection for cotton"
+ ],
+ "prefix": "10.1016",
+ "volume": "3",
+ "author": [
+  {
+   "given": "Abdur",
+   "family": "Rahman",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-3636-1137",
+   "authenticated-orcid": false,
+   "given": "Yuzhen",
+   "family": "Lu",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Haifeng",
+   "family": "Wang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0001",
+   "doi-asserted-by": "crossref",
+   "first-page": "133",
+   "DOI": "10.1111/wbm.12041",
+   "article-title": "Effect of weed interference on Zea mays: growth analysis",
+   "volume": "14",
+   "author": "Ghanizadeh",
+   "year": "2014",
+   "journal-title": "Weed Biol. Manag."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0002",
+   "doi-asserted-by": "crossref",
+   "first-page": "31",
+   "DOI": "10.1017/S0021859605005708",
+   "article-title": "Crop losses to pests",
+   "volume": "144",
+   "author": "OERKE",
+   "year": "2006",
+   "journal-title": "J. Agric. Sci."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0003",
+   "article-title": "Optimization in waste landfilling partitioning in Paran\u00e1 State, Brazil",
+   "volume": "283",
+   "author": "de Barros Franco",
+   "year": "2021",
+   "journal-title": "J. Clean. Prod."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0004",
+   "doi-asserted-by": "crossref",
+   "first-page": "559",
+   "DOI": "10.3390/plants9050559",
+   "article-title": "Weed classification for site-specific weed management using an automated stereo computer-vision machine-learning system in rice fields",
+   "volume": "9",
+   "author": "Dadashzadeh",
+   "year": "2020",
+   "journal-title": "Plants"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0005",
+   "doi-asserted-by": "crossref",
+   "first-page": "275",
+   "DOI": "10.1017/wsc.2017.78",
+   "article-title": "Weed management in 2050: perspectives on the future of weed science",
+   "volume": "66",
+   "author": "Westwood",
+   "year": "2018",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0006",
+   "first-page": "114",
+   "article-title": "Development of a weed detection system using machine learning and neural network algorithms",
+   "volume": "6",
+   "author": "Urmashev",
+   "year": "2021",
+   "journal-title": "Eastern-Eur.n J. Enterp. Technol."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0007",
+   "doi-asserted-by": "crossref",
+   "first-page": "153",
+   "DOI": "10.1016/j.compag.2017.12.032",
+   "article-title": "Evaluation of support vector machine and artificial neural networks in weed detection using shape features",
+   "volume": "145",
+   "author": "Bakhshipour",
+   "year": "2018",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0008",
+   "doi-asserted-by": "crossref",
+   "first-page": "215",
+   "DOI": "10.1016/j.compag.2017.07.028",
+   "article-title": "Maize and weed classification using color indices with support vector data description in outdoor fields",
+   "volume": "141",
+   "author": "Zheng",
+   "year": "2017",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0009",
+   "doi-asserted-by": "crossref",
+   "first-page": "226",
+   "DOI": "10.1016/j.compag.2019.02.005",
+   "article-title": "A review on weed detection using ground-based machine vision and image processing techniques",
+   "volume": "158",
+   "author": "Wang",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agri."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0010",
+   "doi-asserted-by": "crossref",
+   "first-page": "261",
+   "DOI": "10.1007/s11263-019-01247-4",
+   "article-title": "Deep learning for generic object detection: a survey",
+   "volume": "128",
+   "author": "Liu",
+   "year": "2020",
+   "journal-title": "Int. J. Comput. Vis."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0011",
+   "author": "O\u2019Shea"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0012",
+   "doi-asserted-by": "crossref",
+   "first-page": "128837",
+   "DOI": "10.1109/ACCESS.2019.2939201",
+   "article-title": "A survey of deep learning-based object detection",
+   "volume": "7",
+   "author": "Jiao",
+   "year": "2019",
+   "journal-title": "IEEE Access"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0013",
+   "series-title": "Proceeding of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Recognit",
+   "first-page": "580",
+   "article-title": "Rich feature hierarchies for accurate object detection and semantic segmentation",
+   "author": "Girshick",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0014",
+   "series-title": "Proceedings of the IEEE International Conference on Computer Vision",
+   "first-page": "1440",
+   "article-title": "Fast r-cnn",
+   "author": "Girshick",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0015",
+   "article-title": "Faster r-cnn: towards real-time object detection with region proposal networks",
+   "volume": "28",
+   "author": "Ren",
+   "year": "2015",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0016",
+   "series-title": "Proceedings of the IEEE International Conference on Computer Vision",
+   "first-page": "2961",
+   "article-title": "Mask r-cnn",
+   "author": "He",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0017",
+   "series-title": "Proceedings of the European Conference on Computer Vision",
+   "first-page": "21",
+   "article-title": "Ssd: Single shot multibox detector",
+   "author": "Liu",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0018",
+   "series-title": "Proceedings of the IEEE Conference on Computer Vision Pattern Recognit",
+   "first-page": "779",
+   "article-title": "You only look once: unified, real-time object detection",
+   "author": "Redmon",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0019",
+   "series-title": "Proceedings of the IEEE Conference on Computer Vision",
+   "first-page": "2980",
+   "article-title": "Focal loss for dense object detection",
+   "author": "Lin",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0020",
+   "series-title": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+   "first-page": "10781",
+   "article-title": "Efficientdet: Scalable and efficient object detection",
+   "author": "Tan",
+   "year": "2020"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0021",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2020.105760",
+   "article-title": "A survey of public datasets for computer vision tasks in precision agriculture",
+   "volume": "178",
+   "author": "Lu",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0022",
+   "doi-asserted-by": "crossref",
+   "first-page": "387",
+   "DOI": "10.3390/agriculture11050387",
+   "article-title": "Early weed detection using image processing and machine learning techniques in an Australian chilli farm",
+   "volume": "11",
+   "author": "Islam",
+   "year": "2021",
+   "journal-title": "Agriculture"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0023",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2017.10.027",
+   "article-title": "Weed detection in soybean crops using ConvNets",
+   "author": "Dos Santos Ferreira",
+   "year": "2017",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0024",
+   "doi-asserted-by": "crossref",
+   "first-page": "198",
+   "DOI": "10.1080/1343943X.2020.1829490",
+   "article-title": "Discriminating crops/weeds in an upland rice field from UAV images with the SLIC-RF algorithm",
+   "volume": "24",
+   "author": "Kawamura",
+   "year": "2021",
+   "journal-title": "Plant Prod. Sci."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0025",
+   "doi-asserted-by": "crossref",
+   "first-page": "4387",
+   "DOI": "10.3390/rs13214387",
+   "article-title": "Boost precision agriculture with unmanned aerial vehicle remote sensing and edge intelligence: a survey",
+   "volume": "13",
+   "author": "Liu",
+   "year": "2021",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0026",
+   "doi-asserted-by": "crossref",
+   "first-page": "2136",
+   "DOI": "10.3390/rs12132136",
+   "article-title": "Comparison of object detection and patch-based classification deep learning models on mid-to late-season weed detection in UAV imagery",
+   "volume": "12",
+   "author": "Veeranampalayam Sivakumar",
+   "year": "2020",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0027",
+   "series-title": "Proceedings of the IEEE International Instrumentation and Measurement Technology Conference",
+   "first-page": "1",
+   "article-title": "Vision-based deep learning approach for real-time detection of weeds in organic farming",
+   "author": "Czymmek",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0028",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1038/s41598-018-38343-3",
+   "article-title": "DeepWeeds: a multiclass weed species image dataset for deep learning",
+   "volume": "9",
+   "author": "Olsen",
+   "year": "2019",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0029",
+   "series-title": "Proceedings of the IEEE International Conference on Imaging Systems and Techniques",
+   "first-page": "1",
+   "article-title": "A robotic system employing deep learning for visual recognition and detection of weeds in Grasslands",
+   "author": "Kounalakis",
+   "year": "2018"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0030",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2022.107091",
+   "article-title": "Performance evaluation of deep transfer learning on multi-class identification of common weed species in cotton production systems",
+   "volume": "198",
+   "author": "Chen",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0031",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "DOI": "10.1016/j.compag.2017.01.001",
+   "article-title": "Weed identification based on K-means feature learning combined with convolutional neural network",
+   "volume": "135",
+   "author": "Tang",
+   "year": "2017",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0032",
+   "doi-asserted-by": "crossref",
+   "first-page": "78",
+   "DOI": "10.1016/j.eja.2019.01.004",
+   "article-title": "Deep learning for image-based weed detection in turfgrass",
+   "volume": "104",
+   "author": "Yu",
+   "year": "2019",
+   "journal-title": "Eur. J. Agron."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0033",
+   "doi-asserted-by": "crossref",
+   "first-page": "2211",
+   "DOI": "10.1002/ps.5349",
+   "article-title": "Detection of broadleaf weeds growing in turfgrass with convolutional neural networks",
+   "volume": "75",
+   "author": "Yu",
+   "year": "2019",
+   "journal-title": "Pest Manag. Sci."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0034",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2020.105520",
+   "article-title": "Graph weeds net: a graph-based deep learning method for weed recognition",
+   "volume": "174",
+   "author": "Hu",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0035",
+   "series-title": "Proceedings of the 2022 International Conference on Robotics",
+   "first-page": "2273",
+   "article-title": "Deep-cnn based robotic multi-class under-canopy weed control in precision farming",
+   "author": "Du",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0036",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2022.106711",
+   "article-title": "Robust plant segmentation of color images based on image contrast optimization",
+   "volume": "193",
+   "author": "Lu",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0037",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2021.106067",
+   "article-title": "A survey of deep learning techniques for weed detection from images",
+   "volume": "184",
+   "author": "Hasan",
+   "year": "2021",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0038",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2020.105306",
+   "article-title": "Towards weeds identification assistance through transfer learning",
+   "volume": "171",
+   "author": "Espejo-Garcia",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0039",
+   "doi-asserted-by": "crossref",
+   "first-page": "1246",
+   "DOI": "10.3390/rs12081246",
+   "article-title": "Open plant phenotype database of common weeds in Denmark",
+   "volume": "12",
+   "author": "Leminen Madsen",
+   "year": "2020",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0040",
+   "article-title": "Dataset of annotated food crops and weed images for robotic computer vision control",
+   "volume": "31",
+   "author": "Sudars",
+   "year": "2020",
+   "journal-title": "Data BR"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0041",
+   "series-title": "Smart Sprayer For Precision Weed Control Using Artificial intelligence: Comparison of Deep Learning Frameworks",
+   "author": "Partel",
+   "year": "2020"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0042",
+   "doi-asserted-by": "crossref",
+   "first-page": "339",
+   "DOI": "10.1016/j.compag.2018.12.048",
+   "article-title": "Development and evaluation of a low-cost and smart technology for precision weed management utilizing artificial intelligence",
+   "volume": "157",
+   "author": "Partel",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0043",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1038/s41598-020-66505-9",
+   "article-title": "Goosegrass detection in strawberry and tomato using a convolutional neural network",
+   "volume": "10",
+   "author": "Sharpe",
+   "year": "2020",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0044",
+   "series-title": "Proceedings of the IEEE International Instrumentation and Measurement Technology Conference (I2MTC)",
+   "first-page": "1",
+   "article-title": "Vision-based deep learning approach for real-time detection of weeds in organic farming",
+   "author": "Czymmek",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0045",
+   "doi-asserted-by": "crossref",
+   "first-page": "471",
+   "DOI": "10.3390/agriengineering2030032",
+   "article-title": "A deep learning approach for weed detection in lettuce crops using multispectral images",
+   "volume": "2",
+   "author": "Osorio",
+   "year": "2020",
+   "journal-title": "AgriEngineering"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0046",
+   "article-title": "Weed location and recognition based on UAV imaging and deep learning",
+   "volume": "3",
+   "author": "Zhang",
+   "year": "2020",
+   "journal-title": "Int. J. Precis. Agric. Aviat."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0047",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1186/s13007-020-00570-z",
+   "article-title": "Deep convolutional neural networks for image-based Convolvulus sepium detection in sugar beet fields",
+   "volume": "16",
+   "author": "Gao",
+   "year": "2020",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0048",
+   "series-title": "Proceedings of the ASABE Annual International Meeting",
+   "first-page": "1",
+   "article-title": "DeepCottonWeeds (DCW): a novel benchmark of YOLO object detectors for weed detection in cotton production systems",
+   "author": "Dang",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0049",
+   "doi-asserted-by": "crossref",
+   "first-page": "1404",
+   "DOI": "10.3389/fpls.2019.01404",
+   "article-title": "Learning semantic graphics using convolutional encoder\u2013decoder network for autonomous weeding in paddy",
+   "volume": "10",
+   "author": "Adhikari",
+   "year": "2019",
+   "journal-title": "Front. Plant Sci."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0050",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1186/s13007-019-0528-3",
+   "article-title": "DeepSeedling: deep convolutional network and Kalman filter for plant seedling detection and counting in the field",
+   "volume": "15",
+   "author": "Jiang",
+   "year": "2019",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0051",
+   "series-title": "Proceedings of the 2nd International Conference on Sustainable Computing and Data Communication Systems",
+   "first-page": "311",
+   "article-title": "Weed seedling detection using mask regional convolutional neural network",
+   "author": "Patidar",
+   "year": "2020"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0052",
+   "series-title": "Precision Agriculture",
+   "first-page": "2223",
+   "article-title": "Multi species weed detection with Retinanet one-step network in a maize field",
+   "author": "Correa",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0053",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2022.107179",
+   "article-title": "Weed detection in paddy field using an improved RetinaNet network",
+   "volume": "199",
+   "author": "Peng",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0054",
+   "article-title": "Accuracy and efficiency comparison of object detection open-source models",
+   "volume": "17",
+   "author": "Jabir",
+   "year": "2021",
+   "journal-title": "Int. J. Online Biomed. Eng."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0055",
+   "doi-asserted-by": "crossref",
+   "first-page": "2837",
+   "DOI": "10.3390/rs14122837",
+   "article-title": "Rice seedling setection in UAV images using transfer learning and machine learning",
+   "volume": "14",
+   "author": "Tseng",
+   "year": "2022",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0056",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.3389/fpls.2022.850666",
+   "article-title": "Weed identification by single-stage and two-stage neural networks: a study on the impact of image resizers and weights optimization algorithms",
+   "volume": "13",
+   "author": "Saleem",
+   "year": "2022",
+   "journal-title": "Front. Plant Sci."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0057",
+   "series-title": "Proceedings of the 2022 Annual International Meeting",
+   "first-page": "1",
+   "article-title": "Deep learning model for automatic lettuce/weed identification using transfer learning",
+   "author": "Zhang",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0058",
+   "first-page": "1167",
+   "article-title": "Novel assessment of region-based CNNs for detecting monocot/dicot weeds in dense field environments",
+   "volume": "12",
+   "author": "Teimouri",
+   "year": "2022"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0059",
+   "series-title": "Proceedings of the European Conference on Computer Vision",
+   "first-page": "740",
+   "article-title": "Microsoft coco: common objects in context",
+   "author": "Lin",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0060",
+   "series-title": "Proceedings of the MM 2019 - 27th ACM International Conference on Multimedia",
+   "article-title": "The VIA annotation software for images, audio and video",
+   "author": "Dutta",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0061",
+   "doi-asserted-by": "crossref",
+   "first-page": "7365",
+   "DOI": "10.1109/LRA.2021.3098012",
+   "article-title": "Toward robotic weed control: detection of nutsedge weed in bermudagrass turf using inaccurate and insufficient training data",
+   "volume": "6",
+   "author": "Xie",
+   "year": "2021",
+   "journal-title": "IEEE Robot. Autom. Lett."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0062",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2022.107208",
+   "article-title": "Generative adversarial networks (GANs) for image augmentation in agriculture: a systematic review",
+   "volume": "200",
+   "author": "Lu",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0063",
+   "doi-asserted-by": "crossref",
+   "first-page": "125",
+   "DOI": "10.3390/info11020125",
+   "article-title": "Albumentations: fast and flexible image augmentations",
+   "volume": "11",
+   "author": "Buslaev",
+   "year": "2020",
+   "journal-title": "Information"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0064",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.dsp.2022.103514",
+   "article-title": "A survey of modern deep learning based object detection models",
+   "author": "Zaidi",
+   "year": "2022",
+   "journal-title": "Digit. Signal Process."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0065",
+   "series-title": "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition",
+   "first-page": "7310",
+   "article-title": "Speed/accuracy trade-offs for modern convolutional object detectors",
+   "author": "Huang",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0066",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.cosrev.2020.100301",
+   "article-title": "A comprehensive and systematic look up into deep learning based object detection techniques: a review",
+   "volume": "38",
+   "author": "Sharma",
+   "year": "2020",
+   "journal-title": "Comput. Sci. Rev."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0067",
+   "unstructured": "G. Jocher, ultralytics/yolov5: v3.1 - Bug Fixes and Performance Improvements, (2020). https://zenodo.org/record/4154370#.Yz4u0HbMKPo. Last accessed: August 23, 2022."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0068",
+   "series-title": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+   "first-page": "658",
+   "article-title": "Generalized intersection over union: a metric and a loss for bounding box regression",
+   "author": "Rezatofighi",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0069",
+   "series-title": "Proceedings of the 36th International Conference on Machine Learning, PMLR",
+   "first-page": "6105",
+   "article-title": "EfficientNet: rethinking model scaling for convolutional neural networks",
+   "author": "Tan",
+   "year": "2019"
+  },
+  {
+   "issue": "12808",
+   "key": "10.1016/j.atech.2022.100126_bib0070",
+   "article-title": "Model evaluation, model selection, and algorithm selection in machine learning",
+   "volume": "1811",
+   "author": "Raschka",
+   "year": "2018",
+   "journal-title": "ArXiv Preprint ArXiv"
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0071",
+   "doi-asserted-by": "crossref",
+   "first-page": "43",
+   "DOI": "10.1109/JPROC.2020.3004555",
+   "article-title": "A comprehensive survey on transfer learning",
+   "volume": "109",
+   "author": "Zhuang",
+   "year": "2021",
+   "journal-title": "Proc. IEEE."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0072",
+   "unstructured": "Y. Wu, A. Kirillov, F. Massa, W.Y. Lo, R. Girshick, Detectron2, (2019). https://github.com/facebookresearch/detectron2. Last accessed: August 23, 2022."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0073",
+   "article-title": "YOLOWeeds: a novel benchmark of YOLO object detectors for weed detection in cotton production systems",
+   "author": "Dang",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.atech.2022.100126_bib0074",
+   "series-title": "Proceedings of the 2020 IEEE Eighth International Conference on Communications and Electronics",
+   "first-page": "350",
+   "article-title": "Detecting weeds from crops under complex field environments based on Faster RCNN",
+   "author": "Le",
+   "year": "2021"
+  }
+ ],
+ "container-title": [
+  "Smart Agricultural Technology"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2772375522000910?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2772375522000910?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    9,
+    9
+   ]
+  ],
+  "date-time": "2025-09-09T10:09:02Z",
+  "timestamp": 1757412542000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S2772375522000910"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2023,
+    2
+   ]
+  ]
+ },
+ "references-count": 74,
+ "alternative-id": [
+  "S2772375522000910"
+ ],
+ "URL": "https://doi.org/10.1016/j.atech.2022.100126",
+ "relation": {},
+ "ISSN": [
+  "2772-3755"
+ ],
+ "issn-type": [
+  {
+   "value": "2772-3755",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2023,
+    2
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "Performance evaluation of deep learning object detectors for weed detection for cotton",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Smart Agricultural Technology",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.atech.2022.100126",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2022 The Author(s). Published by Elsevier B.V.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ],
+ "article-number": "100126"
+}

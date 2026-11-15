@@ -1,0 +1,932 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    14
+   ]
+  ],
+  "date-time": "2026-11-14T09:26:37Z",
+  "timestamp": 1794648397294,
+  "version": "4.9.1"
+ },
+ "reference-count": 73,
+ "publisher": "Frontiers Media SA",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2026,
+      1,
+      29
+     ]
+    ],
+    "date-time": "2026-01-29T00:00:00Z",
+    "timestamp": 1769644800000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100004070",
+   "name": "Khalifa University of Science, Technology and Research",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100004070",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/501100006013",
+   "name": "United Arab Emirates University",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100006013",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "frontiersin.org"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Front. Plant Sci."
+ ],
+ "abstract": "<jats:p>Weeds remain a major constraint to row-crop productivity, yet current deep learning approaches for UAV imagery often require extensive annotation, generalize poorly across fields, and provide limited interpretability. We investigate whether modern vision\u2013language models (VLMs) can address these gaps in a zero-shot setting. Using drone images from soybean fields with ground-truth weed boxes, we evaluate six commercial VLMs, ChatGPT-4.1, ChatGPT-4o, Gemini Flash 2.5, Gemini Flash Lite 2.5, LLaMA-4 Scout, and LLaMA-4 Maverick under a unified prompt that elicits (i) weed presence, (ii) spatial localization, (iii) reasoning, (iv) crop growth stage, and (v) crop type. We further introduce Error-Probing Prompting (EPP), a counterfactual follow-up that forces re-analysis under the assumption that weeds are present, and we quantify self-correction with expert-rated interpretability scores (Grounding, Specificity, Plausibility, Non-Hallucination, Actionability). Across models, Gemini Flash 2.5 delivers the most consistent zero-shot performance and highest interpretability, ChatGPT-4.1 provides the strongest reasoning but lower raw detection, ChatGPT-4o offers a balanced profile, and LLaMA-4 variants lag in localization and specificity. Gemini Flash Lite 2.5 is efficient but fails EPP stress tests, revealing brittle reasoning. Visual grounding analysis and a text-to-region overlap metric show that interpretability tracks spatial correctness. Results highlight that explainability and feedback driven adaptability not scale alone best predict reliability for field deployment, and position VLMs as promising, low-annotation tools for precision weed management.</jats:p>",
+ "DOI": "10.3389/fpls.2025.1735096",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2026,
+    1,
+    29
+   ]
+  ],
+  "date-time": "2026-01-29T06:43:05Z",
+  "timestamp": 1769668985000
+ },
+ "update-policy": "https://doi.org/10.3389/crossmark-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 13,
+ "title": [
+  "Vision-language models for zero-shot weed detection and visual reasoning in UAV-based precision agriculture"
+ ],
+ "prefix": "10.3389",
+ "volume": "16",
+ "author": [
+  {
+   "given": "Muhammad Fahad",
+   "family": "Nasir",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Khalifa University Center for Autonomous Robotic Systems, Khalifa University",
+     "place": [
+      "Abu Dhabi, United Arab Emirates"
+     ]
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Mobeen Ur",
+   "family": "Rehman",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "College of Information Technology, United Arab Emirates University",
+     "place": [
+      "Al-Ain, Abu Dhabi, United Arab Emirates"
+     ]
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Irfan",
+   "family": "Hussain",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Khalifa University Center for Autonomous Robotic Systems, Khalifa University",
+     "place": [
+      "Abu Dhabi, United Arab Emirates"
+     ]
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "1965",
+ "published-online": {
+  "date-parts": [
+   [
+    2026,
+    1,
+    29
+   ]
+  ]
+ },
+ "reference": [
+  {
+   "key": "B1",
+   "article-title": "Gpt-4 technical report",
+   "author": "Achiam",
+   "year": "2023",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "B2",
+   "doi-asserted-by": "publisher",
+   "first-page": "106081",
+   "DOI": "10.1016/j.compag.2021.106081",
+   "article-title": "Performance of deep learning models for classifying and detecting common weeds in corn and soybean production systems",
+   "volume": "184",
+   "author": "Ahmad",
+   "year": "2021",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B3",
+   "article-title": "Open-loop vlm robot planning: An investigation of fine-tuning and prompt engineering strategies",
+   "author": "Akiyama",
+   "year": "2024"
+  },
+  {
+   "key": "B4",
+   "first-page": "23716",
+   "article-title": "Flamingo: a visual language model for few-shot learning",
+   "volume": "35",
+   "author": "Alayrac",
+   "year": "2022",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "B5",
+   "first-page": "225",
+   "article-title": "Ai-based anomaly and data posing classification in mobile crowd sensing",
+   "author": "Alharam",
+   "year": "2021"
+  },
+  {
+   "key": "B6",
+   "doi-asserted-by": "publisher",
+   "first-page": "138",
+   "DOI": "10.1890/120150",
+   "article-title": "Lightweight unmanned aerial vehicles will revolutionize spatial ecology",
+   "volume": "11",
+   "author": "Anderson",
+   "year": "2013",
+   "journal-title": "Front. Ecol. Environ."
+  },
+  {
+   "key": "B7",
+   "doi-asserted-by": "publisher",
+   "first-page": "535",
+   "DOI": "10.1016/j.inpa.2019.12.002",
+   "article-title": "Weed detection in canola fields using maximum likelihood classification and deep convolutional neural network",
+   "volume": "7",
+   "author": "Asad",
+   "year": "2020",
+   "journal-title": "Inf. Process. Agric."
+  },
+  {
+   "key": "B8",
+   "first-page": "5687",
+   "article-title": "Agrogpt: Efficient agricultural vision-language model with expert tuning",
+   "author": "Awais",
+   "year": "2025"
+  },
+  {
+   "key": "B9",
+   "doi-asserted-by": "publisher",
+   "first-page": "241",
+   "DOI": "10.1111/wre.12418",
+   "article-title": "Thermal weed control technologies for conservation agriculture\u2014a review",
+   "volume": "60",
+   "author": "Bauer",
+   "year": "2020",
+   "journal-title": "Weed Res."
+  },
+  {
+   "key": "B10",
+   "doi-asserted-by": "publisher",
+   "first-page": "109963",
+   "DOI": "10.1016/j.compag.2025.109963",
+   "article-title": "Towards end-to-end rice row detection in paddy fields exploiting two-pathway instance segmentation",
+   "volume": "231",
+   "author": "Chen",
+   "year": "2025",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B11",
+   "article-title": "A precise method for identifying 3d circles in freeform surface point clouds",
+   "author": "Deng",
+   "year": "2025",
+   "journal-title": "IEEE Trans. Instrumentation Measurement"
+  },
+  {
+   "key": "B12",
+   "first-page": "1",
+   "article-title": "Maritime mission planning for unmanned surface vessel using large language model",
+   "author": "Din",
+   "year": "2025"
+  },
+  {
+   "key": "B13",
+   "article-title": "The llama 3 herd of models",
+   "author": "Dubey",
+   "year": "2024",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "B14",
+   "doi-asserted-by": "publisher",
+   "first-page": "18",
+   "DOI": "10.1186/s40538-021-00217-8",
+   "article-title": "Drone and sensor technology for sustainable weed management: A review",
+   "volume": "8",
+   "author": "Esposito",
+   "year": "2021",
+   "journal-title": "Chem. Biol. Technol. Agric."
+  },
+  {
+   "key": "B15",
+   "first-page": "12462",
+   "article-title": "Physically grounded vision-language models for robotic manipulation",
+   "author": "Gao",
+   "year": "2024"
+  },
+  {
+   "key": "B16",
+   "doi-asserted-by": "publisher",
+   "first-page": "1954",
+   "DOI": "10.3390/agronomy15081954",
+   "article-title": "Applications, trends, and challenges of precision weed control technologies based on deep learning and machine vision",
+   "volume": "15",
+   "author": "Gao",
+   "year": "2025",
+   "journal-title": "Agronomy"
+  },
+  {
+   "key": "B17",
+   "doi-asserted-by": "publisher",
+   "first-page": "105385",
+   "DOI": "10.1016/j.compag.2020.105385",
+   "article-title": "An automatic method for weed mapping in oat fields based on uav imagery",
+   "volume": "173",
+   "author": "Ga\u0161parovi\u0107",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B18",
+   "article-title": "Agmmu: A comprehensive agricultural multimodal understanding and reasoning benchmark",
+   "author": "Gauba",
+   "year": "2025",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "B19",
+   "doi-asserted-by": "publisher",
+   "first-page": "616",
+   "DOI": "10.3390/d13120616",
+   "article-title": "Cultural practices and mechanical weed control for the management of a low-diversity weed community in spinach",
+   "volume": "13",
+   "author": "Gazoulis",
+   "year": "2021",
+   "journal-title": "Diversity"
+  },
+  {
+   "key": "B20",
+   "doi-asserted-by": "publisher",
+   "first-page": "87",
+   "DOI": "10.1186/s13007-023-01060-8",
+   "article-title": "Improved weed segmentation in uav imagery of sorghum fields with a combined deblurring segmentation model",
+   "volume": "19",
+   "author": "Genze",
+   "year": "2023",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "B21",
+   "article-title": "Machine learning interventions for weed detection using multispectral imagery and unmanned aerial vehicles\u2013a systematic review",
+   "author": "Goel",
+   "year": "2024",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "B22",
+   "doi-asserted-by": "publisher",
+   "first-page": "686",
+   "DOI": "10.3390/drones8110686",
+   "article-title": "Drones in precision agriculture: A comprehensive review of applications, technologies, and challenges",
+   "volume": "8",
+   "author": "Guebsi",
+   "year": "2024",
+   "journal-title": "Drones"
+  },
+  {
+   "key": "B23",
+   "doi-asserted-by": "publisher",
+   "first-page": "109707",
+   "DOI": "10.1016/j.compag.2024.109707",
+   "article-title": "Efficient weed segmentation in maize fields: A semi-supervised approach for precision weed management with reduced annotation overhead",
+   "volume": "229",
+   "author": "Guo",
+   "year": "2025",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B24",
+   "doi-asserted-by": "publisher",
+   "first-page": "106067",
+   "DOI": "10.1016/j.compag.2021.106067",
+   "article-title": "A survey of deep learning techniques for weed detection from images",
+   "volume": "184",
+   "author": "Hasan",
+   "year": "2021",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B25",
+   "doi-asserted-by": "publisher",
+   "first-page": "106423",
+   "DOI": "10.1016/j.compag.2021.106423",
+   "article-title": "A powerful image synthesis and semi-supervised learning pipeline for site-specific weed detection",
+   "volume": "190",
+   "author": "Hu",
+   "year": "2021",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B26",
+   "doi-asserted-by": "publisher",
+   "first-page": "2",
+   "DOI": "10.1017/wet.2017.89",
+   "article-title": "Uav low-altitude remote sensing for precision weed management",
+   "volume": "32",
+   "author": "Huang",
+   "year": "2018",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "key": "B27",
+   "article-title": "Gpt-4o system card",
+   "author": "Hurst",
+   "year": "2024",
+   "journal-title": "arXiv preprint arXiv:2410.21276"
+  },
+  {
+   "key": "B28",
+   "doi-asserted-by": "publisher",
+   "first-page": "94",
+   "DOI": "10.1186/s13007-022-00929-4",
+   "article-title": "Deep learning for detecting herbicide weed control spectrum in turfgrass",
+   "volume": "18",
+   "author": "Jin",
+   "year": "2022",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "B29",
+   "first-page": "27831",
+   "article-title": "Geochat: Grounded large vision-language model for remote sensing",
+   "author": "Kuckreja",
+   "year": "2024"
+  },
+  {
+   "key": "B30",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TNNLS.2024.3487833",
+   "article-title": "Ao-detr: Anti-overlapping detr for x-ray prohibited items detection",
+   "author": "Li",
+   "year": "2024",
+   "journal-title": "IEEE Trans. Neural Networks Learn. Syst"
+  },
+  {
+   "key": "B31",
+   "article-title": "Vllfl: A vision-language model based lightweight federated learning framework for smart agriculture",
+   "author": "Li",
+   "year": "2025",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "B32",
+   "first-page": "12888",
+   "article-title": "Blip: Bootstrapping language-image pre-training for unified vision-language understanding and generation",
+   "author": "Li",
+   "year": "2022"
+  },
+  {
+   "key": "B33",
+   "first-page": "13201",
+   "article-title": "Prompting large language models for counterfactual generation: An empirical study",
+   "author": "Li",
+   "year": "2024"
+  },
+  {
+   "key": "B34",
+   "doi-asserted-by": "publisher",
+   "first-page": "144",
+   "DOI": "10.1186/s13007-024-01272-6",
+   "article-title": "Harnessing uavs and deep learning for accurate grass weed detection in wheat fields: a study on biomass and yield implications",
+   "volume": "20",
+   "author": "Liu",
+   "year": "2024",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "B35",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3389/fpls.2022.894172",
+   "article-title": "Application of uav remote sensing in monitoring water use efficiency and biomass of cotton plants adjacent to shelterbelt",
+   "volume": "13",
+   "author": "Ma",
+   "year": "2022",
+   "journal-title": "Front. Plant Sci."
+  },
+  {
+   "key": "B36",
+   "doi-asserted-by": "publisher",
+   "first-page": "152",
+   "DOI": "10.1016/j.tplants.2018.11.007",
+   "article-title": "Perspectives for remote sensing with unmanned aerial vehicles in precision agriculture",
+   "volume": "24",
+   "author": "Maes",
+   "year": "2019",
+   "journal-title": "Trends Plant Sci."
+  },
+  {
+   "key": "B37",
+   "doi-asserted-by": "publisher",
+   "first-page": "7663",
+   "DOI": "10.3390/app15147663",
+   "article-title": "Computer vision meets generative models in agriculture: Technological advances, challenges and opportunities",
+   "volume": "15",
+   "author": "Min",
+   "year": "2025",
+   "journal-title": "Appl. Sci."
+  },
+  {
+   "key": "B38",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.aiia.2025.06.001",
+   "article-title": "Multi-camera fusion and bird-eye view location mapping for deep learning-based cattle behavior monitoring",
+   "author": "Nasir",
+   "year": "2025",
+   "journal-title": "Artif. Intell. Agric"
+  },
+  {
+   "key": "B39",
+   "doi-asserted-by": "publisher",
+   "first-page": "100094",
+   "DOI": "10.1016/j.plaphe.2025.100094",
+   "article-title": "Chatleafdisease: a chain-of-thought prompting approach for crop disease classification using large language models",
+   "author": "Pan",
+   "year": "2025",
+   "journal-title": "Plant Phenomics"
+  },
+  {
+   "key": "B40",
+   "doi-asserted-by": "publisher",
+   "first-page": "363",
+   "DOI": "10.3390/agronomy14020363",
+   "article-title": "Deep learning-based weed\u2013crop recognition for smart agricultural equipment: A review",
+   "volume": "14",
+   "author": "Qu",
+   "year": "2024",
+   "journal-title": "Agronomy"
+  },
+  {
+   "key": "B41",
+   "first-page": "8748",
+   "article-title": "Learning transferable visual models from natural language supervision",
+   "author": "Radford",
+   "year": "2021"
+  },
+  {
+   "key": "B42",
+   "doi-asserted-by": "publisher",
+   "first-page": "108442",
+   "DOI": "10.1016/j.compag.2023.108442",
+   "article-title": "Agricultural weed identification in images and videos by integrating optimized deep learning architecture on an edge computing technology",
+   "volume": "216",
+   "author": "Rai",
+   "year": "2024",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B43",
+   "doi-asserted-by": "crossref",
+   "first-page": "133",
+   "DOI": "10.1109/LAGIRS48042.2020.9165562",
+   "article-title": "Deep convolutional neural networks for weed detection in agricultural crops using optical aerial images",
+   "volume-title": "2020 IEEE latin american GRSS & ISPRS remote sensing conference (LAGIRS)",
+   "author": "Ramirez",
+   "year": "2020"
+  },
+  {
+   "key": "B44",
+   "doi-asserted-by": "publisher",
+   "first-page": "112655",
+   "DOI": "10.1016/j.knosys.2024.112655",
+   "article-title": "Advanced drone-based weed detection using feature-enriched deep learning approach",
+   "volume": "305",
+   "author": "Rehman",
+   "year": "2024",
+   "journal-title": "Knowledge-Based Syst."
+  },
+  {
+   "key": "B45",
+   "doi-asserted-by": "publisher",
+   "first-page": "8720",
+   "DOI": "10.1021/cr500077e",
+   "article-title": "Electrochemically assisted remediation of pesticides in soils and water: a review",
+   "volume": "114",
+   "author": "Rodrigo",
+   "year": "2014",
+   "journal-title": "Chem. Rev."
+  },
+  {
+   "key": "B46",
+   "doi-asserted-by": "publisher",
+   "first-page": "100594",
+   "DOI": "10.1016/j.atech.2024.100594",
+   "article-title": "Convolutional neural network for the early identification of weeds: A technological support to biodiversity and yield losses mitigation",
+   "volume": "9",
+   "author": "Russo",
+   "year": "2024",
+   "journal-title": "Smart Agric. Technol."
+  },
+  {
+   "key": "B47",
+   "doi-asserted-by": "publisher",
+   "first-page": "1580",
+   "DOI": "10.3390/agronomy12071580",
+   "article-title": "Weed detection by faster rcnn model: An enhanced anchor box approach",
+   "volume": "12",
+   "author": "Saleem",
+   "year": "2022",
+   "journal-title": "Agronomy"
+  },
+  {
+   "key": "B48",
+   "first-page": "133",
+   "article-title": "Different vegetation indices measurement using computer vision",
+   "author": "Sarvakar",
+   "year": "2024"
+  },
+  {
+   "key": "B49",
+   "doi-asserted-by": "publisher",
+   "first-page": "5695",
+   "DOI": "10.1007/s00521-023-09391-2",
+   "article-title": "Enhancing crop recommendation systems with explainable artificial intelligence: a study on agricultural decision-making",
+   "volume": "36",
+   "author": "Shams",
+   "year": "2024",
+   "journal-title": "Neural Computing Appl."
+  },
+  {
+   "key": "B50",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TIM.2025.3583364",
+   "article-title": "Vlcim: A vision-language cyclic interaction model for industrial defect detection",
+   "author": "Shen",
+   "year": "2025",
+   "journal-title": "IEEE Trans. Instrumentation Measurement"
+  },
+  {
+   "key": "B51",
+   "doi-asserted-by": "publisher",
+   "first-page": "381",
+   "DOI": "10.1038/s41746-025-01772-2",
+   "article-title": "A multimodal visual\u2013language foundation model for computational ophthalmology",
+   "volume": "8",
+   "author": "Shi",
+   "year": "2025",
+   "journal-title": "NPJ Digital Med."
+  },
+  {
+   "key": "B52",
+   "first-page": "8634",
+   "article-title": "Reflexion: Language agents with verbal reinforcement learning",
+   "volume": "36",
+   "author": "Shinn",
+   "year": "2023",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "B53",
+   "doi-asserted-by": "publisher",
+   "first-page": "3136",
+   "DOI": "10.3390/rs12193136",
+   "article-title": "Applications of remote sensing in precision agriculture: A review",
+   "volume": "12",
+   "author": "Sishodia",
+   "year": "2020",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "key": "B54",
+   "doi-asserted-by": "publisher",
+   "first-page": "1057",
+   "DOI": "10.1139/cjps-2021-0282",
+   "article-title": "New tools for mechanical weed control in low-input dry bean (phaseolus vulgaris) production",
+   "volume": "102",
+   "author": "Stanley",
+   "year": "2022",
+   "journal-title": "Can. J. Plant Sci."
+  },
+  {
+   "key": "B55",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.5772/intechopen.114256",
+   "article-title": "Sustainable farming through precision agriculture: Enhancing nitrogen use and weed management",
+   "author": "Suzer",
+   "year": "2024",
+   "journal-title": "Precis. Agriculture-Emerging Technol"
+  },
+  {
+   "key": "B56",
+   "doi-asserted-by": "publisher",
+   "first-page": "814",
+   "DOI": "10.3390/e27080814",
+   "article-title": "Causally-informed instance-wise feature selection for explaining visual classifiers",
+   "volume": "27",
+   "author": "Tan",
+   "year": "2025",
+   "journal-title": "Entropy"
+  },
+  {
+   "key": "B57",
+   "article-title": "Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context",
+   "author": "Team",
+   "year": "2024",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "B58",
+   "doi-asserted-by": "publisher",
+   "first-page": "69188",
+   "DOI": "10.1109/ACCESS.2024.3401018",
+   "article-title": "Unmanned aerial vehicle for precision agriculture: A review",
+   "volume": "12",
+   "author": "Toscano",
+   "year": "2024",
+   "journal-title": "IEEE Access"
+  },
+  {
+   "key": "B59",
+   "doi-asserted-by": "publisher",
+   "first-page": "349",
+   "DOI": "10.3390/info10110349",
+   "article-title": "A review on uav-based applications for precision agriculture",
+   "volume": "10",
+   "author": "Tsouros",
+   "year": "2019",
+   "journal-title": "Information"
+  },
+  {
+   "key": "B60",
+   "doi-asserted-by": "publisher",
+   "first-page": "105981",
+   "DOI": "10.1016/j.compag.2020.105981",
+   "article-title": "Simulation-aided study of herbicide patch spraying: influence of spraying features and weed spatial distributions",
+   "volume": "182",
+   "author": "Villette",
+   "year": "2021",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B61",
+   "first-page": "75392",
+   "article-title": "Is a picture worth a thousand words? delving into spatial reasoning for vision language models",
+   "volume": "37",
+   "author": "Wang",
+   "year": "2024",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "B62",
+   "doi-asserted-by": "publisher",
+   "first-page": "979",
+   "DOI": "10.1007/s11802-025-6029-2",
+   "article-title": "Yolo-dbs: Efficient target detection in complex underwater scene images based on improved yolov8",
+   "volume": "24",
+   "author": "Wang",
+   "year": "2025",
+   "journal-title": "J. Ocean Univ. China"
+  },
+  {
+   "key": "B63",
+   "article-title": "Self-consistency improves chain of thought reasoning in language models",
+   "author": "Wang",
+   "year": "2022",
+   "journal-title": "arXiv"
+  },
+  {
+   "key": "B64",
+   "doi-asserted-by": "publisher",
+   "first-page": "226",
+   "DOI": "10.1016/j.compag.2019.02.005",
+   "article-title": "A review on weed detection using ground-based machine vision and image processing techniques",
+   "volume": "158",
+   "author": "Wang",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "B65",
+   "doi-asserted-by": "publisher",
+   "first-page": "127477",
+   "DOI": "10.1016/j.eja.2024.127477",
+   "article-title": "A survey of unmanned aerial vehicles and deep learning in precision agriculture",
+   "volume": "164",
+   "author": "Wang",
+   "year": "2025",
+   "journal-title": "Eur. J. Agron."
+  },
+  {
+   "key": "B66",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/MGRS.2025.3572702",
+   "article-title": "Vision-language modeling meets remote sensing: Models, datasets, and perspectives",
+   "author": "Weng",
+   "year": "2025",
+   "journal-title": "IEEE Geosci. Remote Sens. Magazine"
+  },
+  {
+   "key": "B67",
+   "doi-asserted-by": "publisher",
+   "first-page": "114970",
+   "DOI": "10.1016/j.measurement.2024.114970",
+   "article-title": "Esmnet: An enhanced yolov7-based approach to detect surface defects in precision metal workpieces",
+   "volume": "235",
+   "author": "Xu",
+   "year": "2024",
+   "journal-title": "Measurement"
+  },
+  {
+   "key": "B68",
+   "doi-asserted-by": "publisher",
+   "first-page": "2544",
+   "DOI": "10.3390/plants14162544",
+   "article-title": "Advances in uav remote sensing for monitoring crop water and nutrient status: Modeling methods, influencing factors, and challenges",
+   "volume": "14",
+   "author": "Yang",
+   "year": "2025",
+   "journal-title": "Plants"
+  },
+  {
+   "key": "B69",
+   "doi-asserted-by": "publisher",
+   "first-page": "198",
+   "DOI": "10.1111/tpj.15285",
+   "article-title": "Osttg1, a wd40 repeat gene, regulates anthocyanin biosynthesis in rice",
+   "volume": "107",
+   "author": "Yang",
+   "year": "2021",
+   "journal-title": "Plant J."
+  },
+  {
+   "key": "B70",
+   "first-page": "11809",
+   "article-title": "Tree of thoughts: Deliberate problem solving with large language models",
+   "volume": "36",
+   "author": "Yao",
+   "year": "2023",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "B71",
+   "doi-asserted-by": "publisher",
+   "first-page": "2087",
+   "DOI": "10.3390/electronics14102087",
+   "article-title": "Vl-paw: A vision\u2013language dataset for pear, apple and weed",
+   "volume": "14",
+   "author": "Yu",
+   "year": "2025",
+   "journal-title": "Electronics"
+  },
+  {
+   "key": "B72",
+   "doi-asserted-by": "publisher",
+   "first-page": "9556",
+   "DOI": "10.1109/CVPR52733.2024.00913",
+   "article-title": "Mmmu: A massive multi-discipline multimodal understanding and reasoning benchmark for expert agi",
+   "author": "Yue",
+   "year": "2024",
+   "journal-title": "Proc. IEEE/CVF Conf. Comput. Vision Pattern Recognit."
+  },
+  {
+   "key": "B73",
+   "doi-asserted-by": "publisher",
+   "first-page": "5625",
+   "DOI": "10.1109/TPAMI.2024.3369699",
+   "article-title": "Vision-language models for vision tasks: A survey",
+   "volume": "46",
+   "author": "Zhang",
+   "year": "2024",
+   "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell."
+  }
+ ],
+ "container-title": [
+  "Frontiers in Plant Science"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "https://www.frontiersin.org/articles/10.3389/fpls.2025.1735096/full",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    2,
+    24
+   ]
+  ],
+  "date-time": "2026-02-24T09:26:14Z",
+  "timestamp": 1771925174000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://www.frontiersin.org/articles/10.3389/fpls.2025.1735096/full"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2026,
+    1,
+    29
+   ]
+  ]
+ },
+ "references-count": 73,
+ "alternative-id": [
+  "10.3389/fpls.2025.1735096"
+ ],
+ "URL": "https://doi.org/10.3389/fpls.2025.1735096",
+ "relation": {},
+ "ISSN": [
+  "1664-462X"
+ ],
+ "issn-type": [
+  {
+   "value": "1664-462X",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2026,
+    1,
+    29
+   ]
+  ]
+ },
+ "article-number": "1735096"
+}

@@ -1,0 +1,65 @@
+% AgriAgent B.Tech final-year project report (black book), VJTI 2026-27.
+% Build:   cd docs/report_latex && tectonic main.tex        (or Overleaf: pdfLaTeX/XeLaTeX + BibTeX)
+% Rule:    every number comes from a file in docs/results/ or docs/testing/ (named under its table);
+%          every journal/proceedings reference comes from refs/build_bib.py (Crossref).
+\documentclass[12pt,a4paper,oneside]{report}
+\input{layout}
+
+% ── Report metadata (title is identical in the report and the PPT) ──
+\newcommand{\reporttitle}{AgriAgent: A Safety-Gated Zero-Shot Vision Pipeline for Crop--Weed Spot Spraying}
+\newcommand{\guide}{Prof.\ V.\ D.\ Dhore}
+\newcommand{\department}{Department of Computer Engineering and Information Technology}
+\newcommand{\institute}{Veermata Jijabai Technological Institute (VJTI)}
+\newcommand{\city}{Mumbai 400 019}
+\newcommand{\academicyear}{2026--2027}
+\newcommand{\reportstage}{Project Report}   % e.g. ``Stage I Report'' if the department uses stages
+\newcommand{\degree}{Bachelor of Technology in Computer Engineering}
+\newcommand{\hod}{[Head of Department]}      % fill in: name of the HoD, Computer Engineering
+\newcommand{\submissiondate}{\rule{2.5cm}{0.4pt}}
+% Roll numbers: fill in before printing.
+\newcommand{\studentA}{Chaitanya Shinde}  \newcommand{\rollA}{231070066}
+\newcommand{\studentB}{Amit Ingle}        \newcommand{\rollB}{\textit{roll no.}}
+\newcommand{\studentC}{Sumant Vetal}      \newcommand{\rollC}{\textit{roll no.}}
+\newcommand{\studentD}{Sahil Chavan}      \newcommand{\rollD}{\textit{roll no.}}
+
+\hypersetup{pdftitle={\reporttitle},pdfauthor={\studentA, \studentB, \studentC, \studentD}}
+
+\begin{document}
+\bstctlcite{IEEEexample:BSTcontrol}
+
+\pagenumbering{roman}
+\input{frontmatter/title}
+\input{frontmatter/declaration}
+\input{frontmatter/approval}
+\input{frontmatter/certificate}
+\input{frontmatter/acknowledgement}
+\input{frontmatter/abstract}
+
+\tableofcontents
+\listoffigures
+\listoftables
+\input{frontmatter/abbreviations}
+
+\clearpage
+\pagenumbering{arabic}
+\input{chapters/01_motivation}
+\input{chapters/02_literature_survey}
+\input{chapters/03_literature_gaps}
+\input{chapters/04_objectives}
+\input{chapters/05_proposed_system}
+\input{chapters/06_model_results}
+\input{chapters/07_conclusion}
+\input{chapters/08_future_scope}
+
+\cleardoublepage
+\phantomsection
+\markboth{References}{References}
+\renewcommand{\bibname}{References}
+\bibliographystyle{IEEEtran}
+\bibliography{references_manual,references_crossref}
+
+\appendix
+\input{chapters/appendix_a_run}
+\input{chapters/appendix_b_contributions}
+
+\end{document}

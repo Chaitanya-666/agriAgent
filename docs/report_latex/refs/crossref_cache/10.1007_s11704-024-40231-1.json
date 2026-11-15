@@ -1,0 +1,1299 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    15
+   ]
+  ],
+  "date-time": "2026-11-15T09:12:45Z",
+  "timestamp": 1794733965432,
+  "version": "4.9.1"
+ },
+ "reference-count": 186,
+ "publisher": "Springer Science and Business Media LLC",
+ "issue": "6",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      3,
+      22
+     ]
+    ],
+    "date-time": "2024-03-22T00:00:00Z",
+    "timestamp": 1711065600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://creativecommons.org/licenses/by/4.0"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      3,
+      22
+     ]
+    ],
+    "date-time": "2024-03-22T00:00:00Z",
+    "timestamp": 1711065600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://creativecommons.org/licenses/by/4.0"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "link.springer.com"
+  ],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "Front. Comput. Sci."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2024,
+    12
+   ]
+  ]
+ },
+ "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>Autonomous agents have long been a research focus in academic and industry communities. Previous research often focuses on training agents with limited knowledge within isolated environments, which diverges significantly from human learning processes, and makes the agents hard to achieve human-like decisions. Recently, through the acquisition of vast amounts of Web knowledge, large language models (LLMs) have shown potential in human-level intelligence, leading to a surge in research on LLM-based autonomous agents. In this paper, we present a comprehensive survey of these studies, delivering a systematic review of LLM-based autonomous agents from a holistic perspective. We first discuss the construction of LLM-based autonomous agents, proposing a unified framework that encompasses much of previous work. Then, we present a overview of the diverse applications of LLM-based autonomous agents in social science, natural science, and engineering. Finally, we delve into the evaluation strategies commonly used for LLM-based autonomous agents. Based on the previous studies, we also present several challenges and future directions in this field.</jats:p>",
+ "DOI": "10.1007/s11704-024-40231-1",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2024,
+    3,
+    22
+   ]
+  ],
+  "date-time": "2024-03-22T19:01:20Z",
+  "timestamp": 1711134080000
+ },
+ "update-policy": "https://doi.org/10.1007/springer_crossmark_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 2083,
+ "title": [
+  "A survey on large language model based autonomous agents"
+ ],
+ "prefix": "10.1007",
+ "volume": "18",
+ "author": [
+  {
+   "given": "Lei",
+   "family": "Wang",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Chen",
+   "family": "Ma",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Xueyang",
+   "family": "Feng",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Zeyu",
+   "family": "Zhang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Hao",
+   "family": "Yang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Jingsen",
+   "family": "Zhang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Zhiyuan",
+   "family": "Chen",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Jiakai",
+   "family": "Tang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Xu",
+   "family": "Chen",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Yankai",
+   "family": "Lin",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Wayne Xin",
+   "family": "Zhao",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Zhewei",
+   "family": "Wei",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Jirong",
+   "family": "Wen",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "297",
+ "published-online": {
+  "date-parts": [
+   [
+    2024,
+    3,
+    22
+   ]
+  ]
+ },
+ "reference": [
+  {
+   "issue": "7540",
+   "key": "40231_CR1",
+   "doi-asserted-by": "publisher",
+   "first-page": "529",
+   "DOI": "10.1038/nature14236",
+   "volume": "518",
+   "author": "V Mnih",
+   "year": "2015",
+   "unstructured": "Mnih V, Kavukcuoglu K, Silver D, Rusu A A, Veness J, Bellemare M G, Graves A, Riedmiller M, Fidjeland A K, Ostrovski G, Petersen S, Beattie C, Sadik A, Antonoglou I, King H, Kumaran D, Wierstra D, Legg S, Hassabis D. Human-level control through deep reinforcement learning. Nature, 2015, 518(7540): 529\u2013533",
+   "journal-title": "Nature"
+  },
+  {
+   "key": "40231_CR2",
+   "unstructured": "Lillicrap T P, Hunt J J, Pritzel A, Heess N, Erez T, Tassa Y, Silver D, Wierstra D. Continuous control with deep reinforcement learning. 2019, arXiv preprint arXiv: 1509.02971"
+  },
+  {
+   "key": "40231_CR3",
+   "unstructured": "Schulman J, Wolski F, Dhariwal P, Radford A, Klimov O. Proximal policy optimization algorithms. 2017, arXiv preprint arXiv: 1707.06347"
+  },
+  {
+   "key": "40231_CR4",
+   "unstructured": "Haarnoja T, Zhou A, Abbeel P, Levine S. Soft actor-critic: off-policy maximum entropy deep reinforcement learning with a stochastic actor. In: Proceedings of the 35th International Conference on Machine Learning. 2018, 1861\u20131870"
+  },
+  {
+   "key": "40231_CR5",
+   "unstructured": "Brown T B, Mann B, Ryder N, Subbiah M, Kaplan J D, Dhariwal P, Neelakantan A, Shyam P, Sastry G, Askell A, Agarwal S, Herbert-Voss A, Krueger G, Henighan T, Child R, Ramesh A, Ziegler D M, Wu J, Winter C, Hesse C, Chen M, Sigler E, Litwin M, Gray S, Chess B, Clark J, Berner C, McCandlish S, Radford A, Sutskever I, Amodei D. Language models are few-shot learners. In: Proceedings of the 34th Conference on Neural Information Processing Systems. 2020, 1877\u20131901"
+  },
+  {
+   "issue": "8",
+   "key": "40231_CR6",
+   "first-page": "9",
+   "volume": "1",
+   "author": "A Radford",
+   "year": "2019",
+   "unstructured": "Radford A, Wu J, Child R, Luan D, Amodei D, Sutskever I. Language models are unsupervised multitask learners. OpenAI Blog, 2019, 1(8): 9",
+   "journal-title": "OpenAI Blog"
+  },
+  {
+   "key": "40231_CR7",
+   "unstructured": "OpenAI. GPT-4 technical report. 2024, arXiv preprint arXiv: 2303.08774"
+  },
+  {
+   "key": "40231_CR8",
+   "unstructured": "Anthropic. Model card and evaluations for Claude models. See Files.anthropic.com/production/images/Model-Card-Claude-2, 2023"
+  },
+  {
+   "key": "40231_CR9",
+   "unstructured": "Touvron H, Lavril T, Izacard G, Martinet X, Lachaux M A, Lacroix T, Rozi\u00e8re B, Goyal N, Hambro E, Azhar F, Rodriguez A, Joulin A, Grave E, Lample G. LLaMA: open and efficient foundation language models. 2023, arXiv preprint arXiv: 2302.13971"
+  },
+  {
+   "key": "40231_CR10",
+   "unstructured": "Touvron H, Martin L, Stone K, Albert P, Almahairi A, et al. Llama 2: open foundation and fine-tuned chat models. 2023, arXiv preprint arXiv: 2307.09288"
+  },
+  {
+   "key": "40231_CR11",
+   "unstructured": "Chen X, Li S, Li H, Jiang S, Qi Y, Song L. Generative adversarial user model for reinforcement learning based recommendation system. In: Proceedings of the 36th International Conference on Machine Learning. 2019, 1052\u20131061"
+  },
+  {
+   "key": "40231_CR12",
+   "unstructured": "Shinn N, Cassano F, Gopinath A, rasimhan K, Yao S. Reflexion: language agents with verbal reinforcement learning. NaIn: Proceedings of the 37th Conference on Neural Information Processing Systems. 2023, 36"
+  },
+  {
+   "key": "40231_CR13",
+   "unstructured": "Shen Y, Song K, Tan X, Li D, Lu W, Zhuang Y. HuggingGPT: solving AI tasks with chatGPT and its friends in hugging face. In: Proceedings of the 37th Conference on Neural Information Processing Systems. 2023, 36"
+  },
+  {
+   "key": "40231_CR14",
+   "unstructured": "Qin Y, Liang S, Ye Y, Zhu K, Yan L, Lu Y, Lin Y, Cong X, Tang X, Qian B, Zhao S, Hong L, Tian R, Xie R, Zhou J, Gerstein M, Li D, Liu Z, Sun M. ToolLLM: facilitating large language models to master 16000+ real-world APIs. 2023, arXiv preprint arXiv: 2307.16789"
+  },
+  {
+   "key": "40231_CR15",
+   "unstructured": "Schick T, Dwivedi-Yu J, Dess\u00ec R, Raileanu R, Lomeli M, Hambro E, Zettlemoyer L, Cancedda N, Scialom T. Toolformer: language models can teach themselves to use tools. In: Proceedings of the 37th Conference on Neural Information Processing Systems. 2023, 36"
+  },
+  {
+   "key": "40231_CR16",
+   "unstructured": "Zhu X, Chen Y, Tian H, Tao C, Su W, Yang C, Huang G, Li B, Lu L, Wang X, Qiao Y, Zhang Z, Dai J. Ghost in the minecraft: generally capable agents for open-world environments via large language models with text-based knowledge and memory. 2023, arXiv preprint arXiv: 2305.17144"
+  },
+  {
+   "key": "40231_CR17",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Sclar M, Kumar S, West P, Suhr A, Choi Y, Tsvetkov Y. Minding language models\u2019 (lack of) theory of mind: a plug-and-play multicharacter belief tracker. In: Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics. 2023, 13960\u201313980",
+   "DOI": "10.18653/v1/2023.acl-long.780"
+  },
+  {
+   "key": "40231_CR18",
+   "unstructured": "Qian C, Cong X, Liu W, Yang C, Chen W, Su Y, Dang Y, Li J, Xu J, Li S, Liu Z, Sun M. Communicative agents for software development. 2023, arXiv preprint arXiv: 2307.07924"
+  },
+  {
+   "key": "40231_CR19",
+   "unstructured": "Chen W, Su Y, Zuo J, Yang C, Yuan C, Chan C, Yu H, Lu Y, Hung Y, Qian C, Qin Y, Cong X, Xie R, Liu Z, Sun M, Zhou, J. Agentverse: Facilitating multi-agent collaboration and exploring emergent behaviors in agents. arXiv preprint arXiv:2308.10848."
+  },
+  {
+   "key": "40231_CR20",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Park J S, O\u2019Brien J, Cai C J, Morris M R, Liang P, Bernstein M S. Generative agents: interactive simulacra of human behavior. In: Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology. 2023, 2",
+   "DOI": "10.1145/3586183.3606763"
+  },
+  {
+   "key": "40231_CR21",
+   "unstructured": "Zhang H, Du W, Shan J, Zhou Q, Du Y, Tenenbaum J B, Shu T, Gan C. Building cooperative embodied agents modularly with large language models. 2024, arXiv preprint arXiv: 2307.02485"
+  },
+  {
+   "key": "40231_CR22",
+   "unstructured": "Hong S, Zhuge M, Chen J, Zheng X, Cheng Y, Zhang C, Wang J, Wang Z, Yau S K S, Lin Z, Zhou L, Ran C, Xiao L, Wu C, Schmidhuber J. MetaGPT: meta programming for a multi-agent collaborative framework. 2023, arXiv preprint arXiv: 2308.00352"
+  },
+  {
+   "key": "40231_CR23",
+   "unstructured": "Dong Y, Jiang X, Jin Z, Li G. Self-collaboration code generation via chatGPT. 2023, arXiv preprint arXiv: 2304.07590"
+  },
+  {
+   "key": "40231_CR24",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Serapio-Garc\u00eda G, Safdari M, Crepy C, Sun L, Fitz S, Romero P, Abdulhai M, Faust A, Matari\u0107 M. Personality traits in large language models. 2023, arXiv preprint arXiv: 2307.00184",
+   "DOI": "10.21203/rs.3.rs-3296728/v1"
+  },
+  {
+   "key": "40231_CR25",
+   "doi-asserted-by": "publisher",
+   "first-page": "78",
+   "DOI": "10.1016/j.jrp.2014.05.003",
+   "volume": "51",
+   "author": "J A Johnson",
+   "year": "2014",
+   "unstructured": "Johnson J A. Measuring thirty facets of the five factor model with a 120-item public domain inventory: development of the IPIP-NEO-120. Journal of Research in Personality, 2014, 51: 78\u201389",
+   "journal-title": "Journal of Research in Personality"
+  },
+  {
+   "key": "40231_CR26",
+   "doi-asserted-by": "crossref",
+   "unstructured": "John O P, Donahue E M, Kentle R L. Big five inventory. Journal of personality and social psychology, 1991.",
+   "DOI": "10.1037/t07550-000"
+  },
+  {
+   "key": "40231_CR27",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Deshpande A, Murahari V, Rajpurohit T, Kalyan A, Narasimhan K. Toxicity in chatGPT: analyzing persona-assigned language models. In: Proceedings of Findings of the Association for Computational Linguistics. 2023, 1236\u20131270",
+   "DOI": "10.18653/v1/2023.findings-emnlp.88"
+  },
+  {
+   "key": "40231_CR28",
+   "unstructured": "Wang L, Zhang J, Yang H, Chen Z, Tang J, Zhang Z, Chen X, Lin Y, Song R, Zhao W X, Xu J, Dou Z, Wang J, Wen J R. User behavior simulation with large language model based agents. 2024, arXiv preprint arXiv: 2306.02552"
+  },
+  {
+   "issue": "3",
+   "key": "40231_CR29",
+   "doi-asserted-by": "publisher",
+   "first-page": "337",
+   "DOI": "10.1017/pan.2023.2",
+   "volume": "31",
+   "author": "L P Argyle",
+   "year": "2023",
+   "unstructured": "Argyle L P, Busby E C, Fulda N, Gubler J R, Rytting C, Wingate D. Out of one, many: using language models to simulate human samples. Political Analysis, 2023, 31(3): 337\u2013351",
+   "journal-title": "Political Analysis"
+  },
+  {
+   "key": "40231_CR30",
+   "unstructured": "Fischer K A. Reflective linguistic programming (RLP): a stepping stone in socially-aware AGI (socialAGI). 2023, arXiv preprint arXiv: 2305.12647"
+  },
+  {
+   "key": "40231_CR31",
+   "unstructured": "Rana K, Haviland J, Garg S, Abou-Chakra J, Reid I, Suenderhauf N. SayPlan: grounding large language models using 3D scene graphs for scalable robot task planning. In: Proceedings of the 7th Conference on Robot Learning. 2023, 23\u201372"
+  },
+  {
+   "key": "40231_CR32",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhu A, Martin L, Head A, Callison-Burch C. CALYPSO: LLMs as dungeon master\u2019s assistants. In: Proceedings of the 19th AAAI Conference on Artificial Intelligence and Interactive Digital Entertainment. 2023, 380\u2013390",
+   "DOI": "10.1609/aiide.v19i1.27534"
+  },
+  {
+   "key": "40231_CR33",
+   "unstructured": "Wang Z, Cai S, Chen G, Liu A, Ma X, Liang Y. Describe, explain, plan and select: interactive planning with large language models enables open-world multi-task agents. 2023, arXiv preprint arXiv: 2302.01560"
+  },
+  {
+   "key": "40231_CR34",
+   "unstructured": "Lin J, Zhao H, Zhang A, Wu Y, Ping H, Chen Q. AgentSims: an open-source sandbox for large language model evaluation. 2023, arXiv preprint arXiv: 2308.04026"
+  },
+  {
+   "key": "40231_CR35",
+   "unstructured": "Wang B, Liang X, Yang J, Huang H, Wu S, Wu P, Lu L, Ma Z, Li Z. Enhancing large language model with self-controlled memory framework. 2024, arXiv preprint arXiv: 2304.13343"
+  },
+  {
+   "key": "40231_CR36",
+   "unstructured": "Ng Y, Miyashita D, Hoshi Y, Morioka Y, Torii O, Kodama T, Deguchi J. SimplyRetrieve: a private and lightweight retrieval-centric generative AI tool. 2023, arXiv preprint arXiv: 2308.03983"
+  },
+  {
+   "key": "40231_CR37",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Huang Z, Gutierrez S, Kamana H, Macneil S. Memory sandbox: transparent and interactive memory management for conversational agents. In: Proceedings of the 36th Annual ACM Symposium on User Interface Software and Technology. 2023, 97",
+   "DOI": "10.1145/3586182.3615796"
+  },
+  {
+   "key": "40231_CR38",
+   "unstructured": "Wang G, Xie Y, Jiang Y, Mandlekar A, Xiao C, Zhu Y, Fan L, Anandkumar A. Voyager: an open-ended embodied agent with large language models. 2023, arXiv preprint arXiv: 2305.16291"
+  },
+  {
+   "key": "40231_CR39",
+   "unstructured": "Zhong W, Guo L, Gao Q, Ye H, Wang Y. MemoryBank: enhancing large language models with long-term memory. 2023, arXiv preprint arXiv: 2305.10250"
+  },
+  {
+   "key": "40231_CR40",
+   "unstructured": "Hu C, Fu J, Du C, Luo S, Zhao J, Zhao H. ChatDB: augmenting LLMs with databases as their symbolic memory. 2023, arXiv preprint arXiv: 2306.03901"
+  },
+  {
+   "key": "40231_CR41",
+   "unstructured": "Zhou X, Li G, Liu Z. LLM as DBA. 2023, arXiv preprint arXiv: 2308.05481"
+  },
+  {
+   "key": "40231_CR42",
+   "unstructured": "Modarressi A, Imani A, Fayyaz M, Sch\u00fctze H. RET-LLM: towards a general read-write memory for large language models. 2023, arXiv preprint arXiv: 2305.14322"
+  },
+  {
+   "key": "40231_CR43",
+   "unstructured": "Schuurmans D. Memory augmented large language models are computationally universal. 2023, arXiv preprint arXiv: 2301.04589"
+  },
+  {
+   "key": "40231_CR44",
+   "unstructured": "Zhao A, Huang D, Xu Q, Lin M, Liu Y J, Huang G. Expel: LLM agents are experiential learners. 2023, arXiv preprint arXiv: 2308.10144"
+  },
+  {
+   "key": "40231_CR45",
+   "unstructured": "Wei J, Wang X, Schuurmans D, Bosma M, Ichter B, Xia F, Chi E H, Le Q V, Zhou D. Chain-of-thought prompting elicits reasoning in large language models. In: Proceedings of the 36th Conference on Neural Information Processing Systems. 2022, 24824\u201324837"
+  },
+  {
+   "key": "40231_CR46",
+   "unstructured": "Kojima T, Gu S S, Reid M, Matsuo Y, Iwasawa Y. Large language models are zero-shot reasoners. In: Proceedings of the 36th Conference on Neural Information Processing Systems. 2022, 22199\u201322213"
+  },
+  {
+   "key": "40231_CR47",
+   "unstructured": "Raman S S, Cohen V, Rosen E, Idrees I, Paulius D, Tellex S. Planning with large language models via corrective re-prompting. In: Proceedings of Foundation Models for Decision Making Workshop at Neural Information Processing Systems. 2022"
+  },
+  {
+   "key": "40231_CR48",
+   "unstructured": "Xu B, Peng Z, Lei B, Mukherjee S, Liu Y, Xu D. ReWOO: decoupling reasoning from observations for efficient augmented language models. 2023, arXiv preprint arXiv: 2305.18323"
+  },
+  {
+   "key": "40231_CR49",
+   "unstructured": "Wang X, Wei J, Schuurmans D, Le Q V, Chi E H, Narang S, Chowdhery A, Zhou D. Self-consistency improves chain of thought reasoning in language models. In: Proceedings of the 11th International Conference on Learning Representations. 2023"
+  },
+  {
+   "key": "40231_CR50",
+   "unstructured": "Yao S, Yu D, Zhao J, Shafran I, Griffiths T L, Cao Y, Narasimhan K. Tree of thoughts: deliberate problem solving with large language models. In: Proceedings of the 37th Conference on Neural Information Processing Systems. 2023, 36"
+  },
+  {
+   "key": "40231_CR51",
+   "unstructured": "Wang Y, Jiang Z, Chen Z, Yang F, Zhou Y, Cho E, Fan X, Huang X, Lu Y, Yang Y. RecMind: Large language model powered agent for recommendation. 2023, arXiv preprint arXiv: 2308.14296"
+  },
+  {
+   "key": "40231_CR52",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Besta M, Blach N, Kubicek A, Gerstenberger R, Podstawski M, Gianinazzi L, Gajda J, Lehmann T, Niewiadomski H, Nyczyk P, Hoefler T. Graph of thoughts: solving elaborate problems with large language models. 2024, arXiv preprint arXiv: 2308.09687",
+   "DOI": "10.1609/aaai.v38i16.29720"
+  },
+  {
+   "key": "40231_CR53",
+   "unstructured": "Sel B, Al-Tawaha A, Khattar V, Jia R, Jin M. Algorithm of thoughts: enhancing exploration of ideas in large language models. 2023, arXiv preprint arXiv: 2308.10379"
+  },
+  {
+   "key": "40231_CR54",
+   "unstructured": "Huang W, Abbeel P, Pathak D, Mordatch I. Language models as zero-shot planners: extracting actionable knowledge for embodied agents. In: Proceedings of the 39th International Conference on Machine Learning. 2022, 9118\u20139147"
+  },
+  {
+   "key": "40231_CR55",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Gramopadhye M, Szafir D. Generating executable action plans with environmentally-aware language models. In: Proceedings of 2023 IEEE/RSJ International Conference on Intelligent Robots and Systems. 2023, 3568\u20133575",
+   "DOI": "10.1109/IROS55552.2023.10341989"
+  },
+  {
+   "key": "40231_CR56",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Hao S, Gu Y, Ma H, Hong J, Wang Z, Wang D, Hu Z. Reasoning with language model is planning with world model. In: Proceedings of 2023 Conference on Empirical Methods in Natural Language Processing. 2023, 8154\u20138173",
+   "DOI": "10.18653/v1/2023.emnlp-main.507"
+  },
+  {
+   "key": "40231_CR57",
+   "unstructured": "Liu B, Jiang Y, Zhang X, Liu Q, Zhang S, Biswas J, Stone P. LLM+P: empowering large language models with optimal planning proficiency. 2023, arXiv preprint arXiv: 2304.11477"
+  },
+  {
+   "key": "40231_CR58",
+   "unstructured": "Dagan G, Keller F, Lascarides A. Dynamic planning with a LLM. 2023, arXiv preprint arXiv: 2308.06391"
+  },
+  {
+   "key": "40231_CR59",
+   "unstructured": "Yao S, Zhao J, Yu D, Du N, Shafran I, Narasimhan K R, Cao Y. ReAct: synergizing reasoning and acting in language models. In: Proceedings of the 11th International Conference on Learning Representations. 2023"
+  },
+  {
+   "key": "40231_CR60",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Song C H, Sadler B M, Wu J, Chao W L, Washington C, Su Y. LLM-planner: few-shot grounded planning for embodied agents with large language models. In: Proceedings of 2023 IEEE/CVF International Conference on Computer Vision. 2023, 2986\u20132997",
+   "DOI": "10.1109/ICCV51070.2023.00280"
+  },
+  {
+   "key": "40231_CR61",
+   "unstructured": "Huang W, Xia F, Xiao T, Chan H, Liang J, Florence P, Zeng A, Tompson J, Mordatch I, Chebotar Y, Sermanet P, Jackson T, Brown N, Luu L, Levine S, Hausman K, Ichter B. Inner monologue: embodied reasoning through planning with language models. In: Proceedings of the 6th Conference on Robot Learning, 2023, 1769\u20131782"
+  },
+  {
+   "key": "40231_CR62",
+   "unstructured": "Madaan A, Tandon N, Gupta P, Hallinan S, Gao L, Wiegreffe S, Alon U, Dziri N, Prabhumoye S, Yang Y, Gupta S, Majumder B P, Hermann K, Welleck S, Yazdanbakhsh A, Clark P. Self-refine: iterative refinement with self-feedback. Advances in Neural Information Processing Systems, 2024, 36."
+  },
+  {
+   "key": "40231_CR63",
+   "unstructured": "Miao N, Teh Y W, Rainforth T. SelfCheck: using LLMs to zero-shot check their own step-by-step reasoning. 2023, arXiv preprint arXiv: 2308.00436"
+  },
+  {
+   "key": "40231_CR64",
+   "unstructured": "Chen P L, Chang C S. InterAct: exploring the potentials of chatGPT as a cooperative agent. 2023, arXiv preprint arXiv: 2308.01552"
+  },
+  {
+   "key": "40231_CR65",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Chen Z, Zhou K, Zhang B, Gong Z, Zhao X, Wen J R. ChatCoT: tool-augmented chain-of-thought reasoning on chat-based large language models. In: Proceedings of Findings of the Association for Computational Linguistics. 2023, 14777\u201314790",
+   "DOI": "10.18653/v1/2023.findings-emnlp.985"
+  },
+  {
+   "key": "40231_CR66",
+   "unstructured": "Nakano R, Hilton J, Balaji S, Wu J, Ouyang L, Kim C, Hesse C, Jain S, Kosaraju V, Saunders W, Jiang X, Cobbe K, Eloundou T, Krueger G, Button K, Knight M, Chess B, Schulman J. WebGPT: browserassisted question-answering with human feedback. 2022, arXiv preprint arXiv: 2112.09332"
+  },
+  {
+   "key": "40231_CR67",
+   "unstructured": "Ruan J, Chen Y, Zhang B, Xu Z, Bao T, Du G, Shi S, Mao H, Li Z, Zeng X, Zhao R. TPTU: large language model-based AI agents for task planning and tool usage. 2023, arXiv preprint arXiv: 2308.03427"
+  },
+  {
+   "key": "40231_CR68",
+   "unstructured": "Patil S G, Zhang T, Wang X, Gonzalez J E. Gorilla: large language model connected with massive APIs. 2023, arXiv preprint arXiv: 2305.15334"
+  },
+  {
+   "key": "40231_CR69",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Li M, Zhao Y, Yu B, Song F, Li H, Yu H, Li Z, Huang F, Li Y. API-bank: a comprehensive benchmark for tool-augmented LLMs. In: Proceedings of 2023 Conference on Empirical Methods in Natural Language Processing. 2023, 3102\u20133116",
+   "DOI": "10.18653/v1/2023.emnlp-main.187"
+  },
+  {
+   "key": "40231_CR70",
+   "unstructured": "Song Y, Xiong W, Zhu D, Wu W, Qian H, Song M, Huang H, Li C, Wang K, Yao R, Tian Y, Li S. RestGPT: connecting large language models with real-world RESTful APIs. 2023, arXiv preprint arXiv: 2306.06624"
+  },
+  {
+   "key": "40231_CR71",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Liang Y, Wu C, Song T, Wu W, Xia Y, Liu Y, Ou Y, Lu S, Ji L, Mao S, Wang Y, Shou L, Gong M, Duan N. TaskMatrix.AI: Completing tasks by connecting foundation models with millions of APIs. 2023, arXiv preprint arXiv: 2303.16434",
+   "DOI": "10.34133/icomputing.0063"
+  },
+  {
+   "key": "40231_CR72",
+   "unstructured": "Karpas E, Abend O, Belinkov Y, Lenz B, Lieber O, Ratner N, Shoham Y, Bata H, Levine Y, Leyton-Brown K, Muhlgay D, Rozen N, Schwartz E, Shachaf G, Shalev-Shwartz S, Shashua A, Tenenholtz M. MRKL systems: a modular, neuro-symbolic architecture that combines large language models, external knowledge sources and discrete reasoning. 2022, arXiv preprint arXiv: 2205.00445"
+  },
+  {
+   "key": "40231_CR73",
+   "unstructured": "Ge Y, Hua W, Mei K, Tan J, Xu S, Li Z, Zhang Y. OpenAGI: When LLM meets domain experts. In: Proceedings of the 37th Conference on Neural Information Processing Systems, 2023, 36"
+  },
+  {
+   "key": "40231_CR74",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Sur\u00eds D, Menon S, Vondrick C. ViperGPT: visual inference via python execution for reasoning. 2023, arXiv preprint arXiv: 2303.08128",
+   "DOI": "10.1109/ICCV51070.2023.01092"
+  },
+  {
+   "key": "40231_CR75",
+   "unstructured": "Bran A M, Cox S, Schilter O, Baldassari C, White A D, Schwaller P. ChemCrow: augmenting large-language models with chemistry tools. 2023, arXiv preprint arXiv: 2304.05376"
+  },
+  {
+   "key": "40231_CR76",
+   "unstructured": "Yang Z, Li L, Wang J, Lin K, Azarnasab E, Ahmed F, Liu Z, Liu C, Zeng M, Wang L. MM-REACT: Prompting chatGPT for multimodal reasoning and action. 2023, arXiv preprint arXiv: 2303.11381"
+  },
+  {
+   "key": "40231_CR77",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Gao C, Lan X, Lu Z, Mao J, Piao J, Wang H, Jin D, Li Y. S3: social-network simulation system with large language model-empowered agents. 2023, arXiv preprint arXiv: 2307.14984",
+   "DOI": "10.2139/ssrn.4607026"
+  },
+  {
+   "key": "40231_CR78",
+   "unstructured": "Ichter B, Brohan A, Chebotar Y, Finn C, Hausman K, et al. Do as I can, not as I say: grounding language in robotic affordances. In: Proceedings of the 6th Conference on Robot Learning. 2023, 287\u2013318"
+  },
+  {
+   "key": "40231_CR79",
+   "unstructured": "Liu H, Sferrazza C, Abbeel P. Chain of hindsight aligns language models with feedback. arXiv preprint arXiv: 2302.02676"
+  },
+  {
+   "key": "40231_CR80",
+   "unstructured": "Yao S, Chen H, Yang J, Narasimhan K. WebShop: towards scalable real-world Web interaction with grounded language agents. In: Proceedings of the 36th Conference on Neural Information Processing Systems. 2022, 20744\u201320757"
+  },
+  {
+   "key": "40231_CR81",
+   "unstructured": "Dan Y, Lei Z, Gu Y, Li Y, Yin J, Lin J, Ye L, Tie Z, Zhou Y, Wang Y, Zhou A, Zhou Z, Chen Q, Zhou J, He L, Qiu X. EduChat: a large-scale language model-based chatbot system for intelligent education. 2023, arXiv preprint arXiv: 2308.02773"
+  },
+  {
+   "key": "40231_CR82",
+   "unstructured": "Lin B Y, Fu Y, Yang K, Brahman F, Huang S, Bhagavatula C, Ammanabrolu P, Choi Y, Ren X. SwiftSage: a generative agent with fast and slow thinking for complex interactive tasks. In: Proceedings of the 37th Conference on Neural Information Processing Systems. 2023, 36"
+  },
+  {
+   "issue": "3",
+   "key": "40231_CR83",
+   "doi-asserted-by": "publisher",
+   "first-page": "223",
+   "DOI": "10.1177/1745691612460685",
+   "volume": "8",
+   "author": "J S B T Evans",
+   "year": "2013",
+   "unstructured": "Evans J S B T, Stanovich K E. Dual-process theories of higher cognition: advancing the debate. Perspectives on Psychological Science, 2013, 8(3): 223\u2013241",
+   "journal-title": "Perspectives on Psychological Science"
+  },
+  {
+   "key": "40231_CR84",
+   "unstructured": "Liu R, Yang R, Jia C, Zhang G, Zhou D, Dai A M, Yang D, Vosoughi S. Training socially aligned language models on simulated social interactions. 2023, arXiv preprint arXiv: 2305.16960"
+  },
+  {
+   "key": "40231_CR85",
+   "unstructured": "Weng X, Gu Y, Zheng B, Chen S, Stevens S, Wang B, Sun H, Su Y. Mind2Web: towards a generalist agent for the Web. In: Proceedings of the 37th Conference on Neural Information Processing Systems. 2023, 36"
+  },
+  {
+   "key": "40231_CR86",
+   "unstructured": "Sun R, Arik S O, Nakhost H, Dai H, Sinha R, Yin P, Pfister T. SQL-PaLm: improved large language model adaptation for text-to-SQL. 2023, arXiv preprint arXiv: 2306.00739"
+  },
+  {
+   "key": "40231_CR87",
+   "unstructured": "Yao W, Heinecke S, Niebles J C, Liu Z, Feng Y, Xue L, Murthy R, Chen Z, Zhang J, Arpit D, Xu R, Mui P, Wang H, Xiong C, Savarese S. Retroformer: retrospective large language agents with policy gradient optimization, 2023, arXiv preprint arXiv: 2308.02151"
+  },
+  {
+   "key": "40231_CR88",
+   "unstructured": "Shu Y, Zhang H, Gu H, Zhang P, Lu T, Li D, Gu N. RAH! RecSys-assistant-human: a human-centered recommendation framework with LLM agents. 2023, arXiv preprint arXiv: 2308.09904"
+  },
+  {
+   "key": "40231_CR89",
+   "unstructured": "Mandi Z, Jain S, Song S. RoCo: dialectic multi-robot collaboration with large language models. 2023, arXiv preprint arXiv: 2307.04738"
+  },
+  {
+   "key": "40231_CR90",
+   "unstructured": "Zhang C, Liu L, Wang J, Wang C, Sun X, Wang H, Cai M. PREFER: prompt ensemble learning via feedback-reflect-refine. 2023, arXiv preprint arXiv: 2308.12033"
+  },
+  {
+   "key": "40231_CR91",
+   "unstructured": "Du Y, Li S, Torralba A, Tenenbaum J B, Mordatch I. Improving factuality and reasoning in language models through multiagent debate. 2023, arXiv preprint arXiv: 2305.14325"
+  },
+  {
+   "key": "40231_CR92",
+   "unstructured": "Zhang C, Yang Z, Liu J, Han Y, Chen X, Huang Z, Fu B, Yu G. AppAgent: multimodal agents as smartphone users. 2023, arXiv preprint arXiv: 2312.13771"
+  },
+  {
+   "key": "40231_CR93",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Madaan A, Tandon N, Clark P, Yang Y. Memory-assisted prompt editing to improve GPT-3 after deployment. In: Proceedings of 2022 Conference on Empirical Methods in Natural Language Processing. 2022, 2833\u20132861",
+   "DOI": "10.18653/v1/2022.emnlp-main.183"
+  },
+  {
+   "key": "40231_CR94",
+   "unstructured": "Colas C, Teodorescu L, Oudeyer P Y, Yuan X, C\u00f4t\u00e9 M A. Augmenting autotelic agents with large language models. In: Proceedings of the 2nd Conference on Lifelong Learning Agents. 2023, 205\u2013226"
+  },
+  {
+   "key": "40231_CR95",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Nascimento N, Alencar P, Cowan D. Self-adaptive large language model (LLM)-based multiagent systems. In: Proceedings of 2023 IEEE International Conference on Autonomic Computing and Self-Organizing Systems Companion. 2023, 104\u2013109",
+   "DOI": "10.1109/ACSOS-C58168.2023.00048"
+  },
+  {
+   "key": "40231_CR96",
+   "unstructured": "Saha S, Hase P, Bansal M. Can language models teach weaker agents? Teacher explanations improve students via personalization. 2023, arXiv preprint arXiv: 2306.09299"
+  },
+  {
+   "key": "40231_CR97",
+   "unstructured": "Zhuge M, Liu H, Faccio F, Ashley D R, Csord\u00e1s R, Gopalakrishnan A, Hamdi A, Hammoud H A A K, Herrmann V, Irie K, Kirsch L, Li B, Li G, Liu S, Mai J, Pi\u0119kos P, Ramesh A, Schlag I, Shi W, Stani\u0107 A, Wang W, Wang Y, Xu M, Fan D P, Ghanem B, Schmidhuber J. Mindstorms in natural language-based societies of mind. 2023, arXiv preprint arXiv: 2305.17066"
+  },
+  {
+   "key": "40231_CR98",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Park J S, Popowski L, Cai C, Morris M R, Liang P, Bernstein M S. Social simulacra: creating populated prototypes for social computing systems. In: Proceedings of the 35th Annual ACM Symposium on User Interface Software and Technology. 2022, 74",
+   "DOI": "10.1145/3526113.3545616"
+  },
+  {
+   "key": "40231_CR99",
+   "unstructured": "Li G, Hammoud H A A K, Itani H, Khizbullin D, Ghanem B. CAMEL: communicative agents for \u201cmind\u201d exploration of large language model society. 2023, arXiv preprint arXiv: 2303.17760"
+  },
+  {
+   "key": "40231_CR100",
+   "unstructured": "AutoGPT. See Github.com/Significant-Gravitas/Auto, 2023"
+  },
+  {
+   "key": "40231_CR101",
+   "unstructured": "Chen L, Wang L, Dong H, Du Y, Yan J, Yang F, Li S, Zhao P, Qin S, Rajmohan S, Lin Q, Zhang D. Introspective tips: large language model for in-context decision making. 2023, arXiv preprint arXiv: 2305.11598"
+  },
+  {
+   "key": "40231_CR102",
+   "unstructured": "Aher G V, Arriaga R I, Kalai A T. Using large language models to simulate multiple humans and replicate human subject studies. In: Proceedings of the 40th International Conference on Machine Learning. 2023, 337\u2013371"
+  },
+  {
+   "key": "40231_CR103",
+   "unstructured": "Akata E, Schulz L, Coda-Forno J, Oh S J, Bethge M, Schulz E. Playing repeated games with large language models. 2023, arXiv preprint arXiv: 2305.16867"
+  },
+  {
+   "key": "40231_CR104",
+   "unstructured": "Ma Z, Mei Y, Su Z. Understanding the benefits and challenges of using large language model-based conversational agents for mental well-being support. In: Proceedings of AMIA Symposium. 2023, 1105\u20131114"
+  },
+  {
+   "key": "40231_CR105",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Ziems C, Held W, Shaikh O, Chen J, Zhang Z, Yang D. Can large language models transform computational social science? 2024, arXiv preprint arXiv: 2305.03514",
+   "DOI": "10.1162/coli_a_00502"
+  },
+  {
+   "key": "40231_CR106",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Horton J J. Large language models as simulated economic agents: what can we learn from homo silicus? 2023, arXiv preprint arXiv: 2301.07543",
+   "DOI": "10.3386/w31122"
+  },
+  {
+   "key": "40231_CR107",
+   "unstructured": "Li S, Yang J, Zhao K. Are you in a masquerade? Exploring the behavior and impact of large language model driven social bots in online social networks. 2023, arXiv preprint arXiv: 2307.10337"
+  },
+  {
+   "key": "40231_CR108",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Li C, Su X, Han H, Xue C, Zheng C, Fan C. Quantifying the impact of large language models on collective opinion dynamics. 2023, arXiv preprint arXiv: 2308.03313",
+   "DOI": "10.2139/ssrn.4688547"
+  },
+  {
+   "key": "40231_CR109",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kova\u010d G, Portelas R, Dominey P F, Oudeyer P Y. The SocialAI school: insights from developmental psychology towards artificial socio-cultural agents. 2023, arXiv preprint arXiv: 2307.07871",
+   "DOI": "10.3389/fnbot.2024.1396359"
+  },
+  {
+   "key": "40231_CR110",
+   "unstructured": "Williams R, Hosseinichimeh N, Majumdar A, Ghaffarzadegan N. Epidemic modeling with generative agents. 2023, arXiv preprint arXiv: 2307.04986"
+  },
+  {
+   "key": "40231_CR111",
+   "unstructured": "Shi J, Zhao J, Wang Y, Wu X, Li J, He L. CGMI: configurable general multi-agent interaction framework. 2023, arXiv preprint arXiv: 2308.12503"
+  },
+  {
+   "key": "40231_CR112",
+   "unstructured": "Cui J, Li Z, Yan Y, Chen B, Yuan L. ChatLaw: open-source legal large language model with integrated external knowledge bases. 2023, arXiv preprint arXiv: 2306.16092"
+  },
+  {
+   "key": "40231_CR113",
+   "unstructured": "Hamilton S. Blind judgement: agent-based supreme court modelling with GPT. 2023, arXiv preprint arXiv: 2301.05327"
+  },
+  {
+   "key": "40231_CR114",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Bail C A. Can generative AI improve social science? 2023",
+   "DOI": "10.31235/osf.io/rwtzs"
+  },
+  {
+   "key": "40231_CR115",
+   "unstructured": "Boiko D A, MacKnight R, Gomes G. Emergent autonomous scientific research capabilities of large language models. 2023, arXiv preprint arXiv: 2304.05332"
+  },
+  {
+   "key": "40231_CR116",
+   "unstructured": "Kang Y, Kim J. ChatMOF: an autonomous AI system for predicting and generating metal-organic frameworks. 2023, arXiv preprint arXiv: 2308.01423"
+  },
+  {
+   "key": "40231_CR117",
+   "unstructured": "Swan M, Kido T, Roland E, Santos R P D. Math agents: computational infrastructure, mathematical embedding, and genomics. 2023, arXiv preprint arXiv: 2307.02502"
+  },
+  {
+   "issue": "32",
+   "key": "40231_CR118",
+   "doi-asserted-by": "publisher",
+   "first-page": "e2123433119",
+   "DOI": "10.1073/pnas.2123433119",
+   "volume": "119",
+   "author": "I Drori",
+   "year": "2022",
+   "unstructured": "Drori I, Zhang S, Shuttleworth R, Tang L, Lu A, Ke E, Liu K, Chen L, Tran S, Cheng N, Wang R, Singh N, Patti T L, Lynch J, Shporer A, Verma N, Wu E, Strang G. A neural network solves, explains, and generates university math problems by program synthesis and few-shot learning at human level. Proceedings of the National Academy of Sciences of the United States of America, 2022, 119(32): e2123433119",
+   "journal-title": "Proceedings of the National Academy of Sciences of the United States of America"
+  },
+  {
+   "key": "40231_CR119",
+   "unstructured": "Chen M, Tworek J, Jun H, Yuan Q, de Oliveira Pinto H P, et al. Evaluating large language models trained on code. 2021, arXiv preprint arXiv: 2107.03374"
+  },
+  {
+   "key": "40231_CR120",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Liffiton M, Sheese B E, Savelka J, Denny P. CodeHelp: using large language models with guardrails for scalable support in programming classes. In: Proceedings of the 23rd Koli Calling International Conference on Computing Education Research. 2023, 8",
+   "DOI": "10.1145/3631802.3631830"
+  },
+  {
+   "key": "40231_CR121",
+   "unstructured": "Matelsky J K, Parodi F, Liu T, Lange R D, Kording K P. A large language model-assisted education tool to provide feedback on open-ended responses. 2023, arXiv preprint arXiv: 2308.02439"
+  },
+  {
+   "key": "40231_CR122",
+   "unstructured": "Mehta N, Teruel M, Sanz P F, Deng X, Awadallah A H, Kiseleva J. Improving grounded language understanding in a collaborative environment by interacting with agents through help feedback. 2024, arXiv preprint arXiv: 2304.10750"
+  },
+  {
+   "key": "40231_CR123",
+   "unstructured": "SmolModels. See Githubcom/smol-ai/developer website, 2023"
+  },
+  {
+   "key": "40231_CR124",
+   "unstructured": "DemoGPT. See Github.com/melih-unsal/Demo website, 2023"
+  },
+  {
+   "key": "40231_CR125",
+   "unstructured": "GPT-engineer. See Github.com/AntonOsika/gpt website, 2023"
+  },
+  {
+   "key": "40231_CR126",
+   "unstructured": "Li H, Hao Y, Zhai Y, Qian Z. The hitchhiker\u2019s guide to program analysis: a journey with large language models. 2023, arXiv preprint arXiv: 2308.00245"
+  },
+  {
+   "key": "40231_CR127",
+   "doi-asserted-by": "crossref",
+   "unstructured": "He Z, Wu H, Zhang X, Yao X, Zheng S, Zheng H, Yu B. ChatEDA: a large language model powered autonomous agent for EDA. In: Proceedings of the 5th ACM/IEEE Workshop on Machine Learning for CAD. 2023, 1\u20136",
+   "DOI": "10.1109/MLCAD58807.2023.10299852"
+  },
+  {
+   "key": "40231_CR128",
+   "unstructured": "Deng G, Liu Y, Mayoral-Vilches V, Liu P, Li Y, Xu Y, Zhang T, Liu Y, Pinzger M, Rass S. PentestGPT: an LLM-empowered automatic penetration testing tool. 2023, arXiv preprint arXiv: 2308.06782"
+  },
+  {
+   "key": "40231_CR129",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Xia Y, Shenoy M, Jazdi N, Weyrich M. Towards autonomous system: flexible modular production system enhanced with large language model agents. In: Proceedings of the 2023 IEEE 28th International Conference on Emerging Technologies and Factory Automation. 2023, 1\u20138",
+   "DOI": "10.1109/ETFA54631.2023.10275362"
+  },
+  {
+   "key": "40231_CR130",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Ogundare O, Madasu S, Wiggins N. Industrial engineering with large language models: a case study of chatGPT\u2019s performance on oil & gas problems. In: Proceedings of the 2023 11th International Conference on Control, Mechatronics and Automation. 2023, 458\u2013461",
+   "DOI": "10.1109/ICCMA59762.2023.10374622"
+  },
+  {
+   "key": "40231_CR131",
+   "unstructured": "Hu B, Zhao C, Zhang P, Zhou Z, Yang Y, Xu Z, Liu B. Enabling intelligent interactions between an agent and an LLM: a reinforcement learning approach. 2024, arXiv preprint arXiv: 2306.03604"
+  },
+  {
+   "key": "40231_CR132",
+   "unstructured": "Wu Y, Min S Y, Bisk Y, Salakhutdinov R, Azaria A, Li Y, Mitchell T, Prabhumoye S. Plan, eliminate, and track\u2013language models are good teachers for embodied agents. 2023, arXiv preprint arXiv: 2305.02412"
+  },
+  {
+   "key": "40231_CR133",
+   "unstructured": "Zhang D, Chen L, Zhang S, Xu H, Zhao Z, Yu K. Large language models are semi-parametric reinforcement learning agents. In: Proceedings of the 37th Conference on Neural Information Processing Systems. 2023, 36"
+  },
+  {
+   "key": "40231_CR134",
+   "unstructured": "Di P N, Byravan A, Hasenclever L, Wulfmeier M, Heess N, Riedmiller M. Towards a unified agent with foundation models. 2023, arXiv preprint arXiv: 2307.09668"
+  },
+  {
+   "key": "40231_CR135",
+   "unstructured": "Dasgupta I, Kaeser-Chen C, Marino K, Ahuja A, Babayan S, Hill F, Fergus R. Collaborating with language models for embodied reasoning. 2023, arXiv preprint arXiv: 2302.00763"
+  },
+  {
+   "key": "40231_CR136",
+   "unstructured": "Zhou W, Peng X, Riedl M O. Dialogue shaping: empowering agents through NPC interaction. 2023, arXiv preprint arXiv: 2307.15833"
+  },
+  {
+   "key": "40231_CR137",
+   "unstructured": "Nottingham K, Ammanabrolu P, Suhr A, Choi Y, Hajishirzi H, Singh S, Fox R. Do embodied agents dream of pixelated sheep: embodied decision making using language guided world modelling. In: Proceedings of the 40th International Conference on Machine Learning. 2023, 26311\u201326325"
+  },
+  {
+   "key": "40231_CR138",
+   "unstructured": "Wu Z, Wang Z, Xu X, Lu J, Yan H. Embodied task planning with large language models. 2023, arXiv preprint arXiv: 2307.01848"
+  },
+  {
+   "key": "40231_CR139",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Wu J, Antonova R, Kan A, Lepert M, Zeng A, Song S, Bohg J, Rusinkiewicz S, Funkhouser T. TidyBot: personalized robot assistance with large language models. In: Proceedings of 2023 IEEE/RSJ International Conference on Intelligent Robots and Systems. 2023, 3546\u20133553",
+   "DOI": "10.1109/IROS55552.2023.10341577"
+  },
+  {
+   "key": "40231_CR140",
+   "unstructured": "AgentGPT. See Github.com/reworkd/Agent website, 2023"
+  },
+  {
+   "key": "40231_CR141",
+   "unstructured": "Ai-legion. See Github.com/eumemic/ai website, 2023"
+  },
+  {
+   "key": "40231_CR142",
+   "unstructured": "AGiXT. See Githubcom/Josh-XT/AGiXT website, 2023"
+  },
+  {
+   "key": "40231_CR143",
+   "unstructured": "Xlang. See Githubcom/xlang-ai/xlang website, 2023"
+  },
+  {
+   "key": "40231_CR144",
+   "unstructured": "Babyagi. See Githubcom/yoheinakajima website, 2023"
+  },
+  {
+   "key": "40231_CR145",
+   "unstructured": "LangChain. See Docs.langchaincom/docs/ website, 2023"
+  },
+  {
+   "key": "40231_CR146",
+   "unstructured": "WorkGPT. See Githubcom/team-openpm/workgpt website, 2023"
+  },
+  {
+   "key": "40231_CR147",
+   "unstructured": "LoopGPT. See Githubcom/farizrahman4u/loopgpt website, 2023"
+  },
+  {
+   "key": "40231_CR148",
+   "unstructured": "GPT-researcher. See Github.com/assafelovic/gpt website, 2023"
+  },
+  {
+   "key": "40231_CR149",
+   "unstructured": "Qin Y, Hu S, Lin Y, Chen W, Ding N, Cui G, Zeng Z, Huang Y, Xiao C, Han C, Fung Y R, Su Y, Wang H, Qian C, Tian R, Zhu K, Liang S, Shen X, Xu B, Zhang Z, Ye Y, Li B, Tang Z, Yi J, Zhu Y, Dai Z, Yan L, Cong X, Lu Y, Zhao W, Huang Y, Yan J, Han X, Sun X, Li D, Phang J, Yang X, Wu T, Ji H, Liu Z, Sun M. Tool learning with foundation models. 2023, arXiv preprint arXiv: 2304.08354"
+  },
+  {
+   "key": "40231_CR150",
+   "unstructured": "Transformers agent. See Huggingface.co/docs/transformers/transformers website, 2023"
+  },
+  {
+   "key": "40231_CR151",
+   "unstructured": "Mini-agi. See Github.com/muellerberndt/mini website, 2023"
+  },
+  {
+   "key": "40231_CR152",
+   "unstructured": "SuperAGI. See Github.com/TransformerOptimus/Super website, 2023"
+  },
+  {
+   "key": "40231_CR153",
+   "unstructured": "Wu Q, Bansal G, Zhang J, Wu Y, Li B, Zhu E, Jiang L, Zhang X, Zhang S, Liu J, Awadallah A H, White R W, Burger D, Wang C. AutoGen: enabling next-gen LLM applications via multi-agent conversation. 2023, arXiv preprint arXiv: 2308.08155"
+  },
+  {
+   "issue": "6650",
+   "key": "40231_CR154",
+   "doi-asserted-by": "publisher",
+   "first-page": "1108",
+   "DOI": "10.1126/science.adi1778",
+   "volume": "380",
+   "author": "I Grossmann",
+   "year": "2023",
+   "unstructured": "Grossmann I, Feinberg M, Parker D C, Christakis N A, Tetlock P E, Cunningham W A. AI and the transformation of social science research: careful bias management and data fidelity are key. Science, 2023, 380(6650): 1108\u20131109",
+   "journal-title": "Science"
+  },
+  {
+   "key": "40231_CR155",
+   "unstructured": "Huang X, Lian J, Lei Y, Yao J, Lian D, Xie X. Recommender AI agent: integrating large language models for interactive recommendations. 2023, arXiv preprint arXiv: 2308.16505"
+  },
+  {
+   "key": "40231_CR156",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhang C, Yang K, Hu S, Wang Z, Li G, Sun Y, Zhang C, Zhang Z, Liu A, Zhu S C, Chang X, Zhang J, Yin F, Liang Y, Yang Y. ProAgent: building proactive cooperative agents with large language models. 2024, arXiv preprint arXiv: 2308.11339",
+   "DOI": "10.1609/aaai.v38i16.29710"
+  },
+  {
+   "key": "40231_CR157",
+   "unstructured": "Xiang J, Tao T, Gu Y, Shu T, Wang Z, Yang Z, Hu Z. Language models meet world models: embodied experiences enhance language models. In: Proceedings of the 37th Conference on Neural Information Processing Systems. 2023, 36"
+  },
+  {
+   "key": "40231_CR158",
+   "unstructured": "Lee M, Srivastava M, Hardy A, Thickstun J, Durmus E, Paranjape A, Gerard-Ursin I, Li X L, Ladhak F, Rong F, Wang R E, Kwon M, Park J S, Cao H, Lee T, Bommasani R, Bernstein M, Liang P. Evaluating human-language model interaction. 2024, arXiv preprint arXiv: 2212.09746"
+  },
+  {
+   "issue": "39",
+   "key": "40231_CR159",
+   "doi-asserted-by": "publisher",
+   "first-page": "e2115730119",
+   "DOI": "10.1073/pnas.2115730119",
+   "volume": "119",
+   "author": "R Krishna",
+   "year": "2022",
+   "unstructured": "Krishna R, Lee D, Fei-Fei L, Bernstein M S. Socially situated artificial intelligence enables learning from human interaction. Proceedings of the National Academy of Sciences of the United States of America, 2022, 119(39): e2115730119",
+   "journal-title": "Proceedings of the National Academy of Sciences of the United States of America"
+  },
+  {
+   "key": "40231_CR160",
+   "unstructured": "Huang J T, Lam M H, Li E J, Ren S, Wang W, Jiao W, Tu Z, Lyu M R. Emotionally numb or empathetic? Evaluating how LLMs feel using emotionbench. 2024, arXiv preprint arXiv: 2308.03656"
+  },
+  {
+   "key": "40231_CR161",
+   "unstructured": "Chan C M, Chen W, Su Y, Yu J, Xue W, Zhang S, Fu J, Liu Z. ChatEval: towards better LLM-based evaluators through multi-agent debate. 2023, arXiv preprint arXiv: 2308.07201"
+  },
+  {
+   "key": "40231_CR162",
+   "unstructured": "Chen A, Phang J, Parrish A, Padmakumar V, Zhao C, Bowman S R, Cho K. Two failures of self-consistency in the multi-step reasoning of LLMs. 2024, arXiv preprint arXiv: 2305.14279"
+  },
+  {
+   "key": "40231_CR163",
+   "unstructured": "Zhang D, Xu H, Zhao Z, Chen L, Cao R, Yu K. Mobile-env: an evaluation platform and benchmark for LLM-GUI interaction. 2024, arXiv preprint arXiv: 2305.08144"
+  },
+  {
+   "key": "40231_CR164",
+   "unstructured": "Liang Y, Zhu L, Yang Y. Tachikuma: understading complex interactions with multi-character and novel objects by large language models. 2023, arXiv preprint arXiv: 2307.12573"
+  },
+  {
+   "key": "40231_CR165",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Choi M, Pei J, Kumar S, Shu C, Jurgens D. Do LLMs understand social knowledge? Evaluating the sociability of large language models with socKET benchmark. In: Proceedings of 2023 Conference on Empirical Methods in Natural Language Processing. 2023, 11370\u201311403",
+   "DOI": "10.18653/v1/2023.emnlp-main.699"
+  },
+  {
+   "key": "40231_CR166",
+   "unstructured": "Liu Z, Yao W, Zhang J, Xue L, Heinecke S, Murthy R, Feng Y, Chen Z, Niebles J C, Arpit D, Xu R, Mui P, Wang H, Xiong C, Savarese S. BOLAA: benchmarking and orchestrating LLM-augmented autonomous agents. 2023, arXiv preprint arXiv: 2308.05960"
+  },
+  {
+   "key": "40231_CR167",
+   "unstructured": "Liu X, Yu H, Zhang H, Xu Y, Lei X, Lai H, Gu Y, Ding H, Men K, Yang K, Zhang S, Deng X, Zeng A, Du Z, Zhang C, Shen S, Zhang T, Su Y, Sun H, Huang M, Dong Y, Tang J. AgentBench: evaluating LLMs as agents. 2023, arXiv preprint arXiv: 2308.03688"
+  },
+  {
+   "key": "40231_CR168",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kang S, Yoon J, Yoo S. Large language models are few-shot testers: exploring LLM-based general bug reproduction. In: Proceedings of the 45th IEEE/ACM International Conference on Software Engineering. 2023, 2312\u20132323",
+   "DOI": "10.1109/ICSE48619.2023.00194"
+  },
+  {
+   "key": "40231_CR169",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Jalil S, Rafi S, LaToza T D, Moran K, Lam W. ChatGPT and software testing education: Promises & perils. In: Proceedings of 2023 IEEE International Conference on Software Testing, Verification and Validation Workshops. 2023, 4130\u20134137",
+   "DOI": "10.1109/ICSTW58534.2023.00078"
+  },
+  {
+   "key": "40231_CR170",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Feldt R, Kang S, Yoon J, Yoo S. Towards autonomous testing agents via conversational large language models. In: Proceedings of the 38th IEEE/ACM International Conference on Automated Software Engineering. 2023, 1688\u20131693",
+   "DOI": "10.1109/ASE56229.2023.00148"
+  },
+  {
+   "key": "40231_CR171",
+   "unstructured": "Zhou S, Xu F F, Zhu H, Zhou X, Lo R, Sridhar A, Cheng X, Ou T, Bisk Y, Fried D, Alon U, Neubig G. WebArena: a realistic Web environment for building autonomous agents. 2023, arXiv preprint arXiv: 2307.13854"
+  },
+  {
+   "key": "40231_CR172",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Xu B, Liu X, Shen H, Han Z, Li Y, Yue M, Peng Z, Liu Y, Yao Z, Xu D. Gentopia.AI: a collaborative platform for tool-augmented LLMs. In: Proceedings of 2023 Conference on Empirical Methods in Natural Language Processing: System Demonstrations. 2023, 237\u2013245",
+   "DOI": "10.18653/v1/2023.emnlp-demo.20"
+  },
+  {
+   "key": "40231_CR173",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Chalamalasetti K, G\u00f6tze J, Hakimov S, Madureira B, Sadler P, Schlangen D. clembench: Using game play to evaluate chat-optimized language models as conversational agents. In: Proceedings of 2023 Conference on Empirical Methods in Natural Language Processing. 2023, 11174\u201311219",
+   "DOI": "10.18653/v1/2023.emnlp-main.689"
+  },
+  {
+   "key": "40231_CR174",
+   "unstructured": "Banerjee D, Singh P, Avadhanam A, Srivastava S. Benchmarking LLM powered chatbots: methods and metrics. 2023, arXiv preprint arXiv: 2308.04624"
+  },
+  {
+   "key": "40231_CR175",
+   "unstructured": "Lin J, Tomlin N, Andreas J, Eisner J. Decision-oriented dialogue for human-AI collaboration. 2023, arXiv preprint arXiv: 2305.20076"
+  },
+  {
+   "key": "40231_CR176",
+   "unstructured": "Zhao W X, Zhou K, Li J, Tang T, Wang X, Hou Y, Min Y, Zhang B, Zhang J, Dong Z, Du Y, Yang C, Chen Y, Chen Z, Jiang J, Ren R, Li Y, Tang X, Liu Z, Liu P, Nie J Y, Wen J R. A survey of large language models. 2023, arXiv preprint arXiv: 2303.18223"
+  },
+  {
+   "key": "40231_CR177",
+   "doi-asserted-by": "publisher",
+   "unstructured": "Yang J, Jin H, Tang R, Han X, Feng Q, Jiang H, Zhong S, Yin B, Hu X. Harnessing the power of LLMs in practice: a survey on chatGPT and beyond. ACM Transactions on Knowledge Discovery from Data, 2024, doi: https://doi.org/10.1145/3649506",
+   "DOI": "10.1145/3649506"
+  },
+  {
+   "key": "40231_CR178",
+   "unstructured": "Wang Y, Zhong W, Li L, Mi F, Zeng X, Huang W, Shang L, Jiang X, Liu Q. Aligning large language models with human: a survey. 2023, arXiv preprint arXiv: 2307.12966"
+  },
+  {
+   "key": "40231_CR179",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Huang J, Chang K C C. Towards reasoning in large language models: a survey. In: Proceedings of Findings of the Association for Computational Linguistics: ACL 2023. 2023, 1049\u20131065",
+   "DOI": "10.18653/v1/2023.findings-acl.67"
+  },
+  {
+   "key": "40231_CR180",
+   "unstructured": "Mialon G, Dess\u00ec R, Lomeli M, Nalmpantis C, Pasunuru R, Raileanu R, Rozi\u00e8re B, Schick T, Dwivedi-Yu J, Celikyilmaz A, Grave E, LeCun Y, Scialom T. Augmented language models: a survey. 2023, arXiv preprint arXiv: 2302.07842"
+  },
+  {
+   "key": "40231_CR181",
+   "doi-asserted-by": "publisher",
+   "unstructured": "Chang Y, Wang X, Wang J, Wu Y, Yang L, Zhu K, Chen H, Yi X, Wang C, Wang Y, Ye W, Zhang Y, Chang Y, Yu P S. A survey on evaluation of large language models. ACM Transactions on Intelligent Systems and Technology, 2023, doi: https://doi.org/10.1145/3641289",
+   "DOI": "10.1145/3641289"
+  },
+  {
+   "key": "40231_CR182",
+   "doi-asserted-by": "publisher",
+   "unstructured": "Chang T A, Bergen B K. Language model behavior: a comprehensive survey. Computational Linguistics, 2024, doi: https://doi.org/10.1162/coli_a_00492",
+   "DOI": "10.1162/coli_a_00492"
+  },
+  {
+   "key": "40231_CR183",
+   "unstructured": "Li C, Wang J, Zhu K, Zhang Y, Hou W, Lian J, Xie X. Emotionprompt: Leveraging psychology for large language models enhancement via emotional stimulus. 2023, arXiv preprint arXiv: 2307.11760"
+  },
+  {
+   "key": "40231_CR184",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhuo T Y, Li Z, Huang Y, Shiri F, Wang W, Haffari G, Li Y F. On robustness of prompt-based semantic parsing with large pre-trained language model: an empirical study on codex. In: Proceedings of the 17th Conference of the European Chapter of the Association for Computational Linguistics. 2023, 1090\u20131102",
+   "DOI": "10.18653/v1/2023.eacl-main.77"
+  },
+  {
+   "issue": "11",
+   "key": "40231_CR185",
+   "doi-asserted-by": "publisher",
+   "first-page": "351",
+   "DOI": "10.1162/tacl_a_00549",
+   "volume": "11",
+   "author": "Z Gekhman",
+   "year": "2023",
+   "unstructured": "Gekhman Z, Oved N, Keller O, Szpektor I, Reichart R. On the robustness of dialogue history representation in conversational question answering: a comprehensive study and a new prompt-based method. Transactions of the Association for Computational Linguistics, 2023, 11(11): 351\u2013366",
+   "journal-title": "Transactions of the Association for Computational Linguistics"
+  },
+  {
+   "issue": "12",
+   "key": "40231_CR186",
+   "doi-asserted-by": "publisher",
+   "first-page": "248",
+   "DOI": "10.1145/3571730",
+   "volume": "55",
+   "author": "Z Ji",
+   "year": "2023",
+   "unstructured": "Ji Z, Lee N, Frieske R, Yu T, Su D, Xu Y, Ishii E, Bang Y J, Madotto A, Fung P. Survey of hallucination in natural language generation. ACM Computing Surveys, 2023, 55(12): 248",
+   "journal-title": "ACM Computing Surveys"
+  }
+ ],
+ "container-title": [
+  "Frontiers of Computer Science"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://link.springer.com/content/pdf/10.1007/s11704-024-40231-1.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://link.springer.com/article/10.1007/s11704-024-40231-1",
+   "content-type": "text/html",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://link.springer.com/content/pdf/10.1007/s11704-024-40231-1.pdf",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    1,
+    19
+   ]
+  ],
+  "date-time": "2026-01-19T20:33:24Z",
+  "timestamp": 1768854804000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://link.springer.com/10.1007/s11704-024-40231-1"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2024,
+    3,
+    22
+   ]
+  ]
+ },
+ "references-count": 186,
+ "journal-issue": {
+  "issue": "6",
+  "published-print": {
+   "date-parts": [
+    [
+     2024,
+     12
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "40231"
+ ],
+ "URL": "https://doi.org/10.1007/s11704-024-40231-1",
+ "relation": {},
+ "ISSN": [
+  "2095-2228",
+  "2095-2236"
+ ],
+ "issn-type": [
+  {
+   "value": "2095-2228",
+   "type": "print"
+  },
+  {
+   "value": "2095-2236",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2024,
+    3,
+    22
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "5 March 2024",
+   "order": 1,
+   "name": "received",
+   "label": "Received",
+   "group": {
+    "name": "ArticleHistory",
+    "label": "Article History"
+   }
+  },
+  {
+   "value": "10 March 2024",
+   "order": 2,
+   "name": "accepted",
+   "label": "Accepted",
+   "group": {
+    "name": "ArticleHistory",
+    "label": "Article History"
+   }
+  },
+  {
+   "value": "22 March 2024",
+   "order": 3,
+   "name": "first_online",
+   "label": "First Online",
+   "group": {
+    "name": "ArticleHistory",
+    "label": "Article History"
+   }
+  },
+  {
+   "value": "Competing interests\n                      The authors declare that they have no competing interests or financial conflicts to disclose.",
+   "order": 1,
+   "name": "Ethics",
+   "group": {
+    "name": "EthicsHeading",
+    "label": "Ethics"
+   }
+  }
+ ],
+ "article-number": "186345"
+}

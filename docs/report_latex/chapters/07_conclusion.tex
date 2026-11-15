@@ -1,0 +1,62 @@
+\chapter{Conclusion}\label{ch:conclusion}
+
+\section{Answers to the research questions}
+\begin{itemize}
+\item \textbf{RQ1.} Grounded SAM's text labels do not separate crop from weed: on held-out photos
+  65.5\% of crop pixels are sprayed for 1.8\% weed recall, and the deployed 0.70 gate sprays nothing.
+  SAM~2's masks are good; the labels are the problem.
+\item \textbf{RQ2.} The escalation agent is safe (no crop approved) and precise (13 of 14 crop
+  verdicts right) but adds no weed recall (0 of 25 weeds).
+\item \textbf{RQ3.} Crop exclusion cuts damage without a recall gain; lower thresholds and tiling do
+  not help. Plain rules on crop overlap, rows and relative size give the best trade-off measured:
+  8.8\% crop sprayed and 77.9\% weed recall on held-out photos.
+\end{itemize}
+
+\section{Relation to the base paper and the closest work}
+We implemented the Grounded SAM pipeline~\cite{ren2024groundedsam} and confirm on field photos the
+weakness that Chong et al.~\cite{chong2025zeroshot} argue for: text prompts are ill-defined for crop
+and weed. We do not claim to beat WaW's 12.1\% weed IoU, because we measure a different quantity
+(sprayed vegetation inside labelled boxes, not pixel IoU against pixel masks) on different data. What
+we add is the sprayer's view: how much crop lands on the map, how many weeds are hit, and how far a
+transparent, deterministic safety layer moves that trade-off without training.
+
+\section{What we learned, including what went wrong}\label{sec:lessons}
+\begin{enumerate}
+\item \textbf{AI-written status claims.} AI-generated documents early in the project described
+  intentions as facts: ``100\% complete'', 227 tests (there were 175), a ``0.99 IoU'' that was SAM~2's
+  own confidence score. Since 11 October every claim carries a status label (REAL, PARTIAL, MOCK,
+  PLANNED) and a command output.
+\item \textbf{Fabricated labels.} The first evaluation set was a template. Ground truth is now copied
+  from the official files by a script and audited.
+\item \textbf{Fabricated references.} An early bibliography contained papers that do not exist. Every
+  journal and proceedings reference in this report is now generated from its Crossref record.
+\item \textbf{Silent fake output.} Failed model loads became mock output; every SAM~2 mask got an
+  invented quality of 0.88; the reasoning model never received the photo. Real mode now fails loudly.
+\item \textbf{A gate that ignored its inputs.} Confidence and quality were passed as 1.0. Each gate
+  rule now has a test with real values.
+\item \textbf{Measure before claiming.} The original proposal promised ``over 70\% chemical saving''
+  and ``under 40~ms''. Neither was measured then; the measured numbers are in
+  Chapter~\ref{ch:results}.
+\end{enumerate}
+
+\section{Limitations}
+\begin{itemize}
+\item Small data: 120 sugar beet photos from one dataset of undocumented origin, and 8 cotton photos.
+\item Box labels only, so the pixel metrics are approximate (vegetation inside boxes).
+\item The plant rules exploit ``weeds are smaller than the crop'', true for young sugar beet; they
+  reach only 10.4\% weed recall on cotton.
+\item Finding F1: whole off-row beets can be sprayed when the detector misses the crop box (104 of 363
+  held-out beets touched, mostly specks).
+\item The held-out set has been used, so any changed rule can only be tested on new data.
+\item Coordinates are not GPS; no sprayer, latency or field trial was tested.
+\item Cloud reasoning depends on free tiers and on the provider (F25).
+\end{itemize}
+
+\section{Conclusion}
+AgriAgent shows, with official labels and a held-out set, that a zero-shot Grounded SAM pipeline cannot
+on its own tell a weed from a crop plant well enough to spray: it either sprays the crop or nothing. A
+small set of transparent rules and a deterministic safety gate, with no training and no model calls,
+move the held-out result to 77.9\% weed recall at 8.8\% crop pixels sprayed and a 95\% herbicide saving,
+in 0.6~s per photo on a laptop. A vision-language escalation agent, used conservatively, stays safe but
+does not add recall. The system is honest about what it is: a research prototype that measures how far
+zero-shot vision gets on this problem, not a product for real spraying.

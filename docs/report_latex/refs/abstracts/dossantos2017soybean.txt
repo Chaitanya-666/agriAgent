@@ -1,0 +1,1 @@
+This work achieved above 98% accuracy using Convolutional Neural Networks in the detection of broadleaf and grass weeds in relation to soil and soybean, with an accuracy average between all images above 99%.

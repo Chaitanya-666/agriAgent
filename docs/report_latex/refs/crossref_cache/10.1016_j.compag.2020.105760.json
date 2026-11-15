@@ -1,0 +1,1178 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    10
+   ]
+  ],
+  "date-time": "2026-11-10T16:59:19Z",
+  "timestamp": 1794329959068,
+  "version": "4.9.0"
+ },
+ "reference-count": 98,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2020-11-01T00:00:00Z",
+    "timestamp": 1604188800000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2020-11-01T00:00:00Z",
+    "timestamp": 1604188800000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      9,
+      3
+     ]
+    ],
+    "date-time": "2020-09-03T00:00:00Z",
+    "timestamp": 1599091200000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/100006481",
+   "name": "Cotton Incorporated",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/100006481",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/100005825",
+   "name": "National Institute of Food and Agriculture",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/100005825",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    11
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2020.105760",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2020,
+    9,
+    7
+   ]
+  ],
+  "date-time": "2020-09-07T23:42:00Z",
+  "timestamp": 1599522120000
+ },
+ "page": "105760",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 357,
+ "special_numbering": "C",
+ "title": [
+  "A survey of public datasets for computer vision tasks in precision agriculture"
+ ],
+ "prefix": "10.1016",
+ "volume": "178",
+ "author": [
+  {
+   "given": "Yuzhen",
+   "family": "Lu",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Sierra",
+   "family": "Young",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "issue": "11",
+   "key": "10.1016/j.compag.2020.105760_bib485",
+   "doi-asserted-by": "crossref",
+   "first-page": "2274",
+   "DOI": "10.1109/TPAMI.2012.120",
+   "article-title": "SLIC superpixels compared to state-of-the-art superpixel methods",
+   "volume": "34",
+   "author": "Achanta",
+   "year": "2012",
+   "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0005",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Akbar, S.A., Chattopadhyay, S., Elfiky, N.M., Kak, A., 2016. A novel benchmark RGBD dataset for dormant apple trees and its application to automatic pruning. In: The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops, Las Vegas, NV, pp. 81\u201388.",
+   "DOI": "10.1109/CVPRW.2016.50"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0010",
+   "doi-asserted-by": "crossref",
+   "first-page": "3828",
+   "DOI": "10.1109/LRA.2018.2856999",
+   "article-title": "Robotics for sugarcane cultivation: analysis of billet quality using computer vision",
+   "volume": "3",
+   "author": "Alencastre-Miranda",
+   "year": "2018",
+   "journal-title": "IEEE Rob. Autom. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0015",
+   "doi-asserted-by": "crossref",
+   "first-page": "117115",
+   "DOI": "10.1109/ACCESS.2019.2936536",
+   "article-title": "Date fruit classification for robotic harvesting in a natural environment using deep learning",
+   "volume": "7",
+   "author": "Altaheri",
+   "year": "2019",
+   "journal-title": "IEEE Access"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0020",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.dib.2019.104514",
+   "article-title": "Data fruit dataset for intelligent haresting",
+   "volume": "26",
+   "author": "Altaheri",
+   "year": "2019",
+   "journal-title": "Data in Brief"
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2020.105760_bib481",
+   "doi-asserted-by": "crossref",
+   "first-page": "888",
+   "DOI": "10.1002/rob.21525",
+   "article-title": "Harvesting robots for high-value crops: state-of-the-art review and challenges ahead",
+   "volume": "31",
+   "author": "Bac",
+   "year": "2014",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0025",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Bargoti, S., Underwood, J., 2017a. Deep Fruit Detection in Orchards. In: 2017 IEEE International Conference on Robotics and Automation (ICRA), Singapore.",
+   "DOI": "10.1109/ICRA.2017.7989417"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0030",
+   "doi-asserted-by": "crossref",
+   "first-page": "1039",
+   "DOI": "10.1002/rob.21699",
+   "article-title": "Image segmentation for fruit detection and yield estimation in apple orchards",
+   "volume": "34",
+   "author": "Bargoti",
+   "year": "2017",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0035",
+   "doi-asserted-by": "crossref",
+   "first-page": "105378",
+   "DOI": "10.1016/j.compag.2020.105378",
+   "article-title": "Optimising realism of synthetic images using cycle generative adversarialnetworks for improved part segmentation",
+   "volume": "173",
+   "author": "Barth",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0040",
+   "doi-asserted-by": "crossref",
+   "first-page": "284",
+   "DOI": "10.1016/j.compag.2017.12.001",
+   "article-title": "Data synthesis methods for semantic segmentation in agriculture: a Capsicum annuum dataset",
+   "volume": "144",
+   "author": "Barth",
+   "year": "2018",
+   "journal-title": "Comput. Electron. Agri."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0050",
+   "doi-asserted-by": "crossref",
+   "first-page": "94",
+   "DOI": "10.1016/j.biosystemseng.2016.06.014",
+   "article-title": "Agricultural robots for field operations: concepts and components",
+   "volume": "149",
+   "author": "Bechar",
+   "year": "2016",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0055",
+   "doi-asserted-by": "crossref",
+   "first-page": "73",
+   "DOI": "10.1002/rob.21877",
+   "article-title": "A high-resolution, multimodal data set for agricultural robotics: a Ladybird\u2019s-eye view of Brassica",
+   "volume": "37",
+   "author": "Bender",
+   "year": "2020",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0060",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1016/j.imavis.2018.09.017",
+   "article-title": "Image annotation: then and now",
+   "volume": "80",
+   "author": "Bhagat",
+   "year": "2018",
+   "journal-title": "Image Vis. Comput."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0065",
+   "unstructured": "Bhusal, S., Karkee, M., Zhang, Q., 2019. Apple dataset benchmark from orchard environment in modern fruiting wall. WSU AgRobotics Laboratory. Available from <https://research.libraries.wsu.edu:8443/xmlui/handle/2376/17721>."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0070",
+   "doi-asserted-by": "crossref",
+   "first-page": "450",
+   "DOI": "10.1108/IR-05-2016-0142",
+   "article-title": "Robots poised to revolutionise agriculture",
+   "volume": "43",
+   "author": "Bogue",
+   "year": "2016",
+   "journal-title": "Industrial Robot: Int. J."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2020.105760_bib488",
+   "doi-asserted-by": "crossref",
+   "first-page": "7",
+   "DOI": "10.1002/rob.21869",
+   "article-title": "Transfer learning between crop types for semantic segmentation of crop versus weeds in precision agriculture",
+   "volume": "37",
+   "author": "Bosilj",
+   "year": "2020",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0085",
+   "doi-asserted-by": "crossref",
+   "first-page": "3",
+   "DOI": "10.1177/1745691610393980",
+   "article-title": "Amazon\u2019s mechanical turk: a new source of inexpensive, yet high-quality data",
+   "volume": "6",
+   "author": "Buhrmester",
+   "year": "2011",
+   "journal-title": "Perspect. Psychol. Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0095",
+   "series-title": "Machine Vision and Navigation",
+   "first-page": "197",
+   "article-title": "Machine vision system for orchard management",
+   "author": "Bulanon",
+   "year": "2020"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0100",
+   "doi-asserted-by": "crossref",
+   "first-page": "1045",
+   "DOI": "10.1177/0278364917720510",
+   "article-title": "Agricultural robot dataset for plant classification, localization and mapping on sugar beet fields",
+   "volume": "36",
+   "author": "Chebrolu",
+   "year": "2017",
+   "journal-title": "Int. J. Robot. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0105",
+   "unstructured": "Cicco, D., Potena, C., Grisetti, G., Pretto, A., 2017. Automatic model based dataset generation for fast and accurate crop and weeds detection. In: 2017 IEEE/ESJ International Conference on Intelligent Robots and Systems, Vancouver, Canada, pp. 5188\u20135195."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0110",
+   "doi-asserted-by": "crossref",
+   "first-page": "53",
+   "DOI": "10.1109/MSP.2017.2765202",
+   "article-title": "Generative adversarial networks: an overview",
+   "volume": "35",
+   "author": "Creswell",
+   "year": "2018",
+   "journal-title": "IEEE Signal Process. Mag."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0115",
+   "unstructured": "De Clercq, M., Vats, A., Biel, A., 2018. Agriculture 4.0: the future of farming technology. In: Proceedings of the World Government Summit, Dubai, UAE."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0120",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Dias, P.A., Shen, Z., Tabb, A., Medeiros, H., 2019. FreeLabel: a publicly available annotation tool based on freehand traces. In: 2019 IEEE Winter Conference on Applications of Computer Vision, Waikoloa Village, HI, pp. 21\u201330.",
+   "DOI": "10.1109/WACV.2019.00010"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0125",
+   "doi-asserted-by": "crossref",
+   "first-page": "3003",
+   "DOI": "10.1109/LRA.2018.2849498",
+   "article-title": "Multispecies fruit flower detection using a refined semantic segmentation network",
+   "volume": "3",
+   "author": "Dias",
+   "year": "2018",
+   "journal-title": "IEEE Rob. Autom. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0130",
+   "doi-asserted-by": "crossref",
+   "first-page": "314",
+   "DOI": "10.1016/j.compag.2017.10.027",
+   "article-title": "Weed detection in soybean crops using ConvNets",
+   "volume": "143",
+   "author": "dos Santos Ferreira",
+   "year": "2017",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_bib486",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2019.104963",
+   "article-title": "Unsupervised deep learning and semi-automatic data labeling in weed discrimination",
+   "volume": "165",
+   "author": "dos Santos Ferreira",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agri."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0135",
+   "series-title": "Proceedings of the 27th ACM International Conference on Multimedia, Nice, France",
+   "first-page": "2276",
+   "article-title": "The VIA annotation software for images, audio and video",
+   "author": "Dutta",
+   "year": "2019"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2020.105760_bib484",
+   "doi-asserted-by": "crossref",
+   "first-page": "202",
+   "DOI": "10.1002/rob.21734",
+   "article-title": "Estimation of plant species by classifying plants and leaves in combination",
+   "volume": "35",
+   "author": "Dyrmann",
+   "year": "2018",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0140",
+   "doi-asserted-by": "crossref",
+   "first-page": "105306",
+   "DOI": "10.1016/j.compag.2020.105306",
+   "article-title": "Towards weeds identification assistance through transfer learning",
+   "volume": "171",
+   "author": "Espejo-Garcia",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0145",
+   "doi-asserted-by": "crossref",
+   "first-page": "303",
+   "DOI": "10.1007/s11263-009-0275-4",
+   "article-title": "The PASCAL visual object classes (VOC) challenge",
+   "volume": "88",
+   "author": "Everingham",
+   "year": "2010",
+   "journal-title": "Int. J. Comput. Vision"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_bib483",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Fawakherji, M., Bloisi, D., Pretto, A., Nardi, D., 2019. Crop and weeds classification for precision agriculture using context-independent pixel-wise segmentation. 2019 Third IEEE International Conference on Robotic Computing (IRC), 146\u2013152.",
+   "DOI": "10.1109/IRC.2019.00029"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0150",
+   "unstructured": "Fu, L., Karkee, M., Zhang, Q., 2017. Scifresh apple orignial and depthFilter RGB images, WSU AgRobotics Laboratory. Available from <https://research.libraries.wsu.edu/xmlui/handle/2376/17720>."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0155",
+   "doi-asserted-by": "crossref",
+   "first-page": "105121",
+   "DOI": "10.1016/j.compag.2019.105121",
+   "article-title": "Fruit detection, yield prediction and canopy geometric characterization using LiDAR with forced air flow",
+   "volume": "168",
+   "author": "Gen\u00e9-Mola",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0160",
+   "doi-asserted-by": "crossref",
+   "first-page": "105248",
+   "DOI": "10.1016/j.dib.2020.105248",
+   "article-title": "LFuji-air dataset: annotated 3D LiDAR point clouds of Fuji apple trees for fruit detection scanned under different forced air flow conditions",
+   "volume": "29",
+   "author": "Gen\u00e9-Mola",
+   "year": "2020",
+   "journal-title": "Data in Brief"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0165",
+   "doi-asserted-by": "crossref",
+   "first-page": "105165",
+   "DOI": "10.1016/j.compag.2019.105165",
+   "article-title": "Fruit detection and 3D location using instance segmentation neural networks and structure-from-motion photogrammetry",
+   "volume": "169",
+   "author": "Gen\u00e9-Mola",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0170",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Gen\u00e9-Mola, J.V.V., Rosell-Polo, J.R., Morros, J.R., Ruiz-Hidalgo, J., Gregorio, E., 2019a. Multi-modal deep learning for Fuji apple detection using RGB-D cameras and their radiometric capabilities. Comput. Electron. Agric. 162, 689\u2013698.",
+   "DOI": "10.1016/j.compag.2019.05.016"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0175",
+   "doi-asserted-by": "crossref",
+   "first-page": "104289",
+   "DOI": "10.1016/j.dib.2019.104289",
+   "article-title": "KFuji RGB-DS database: Fuji apple multi-modal images for fruit detection with color, depth and range-corrected IR data",
+   "volume": "25",
+   "author": "Gen\u00e9-Mola",
+   "year": "2019",
+   "journal-title": "Data in Brief"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0180",
+   "unstructured": "Giselsson, T.M., J\u00f8rgensen, R.N., Jensen, P.J., Dyrmann, M., Midtiby, H.S., 2017. A public image database for benchmark of plant seedling classification algorithms. Available from: arXiv preprint <arxiv.org/abs/1711.05458>."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0185",
+   "series-title": "Deep Learning",
+   "author": "Goodfellow",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0190",
+   "series-title": "Advances in Neural Information Processing Systems 27 (NIPS 2014)",
+   "article-title": "Generative adversarial nets",
+   "author": "Goodfellow",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0195",
+   "doi-asserted-by": "crossref",
+   "first-page": "8",
+   "DOI": "10.1109/MIS.2009.36",
+   "article-title": "The unreasonable effectiveness of data",
+   "volume": "24",
+   "author": "Halevy",
+   "year": "2009",
+   "journal-title": "IEEE Intell. Syst."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0200",
+   "doi-asserted-by": "crossref",
+   "first-page": "263",
+   "DOI": "10.1002/rob.21902",
+   "article-title": "A comparative study of fruit detection and counting methods for yield mapping in apple orchards",
+   "volume": "37",
+   "author": "H\u00e4ni",
+   "year": "2020",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0205",
+   "doi-asserted-by": "crossref",
+   "first-page": "852",
+   "DOI": "10.1109/LRA.2020.2965061",
+   "article-title": "MinneApple: a benchmark dataset for apple detection and segmentation",
+   "volume": "5",
+   "author": "H\u00e4ni",
+   "year": "2020",
+   "journal-title": "IEEE Rob. Autom. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0210",
+   "series-title": "Computer Vision - ECCV 2014 Workshops",
+   "first-page": "105",
+   "article-title": "A crop/weed field image dataset for the evaluation of computer vision based precision agriculture tasks",
+   "author": "Haug",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0215",
+   "doi-asserted-by": "crossref",
+   "first-page": "141",
+   "DOI": "10.1186/s13007-019-0528-3",
+   "article-title": "DeepSeedling: deep convolutional network and Kalman flter for plant seedling detection and counting in the feld",
+   "volume": "15",
+   "author": "Jiang",
+   "year": "2019",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0220",
+   "first-page": "191",
+   "article-title": "Crop and weed discrimination using Laws\u2019 texture masks",
+   "volume": "13",
+   "author": "Kamath",
+   "year": "2020",
+   "journal-title": "Int. J. Agric. Biol. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0225",
+   "doi-asserted-by": "crossref",
+   "first-page": "59",
+   "DOI": "10.1016/j.engappai.2018.09.011",
+   "article-title": "MangoNet: a deep semantic segmentation architecture for a method to detect and count mangoes in an open orchard",
+   "volume": "77",
+   "author": "Kestur",
+   "year": "2019",
+   "journal-title": "Eng. Appl. Artif. Intell."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0230",
+   "doi-asserted-by": "crossref",
+   "first-page": "1107",
+   "DOI": "10.1007/s11119-019-09642-0",
+   "article-title": "Deep learning for real-time fruit detection and orchard fruit load estimation: benchmarking of \u2018MangoYOLO\u2019",
+   "volume": "20",
+   "author": "Koirala",
+   "year": "2019",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0235",
+   "doi-asserted-by": "crossref",
+   "first-page": "177",
+   "DOI": "10.1561/0600000071",
+   "article-title": "Crowdsourcing in computer vision",
+   "volume": "10",
+   "author": "Kovashka",
+   "year": "2016",
+   "journal-title": "Found. Trends Comput. Graphics Vision"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0240",
+   "series-title": "2016 IEEE/RSJ International Conference on Intelligent Robots and Systems",
+   "first-page": "646",
+   "article-title": "Can you pick a broccoli? 3D-vision based detection and localisation of broccoli heads in the field",
+   "author": "Kusumam",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0245",
+   "doi-asserted-by": "crossref",
+   "first-page": "1505",
+   "DOI": "10.1002/rob.21726",
+   "article-title": "3D-vision based detection, localization, and sizing of broccoli heads in the field",
+   "volume": "34",
+   "author": "Kusumam",
+   "year": "2017",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0250",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1007/s11263-020-01316-z",
+   "article-title": "The Open Images Dataset V4",
+   "author": "Kuznetsova",
+   "year": "2020",
+   "journal-title": "Int. J. Comput. Vision"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0255",
+   "series-title": "ICT Innovations 2017. Communications in Computer and Information Science",
+   "first-page": "112",
+   "article-title": "Weed detection dataset with RGB images taken under variable light conditions",
+   "author": "Lameski",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0260",
+   "first-page": "231",
+   "article-title": "Precision weed control system for cotton",
+   "volume": "45",
+   "author": "Lamm",
+   "year": "2002",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0265",
+   "doi-asserted-by": "crossref",
+   "first-page": "2169",
+   "DOI": "10.1109/ACCESS.2019.2911709",
+   "article-title": "Low-power and high-speed deep FPGA inference engines for weed classification at the edge",
+   "volume": "7",
+   "author": "Lammie",
+   "year": "2019",
+   "journal-title": "IEEE Access"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0270",
+   "series-title": "Microsoft COCO: common objects in context",
+   "first-page": "740",
+   "author": "Lin",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0275",
+   "doi-asserted-by": "crossref",
+   "first-page": "559",
+   "DOI": "10.1016/j.tplants.2017.05.002",
+   "article-title": "Image analysis in plant sciences: publish then perish",
+   "volume": "22",
+   "author": "Lobet",
+   "year": "2017",
+   "journal-title": "Trends Plant Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0280",
+   "doi-asserted-by": "crossref",
+   "first-page": "38",
+   "DOI": "10.1186/1746-4811-9-38",
+   "article-title": "An online database for plant image analysis software tools",
+   "volume": "9",
+   "author": "Lobet",
+   "year": "2013",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0285",
+   "series-title": "EEE/RSJ International Conference on Intelligent Robots and Systems (IROS), Madrid, Spain",
+   "first-page": "8233",
+   "article-title": "Joint stem detection and crop-weed classification for plant-specific treatment in precision farming",
+   "author": "Lottes",
+   "year": "2018"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2020.105760_bib489",
+   "doi-asserted-by": "crossref",
+   "first-page": "20",
+   "DOI": "10.1002/rob.21901",
+   "article-title": "Robust joint stem detection and crop\u2010weed classification using image sequences for plant\u2010specific treatment in precision farming",
+   "volume": "37",
+   "author": "Lottes",
+   "year": "2020",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0290",
+   "doi-asserted-by": "crossref",
+   "first-page": "147",
+   "DOI": "10.1016/j.biosystemseng.2019.09.005",
+   "article-title": "Generating artificial images of plant seedlings using generative adversarial networks",
+   "volume": "187",
+   "author": "Madsen",
+   "year": "2019",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0295",
+   "doi-asserted-by": "crossref",
+   "first-page": "1246",
+   "DOI": "10.3390/rs12081246",
+   "article-title": "Open plant phenotype database of common weeds in denmark",
+   "volume": "12",
+   "author": "Madsen",
+   "year": "2020",
+   "journal-title": "Remote Sensing"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0300",
+   "doi-asserted-by": "crossref",
+   "first-page": "59",
+   "DOI": "10.3390/jimaging5120089",
+   "article-title": "Machine vision systems in precision agriculture for crop farming",
+   "volume": "5",
+   "author": "Mavridou",
+   "year": "2019",
+   "journal-title": "J. Imaging"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2020.105760_bib482",
+   "doi-asserted-by": "crossref",
+   "first-page": "1344",
+   "DOI": "10.1109/LRA.2017.2667039",
+   "article-title": "Mixtures of lightweight deep convolutional neural networks: Applied to agricultural robotics",
+   "volume": "2",
+   "author": "McCool",
+   "year": "2017",
+   "journal-title": "IEEE Rob. Autom. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_bib487",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Milioto, A., Lottes, P., Stachniss, C., 2018. Real-time semantic segmentation of crop and weed for precision agriculture robots leveraging background knowledge in CNNs. IEEE International Conference on Robotics and Automation (ICRA), 2229\u20132235.",
+   "DOI": "10.1109/ICRA.2018.8460962"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0305",
+   "article-title": "Using deep learning for image-based plant disease detection",
+   "volume": "22",
+   "author": "Mohanty",
+   "year": "2016",
+   "journal-title": "Front. Plant Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0310",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Mortensen, A.K., Skovsen, S., Karstoft, H., Gislum, R., 2019. The oil radish growth dataset for semantic segmentation and yield estimation. In: The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops, Long Beach, CA.",
+   "DOI": "10.1109/CVPRW.2019.00328"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0315",
+   "doi-asserted-by": "crossref",
+   "first-page": "2058",
+   "DOI": "10.1038/s41598-018-38343-3",
+   "article-title": "DeepWeeds: a multiclass weed species image dataset for deep learning",
+   "volume": "9",
+   "author": "Olsen",
+   "year": "2019",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0320",
+   "doi-asserted-by": "crossref",
+   "first-page": "69",
+   "DOI": "10.1016/j.compag.2018.08.001",
+   "article-title": "Computer vision and artificial intelligence in precision agriculture for grain crops: a systematic review",
+   "volume": "153",
+   "author": "Patr\u00edcio",
+   "year": "2018",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0325",
+   "doi-asserted-by": "crossref",
+   "first-page": "633",
+   "DOI": "10.1177/0278364919841437",
+   "article-title": "The Rosario dataset: multisensor data for localization and mapping in agricultural environments",
+   "volume": "38",
+   "author": "Pire",
+   "year": "2019",
+   "journal-title": "Int. J. Robot. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0330",
+   "doi-asserted-by": "crossref",
+   "first-page": "257",
+   "DOI": "10.1016/j.biosystemseng.2020.02.002",
+   "article-title": "Real-time weed-crop classification and localisation technique for robotic weed control in lettuce",
+   "volume": "192",
+   "author": "Raja",
+   "year": "2020",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0335",
+   "unstructured": "Rashtchian, C., Young, P., Hodosh, M., Hockenmaier, J., 2010. Collecting image annotations using Amazon\u2019s Mechanical Turk. In: Proceedings of the NAACL HLT 2010 Workshop on Creating Speech and Language Data with Amazon\u2019s Mechanical Turk, Los Angeles, CA, pp. 139\u2013147."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0340",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Redmon, J., Farhadi, A., 2017. YOLO9000: better, faster, stronger. IEEE conference on computer vision and pattern recognition, pp. 7263\u20137271.",
+   "DOI": "10.1109/CVPR.2017.690"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0345",
+   "unstructured": "Redmon, J., Farhadi, A., 2018. YOLOv3: An Incremental Improvement. Available from arXiv preprint <https://arxiv.org/abs/1804.02767>."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0350",
+   "doi-asserted-by": "crossref",
+   "first-page": "841",
+   "DOI": "10.3920/9789086866649_101",
+   "article-title": "BoniRob: an autonomous field robot platform for individual plant phenotyping",
+   "volume": "09",
+   "author": "Ruchelshausen",
+   "year": "2009",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0360",
+   "doi-asserted-by": "crossref",
+   "first-page": "211",
+   "DOI": "10.1007/s11263-015-0816-y",
+   "article-title": "Imagenet large scale visual recognition challenge",
+   "volume": "115",
+   "author": "Russakovsky",
+   "year": "2015",
+   "journal-title": "Int. J. Comput. Vision"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0365",
+   "doi-asserted-by": "crossref",
+   "first-page": "588",
+   "DOI": "10.1109/LRA.2017.2774979",
+   "article-title": "weedNet: dense semantic weed classification using multispectral images and MAV for smart farming",
+   "volume": "3",
+   "author": "Sa",
+   "year": "2017",
+   "journal-title": "IEEE Rob. Autom. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0370",
+   "doi-asserted-by": "crossref",
+   "first-page": "1222",
+   "DOI": "10.3390/s16081222",
+   "article-title": "DeepFruits: a fruit detection system using deep neural networks",
+   "volume": "16",
+   "author": "Sa",
+   "year": "2016",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0375",
+   "doi-asserted-by": "crossref",
+   "first-page": "1423",
+   "DOI": "10.3390/rs10091423",
+   "article-title": "WeedMap: a large-scale semantic weed mapping framework using aerial multispectral imaging and deep neural network for precision farming",
+   "volume": "10",
+   "author": "Sa",
+   "year": "2018",
+   "journal-title": "Remote Sensing"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0380",
+   "doi-asserted-by": "crossref",
+   "first-page": "265",
+   "DOI": "10.1006/jaer.1993.1020",
+   "article-title": "Robotics of fruit harvesting: a state-of-the-art review",
+   "volume": "54",
+   "author": "Sarig",
+   "year": "1993",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0385",
+   "series-title": "Procedural Content Generation in Games",
+   "author": "Shaker",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0390",
+   "first-page": "1",
+   "article-title": "Research and development in agricultural robotics: a perspective of digital farming",
+   "volume": "11",
+   "author": "Shamshiri",
+   "year": "2018",
+   "journal-title": "Int. J. Agric. Biol. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0395",
+   "doi-asserted-by": "crossref",
+   "first-page": "60",
+   "DOI": "10.1186/s40537-019-0197-0",
+   "article-title": "A survey on image data augmentation for deep learning",
+   "volume": "6",
+   "author": "Shorten",
+   "year": "2019",
+   "journal-title": "J. Big Data"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0400",
+   "series-title": "The IEEE Conference on Computer Vision and Pattern Recognition (CVPR) Workshops, Long Beach CA",
+   "article-title": "The GrassClover image dataset for semantic and hierarchical species understanding in agriculture",
+   "author": "Skovsen",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0405",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Suh, H.K., IJsselmuiden, J., Hofstee, J.W., van Henten, E.J., 2018. Transfer learning for the classification of sugar beet and volunteer potato under field conditions. Biosyst. Eng. 174, 50\u201365.",
+   "DOI": "10.1016/j.biosystemseng.2018.06.017"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0410",
+   "series-title": "The IEEE International Conference on Computer Vision (ICCV), Venice, Italy",
+   "first-page": "843",
+   "article-title": "Revisiting unreasonable effectiveness of data in deep learning era",
+   "author": "Sun",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0415",
+   "doi-asserted-by": "crossref",
+   "first-page": "1580",
+   "DOI": "10.3390/s18051580",
+   "article-title": "Weed growth stage estimator using deep convolutional neural networks",
+   "volume": "18",
+   "author": "Teimouri",
+   "year": "2018",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0420",
+   "doi-asserted-by": "crossref",
+   "first-page": "171",
+   "DOI": "10.1016/j.biosystemseng.2007.09.026",
+   "article-title": "Mechnical within-row weed control for transplanted crops using computer vision",
+   "volume": "99",
+   "author": "Tillett",
+   "year": "2008",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0425",
+   "unstructured": "Tzutalin, 2015. LabelImg. Git code. Available from <https://github.com/tzutalin/labelImg>."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0435",
+   "doi-asserted-by": "crossref",
+   "first-page": "1061",
+   "DOI": "10.1002/rob.21728",
+   "article-title": "Efficient in-field plant phenomics for row-crops with an autonomous ground vehicle",
+   "volume": "34",
+   "author": "Underwood",
+   "year": "2017",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0440",
+   "doi-asserted-by": "crossref",
+   "first-page": "226",
+   "DOI": "10.1016/j.compag.2019.02.005",
+   "article-title": "A review on weed detection using ground-based machine vision and image processing techniques",
+   "volume": "158",
+   "author": "Wang",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0445",
+   "doi-asserted-by": "crossref",
+   "first-page": "440",
+   "DOI": "10.1186/s13104-018-3548-6",
+   "article-title": "Image set for deep learning: field images of maize annotated with disease symptoms",
+   "volume": "11",
+   "author": "Wiesner-Hanks",
+   "year": "2018",
+   "journal-title": "BMC Res. Notes"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0455",
+   "doi-asserted-by": "crossref",
+   "first-page": "1550",
+   "DOI": "10.3389/fpls.2019.01550",
+   "article-title": "Millimeter-level plant disease detection from aerial photographs via deep learning and crowdsourced data",
+   "volume": "10",
+   "author": "Wiesner-Hanks",
+   "year": "2019",
+   "journal-title": "Front. Plant Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0460",
+   "doi-asserted-by": "crossref",
+   "first-page": "101552",
+   "DOI": "10.1016/j.media.2019.101552",
+   "article-title": "Generative adversarial network in medical imaging: a review",
+   "volume": "58",
+   "author": "Yi",
+   "year": "2019",
+   "journal-title": "Med. Image Anal."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0465",
+   "doi-asserted-by": "crossref",
+   "first-page": "1520",
+   "DOI": "10.3390/s20051520",
+   "article-title": "Applicaitons of deep learning for dense scenes analysis in agriculture",
+   "volume": "20",
+   "author": "Zhang",
+   "year": "2020",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0470",
+   "unstructured": "Zhang, X., Karkee, M., Zhang, Q., 2020b. Foliage canopy of apple tree in formal architecture, WSU AgRobotics Laboratory. Available from <https://research.libraries.wsu.edu/xmlui/handle/2376/17529>."
+  },
+  {
+   "key": "10.1016/j.compag.2020.105760_b0475",
+   "unstructured": "Zhang, X., Lu, S., Karkee, M., Zhang, Q., 2020c. Full stages of wine grape canopy and clusters, WSU AgRobotics Laboratory. Available from <https://research.libraries.wsu.edu/xmlui/handle/2376/17628>."
+  },
+  {
+   "issue": "7",
+   "key": "10.1016/j.compag.2020.105760_b0480",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1371/journal.pcbi.1006337",
+   "article-title": "Crowdsourcing image analysis for plant phenomics to generate ground truth data for machine learning",
+   "volume": "14",
+   "author": "Zhou",
+   "year": "2018",
+   "journal-title": "Plos Comput. Biol."
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169920312709?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169920312709?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    9,
+    29
+   ]
+  ],
+  "date-time": "2025-09-29T13:19:46Z",
+  "timestamp": 1759151986000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169920312709"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2020,
+    11
+   ]
+  ]
+ },
+ "references-count": 98,
+ "alternative-id": [
+  "S0168169920312709"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2020.105760",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2020,
+    11
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "A survey of public datasets for computer vision tasks in precision agriculture",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Computers and Electronics in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.compag.2020.105760",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2020 The Authors. Published by Elsevier B.V.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ],
+ "article-number": "105760"
+}

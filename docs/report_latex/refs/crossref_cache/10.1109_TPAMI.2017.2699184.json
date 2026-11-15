@@ -1,0 +1,831 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    15
+   ]
+  ],
+  "date-time": "2026-11-15T11:06:33Z",
+  "timestamp": 1794740793113,
+  "version": "4.9.1"
+ },
+ "reference-count": 102,
+ "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+ "issue": "4",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      4,
+      1
+     ]
+    ],
+    "date-time": "2018-04-01T00:00:00Z",
+    "timestamp": 1522540800000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html"
+  }
+ ],
+ "funder": [
+  {
+   "name": "ARO 62250-CS"
+  },
+  {
+   "name": "FP7-RECONFIG"
+  },
+  {
+   "name": "FP7-MOBOT"
+  },
+  {
+   "name": "H2020-ISUPPORT EU"
+  },
+  {
+   "name": "NVIDIA Corporation",
+   "id": [
+    {
+     "id": "https://ror.org/03jdj4y14",
+     "id-type": "ROR",
+     "asserted-by": "crossref"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "IEEE Trans. Pattern Anal. Mach. Intell."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    1
+   ]
+  ]
+ },
+ "DOI": "10.1109/tpami.2017.2699184",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2017,
+    4,
+    27
+   ]
+  ],
+  "date-time": "2017-04-27T14:18:37Z",
+  "timestamp": 1493302717000
+ },
+ "page": "834-848",
+ "source": "Crossref",
+ "is-referenced-by-count": 19025,
+ "title": [
+  "DeepLab: Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs"
+ ],
+ "prefix": "10.1109",
+ "volume": "40",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0001-8564-374X",
+   "authenticated-orcid": false,
+   "given": "Liang-Chieh",
+   "family": "Chen",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "George",
+   "family": "Papandreou",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Iasonas",
+   "family": "Kokkinos",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Kevin",
+   "family": "Murphy",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Alan L.",
+   "family": "Yuille",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "263",
+ "reference": [
+  {
+   "key": "ref39",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2012.231"
+  },
+  {
+   "key": "ref38",
+   "article-title": "Semantic image segmentation with deep convolutional nets and fully connected CRFs",
+   "author": "chen",
+   "year": "2015",
+   "journal-title": "Proc Int Conf Learn Representations"
+  },
+  {
+   "key": "ref33",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298897"
+  },
+  {
+   "key": "ref32",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2013.49"
+  },
+  {
+   "key": "ref31",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-008-0202-0"
+  },
+  {
+   "key": "ref30",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2010.5540048"
+  },
+  {
+   "key": "ref37",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.350"
+  },
+  {
+   "key": "ref36",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2014.254"
+  },
+  {
+   "key": "ref35",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2014.119"
+  },
+  {
+   "key": "ref34",
+   "article-title": "The PASCAL visual object classes challenge a retrospective",
+   "author": "everingham",
+   "year": "2014",
+   "journal-title": "Int J Comput Vis"
+  },
+  {
+   "key": "ref28",
+   "first-page": "1485",
+   "article-title": "Pylon model for semantic segmentation",
+   "author": "lempitsky",
+   "year": "2011",
+   "journal-title": "Proc Advances Neural Inf Process Syst"
+  },
+  {
+   "key": "ref27",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2009.5459248"
+  },
+  {
+   "key": "ref29",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-011-0437-z"
+  },
+  {
+   "key": "ref20",
+   "first-page": "346",
+   "article-title": "Spatial pyramid pooling in deep convolutional networks for visual recognition",
+   "author": "he",
+   "year": "2014",
+   "journal-title": "Proc Eur Conf Comput Vis"
+  },
+  {
+   "key": "ref22",
+   "first-page": "109",
+   "article-title": "Efficient inference in fully connected CRFs with Gaussian edge potentials",
+   "author": "kr\u00e4henb\u00fchl",
+   "year": "2011",
+   "journal-title": "Proc Advances Neural Inf Process Syst"
+  },
+  {
+   "key": "ref21",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298642"
+  },
+  {
+   "key": "ref24",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-007-0109-1"
+  },
+  {
+   "key": "ref23",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/1186562.1015720"
+  },
+  {
+   "key": "ref101",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-45886-1_2"
+  },
+  {
+   "key": "ref26",
+   "first-page": "695",
+   "article-title": "Multiscale conditional random fields for image labeling",
+   "author": "he",
+   "year": "2004",
+   "journal-title": "Proc IEEE Comput Soc Conf Comput Vis Pattern Recog"
+  },
+  {
+   "key": "ref100",
+   "article-title": "Segnet: A deep convolutional encoder-decoder architecture for image segmentation",
+   "author": "badrinarayanan",
+   "year": "2015"
+  },
+  {
+   "key": "ref25",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2011.6126219"
+  },
+  {
+   "key": "ref50",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298959"
+  },
+  {
+   "key": "ref51",
+   "article-title": "Convolutional feature masking for joint object and stuff segmentation",
+   "author": "dai",
+   "year": "2014"
+  },
+  {
+   "key": "ref59",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.179"
+  },
+  {
+   "key": "ref58",
+   "first-page": "1742",
+   "article-title": "Weakly- and semi-supervised learning of a DCNN for semantic image segmentation",
+   "author": "papandreou",
+   "year": "2015",
+   "journal-title": "Proc IEEE Int Conf Comput Vis"
+  },
+  {
+   "key": "ref57",
+   "article-title": "Material recognition in the wild with the materials in context database",
+   "author": "bell",
+   "year": "2014"
+  },
+  {
+   "key": "ref56",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.neucom.2007.11.031"
+  },
+  {
+   "key": "ref55",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/BF00115697"
+  },
+  {
+   "key": "ref54",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/34.134040"
+  },
+  {
+   "key": "ref53",
+   "article-title": "Combining the best of graphical models and convnets for semantic segmentation",
+   "author": "cogswell",
+   "year": "2014"
+  },
+  {
+   "key": "ref52",
+   "article-title": "Predicting depth, surface normals and semantic labels with a common multi-scale convolutional architecture",
+   "author": "eigen",
+   "year": "2014"
+  },
+  {
+   "key": "ref40",
+   "article-title": "Efficient piecewise training of deep structured models for semantic segmentation",
+   "author": "lin",
+   "year": "2015"
+  },
+  {
+   "key": "ref4",
+   "article-title": "Very deep convolutional networks for large-scale image recognition",
+   "author": "simonyan",
+   "year": "2015",
+   "journal-title": "Proc Int Conf Learn Representations"
+  },
+  {
+   "key": "ref3",
+   "article-title": "OverFeat: Integrated recognition, localization and detection using convolutional networks",
+   "author": "sermanet",
+   "year": "2013"
+  },
+  {
+   "key": "ref6",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298636"
+  },
+  {
+   "key": "ref5",
+   "article-title": "Going deeper with convolutions",
+   "author": "szegedy",
+   "year": "2014"
+  },
+  {
+   "key": "ref8",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2014.276"
+  },
+  {
+   "key": "ref49",
+   "first-page": "297",
+   "article-title": "Simultaneous detection and segmentation",
+   "author": "hariharan",
+   "year": "2014",
+   "journal-title": "Proc Eur Conf Comput Vis"
+  },
+  {
+   "key": "ref7",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2014.81"
+  },
+  {
+   "key": "ref9",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.169"
+  },
+  {
+   "key": "ref46",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2011.231"
+  },
+  {
+   "key": "ref45",
+   "first-page": "430",
+   "article-title": "Semantic segmentation with second-order pooling",
+   "author": "carreira",
+   "year": "2012",
+   "journal-title": "Proc Eur Conf Comput Vis"
+  },
+  {
+   "key": "ref48",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-013-0620-5"
+  },
+  {
+   "key": "ref47",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2014.49"
+  },
+  {
+   "key": "ref42",
+   "doi-asserted-by": "crossref",
+   "first-page": "1744",
+   "DOI": "10.1109/TPAMI.2009.186",
+   "article-title": "Auto-context and its application to high-level vision tasks and 3D brain image segmentation",
+   "volume": "32",
+   "author": "tu",
+   "year": "2010",
+   "journal-title": "IEEE Trans Pattern Anal Mach Intell"
+  },
+  {
+   "key": "ref41",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/2647868.2654889"
+  },
+  {
+   "key": "ref44",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2009.5459175"
+  },
+  {
+   "key": "ref43",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2008.4587503"
+  },
+  {
+   "key": "ref73",
+   "article-title": "Proposal-free network for instance-level object segmentation",
+   "author": "liang",
+   "year": "2015"
+  },
+  {
+   "key": "ref72",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2011.6126299"
+  },
+  {
+   "key": "ref71",
+   "first-page": "1495",
+   "article-title": "Decoupled deep neural network for semi-supervised semantic segmentation",
+   "author": "hong",
+   "year": "2015",
+   "journal-title": "Proc 28th Int Conf Neural Inf Process Syst"
+  },
+  {
+   "key": "ref70",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.209"
+  },
+  {
+   "key": "ref76",
+   "article-title": "Multi-scale context aggregation by dilated convolutions",
+   "author": "yu",
+   "year": "2016",
+   "journal-title": "Proc Int Conf Learn Representations"
+  },
+  {
+   "key": "ref77",
+   "article-title": "R-FCN: Object detection via region-based fully convolutional networks",
+   "author": "dai",
+   "year": "2016"
+  },
+  {
+   "key": "ref74",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LSP.2005.853048"
+  },
+  {
+   "key": "ref75",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/5.52200"
+  },
+  {
+   "key": "ref78",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-46466-4_32"
+  },
+  {
+   "key": "ref79",
+   "article-title": "ABC-CNN: An attention based convolutional neural network for visual question answering",
+   "author": "chen",
+   "year": "2015"
+  },
+  {
+   "key": "ref60",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.191"
+  },
+  {
+   "key": "ref62",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.162"
+  },
+  {
+   "key": "ref61",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.178"
+  },
+  {
+   "key": "ref63",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.492"
+  },
+  {
+   "key": "ref64",
+   "first-page": "1785",
+   "article-title": "Learning deep structured models",
+   "author": "chen",
+   "year": "2015",
+   "journal-title": "Proc Int Conf Int Conf Mach Learn"
+  },
+  {
+   "key": "ref65",
+   "article-title": "Fully connected deep structured networks",
+   "author": "schwing",
+   "year": "2015"
+  },
+  {
+   "key": "ref66",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-46478-7_25"
+  },
+  {
+   "key": "ref67",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/1964921.1964964"
+  },
+  {
+   "key": "ref68",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.65"
+  },
+  {
+   "key": "ref2",
+   "first-page": "1097",
+   "article-title": "ImageNet classification with deep convolutional neural networks",
+   "author": "krizhevsky",
+   "year": "2013",
+   "journal-title": "Proc 25th Int Conf Neural Inf Process Syst"
+  },
+  {
+   "key": "ref69",
+   "article-title": "Weakly supervised semantic segmentation with convolutional networks",
+   "author": "pinheiro",
+   "year": "2014"
+  },
+  {
+   "key": "ref1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/5.726791"
+  },
+  {
+   "key": "ref95",
+   "article-title": "Zoom better to see clearer: Huamn part segmentation with auto zoom net",
+   "author": "xia",
+   "year": "2015"
+  },
+  {
+   "key": "ref94",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1007/978-3-319-46493-0_38",
+   "article-title": "Identity mappings in deep residual networks",
+   "author": "he",
+   "year": "2016"
+  },
+  {
+   "key": "ref93",
+   "article-title": "Bridging category-level and instance-level semantic image segmentation",
+   "author": "wu",
+   "year": "2016"
+  },
+  {
+   "key": "ref92",
+   "article-title": "Fast semantic image segmentation with high order context and guided filtering",
+   "author": "shen",
+   "year": "2016"
+  },
+  {
+   "key": "ref91",
+   "article-title": "Higher order potentials in end-to-end trainable conditional random fields",
+   "author": "arnab",
+   "year": "2015"
+  },
+  {
+   "key": "ref90",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1007/978-3-319-46487-9_32",
+   "article-title": "Laplacian reconstruction and refinement for semantic segmentation",
+   "author": "ghiasi",
+   "year": "2016"
+  },
+  {
+   "key": "ref102",
+   "first-page": "234",
+   "article-title": "U-net: Convolutional networks for biomedical image segmentation",
+   "author": "ronneberger",
+   "year": "2015",
+   "journal-title": "Proc Int Conf Medical Image Comput Comput -Assisted Intervention"
+  },
+  {
+   "key": "ref98",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298788"
+  },
+  {
+   "key": "ref99",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.184"
+  },
+  {
+   "key": "ref96",
+   "article-title": "Semantic object parsing with local-global long short-term memory",
+   "author": "liang",
+   "year": "2015"
+  },
+  {
+   "key": "ref97",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-46448-0_8"
+  },
+  {
+   "key": "ref10",
+   "first-page": "91",
+   "article-title": "Faster R-CNN: Towards real-time object detection with region proposal networks",
+   "author": "ren",
+   "year": "2015",
+   "journal-title": "Proc 28th Int Conf Neural Inf Process Syst"
+  },
+  {
+   "key": "ref11",
+   "article-title": "Deep residual learning for image recognition",
+   "author": "he",
+   "year": "2015"
+  },
+  {
+   "key": "ref12",
+   "article-title": "SSD: Single shot multibox detector",
+   "author": "liu",
+   "year": "2015"
+  },
+  {
+   "key": "ref13",
+   "first-page": "818",
+   "article-title": "Visualizing and understanding convolutional networks",
+   "author": "zeiler",
+   "year": "2014",
+   "journal-title": "Proc Eur Conf Comput Vis"
+  },
+  {
+   "key": "ref14",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298965"
+  },
+  {
+   "key": "ref15",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-642-97177-8_28"
+  },
+  {
+   "key": "ref16",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICIP.2013.6738831"
+  },
+  {
+   "key": "ref82",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/78.157290"
+  },
+  {
+   "key": "ref17",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.396"
+  },
+  {
+   "key": "ref81",
+   "article-title": "High-performance semantic segmentation using very deep fully convolutional networks",
+   "author": "wu",
+   "year": "2016"
+  },
+  {
+   "key": "ref18",
+   "article-title": "Pushing the boundaries of boundary detection using deep learning",
+   "author": "kokkinos",
+   "year": "2016",
+   "journal-title": "Proc Int Conf Learn Representations"
+  },
+  {
+   "key": "ref84",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1467-8659.2009.01645.x"
+  },
+  {
+   "key": "ref19",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2006.68"
+  },
+  {
+   "key": "ref83",
+   "article-title": "Tensorflow: Large-scale machine learning on heterogeneous distributed systems",
+   "author": "abadi",
+   "year": "2016"
+  },
+  {
+   "key": "ref80",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.422"
+  },
+  {
+   "key": "ref89",
+   "article-title": "Combining the best of convolutional layers and recurrent layers: A hybrid network for semantic segmentation",
+   "author": "yan",
+   "year": "2016"
+  },
+  {
+   "key": "ref85",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2011.6126343"
+  },
+  {
+   "key": "ref86",
+   "article-title": "Parsenet: Looking wider to see better",
+   "author": "liu",
+   "year": "2015"
+  },
+  {
+   "key": "ref87",
+   "first-page": "740",
+   "article-title": "Microsoft COCO: Common objects in context",
+   "author": "lin",
+   "year": "2014",
+   "journal-title": "Proc Eur Conf Comput Vis"
+  },
+  {
+   "key": "ref88",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.351"
+  }
+ ],
+ "container-title": [
+  "IEEE Transactions on Pattern Analysis and Machine Intelligence"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "http://xplorestaging.ieee.org/ielx7/34/8306529/07913730.pdf?arnumber=7913730",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2022,
+    1,
+    12
+   ]
+  ],
+  "date-time": "2022-01-12T11:22:52Z",
+  "timestamp": 1641986572000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "http://ieeexplore.ieee.org/document/7913730/"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    1
+   ]
+  ]
+ },
+ "references-count": 102,
+ "journal-issue": {
+  "issue": "4"
+ },
+ "URL": "https://doi.org/10.1109/tpami.2017.2699184",
+ "relation": {},
+ "ISSN": [
+  "0162-8828",
+  "2160-9292"
+ ],
+ "issn-type": [
+  {
+   "value": "0162-8828",
+   "type": "print"
+  },
+  {
+   "value": "2160-9292",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    4,
+    1
+   ]
+  ]
+ }
+}

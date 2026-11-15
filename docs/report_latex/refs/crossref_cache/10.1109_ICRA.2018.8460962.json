@@ -1,0 +1,296 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    13
+   ]
+  ],
+  "date-time": "2026-11-13T10:30:05Z",
+  "timestamp": 1794565805066,
+  "version": "4.9.1"
+ },
+ "reference-count": 22,
+ "publisher": "IEEE",
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    5
+   ]
+  ]
+ },
+ "DOI": "10.1109/icra.2018.8460962",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    9,
+    21
+   ]
+  ],
+  "date-time": "2018-09-21T18:28:03Z",
+  "timestamp": 1537554483000
+ },
+ "page": "2229-2235",
+ "source": "Crossref",
+ "is-referenced-by-count": 385,
+ "title": [
+  "Real-Time Semantic Segmentation of Crop and Weed for Precision Agriculture Robots Leveraging Background Knowledge in CNNs"
+ ],
+ "prefix": "10.1109",
+ "author": [
+  {
+   "given": "Andres",
+   "family": "Milioto",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Philipp",
+   "family": "Lottes",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Cyrill",
+   "family": "Stachniss",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "263",
+ "reference": [
+  {
+   "key": "ref10",
+   "article-title": "Effective Vision-Based Classification for Separating Sugar Beets and Weeds for Precision Farming",
+   "author": "lottes",
+   "year": "2016",
+   "journal-title": "Journal of Field Robotics (JFR)"
+  },
+  {
+   "key": "ref11",
+   "article-title": "An Effective Classification System for Separating Sugar Beets and Weeds for Precision Farming Applications",
+   "author": "lottes",
+   "year": "2016",
+   "journal-title": "IEEE Intl Conf On Robotics and Automation (ICRA) IEEE"
+  },
+  {
+   "key": "ref12",
+   "article-title": "Semi-supervised online visual crop and weed classification in precision farming exploiting plant arrangement",
+   "author": "lottes",
+   "year": "2017",
+   "journal-title": "Proc of the IEEE/RSJ Intl Conf on Intelligent Robots and Systems (IROS)"
+  },
+  {
+   "key": "ref13",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2017.2667039"
+  },
+  {
+   "key": "ref14",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2008.03.009"
+  },
+  {
+   "key": "ref15",
+   "article-title": "Real-time blob-wise sugar beets vs weeds classification for monitoring fields using convolutional neural networks",
+   "author": "milioto",
+   "year": "2017",
+   "journal-title": "Int Conf on Unmanned Aerial Vehicle in Geomatics"
+  },
+  {
+   "key": "ref16",
+   "article-title": "Semantic segmentation of mixed crops using deep convolutional neural network",
+   "author": "mortensen",
+   "year": "2017",
+   "journal-title": "Proc Int Conf Agricultural Engineering"
+  },
+  {
+   "key": "ref17",
+   "volume": "abs 1606 2147",
+   "author": "paszke",
+   "year": "2016",
+   "journal-title": "ENet A deep neural network architecture for real-time semantic segmentation"
+  },
+  {
+   "key": "ref18",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LGRS.2012.2193113"
+  },
+  {
+   "key": "ref19",
+   "article-title": "Fast and accurate crop and weed identification with summarized train sets for precision agriculture",
+   "author": "potena",
+   "year": "2016",
+   "journal-title": "Proc Int Conf Intelligent Autonomous Systems (IAS)"
+  },
+  {
+   "key": "ref4",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2013.04.010"
+  },
+  {
+   "key": "ref3",
+   "author": "di cicco",
+   "year": "2016",
+   "journal-title": "Automatic model based dataset generation for fast and accurate crop and weeds detection"
+  },
+  {
+   "key": "ref6",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2016.04.024"
+  },
+  {
+   "key": "ref5",
+   "first-page": "797",
+   "article-title": "Evaluation of features for leaf classification in challenging conditions",
+   "author": "hall",
+   "year": "2015",
+   "journal-title": "Proc of the IEEE Winter Conf on Applications of Computer Vision (WACV)"
+  },
+  {
+   "key": "ref8",
+   "author": "he",
+   "year": "2017",
+   "journal-title": "Mask R-CNN"
+  },
+  {
+   "key": "ref7",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/WACV.2014.6835733"
+  },
+  {
+   "key": "ref2",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1177/0278364917720510"
+  },
+  {
+   "key": "ref1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2016.2644615"
+  },
+  {
+   "key": "ref9",
+   "article-title": "Deep residual learning for image recognition",
+   "author": "he",
+   "year": "2016",
+   "journal-title": "Proc of the IEEE Conf on Computer Vision and Pattern Recognition (CVPR)"
+  },
+  {
+   "key": "ref20",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s10044-012-0307-5"
+  },
+  {
+   "key": "ref22",
+   "article-title": "Self-Supervised Weed Detection in Vegetable Crops Using Ground Based Hyperspectral Imaging",
+   "author": "wendel",
+   "year": "2016",
+   "journal-title": "IEEE Intl Conf On Robotics and Automation (ICRA) IEEE"
+  },
+  {
+   "key": "ref21",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2015.03.019"
+  }
+ ],
+ "event": {
+  "name": "2018 IEEE International Conference on Robotics and Automation (ICRA)",
+  "location": "Brisbane, QLD",
+  "start": {
+   "date-parts": [
+    [
+     2018,
+     5,
+     21
+    ]
+   ]
+  },
+  "end": {
+   "date-parts": [
+    [
+     2018,
+     5,
+     25
+    ]
+   ]
+  }
+ },
+ "container-title": [
+  "2018 IEEE International Conference on Robotics and Automation (ICRA)"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "http://xplorestaging.ieee.org/ielx7/8449910/8460178/08460962.pdf?arnumber=8460962",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2020,
+    8,
+    23
+   ]
+  ],
+  "date-time": "2020-08-23T20:52:57Z",
+  "timestamp": 1598215977000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://ieeexplore.ieee.org/document/8460962/"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    5
+   ]
+  ]
+ },
+ "references-count": 22,
+ "URL": "https://doi.org/10.1109/icra.2018.8460962",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    5
+   ]
+  ]
+ }
+}

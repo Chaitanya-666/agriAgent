@@ -1,0 +1,437 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    10
+   ]
+  ],
+  "date-time": "2026-11-10T16:43:01Z",
+  "timestamp": 1794328981962,
+  "version": "4.9.0"
+ },
+ "reference-count": 24,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2016,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2016-11-01T00:00:00Z",
+    "timestamp": 1477958400000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2016,
+      11,
+      1
+     ]
+    ],
+    "date-time": "2016-11-01T00:00:00Z",
+    "timestamp": 1477958400000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Biosystems Engineering"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2016,
+    11
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.biosystemseng.2016.08.024",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    9,
+    13
+   ]
+  ],
+  "date-time": "2016-09-13T09:30:31Z",
+  "timestamp": 1473759031000
+ },
+ "page": "72-80",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 599,
+ "special_numbering": "C",
+ "title": [
+  "Plant species classification using deep convolutional neural network"
+ ],
+ "prefix": "10.1016",
+ "volume": "151",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-6510-1609",
+   "authenticated-orcid": false,
+   "given": "Mads",
+   "family": "Dyrmann",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-3310-5680",
+   "authenticated-orcid": false,
+   "given": "Henrik",
+   "family": "Karstoft",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Henrik Skov",
+   "family": "Midtiby",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib1",
+   "series-title": "Ukrudtsn\u00f8glen",
+   "author": "Aarhus University - Department of Agroecology",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib2",
+   "doi-asserted-by": "crossref",
+   "first-page": "21",
+   "DOI": "10.1023/A:1015674004201",
+   "article-title": "An agricultural mobile robot with vision based perception for mechanical weed control",
+   "volume": "13",
+   "author": "\u00c5strand",
+   "year": "2002",
+   "journal-title": "Autonomous Robots"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib3",
+   "series-title": "A practical theory for designing very deep convolutional neural networks Classifier Level",
+   "author": "Cao",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib4",
+   "series-title": "Lasagne: First release",
+   "author": "Dieleman",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib5",
+   "series-title": "Automated classification of seedlings using computer vision. Tech. Rep.",
+   "author": "Dyrmann",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib7",
+   "series-title": "Real time crops and weeds classification from top down images of plant canopies",
+   "author": "Giselsson",
+   "year": "2010"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib8",
+   "first-page": "249",
+   "article-title": "Understanding the difficulty of training deep feed-forward neural networks",
+   "volume": "9",
+   "author": "Glorot",
+   "year": "2010"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib9",
+   "doi-asserted-by": "crossref",
+   "first-page": "28",
+   "DOI": "10.1186/1746-4811-7-28",
+   "article-title": "Classification of images of wheat, ryegrass and brome grass species at early growth stages using principal component analysis",
+   "volume": "7",
+   "author": "Golzarian",
+   "year": "2011",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib10",
+   "series-title": "Deep residual learning for image recognition",
+   "volume": "Vol. 7",
+   "author": "He",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib11",
+   "series-title": "The nature, ecology, and control of Canada thistle",
+   "author": "Hodgson",
+   "year": "1968"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib12",
+   "series-title": "Batch normalization: Accelerating deep network training by reducing internal covariate shift",
+   "author": "Ioffe",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib13",
+   "series-title": "Vurdering af Plantev\u00e6rn Onlines \u00f8konomiske og milj\u00f8m\u00e6ssige effekt",
+   "volume": "115",
+   "author": "J\u00f8rgensen",
+   "year": "2007"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib14",
+   "series-title": "Computer vision based weed detection and 3D plant imaging",
+   "author": "Kazmi",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib15",
+   "first-page": "1",
+   "article-title": "Imagenet\u00a0classification with deep convolutional neural networks",
+   "author": "Krizhevsky",
+   "year": "2012",
+   "journal-title": "Advances in neural information processing systems"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib17",
+   "series-title": "Growth stages of mono-and dicotyledonous plants \u2013 BBCH monograph",
+   "author": "Meier",
+   "year": "2001"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib18",
+   "doi-asserted-by": "crossref",
+   "first-page": "35",
+   "DOI": "10.1016/j.ecoinf.2013.07.004",
+   "article-title": "Image-based plant phenotyping with incremental learning and active contours",
+   "volume": "23",
+   "author": "Minervini",
+   "year": "2014",
+   "journal-title": "Ecological Informatics"
+  },
+  {
+   "issue": "01",
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib19",
+   "doi-asserted-by": "crossref",
+   "first-page": "31",
+   "DOI": "10.1017/S0021859605005708",
+   "article-title": "Crop losses to pests",
+   "volume": "144",
+   "author": "Oerke",
+   "year": "2006",
+   "journal-title": "The Journal of Agricultural Science"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib20",
+   "series-title": "Roboweedsupport.com",
+   "author": "RoboWeedSupport",
+   "year": "2015"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib21",
+   "doi-asserted-by": "crossref",
+   "first-page": "211",
+   "DOI": "10.1007/s11263-015-0816-y",
+   "article-title": "ImageNet large Scale visual recognition challenge",
+   "volume": "115",
+   "author": "Russakovsky",
+   "year": "2015",
+   "journal-title": "International Journal of Computer Vision (IJCV)"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib22",
+   "article-title": "Annotated image datasets of rosette plants",
+   "author": "Scharr",
+   "year": "2014",
+   "journal-title": "Forschungszentrum Julich"
+  },
+  {
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib23",
+   "first-page": "1",
+   "article-title": "Very deep convolutional networks for large-scale image recognition",
+   "author": "Simonyan",
+   "year": "2014",
+   "journal-title": "arXiv"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib24",
+   "doi-asserted-by": "crossref",
+   "first-page": "378",
+   "DOI": "10.1614/WT-07-104.1",
+   "article-title": "Multispectral machine vision identification of lettuce and weed seedlings for automated weed control",
+   "volume": "22",
+   "author": "Slaughter",
+   "year": "2008",
+   "journal-title": "Weed Technology"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib25",
+   "doi-asserted-by": "crossref",
+   "first-page": "271",
+   "DOI": "10.1016/j.biosystemseng.2005.04.011",
+   "article-title": "Weed classification by active shape models",
+   "volume": "91",
+   "author": "S\u00f8gaard",
+   "year": "2005",
+   "journal-title": "Biosystems Engineering"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.biosystemseng.2016.08.024_bib26",
+   "doi-asserted-by": "crossref",
+   "first-page": "259",
+   "DOI": "10.13031/2013.27838",
+   "article-title": "Color indices for weed identification under various soil, residue, and lighting conditions",
+   "volume": "38",
+   "author": "Woebbecke",
+   "year": "1995",
+   "journal-title": "Transactions of the ASAE"
+  }
+ ],
+ "container-title": [
+  "Biosystems Engineering"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S1537511016301465?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S1537511016301465?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    27
+   ]
+  ],
+  "date-time": "2025-10-27T01:47:46Z",
+  "timestamp": 1761529666000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S1537511016301465"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    11
+   ]
+  ]
+ },
+ "references-count": 24,
+ "alternative-id": [
+  "S1537511016301465"
+ ],
+ "URL": "https://doi.org/10.1016/j.biosystemseng.2016.08.024",
+ "relation": {},
+ "ISSN": [
+  "1537-5110"
+ ],
+ "issn-type": [
+  {
+   "value": "1537-5110",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    11
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "Plant species classification using deep convolutional neural network",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Biosystems Engineering",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.biosystemseng.2016.08.024",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2016 IAgrE. Published by Elsevier Ltd. All rights reserved.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ]
+}

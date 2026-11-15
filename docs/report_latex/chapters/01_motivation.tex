@@ -1,0 +1,70 @@
+\chapter{Motivation}\label{ch:motivation}
+
+\section{Why spot spraying needs a weed-versus-crop decision}
+Weeds compete with the crop for light, water and nutrients, and herbicide is the cheapest way to
+control them. It is usually applied uniformly across a field, although weeds cover only part of it.
+Site-specific weed management (SSWM) instead treats only the places where weeds grow; reviews of the
+field report that the saving in herbicide depends strongly on how patchy the weeds
+are~\cite{gerhards2022sswm}. The finest form of SSWM is \emph{spot spraying}: a camera looks at the
+ground ahead of a boom, and each nozzle opens only over a weed. Low-cost prototypes of such sprayers
+already exist~\cite{partel2019sprayer}.
+
+The hard part of spot spraying is not the nozzle but the decision. Slaughter et al.\ identified
+reliable weed identification as the main obstacle to robotic weed control more than fifteen years
+ago~\cite{slaughter2008review}, and it still is. The two possible mistakes are not equal: a missed
+weed survives until the next pass, but a false ``weed'' on a crop plant damages the crop the farmer is
+trying to protect. A spot sprayer is therefore only useful if its vision system keeps the crop off
+the spray map.
+
+\section{Why zero-shot vision}
+Today this separation is done by supervised networks trained on thousands of labelled images of the
+same crop under similar conditions~\cite{milioto2018realtime,lottes2018fcn,hasan2021survey}. Labelling
+plants pixel by pixel is slow and expensive, and a network trained on one field often degrades on
+another~\cite{weyler2023domain}. For a small Indian farm growing several crops in a season, collecting
+a labelled dataset for each crop and field is not realistic.
+
+Foundation models offer a different route. Grounding DINO~\cite{liu2024groundingdino} finds objects
+named in a free-text prompt, and SAM~2~\cite{ravi2025sam2} outlines any object it is pointed at.
+Chained together, as in Grounded SAM~\cite{ren2024groundedsam}, they promise to segment ``the weeds''
+in a photograph without a single training label. Whether this works for crop and weed, which are both
+small green plants that often look alike, is an open question: a 2025 study by Chong et
+al.~\cite{chong2025zeroshot} argues that text prompts are ill-defined for exactly this task. AgriAgent
+measures the question on real field photographs and asks what a transparent safety layer can recover.
+
+\section{Problem statement}
+Given an RGB field photograph and the name of the crop, produce a spray map that covers the weeds and
+leaves the crop untouched, using pretrained models only (no training on our data), on a laptop GPU,
+with every spraying decision explainable and testable.
+
+\section{Scope}
+AgriAgent is a research prototype. It produces a map on screen and a GeoJSON file; it does not drive a
+sprayer, a drone or a tractor, and its GeoJSON coordinates are placeholders, not GPS. Separating weed
+from crop for spot spraying is the only application studied. No model is trained or fine-tuned.
+Disease detection, yield counting, canopy cover and nutrient stress, listed in our original proposal,
+are future scope (Chapter~\ref{ch:future}).
+
+\section{Contributions}
+\begin{enumerate}
+\item An honest measurement of the Grounded SAM pipeline for crop-versus-weed spraying on two crops,
+  with labels copied from the official dataset files and a held-out set evaluated once
+  (Chapter~\ref{ch:results}).
+\item A deterministic safety gate and a four-rule plant classifier that move the held-out result from
+  65.5\% crop pixels sprayed and 1.8\% weed recall to 8.8\% and 77.9\%, with no training and no model
+  calls (Section~\ref{sec:holdout}).
+\item A bounded escalation agent whose verdicts are combined by the measured accuracy of each source,
+  and a negative but useful result: it is safe and precise but adds no weed recall
+  (Section~\ref{sec:agent-results}).
+\item A testing record: 270 automated tests, two system test cycles by a team member on a fresh
+  Windows installation, a verification run, a manual test cycle and 30 findings (F1--F30) traced to
+  fixes or stated limitations (Section~\ref{sec:testing}). The final build is released as
+  \code{v1.0.0}.
+\end{enumerate}
+
+\section{Organisation of the report}
+Chapter~\ref{ch:survey} surveys related work and Chapter~\ref{ch:gaps} states the gaps it leaves.
+Chapter~\ref{ch:objectives} lists our objectives and research questions. Chapter~\ref{ch:proposed}
+describes the proposed system, the datasets and the implementation. Chapter~\ref{ch:results} gives the
+mathematical model, the evaluation method, the results with their analysis, and the testing.
+Chapter~\ref{ch:conclusion} concludes and Chapter~\ref{ch:future} describes future scope.
+Appendix~\ref{app:run} explains how to run the system; Appendix~\ref{app:contrib} records who built
+which part, counted from the repository history.

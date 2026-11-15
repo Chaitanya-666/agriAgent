@@ -1,0 +1,809 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    9,
+    27
+   ]
+  ],
+  "date-time": "2026-09-27T00:23:04Z",
+  "timestamp": 1790468584844,
+  "version": "4.1.0"
+ },
+ "reference-count": 58,
+ "publisher": "MDPI AG",
+ "issue": "5",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      5,
+      15
+     ]
+    ],
+    "date-time": "2018-05-15T00:00:00Z",
+    "timestamp": 1526342400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "Remote Sensing"
+ ],
+ "abstract": "<jats:p>In agriculture, reducing herbicide use is a challenge to reduce health and environmental risks while maintaining production yield and quality. Site-specific weed management is a promising way to reach this objective but requires efficient weed detection methods. In this paper, an automatic image processing has been developed to discriminate between crop and weed pixels combining spatial and spectral information extracted from four-band multispectral images. Image data was captured at 3 m above ground, with a camera (multiSPEC 4C, AIRINOV, Paris) mounted on a pole kept manually. For each image, the field of view was approximately 4 m \u00d7 3 m and the resolution was 6 mm/pix. The row crop arrangement was first used to discriminate between some crop and weed pixels depending on their location inside or outside of crop rows. Then, these pixels were used to automatically build the training dataset concerning the multispectral features of crop and weed pixel classes. For each image, a specific training dataset was used by a supervised classifier (Support Vector Machine) to classify pixels that cannot be correctly discriminated using only the initial spatial approach. Finally, inter-row pixels were classified as weed and in-row pixels were classified as crop or weed depending on their spectral characteristics. The method was assessed on 14 images captured on maize and sugar beet fields. The contribution of the spatial, spectral and combined information was studied with respect to the classification quality. Our results show the better ability of the spatial and spectral combination algorithm to detect weeds between and within crop rows. They demonstrate the improvement of the weed detection rate and the improvement of its robustness. On all images, the mean value of the weed detection rate was 89% for spatial and spectral combination method, 79% for spatial method, and 75% for spectral method. Moreover, our work shows that the plant in-line sowing can be used to design an automatic image processing and classification algorithm to detect weed without requiring any manual data selection and labelling. Since the method required crop row identification, the method is suitable for wide-row crops and high spatial resolution images (at least 6 mm/pix).</jats:p>",
+ "DOI": "10.3390/rs10050761",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    5,
+    15
+   ]
+  ],
+  "date-time": "2018-05-15T11:36:13Z",
+  "timestamp": 1526384173000
+ },
+ "page": "761",
+ "update-policy": "https://doi.org/10.3390/mdpi_crossmark_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 103,
+ "title": [
+  "Unsupervised Classification Algorithm for Early Weed Detection in Row-Crops by Combining Spatial and Spectral Information"
+ ],
+ "prefix": "10.3390",
+ "volume": "10",
+ "author": [
+  {
+   "given": "Marine",
+   "family": "Louargant",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Agro\u00e9cologie, AgroSup Dijon, INRA, Universit\u00e9 Bourgogne Franche-Comt\u00e9, 21000 Dijon, France"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5492-9590",
+   "authenticated-orcid": false,
+   "given": "Gawain",
+   "family": "Jones",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Agro\u00e9cologie, AgroSup Dijon, INRA, Universit\u00e9 Bourgogne Franche-Comt\u00e9, 21000 Dijon, France"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Romain",
+   "family": "Faroux",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "AIRINOV, 174 Quai de Jemmapes, 75010 Paris, France"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Jean-No\u00ebl",
+   "family": "Paoli",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Agro\u00e9cologie, AgroSup Dijon, INRA, Universit\u00e9 Bourgogne Franche-Comt\u00e9, 21000 Dijon, France"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Thibault",
+   "family": "Maillot",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Agro\u00e9cologie, AgroSup Dijon, INRA, Universit\u00e9 Bourgogne Franche-Comt\u00e9, 21000 Dijon, France"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Christelle",
+   "family": "G\u00e9e",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Agro\u00e9cologie, AgroSup Dijon, INRA, Universit\u00e9 Bourgogne Franche-Comt\u00e9, 21000 Dijon, France"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Sylvain",
+   "family": "Villette",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Agro\u00e9cologie, AgroSup Dijon, INRA, Universit\u00e9 Bourgogne Franche-Comt\u00e9, 21000 Dijon, France"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "1968",
+ "published-online": {
+  "date-parts": [
+   [
+    2018,
+    5,
+    15
+   ]
+  ]
+ },
+ "reference": [
+  {
+   "key": "ref_1",
+   "doi-asserted-by": "crossref",
+   "first-page": "31",
+   "DOI": "10.1017/S0021859605005708",
+   "article-title": "Crop losses to pests",
+   "volume": "144",
+   "author": "Oerke",
+   "year": "2006",
+   "journal-title": "J. Agric. Sci."
+  },
+  {
+   "key": "ref_2",
+   "doi-asserted-by": "crossref",
+   "first-page": "249",
+   "DOI": "10.1023/A:1024988022674",
+   "article-title": "The economic impact of site-specific weed control",
+   "volume": "4",
+   "author": "Timmermann",
+   "year": "2003",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_3",
+   "doi-asserted-by": "crossref",
+   "first-page": "171",
+   "DOI": "10.1007/s10343-008-0195-1",
+   "article-title": "Precision farming for weed management: Techniques",
+   "volume": "60",
+   "author": "Weis",
+   "year": "2008",
+   "journal-title": "Gesunde Pflanzen"
+  },
+  {
+   "key": "ref_4",
+   "doi-asserted-by": "crossref",
+   "first-page": "95",
+   "DOI": "10.1023/A:1009977903204",
+   "article-title": "Robotic weed control system for tomatoes",
+   "volume": "1",
+   "author": "Lee",
+   "year": "1999",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_5",
+   "doi-asserted-by": "crossref",
+   "first-page": "185",
+   "DOI": "10.1111/j.1365-3180.2006.00504.x",
+   "article-title": "Practical experiences with a system for site-specific weed control in arable crops using real-time image analysis and GPS-controlled patch spraying",
+   "volume": "46",
+   "author": "Gerhards",
+   "year": "2006",
+   "journal-title": "Weed Res."
+  },
+  {
+   "key": "ref_6",
+   "doi-asserted-by": "crossref",
+   "first-page": "23",
+   "DOI": "10.1016/0168-1699(94)90050-7",
+   "article-title": "In-field location using GPS for spatially variable field operations",
+   "volume": "11",
+   "author": "Stafford",
+   "year": "1994",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_7",
+   "doi-asserted-by": "crossref",
+   "first-page": "219",
+   "DOI": "10.1007/s11119-006-9015-8",
+   "article-title": "Patchy weed distribution and site-specific weed control in winter cereals",
+   "volume": "7",
+   "author": "Nordmeyer",
+   "year": "2006",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_8",
+   "doi-asserted-by": "crossref",
+   "first-page": "510",
+   "DOI": "10.1111/j.1365-3180.2012.00943.x",
+   "article-title": "Evaluation of two patch spraying systems in winter wheat and maize",
+   "volume": "52",
+   "author": "Gutjahr",
+   "year": "2012",
+   "journal-title": "Weed Res."
+  },
+  {
+   "key": "ref_9",
+   "first-page": "24",
+   "article-title": "Developments in physical weed control in northwest Europe",
+   "volume": "24",
+   "author": "Riemens",
+   "year": "2016",
+   "journal-title": "Julius-K\u00fchn-Archiv"
+  },
+  {
+   "key": "ref_10",
+   "doi-asserted-by": "crossref",
+   "first-page": "693",
+   "DOI": "10.1007/s11119-012-9274-5",
+   "article-title": "The application of small unmanned aerial systems for precision agriculture: A review",
+   "volume": "13",
+   "author": "Zhang",
+   "year": "2012",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_11",
+   "doi-asserted-by": "crossref",
+   "first-page": "242",
+   "DOI": "10.1111/wre.12026",
+   "article-title": "Potential uses of small unmanned aircraft systems (UAS) in weed research",
+   "volume": "53",
+   "author": "Rasmussen",
+   "year": "2013",
+   "journal-title": "Weed Res."
+  },
+  {
+   "key": "ref_12",
+   "doi-asserted-by": "crossref",
+   "first-page": "117",
+   "DOI": "10.1006/jaer.2000.0630",
+   "article-title": "Remote-sensing and mapping of weeds in crops",
+   "volume": "78",
+   "author": "Lamb",
+   "year": "2001",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "ref_13",
+   "doi-asserted-by": "crossref",
+   "first-page": "637",
+   "DOI": "10.1007/s11119-013-9321-x",
+   "article-title": "Ground-level hyperspectral imagery for detecting weeds in wheat fields",
+   "volume": "14",
+   "author": "Herrmann",
+   "year": "2013",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_14",
+   "doi-asserted-by": "crossref",
+   "first-page": "6094",
+   "DOI": "10.1080/01431161.2013.793860",
+   "article-title": "Field spectroscopy for weed detection in wheat and chickpea fields",
+   "volume": "34",
+   "author": "Shapira",
+   "year": "2013",
+   "journal-title": "Int. J. Remote Sens."
+  },
+  {
+   "key": "ref_15",
+   "first-page": "98",
+   "article-title": "Ground-based hyperspectral remote sensing for weed management in crop production",
+   "volume": "9",
+   "author": "Huang",
+   "year": "2016",
+   "journal-title": "Int. J. Agric. Biol. Eng."
+  },
+  {
+   "key": "ref_16",
+   "doi-asserted-by": "crossref",
+   "first-page": "667",
+   "DOI": "10.1016/S0167-8655(01)00006-X",
+   "article-title": "Multi-spectral vision system for weed detection",
+   "volume": "22",
+   "author": "Feyaerts",
+   "year": "2001",
+   "journal-title": "Pattern Recognit. Lett."
+  },
+  {
+   "key": "ref_17",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "DOI": "10.1023/A:1013326304427",
+   "article-title": "Weed detection using canopy reflection",
+   "volume": "3",
+   "author": "Vrindts",
+   "year": "2002",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_18",
+   "doi-asserted-by": "crossref",
+   "first-page": "477",
+   "DOI": "10.2135/cropsci2005.0477",
+   "article-title": "Identification of optical spectral signatures for detecting cheat and ryegrass in winter wheat",
+   "volume": "45",
+   "author": "Girma",
+   "year": "2005",
+   "journal-title": "Crop Sci."
+  },
+  {
+   "key": "ref_19",
+   "doi-asserted-by": "crossref",
+   "first-page": "677",
+   "DOI": "10.2307/2657068",
+   "article-title": "Leaf optical properties in higher plants: Linking spectral characteristics to stress and chlorophyll concentration",
+   "volume": "88",
+   "author": "Carter",
+   "year": "2001",
+   "journal-title": "Am. J. Bot."
+  },
+  {
+   "key": "ref_20",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Torres-S\u00e1nchez, J., L\u00f3pez-Granados, F., De Castro, A.I., and Pe\u00f1a-Barrag\u00e1n, J.M. (2013). Configuration and specifications of an unmanned aerial vehicle (UAV) for early site specific weed management. PLoS ONE, 8.",
+   "DOI": "10.1371/journal.pone.0058210"
+  },
+  {
+   "key": "ref_21",
+   "doi-asserted-by": "crossref",
+   "first-page": "5609",
+   "DOI": "10.3390/s150305609",
+   "article-title": "Quantifying efficacy and limits of unmanned aerial vehicle (UAV) technology for weed seedling detection as affected by sensor resolution",
+   "volume": "15",
+   "year": "2015",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "ref_22",
+   "unstructured": "Lottes, P., Khanna, R., Pfeifer, J., Siegwart, R., and Stachniss, C. (June, January 29). UAV-based crop and weed classification for smart farming. Proceedings of the IEEE International Conference on Robotics and Automation (ICRA), Singapore."
+  },
+  {
+   "key": "ref_23",
+   "doi-asserted-by": "crossref",
+   "first-page": "85",
+   "DOI": "10.1016/j.eswa.2015.10.043",
+   "article-title": "Selecting patterns and features for between-and within-crop-row weed mapping using UAV-imagery",
+   "volume": "47",
+   "year": "2016",
+   "journal-title": "Expert Syst. Appl."
+  },
+  {
+   "key": "ref_24",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Pe\u00f1a, J.M., Torres-S\u00e1nchez, J., de Castro, A.I., Kelly, M., and L\u00f3pez-Granados, F. (2013). Weed mapping in early-season maize fields using object-based analysis of unmanned aerial vehicle (UAV) images. PLoS ONE, 8.",
+   "DOI": "10.1371/journal.pone.0077151"
+  },
+  {
+   "key": "ref_25",
+   "doi-asserted-by": "crossref",
+   "first-page": "183",
+   "DOI": "10.1007/s11119-015-9415-8",
+   "article-title": "Early season weed mapping in sunflower using UAV technology: Variability of herbicide treatment maps against weed thresholds",
+   "volume": "17",
+   "year": "2016",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_26",
+   "unstructured": "Rouse, J., Haas, R., Schell, J., and Deering, D. (1974). Monitoring vegetation systems in the Great Plains with ERTS. Third Earth Resources Technology Satellite-1 Symposium\u2014Volume I: Technical Presentations, NASA."
+  },
+  {
+   "key": "ref_27",
+   "doi-asserted-by": "crossref",
+   "first-page": "259",
+   "DOI": "10.13031/2013.27838",
+   "article-title": "Color indices for weed identification under various soil, residue, and lighting conditions",
+   "volume": "38",
+   "author": "Woebbecke",
+   "year": "1995",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "ref_28",
+   "doi-asserted-by": "crossref",
+   "first-page": "104",
+   "DOI": "10.1016/j.compag.2014.02.009",
+   "article-title": "Multi-temporal mapping of the vegetation fraction in early-season wheat fields using images from UAV",
+   "volume": "103",
+   "year": "2014",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_29",
+   "doi-asserted-by": "crossref",
+   "first-page": "43",
+   "DOI": "10.1016/j.compag.2015.03.019",
+   "article-title": "An automatic object-based method for optimal thresholding in UAV images: Application for vegetation detection in herbaceous crops",
+   "volume": "114",
+   "year": "2015",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_30",
+   "doi-asserted-by": "crossref",
+   "first-page": "98",
+   "DOI": "10.1016/j.cropro.2012.04.024",
+   "article-title": "Classification of crops and weeds from digital images: A support vector machine approach",
+   "volume": "40",
+   "author": "Ahmed",
+   "year": "2012",
+   "journal-title": "Crop Prot."
+  },
+  {
+   "key": "ref_31",
+   "doi-asserted-by": "crossref",
+   "first-page": "197",
+   "DOI": "10.1016/S0168-1699(99)00068-X",
+   "article-title": "Colour and shape analysis techniques for weed detection in cereal fields",
+   "volume": "25",
+   "author": "Benlloch",
+   "year": "2000",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_32",
+   "doi-asserted-by": "crossref",
+   "first-page": "441",
+   "DOI": "10.13031/2013.2723",
+   "article-title": "Classification of weed species using color texture features and discriminant analysis",
+   "volume": "43",
+   "author": "Burks",
+   "year": "2000",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "ref_33",
+   "doi-asserted-by": "crossref",
+   "first-page": "161",
+   "DOI": "10.1016/0168-1699(96)00014-2",
+   "article-title": "Tracking of row structure in three crops using image analysis",
+   "volume": "15",
+   "author": "Marchant",
+   "year": "1996",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_34",
+   "doi-asserted-by": "crossref",
+   "first-page": "325",
+   "DOI": "10.1016/j.biosystemseng.2006.03.014",
+   "article-title": "Application of the hough transform for seed row localisation using machine vision",
+   "volume": "94",
+   "author": "Leemans",
+   "year": "2006",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "ref_35",
+   "doi-asserted-by": "crossref",
+   "first-page": "163",
+   "DOI": "10.1016/S0168-1699(02)00005-4",
+   "article-title": "Inter-row vision guidance for mechanical weed control in sugar beet",
+   "volume": "33",
+   "author": "Tillett",
+   "year": "2002",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_36",
+   "doi-asserted-by": "crossref",
+   "first-page": "21",
+   "DOI": "10.1007/s11119-005-6787-1",
+   "article-title": "Automated crop and weed monitoring in widely spaced cereals",
+   "volume": "7",
+   "author": "Hague",
+   "year": "2006",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_37",
+   "doi-asserted-by": "crossref",
+   "first-page": "793080",
+   "DOI": "10.1155/S1110865702204072",
+   "article-title": "Spatial and spectral methods for weed detection and localization",
+   "volume": "2002",
+   "author": "Vioix",
+   "year": "2002",
+   "journal-title": "EURASIP J. Adv. Signal Proc."
+  },
+  {
+   "key": "ref_38",
+   "first-page": "429",
+   "article-title": "Theory of communication. Part 1: The analysis of information",
+   "volume": "93",
+   "author": "Gabor",
+   "year": "1946",
+   "journal-title": "Electr. Eng. Part III Radio Commun. Eng. J. Inst."
+  },
+  {
+   "key": "ref_39",
+   "unstructured": "Vioix, J.-B. (2004). Conception et R\u00e9alisation d\u2019un Dispositif D\u2019imagerie Multispectrale Embarqu\u00e9: Du Capteur aux Traitements Pour la D\u00e9tection D\u2019adventices. [Ph.D. Thesis, Universit\u00e9 de Bourgogne]."
+  },
+  {
+   "key": "ref_40",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Hung, C., Xu, Z., and Sukkarieh, S. (2014). Feature learning based approach for weed classification using high resolution aerial images from a digital camera mounted on a UAV. Remote Sens., 6.",
+   "DOI": "10.3390/rs61212037"
+  },
+  {
+   "key": "ref_41",
+   "doi-asserted-by": "crossref",
+   "unstructured": "P\u00e9rez-Ortiz, M., Guti\u00e9rrez, P.A., Pe\u00f1a, J.M., Torres-S\u00e1nchez, J., Herv\u00e1s-Mart\u00ednez, C., and L\u00f3pez-Granados, F. (2015, January 10\u201312). An experimental comparison for the identification of weeds in sunflower crops via unmanned aerial vehicles and object-based analysis. Proceedings of the International Work-Conference on Artificial Neural Networks, Palma de Mallorca, Spain.",
+   "DOI": "10.1007/978-3-319-19258-1_22"
+  },
+  {
+   "key": "ref_42",
+   "first-page": "43",
+   "article-title": "Fusion of pixel and object-based features for weed mapping using unmanned aerial vehicle imagery",
+   "volume": "67",
+   "author": "Gao",
+   "year": "2018",
+   "journal-title": "Int. J. Appl. Earth Obs. Geoinform."
+  },
+  {
+   "key": "ref_43",
+   "doi-asserted-by": "crossref",
+   "unstructured": "De Castro, A., Torres-S\u00e1nchez, J., Pe\u00f1a, J., Jim\u00e9nez-Brenes, F., Csillik, O., and L\u00f3pez-Granados, F. (2018). An automatic random forest-obia algorithm for early weed mapping between and within crop rows using UAV imagery. Remote Sens., 10.",
+   "DOI": "10.3390/rs10020285"
+  },
+  {
+   "key": "ref_44",
+   "doi-asserted-by": "crossref",
+   "first-page": "932",
+   "DOI": "10.1007/s11119-017-9528-3",
+   "article-title": "Weed detection by UAV: Simulation of the impact of spectral mixing in multispectral images",
+   "volume": "18",
+   "author": "Louargant",
+   "year": "2017",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_45",
+   "unstructured": "Meier, U. (1997). Growth Stages of Mono- and Dicotyledonous Plants, Blackwell Wissenschafts-Verlag."
+  },
+  {
+   "key": "ref_46",
+   "doi-asserted-by": "crossref",
+   "first-page": "654",
+   "DOI": "10.1016/j.rse.2014.06.006",
+   "article-title": "Green area index from an unmanned aerial system over wheat and rapeseed crops",
+   "volume": "152",
+   "author": "Verger",
+   "year": "2014",
+   "journal-title": "Remote Sens. Environ."
+  },
+  {
+   "key": "ref_47",
+   "unstructured": "Gonzalez, R.C., and Woods, R.E. (2002). Introduction to the fourier transform and the frequency domain. Digital Image Processing, Prentice Hall. [2nd ed.]."
+  },
+  {
+   "key": "ref_48",
+   "doi-asserted-by": "crossref",
+   "first-page": "127",
+   "DOI": "10.1016/0034-4257(79)90013-0",
+   "article-title": "Red and photographic infrared linear combinations for monitoring vegetation",
+   "volume": "8",
+   "author": "Tucker",
+   "year": "1979",
+   "journal-title": "Remote Sens. Environ."
+  },
+  {
+   "key": "ref_49",
+   "first-page": "309",
+   "article-title": "Monitoring vegetation systems in the great plains with erts",
+   "volume": "Volume 1",
+   "author": "Rouse",
+   "year": "1974",
+   "journal-title": "Goddard Space Flight Center 3d ERTS-1 Symposium"
+  },
+  {
+   "key": "ref_50",
+   "doi-asserted-by": "crossref",
+   "first-page": "62",
+   "DOI": "10.1109/TSMC.1979.4310076",
+   "article-title": "A threshold selection method from gray-level histograms",
+   "volume": "9",
+   "author": "Otsu",
+   "year": "1979",
+   "journal-title": "IEEE Trans. Syst. Man Cybern."
+  },
+  {
+   "key": "ref_51",
+   "unstructured": "Hough, P.V.C. (1962). Method and Means for Recognizing Complex Patterns. (3,069,654), U.S. Patent."
+  },
+  {
+   "key": "ref_52",
+   "first-page": "11",
+   "article-title": "Use of the hough transformation to detect lines and curves in pictures",
+   "volume": "15",
+   "author": "Duda",
+   "year": "1972",
+   "journal-title": "Commun. Assoc. Comput. Mach."
+  },
+  {
+   "key": "ref_53",
+   "doi-asserted-by": "crossref",
+   "first-page": "533",
+   "DOI": "10.1016/j.asoc.2015.08.027",
+   "article-title": "A semi-supervised system for weed mapping in sunflower crops using unmanned aerial vehicles and a crop row detection method",
+   "volume": "37",
+   "year": "2015",
+   "journal-title": "Appl. Soft Comput."
+  },
+  {
+   "key": "ref_54",
+   "unstructured": "Louargant, M. (2016). Proxid\u00e9tection des Adventices par Imagerie A\u00e9rienne: Vers un Service de Gestion par Drone. [Ph.D. Thesis, Universit\u00e9 de Bourgogne]."
+  },
+  {
+   "key": "ref_55",
+   "doi-asserted-by": "crossref",
+   "first-page": "43",
+   "DOI": "10.1016/j.compag.2009.02.009",
+   "article-title": "Assessment of an inter-row weed infestation rate on simulated agronomic images",
+   "volume": "67",
+   "author": "Jones",
+   "year": "2009",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_56",
+   "unstructured": "Hadoux, X., Gorretta, N., and Rabatel, G. (2012, January 8\u201312). Weeds-wheat discrimination using hyperspectral imagery. Proceedings of the International Conference on Agricultural Engineering, Valence, Spain."
+  },
+  {
+   "key": "ref_57",
+   "doi-asserted-by": "crossref",
+   "first-page": "389",
+   "DOI": "10.1006/jaer.1999.0519",
+   "article-title": "Crop-weed discrimination by line imaging spectroscopy",
+   "volume": "75",
+   "author": "Borregaard",
+   "year": "2000",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "ref_58",
+   "doi-asserted-by": "crossref",
+   "first-page": "141",
+   "DOI": "10.1016/j.compag.2007.12.007",
+   "article-title": "Selection of the most efficient wavelength bands for discriminating weeds from crop",
+   "volume": "62",
+   "author": "Piron",
+   "year": "2008",
+   "journal-title": "Comput. Electron. Agric."
+  }
+ ],
+ "container-title": [
+  "Remote Sensing"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://www.mdpi.com/2072-4292/10/5/761/pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    11
+   ]
+  ],
+  "date-time": "2025-10-11T15:04:20Z",
+  "timestamp": 1760195060000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://www.mdpi.com/2072-4292/10/5/761"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    5,
+    15
+   ]
+  ]
+ },
+ "references-count": 58,
+ "journal-issue": {
+  "issue": "5",
+  "published-online": {
+   "date-parts": [
+    [
+     2018,
+     5
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "rs10050761"
+ ],
+ "URL": "https://doi.org/10.3390/rs10050761",
+ "relation": {},
+ "ISSN": [
+  "2072-4292"
+ ],
+ "issn-type": [
+  {
+   "value": "2072-4292",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    5,
+    15
+   ]
+  ]
+ }
+}

@@ -1,0 +1,1074 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    11
+   ]
+  ],
+  "date-time": "2026-11-11T23:40:05Z",
+  "timestamp": 1794440405232,
+  "version": "4.9.1"
+ },
+ "reference-count": 85,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-017"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-037"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-012"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-029"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2023-02-01T00:00:00Z",
+    "timestamp": 1675209600000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-004"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/100006481",
+   "name": "Cotton Incorporated",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "21-005"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "21-005"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/100006481",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2023,
+    2
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2023.107655",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2023,
+    1,
+    19
+   ]
+  ],
+  "date-time": "2023-01-19T23:40:06Z",
+  "timestamp": 1674171606000
+ },
+ "page": "107655",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 319,
+ "special_numbering": "C",
+ "title": [
+  "YOLOWeeds: A novel benchmark of YOLO object detectors for multi-class weed detection in cotton production systems"
+ ],
+ "prefix": "10.1016",
+ "volume": "205",
+ "author": [
+  {
+   "given": "Fengying",
+   "family": "Dang",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Dong",
+   "family": "Chen",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Yuzhen",
+   "family": "Lu",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Zhaojian",
+   "family": "Li",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.compag.2023.107655_b0005",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2021.106081",
+   "article-title": "Performance of deep learning models for classifying and detecting common weeds in corn and soybean production systems",
+   "volume": "184",
+   "author": "Ahmad",
+   "year": "2021",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2023.107655_b0010",
+   "doi-asserted-by": "crossref",
+   "first-page": "339",
+   "DOI": "10.3390/agriengineering3020023",
+   "article-title": "Opportunities for robotic systems and automation in cotton production",
+   "volume": "3",
+   "author": "Barnes",
+   "year": "2021",
+   "journal-title": "AgriEngineering"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2023.107655_b0015",
+   "doi-asserted-by": "crossref",
+   "first-page": "241",
+   "DOI": "10.1111/wre.12418",
+   "article-title": "Thermal weed control technologies for conservation agriculture\u2014a review",
+   "volume": "60",
+   "author": "Bauer",
+   "year": "2020",
+   "journal-title": "Weed Res."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2023.107655_b0020",
+   "doi-asserted-by": "crossref",
+   "first-page": "1179",
+   "DOI": "10.1002/rob.21727",
+   "article-title": "Robot for weed species plant-specific management",
+   "volume": "34",
+   "author": "Bawden",
+   "year": "2017",
+   "journal-title": "J. Field Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0025",
+   "unstructured": "Bochkovskiy, A., Wang, C.Y., Liao, H.Y.M., (2020). Yolov4: Optimal speed and accuracy of object detection. arXiv preprint, arXiv:2004.10934, 2020."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2023.107655_b0030",
+   "doi-asserted-by": "crossref",
+   "first-page": "125",
+   "DOI": "10.3390/info11020125",
+   "article-title": "Albumentations: fast and flexible image augmentations",
+   "volume": "11",
+   "author": "Buslaev",
+   "year": "2020",
+   "journal-title": "Information"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0035",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2022.107091",
+   "article-title": "Performance evaluation of deep transfer learning on multi-class identification of common weed species in cotton production systems",
+   "volume": "198",
+   "author": "Chen",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0040",
+   "series-title": "In ProceedIngs of the IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+   "first-page": "13039",
+   "article-title": "You only look one-level feature",
+   "author": "Chen",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0045",
+   "unstructured": "Chen, D., Q, X., Zheng, Y., Lu, Y., Li, Z., (2022). Deep data augmentation for weed recognition enhancement: a diffusion probabilistic model and transfer learning based approach. https://arxiv.org/abs/2210.09509."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2023.107655_b0050",
+   "first-page": "4",
+   "article-title": "See & spray: the next generation of weed control",
+   "volume": "24",
+   "author": "Chostner",
+   "year": "2017",
+   "journal-title": "Resource Magazine"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0055",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Du, Y., Zhang, G., Tsang, D., Jawed, M.K. (2021). Deep-cnn based robotic multi-class under-canopy weed control in precision farming. arXiv preprint arXiv:2112.13986.",
+   "DOI": "10.1109/ICRA46639.2022.9812240"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_bib413",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Dang, F., Chen, D., Lu, Y., Li, Z., Zheng, Y., 2022. DeepCottonWeeds (DCW): a novel benchmark of YOLO object detectors for weed detection in cotton production systems. 2022 ASABE Annual International Meeting Paper#2200214. https://doi.org/10.13031/aim.202200214.",
+   "DOI": "10.13031/aim.202200214"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0060",
+   "series-title": "In ProceedIngs of the 27th ACM International Conference on Multimedia",
+   "first-page": "2276",
+   "article-title": "The via annotation software for images, audio and video",
+   "author": "Dutta",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0065",
+   "doi-asserted-by": "crossref",
+   "first-page": "72",
+   "DOI": "10.1016/j.biosystemseng.2016.08.024",
+   "article-title": "Plant species classification using deep convolutional neural network",
+   "volume": "151",
+   "author": "Dyrmann",
+   "year": "2016",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0075",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2020.105306",
+   "article-title": "Towards weeds identification assistance through transfer learning",
+   "volume": "171",
+   "author": "Espejo-Garcia",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0080",
+   "doi-asserted-by": "crossref",
+   "first-page": "98",
+   "DOI": "10.1007/s11263-014-0733-5",
+   "article-title": "The pascal visual object classes challenge: a retrospective",
+   "volume": "111",
+   "author": "Everingham",
+   "year": "2015",
+   "journal-title": "Int. J. Comput. Vis."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0085",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1186/s13007-020-00570-z",
+   "article-title": "Deep convolutional neural networks for image-based convolvulus sepium detection in sugar beet fields",
+   "volume": "16",
+   "author": "Gao",
+   "year": "2020",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0090",
+   "unstructured": "Ge, Z., Liu, S., Wang, F., Li, Z., Sun, J. (2021). Yolox: Exceeding yolo series in 2021. arXiv preprint arXiv:2107.08430."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0095",
+   "series-title": "In Proceedings of the 32nd International Conference on Neural Information Processing Systems",
+   "first-page": "10750",
+   "article-title": "Dropblock: A regularization method for convolutional networks",
+   "author": "Ghiasi",
+   "year": "2018"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0100",
+   "doi-asserted-by": "crossref",
+   "first-page": "142",
+   "DOI": "10.1109/TPAMI.2015.2437384",
+   "article-title": "Region-based convolutional networks for accurate object detection and segmentation",
+   "volume": "38",
+   "author": "Girshick",
+   "year": "2015",
+   "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell."
+  },
+  {
+   "issue": "6390",
+   "key": "10.1016/j.compag.2023.107655_b0105",
+   "doi-asserted-by": "crossref",
+   "first-page": "728",
+   "DOI": "10.1126/science.aar3780",
+   "article-title": "Wicked evolution: Can we address the sociobiological dilemma of pesticide resistance?",
+   "volume": "360",
+   "author": "Gould",
+   "year": "2018",
+   "journal-title": "Science"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0110",
+   "doi-asserted-by": "crossref",
+   "first-page": "184",
+   "DOI": "10.1016/j.compag.2016.04.024",
+   "article-title": "A survey of image processing techniques for plant extraction and segmentation in the field",
+   "volume": "125",
+   "author": "Hamuda",
+   "year": "2016",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0115",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2021.106067",
+   "article-title": "A survey of deep learning techniques for weed detection from images",
+   "volume": "184",
+   "author": "Hasan",
+   "year": "2021",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0120",
+   "series-title": "In Proceedings of the IEEE International Conference on Computer Vision",
+   "first-page": "2961",
+   "article-title": "Mask r-cnn",
+   "author": "He",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_bib411",
+   "first-page": "558",
+   "article-title": "Bag of tricks for image classification with convolutional neural networks",
+   "author": "He",
+   "year": "2019",
+   "journal-title": "Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0125",
+   "series-title": "Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)",
+   "first-page": "8340",
+   "article-title": "The many faces of robustness: a critical analysis of out-of-distribution generalization",
+   "author": "Hendrycks",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0130",
+   "unstructured": "Huang, X., Wang, X., Lv. W., Bai, X., Long, X., Deng, K., Dang, Q., Han, S., Liu, Q., Hu, X., Yu, D., Ma, Y., Yoshie, O. (2021). PP-YOLOv2: A practical object detector. arXiv preprint arXiv:2104.10419."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0135",
+   "article-title": "yolov5",
+   "author": "Jocher",
+   "year": "2020",
+   "journal-title": "Code repository"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2023.107655_b0140",
+   "doi-asserted-by": "crossref",
+   "first-page": "342",
+   "DOI": "10.1017/wet.2019.120",
+   "article-title": "Crop signal markers facilitate crop detection and weed removal from lettuce and tomato by an intelligent cultivator",
+   "volume": "34",
+   "author": "Kennedy",
+   "year": "2020",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2023.107655_b0150",
+   "doi-asserted-by": "crossref",
+   "first-page": "260",
+   "DOI": "10.1017/wsc.2017.70",
+   "article-title": "Genetically engineered herbicide-resistant crops and herbicide-resistant weed evolution in the United States",
+   "volume": "66",
+   "author": "Kniss",
+   "year": "2018",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0155",
+   "first-page": "231",
+   "article-title": "Precision weed control system for cotton",
+   "volume": "45",
+   "author": "Lamm",
+   "year": "2002",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2023.107655_b0160",
+   "doi-asserted-by": "crossref",
+   "first-page": "147",
+   "DOI": "10.1111/wre.12469",
+   "article-title": "Site-specific weed management\u2014constraints and opportunities for the weed research community: Insights from a workshop",
+   "volume": "61",
+   "author": "Lati",
+   "year": "2021",
+   "journal-title": "Weed Res."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2023.107655_b0165",
+   "doi-asserted-by": "crossref",
+   "first-page": "582",
+   "DOI": "10.1614/WS-07-204.1",
+   "article-title": "Glyphosate and multiple herbicide resistance in common waterhemp (amaranthus rudis) populations from Missouri",
+   "volume": "56",
+   "author": "Legleiter",
+   "year": "2008",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0170",
+   "unstructured": "Li, C., Li, L., Jiang, H., Weng, K., Geng, Y., Li, L., Ke., Z., Li, Q., Cheng, M., Nie, W., Li, Y., Zhang, B., Liang, Y., Zhou, L., Xu, X., Chu, X., Wei, X., Wei, X. (2022a). YOLOv6: a single-stage object detection framework for industrial applications. https://arxiv.org/pdf/2209.02976.pdf."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0175",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Li, Y., Guo, Z., Shuang, F., Zhang, M., Li., X. (2022b). Key technologies of machine vision for weeding robots: A review and benchmark. Computers and Electronics in Agriculture, 196, 106880. https://doi.org/10.1016/j.compag.2022.106880.",
+   "DOI": "10.1016/j.compag.2022.106880"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0180",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lin, T.Y., Maire, M., Belongie, S., Hays, J., Perona, P., Ramanan, D., Dol\u013aar, P., Zitnick, C.L. (2014). Microsoft coco: Common objects in context. In European Conference on Computer Vision, 740\u2013755. https://doi.org/10.1007/978-3-319-10602-1_48.",
+   "DOI": "10.1007/978-3-319-10602-1_48"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2023.107655_b0185",
+   "doi-asserted-by": "crossref",
+   "first-page": "261",
+   "DOI": "10.1007/s11263-019-01247-4",
+   "article-title": "Deep learning for generic object detection: a survey",
+   "volume": "128",
+   "author": "Liu",
+   "year": "2020",
+   "journal-title": "Int. J. Comput. Vis."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_bib414",
+   "unstructured": "Lu, Y., 2023. CottonWeedDet12: a 12-class weed dataset of cotton production systems for benchmarking AI models for weed detection [Dataset]. Zenodo. https://doi.org/10.5281/zenodo.7535814."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0190",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2022.107208",
+   "article-title": "Generative adversarial networks (GANs) for image augmentation in agriculture: a systematic review",
+   "volume": "200",
+   "author": "Lu",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0195",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2020.105760",
+   "article-title": "A survey of public datasets for computer vision tasks in precision agriculture",
+   "volume": "178",
+   "author": "Lu",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0200",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2022.106711",
+   "article-title": "Robust plant segmentation of color images based on image contrast optimization",
+   "volume": "193",
+   "author": "Lu",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2023.107655_b0205",
+   "first-page": "227",
+   "article-title": "Cotton yield loss potential in response to length of palmer amaranth (amaranthus palmeri) interference",
+   "volume": "17",
+   "author": "MacRae",
+   "year": "2013",
+   "journal-title": "J. Cotton Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0210",
+   "doi-asserted-by": "crossref",
+   "first-page": "53",
+   "DOI": "10.1016/j.cropro.2016.08.008",
+   "article-title": "Weed management in cotton (gossypium hirsutum l.) through weed-crop competition: a review",
+   "volume": "95",
+   "author": "Manalil",
+   "year": "2017",
+   "journal-title": "Crop Prot."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2023.107655_b0215",
+   "doi-asserted-by": "crossref",
+   "first-page": "282",
+   "DOI": "10.1016/j.compag.2008.03.009",
+   "article-title": "Verification of color vegetation indices for automated crop imaging applications",
+   "volume": "63",
+   "author": "Meyer",
+   "year": "2008",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0220",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Misra. M. (2019). Mish: A self regularized non-monotonic activation function. arXiv preprint arXiv:1908.08681.",
+   "DOI": "10.5244/C.34.191"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2023.107655_b0225",
+   "doi-asserted-by": "crossref",
+   "first-page": "408",
+   "DOI": "10.1614/0890-037X(2001)015[0408:CIOPAA]2.0.CO;2",
+   "article-title": "Competitive impact of palmer amaranth (amaranthus palmeri) on cotton (gossypium hirsutum) development and yield",
+   "volume": "15",
+   "author": "Morgan",
+   "year": "2001",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0230",
+   "article-title": "Eden library: a long-term database for storing agricultural multi-sensor datasets from UAV and proximal platforms",
+   "volume": "2",
+   "author": "Mylonas",
+   "year": "2022",
+   "journal-title": "Smart Agric. Technol."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0235",
+   "unstructured": "Nelson, J., Solawetz, J. (2020). Responding to the controversy about yolov5. https://blog.roboflow.com/yolov4-versus-yolov5/, Accessed April 20, 2022."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2023.107655_b9001",
+   "doi-asserted-by": "crossref",
+   "first-page": "464",
+   "DOI": "10.3390/s22020464",
+   "article-title": "Comparing YOLOv3, YOLOv4 and YOLOv5 for autonomous landing spot detection in faulty UAVs",
+   "volume": "22",
+   "author": "Nepal",
+   "year": "2022",
+   "journal-title": "Sensors"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0240",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1038/s41598-018-38343-3",
+   "article-title": "Deepweeds: a multiclass weed species image dataset for deep learning",
+   "volume": "9",
+   "author": "Olsen",
+   "year": "2019",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0245",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Padilla, R., Netto, S.L., Da Silva, E.A. (2020). A survey on performance metrics for object-detection algorithms. In 2020 International Conference on Systems, Signals and Image Processing (IWSSIP), 237\u2013242. https://doi.org/10.1109/IWSSIP48289.2020.9145130.",
+   "DOI": "10.1109/IWSSIP48289.2020.9145130"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0250",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Pandey, P., Dakshinamurthy, H.N., Young, S.N. Autonomy in detection, actuation, and planning for robotic weeding systems. Transactions of the ASABE, 64(2), 557\u2013563. https://doi.org/10.13031/trans.14085.",
+   "DOI": "10.13031/trans.14085"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0255",
+   "unstructured": "Paszke, A., Gross, S., Massa, F., Lerer, A., Bradbury, J., Chanan, G., Killeen, T., Lin, Z., Gimelshein, N., Antiga, L. (2019). Pytorch: An imperative style, high-performance deep learning library. In Proceedings of the 33rd International Conference on Neural Information Processing Systems, 8026\u20138037."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2023.107655_b0260",
+   "doi-asserted-by": "crossref",
+   "first-page": "57",
+   "DOI": "10.4081/jae.2017.583",
+   "article-title": "Machines for non-chemical intra-row weed control in narrow and wide-row crops: a review",
+   "volume": "48",
+   "author": "Peruzzi",
+   "year": "2017",
+   "journal-title": "J. Agric. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0265",
+   "unstructured": "Raschka, S. (2020). Model evaluation, model selection, and algorithm selection in machine learning. arXiv preprint arXiv:1811.12808."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0270",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Redmon, J., Farhadi, A. (2017). Yolo9000: better, faster, stronger. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 7263\u20137271.",
+   "DOI": "10.1109/CVPR.2017.690"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0275",
+   "unstructured": "Redmon, J., Farhadi, A. (2018). Yolov3: An incremental improvement. arXiv preprint arXiv:1804.02767."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0280",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Redmon, J., Divvala, S., Girshick, R., Farhadi, A. You only look once: Unified, real-time object detection. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 779\u2013788.",
+   "DOI": "10.1109/CVPR.2016.91"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0285",
+   "unstructured": "Ren, S., He, K., Girshick, R., Sun, J. Faster r-cnn: Towards real-time object detection with region proposal networks. Advances in Neural Information Processing Systems, 28."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_bib412",
+   "first-page": "779",
+   "article-title": "You only look once: unified, real-time object detection",
+   "author": "Redmon",
+   "year": "2016",
+   "journal-title": "Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition (CVPR)"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0290",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1038/s41598-020-66505-9",
+   "article-title": "Goosegrass detection in strawberry and tomato using a convolutional neural network",
+   "volume": "10",
+   "author": "Sharpe",
+   "year": "2020",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0295",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "DOI": "10.1016/j.compag.2007.05.008",
+   "article-title": "Autonomous robotic weed control systems: a review",
+   "volume": "61",
+   "author": "Slaughter",
+   "year": "2008",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2023.107655_b0300",
+   "doi-asserted-by": "crossref",
+   "first-page": "393",
+   "DOI": "10.1614/WS-D-13-00077.1",
+   "article-title": "Glyphosate-resistant palmer amaranth (amaranthus palmeri) increases herbicide use, tillage, and hand-weeding in Georgia cotton",
+   "volume": "62",
+   "author": "Sosnoskie",
+   "year": "2014",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0305",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.dib.2020.105833",
+   "article-title": "Dataset of annotated food crops and weed images for robotic computer vision control",
+   "volume": "31",
+   "author": "Sudars",
+   "year": "2020",
+   "journal-title": "Data Brief"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0310",
+   "doi-asserted-by": "crossref",
+   "first-page": "50",
+   "DOI": "10.1016/j.biosystemseng.2018.06.017",
+   "article-title": "Transfer learning for the classification of sugar beet and volunteer potato under field conditions",
+   "volume": "174",
+   "author": "Suh",
+   "year": "2018",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0315",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Sun, C., Shrivastava, A., Singh, S., Gupta, A. (2017). Revisiting unreasonable effectiveness of data in deep learning era. In Proceedings of the IEEE International Conference on Computer Vision, 843-852.",
+   "DOI": "10.1109/ICCV.2017.97"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0320",
+   "unstructured": "Thuan, D. (2021). Evolution of yolo algorithm and yolov5: the state-of-the-art object detection algorithm. https://www.theseus.fi/handle/10024/452552, Accessed April 20, 2022."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0325",
+   "unstructured": "USDA-ERS. (2020). Adoption of genetically engineered crops in the U.S. https://www.ers.usda.gov/data-products/adoption-of-genetically-engineered-crops-in-the-us/. Accessed April 20, 2022."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0330",
+   "unstructured": "USDA-NASS. (2022a). Crop production 2021 summary. https://downloads.usda.library.cornell.edu/usda-esmis/ files/k3569432s/sn00c1252/g158cj98r/cropan22.pdf. Accessed April 20, 2022."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0335",
+   "unstructured": "USDA-NASS. (2022b). Crop values 2021 summary, 2022b. https://downloads.usda.library.cornell.edu/usda-esmis/ files/k35694332/gb19g8865/jd474051x/cpvl0222.pdf. Accessed April 20, 2022."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2023.107655_b0340",
+   "doi-asserted-by": "crossref",
+   "first-page": "215",
+   "DOI": "10.1111/j.1365-3180.2008.00629.x",
+   "article-title": "Innovation in mechanical weed control in crop rows",
+   "volume": "48",
+   "author": "Van Der Weide",
+   "year": "2008",
+   "journal-title": "Weed Res."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0345",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Wang, A., Zhang, W., Wei., X. (2019). A review on weed detection using ground-based machine vision and image processing techniques. Computers and Electronics in Agriculture, 158, 226\u2013240. https://doi.org/10.1016/j.compag.2019.02.005.",
+   "DOI": "10.1016/j.compag.2019.02.005"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0350",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Wang, C.Y., Liao, H.Y.M., Wu, Y.H., Chen, P.Y., Hsieh, J.W., Yeh, I.H. (2020). CSPNet: A new backbone that can enhance learning capability of CNN. In Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition Workshops, 390\u2013391.",
+   "DOI": "10.1109/CVPRW50498.2020.00203"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0355",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Wang, C.Y., Bochkovskiy, A., Liao, H.Y.M. (2021a). Scaled-yolov4: Scaling cross stage partial network. In Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, 13029\u201313038.",
+   "DOI": "10.1109/CVPR46437.2021.01283"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0360",
+   "unstructured": "Wang, C.Y., Yeh, I.H., Liao, H.Y.W. (2021b). You only learn one rep- resentation: Unified network for multiple tasks. arXiv preprint arXiv:2105.04206, 2021b."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0365",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Wang, C.Y., Bochkovskiy, A., Liao, H.Y.M. (2022). YOLOv7: trainable bag-of-freebies sets new state-of-the-art for real-time object detectors. https://arxiv.org/pdf/2207.02696.pdf.",
+   "DOI": "10.1109/CVPR52729.2023.00721"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2023.107655_b0370",
+   "doi-asserted-by": "crossref",
+   "first-page": "888",
+   "DOI": "10.3390/s21030888",
+   "article-title": "R-yolo: a real-time text detector for natural scenes with arbitrary rotation",
+   "volume": "21",
+   "author": "Wang",
+   "year": "2021",
+   "journal-title": "Sensors"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2023.107655_b0375",
+   "doi-asserted-by": "crossref",
+   "first-page": "275",
+   "DOI": "10.1017/wsc.2017.78",
+   "article-title": "Weed management in 2050: perspectives on the future of weed science",
+   "volume": "66",
+   "author": "Westwood",
+   "year": "2018",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0380",
+   "doi-asserted-by": "crossref",
+   "first-page": "259",
+   "DOI": "10.13031/2013.27838",
+   "article-title": "Color indices for weed identification under various soil, residue, and lighting conditions",
+   "volume": "38",
+   "author": "Woebbecke",
+   "year": "1995",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "11",
+   "key": "10.1016/j.compag.2023.107655_b0385",
+   "doi-asserted-by": "crossref",
+   "first-page": "3647",
+   "DOI": "10.3390/s21113647",
+   "article-title": "Review of weed detection methods based on computer vision",
+   "volume": "21",
+   "author": "Wu",
+   "year": "2021",
+   "journal-title": "Sensors"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2023.107655_b0390",
+   "doi-asserted-by": "crossref",
+   "first-page": "7",
+   "DOI": "10.1017/wet.2017.70",
+   "article-title": "Beyond precision weed control: a model for true integration",
+   "volume": "32",
+   "author": "Young",
+   "year": "2018",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0395",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Yun, S., Han, D., Oh, S.J., Chun, S., Choe, J., Yoo, Y. (2019). Cutmix: Regularization strategy to train strong classifiers with localizable features. In Proceedings of the IEEE International Conference on Computer Vision, 6023\u20136032.",
+   "DOI": "10.1109/ICCV.2019.00612"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0400",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zheng, Z., Wang, P., Liu, W., Li, J., Ye, R., Ren, D. (2020). Distance-iou loss: Faster and better learning for bounding box regression. In Proceedings of the AAAI Conference on Artificial Intelligence, 34, 12993\u201313000.",
+   "DOI": "10.1609/aaai.v34i07.6999"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0405",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhuang, F., Qi, Z., Duan, K., Xi, D., Zhu, Y., Zhu, H., Xiong, H., He, Q. (2020). A comprehensive survey on transfer learning. Proceedings of the IEEE, 109(1), 43\u201376. https://doi.org/10.1109/JPROC.2020.3004555.",
+   "DOI": "10.1109/JPROC.2020.3004555"
+  },
+  {
+   "key": "10.1016/j.compag.2023.107655_b0410",
+   "article-title": "Learning data augmentation strategies for object detection",
+   "volume": "566\u2013583",
+   "author": "Zoph",
+   "year": "2020",
+   "journal-title": "Eur. Conf. Comput. Vision"
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169923000431?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169923000431?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    9,
+    29
+   ]
+  ],
+  "date-time": "2025-09-29T13:49:28Z",
+  "timestamp": 1759153768000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169923000431"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2023,
+    2
+   ]
+  ]
+ },
+ "references-count": 85,
+ "alternative-id": [
+  "S0168169923000431"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2023.107655",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2023,
+    2
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "YOLOWeeds: A novel benchmark of YOLO object detectors for multi-class weed detection in cotton production systems",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Computers and Electronics in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.compag.2023.107655",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2023 Elsevier B.V. All rights reserved.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ],
+ "article-number": "107655"
+}
