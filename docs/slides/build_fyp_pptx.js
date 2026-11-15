@@ -96,8 +96,8 @@ s.addText("A Safety-Gated Zero-Shot Vision Pipeline for Crop–Weed Spot Sprayin
 s.addTable([
   [{ text: "Chaitanya Shinde", options: { bold: true } }, "231070066"],
   [{ text: "Amit Ingle", options: { bold: true } }, "231070020"],
-  [{ text: "Sumant Vetal", options: { bold: true } }, "roll no. pending"],
-  [{ text: "Sahil Chavan", options: { bold: true } }, "roll no. pending"],
+  [{ text: "Sumant Vetal", options: { bold: true } }, "241070906"],
+  [{ text: "Sahil Chavan", options: { bold: true } }, "241070909"],
 ], { x: M, y: 4.25, w: 5.2, colW: [2.9, 2.3], fontSize: 16, color: "DDE6DE", border: { type: "none" }, margin: 0.03, rowH: 0.36 });
 s.addText([
   { text: "Project guide", options: { breakLine: true, color: "9FC7A5", fontSize: 13, bold: true } },
