@@ -1,0 +1,12 @@
+\documentclass[varwidth=17cm,border=10pt]{standalone}
+\usepackage{amsmath,amssymb}
+\begin{document}\Large
+$$f(P)=\begin{cases}
+\text{crop}   & o(P)=\dfrac{|P\cap C|}{|P|}\ge 0.3\\[4pt]
+\text{crop}   & \text{rows}\wedge\text{on-row}(P)\\[2pt]
+\text{weed}   & C\neq\emptyset\wedge|P|<0.25\,\tilde m\\[2pt]
+\text{unsure} & C\neq\emptyset\\[2pt]
+\text{weed}   & \text{rows}\wedge\neg\,\text{on-row}(P)\quad(\text{reached only if } C=\emptyset)\\[2pt]
+\text{unsure} & \text{otherwise}
+\end{cases}$$
+\end{document}

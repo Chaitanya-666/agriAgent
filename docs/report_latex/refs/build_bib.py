@@ -22,6 +22,8 @@ CONTAINER_OVERRIDE = {
 # Crossref splits a few names wrongly; the publisher's page is the reference for these.
 AUTHOR_FIX = {
     "10.1016/j.compag.2018.12.048": "Partel, Victor and Kakarla, Sri Charan and Ampatzidis, Yiannis",
+    # BibTeX would read "Von" as a particle and print "K. V. Bargen".
+    "10.13031/2013.27838": "Woebbecke, D. M. and Meyer, G. E. and {Von Bargen}, K. and Mortensen, D. A.",
 }
 TEX = {"&": r"\&", "%": r"\%", "_": r"\_", "#": r"\#"}
 
