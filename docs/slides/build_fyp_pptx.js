@@ -394,8 +394,8 @@ s.addText("8.8%", { x: M, y: 3.45, w: 4.3, h: 1.0, fontFace: "Cambria", fontSize
 text(s, "crop pixels sprayed; Grounded SAM 65.5%", M, 4.45, 4.3, 0.6, { fontSize: 15 });
 text(s, "95% herbicide saved vs blanket spraying. Dev set 71.5% / 4.6%: no sign of overfitting. Cost: 104 of 363 beets touched, mostly edge specks.", M, 5.1, 4.3, 1.4, { fontSize: 14 });
 s.addImage({ path: FIG("tradeoff_holdout.png"), x: 5.2, y: 1.75, w: 7.53, h: 4.8, sizing: { type: "contain", w: 7.53, h: 4.8 }, altText: "Crop pixels sprayed vs weed recall on 90 held-out photos: Grounded SAM settings near zero recall; plant rules at 77.9% recall, 8.8% crop" });
-note(s, "90 held-out sugar beet photos. Source: docs/results/holdout_plant_rules_v3_20261018.md. Cotton: only 10.4% recall (weeds there are not smaller than the crop).");
-s.addNotes("Answer to RQ3: plain rules on crop overlap, rows and relative size give the best trade-off measured, with no training and no model calls, at 0.6 s per photo.");
+note(s, "Weeds hit, 95% CI: rules 76.7–86.8% vs Grounded SAM 0.5–4.0% (215 weeds). No training: all 120 photos of the public set are test data. Cotton: 10.4% recall.");
+s.addNotes("If asked about only 120 images: we trained nothing; the 120 photos are the whole public dataset and are used only to test. 90 were held out and run once. The confidence intervals (76.7–86.8% vs 0.5–4.0% weeds hit) do not overlap, so the conclusion holds; what is limited is generality beyond young sugar beet. Answer to RQ3: plain rules on crop overlap, rows and relative size give the best trade-off measured, with no training and no model calls, at 0.6 s per photo.");
 
 s = slide("CONTENT_ALT", "Results");
 eyebrow(s, "RQ2 · escalation agent and VLMs");

@@ -292,6 +292,16 @@ but some whole plants (Section~\ref{sec:f1}). On the eight cotton photos the rul
 weed recall: rule~3 assumes weeds are smaller than the crop, true for young sugar beet and false for
 cotton close-ups where one large weed fills the photo.
 
+\textbf{Is a held-out set of 90 photos enough?} No model was trained or fine-tuned in this project, so
+the 120 sugar beet photos are evaluation data only, and they are the complete public
+dataset~\cite{data_sugarbeets}, not a sample from it. The held-out part contains 363 crop plants and
+215 weeds. At plant level, the 95\% Wilson confidence interval for the share of weeds hit is
+76.7--86.8\% (177/215) for the plant rules against 0.5--4.0\% (3/215) for the best-recall Grounded
+SAM setting; for crop plants touched it is 24.2--33.5\% (104/363) against 61.7--71.3\% (242/363).
+The intervals are far apart, so the size of the test set limits how precisely the numbers are known,
+not the conclusion. What the data cannot show is generality beyond young sugar beet in one dataset,
+which is why our claims are stated for that crop only.
+
 \section{Escalation agent (RQ2)}\label{sec:agent-results}
 \begin{table}[H]
 \centering

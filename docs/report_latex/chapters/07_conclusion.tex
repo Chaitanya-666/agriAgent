@@ -41,7 +41,10 @@ transparent, deterministic safety layer moves that trade-off without training.
 
 \section{Limitations}
 \begin{itemize}
-\item Small data: 120 sugar beet photos from one dataset of undocumented origin, and 8 cotton photos.
+\item Evaluation data: the complete public sugar beet set (120 photos; 90 held out with 363 crop and
+  215 weed plants) from one source of undocumented origin, and 8 cotton photos. No training data is
+  used, by design; the results are therefore claimed for young sugar beet only (confidence intervals in
+  Section~\ref{sec:holdout}).
 \item Box labels only, so the pixel metrics are approximate (vegetation inside boxes).
 \item The plant rules exploit ``weeds are smaller than the crop'', true for young sugar beet; they
   reach only 10.4\% weed recall on cotton.
