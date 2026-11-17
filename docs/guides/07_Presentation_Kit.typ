@@ -440,10 +440,10 @@ Claim only your real role, exactly as printed in the black book (Table B.1, p. 5
 #table(
   columns: (auto, 1fr, auto),
   [*Member*], [*Role in the black book*], [*Expect questions on*],
-  [Chaitanya Shinde (lead)], [Research questions and method; vision pipeline, safety gate, plant rules, escalation agent, System 2 and ICAR store, app, evaluation, experiments, tests, report and slides.], [11–13, 18–22, 24],
-  [Amit Ingle], [First Streamlit dashboard; system test cycles 0 and 2 (24/24 on Windows 11, RTX 3050); packaging bug report; v1.0.0 release; live demo.], [16, 17, 25],
-  [Sumant Vetal], [First version of the System 2 agronomy module (diagnosis and herbicide advice), later rewritten and integrated.], [14, ICAR],
-  [Sahil Chavan], [The dataset downloader used to fetch the public datasets.], [15, 20],
+  [Chaitanya Shinde (lead)], [Research questions and method; vision pipeline, safety gate, plant rules, escalation agent, System 2 and ICAR store, app, evaluation, experiments, tests, report and slides.], [everything; 1–3, 11–13, 17, 22, 26],
+  [Amit Ingle], [First Streamlit dashboard; system test cycles 0 and 2 (24/24 on Windows 11, RTX 3050); packaging bug report; v1.0.0 release; live demo.], [15–19, 23–25],
+  [Sumant Vetal], [First version of the System 2 agronomy module (diagnosis and herbicide advice), later rewritten and integrated.], [4–10, 14, ICAR],
+  [Sahil Chavan], [The dataset downloader used to fetch the public datasets.], [15, 20–21],
 )
 
 = How to prepare in 90 minutes
