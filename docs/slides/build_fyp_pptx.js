@@ -4,7 +4,7 @@
 // Same title and numbers as the LaTeX report in docs/report_latex.
 //
 //   NODE_PATH=<folder with node_modules/pptxgenjs@3.12> PPTX_SKILL_SCRIPTS=<pptx skill>/scripts \
-//     node docs/slides/build_fyp_pptx.js
+//     node docs/slides/build_fyp_pptx.js && uv run --with python-pptx python docs/slides/set_speaker_notes.py
 //
 // Equation and architecture images: docs/slides/fyp_assets/*.tex (tectonic + pdftoppm -r 300).
 // References: fyp_assets/refs.json, extracted from the compiled report, so the text is identical
@@ -314,18 +314,23 @@ text(s, "Honesty rules: every screen says REAL or MOCK; a real run that cannot l
 s.addNotes("Modules: grounding_dino.py, sam2_wrapper.py, model_cache.py, plant_candidates.py, workflow.py, deterministic_router.py, escalation_agent.py, agronomy/, evaluation/, app/. Mock mode lets tests run without the 1.5 GB of weights.");
 
 s = slide("CONTENT", "Proposed system");
-eyebrow(s, "Implementation · demo");
-s.addText("The application on real photos", TT());
-s.addImage({ path: FIG("real_run_beet_after_gate_fix.jpg"), x: M, y: 1.8, w: 6.0, h: 1.5, sizing: { type: "contain", w: 6.0, h: 1.5 }, altText: "Real run on a sugar beet photo: photo, boxes, masks, empty spray map" });
-text(s, "Baseline behaviour: detector confidences 0.36–0.47 < 0.70, so nothing is sprayed. Crop safe, weeds missed.", M, 3.4, 6.0, 0.8, { fontSize: 14 });
-s.addImage({ path: FIG("verdict_beet_X2-30-0.jpg"), x: 6.9, y: 1.8, w: 5.83, h: 2.88, sizing: { type: "contain", w: 5.83, h: 2.88 }, altText: "Verdict view on beet X2-30-0: red sprayed, green protected, yellow left alone" });
-text(s, "Verdict view: red sprayed, green protected as crop, yellow left alone.", 6.9, 4.75, 5.83, 0.5, { fontSize: 14 });
-card(s, M, 4.4, 6.0, 2.05, C.background2, C.accent6);
+eyebrow(s, "Implementation · system walkthrough");
+s.addText("The system on one real photo, step by step", TT());
+s.addImage({ path: ASSET("walkthrough.png"), x: M, y: 1.65, w: CW, h: CW * 584 / 2737, altText: "Development photo X2-170-0 through the pipeline: photo, one detector box over the whole photo, one SAM 2 mask, plant-rule verdicts (red weed, green crop), approved spray map" });
 text(s, [
-  { text: "Live demo (≈ 2 min)", options: { bold: true, color: C.accent1, breakLine: true } },
-  { text: "Upload beet photo → spray map and KPIs → every-plant view → Hindi summary → GeoJSON on geojson.io. A screen recording is kept as backup." },
-], M + 0.25, 4.55, 5.5, 1.8, { fontSize: 15 });
-s.addNotes("If the live demo fails, play the backup recording. Show the REAL banner first so the examiners know it is not mock output.");
+  { text: "What happens", options: { bold: true, color: C.accent1, breakLine: true } },
+  { text: "② The detector boxes the whole photo as “sugar beet plant” (0.58): its labels are useless here.", options: { breakLine: true } },
+  { text: "④ The plant rules check every green patch: plants on the row are protected (green), small off-row patches are weeds (red).", options: { breakLine: true } },
+  { text: "⑤ The gate sprays only rule-weed patches, minus every crop pixel." },
+], M, 4.45, 6.3, 2.2, { fontSize: 14 });
+card(s, 7.15, 4.45, W - M - 7.15, 2.15, C.background2, C.accent6);
+text(s, [
+  { text: "Against the official labels", options: { bold: true, color: C.accent1, breakLine: true } },
+  { text: "31 of 36 weeds hit (76.8% recall) · 0 of 3 beets touched · 98.2% herbicide saved.", options: { breakLine: true } },
+  { text: "Held-out average: 77.9% recall, 8.8% crop. Real run, 17 Nov.", options: { breakLine: true, color: MUTED } },
+  { text: "Live demo (≈ 2 min); this slide is the backup.", options: { bold: true } },
+], 7.35, 4.55, W - M - 7.55, 2.0, { fontSize: 14 });
+s.addNotes("placeholder");
 
 // ════════════════════════════════════════ 18–19 Mathematical model
 pres.addSection({ title: "Mathematical model" });

@@ -73,7 +73,7 @@ Each student gets at most *15 min to present + 5–10 min of questions* (departm
   [*1. The problem*], [Slides 2–3: why weed vs crop is hard and why crop damage matters most.],
   [*2. What is ours*], [Slides 9, 11–13: the gate + plant rules + measuring the way a sprayer needs. We implement Grounded SAM (base paper) and measure its weakness.],
   [*3. Results*], [Slides 21–22: the numbers above, measured once on photos never seen during design.],
-  [*4. It works*], [Slide 17: demo (live or the screenshots on the slide).],
+  [*4. It works*], [Slide 17: one real photo through all five steps (or the live demo).],
   [*5. Honesty*], [Slides 20 and 24: fabricated labels found and replaced; the known failure F1. Say them before you are asked.],
 )
 
@@ -179,10 +179,10 @@ PowerPoint (View → Notes) hold the same hints. "Book" = page in the printed bl
 
 == Demo, maths, evaluation (8:00 – 12:30)
 
-#slide(17, "EXPLAIN", 75, "Demo",
-  [Live demo (if the laptop is ready) *or* talk over the two screenshots: "Left: Grounded SAM alone. Scores 0.36–0.47 are below 0.70, so *nothing is sprayed: crop safe, weeds missed*. Right: our verdict view: *red sprayed, green protected crop, yellow left alone*." The department allows results instead of a video.],
-  ask: [Is it real? The app shows a REAL banner; mock output is always labelled MOCK.],
-  book: "§5.12, pp. 27–28, Figs. 5.2–5.3")
+#slide(17, "EXPLAIN", 75, "System walkthrough (or live demo)",
+  [Walk the five panels left to right: "① A real photo, crop sugar beet. ② Grounding DINO draws *one box over the whole photo*, 'sugar beet plant' 0.58: its labels are useless here. ③ SAM 2 makes it one mask. ④ Our *plant rules* check every green patch: plants on the row protected (green), small off-row patches are weeds (red). ⑤ The gate sprays only those, minus every crop pixel. Against the official labels: *31 of 36 weeds hit, 0 of 3 beets touched*, 98% saved." Held-out average: 77.9% / 8.8%.],
+  ask: [Is it real? Real run on 17 Nov with the real models (`scripts/make_walkthrough_figure.py`); the app always shows REAL or MOCK.],
+  book: "§5.12, pp. 27–28")
 
 #slide(18, "QUICK", 30, "Maths 1/2: vegetation and rules",
   ["The full model is in §6.1. Excess green = 2G − R − B; *Otsu* picks the plant/soil threshold per photo; rows come from the vegetation profile. The classifier is a piecewise function; line 5 applies only when no crop was found, which is our known failure F1."],
