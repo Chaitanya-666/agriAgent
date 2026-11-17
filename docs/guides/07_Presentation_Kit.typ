@@ -379,10 +379,41 @@ Models load once (`src/vision/model_cache.py`); *mock mode* swaps in fake detect
 
 #pagebreak()
 
+// ─────────────────────────── WHO PRESENTS WHAT ───────────────────────────
+= Who presents which slides (locked 17 Nov)
+We present together, in slide order. Everyone uses the "say this" lines of their slides (pages 2–7, or the speaker notes).
+If the department evaluates each student *alone* for 15 minutes, ignore this split and use the whole-deck plan on page 1.
+
+#table(
+  columns: (auto, 1fr, auto),
+  [*Presenter*], [*Slides*], [*Time*],
+  [*Chaitanya*], [1 Title · 11 Architecture · 12 Safety gate · 13 Plant rules · 14 Agent + ICAR · 17 Walkthrough · 22 Headline · 26 Conclusion], [≈ 5.5 min],
+  [*Sumant*], [2–3 Motivation · 4–7 Literature survey · 8 Gaps · 9 Base paper · 10 Objectives], [≈ 4.5 min],
+  [*Amit*], [15 Datasets · 16 Implementation · 18–19 Mathematical model · 23 Agent results · 24 Limitation F1 · 25 Testing; runs the live demo during 17], [≈ 3 min],
+  [*Sahil*], [20 Evaluation method · 21 RQ1 baseline · 27 Future scope · 28–30 References], [≈ 1.5 min],
+)
+*Speaking order:* Chaitanya 1 → Sumant 2–10 → Chaitanya 11–14 → Amit 15–16 → Chaitanya 17 → Amit 18–19 → Sahil 20–21 → Chaitanya 22 → Amit 23–25 → Chaitanya 26 → Sahil 27–30. *Hand-off line:* "… and now X will explain …".
+#note(title: "If someone is absent")[Chaitanya takes their slides with the same lines; nothing else changes.]
+
+#pagebreak()
+
 // ─────────────────────────── AUDIENCE-SPECIFIC ───────────────────────────
 #if me [
-= Your part: vision pipeline, workflow, safety gate
-You are the team lead (Table B.1). Expect the hardest questions on *slides 11–13, 18–22, 24*. Deep-dive answers:
+= Your slides: the light, visual parts of your own work
+*1 · 11 · 12 · 13 · 14 · 17 · 22 · 26*, about 5.5 minutes. Each is a diagram, a table of plain rules, the photo walkthrough or big numbers: read the card on pages 2–7 aloud twice and you have it.
+#table(
+  columns: (auto, 1fr),
+  [*Slide*], [*Your one line if you blank*],
+  [1], ["We are …, guided by Prof. Dhore; AgriAgent, a safety-gated zero-shot vision pipeline for spot spraying."],
+  [11], ["Top to bottom: detect, segment, plant rules, gate. *The yellow gate is the only thing allowed to spray.*"],
+  [12], ["The gate is plain code: spray only if every rule passes; any doubt → do not spray."],
+  [13], ["Every green patch: crop if in a crop mask or on the row, weed if small or off-row, else unsure → never sprayed."],
+  [14], ["The agent and the AI only advise; doses come only from the ICAR bulletin."],
+  [17], ["One real photo: the detector's label is useless, the rules protect the beets and spray 31 of 36 weeds."],
+  [22], ["90 unseen photos: 77.9% of weeds hit, 8.8% of crop, against 1.8% and 65.5% for Grounded SAM."],
+  [26], ["Text labels fail, the agent is safe but adds nothing, simple rules + the gate recover most of it."],
+)
+Questions will still come to you on anything (you are the lead). Use the numbers section and these deep-dive answers:
 
 #qa[Why ¼ of the median crop plant?][It calibrates itself per photo and was set by design, never tuned on the held-out labels. Weeds in this data are tiny (median about 16 px across vs 68 px for crops).]
 #qa[Why naive Bayes in the agent?][Simple and explainable; each source's measured accuracy (row 0.65, Clef 0.70, Qwen 0.80) caps its influence. It assumes independent errors, which is optimistic, so the 0.85 bar is strict.]
@@ -394,7 +425,7 @@ You are the team lead (Table B.1). Expect the hardest questions on *slides 11–
 #table(
   columns: (auto, 1fr),
   [When], [What],
-  [*Tue 17 eve*], [Read page 1 twice, then slides 1–13 of this guide with the deck open. CPAD exam prep comes first (other session).],
+  [*Tue 17 eve*], [Read page 1 twice, then *your 8 slide cards* with the deck open. CPAD exam prep comes first (other session).],
   [*Wed 18 morning*], [Meet Prof. Dhore *before the CPAD exam (13:30)*. Show the report PDF + PPT. Ask: (1) approval of both; (2) plagiarism check (< 30%); (3) how many black-book copies; (4) Thursday's time and whether each student presents separately; (5) *tell him your Deep Learning lab exam is Thu 19, 9:00–17:30* and ask for a slot that fits.],
   [*Wed 18 after CPAD*], [Send me any changes he asks for; I rebuild the PDF. Then print and bind (front matter pages i–iv get signatures by hand).],
   [*Thu 19*], [Before your slot: read page 1 and the 16 questions once. Laptop charged, deck opened in presenter view.],
@@ -402,7 +433,7 @@ You are the team lead (Table B.1). Expect the hardest questions on *slides 11–
 #warn(title: "Clash")[Your DL lab exam (Lab 1B, 9:00–17:30) is on the same day as the external examiners. Sort out the timing with Prof. Dhore and the DL faculty on Wednesday.]
 ] else [
 = Your part and what you may claim
-Every member presents the whole deck with the plan above, then answers questions on their own part.
+Present your slides from the table on the previous page, then answer questions on your own part.
 Claim only your real role, exactly as printed in the black book (Table B.1, p. 50):
 
 #table(
@@ -416,8 +447,8 @@ Claim only your real role, exactly as printed in the black book (Table B.1, p. 5
 
 = How to prepare in 90 minutes
 + *15 min:* page 1 of this kit, twice. Say the 4 sentences aloud without looking.
-+ *40 min:* open the deck next to this kit; go slide by slide and say the lines aloud.
-+ *15 min:* one full run with a timer. Check the clock marks (slide 10 by 5:00, 17 by 9:30, 22 by 12:30).
++ *40 min:* open the deck next to this kit; read every card once, then say *your own slides'* lines aloud three times.
++ *15 min:* time your own slides; know who speaks before and after you (speaking order).
 + *20 min:* the 16 questions: cover the answers and answer aloud. Then read your row in the table above and the black-book pages for your slides.
 
 #note(title: "Golden rules in front of the examiner")[
