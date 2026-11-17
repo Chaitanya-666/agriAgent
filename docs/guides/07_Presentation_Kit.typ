@@ -387,12 +387,12 @@ If the department evaluates each student *alone* for 15 minutes, ignore this spl
 #table(
   columns: (auto, 1fr, auto),
   [*Presenter*], [*Slides*], [*Time*],
-  [*Chaitanya*], [1 Title · 11 Architecture · 12 Safety gate · 13 Plant rules · 14 Agent + ICAR · 17 Walkthrough · 22 Headline · 26 Conclusion], [≈ 5.5 min],
-  [*Sumant*], [2–3 Motivation · 4–7 Literature survey · 8 Gaps · 9 Base paper · 10 Objectives], [≈ 4.5 min],
-  [*Amit*], [15 Datasets · 16 Implementation · 18–19 Mathematical model · 23 Agent results · 24 Limitation F1 · 25 Testing; runs the live demo during 17], [≈ 3 min],
-  [*Sahil*], [20 Evaluation method · 21 RQ1 baseline · 27 Future scope · 28–30 References], [≈ 1.5 min],
+  [*Chaitanya* (9)], [1 Title · 2 Motivation · 3 Problem statement · 11 Architecture · 12 Safety gate · 13 Plant rules · 17 Walkthrough · 22 Headline · 26 Conclusion], [≈ 6.5 min],
+  [*Sumant* (8)], [4–7 Literature survey · 8 Gaps · 9 Base paper · 10 Objectives · 14 Agent + ICAR advice], [≈ 3.5 min],
+  [*Amit* (7)], [15 Datasets · 16 Implementation · 18–19 Mathematical model · 23 Agent results · 24 Limitation F1 · 25 Testing; runs the live demo during 17], [≈ 3 min],
+  [*Sahil* (6)], [20 Evaluation method · 21 RQ1 baseline · 27 Future scope · 28–30 References], [≈ 1.5 min],
 )
-*Speaking order:* Chaitanya 1 → Sumant 2–10 → Chaitanya 11–14 → Amit 15–16 → Chaitanya 17 → Amit 18–19 → Sahil 20–21 → Chaitanya 22 → Amit 23–25 → Chaitanya 26 → Sahil 27–30. *Hand-off line:* "… and now X will explain …".
+*Speaking order:* Chaitanya 1–3 → Sumant 4–10 → Chaitanya 11–13 → Sumant 14 → Amit 15–16 → Chaitanya 17 → Amit 18–19 → Sahil 20–21 → Chaitanya 22 → Amit 23–25 → Chaitanya 26 → Sahil 27–30. *Hand-off line:* "… and now X will explain …".
 #note(title: "If someone is absent")[Chaitanya takes their slides with the same lines; nothing else changes.]
 
 #pagebreak()
@@ -400,15 +400,16 @@ If the department evaluates each student *alone* for 15 minutes, ignore this spl
 // ─────────────────────────── AUDIENCE-SPECIFIC ───────────────────────────
 #if me [
 = Your slides: the light, visual parts of your own work
-*1 · 11 · 12 · 13 · 14 · 17 · 22 · 26*, about 5.5 minutes. Each is a diagram, a table of plain rules, the photo walkthrough or big numbers: read the card on pages 2–7 aloud twice and you have it.
+*1 · 2 · 3 · 11 · 12 · 13 · 17 · 22 · 26* (9 slides), about 6.5 minutes: the opening story plus the core. Each is a story, a diagram, a table of plain rules, the photo walkthrough or big numbers: read the card on pages 2–7 aloud twice and you have it.
 #table(
   columns: (auto, 1fr),
   [*Slide*], [*Your one line if you blank*],
   [1], ["We are …, guided by Prof. Dhore; AgriAgent, a safety-gated zero-shot vision pipeline for spot spraying."],
+  [2], ["Weeds grow in patches but we spray the whole field; the hard part is telling weed from crop, and spraying the crop is the costly mistake."],
+  [3], ["Trained models need labelled photos per field; we test zero-shot models that need none: photo + crop name → safe spray map, on a laptop."],
   [11], ["Top to bottom: detect, segment, plant rules, gate. *The yellow gate is the only thing allowed to spray.*"],
   [12], ["The gate is plain code: spray only if every rule passes; any doubt → do not spray."],
   [13], ["Every green patch: crop if in a crop mask or on the row, weed if small or off-row, else unsure → never sprayed."],
-  [14], ["The agent and the AI only advise; doses come only from the ICAR bulletin."],
   [17], ["One real photo: the detector's label is useless, the rules protect the beets and spray 31 of 36 weeds."],
   [22], ["90 unseen photos: 77.9% of weeds hit, 8.8% of crop, against 1.8% and 65.5% for Grounded SAM."],
   [26], ["Text labels fail, the agent is safe but adds nothing, simple rules + the gate recover most of it."],
@@ -425,7 +426,7 @@ Questions will still come to you on anything (you are the lead). Use the numbers
 #table(
   columns: (auto, 1fr),
   [When], [What],
-  [*Tue 17 eve*], [Read page 1 twice, then *your 8 slide cards* with the deck open. CPAD exam prep comes first (other session).],
+  [*Tue 17 eve*], [Read page 1 twice, then *your 9 slide cards* with the deck open. CPAD exam prep comes first (other session).],
   [*Wed 18 morning*], [Meet Prof. Dhore *before the CPAD exam (13:30)*. Show the report PDF + PPT. Ask: (1) approval of both; (2) plagiarism check (< 30%); (3) how many black-book copies; (4) Thursday's time and whether each student presents separately; (5) *tell him your Deep Learning lab exam is Thu 19, 9:00–17:30* and ask for a slot that fits.],
   [*Wed 18 after CPAD*], [Send me any changes he asks for; I rebuild the PDF. Then print and bind (front matter pages i–iv get signatures by hand).],
   [*Thu 19*], [Before your slot: read page 1 and the 16 questions once. Laptop charged, deck opened in presenter view.],
