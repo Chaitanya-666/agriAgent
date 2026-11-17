@@ -2,7 +2,9 @@
 
 AgriAgent looks at a photo of a crop field, finds the plants, and produces a map of only the weed areas, so a sprayer could treat weeds without spraying the crop. It is a Final Year Project and a **research prototype**: it asks how well zero-shot foundation models tell weeds from crop plants, and whether a safety gate plus a reasoning model keeps the crop off the spray map. It does not control real spraying equipment.
 
-**Start here:** [docs/AgriAgent_Progress_Report_Guide.pdf](docs/AgriAgent_Progress_Report_Guide.pdf) (the whole story to 17 October) and [docs/AgriAgent_Team_Tasks.pdf](docs/AgriAgent_Team_Tasks.pdf) (team tasks and test cycle 1, due 27 October) and [docs/AgriAgent_Week4_Dossier.pdf](docs/AgriAgent_Week4_Dossier.pdf) (latest results).
+**Start here (Nov 2026):** [docs/guides/10_MASTER_GUIDE_Learn_AgriAgent.pdf](docs/guides/10_MASTER_GUIDE_Learn_AgriAgent.pdf) (learn the whole project from zero), [docs/guides/07_Presentation_Kit_Team.pdf](docs/guides/07_Presentation_Kit_Team.pdf) (what to say on every slide), [docs/guides/08_Slide_Distribution.pdf](docs/guides/08_Slide_Distribution.pdf) (who presents what). Report: [docs/report_latex/main.pdf](docs/report_latex/main.pdf); slides: [docs/slides/AgriAgent_FYP_Presentation.pptx](docs/slides/AgriAgent_FYP_Presentation.pptx).
+
+Older background: [docs/AgriAgent_Progress_Report_Guide.pdf](docs/AgriAgent_Progress_Report_Guide.pdf) (the whole story to 17 October) and [docs/AgriAgent_Team_Tasks.pdf](docs/AgriAgent_Team_Tasks.pdf) (team tasks and test cycle 1, due 27 October) and [docs/AgriAgent_Week4_Dossier.pdf](docs/AgriAgent_Week4_Dossier.pdf) (latest results).
 
 ## How it works
 
