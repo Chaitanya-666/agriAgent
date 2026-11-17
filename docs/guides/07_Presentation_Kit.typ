@@ -42,6 +42,8 @@
 ]
 
 // ─────────────────────────── PAGE 1 ───────────────────────────
+#set text(10pt)
+#set par(leading: 0.55em)
 #note(title: "If you read only one page, read this one")[
 *Thursday 19 Nov:* external examiners see the presentation, the demo and the black book.
 Each student gets at most *15 min to present + 5–10 min of questions* (department rule), using the same
@@ -87,6 +89,8 @@ Each student gets at most *15 min to present + 5–10 min of questions* (departm
 Running late? Drop to one sentence on 14, 18, 19, 23, 25. Never skip 12, 13, 21, 22.
 
 #pagebreak()
+#set text(10.5pt)
+#set par(leading: 0.62em)
 
 // ─────────────────────────── SLIDE BY SLIDE ───────────────────────────
 = The talk, slide by slide
@@ -271,7 +275,7 @@ The examiner may flip through it while you talk. Know where these are:
 #pagebreak()
 
 // ─────────────────────────── QUESTIONS ───────────────────────────
-= The 15 questions most likely to come
+= The 16 questions most likely to come
 #set text(9.6pt)
 #let qa(q, a) = block(breakable: false, below: 6pt)[*Q: #q* \ #a]
 
@@ -289,8 +293,89 @@ The examiner may flip through it while you talk. Know where these are:
 #qa[What is IoU and why don't you use it?][Overlap ÷ union of predicted and true regions. A sprayer cares about crop sprayed and weeds hit, so we report those; IoU on PhenoBench is our first future step to compare with WaW.]
 #qa[Biggest weakness?][F1 (slide 24): with no crop found, rule 4 can spray a whole beet. Also cotton recall 10.4%, and only one crop really tested.]
 #qa[Did you use AI tools? What about plagiarism?][Yes, for code and drafts. That is why every number comes from running the code, every reference was checked against its DOI, and AI mistakes (fake labels, bad references, the 1.0 gate bug, a wrong rice dose) were found and removed. The mentor runs the plagiarism check.]
+#qa[Why is this number so high / so low?][Use the next section: every number on the slides with its source and the reason.]
 #qa[What did *you* do?][Give *your* line from Table B.1 (p. 50) and the next section. Never claim a part you did not build.]
 #set text(10.5pt)
+
+#pagebreak()
+
+// ─────────────────────────── NUMBERS ───────────────────────────
+= Every number on the slides, and why it is that value
+Seniors' advice: examiners point at a number and ask "where does this come from?" and "why so high / so low?".
+Rule: *our* numbers come from running the code (result files in `docs/results/`); *survey* numbers are the papers' own results on their own data.
+#set text(9pt)
+#let nt(..rows) = { show raw: set text(7.5pt); table(columns: (2.7cm, 1fr, 1.25fr), [Number (slide)], [What it is · source], [Why that value], ..rows) }
+
+== Our headline results
+#nt(
+  [*77.9%* weed recall (22)], [Share of weed *pixels* on the spray map, 90 held-out photos. `holdout_plant_rules_v3`], [Rules 3 and 4 catch small and off-row weeds that the detector never boxes. Not 100% by design: anything ambiguous becomes *unsure*, and unsure is never sprayed (safety first).],
+  [*8.8%* crop sprayed (22)], [Share of crop pixels sprayed. Same file. 104 of 363 beets touched], [Report §6.6: mostly small specks at a beet's edge, but some whole beets through F1 (slide 24). Not 0 because the rules use no training.],
+  [*1.8%* / *65.5%* (22)], [Grounded SAM alone, threshold 0.35, same 90 photos. Same file], [The detector mostly boxes the big beets and often labels them "weed", so it sprays crop and misses small weeds.],
+  [*95%* saved (22)], [1 − sprayed area ÷ whole photo. Same file (94.96)], [Weeds are small; only about 5% of each photo is sprayed.],
+  [*76.7–86.8%* vs *0.5–4.0%* (22)], [95% Wilson interval for the share of *weeds hit*: 177/215 = 82.3% vs 3/215 = 1.4%. Report §6.6], [It counts weeds (hit or not), not pixels, so 77.9% need not lie inside it. The two ranges do not overlap: the gain is not luck.],
+  [*71.5% / 4.6%* dev (22)], [Same rules on the 30 design photos. `plant_rules_v3`], [Held-out is *not worse* than dev, so the rules were not over-fitted to the design photos.],
+  [*10.4%* cotton (22)], [Weed recall on 8 cotton photos (7 of 19 weeds). Same file], [Cotton close-ups: one big weed fills the frame, so "weeds are smaller than the crop" is false; the detector even boxed big weeds as cotton.],
+)
+
+== Grounded SAM baseline, dev set (21)
+#nt(
+  [*97.6%* recall, every mask], [Spray every SAM 2 mask. `baseline_v2`], [Masks cover nearly all plants, so *segmentation is fine*; but it also sprays 93.9% of crop.],
+  [*70.8% / 9.0%*, gate 0.35], [Spray only masks labelled weed, score ≥ 0.35], [Labels are wrong: many beets are called "weed".],
+  [*0.0 / 0.0*, gate 0.70], [The deployed threshold], [Real scores never pass *0.68*: Grounding DINO is unsure about the vague word "weed". 0.70 was a safe design default set before measuring.],
+  [*5.3%* + crop exclusion], [Remove pixels inside "crop" boxes. `exclusion_v2`], [Protects beets but adds no weeds (recall stays 6.8%).],
+)
+
+== Agent and models (14, 19, 23)
+#nt(
+  [*69* plants: *0* crops approved, *13/14*, *0/25*], [Agent on withheld plants, dev set. `agent_v2`], [It needs P ≥ 0.85 for "weed", which takes two sources agreeing; they rarely agreed on "weed". Also 14 of 69 Groq calls hit the free-tier rate limit and counted as no answer.],
+  [*16 / 14 / 13 / 12* of 20], [Crop-or-weed accuracy on 20 labelled plant patches: Qwen on Groq / Clef / row rule / Qwen on Cloudflare], [Small sample; same model differs by provider (16 vs 12), so trust is per provider.],
+  [Weights *0.80 / 0.70 / 0.65*], [Agent's trust in Qwen / Clef / row rule], [Exactly the measured accuracies above: 16/20, 14/20, 13/20.],
+  [*0.85* and *0.90* (19)], [Decision bar; worked example], [Chosen so that no single source (max 0.80) can decide alone; two agreeing sources give 0.90.],
+)
+
+== Design thresholds (12, 13, 18): set by design, frozen, never tuned on the held-out photos
+#nt(
+  [0.70 · 0.85 · 50% · 85%], [Gate: confidence, mask quality, one-plant size, infestation ceiling], [Conservative defaults: spraying crop is the costly error. Each has a unit test.],
+  [30% · ¼ · 2 · 0.5 · 1%], [Rules: crop-mask overlap, size vs median crop, row peakiness, on-row level, closing radius], [Set on the 30 design photos, then frozen before the single held-out run (18 Oct).],
+)
+
+== System and data (15, 16, 20, 25)
+#nt(
+  [*0.6 s* per photo], [Median after the first photo; 0.21 s detect + 0.28–0.37 s segment, RTX 5050], [Tiny models; first photo ≈ 1.1–1.5 s and model loading ≈ 4 s are not counted.],
+  [*2.4 GB* peak], [GPU memory, both models], [Tiny versions; also runs on a 4 GB RTX 3050.],
+  [*120* photos (30 + 90)], [The whole sugarbeetsAndweeds dataset, 512×512], [Test data only: we trained nothing.],
+  [*93 / 282* and *363 / 215*], [Beets / weeds labelled in dev and held-out sets], [Copied from the official XML files by script.],
+  [*270* tests], [235 unit + 35 end-to-end], [Every gate rule, plant rule, metric, ICAR row and GeoJSON field.],
+  [*7/16*, *24/24*, *30* findings], [System test cycle 0, cycle 2; findings F1–F30], [Cycle 0 found 8 issues, all fixed; cycle 2 is the final build.],
+)
+
+== Survey numbers (4–7): the papers' own results, not ours
+#nt(
+  [12.1% vs 62.7%], [WaW: zero-shot vs supervised weed IoU, IROS 2025], [Even the best zero-shot method is far below trained models.],
+  [48.7 AP · 52.5 AP], [Grounded SAM on SegInW · Grounding DINO zero-shot on COCO], [Good on everyday objects, not on crop vs weed.],
+  [0.15–0.75], [Nasir 2026: commercial VLMs' weed accuracy], [Too unreliable to decide; fine to advise.],
+  [79.98% mAP], [Rahman 2023: trained detectors on our cotton data], [The supervised ceiling for that data.],
+  [95.7% · 86.2% · 96.5–99.4%], [DeepWeeds · Dyrmann · Jiang: supervised classification], [Need labelled data; whole-image class, not a spray map.],
+)
+#text(8.5pt, fill: muted)[Unsure about a survey number? Say: "That is the authors' result on their data, reported in their paper; the summary is in Chapter 2 of our report."]
+#set text(10.5pt)
+
+#pagebreak()
+= How it is built: a one-page code tour
+#text(9pt, fill: muted)[Examiners ask "how did you implement it?". Overview in the talk; this is for the questions. Follow one photo:]
+#{ show raw: set text(7.5pt); table(
+  columns: (2cm, 6.2cm, 1fr),
+  [*Step*], [*File · function*], [*What happens*],
+  [1 Start], [`app/app.py` → `src/workflow.py` · `VisionWorkflowRunner.run`], [Streamlit takes the photo and crop; the runner calls the nodes in order.],
+  [2 Detect], [`src/vision/grounding_dino.py` · `GroundingDINOEngine.detect`], [Prompt `weed . sugar beet plant .` → boxes, labels, scores (box threshold 0.35).],
+  [3 Segment], [`src/vision/sam2_wrapper.py` · `SAM2Segmenter.segment_boxes`, `refine_with_point`], [One mask per box with a quality score; re-prompted with a point if quality < 0.85.],
+  [4 Plant rules], [`src/vision/plant_candidates.py` · `row_profile`, `classify_plants`], [Green patches (ExG + Otsu from `src/evaluation/crop_protection.py`) → crop / weed / unsure.],
+  [5 Gate], [`src/workflow.py` · `label_policy`, `spray_map_node`; `src/agents/deterministic_router.py` · `verify_spray_safety`], [Applies the gate rules; builds the spray map; anything uncertain is withheld.],
+  [6 Agent (opt.)], [`src/agents/escalation_agent.py` · `EscalationAgent.review`, `p_weed`], [Asks row rule → Clef → Qwen; combines odds; advice only.],
+  [7 Advice], [`src/agronomy/` · `system2_node.py`, `knowledge_store.py`, `farmer_summary.py`], [VLM names the weed; dose only from the ICAR row; summary EN/HI/MR.],
+  [8 Measure], [`src/evaluation/crop_protection.py` · `spray_metrics`], [Crop sprayed, weed recall, saving: pooled pixel ratios.],
+) }
+Models load once (`src/vision/model_cache.py`); *mock mode* swaps in fake detections so the 270 tests run without the 1.5 GB of weights.
 
 #pagebreak()
 
@@ -312,7 +397,7 @@ You are the team lead (Table B.1). Expect the hardest questions on *slides 11–
   [*Tue 17 eve*], [Read page 1 twice, then slides 1–13 of this guide with the deck open. CPAD exam prep comes first (other session).],
   [*Wed 18 morning*], [Meet Prof. Dhore *before the CPAD exam (13:30)*. Show the report PDF + PPT. Ask: (1) approval of both; (2) plagiarism check (< 30%); (3) how many black-book copies; (4) Thursday's time and whether each student presents separately; (5) *tell him your Deep Learning lab exam is Thu 19, 9:00–17:30* and ask for a slot that fits.],
   [*Wed 18 after CPAD*], [Send me any changes he asks for; I rebuild the PDF. Then print and bind (front matter pages i–iv get signatures by hand).],
-  [*Thu 19*], [Before your slot: read page 1 and the 15 questions once. Laptop charged, deck opened in presenter view.],
+  [*Thu 19*], [Before your slot: read page 1 and the 16 questions once. Laptop charged, deck opened in presenter view.],
 )
 #warn(title: "Clash")[Your DL lab exam (Lab 1B, 9:00–17:30) is on the same day as the external examiners. Sort out the timing with Prof. Dhore and the DL faculty on Wednesday.]
 ] else [
@@ -333,7 +418,7 @@ Claim only your real role, exactly as printed in the black book (Table B.1, p. 5
 + *15 min:* page 1 of this kit, twice. Say the 4 sentences aloud without looking.
 + *40 min:* open the deck next to this kit; go slide by slide and say the lines aloud.
 + *15 min:* one full run with a timer. Check the clock marks (slide 10 by 5:00, 17 by 9:30, 22 by 12:30).
-+ *20 min:* the 15 questions: cover the answers and answer aloud. Then read your row in the table above and the black-book pages for your slides.
++ *20 min:* the 16 questions: cover the answers and answer aloud. Then read your row in the table above and the black-book pages for your slides.
 
 #note(title: "Golden rules in front of the examiner")[
 - Say "we measured", not "we proved". Every number is in the black book; never invent one.
