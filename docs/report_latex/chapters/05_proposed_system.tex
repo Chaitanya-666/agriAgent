@@ -59,7 +59,7 @@ Figure~\ref{fig:arch} shows the pipeline.
 
 \section{The safety gate}\label{sec:gate}
 The gate is the only component allowed to approve a spray zone (modules
-\code{deterministic\_router.py} and \code{workflow.py}). Its rules are deliberately plain so that each can be unit tested and
+\code{deterministic\_\allowbreak router.py} and \code{workflow.py}). Its rules are deliberately plain so that each can be unit tested and
 explained; Section~\ref{sec:math-gate} states them as equations.
 \begin{itemize}
 \item \textbf{Label policy.} A detector mask is a spray candidate only if its label names a weed.
@@ -137,8 +137,8 @@ model.
 \toprule
 \textbf{Dataset} & \textbf{Contents and link} & \textbf{Used for}\\
 \midrule
-sugarbeetsAndweeds~\cite{data_sugarbeets} & 120 photos, 512$\times$512, Pascal VOC boxes for sugar beet and weed. The images resemble the Bonn sugar beet data~\cite{chebrolu2017sugarbeet}; the uploader does not document the origin. \url{https://www.kaggle.com/datasets/wangyongkun/sugarbeetsandweeds} & 30 development + 90 held-out photos\\
-CottonWeedDet3~\cite{data_cottonweeddet3,rahman2023cotton} & Cotton field photos with boxes for three weeds (palmer amaranth, morningglory, waterhemp); cotton itself is never labelled. \url{https://www.kaggle.com/datasets/yuzhenlu/cottonweeddet3} & 8 development photos\\
+sugarbeets\-And\-weeds \cite{data_sugarbeets} & 120 photos, 512$\times$512, Pascal VOC boxes for sugar beet and weed. The images resemble the Bonn sugar beet data~\cite{chebrolu2017sugarbeet}; the uploader does not document the origin. \url{https://www.kaggle.com/datasets/wangyongkun/sugarbeetsandweeds} & 30 development + 90 held-out photos\\
+Cotton\-Weed\-Det3 \cite{data_cottonweeddet3,rahman2023cotton} & Cotton field photos with boxes for three weeds (palmer amaranth, morningglory, waterhemp); cotton itself is never labelled. \url{https://www.kaggle.com/datasets/yuzhenlu/cottonweeddet3} & 8 development photos\\
 ICAR--DWR bulletin No.~22~\cite{choudhury2016icar} & Approved herbicides per crop with dose, water volume and waiting period; list of banned herbicides. \url{https://dwr.icar.gov.in} & System~2 knowledge store\\
 \bottomrule
 \end{tabularx}
@@ -179,7 +179,7 @@ Hardware & Laptop with an NVIDIA RTX~5050 (8~GB) and 15~GB RAM. Both vision mode
 \code{src/vision/model\_cache.py} & Loads each real model once per process under a lock.\\
 \code{src/vision/plant\_candidates.py} & Plant rules v3 (Section~\ref{sec:rules}).\\
 \code{src/workflow.py} & \code{VisionWorkflowRunner}: detect, segment, refine, spray map with the gate, triage, System~2.\\
-\code{src/agents/deterministic\_router.py} & Safety gate rules.\\
+\code{src/agents/\allowbreak deterministic\_\allowbreak router.py} & Safety gate rules.\\
 \code{src/agents/escalation\_agent.py} & Escalation agent and its three evidence sources.\\
 \code{src/agronomy/} & System~2 reasoner, ICAR knowledge store, prescription and dose ceilings, providers, farmer summary.\\
 \code{src/evaluation/} & Metrics: crop pixels sprayed, weed recall, savings, IoU/Dice; benchmark runner.\\
