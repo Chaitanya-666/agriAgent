@@ -310,7 +310,7 @@ You are the team lead (Table B.1). Expect the hardest questions on *slides 11–
   columns: (auto, 1fr),
   [When], [What],
   [*Tue 17 eve*], [Read page 1 twice, then slides 1–13 of this guide with the deck open. CPAD exam prep comes first (other session).],
-  [*Wed 18 morning*], [Meet Prof. Dhore *before the CPAD exam (13:30)*. Show the report PDF + PPT. Ask: (1) approval of both; (2) plagiarism check (< 30%); (3) the *HoD's name* for the certificate (now a blank line); (4) how many black-book copies; (5) Thursday's time and whether each student presents separately; (6) *tell him your Deep Learning lab exam is Thu 19, 9:00–17:30* and ask for a slot that fits.],
+  [*Wed 18 morning*], [Meet Prof. Dhore *before the CPAD exam (13:30)*. Show the report PDF + PPT. Ask: (1) approval of both; (2) plagiarism check (< 30%); (3) how many black-book copies; (4) Thursday's time and whether each student presents separately; (5) *tell him your Deep Learning lab exam is Thu 19, 9:00–17:30* and ask for a slot that fits.],
   [*Wed 18 after CPAD*], [Send me any changes he asks for; I rebuild the PDF. Then print and bind (front matter pages i–iv get signatures by hand).],
   [*Thu 19*], [Before your slot: read page 1 and the 15 questions once. Laptop charged, deck opened in presenter view.],
 )
