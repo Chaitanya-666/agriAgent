@@ -1,4 +1,9 @@
-\chapter{Conclusion}\label{ch:conclusion}
+\chapter{Conclusion and Future Scope}\label{ch:conclusion}
+
+This chapter brings the report together. We answer the three research questions of
+Section~\ref{sec:objectives} from the results of Chapter~\ref{ch:results}, relate them to the base paper
+and the closest work, record what we learned (including what went wrong) and the limitations, describe
+the future scope, and end with the conclusion.
 
 \section{Answers to the research questions}
 \begin{itemize}
@@ -54,6 +59,30 @@ transparent, deterministic safety layer moves that trade-off without training.
 \item Coordinates are not GPS; no sprayer, latency or field trial was tested.
 \item Cloud reasoning depends on free tiers and on the provider (F25).
 \end{itemize}
+
+\section{Future scope}\label{sec:future}
+The limitations above point directly to the next steps:
+
+\begin{enumerate}
+\item \textbf{A like-for-like comparison with WaW.} Run the pipeline on the PhenoBench validation
+  set~\cite{weyler2024phenobench} (pixel labels) and report weed IoU, the metric of Chong et
+  al.~\cite{chong2025zeroshot}.
+\item \textbf{Species-aware features instead of text labels.} Replace the detector's words with
+  BioCLIP~\cite{stevens2024bioclip} features of each plant, as WaW does, and keep the safety gate on
+  top.
+\item \textbf{A ``safe mode'' for rule 4.} Limit the off-row rule by plant size (Table~\ref{tab:f1}),
+  tested on new held-out data, so that a missed crop box can no longer cause a whole crop plant to be sprayed.
+\item \textbf{Few-shot adaptation.} Adapt the detector with a handful of labelled field photos, as
+  Singh et al.~\cite{singh2025fewshot} suggest, and measure how many labels close the gap to supervised
+  detectors~\cite{rahman2023cotton,dang2023yoloweeds}.
+\item \textbf{Using the row over time.} Exploit image sequences along the row~\cite{lottes2018fcn,lottes2020stem}
+  and automatically labelled inter-row weeds~\cite{bah2018unsupervised} to calibrate the rules per field.
+\item \textbf{Farmer-facing agent and interface.} A conversational assistant over the same verified
+  facts, in Indian languages, on a mobile-first web interface.
+\item \textbf{Real deployment.} GPS from drone or sprayer metadata, nozzle latency, a field trial with
+  an agronomist, and the other applications of the original proposal (disease, yield, canopy cover,
+  nutrient stress).
+\end{enumerate}
 
 \section{Conclusion}
 AgriAgent shows, with official labels and a held-out set, that a zero-shot Grounded SAM pipeline cannot
