@@ -5,7 +5,7 @@
 #show: doc.with(
   title: "MASTER GUIDE: Learn AgriAgent from Zero",
   subtitle: "Every part of the project, explained simply: the idea, our real evidence, the code, and the questions you will be asked",
-  date: "17 November 2026",
+  date: "18 November 2026",
 )
 #set heading(numbering: "1.")
 
@@ -27,7 +27,7 @@ learning. Every section opens with *"In one line"*: read only those boxes and yo
 #table(
   columns: (auto, 1fr),
   [*This file*], [`docs/guides/10_MASTER_GUIDE_Learn_AgriAgent.pdf` in the repository; copy in `labworksdepot/FYP_AgriAgent/`],
-  [*Report (black book)*], [`docs/report_latex/main.pdf`, 63 pages. "Book p. N" below = its printed page N.],
+  [*Report (black book)*], [`docs/report_latex/main.pdf`, 52 pages. "Book p. N" below = its printed page N.],
   [*Slides*], [`docs/slides/AgriAgent_FYP_Presentation.pptx`, 30 slides with speaker notes],
   [*To present*], [`docs/guides/07_Presentation_Kit_*.pdf` (what to say per slide) and `08_Slide_Distribution.pdf` (who presents what)],
   [*Online*], [github.com/Chaitanya-666/agriAgent, branch `chaitanya/blackbook-latex`],
@@ -105,7 +105,7 @@ The research question of the whole project: *can zero-shot models do the weed-vs
 - *Grounded SAM* (Ren et al. 2024) = text → boxes (DINO) → masks (SAM). This is our *base paper*.
 
 We use the *tiny* versions: both fit in about 2.4 GB of our 8 GB laptop graphics card (GPU) and take about 0.6 s per photo.
-#ev[Slides 3, 9, 16; book §5.2, p. 23. Code: `src/vision/grounding_dino.py`, `src/vision/sam2_wrapper.py`.]
+#ev[Slides 3, 10, 16; book §4.2, p. 12. Code: `src/vision/grounding_dino.py`, `src/vision/sam2_wrapper.py`.]
 
 // ═════════════════════════ PART B ═════════════════════════
 #pagebreak()
@@ -114,7 +114,7 @@ We use the *tiny* versions: both fit in about 2.4 GB of our 8 GB laptop graphics
 = The big picture
 #line1[*System 1* (on the laptop) finds plants and decides what to spray with plain rules; *System 2* (cloud AI) only *advises*; the yellow *safety gate* is the only thing allowed to approve spraying.]
 
-#pic("../slides/fyp_assets/arch.png", [The pipeline (slide 11; book Fig. 5.1). Green: local; yellow: the safety gate; blue: cloud models that only advise.], w: 78%)
+#pic("../slides/fyp_assets/arch.png", [The pipeline (slide 11; book Fig. 4.1). Green: local; yellow: the safety gate; blue: cloud models that only advise.], w: 78%)
 
 Why two systems? System 1 is fast, runs offline and gives the *same answer every time* for the same photo, so it can be
 tested. System 2 uses big cloud AI models that can be wrong, so they may *explain and suggest*, never spray.
@@ -134,7 +134,7 @@ Checked against the dataset's official labels: *31 of 36 weeds hit, 0 of 3 beets
 = Why the text labels fail (research question 1)
 #line1[Grounding DINO's *masks* cover the weeds fine, but its *labels* ("weed" or "crop") are wrong, so trusting them either sprays the crop or sprays nothing.]
 
-The test (slide 21; book Table 6.3, p. 33), 30 photos:
+The test (slide 21; book Table 5.3, p. 23), 30 photos:
 #table(columns: (1fr, auto, auto),
   [What we spray], [Crop sprayed], [Weed recall],
   [*Every* SAM 2 mask], [93.9%], [*97.6%*],
@@ -182,9 +182,9 @@ that band is *on the row*.
   [–], [unsure], [anything else: *never sprayed*])
 Masks covering the whole photo are thrown away before rule 1; otherwise one giant "crop" box would make everything crop.
 
-*Why it works on sugar beet:* the weeds there are tiny (median 16 px across) and the beets large (68 px), book p. 37.
+*Why it works on sugar beet:* the weeds there are tiny (median 16 px across) and the beets large (68 px), book p. 27.
 *Why it fails on cotton (10.4%):* one big weed fills the close-up photo, so "weeds are smaller" is false.
-The rules were written on 30 photos, *frozen*, then tested once on 90 new photos (book §5.4, p. 24).
+The rules were written on 30 photos, *frozen*, then tested once on 90 new photos (book §4.4, p. 14).
 #ask(
   [Why Otsu and not a fixed number?], [Light and soil change between photos; Otsu finds the best cut-off for each photo automatically.],
   [What if a field has no rows?], [Rules 2 and 4 switch off; rule 3 still works if crop plants were found; otherwise everything is unsure, so nothing is sprayed. Safe by default.],
@@ -204,12 +204,12 @@ For each detector mask (`spray_map_node` in `src/workflow.py`):
 *Why plain code, not AI?* Spraying the crop is the expensive mistake, so the decision must be testable (every rule has
 unit tests), explainable (each refused mask gets a written reason) and repeatable.
 *A story to tell:* an early version passed confidence and quality as *1.0*, so every "weed" label was sprayed. We found it
-in code review and fixed it before measuring anything. Book §5.3, p. 23.
+in code review and fixed it before measuring anything. Book §4.3, p. 13.
 
 = Where it goes wrong (finding F1)
 #line1[If the detector finds *no* crop, rule 4 calls every off-row plant a weed, even a whole beet.]
-#pic("../report_latex/figures/verify_rotation_X-10-0.jpg", [Book Fig. 6.3: photo X-10-0 rotated 90°. No crop box, so the largest beet is sprayed.], w: 70%)
-A size limit fixes it but loses most of the recall (book Table 6.9): limit 0.25 × median → 0.25% crop but 12.9% recall;
+#pic("../report_latex/figures/verify_rotation_X-10-0.jpg", [Book Fig. 5.3: photo X-10-0 rotated 90°. No crop box, so the largest beet is sprayed.], w: 70%)
+A size limit fixes it but loses most of the recall (book Table 5.9): limit 0.25 × median → 0.25% crop but 12.9% recall;
 no limit → 4.55% crop, 71.5% recall. We kept the rules frozen because the held-out photos were already used; a "safe
 mode" needs new test data (future scope). Typing the wrong crop name (F18) triggers the same failure; the app warns.
 
@@ -228,12 +228,12 @@ mode" needs new test data (future scope). Typing the wrong crop name (F18) trigg
   [PhenoBench], [Drone photos with pixel labels], [future work])
 *A lesson in honesty:* the first test set turned out to be *fabricated*: every beet photo had the same 2 crop + 6 weed
 boxes. We threw it away and copied every label from the official files by script (`scripts/build_eval_manifest_v2.py`).
-#pic("../report_latex/figures/audit_beet_X-10-0.jpg", [Book Fig. 6.1: old invented labels (left) vs official labels (right).], w: 62%)
+#pic("../report_latex/figures/audit_beet_X-10-0.jpg", [Book Fig. 5.1: old invented labels (left) vs official labels (right).], w: 62%)
 
 = How we measure
 #line1[Three percentages over pixels: *crop sprayed* (lower is better), *weed recall* (higher is better), *herbicide saved*.]
 
-Toy example (it is one of our automated tests, book p. 31): a tiny 5 × 5 photo has 6 crop pixels and 4 weed pixels. The
+Toy example (it is one of our automated tests, book p. 22): a tiny 5 × 5 photo has 6 crop pixels and 4 weed pixels. The
 spray map covers 5 pixels: 2 crop + 3 weed.
 - *Crop sprayed* = crop pixels sprayed ÷ all crop pixels = 2/6 = *33.3%*
 - *Weed recall* = weed pixels sprayed ÷ all weed pixels = 3/4 = *75%*
@@ -248,7 +248,7 @@ photos were run *once*, on 18 October, after the rules were frozen; a repeat run
 = The results
 #line1[On 90 unseen photos, AgriAgent hits *77.9%* of weeds while spraying *8.8%* of crop; Grounded SAM alone: 1.8% and 65.5%.]
 
-#pic("../report_latex/figures/tradeoff_holdout.png", [Book Fig. 6.2 (slide 22): best is top-left. Every Grounded SAM setting sits near zero recall; the plant rules jump up.], w: 70%)
+#pic("../report_latex/figures/tradeoff_holdout.png", [Book Fig. 5.2 (slide 22): best is top-left. Every Grounded SAM setting sits near zero recall; the plant rules jump up.], w: 70%)
 - *95%* herbicide saved compared with spraying everything; *0.6 s* per photo; no training.
 - Design photos 71.5% / 4.6%: held-out is *not worse*, so the rules were not tuned to the design photos.
 - *Is 90 photos enough?* We trained nothing, so all 120 are test photos. The 95% confidence intervals for weeds hit, *76.7–86.8%* vs *0.5–4.0%*, do not overlap: the gain is not luck.
@@ -266,7 +266,7 @@ Qwen 16/20 = *0.80*, Clef 14/20 = *0.70*, row rule 13/20 = *0.65*. The answers a
 Worked example (slide 19): Clef and Qwen both say weed → (0.7/0.3) × (0.8/0.2) = 9.33 → P = 0.90 ≥ 0.85 → weed. One
 expert alone reaches at most 0.80, so *no single model can ever decide alone*.
 
-Result (book p. 37): 69 plants reviewed, *0 crops approved*, 13 of 14 "crop" answers right, but *0 of 25 weeds* called
+Result (book p. 27): 69 plants reviewed, *0 crops approved*, 13 of 14 "crop" answers right, but *0 of 25 weeds* called
 weed (two experts rarely agreed on "weed"; 14 of 69 Groq calls also hit the free-tier rate limit). The same Qwen model
 scored 16/20 on Groq but 12/20 on Cloudflare: trust belongs to the provider it was measured on. Code:
 `src/agents/escalation_agent.py`.
@@ -277,7 +277,7 @@ scored 16/20 on Groq but 12/20 on Cloudflare: trust belongs to the provider it w
 The bulletin (ICAR–Directorate of Weed Research, *Herbicide Use in Indian Agriculture*, 2016) lists approved
 herbicides per crop. Doses are capped at the bulletin's maximum; banned herbicides are rejected; no matching row →
 "no evidence". We checked every row against the PDF and found a *dangerous rice dose* (20 g, 75 days instead of 15 g,
-95 days) and fixed it (book §6.10, p. 38). The farmer summary comes in English, Hindi and Marathi; its safety sentences
+95 days) and fixed it (book §5.10, p. 28). The farmer summary comes in English, Hindi and Marathi; its safety sentences
 are fixed text, never written by the AI. Code: `src/agronomy/`.
 
 // ═════════════════════════ PART D ═════════════════════════
@@ -344,7 +344,7 @@ One photo from the terminal: `python scripts/run_live_pipeline.py --image <photo
 - *Unit tests* (235) check one piece each: every gate rule, plant rule, metric (incl. the 5 × 5 toy example), ICAR row, GeoJSON field.
 - *End-to-end tests* (35) run the whole pipeline in mock mode.
 - Run them: `PYTHONPATH=. python3 -m unittest discover -s tests`.
-- *Manual cycles:* cycle 0 (16 Oct, 7 pass / 9 fail → 8 issues fixed), verification (23 Oct), manual cycle (30 Oct), Amit's cycle 2 (24 of 24 on Windows 11, RTX 3050). 30 findings F1–F30 traced (book §6.12, pp. 39–40).
+- *Manual cycles:* cycle 0 (16 Oct, 7 pass / 9 fail → 8 issues fixed), verification (23 Oct), manual cycle (30 Oct), Amit's cycle 2 (24 of 24 on Windows 11, RTX 3050). 30 findings F1–F30 traced (book §5.12, pp. 29–30).
 
 // ═════════════════════════ PART E ═════════════════════════
 #pagebreak()
@@ -352,7 +352,7 @@ One photo from the terminal: `python scripts/run_live_pipeline.py --image <photo
 
 = Using AI, honestly
 #line1[Yes, we used AI tools for code and drafts; our work was the decisions, the honest measurement, and catching where the AI was wrong.]
-Book §7.3 (p. 41) lists what went wrong and how we fixed it:
+Book §6.3 (p. 31) lists what went wrong and how we fixed it:
 + AI-written status claims ("100% complete", "227 tests" when there were 175) → every claim now carries REAL / PARTIAL / MOCK / PLANNED.
 + Fabricated test labels → rebuilt from the official files by script.
 + References to papers that do not exist → every reference now comes from its official Crossref record.

@@ -1,5 +1,5 @@
 // Builds docs/slides/AgriAgent_FYP_Presentation.pptx: the department-format FYP deck
-// (Nov 2026 guideline: Title, Motivation, Literature Survey, Gaps, Objectives, Proposed System
+// (Nov 2026 guideline as revised by Prof. Dhore on 18 Nov: Title, Introduction incl. objectives, Literature Survey, Gaps, Proposed System
 // and Implementation, Mathematical Model + Results, Conclusion, Future Scope, IEEE References).
 // Same title and numbers as the LaTeX report in docs/report_latex.
 //
@@ -106,10 +106,10 @@ s.addText([
 s.addText("Veermata Jijabai Technological Institute, Matunga, Mumbai 400019", { x: 7.4, y: 5.4, w: 5.3, h: 0.6, fontSize: 14, color: "BFD0C2", margin: 0, isTextBox: true });
 s.addNotes("Introduce the team and the guide. One sentence: we measured how well zero-shot foundation models tell a weed from a crop plant for spot spraying, and how much a transparent safety layer recovers when they cannot.");
 
-// ════════════════════════════════════════ 2–3 Motivation
-pres.addSection({ title: "Motivation" });
-s = slide("CONTENT", "Motivation");
-eyebrow(s, "Motivation");
+// ════════════════════════════════════════ 2–4 Introduction (report Chapter 1)
+pres.addSection({ title: "Introduction" });
+s = slide("CONTENT", "Introduction");
+eyebrow(s, "Introduction · background and motivation");
 s.addText("Spot spraying saves herbicide only if the camera can tell a weed from the crop", TT());
 boxCard(s, M, 2.0, 3.85, 3.0, "Blanket spraying today", "Herbicide goes on the whole field although weeds are patchy. Site-specific weed management treats only weed patches " + cite("gerhards2022sswm") + ".");
 boxCard(s, M + 4.1, 2.0, 3.85, 3.0, "Nozzles are cheap", "A low-cost smart sprayer with a deep detector already opens nozzles only over targets " + cite("partel2019sprayer") + ". The hard part is the decision.");
@@ -117,8 +117,8 @@ boxCard(s, M + 8.2, 2.0, 3.93, 3.0, "Decision is the bottleneck", "Reliable weed
 text(s, "Two errors, not equal: a missed weed survives one pass; a false “weed” on a crop plant damages the crop the farmer is protecting.", M, 5.35, CW, 0.9, { fontSize: 18, italic: true, color: C.text1 });
 s.addNotes("Why the topic matters: chemical use, cost, environment. The nozzle side is solved; the vision decision is not. Our main measure is therefore how much crop lands on the spray map.");
 
-s = slide("CONTENT_ALT", "Motivation");
-eyebrow(s, "Motivation · why zero-shot");
+s = slide("CONTENT_ALT", "Introduction");
+eyebrow(s, "Introduction · why zero-shot and problem statement");
 s.addText("Supervised models need labels from the same field; foundation models promise none", TT());
 boxCard(s, M, 2.0, 5.95, 2.4, "Supervised crop–weed networks", "Accurate after training on labelled images of the target crop " + cite("milioto2018realtime", "lottes2018fcn") + ", but labels are expensive " + cite("hasan2021survey") + " and accuracy drops on new fields " + cite("weyler2023domain") + ".", C.accent1, 16);
 boxCard(s, M + 6.18, 2.0, 5.95, 2.4, "Zero-shot foundation models", "Grounding DINO finds objects named in text " + cite("liu2024groundingdino") + "; SAM 2 outlines any object " + cite("ravi2025sam2") + ". Grounded SAM chains them " + cite("ren2024groundedsam") + ": “segment the weeds”, no labels.", C.accent3, 16);
@@ -129,7 +129,25 @@ text(s, [
 ], M + 0.3, 4.85, CW - 0.6, 1.4, { fontSize: 18 });
 s.addNotes("A small Indian farm cannot label thousands of photos per crop and field. If zero-shot worked, that cost disappears. Chong et al. 2025 argue text prompts are ill-defined for crop vs weed; we measure it.");
 
-// ════════════════════════════════════════ 4–7 Literature survey
+// 4 Objectives and research questions (report Section 1.4)
+s = slide("CONTENT", "Introduction");
+eyebrow(s, "Introduction · objectives and research questions");
+s.addText("Six objectives, three measurable questions", TT());
+bullets(s, [
+  "O1 Run Grounding DINO + SAM 2 zero-shot on a laptop GPU (8 GB)",
+  "O2 Deterministic safety gate = the only authority to spray",
+  "O3 Measure crop sprayed, weed recall, saving on official labels; held-out set used once",
+  "O4 Test one bounded escalation agent on withheld plants",
+  "O5 Herbicide advice only from the ICAR bulletin " + cite("choudhury2016icar"),
+  "O6 Working app, GeoJSON export, farmer summary (EN/HI/MR)",
+], M, 1.95, 6.2, 4.5, 16);
+[["RQ1", "How well does Grounded SAM separate weed from crop (weed recall, crop pixels sprayed)?"],
+ ["RQ2", "Does escalating unsure plants to VLMs make the map more complete without making it less safe?"],
+ ["RQ3", "Which cheap addition (gate, crop exclusion, row and size rules) cuts crop damage most, and at what recall cost?"]]
+  .forEach(([id, q], i) => boxCard(s, 7.2, 1.85 + i * 1.6, 5.53, 1.5, id, q, i === 0 ? C.accent2 : C.accent1, 14));
+s.addNotes("Objectives map to gaps: O1/O3 to G1–G3, O2/O4 to G4, O5/O6 to G5. Success criteria: real models, official labels, reproducible script, headline measured once on held-out photos.");
+
+// ════════════════════════════════════════ 5–8 Literature survey (report Chapter 2)
 pres.addSection({ title: "Literature survey" });
 const litSlide = (eye, title, rows, notes, alt) => {
   const sl = slide(alt ? "CONTENT_ALT" : "CONTENT", "Literature survey");
@@ -187,7 +205,7 @@ litSlide("Literature survey 4/4 · spraying, rows, surveys, LLMs and agents", "P
   ["Wang et al. 2024, Front. Comput. Sci. " + cite("wang2024agents"), "Survey of LLM-based autonomous agents", "Planning + tools; our agent is bounded"],
 ], "Bah and Louargant use the planting row to replace labels: our rules 2 and 4 use the same idea on single ground photos. The LLM reviews motivate our rule that every herbicide dose comes from the ICAR bulletin, not the model.", true);
 
-// ════════════════════════════════════════ 8 Gaps
+// ════════════════════════════════════════ 9 Gaps (report Chapter 3)
 pres.addSection({ title: "Literature gaps" });
 s = slide("CONTENT", "Literature gaps");
 eyebrow(s, "Literature gaps");
@@ -207,7 +225,7 @@ gaps.forEach(([id, t], i) => {
 });
 s.addNotes("Each gap maps to an objective. G2 and G3 are the core research gap: nobody measured Grounded SAM on the sprayer's metrics. G4 is our design contribution: a gate that is the only authority.");
 
-// ════════════════════════════════════════ 9 Base paper
+// ════════════════════════════════════════ 10 Base paper (report Section 3.1)
 s = slide("CONTENT_ALT", "Literature gaps");
 eyebrow(s, "Base paper and positioning");
 s.addText("We implement Grounded SAM and measure the weakness the closest work describes", TT());
@@ -218,25 +236,6 @@ text(s, [
   { text: "the sprayer's view (crop on the map, weeds hit, herbicide saved) and a transparent safety layer, without training. We do not claim to beat WaW's IoU: different metric and data." },
 ], M, 5.5, CW, 1.0, { fontSize: 17 });
 s.addNotes("Prof. Dhore asked: did we implement the base paper? Yes, Grounded SAM with SAM 2 in place of SAM. WaW is the comparison point; a like-for-like run on PhenoBench is the first future-work item.");
-
-// ════════════════════════════════════════ 10 Objectives
-pres.addSection({ title: "Objectives" });
-s = slide("CONTENT", "Objectives");
-eyebrow(s, "Objectives and research questions");
-s.addText("Six objectives, three measurable questions", TT());
-bullets(s, [
-  "O1 Run Grounding DINO + SAM 2 zero-shot on a laptop GPU (8 GB)",
-  "O2 Deterministic safety gate = the only authority to spray",
-  "O3 Measure crop sprayed, weed recall, saving on official labels; held-out set used once",
-  "O4 Test one bounded escalation agent on withheld plants",
-  "O5 Herbicide advice only from the ICAR bulletin " + cite("choudhury2016icar"),
-  "O6 Working app, GeoJSON export, farmer summary (EN/HI/MR)",
-], M, 1.95, 6.2, 4.5, 16);
-[["RQ1", "How well does Grounded SAM separate weed from crop (weed recall, crop pixels sprayed)?"],
- ["RQ2", "Does escalating unsure plants to VLMs make the map more complete without making it less safe?"],
- ["RQ3", "Which cheap addition (gate, crop exclusion, row and size rules) cuts crop damage most, and at what recall cost?"]]
-  .forEach(([id, q], i) => boxCard(s, 7.2, 1.85 + i * 1.6, 5.53, 1.5, id, q, i === 0 ? C.accent2 : C.accent1, 14));
-s.addNotes("Objectives map to gaps: O1/O3 to G1–G3, O2/O4 to G4, O5/O6 to G5. Success criteria: real models, official labels, reproducible script, headline measured once on held-out photos.");
 
 // ════════════════════════════════════════ 11–17 Proposed system and implementation
 pres.addSection({ title: "Proposed system" });
@@ -452,10 +451,10 @@ table(s, [
 text(s, "Also verified: every ICAR herbicide row against the PDF; a dangerous rice dose (20 g, 75 days vs 15 g, 95 days) was found and fixed. Speed: 0.56–0.64 s per photo.", M, 5.6, CW, 0.9, { fontSize: 15 });
 s.addNotes("Testing was led by Chaitanya; Amit ran both system cycles on his own laptop. F30: on a screenshot of a text page the detector saw a 'sugar beet plant' at 0.71, and the gate sprayed nothing: labels are not evidence.");
 
-// ════════════════════════════════════════ 26 Conclusion
-pres.addSection({ title: "Conclusion" });
+// ════════════════════════════════════════ 26–27 Conclusion and future scope (report Chapter 6)
+pres.addSection({ title: "Conclusion and future scope" });
 s = slide("DARK", "Conclusion");
-s.addText("CONCLUSION", { x: M, y: 0.5, w: CW, h: 0.4, fontSize: 14, bold: true, charSpacing: 2, color: "9FC7A5", margin: 0, isTextBox: true });
+s.addText("CONCLUSION AND FUTURE SCOPE", { x: M, y: 0.5, w: CW, h: 0.4, fontSize: 14, bold: true, charSpacing: 2, color: "9FC7A5", margin: 0, isTextBox: true });
 s.addText("Zero-shot labels cannot decide what to spray; a transparent safety layer recovers most of it", { x: M, y: 1.0, w: CW, h: 1.3, fontFace: "Cambria", fontSize: 28, bold: true, color: C.background1, margin: 0, isTextBox: true });
 [["RQ1", "Grounded SAM: 65.5% crop sprayed for 1.8% weed recall held out; deployed gate sprays nothing."],
  ["RQ2", "Escalation agent: no crop approved, 13/14 crop verdicts right, 0/25 weeds found. Safe, not effective."],
@@ -467,10 +466,9 @@ s.addText("Zero-shot labels cannot decide what to spray; a transparent safety la
 s.addText("A research prototype, not for real spraying. Every number is reproducible from the repository.", { x: M, y: 6.1, w: CW, h: 0.5, fontSize: 16, italic: true, color: "BFD0C2", margin: 0, isTextBox: true });
 s.addNotes("Close with the three answers and the honesty point: we measured what zero-shot vision can and cannot do on this problem.");
 
-// ════════════════════════════════════════ 27 Future scope
-pres.addSection({ title: "Future scope" });
-s = slide("CONTENT", "Future scope");
-eyebrow(s, "Future scope");
+// 27 Future scope (report Section 6.5)
+s = slide("CONTENT", "Conclusion and future scope");
+eyebrow(s, "Conclusion · future scope");
 s.addText("From measurement to a field-ready system", TT());
 [["Like-for-like with WaW", "Weed IoU on PhenoBench " + cite("weyler2024phenobench") + " validation set"],
  ["Species-aware features", "BioCLIP " + cite("stevens2024bioclip") + " features instead of text labels, gate on top"],

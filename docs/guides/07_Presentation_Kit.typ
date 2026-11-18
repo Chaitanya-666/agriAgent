@@ -1,4 +1,4 @@
-// AgriAgent presentation kit for the external examiners (Thu 19 Nov 2026).
+// AgriAgent presentation kit: showcase to Prof. Dhore on 7 Dec, external examiners on 9/10 Dec 2026.
 // One source, two PDFs:
 //   typst compile --root .. --input who=team 07_Presentation_Kit.typ 07_Presentation_Kit_Team.pdf
 //   typst compile --root .. --input who=me   07_Presentation_Kit.typ 07_Presentation_Kit_Chaitanya.pdf
@@ -12,7 +12,7 @@
 #show: doc.with(
   title: if me { "Examiner Day Guide (Chaitanya)" } else { "AgriAgent Presentation Kit" },
   subtitle: "How to present the 30-slide deck in 15 minutes and defend the black book",
-  date: "17 November 2026",
+  date: "18 November 2026",
 )
 #set heading(numbering: none)
 
@@ -45,10 +45,10 @@
 #set text(10pt)
 #set par(leading: 0.55em)
 #note(title: "If you read only one page, read this one")[
-*Thursday 19 Nov:* external examiners see the presentation, the demo and the black book.
+*7 Dec:* showcase to Prof. Dhore. *9 or 10 Dec:* the external examiners see the presentation, the demo and the black book.
 Each student gets at most *15 min to present + 5–10 min of questions* (department rule), using the same
 30-slide deck: `docs/slides/AgriAgent_FYP_Presentation.pptx`. The black book is
-`docs/report_latex/main.pdf` (63 pages). Everything below quotes those two files.
+`docs/report_latex/main.pdf` (52 pages). Everything below quotes those two files.
 ]
 
 == The project in 4 sentences (learn these by heart)
@@ -71,7 +71,7 @@ Each student gets at most *15 min to present + 5–10 min of questions* (departm
   columns: (auto, 1fr),
   [Point], [Where and what to say],
   [*1. The problem*], [Slides 2–3: why weed vs crop is hard and why crop damage matters most.],
-  [*2. What is ours*], [Slides 9, 11–13: the gate + plant rules + measuring the way a sprayer needs. We implement Grounded SAM (base paper) and measure its weakness.],
+  [*2. What is ours*], [Slides 10, 11–13: the gate + plant rules + measuring the way a sprayer needs. We implement Grounded SAM (base paper) and measure its weakness.],
   [*3. Results*], [Slides 21–22: the numbers above, measured once on photos never seen during design.],
   [*4. It works*], [Slide 17: one real photo through all five steps (or the live demo).],
   [*5. Honesty*], [Slides 20 and 24: fabricated labels found and replaced; the known failure F1. Say them before you are asked.],
@@ -81,8 +81,8 @@ Each student gets at most *15 min to present + 5–10 min of questions* (departm
 #table(
   columns: (auto, 1fr, auto),
   [*Tag*], [*Slides*], [*Time*],
-  [#tag("EXPLAIN")], [2, 3, 4, 8, 9, 10, 11, 12, 13, 17, 20, 21, 22, 26: talk properly], [≈ 10 min],
-  [#tag("QUICK")], [1, 5, 6, 7, 14, 15, 16, 18, 19, 23, 24, 25, 27: one or two sentences], [≈ 4 min],
+  [#tag("EXPLAIN")], [2, 3, 4, 5, 9, 10, 11, 12, 13, 17, 20, 21, 22, 26: talk properly], [≈ 10 min],
+  [#tag("QUICK")], [1, 6, 7, 8, 14, 15, 16, 18, 19, 23, 24, 25, 27: one or two sentences], [≈ 4 min],
   [#tag("SKIP")], [28–30 references: one sentence, click past], [5 s],
 )
 *Clock checks:* finish slide 10 by *5:00*, slide 17 by *9:30*, slide 22 by *12:30*, end at *≈ 14:20*.
@@ -97,140 +97,138 @@ Running late? Drop to one sentence on 14, 18, 19, 23, 25. Never skip 12, 13, 21,
 #text(9pt, fill: muted)[Say it in your own words; the lines below are the safe version. Speaker notes in
 PowerPoint (View → Notes) hold the same hints. "Book" = page in the printed black book.]
 
-== Opening and motivation (0:00 – 1:45)
+== Introduction: background, problem, objectives (0:00 – 2:15)
 
 #slide(1, "QUICK", 15, "Title",
   ["Good morning. We are Chaitanya Shinde, Amit Ingle, Sumant Vetal and Sahil Chavan, guided by Prof. V. D. Dhore. Our project is *AgriAgent: a safety-gated zero-shot vision pipeline for crop–weed spot spraying*."],
   book: "title page (same title as the deck, a department rule)")
 
-#slide(2, "EXPLAIN", 45, "Motivation",
+#slide(2, "EXPLAIN", 45, "Introduction: background and motivation",
   ["Farmers spray herbicide on the whole field although weeds grow in patches. A spot sprayer opens a nozzle only above a weed. The nozzle is cheap; *the decision is the bottleneck*. And the two errors are not equal: a missed weed survives one pass, but a crop plant called 'weed' gets sprayed. So our main number is *how much crop lands on the spray map*."],
   ask: [Why is crop damage worse? A missed weed is caught on the next pass; a sprayed crop plant is lost yield.],
   book: "§1.1, p. 1")
 
-#slide(3, "EXPLAIN", 45, "Why zero-shot + problem statement",
+#slide(3, "EXPLAIN", 45, "Introduction: why zero-shot + problem statement",
   ["Trained networks do this well but need *labelled photos from the same field*, and drop on new fields. Zero-shot models promise no labels: Grounding DINO finds objects named in text, SAM 2 outlines them; chained, they are *Grounded SAM*." Then read the *problem statement* box.],
   ask: [What is zero-shot? Using a model pretrained by others on huge general data, with *no training on our photos*. We trained nothing.],
   book: "§1.2–1.3, pp. 1–2")
 
-== Literature survey and gaps (1:45 – 4:00)
+#slide(4, "EXPLAIN", 30, "Introduction: objectives and research questions",
+  ["Six objectives, three questions. *RQ1:* how well does Grounded SAM separate weed from crop? *RQ2:* does asking AI models about unsure plants help without making it less safe? *RQ3:* which cheap addition cuts crop damage most, at what cost? The rest of the talk answers these three; the survey comes next."],
+  book: "§1.4, pp. 2–3")
 
-#slide(4, "EXPLAIN", 40, "Survey 1/4: zero-shot models",
+== Literature survey, gaps and base paper (2:15 – 5:00)
+
+#slide(5, "EXPLAIN", 40, "Survey 1/4: zero-shot models",
   ["Four survey slides; this is the key one. *Closest work: Chong et al., IROS 2025*: zero-shot with SAM + BioCLIP reaches *12.1% weed IoU vs 62.7% supervised* and argues text prompts are ill-defined for crop vs weed. *Ren et al. 2024, Grounded SAM*, is the pipeline we implement. VLM studies show 0.15–0.75 accuracy, so VLMs may advise, not decide."],
-  book: "Ch. 2, pp. 3–17; summary Table 2.1, p. 16")
+  book: "Ch. 2, pp. 5–8; summary Table 2.1, p. 8")
 
-#slide(5, "QUICK", 15, "Survey 2/4: supervised",
+#slide(6, "QUICK", 15, "Survey 2/4: supervised",
   ["Supervised crop–weed networks (Milioto, Lottes, Weyler) work, but need labels per field; Weyler 2023 shows they drop on new fields."],
-  book: "§2.6–2.11, pp. 6–8")
+  book: "§2.2, p. 6")
 
-#slide(6, "QUICK", 15, "Survey 3/4: weed detection",
+#slide(7, "QUICK", 15, "Survey 3/4: weed detection",
   ["Woebbecke's *excess-green index* is the first step of our plant rules; Rahman 2023 is the source of our cotton photos (80% mAP when trained)."],
-  book: "§2.17–2.23, pp. 11–14")
+  book: "§2.4–2.5, pp. 6–7")
 
-#slide(7, "QUICK", 15, "Survey 4/4: rows, spraying, LLMs",
+#slide(8, "QUICK", 15, "Survey 4/4: rows, spraying, LLMs",
   ["Bah and Louargant use the *planting row* instead of labels; our rules 2 and 4 use the same idea. LLM reviews say advice must be grounded, so our doses come only from the ICAR bulletin."],
-  book: "§2.12–2.16, pp. 9–11")
+  book: "§2.3–2.4, 2.6, pp. 6–7")
 
-#slide(8, "EXPLAIN", 40, "Literature gaps",
+#slide(9, "EXPLAIN", 40, "Literature gaps",
   ["Five gaps. G1: accuracy needs labels from the same field. G2: the text-prompt pipeline was *argued, not measured*, to fail. G3: papers report IoU, not what a sprayer needs. G4: no testable safety gate between model and nozzle. G5: AI advice not tied to Indian herbicide rules. *G2 and G3 are our research gap; G4 is our design contribution.*"],
-  book: "Ch. 3, p. 18")
+  book: "Ch. 3, p. 9")
 
-== Base paper and objectives (4:00 – 5:00)
-
-#slide(9, "EXPLAIN", 30, "Base paper and positioning",
+#slide(10, "EXPLAIN", 30, "Base paper and positioning",
   ["*Base paper: Grounded SAM.* We implement it, with SAM 2 instead of SAM. The peer-reviewed reference point is WaW (IROS 2025). We add the sprayer's view and a safety layer, without training. *We do not claim to beat WaW's IoU*: different metric and data."],
   ask: [Did you beat it? Different question and data; a like-for-like run on PhenoBench is future-scope item 1.],
-  book: "§3.1, p. 19")
-
-#slide(10, "EXPLAIN", 30, "Objectives and research questions",
-  ["Six objectives, three questions. *RQ1:* how well does Grounded SAM separate weed from crop? *RQ2:* does asking AI models about unsure plants help without making it less safe? *RQ3:* which cheap addition cuts crop damage most, at what cost? The rest of the talk answers these three."],
-  book: "Ch. 4, pp. 20–21")
+  book: "§3.1, p. 10")
 
 == Proposed system (5:00 – 8:00)
 
 #slide(11, "EXPLAIN", 50, "Architecture",
   [Point and walk top to bottom: "Photo + crop name → Grounding DINO boxes → SAM 2 masks → plant rules → *safety gate (yellow)* → app and GeoJSON. *System 1* runs on the laptop, 0.6 s per photo, same input same output. *System 2* (blue, cloud) only advises. *The yellow gate is the only part allowed to approve spraying.*"],
   ask: [Why two systems? Local plain code decides; cloud AI can be wrong, so it may only advise.],
-  book: "§5.2, p. 23, Fig. 5.1")
+  book: "§4.2, p. 12, Fig. 4.1")
 
 #slide(12, "EXPLAIN", 40, "Safety gate",
   ["The gate is plain code, not AI. A mask is sprayed only if its label says weed and not the crop, confidence ≥ 0.70, mask quality ≥ 0.85, it covers ≤ 50% of the photo; if more than 85% would be sprayed, nothing is; any error → do not spray. An early version passed confidence as 1.0 and sprayed every 'weed'; we found it, fixed it, and now every rule has a test with real values."],
   ask: [Why not AI here? Spraying the crop is the costly mistake; rules can be tested and explained and always give the same answer.],
-  book: "§5.3, p. 23; equations §6.1.6, p. 30")
+  book: "§4.3, p. 13; equations §5.1.6, p. 20")
 
 #slide(13, "EXPLAIN", 45, "Plant rules v3 (frozen)",
   ["The detector rarely boxes small weeds, so we check *every green patch* (excess green + Otsu threshold). In order: *1* crop if ≥ 30% inside a crop mask; *2* crop if on the planting row; *3* weed if smaller than ¼ of the median crop plant; *4* weed if no crop was found and it is off the row; else *unsure, never sprayed*. Written on 30 photos, frozen, then run once on 90 new photos."],
   ask: [Why ¼? It calibrates itself per photo; set by design, never tuned on the held-out photos.],
-  book: "§5.4, p. 24")
+  book: "§4.4, p. 14")
 
 #slide(14, "QUICK", 30, "Escalation agent and ICAR",
   ["The *escalation agent* asks up to three sources (row rule, Clef Flash, Qwen) about withheld plants, cheapest first, and needs 85% agreement for 'weed'; it only advises. *System 2* names the weed, but the herbicide and dose come only from the *ICAR–DWR bulletin*; banned herbicides are rejected. Summary in English, Hindi, Marathi."],
   ask: [Is it really an agent? One bounded agent: it chooses which source to ask next under a call budget and keeps a trace; it has no authority.],
-  book: "§5.5–5.7, pp. 24–25")
+  book: "§4.5–4.7, pp. 14–15")
 
 #slide(15, "QUICK", 20, "Datasets (with links)",
   ["Public data with links: *sugarbeetsAndweeds* (120 photos: 30 design + 90 held out), *CottonWeedDet3* (8 photos), the *ICAR bulletin*, and PhenoBench for future work. Labels copied unchanged from the official files by a script."],
   ask: [Why sugar beet? It is public data where both crop and weeds are labelled; cotton labels only weeds, so crop damage cannot be measured there.],
-  book: "§5.8, p. 26, Table 5.2")
+  book: "§4.8, p. 15, Table 4.2")
 
 #slide(16, "QUICK", 15, "Implementation",
   ["Python; the two tiny models through Hugging Face on an 8 GB laptop GPU (peak ≈ 2.4 GB); Qwen and Clef on Cloudflare's free tier; Streamlit app; *270 automated tests*; release v1.0.0. Every screen says REAL or MOCK."],
-  book: "§5.9–5.11, pp. 26–27")
+  book: "§4.9–4.11, pp. 16–17")
 
 == Demo, maths, evaluation (8:00 – 12:30)
 
 #slide(17, "EXPLAIN", 75, "System walkthrough (or live demo)",
   [Walk the five panels left to right: "① A real photo, crop sugar beet. ② Grounding DINO draws *one box over the whole photo*, 'sugar beet plant' 0.58: its labels are useless here. ③ SAM 2 makes it one mask. ④ Our *plant rules* check every green patch: plants on the row protected (green), small off-row patches are weeds (red). ⑤ The gate sprays only those, minus every crop pixel. Against the official labels: *31 of 36 weeds hit, 0 of 3 beets touched*, 98% saved." Held-out average: 77.9% / 8.8%.],
   ask: [Is it real? Real run on 17 Nov with the real models (`scripts/make_walkthrough_figure.py`); the app always shows REAL or MOCK.],
-  book: "§5.12, pp. 27–28")
+  book: "§4.12, pp. 17–18")
 
 #slide(18, "QUICK", 30, "Maths 1/2: vegetation and rules",
-  ["The full model is in §6.1. Excess green = 2G − R − B; *Otsu* picks the plant/soil threshold per photo; rows come from the vegetation profile. The classifier is a piecewise function; line 5 applies only when no crop was found, which is our known failure F1."],
+  ["The full model is in §5.1. Excess green = 2G − R − B; *Otsu* picks the plant/soil threshold per photo; rows come from the vegetation profile. The classifier is a piecewise function; line 5 applies only when no crop was found, which is our known failure F1."],
   ask: [Otsu? Tries every threshold and keeps the one that best separates the two pixel groups (maximum between-class variance).],
-  book: "§6.1.2–6.1.5, pp. 29–30")
+  book: "§5.1.2–5.1.5, pp. 19–20")
 
 #slide(19, "QUICK", 30, "Maths 2/2: gate, agent, metrics",
   ["The gate is an AND of conditions. The agent multiplies odds: Clef (0.70) and Qwen (0.80) both say weed → odds 9.33 → *P = 0.90 ≥ 0.85*, so weed; one source alone tops out at 0.80. Metrics are pixel ratios, tested on a 5×5 toy grid: crop 2/6 = 33.3%, recall 3/4 = 75%, saved 80%."],
-  book: "§6.1.6–6.1.8, pp. 30–31")
+  book: "§5.1.6–5.1.8, pp. 20–22")
 
 #slide(20, "EXPLAIN", 30, "Evaluation method",
   ["Honesty slide. The first test set had *fabricated labels*: the same 2 crop + 6 weed boxes on every photo. We caught it, withdrew it and rebuilt every label from the official files by script. 30 photos for design; *90 held out and run once* (18 Oct); a repeat run (23 Oct) gave identical numbers."],
-  book: "§6.2, pp. 32–33, Fig. 6.1")
+  book: "§5.2, pp. 22–23, Fig. 5.1")
 
 #slide(21, "EXPLAIN", 40, "RQ1: Grounded SAM baseline",
   ["Spraying every SAM 2 mask hits 97.6% of weeds, so *the masks are fine*. Using the text labels: threshold 0.35 sprays 70.8% of the crop for 9% of weeds; the deployed 0.70 sprays nothing, because real scores never pass 0.68. *Text labels cannot separate crop from weed*, as WaW argued."],
-  book: "§6.3–6.4, pp. 33–34, Table 6.3")
+  book: "§5.3–5.4, pp. 23–24, Table 5.3")
 
 #slide(22, "EXPLAIN", 45, "Headline (held-out, run once)",
   ["On 90 photos never used in design: *77.9% weed recall at 8.8% crop sprayed*, against 1.8% and 65.5% for Grounded SAM. 95% herbicide saved. 95% confidence intervals for weeds hit, 76.7–86.8% vs 0.5–4.0%, do not overlap. Cotton is weaker: 10.4%."],
   ask: [Only 120 images? We trained nothing; it is the whole public dataset, used only for testing; the intervals do not overlap. What is limited is generality beyond young sugar beet.],
-  book: "§6.6, pp. 35–36, Table 6.6, Fig. 6.2")
+  book: "§5.6, pp. 25–26, Table 5.6, Fig. 5.2")
 
 == Results, limits, close (12:30 – 14:20)
 
 #slide(23, "QUICK", 25, "RQ2: escalation agent",
   ["69 withheld plants: it *never approved a crop plant*, was right 13 of 14 times when it said crop, but called *0 of 25 weeds* weeds. Safe, not effective. The same Qwen model scored 16/20 on Groq and 12/20 on Cloudflare."],
-  book: "§6.7–6.8, p. 37")
+  book: "§5.7–5.8, p. 27")
 
 #slide(24, "QUICK", 30, "Limitation F1",
   ["Say it before they find it: rotate a photo 90°, the detector finds no crop, so rule 4 calls the largest beet an off-row weed and sprays it. A size limit fixes that but loses most of the recall (table). Rules stay frozen; a 'safe mode' is future work."],
-  book: "§6.9, p. 38, Fig. 6.3")
+  book: "§5.9, p. 28, Fig. 5.3")
 
 #slide(25, "QUICK", 15, "Testing and release",
   ["270 automated tests, three manual cycles, final system test 24 of 24 on Windows. Every ICAR row was checked against the PDF; a dangerous rice dose was found and fixed."],
-  book: "§6.10–6.12, pp. 38–40")
+  book: "§5.10–5.12, pp. 28–30")
 
-#slide(26, "EXPLAIN", 30, "Conclusion",
+#slide(26, "EXPLAIN", 30, "Conclusion (and future scope)",
   [Read the three answers: "*RQ1* text labels fail. *RQ2* the agent is safe but finds no weeds. *RQ3* simple rules plus the gate: 77.9% recall at 8.8% crop, 95% saved, no training. A research prototype, not for real spraying; every number is reproducible from the repository."],
-  book: "Ch. 7, pp. 41–42")
+  book: "Ch. 6, pp. 31–33")
 
-#slide(27, "QUICK", 15, "Future scope",
+#slide(27, "QUICK", 15, "Future scope (inside the conclusion)",
   ["Next: a like-for-like comparison with WaW on PhenoBench, species-aware BioCLIP features instead of text labels, a safe mode for rule 4, few-shot adaptation, and a field trial with GPS and an agronomist."],
-  book: "Ch. 8, p. 43")
+  book: "§6.5, p. 32")
 
 #slide(28, "SKIP", 5, "References 1/3 (also 29, 30)",
   ["*51 references in IEEE format*, with volume, pages and DOI; the report lists them in full." Click to the end and say "Thank you, we are happy to take questions."],
-  book: "References, pp. 44–48")
+  book: "References, pp. 34–38")
 
 #pagebreak()
 
@@ -241,29 +239,31 @@ The examiner may flip through it while you talk. Know where these are:
 #table(
   columns: (auto, auto, 1fr, auto),
   [*Part*], [*Pages*], [*What is there*], [*Slides*],
-  [Front matter], [i–xii], [Statement of candidate, approval sheet, certificate, acknowledgement, *abstract (p. v)*, contents, lists, abbreviations], [1],
-  [1 Motivation], [1–2], [Why spot spraying, why zero-shot, *problem statement*, scope, contributions], [2–3],
-  [2 Literature survey], [3–17], [*25 papers*, each with authors, venue, DOI, introduction, solution, results, gap, relevance; summary table p. 16], [4–7],
-  [3 Literature gaps], [18–19], [Gaps G1–G5; *base paper* §3.1], [8–9],
-  [4 Objectives], [20–21], [O1–O6, RQ1–RQ3, success criteria], [10],
-  [5 Proposed system], [22–28], [Requirements, architecture, gate, rules, agent, ICAR, *datasets with links*, stack, app, GeoJSON], [11–17],
-  [6 Model + results], [29–40], [*Mathematical model* (§6.1), evaluation, RQ1, *headline Table 6.6 p. 35*, RQ2, F1, ICAR check, speed, testing], [18–25],
-  [7 Conclusion], [41–42], [Answers to RQs, base paper, lessons, limitations], [26],
-  [8 Future scope], [43], [Next steps], [27],
-  [References], [44–48], [IEEE format, 35 journal + 5 conference papers + datasets/docs], [28–30],
-  [Appendix A, B], [49–50], [How to run; *team roles* (Table B.1)], [–],
+  [Front matter], [i–xi], [Statement of candidate (the only names table), approval sheet, certificate (two examiners), acknowledgement, *abstract (p. v)*, contents, lists, abbreviations], [1],
+  [1 Introduction], [1–4], [Background, motivation, *problem statement*, *objectives + RQ1–RQ3*, scope, contributions, key observations, organisation], [2–4],
+  [2 Literature survey], [5–8], [*25 papers summarised by theme* (zero-shot models, supervised, rows, spraying, detection, VLMs/agents); summary Table 2.1, p. 8], [5–8],
+  [3 Literature gaps], [9–10], [Gaps G1–G5; *base paper* §3.1], [9–10],
+  [4 Proposed system], [11–18], [Requirements, architecture, gate, rules, agent, ICAR, *datasets with links*, stack, app, GeoJSON], [11–17],
+  [5 Model + results], [19–30], [*Mathematical model* (§5.1), evaluation, RQ1, *headline Table 5.6 p. 25*, RQ2, F1, ICAR check, speed, testing], [18–25],
+  [6 Conclusion and future scope], [31–33], [Answers to RQs, base paper, lessons, limitations, *future scope §6.5*, conclusion], [26–27],
+  [References], [34–38], [IEEE format, 35 journal + 5 conference papers + datasets/docs], [28–30],
+  [Appendix A, B], [39–40], [How to run; *team roles* (Table B.1)], [–],
 )
 
-== Format check against the department rules (done 17 Nov)
+== Format check: department rules and Prof. Dhore's review (18 Nov)
 #table(
   columns: (1fr, auto),
   [Department rule], [Status],
   [Report in LaTeX (`docs/report_latex/`)], [#real done],
-  [Same section order as the department list (Motivation … Future scope, References)], [#real done],
+  [Chapter 1 is *Introduction* (background, motivation, problem, objectives, scope, contributions, observations); same in the PPT], [#real done 18 Nov],
+  [Literature survey summarised, not paper by paper; linking paragraph at the start of every chapter], [#real done 18 Nov],
+  [Future scope inside the conclusion chapter; objectives inside Chapter 1], [#real done 18 Nov],
+  [Names table only on the first page; two examiners everywhere; no acknowledgement signature; no citations in the abstract], [#real done 18 Nov],
+  [Section order as revised by Prof. Dhore; PPT aligned with the report], [#real done],
   [≥ 25–30 Transactions / journal papers, IEEE format, full volume/pages/DOI], [#real 35 journal + 5 conf.],
   [Every paper cited in the survey or gaps chapter], [#real checked],
   [Same title in report and PPT], [#real done],
-  [Datasets slide with links], [#real slide 15, Table 5.2],
+  [Datasets slide with links], [#real slide 15, Table 4.2],
   [PPT 25–30 slides], [#real 30],
   [Demo video *or* results in the slot], [#real results on slide 17],
   [Mentor pre-approval of report + PPT], [#planned pending],
@@ -281,10 +281,10 @@ The examiner may flip through it while you talk. Know where these are:
 
 #qa[Explain the project in one minute.][Use the 4 sentences on page 1 and the numbers 65.5% → 8.8% crop, 1.8% → 77.9% weeds.]
 #qa[What is new in your work?][(1) We *measured* the zero-shot pipeline the way a sprayer needs: crop sprayed, weeds hit, herbicide saved. (2) A *safety gate* that alone decides spraying. (3) Simple rules that recover most of the performance *without training*. (4) Honest negative results (RQ2, F1).]
-#qa[What is your base paper? Did you implement it?][Grounded SAM (Ren et al. 2024). Yes, with SAM 2 instead of SAM. Peer-reviewed reference: Chong et al., IROS 2025 (slide 9, p. 19).]
+#qa[What is your base paper? Did you implement it?][Grounded SAM (Ren et al. 2024). Yes, with SAM 2 instead of SAM. Peer-reviewed reference: Chong et al., IROS 2025 (slide 10, p. 10).]
 #qa[Why not just train YOLO or a CNN?][That is the research question: can we avoid labelling? Training needs thousands of labelled photos per field and drops on new fields (Weyler 2023). Trained results (about 80% mAP on cotton, Rahman 2023) are the ceiling we compare against.]
-#qa[Only 120 images?][We trained on zero. 120 is the whole public dataset, used only to test; 90 held out and run once; confidence intervals 76.7–86.8% vs 0.5–4.0% do not overlap (p. 35).]
-#qa[What is your mathematical model?][§6.1, pp. 29–32: excess green and Otsu threshold → patches → row test → piecewise classifier → gate as a logical AND → agent's odds formula → three pixel-ratio metrics. Show slide 19's worked example.]
+#qa[Only 120 images?][We trained on zero. 120 is the whole public dataset, used only to test; 90 held out and run once; confidence intervals 76.7–86.8% vs 0.5–4.0% do not overlap (p. 25).]
+#qa[What is your mathematical model?][§5.1, pp. 19–22: excess green and Otsu threshold → patches → row test → piecewise classifier → gate as a logical AND → agent's odds formula → three pixel-ratio metrics. Show slide 19's worked example.]
 #qa[Why is the gate plain code and not AI?][Spraying the crop is the expensive mistake. Plain rules can be unit tested, explained, and give the same answer every time. AI advises; the gate decides.]
 #qa[What if the field has no rows?][Rules 2 and 4 need clear rows. Without rows, rules 1 and 3 still work when the detector finds crop plants; everything else becomes *unsure*, which is never sprayed. It fails safe.]
 #qa[Does it need internet in the field?][No for spraying decisions: System 1 runs locally. Only System 2's advice (weed name, summary) uses the cloud.]
@@ -294,7 +294,7 @@ The examiner may flip through it while you talk. Know where these are:
 #qa[Biggest weakness?][F1 (slide 24): with no crop found, rule 4 can spray a whole beet. Also cotton recall 10.4%, and only one crop really tested.]
 #qa[Did you use AI tools? What about plagiarism?][Yes, for code and drafts. That is why every number comes from running the code, every reference was checked against its DOI, and AI mistakes (fake labels, bad references, the 1.0 gate bug, a wrong rice dose) were found and removed. The mentor runs the plagiarism check.]
 #qa[Why is this number so high / so low?][Use the next section: every number on the slides with its source and the reason.]
-#qa[What did *you* do?][Give *your* line from Table B.1 (p. 50) and the next section. Never claim a part you did not build.]
+#qa[What did *you* do?][Give *your* line from Table B.1 (p. 40) and the next section. Never claim a part you did not build.]
 #set text(10.5pt)
 
 #pagebreak()
@@ -309,10 +309,10 @@ Rule: *our* numbers come from running the code (result files in `docs/results/`)
 == Our headline results
 #nt(
   [*77.9%* weed recall (22)], [Share of weed *pixels* on the spray map, 90 held-out photos. `holdout_plant_rules_v3`], [Rules 3 and 4 catch small and off-row weeds that the detector never boxes. Not 100% by design: anything ambiguous becomes *unsure*, and unsure is never sprayed (safety first).],
-  [*8.8%* crop sprayed (22)], [Share of crop pixels sprayed. Same file. 104 of 363 beets touched], [Report §6.6: mostly small specks at a beet's edge, but some whole beets through F1 (slide 24). Not 0 because the rules use no training.],
+  [*8.8%* crop sprayed (22)], [Share of crop pixels sprayed. Same file. 104 of 363 beets touched], [Report §5.6: mostly small specks at a beet's edge, but some whole beets through F1 (slide 24). Not 0 because the rules use no training.],
   [*1.8%* / *65.5%* (22)], [Grounded SAM alone, threshold 0.35, same 90 photos. Same file], [The detector mostly boxes the big beets and often labels them "weed", so it sprays crop and misses small weeds.],
   [*95%* saved (22)], [1 − sprayed area ÷ whole photo. Same file (94.96)], [Weeds are small; only about 5% of each photo is sprayed.],
-  [*76.7–86.8%* vs *0.5–4.0%* (22)], [95% Wilson interval for the share of *weeds hit*: 177/215 = 82.3% vs 3/215 = 1.4%. Report §6.6], [It counts weeds (hit or not), not pixels, so 77.9% need not lie inside it. The two ranges do not overlap: the gain is not luck.],
+  [*76.7–86.8%* vs *0.5–4.0%* (22)], [95% Wilson interval for the share of *weeds hit*: 177/215 = 82.3% vs 3/215 = 1.4%. Report §5.6], [It counts weeds (hit or not), not pixels, so 77.9% need not lie inside it. The two ranges do not overlap: the gain is not luck.],
   [*71.5% / 4.6%* dev (22)], [Same rules on the 30 design photos. `plant_rules_v3`], [Held-out is *not worse* than dev, so the rules were not over-fitted to the design photos.],
   [*10.4%* cotton (22)], [Weed recall on 8 cotton photos (7 of 19 weeds). Same file], [Cotton close-ups: one big weed fills the frame, so "weeds are smaller than the crop" is false; the detector even boxed big weeds as cotton.],
 )
@@ -349,7 +349,7 @@ Rule: *our* numbers come from running the code (result files in `docs/results/`)
   [*7/16*, *24/24*, *30* findings], [System test cycle 0, cycle 2; findings F1–F30], [Cycle 0 found 8 issues, all fixed; cycle 2 is the final build.],
 )
 
-== Survey numbers (4–7): the papers' own results, not ours
+== Survey numbers (5–8): the papers' own results, not ours
 #nt(
   [12.1% vs 62.7%], [WaW: zero-shot vs supervised weed IoU, IROS 2025], [Even the best zero-shot method is far below trained models.],
   [48.7 AP · 52.5 AP], [Grounded SAM on SegInW · Grounding DINO zero-shot on COCO], [Good on everyday objects, not on crop vs weed.],
@@ -387,8 +387,8 @@ If the department evaluates each student *alone* for 15 minutes, ignore this spl
 #table(
   columns: (auto, 1fr, auto),
   [*Presenter*], [*Slides*], [*Time*],
-  [*Chaitanya* (9)], [1 Title · 2 Motivation · 3 Problem statement · 11 Architecture · 12 Safety gate · 13 Plant rules · 17 Walkthrough · 22 Headline · 26 Conclusion], [≈ 6.5 min],
-  [*Sumant* (8)], [4–7 Literature survey · 8 Gaps · 9 Base paper · 10 Objectives · 14 Agent + ICAR advice], [≈ 3.5 min],
+  [*Chaitanya* (9)], [1 Title · 2 Introduction · 3 Problem statement · 11 Architecture · 12 Safety gate · 13 Plant rules · 17 Walkthrough · 22 Headline · 26 Conclusion], [≈ 6.5 min],
+  [*Sumant* (8)], [4 Objectives · 5–8 Literature survey · 9 Gaps · 10 Base paper · 14 Agent + ICAR advice], [≈ 3.5 min],
   [*Amit* (7)], [15 Datasets · 16 Implementation · 18–19 Mathematical model · 23 Agent results · 24 Limitation F1 · 25 Testing; runs the live demo during 17], [≈ 3 min],
   [*Sahil* (6)], [20 Evaluation method · 21 RQ1 baseline · 27 Future scope · 28–30 References], [≈ 1.5 min],
 )
@@ -422,20 +422,20 @@ Questions will still come to you on anything (you are the lead). Use the numbers
 #qa[Why the tiny models?][Both fit in 8 GB with headroom (peak ≈ 2.4 GB) and run in about 0.6 s per photo; also verified on Amit's 4 GB RTX 3050.]
 #qa[Where is the gate in the code?][`src/agents/deterministic_router.py` and `src/workflow.py`; each rule has unit tests.]
 
-= Your checklist before Thursday
+= Your plan until the final presentation
 #table(
   columns: (auto, 1fr),
   [When], [What],
-  [*Tue 17 eve*], [Read page 1 twice, then *your 9 slide cards* with the deck open. CPAD exam prep comes first (other session).],
-  [*Wed 18 morning*], [Meet Prof. Dhore *before the CPAD exam (13:30)*. Show the report PDF + PPT. Ask: (1) approval of both; (2) plagiarism check (< 30%); (3) how many black-book copies; (4) Thursday's time and whether each student presents separately; (5) *tell him your Deep Learning lab exam is Thu 19, 9:00–17:30* and ask for a slot that fits.],
-  [*Wed 18 after CPAD*], [Send me any changes he asks for; I rebuild the PDF. Then print and bind (front matter pages i–iv get signatures by hand).],
-  [*Thu 19*], [Before your slot: read page 1 and the 16 questions once. Laptop charged, deck opened in presenter view.],
+  [*Now – 22 Nov*], [End-sem exams come first. 20 minutes a day: one Part of the master guide (A, then B).],
+  [*28 Nov – 6 Dec*], [Your 9 slide cards aloud with the deck open; then the 16 questions without looking; one timed run of your slides.],
+  [*7 Dec*], [Showcase to Prof. Dhore. Note every change he asks for and send it to me; I update the report, deck and guides.],
+  [*8 Dec*], [Print and bind after his approval: one per student + guide + department = 6. Signatures only on the Statement of Candidate (students) and the approval/certificate pages (supervisor, HoD, two examiners).],
+  [*9 or 10 Dec*], [Before your slot: page 1 and the 16 questions once; laptop charged, deck in presenter view.],
 )
-#warn(title: "Clash")[Your DL lab exam (Lab 1B, 9:00–17:30) is on the same day as the external examiners. Sort out the timing with Prof. Dhore and the DL faculty on Wednesday.]
 ] else [
 = Your part and what you may claim
 Present your slides from the table on the previous page, then answer questions on your own part.
-Claim only your real role, exactly as printed in the black book (Table B.1, p. 50):
+Claim only your real role, exactly as printed in the black book (Table B.1, p. 40):
 
 #table(
   columns: (auto, 1fr, auto),

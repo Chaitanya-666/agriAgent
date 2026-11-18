@@ -1,10 +1,10 @@
-// Who presents which slide at the FYP external evaluation (Thu 19 Nov 2026), and where every file lives.
+// Who presents which slide at the FYP presentations (7 Dec to Prof. Dhore, 9/10 Dec to the examiners), and where every file lives.
 //   typst compile --root .. 08_Slide_Distribution.typ 08_Slide_Distribution.pdf
 #import "../template.typ": *
 #show: doc.with(
   title: "AgriAgent: Slide Distribution and Files",
-  subtitle: "Who presents what on Thursday 19 November, and where to find everything",
-  date: "17 November 2026",
+  subtitle: "Who presents what (7 Dec to Prof. Dhore, 9 or 10 Dec to the examiners), and where to find everything",
+  date: "18 November 2026",
 )
 #set heading(numbering: none)
 #set text(9.6pt)
@@ -15,7 +15,7 @@
   columns: (auto, 1fr, auto),
   [*File*], [*What it is*], [*Online*],
   [`AgriAgent_FYP_Presentation.pptx`], [The deck: 30 slides, department order. *Speaker notes* on every slide hold the lines to say (PowerPoint → presenter view). PDF copy: `AgriAgent_FYP_Presentation.pdf`.], [#gh("docs/slides/AgriAgent_FYP_Presentation.pptx")],
-  [`AgriAgent_FYP_Report.pdf`], [The black book, 63 pages, LaTeX. Print and sign *after* Prof. Dhore approves it.], [#gh("docs/report_latex/main.pdf")],
+  [`AgriAgent_FYP_Report.pdf`], [The black book, 52 pages, LaTeX. Print and sign *after* Prof. Dhore approves it.], [#gh("docs/report_latex/main.pdf")],
   [`AgriAgent_Presentation_Kit_Team.pdf`], [Preparation kit: every slide with what to say, the likely questions, every number explained, the black-book map.], [#gh("docs/guides/07_Presentation_Kit_Team.pdf")],
   [`AgriAgent_Slide_Distribution.pdf`], [This page.], [#gh("docs/guides/08_Slide_Distribution.pdf")],
 )
@@ -31,8 +31,8 @@
 
 #part("Chaitanya Shinde", 9, "6.5 min", (
   [1], [Title], [Introduce the four members and Prof. V. D. Dhore; the project title.],
-  [2], [Motivation], [Whole-field spraying though weeds are patchy; the decision weed-or-crop is the bottleneck; spraying the crop is the costly mistake.],
-  [3], [Why zero-shot + problem], [Trained models need labels per field; Grounded SAM promises none; read the problem statement.],
+  [2], [Introduction: background], [Whole-field spraying though weeds are patchy; the decision weed-or-crop is the bottleneck; spraying the crop is the costly mistake.],
+  [3], [Introduction: problem], [Trained models need labels per field; Grounded SAM promises none; read the problem statement.],
   [11], [Architecture], [Detect → segment → plant rules → *safety gate* → app/GeoJSON; System 1 decides locally, System 2 only advises.],
   [12], [Safety gate], [Plain code; spray only if every rule passes (weed label, ≥ 0.70, ≥ 0.85, ≤ 50%, ≤ 85%); any doubt → no spray.],
   [13], [Plant rules], [Crop if in a crop mask or on the row; weed if small or off-row; else unsure, never sprayed; frozen, tested once.],
@@ -42,13 +42,13 @@
 ))
 
 #part("Sumant Vetal", 8, "3.5 min", (
-  [4], [Survey 1/4], [Closest work WaW: 12.1% vs 62.7% weed IoU; Grounded SAM = our pipeline; VLMs 0.15–0.75, advise only.],
-  [5], [Survey 2/4], [Supervised networks need labels per field; they drop on new fields.],
-  [6], [Survey 3/4], [Excess-green index = our first step; our cotton data comes from Rahman 2023.],
-  [7], [Survey 4/4], [Planting rows replace labels; AI advice must be grounded, so doses only from ICAR.],
-  [8], [Literature gaps], [G1–G5; G2 and G3 = our research gap; G4 = our design contribution.],
-  [9], [Base paper], [Grounded SAM, implemented with SAM 2; we do not claim to beat WaW.],
-  [10], [Objectives], [Six objectives; research questions RQ1–RQ3.],
+  [4], [Objectives], [Six objectives (O1–O6) and research questions RQ1–RQ3; the survey comes next.],
+  [5], [Survey 1/4], [Closest work WaW: 12.1% vs 62.7% weed IoU; Grounded SAM = our pipeline; VLMs 0.15–0.75, advise only.],
+  [6], [Survey 2/4], [Supervised networks need labels per field; they drop on new fields.],
+  [7], [Survey 3/4], [Excess-green index = our first step; our cotton data comes from Rahman 2023.],
+  [8], [Survey 4/4], [Planting rows replace labels; AI advice must be grounded, so doses only from ICAR.],
+  [9], [Literature gaps], [G1–G5; G2 and G3 = our research gap; G4 = our design contribution.],
+  [10], [Base paper], [Grounded SAM, implemented with SAM 2; we do not claim to beat WaW.],
   [14], [Agent + ICAR advice], [Agent asks row rule → Clef → Qwen, advice only; doses only from the ICAR bulletin; EN/HI/MR summary.],
 ))
 
@@ -66,12 +66,12 @@
 #part("Sahil Chavan", 6, "1.5 min", (
   [20], [Evaluation method], [Fabricated labels found and replaced; 30 design photos + 90 held out, run once.],
   [21], [RQ1 baseline], [Masks hit 97.6% of weeds but labels fail: 70.8% crop at 0.35, nothing at 0.70.],
-  [27], [Future scope], [PhenoBench comparison, BioCLIP, safe mode, few-shot, field trial.],
+  [27], [Future scope (part of the conclusion)], [PhenoBench comparison, BioCLIP, safe mode, few-shot, field trial.],
   [28–30], [References], ["51 references in IEEE format." Then: "Thank you, we are happy to take questions."],
 ))
 
-= Everyone, before Thursday
+= Everyone, before 7 December
 - Read page 1 of the kit, then say *your* slides' lines aloud three times with the deck open; time yourself.
 - Bring *your own printed, signed black book* (department rule); the team also brings one for Prof. Dhore and one for the department.
-- In questions, claim only your role as printed in Table B.1 (p. 50). If unsure: "It is in the report, section …".
+- In questions, claim only your role as printed in Table B.1 (p. 40). If unsure: "It is in the report, section …".
 - If someone is absent, Chaitanya presents their slides with the same lines.
