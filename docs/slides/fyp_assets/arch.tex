@@ -1,0 +1,25 @@
+\documentclass[border=6pt]{standalone}
+\usepackage{amssymb}
+\usepackage{xcolor}\definecolor{accent}{HTML}{2F6B3A}
+\usepackage{tikz}\usetikzlibrary{positioning,arrows.meta}
+\begin{document}
+\begin{tikzpicture}[
+  node distance=5mm,
+  box/.style={draw=accent,rounded corners=2pt,fill=accent!8,text width=12.2cm,inner sep=5pt,font=\small,align=left},
+  gate/.style={box,fill=yellow!15,draw=orange!70!black},
+  cloud/.style={box,fill=blue!6,draw=blue!50!black,text width=5.85cm},
+  io/.style={box,fill=black!4,draw=black!50},
+  arr/.style={-{Stealth[length=2.5mm]},thick,accent}]
+\node[io] (in) {\textbf{Input:} RGB field photo + declared crop (sugar beet, cotton, wheat, rice). Prompt \texttt{weed . <crop> plant .}};
+\node[box,below=of in] (det) {\textbf{1 Detect} -- Grounding DINO-tiny (local GPU): boxes, each with a label taken from the prompt words and a confidence score.};
+\node[box,below=of det] (seg) {\textbf{2 Segment} -- SAM~2-tiny (local GPU): one mask per box with a predicted quality score; re-prompted with a corrective point when quality $<0.85$.};
+\node[box,below=of seg] (rules) {\textbf{3 Plant rules (frozen v3)} -- every green patch is classified crop / weed / unsure by four plain rules: crop-mask overlap, planting row, size relative to the crop, off-row.};
+\node[gate,below=of rules] (gate) {\textbf{4 Safety gate (deterministic, final authority)} -- spray a zone only if it is a weed by label policy (confidence $\ge 0.70$, quality $\ge 0.85$) or by the plant rules; never a crop word or a mixed label; suppress the map above 85\% infestation. Everything else is withheld with a reason.};
+\node[cloud,below=of gate.south west,anchor=north west] (agent) {\textbf{5a Escalation agent} (optional) -- per withheld plant: row rule $\rightarrow$ Clef Flash $\rightarrow$ Qwen~3.8 VLM under a call budget; advice only.};
+\node[cloud,below=of gate.south east,anchor=north east] (sys2) {\textbf{5b System~2 + ICAR} -- Qwen~3.8 names the weed; the herbicide comes only from the ICAR bulletin row for the declared crop.};
+\node[io,below=of agent.south west,anchor=north west,yshift=-1mm] (out) {\textbf{Output:} Streamlit app (REAL/MOCK banner, approved zones only), GeoJSON spray map, farmer summary (EN/HI/MR).};
+\draw[arr] (in) -- (det); \draw[arr] (det) -- (seg); \draw[arr] (seg) -- (rules); \draw[arr] (rules) -- (gate);
+\draw[arr] (gate.south -| agent.north) -- (agent.north); \draw[arr] (gate.south -| sys2.north) -- (sys2.north);
+\draw[arr] (agent.south) -- (agent.south |- out.north); \draw[arr] (sys2.south) -- (sys2.south |- out.north);
+\end{tikzpicture}
+\end{document}

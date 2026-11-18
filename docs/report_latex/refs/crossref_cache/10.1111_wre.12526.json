@@ -1,0 +1,809 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    14
+   ]
+  ],
+  "date-time": "2026-11-14T09:23:04Z",
+  "timestamp": 1794648184433,
+  "version": "4.9.1"
+ },
+ "reference-count": 86,
+ "publisher": "Wiley",
+ "issue": "2",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2022,
+      3,
+      10
+     ]
+    ],
+    "date-time": "2022-03-10T00:00:00Z",
+    "timestamp": 1646870400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "onlinelibrary.wiley.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Weed Research"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2022,
+    4
+   ]
+  ]
+ },
+ "abstract": "<jats:title>Abstract</jats:title>\n                  <jats:p>\n                    The developments of information and automation technologies have opened a new era for weed management to fit physical and chemical control treatments to the spatial and temporal heterogeneity of weed distributions in agricultural fields. This review describes the technologies of site\u2010specific weed management (SSWM) systems, evaluates their ecological and economic benefits and gives a perspective for the implementation in practical farming. Sensor technologies including 3D cameras, multispectral imaging and Artificial Intelligence (AI) for weed classification and computer\u2010based decision algorithms are described in combination with precise spraying and hoeing operations. Those treatments are targeted for patches of weeds or individual weed plants. Cameras can also guide inter\u2010row hoes precisely in the centre between two crop rows at much higher driving speed. Camera\u2010guided hoeing increased selectivity and weed control efficacy compared with manual steered hoeing. Robots combine those guiding systems with in\u2010row hoeing or spot spraying systems that can selectively control individual weeds within crop rows. Results with patch spraying show at least 50% saving of herbicides in various crops without causing additional costs for weed control in the following years. A challenge with these technologies is the interoperability of sensing and controllers. Most of the current SSWM technologies use their own IT protocols that do not allow connecting different sensors and implements.\n                    <jats:italic>Plug &amp; play</jats:italic>\n                    standards for linking detection, decision making and weeding would improve the adoption of new SSWM technologies and reduce operational costs. An important impact of SSWM is the potential contribution to the EU\u2010\n                    <jats:italic>Green Deal</jats:italic>\n                    targets to reduce pesticide use and increase biodiversity. However, further on\u2010farm research is needed for integrating those technologies into agricultural practice.\n                  </jats:p>",
+ "DOI": "10.1111/wre.12526",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2022,
+    3,
+    10
+   ]
+  ],
+  "date-time": "2022-03-10T22:43:48Z",
+  "timestamp": 1646952228000
+ },
+ "page": "123-133",
+ "update-policy": "https://doi.org/10.1002/crossmark_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 233,
+ "title": [
+  "Advances in site\u2010specific weed management in agriculture\u2014A review"
+ ],
+ "prefix": "10.1111",
+ "volume": "62",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-6720-5938",
+   "authenticated-orcid": false,
+   "given": "Roland",
+   "family": "Gerhards",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Weed Science Department University of Hohenheim Stuttgart Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Dionisio",
+   "family": "And\u00fajar Sanchez",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Centre for Automation and Robotics CSIC\u2010UPM Madrid Spain"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-1318-8869",
+   "authenticated-orcid": false,
+   "given": "Pavel",
+   "family": "Hamouz",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Department of Agroecology and Biometeorology Faculty of Agrobiology, Food and Natural Resources Czech University of Life Sciences Prague Czech Republic"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Gerassimos G.",
+   "family": "Peteinatos",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Weed Science Department University of Hohenheim Stuttgart Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-1112-1954",
+   "authenticated-orcid": false,
+   "given": "Svend",
+   "family": "Christensen",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Department of Plant and Environmental Sciences Faculty of Science University of Copenhagen Frederiksberg C Denmark"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Cesar",
+   "family": "Fernandez\u2010Quintanilla",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Instituto de Ciencias Agrarias CSIC Madrid Spain"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "311",
+ "published-online": {
+  "date-parts": [
+   [
+    2022,
+    3,
+    10
+   ]
+  ]
+ },
+ "reference": [
+  {
+   "key": "e_1_2_12_2_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.cropro.2013.06.010"
+  },
+  {
+   "key": "e_1_2_12_3_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/s18041077"
+  },
+  {
+   "key": "e_1_2_12_4_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2011.00876.x"
+  },
+  {
+   "key": "e_1_2_12_5_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1614/WT-D-10-00082.1"
+  },
+  {
+   "key": "e_1_2_12_6_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.cropro.2013.04.003"
+  },
+  {
+   "key": "e_1_2_12_7_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1614/WS-D-10-00114.1"
+  },
+  {
+   "key": "e_1_2_12_8_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1469-8137.2011.03756.x"
+  },
+  {
+   "key": "e_1_2_12_9_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/agronomy10050743"
+  },
+  {
+   "key": "e_1_2_12_10_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.envsci.2018.12.014"
+  },
+  {
+   "key": "e_1_2_12_11_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2006.00500.x"
+  },
+  {
+   "key": "e_1_2_12_12_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2011.11.004"
+  },
+  {
+   "key": "e_1_2_12_13_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2004.00412.x"
+  },
+  {
+   "key": "e_1_2_12_14_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1023/B:PRAG.0000040806.39604.aa"
+  },
+  {
+   "key": "e_1_2_12_15_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.biosystemseng.2018.11.004"
+  },
+  {
+   "key": "e_1_2_12_16_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.patrec.2016.05.022"
+  },
+  {
+   "key": "e_1_2_12_17_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1046/j.1365-3180.2003.00344.x"
+  },
+  {
+   "key": "e_1_2_12_18_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2009.00696.x"
+  },
+  {
+   "key": "e_1_2_12_19_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1614/0043-1745(2000)048[0366:SATSOW]2.0.CO;2"
+  },
+  {
+   "key": "e_1_2_12_20_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1744-7348.1985.tb01567.x"
+  },
+  {
+   "key": "e_1_2_12_21_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1017/CBO9780511608629"
+  },
+  {
+   "key": "e_1_2_12_22_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2017.10.027"
+  },
+  {
+   "key": "e_1_2_12_23_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.biosystemseng.2016.08.024"
+  },
+  {
+   "key": "e_1_2_12_24_1",
+   "volume-title": "Commission Implementing Regulation (EU) 2019/1100 of 27 June 2019 concerning the non\u2010renewal of approval of the active substance desmedipham, in accordance with Regulation (EC) No 1107/2009 of the European Parliament and of the Council concerning the placing of plant protection products on the market, and amending the Annex to Commission Implementing Regulation (EU) No 540/2011",
+   "author": "European Commission",
+   "year": "2019"
+  },
+  {
+   "key": "e_1_2_12_25_1",
+   "volume-title": "Communication from the Commission to the European Parliament, the Council, the European economic and social committee and the Committee of the regions",
+   "author": "European Commission",
+   "year": "2020"
+  },
+  {
+   "key": "e_1_2_12_26_1",
+   "volume-title": "Organic farming statistics",
+   "author": "Eurostat",
+   "year": "2021"
+  },
+  {
+   "key": "e_1_2_12_27_1",
+   "first-page": "9",
+   "article-title": "Spot spraying",
+   "volume": "1992",
+   "author": "Felton W.L.",
+   "year": "1992",
+   "journal-title": "Agricultural Engineering"
+  },
+  {
+   "key": "e_1_2_12_28_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/wre.12307"
+  },
+  {
+   "key": "e_1_2_12_29_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1046/j.1365-3180.2003.00349.x"
+  },
+  {
+   "key": "e_1_2_12_30_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s10343-020-00523-5"
+  },
+  {
+   "key": "e_1_2_12_31_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2006.00504.x"
+  },
+  {
+   "key": "e_1_2_12_32_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1439-037X.1997.tb00494.x"
+  },
+  {
+   "key": "e_1_2_12_33_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/wre.12458"
+  },
+  {
+   "key": "e_1_2_12_34_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11119-016-9476-3"
+  },
+  {
+   "key": "e_1_2_12_35_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11427-017-9056-0"
+  },
+  {
+   "key": "e_1_2_12_36_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-90-481-9277-9_14"
+  },
+  {
+   "key": "e_1_2_12_37_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2012.00943.x"
+  },
+  {
+   "key": "e_1_2_12_38_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2018.02.023"
+  },
+  {
+   "key": "e_1_2_12_39_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.17221/574/2013-PSE"
+  },
+  {
+   "key": "e_1_2_12_40_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2007.00580.x"
+  },
+  {
+   "key": "e_1_2_12_41_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1614/WT-05-069R1.1"
+  },
+  {
+   "key": "e_1_2_12_42_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1614/0890-037X(2000)014[0337:ETATCF]2.0.CO;2"
+  },
+  {
+   "key": "e_1_2_12_43_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2018.02.016"
+  },
+  {
+   "key": "e_1_2_12_44_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/agronomy5020130"
+  },
+  {
+   "key": "e_1_2_12_45_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1614/WT-D-15-00179.1"
+  },
+  {
+   "key": "e_1_2_12_46_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1162/neco.1989.1.4.541"
+  },
+  {
+   "key": "e_1_2_12_47_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.patcog.2017.05.015"
+  },
+  {
+   "key": "e_1_2_12_48_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1614/WS-D-13-00050.1"
+  },
+  {
+   "key": "e_1_2_12_49_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11119-019-09667-5"
+  },
+  {
+   "key": "e_1_2_12_50_1",
+   "volume-title": "Spatially variable herbicide application technology; opportunities for herbicide minimisation and protection of beneficial weeds",
+   "author": "Lutman P.J.W.",
+   "year": "2007"
+  },
+  {
+   "key": "e_1_2_12_51_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.1988.tb01606.x"
+  },
+  {
+   "key": "e_1_2_12_52_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.5194/isprs-annals-IV-2-W3-41-2017"
+  },
+  {
+   "key": "e_1_2_12_53_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/agriculture8050065"
+  },
+  {
+   "key": "e_1_2_12_54_1",
+   "first-page": "293",
+   "volume-title": "Integrated weed and soil management",
+   "author": "Mortensen D.A.",
+   "year": "1998"
+  },
+  {
+   "key": "e_1_2_12_55_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/s150818587"
+  },
+  {
+   "key": "e_1_2_12_56_1",
+   "first-page": "539",
+   "article-title": "M\u00f6glichkeiten der gezielten Teilfl\u00e4chenbehandlung mit Herbiziden auf der Grundlage von Unkrautverteilung und Bodenvariabilit\u00e4t (Site\u2010specific herbicide application based on weed\u2010 and soil maps)",
+   "author": "Nordmeyer H.",
+   "year": "1992",
+   "journal-title": "Journal of Plant Diseases and Protection"
+  },
+  {
+   "key": "e_1_2_12_57_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11119-011-9234-5"
+  },
+  {
+   "key": "e_1_2_12_58_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1038/s41598-018-38343-3"
+  },
+  {
+   "key": "e_1_2_12_59_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3389/fpls.2017.00833"
+  },
+  {
+   "key": "e_1_2_12_60_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2019.104863"
+  },
+  {
+   "key": "e_1_2_12_61_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11119-019-09682-6"
+  },
+  {
+   "key": "e_1_2_12_62_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.biosystemseng.2014.07.009"
+  },
+  {
+   "key": "e_1_2_12_63_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/rs12244185"
+  },
+  {
+   "key": "e_1_2_12_64_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/ps.3677"
+  },
+  {
+   "key": "e_1_2_12_65_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s10343-019-00452-y"
+  },
+  {
+   "key": "e_1_2_12_66_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-48036-7_9"
+  },
+  {
+   "key": "e_1_2_12_67_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.eja.2021.126373"
+  },
+  {
+   "key": "e_1_2_12_68_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2012.00922.x"
+  },
+  {
+   "key": "e_1_2_12_69_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/wre.12026"
+  },
+  {
+   "key": "e_1_2_12_70_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1162/neco_a_00990"
+  },
+  {
+   "key": "e_1_2_12_71_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/agriculture9010018"
+  },
+  {
+   "key": "e_1_2_12_72_1",
+   "first-page": "209",
+   "article-title": "Population dynamics of Galium aparine L. and Alopecurus myosuroides (Huds.) under the influence of site\u2010specific weed management",
+   "volume": "21",
+   "author": "Ritter C.",
+   "year": "2008",
+   "journal-title": "Journal of Plant Diseases and Protection"
+  },
+  {
+   "key": "e_1_2_12_73_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/s20247262"
+  },
+  {
+   "key": "e_1_2_12_74_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1365-3180.2006.00523.x"
+  },
+  {
+   "key": "e_1_2_12_75_1",
+   "first-page": "43",
+   "article-title": "A Danish decision support system for integrated management of weeds",
+   "volume": "72",
+   "author": "Rydahl P.",
+   "year": "2004",
+   "journal-title": "Aspects of Applied Biology"
+  },
+  {
+   "key": "e_1_2_12_76_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1080/01431161.2013.793860"
+  },
+  {
+   "key": "e_1_2_12_77_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.biosystemseng.2005.03.006"
+  },
+  {
+   "key": "e_1_2_12_78_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2017.01.003"
+  },
+  {
+   "key": "e_1_2_12_79_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1614/WS-04-035R2"
+  },
+  {
+   "key": "e_1_2_12_80_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.biosystemseng.2007.09.026"
+  },
+  {
+   "key": "e_1_2_12_81_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/S0168-1699(02)00005-4"
+  },
+  {
+   "key": "e_1_2_12_82_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1371/journal.pone.0058210"
+  },
+  {
+   "key": "e_1_2_12_83_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2018.08.043"
+  },
+  {
+   "key": "e_1_2_12_84_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11119-008-9097-6"
+  },
+  {
+   "key": "e_1_2_12_85_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1017/S0043174500058124"
+  },
+  {
+   "key": "e_1_2_12_86_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.21938"
+  },
+  {
+   "key": "e_1_2_12_87_1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2011.04.001"
+  }
+ ],
+ "container-title": [
+  "Weed Research"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://onlinelibrary.wiley.com/doi/pdf/10.1111/wre.12526",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://onlinelibrary.wiley.com/doi/full-xml/10.1111/wre.12526",
+   "content-type": "application/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://onlinelibrary.wiley.com/doi/pdf/10.1111/wre.12526",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2023,
+    8,
+    25
+   ]
+  ],
+  "date-time": "2023-08-25T12:10:44Z",
+  "timestamp": 1692965444000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://onlinelibrary.wiley.com/doi/10.1111/wre.12526"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2022,
+    3,
+    10
+   ]
+  ]
+ },
+ "references-count": 86,
+ "journal-issue": {
+  "issue": "2",
+  "published-print": {
+   "date-parts": [
+    [
+     2022,
+     4
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1111/wre.12526"
+ ],
+ "URL": "https://doi.org/10.1111/wre.12526",
+ "archive": [
+  "Portico"
+ ],
+ "relation": {
+  "has-review": [
+   {
+    "id-type": "doi",
+    "id": "10.1111/WRE.12526/v1/decision1",
+    "asserted-by": "object"
+   },
+   {
+    "id-type": "doi",
+    "id": "10.1111/WRE.12526/v2/review2",
+    "asserted-by": "object"
+   },
+   {
+    "id-type": "doi",
+    "id": "10.1111/WRE.12526/v2/review1",
+    "asserted-by": "object"
+   },
+   {
+    "id-type": "doi",
+    "id": "10.1111/WRE.12526/v2/response1",
+    "asserted-by": "object"
+   },
+   {
+    "id-type": "doi",
+    "id": "10.1111/WRE.12526/v2/decision1",
+    "asserted-by": "object"
+   },
+   {
+    "id-type": "doi",
+    "id": "10.1111/WRE.12526/v1/review2",
+    "asserted-by": "object"
+   },
+   {
+    "id-type": "doi",
+    "id": "10.1111/WRE.12526/v1/review1",
+    "asserted-by": "object"
+   }
+  ]
+ },
+ "ISSN": [
+  "0043-1737",
+  "1365-3180"
+ ],
+ "issn-type": [
+  {
+   "value": "0043-1737",
+   "type": "print"
+  },
+  {
+   "value": "1365-3180",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2022,
+    3,
+    10
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "2021-06-10",
+   "order": 0,
+   "name": "received",
+   "label": "Received",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2022-02-13",
+   "order": 1,
+   "name": "accepted",
+   "label": "Accepted",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  },
+  {
+   "value": "2022-03-10",
+   "order": 2,
+   "name": "published",
+   "label": "Published",
+   "group": {
+    "name": "publication_history",
+    "label": "Publication History"
+   }
+  }
+ ]
+}

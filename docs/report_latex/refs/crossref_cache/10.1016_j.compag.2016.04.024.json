@@ -1,0 +1,1202 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    7
+   ]
+  ],
+  "date-time": "2026-11-07T14:20:55Z",
+  "timestamp": 1794061255050,
+  "version": "4.8.0"
+ },
+ "reference-count": 94,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2016,
+      7,
+      1
+     ]
+    ],
+    "date-time": "2016-07-01T00:00:00Z",
+    "timestamp": 1467331200000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2016,
+    7
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2016.04.024",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2016,
+    5,
+    20
+   ]
+  ],
+  "date-time": "2016-05-20T07:03:40Z",
+  "timestamp": 1463727820000
+ },
+ "page": "184-199",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 536,
+ "special_numbering": "C",
+ "title": [
+  "A survey of image processing techniques for plant extraction and segmentation in the field"
+ ],
+ "prefix": "10.1016",
+ "volume": "125",
+ "author": [
+  {
+   "given": "Esmael",
+   "family": "Hamuda",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Martin",
+   "family": "Glavin",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Edward",
+   "family": "Jones",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0005",
+   "doi-asserted-by": "crossref",
+   "first-page": "3671",
+   "DOI": "10.1016/j.eswa.2010.09.023",
+   "article-title": "Color image segmentation with genetic algorithm in a raisin sorting system based on machine vision in variable conditions",
+   "volume": "38",
+   "author": "Abbasgholipour",
+   "year": "2011",
+   "journal-title": "Expert Syst. Appl."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2016.04.024_b0015",
+   "doi-asserted-by": "crossref",
+   "first-page": "157",
+   "DOI": "10.1016/S0168-1699(03)00076-0",
+   "article-title": "Weed and crop discrimination using image analysis and artificial intelligence methods",
+   "volume": "39",
+   "author": "Aitkenhead",
+   "year": "2003",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "November",
+   "key": "10.1016/j.compag.2016.04.024_b0020",
+   "doi-asserted-by": "crossref",
+   "first-page": "21",
+   "DOI": "10.1016/j.compag.2013.08.022",
+   "article-title": "Crop segmentation from images by morphology modeling in the CIE L\u2217a\u2217b\u2217 color space",
+   "volume": "99",
+   "author": "Bai",
+   "year": "2013",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "September",
+   "key": "10.1016/j.compag.2016.04.024_b0025",
+   "doi-asserted-by": "crossref",
+   "first-page": "80",
+   "DOI": "10.1016/j.biosystemseng.2014.06.015",
+   "article-title": "Vegetation segmentation robust to illumination variations based on clustering and morphology modelling",
+   "volume": "125",
+   "author": "Bai",
+   "year": "2014",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0030",
+   "unstructured": "BCC Research Chemical Report, Jun 2014. CHM029E. Global Markets for Biopesticides. Available at: <http://www.bccresearch.com/market-research/chemicals/biopesticides-chm029e.html>."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0035",
+   "doi-asserted-by": "crossref",
+   "first-page": "987",
+   "DOI": "10.1016/S0262-8856(00)00042-1",
+   "article-title": "Unsupervised and adaptive Gaussian skin-color model",
+   "volume": "18",
+   "author": "Bergasa",
+   "year": "2000",
+   "journal-title": "Image Vision Comput."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0040",
+   "doi-asserted-by": "crossref",
+   "first-page": "79",
+   "DOI": "10.1016/j.compag.2011.11.004",
+   "article-title": "Towards machine vision based site-specific weed management in cereals",
+   "volume": "81",
+   "author": "Berge",
+   "year": "2012",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "10",
+   "key": "10.1016/j.compag.2016.04.024_b0045",
+   "doi-asserted-by": "crossref",
+   "first-page": "15",
+   "DOI": "10.1109/62.240102",
+   "article-title": "Image understanding research for automatic target recognition",
+   "volume": "8",
+   "author": "Bhanu",
+   "year": "1993",
+   "journal-title": "Aerospace Electron. Syst. (IEEE)"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0050",
+   "series-title": "Crop Losses due to Weeds in the United States-1992",
+   "author": "Bridges",
+   "year": "1992"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0055",
+   "doi-asserted-by": "crossref",
+   "first-page": "337",
+   "DOI": "10.1016/j.compag.2010.12.011",
+   "article-title": "Real-time image processing for crop/weed discrimination in maize fields",
+   "volume": "75",
+   "author": "Burgos-Artizzu",
+   "year": "2011",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0060",
+   "doi-asserted-by": "crossref",
+   "first-page": "9",
+   "DOI": "10.1016/j.biosystemseng.2008.09.030",
+   "article-title": "An image-processing based algorithm to automatically identify plant disease visual symptoms",
+   "volume": "102",
+   "author": "Camargo",
+   "year": "2009",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0065",
+   "doi-asserted-by": "crossref",
+   "first-page": "233",
+   "DOI": "10.1111/j.1365-3180.2009.00696.x",
+   "article-title": "Site-specific weed control technologies",
+   "volume": "49",
+   "author": "Christensen",
+   "year": "2009",
+   "journal-title": "Weed Res."
+  },
+  {
+   "issue": "5",
+   "key": "10.1016/j.compag.2016.04.024_b0070",
+   "doi-asserted-by": "crossref",
+   "first-page": "1485",
+   "DOI": "10.13031/2013.13313",
+   "article-title": "Field-of-view determination for a bindweed detection sensor",
+   "volume": "42",
+   "author": "Criner",
+   "year": "1999",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0075",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "DOI": "10.1016/j.compag.2007.05.008",
+   "article-title": "Autonomous robotic weed control systems: a review",
+   "volume": "61",
+   "author": "Slaughter",
+   "year": "2008",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2016.04.024_b0080",
+   "doi-asserted-by": "crossref",
+   "first-page": "921",
+   "DOI": "10.4141/cjps72-159",
+   "article-title": "An index of competition for estimating crop loss due to weeds",
+   "volume": "52",
+   "author": "Dew",
+   "year": "1972",
+   "journal-title": "Can. J. Plant Sci."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0085",
+   "doi-asserted-by": "crossref",
+   "first-page": "511",
+   "DOI": "10.1614/WT-05-128.1",
+   "article-title": "Between-row mowing systems control summer annual weeds in no-till grain sorghum",
+   "volume": "21",
+   "author": "Donald",
+   "year": "2007",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0090",
+   "doi-asserted-by": "crossref",
+   "first-page": "1523",
+   "DOI": "10.3390/s130201523",
+   "article-title": "Strategy for the development of a smart NDVI camera system for outdoor plant detection and agricultural embedded systems",
+   "volume": "13",
+   "author": "Dworak",
+   "year": "2013",
+   "journal-title": "Sensors (Switzerland)"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0095",
+   "doi-asserted-by": "crossref",
+   "first-page": "153",
+   "DOI": "10.1016/j.eja.2011.01.001",
+   "article-title": "Crop sequence, crop protection and fertility management effects on weed cover in an organic/conventional farm management trial",
+   "volume": "34",
+   "author": "Eyre",
+   "year": "2011",
+   "journal-title": "Eur. J. Agron."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0100",
+   "doi-asserted-by": "crossref",
+   "first-page": "298",
+   "DOI": "10.1614/0890-037X(2000)014[0298:RHSFTT]2.0.CO;2",
+   "article-title": "Rotary hoeing substitutes for two-thirds rate of soil-applied herbicide",
+   "volume": "14",
+   "author": "Forcella",
+   "year": "2000",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2016.04.024_b0105",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1007/s11119-006-9024-7",
+   "article-title": "A new algorithm for automatic Rumex obtusifolius detection in digital image using colour and texture features and the influence of image resolution",
+   "volume": "8",
+   "author": "Gebhardt",
+   "year": "2007",
+   "journal-title": "Precision Agric."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2016.04.024_b0110",
+   "doi-asserted-by": "crossref",
+   "first-page": "165",
+   "DOI": "10.1007/s11119-006-9006-9",
+   "article-title": "Identification of broadleaved dock (Rumex obtusifolius L.) on grassland by means of digital image processing",
+   "volume": "7",
+   "author": "Gebhardt",
+   "year": "2006",
+   "journal-title": "Precision Agric."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0115",
+   "doi-asserted-by": "crossref",
+   "first-page": "559",
+   "DOI": "10.1614/WT-06-130.1",
+   "article-title": "The value of herbicides in U.S. crop production",
+   "volume": "21",
+   "author": "Gianessi",
+   "year": "2007",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0120",
+   "doi-asserted-by": "crossref",
+   "first-page": "126",
+   "DOI": "10.3146/i0095-3679-20-2-15",
+   "article-title": "Effect of dinitroaniline herbicides upon yield and grade of five runner cultivars",
+   "volume": "20",
+   "author": "Grichar",
+   "year": "1993",
+   "journal-title": "Peanut Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0125",
+   "doi-asserted-by": "crossref",
+   "first-page": "11149",
+   "DOI": "10.1016/j.eswa.2012.03.040",
+   "article-title": "Support vector machines for crop/weeds identification in maize fields",
+   "volume": "39",
+   "author": "Guerrero",
+   "year": "2012",
+   "journal-title": "Exp. Syst. Appl."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b9000",
+   "doi-asserted-by": "crossref",
+   "first-page": "75",
+   "DOI": "10.1016/j.compag.2010.09.013",
+   "article-title": "Automatic segmentation of relevant textures in agricultural images",
+   "volume": "75",
+   "author": "Guijarro",
+   "year": "2011",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0130",
+   "doi-asserted-by": "crossref",
+   "first-page": "58",
+   "DOI": "10.1016/j.compag.2013.04.010",
+   "article-title": "Illumination invariant segmentation of vegetation for time series wheat images based on decision tree model",
+   "volume": "96",
+   "author": "Guo",
+   "year": "2013",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2016.04.024_b0135",
+   "first-page": "95",
+   "article-title": "Automated crop and weed monitoring in widely spaced cereals",
+   "volume": "1",
+   "author": "Hague",
+   "year": "2006",
+   "journal-title": "Precision Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0140",
+   "doi-asserted-by": "crossref",
+   "first-page": "441",
+   "DOI": "10.1017/S0043174500051882",
+   "article-title": "The critical period of weed control in grain corn (Zea mays)",
+   "volume": "40",
+   "author": "Hall",
+   "year": "1992",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0145",
+   "first-page": "759",
+   "article-title": "Whole-field experiments with sit-specific weed management",
+   "volume": "vol. 2",
+   "author": "Heisel",
+   "year": "1999"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2016.04.024_b0150",
+   "doi-asserted-by": "crossref",
+   "first-page": "233",
+   "DOI": "10.1006/jaer.2000.0639",
+   "article-title": "PA-precision agriculture. Computer-vision-based weed identification under field conditions using controlled lighting",
+   "volume": "78",
+   "author": "Hemming",
+   "year": "2001",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0155",
+   "doi-asserted-by": "crossref",
+   "first-page": "359",
+   "DOI": "10.1007/s11119-005-2324-5",
+   "article-title": "Evaluation of digital photography from model aircraft for remote sensing of crop biomass and nitrogen status",
+   "volume": "6",
+   "author": "Hunt",
+   "year": "2005",
+   "journal-title": "Precision Agric."
+  },
+  {
+   "issue": "7",
+   "key": "10.1016/j.compag.2016.04.024_b0160",
+   "doi-asserted-by": "crossref",
+   "first-page": "309",
+   "DOI": "10.14257/ijmue.2014.9.7.26",
+   "article-title": "Color image enhancement by histogram equalization in heterogeneous color space",
+   "volume": "9",
+   "author": "Jeon",
+   "year": "2014",
+   "journal-title": "Int. J. Multimedia Ubiquitous Eng."
+  },
+  {
+   "issue": "12",
+   "key": "10.1016/j.compag.2016.04.024_b0165",
+   "doi-asserted-by": "crossref",
+   "first-page": "6270",
+   "DOI": "10.3390/s110606270",
+   "article-title": "Robust crop and weed segmentation under uncontrolled outdoor illumination",
+   "volume": "11",
+   "author": "Jeon",
+   "year": "2011",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0170",
+   "doi-asserted-by": "crossref",
+   "first-page": "416",
+   "DOI": "10.1614/WS-D-10-00129.1",
+   "article-title": "Predicted soybean yield loss as affected by emergence time of mixed-species weed communities",
+   "volume": "59",
+   "author": "Jeschke",
+   "year": "2011",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0175",
+   "doi-asserted-by": "crossref",
+   "first-page": "81",
+   "DOI": "10.1023/A:1013200319198",
+   "article-title": "Statistical color models with application to skin detection",
+   "volume": "46",
+   "author": "Jones",
+   "year": "2002",
+   "journal-title": "Int. J. Comput. Vision"
+  },
+  {
+   "issue": "December",
+   "key": "10.1016/j.compag.2016.04.024_b0180",
+   "doi-asserted-by": "crossref",
+   "first-page": "268",
+   "DOI": "10.1016/j.cropro.2012.07.003",
+   "article-title": "The critical period for weed competition in parsley (Petroselinum crispum (Mill.) Nyman Ex A.W. Hill) in Mediterranean Areas",
+   "volume": "42",
+   "author": "Karkanis",
+   "year": "2012",
+   "journal-title": "Crop Prot."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0185",
+   "first-page": "1079",
+   "article-title": "Crop growth estimation system using machine vision",
+   "volume": "vol. 2",
+   "author": "Kataoka",
+   "year": "2003"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0190",
+   "doi-asserted-by": "crossref",
+   "first-page": "22",
+   "DOI": "10.1016/j.patcog.2007.04.011",
+   "article-title": "Color segmentation robust to brightness variations by using B-spline curve modeling",
+   "volume": "41",
+   "author": "Kim",
+   "year": "2008",
+   "journal-title": "Pattern Recogn."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0195",
+   "doi-asserted-by": "crossref",
+   "first-page": "308",
+   "DOI": "10.1016/j.biosystemseng.2009.07.001",
+   "article-title": "Estimation of leaf area index in cereal crops using red\u2013green images",
+   "volume": "104",
+   "author": "Kirk",
+   "year": "2009",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0200",
+   "doi-asserted-by": "crossref",
+   "first-page": "568",
+   "DOI": "10.1017/S0043174500076967",
+   "article-title": "Interference of redroot pigweed (Amaranthus retroflexus) in corn (Zea mays)",
+   "volume": "42",
+   "author": "Knezevic",
+   "year": "1994",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0205",
+   "doi-asserted-by": "crossref",
+   "first-page": "296",
+   "DOI": "10.1017/S0043174500057374",
+   "article-title": "Use of ecophysiological models of crop-weed interference: relation amongst weed density, relative time of weed emergence, relative leaf area and yield loss",
+   "volume": "40",
+   "author": "Kropff",
+   "year": "1992",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0210",
+   "first-page": "231",
+   "article-title": "Precision weed control for cotton",
+   "volume": "45",
+   "author": "Lamm",
+   "year": "2002",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0215",
+   "first-page": "90",
+   "article-title": "Plant species identification based on neural network",
+   "volume": "vol. 5",
+   "author": "Lei",
+   "year": "2008"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0220",
+   "doi-asserted-by": "crossref",
+   "first-page": "7",
+   "DOI": "10.1017/S0890037X00042482",
+   "article-title": "Economic importance of managing spatially heterogeneous weed populations",
+   "volume": "12",
+   "author": "Lindquist",
+   "year": "1998",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0225",
+   "doi-asserted-by": "crossref",
+   "first-page": "85",
+   "DOI": "10.1006/jaer.1996.0082",
+   "article-title": "Machine vision techniques for measuring the canopy of tomato seedling",
+   "volume": "65",
+   "author": "Ling",
+   "year": "1996",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "issue": "5",
+   "key": "10.1016/j.compag.2016.04.024_b0230",
+   "doi-asserted-by": "crossref",
+   "first-page": "672",
+   "DOI": "10.1614/0043-1745(2002)050[0672:OSMOSA]2.0.CO;2",
+   "article-title": "Off-site movement of surface-applied simazine from a citrus orchard as affected by irrigation incorporation",
+   "volume": "50",
+   "author": "Liu",
+   "year": "2002",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0235",
+   "series-title": "Proceedings of the 12th EWRS Symposium, 2\u20133. Wageningen, Papendal, the Netherlands",
+   "article-title": "Weed management and policies: from prevention and precision technology to certification of individual farms",
+   "author": "Lotz",
+   "year": "2002"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0240",
+   "series-title": "Weed Leaf Image Segmentation by Deformable Templates",
+   "first-page": "139",
+   "author": "Manh",
+   "year": "2001"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2016.04.024_b0245",
+   "doi-asserted-by": "crossref",
+   "first-page": "243",
+   "DOI": "10.1006/rtim.1997.0086",
+   "article-title": "Real-time segmentation of plants and weeds",
+   "volume": "4",
+   "author": "Marchant",
+   "year": "1998",
+   "journal-title": "Real-Time Imaging"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0250",
+   "doi-asserted-by": "crossref",
+   "first-page": "282",
+   "DOI": "10.1016/j.compag.2008.03.009",
+   "article-title": "Verification of color vegetation indices for automated crop imaging applications",
+   "volume": "63",
+   "author": "Meyer",
+   "year": "2008",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0255",
+   "doi-asserted-by": "crossref",
+   "first-page": "161",
+   "DOI": "10.1016/j.compag.2003.08.002",
+   "article-title": "Intensified fuzzy clusters for classifying plant, soil, and residue regions of interest from color images",
+   "volume": "42",
+   "author": "Meyer",
+   "year": "2004",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0260",
+   "unstructured": "Meyer, G.E., Hindman, T.W., Lakshmi, K., 1998. Machine vision detection parameters for plant species identification. In: Meyer, G.E., DeShazer, J.A. (Eds.), Precision Agriculture and Biological Quality, Proceedings of SPIE. vol. 3543, Bellingham, WA, pp. 327\u2013335."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0265",
+   "first-page": "445",
+   "article-title": "Implication of post emergence tillage on root injury and yields of potatoes",
+   "volume": "63",
+   "author": "Nelson",
+   "year": "1986",
+   "journal-title": "Am. Potato J."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0270",
+   "series-title": "A Combined Statistical-Soft Computing Approach for Classification and Mapping Weed Species in Minimum-Tillage Systems",
+   "author": "Neto",
+   "year": "2004"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0275",
+   "first-page": "159",
+   "article-title": "Critical period of crop growth cycles for competition from weeds",
+   "volume": "14",
+   "author": "Nieto",
+   "year": "1968",
+   "journal-title": "Pest Articles News Summaries (C)"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0280",
+   "doi-asserted-by": "crossref",
+   "first-page": "498",
+   "DOI": "10.1017/S0043174500082722",
+   "article-title": "Influence of the relative time of emergence of wild oat (Avena fatua) on yield loss of barley (Hordeum vulgare) and wheat (Triticum aestivum)",
+   "volume": "33",
+   "author": "O\u2019Donovan",
+   "year": "1985",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0285",
+   "doi-asserted-by": "crossref",
+   "first-page": "141",
+   "DOI": "10.1016/S0168-1699(03)00023-1",
+   "article-title": "Segmentation of row crop plants from weeds using colour and morphology",
+   "volume": "39",
+   "author": "Onyango",
+   "year": "2003",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0290",
+   "doi-asserted-by": "crossref",
+   "first-page": "62",
+   "DOI": "10.1109/TSMC.1979.4310076",
+   "article-title": "A threshold selection method from gray-level histogram",
+   "volume": "9",
+   "author": "Otsu",
+   "year": "1979",
+   "journal-title": "IEEE Trans. Syst. Man Cybern."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0295",
+   "first-page": "563",
+   "article-title": "Performance analysis performance analysis of homomorphic systems for image change detection",
+   "volume": "vol. 3522",
+   "author": "Pajares",
+   "year": "2005"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0300",
+   "doi-asserted-by": "crossref",
+   "first-page": "105",
+   "DOI": "10.1007/BF02983976",
+   "article-title": "Critical periods of weed competition in cotton in Greece",
+   "volume": "30",
+   "author": "Papamichail",
+   "year": "2002",
+   "journal-title": "Phytoparasitica"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2016.04.024_b0305",
+   "doi-asserted-by": "crossref",
+   "first-page": "197",
+   "DOI": "10.1016/S0168-1699(99)00068-X",
+   "article-title": "Colour and shape analysis techniques for weed detection in cereal fields",
+   "volume": "25",
+   "author": "Perez",
+   "year": "2000",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2016.04.024_b0310",
+   "doi-asserted-by": "crossref",
+   "first-page": "255",
+   "DOI": "10.1016/j.scienta.2009.02.010",
+   "article-title": "Weed competition in cauliflower (Brassica oleracea L. Var. Botrytis) in the Jordan Valley",
+   "volume": "121",
+   "author": "Qasem",
+   "year": "2009",
+   "journal-title": "Sci. Hortic."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0315",
+   "doi-asserted-by": "crossref",
+   "first-page": "299",
+   "DOI": "10.1111/j.1365-3180.2007.00565.x",
+   "article-title": "Assessment of leaf cover and crop soil cover in weed harrowing research using digital images",
+   "volume": "47",
+   "author": "Rasmussen",
+   "year": "2007",
+   "journal-title": "Weed Res."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0320",
+   "doi-asserted-by": "crossref",
+   "first-page": "39",
+   "DOI": "10.1109/MCS.1987.1105271",
+   "article-title": "Vision-based guidance of an agricultural tractor",
+   "volume": "7",
+   "author": "Reid",
+   "year": "1987",
+   "journal-title": "IEEE Control Syst. Mag."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0325",
+   "series-title": "Proceedings of the 5th European Conference on Precision Agriculture (5ECPA)",
+   "first-page": "169",
+   "article-title": "Development of an image analysis system for estimation of weed",
+   "author": "Ribeiro",
+   "year": "2005"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0330",
+   "doi-asserted-by": "crossref",
+   "first-page": "88",
+   "DOI": "10.1016/j.compag.2009.04.009",
+   "article-title": "Testing different color spaces based on hue for the environmentally adaptive segmentation algorithm (EASA)",
+   "volume": "68",
+   "author": "Ruiz-Ruiz",
+   "year": "2009",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0335",
+   "doi-asserted-by": "crossref",
+   "first-page": "233",
+   "DOI": "10.1016/0734-189X(88)90022-9",
+   "article-title": "A survey of thresholding techniques",
+   "volume": "41",
+   "author": "Sahoo",
+   "year": "1988",
+   "journal-title": "Comput. Vision, Graph., Image Process."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0340",
+   "doi-asserted-by": "crossref",
+   "first-page": "17",
+   "DOI": "10.1016/j.biosystemseng.2007.06.009",
+   "article-title": "Comparison of vision-based and manual weed mapping in sugar beet",
+   "volume": "98",
+   "author": "Schuster",
+   "year": "2007",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0345",
+   "doi-asserted-by": "crossref",
+   "first-page": "119",
+   "DOI": "10.1016/j.biosystemseng.2004.06.007",
+   "article-title": "Video processing for early stage maize plant detection",
+   "volume": "89",
+   "author": "Shrestha",
+   "year": "2004",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0350",
+   "doi-asserted-by": "crossref",
+   "first-page": "757",
+   "DOI": "10.13031/2013.31066",
+   "article-title": "Discriminating fruit for robotic harvest using color in natural outdoor scenes",
+   "volume": "32",
+   "author": "Slaughter",
+   "year": "1989",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0355",
+   "doi-asserted-by": "crossref",
+   "first-page": "271",
+   "DOI": "10.1016/j.biosystemseng.2005.04.011",
+   "article-title": "Weed classification by active shape models",
+   "volume": "91",
+   "author": "S\u00f8gaard",
+   "year": "2005",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "issue": "7",
+   "key": "10.1016/j.compag.2016.04.024_b0360",
+   "doi-asserted-by": "crossref",
+   "first-page": "1307",
+   "DOI": "10.1016/S0045-6535(98)00128-3",
+   "article-title": "Occurrence of pesticides in Danish shallow ground water",
+   "volume": "37",
+   "author": "Spliid",
+   "year": "1998",
+   "journal-title": "Chemosphere"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0365",
+   "series-title": "Weed Control in Sweet Corn",
+   "author": "Stall",
+   "year": "2009"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0370",
+   "doi-asserted-by": "crossref",
+   "first-page": "657",
+   "DOI": "10.1017/S0890037X00027512",
+   "article-title": "Integrated weed management: the rationale and approach",
+   "volume": "5",
+   "author": "Swanton",
+   "year": "1991",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0375",
+   "doi-asserted-by": "crossref",
+   "first-page": "9",
+   "DOI": "10.1300/J144v02n01_02",
+   "article-title": "Weed thresholds: theory and applicability",
+   "volume": "2",
+   "author": "Swanton",
+   "year": "1999",
+   "journal-title": "J. Crop Prod."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0380",
+   "doi-asserted-by": "crossref",
+   "first-page": "521",
+   "DOI": "10.1016/j.patcog.2007.07.007",
+   "article-title": "A vision-based method for weeds identification through the Bayesian decision theory",
+   "volume": "41",
+   "author": "Tellaeche",
+   "year": "2008",
+   "journal-title": "Pattern Recogn."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0385",
+   "series-title": "Computer Vision image Enhancement for Plant Leaves Disease Detection",
+   "first-page": "173",
+   "author": "Thangadurai",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0390",
+   "doi-asserted-by": "crossref",
+   "first-page": "153",
+   "DOI": "10.1016/S0168-1699(98)00037-4",
+   "article-title": "Environmentally adaptive segmentation algorithm for outdoor image segmentation",
+   "volume": "21",
+   "author": "Tian",
+   "year": "1998",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "April",
+   "key": "10.1016/j.compag.2016.04.024_b0395",
+   "doi-asserted-by": "crossref",
+   "first-page": "104",
+   "DOI": "10.1016/j.compag.2014.02.009",
+   "article-title": "Multi-temporal mapping of the vegetation fraction in early-season wheat fields using images from UAV",
+   "volume": "103",
+   "author": "Torres-S\u00e1nchez",
+   "year": "2014",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0400",
+   "author": "U.S. Department of Agriculture"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0405",
+   "doi-asserted-by": "crossref",
+   "first-page": "194",
+   "DOI": "10.1017/S0043174500076050",
+   "article-title": "The critical period of weed control in soybean (Glycine max (L.) Merr)",
+   "volume": "41",
+   "author": "Van Acker",
+   "year": "1993",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0410",
+   "doi-asserted-by": "crossref",
+   "first-page": "305",
+   "DOI": "10.1016/j.biosystemseng.2003.08.002",
+   "article-title": "Field test of an autonomous cucumber picking robot",
+   "volume": "86",
+   "author": "Van Henten",
+   "year": "2003",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0415",
+   "doi-asserted-by": "crossref",
+   "first-page": "208",
+   "DOI": "10.1117/12.144030",
+   "article-title": "Plant species identification, size, and enumeration using machine vision techniques on near-binary images",
+   "volume": "1836",
+   "author": "Woebbecke",
+   "year": "1992",
+   "journal-title": "SPIE Opt. Agric. Forestry"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2016.04.024_b0420",
+   "doi-asserted-by": "crossref",
+   "first-page": "271",
+   "DOI": "10.13031/2013.27838",
+   "article-title": "Color indices for weed identification under various soil, residue, and lighting conditions",
+   "volume": "38",
+   "author": "Woebbecke",
+   "year": "1995",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2016.04.024_b0425",
+   "doi-asserted-by": "crossref",
+   "first-page": "669",
+   "DOI": "10.13031/2013.28128",
+   "article-title": "Calibration of large field of view thermal and optical sensors for plant and soil",
+   "volume": "37",
+   "author": "Woebbecke",
+   "year": "1994",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0430",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1016/j.compag.2011.04.006",
+   "article-title": "An automated stand-alone in-field remote sensing system (SIRSS) for in-season crop monitoring",
+   "volume": "78",
+   "author": "Xiang",
+   "year": "2011",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0435",
+   "doi-asserted-by": "crossref",
+   "first-page": "10656",
+   "DOI": "10.1364/OE.19.010656",
+   "article-title": "Type-2 fuzzy thresholding using GLSC histogram of human visual nonlinearity characteristics",
+   "volume": "19",
+   "author": "Xiao",
+   "year": "2011",
+   "journal-title": "Opt. Express"
+  },
+  {
+   "issue": "June",
+   "key": "10.1016/j.compag.2016.04.024_b0440",
+   "doi-asserted-by": "crossref",
+   "first-page": "247",
+   "DOI": "10.1016/j.compag.2015.04.010",
+   "article-title": "Crop feature extraction from images with probabilistic superpixel Markov random field",
+   "volume": "114",
+   "author": "Ye",
+   "year": "2015",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0445",
+   "doi-asserted-by": "crossref",
+   "first-page": "65",
+   "DOI": "10.1016/j.agrformet.2013.02.011",
+   "article-title": "Automatic image-based detection technology for two critical growth stages of maize. Emergence and three-leaf stage",
+   "volume": "174\u2013175",
+   "author": "Yu",
+   "year": "2013",
+   "journal-title": "Agric. Forest Meteorol."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0450",
+   "series-title": "Eighth International Symposium on Multispectral Image Processing and Pattern Recognition",
+   "first-page": "891806",
+   "article-title": "Specularity-invariant crop extraction with probabilistic superpixel Markov random field",
+   "author": "Yu",
+   "year": "2013"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0455",
+   "doi-asserted-by": "crossref",
+   "first-page": "93",
+   "DOI": "10.1016/j.compag.2008.08.002",
+   "article-title": "Mean-shift-based color segmentation of images containing green vegetation",
+   "volume": "65",
+   "author": "Zheng",
+   "year": "2009",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "9",
+   "key": "10.1016/j.compag.2016.04.024_b0460",
+   "doi-asserted-by": "crossref",
+   "first-page": "920",
+   "DOI": "10.1016/j.patrec.2010.01.016",
+   "article-title": "Segmentation of green vegetation of crop canopy images based on mean shift and Fisher linear discriminate",
+   "volume": "31",
+   "author": "Zheng",
+   "year": "2010",
+   "journal-title": "Pattern Recogn. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0465",
+   "series-title": "Weed Management in Agroecosystems: Ecological Approaches",
+   "first-page": "145",
+   "article-title": "The concept and application of the critical weed-free period",
+   "author": "Zimdahl",
+   "year": "1988"
+  },
+  {
+   "key": "10.1016/j.compag.2016.04.024_b0470",
+   "series-title": "Fundamentals of Weed Science",
+   "author": "Zimdahl",
+   "year": "1993"
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169916301557?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169916301557?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2019,
+    9,
+    7
+   ]
+  ],
+  "date-time": "2019-09-07T23:41:39Z",
+  "timestamp": 1567899699000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169916301557"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2016,
+    7
+   ]
+  ]
+ },
+ "references-count": 94,
+ "alternative-id": [
+  "S0168169916301557"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2016.04.024",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2016,
+    7
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "A survey of image processing techniques for plant extraction and segmentation in the field",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Computers and Electronics in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.compag.2016.04.024",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2016 Elsevier B.V. All rights reserved.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ]
+}

@@ -1,0 +1,837 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    15
+   ]
+  ],
+  "date-time": "2026-11-15T09:44:55Z",
+  "timestamp": 1794735895139,
+  "version": "4.9.1"
+ },
+ "reference-count": 72,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      4,
+      1
+     ]
+    ],
+    "date-time": "2018-04-01T00:00:00Z",
+    "timestamp": 1522540800000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  }
+ ],
+ "funder": [
+  {
+   "name": "European Union\u2019s Horizon 2020"
+  },
+  {
+   "name": "Marie Skodowska-Curie",
+   "award": [
+    "665919"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "665919"
+     ]
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    4
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2018.02.016",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    2,
+    22
+   ]
+  ],
+  "date-time": "2018-02-22T08:36:02Z",
+  "timestamp": 1519288562000
+ },
+ "page": "70-90",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 5017,
+ "special_numbering": "C",
+ "title": [
+  "Deep learning in agriculture: A survey"
+ ],
+ "prefix": "10.1016",
+ "volume": "147",
+ "author": [
+  {
+   "given": "Andreas",
+   "family": "Kamilaris",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Francesc X.",
+   "family": "Prenafeta-Bold\u00fa",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0005",
+   "series-title": "A Deep Learning-Based Approach for Banana Leaf Diseases Classification",
+   "first-page": "79",
+   "author": "Amara",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0010",
+   "unstructured": "Bahrampour, S., Ramakrishnan, N., Schott, L., Shah, M., 2015. Comparative study of deep learning software frameworks. arXiv preprint arXiv: 1511.06435."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0015",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Bargoti, S., Underwood, J., 2016. Deep Fruit Detection in Orchards. arXiv preprint arXiv: 1610.03677.",
+   "DOI": "10.1109/ICRA.2017.7989417"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2018.02.016_b0020",
+   "doi-asserted-by": "crossref",
+   "first-page": "137",
+   "DOI": "10.1016/S0378-3774(00)00080-9",
+   "article-title": "Remote sensing for irrigated agriculture: examples from research and possible applications",
+   "volume": "46",
+   "author": "Bastiaanssen",
+   "year": "2000",
+   "journal-title": "Agric. Water Manag."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0025",
+   "unstructured": "Canziani, A., Paszke, A., Culurciello, E., 2016. An Analysis of Deep Neural Network Models for Practical Applications. arXiv preprint arXiv: 1605.07678."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2018.02.016_b0030",
+   "doi-asserted-by": "crossref",
+   "first-page": "781",
+   "DOI": "10.1109/LRA.2017.2651944",
+   "article-title": "Counting apples and oranges with deep learning: a data-driven approach",
+   "volume": "2",
+   "author": "Chen",
+   "year": "2017",
+   "journal-title": "IEEE Rob. Autom. Lett."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2018.02.016_b0035",
+   "doi-asserted-by": "crossref",
+   "first-page": "2094",
+   "DOI": "10.1109/JSTARS.2014.2329330",
+   "article-title": "Deep learning-based classification of hyperspectral data",
+   "volume": "7",
+   "author": "Chen",
+   "year": "2014",
+   "journal-title": "IEEE J. Sel. Top. Appl. Earth Obs. Remote Sens."
+  },
+  {
+   "issue": "11",
+   "key": "10.1016/j.compag.2018.02.016_b0045",
+   "doi-asserted-by": "crossref",
+   "first-page": "1904",
+   "DOI": "10.3390/s16111904",
+   "article-title": "DeepAnomaly: combining background subtraction and deep learning for detecting obstacles and anomalies in an agricultural field",
+   "volume": "16",
+   "author": "Christiansen",
+   "year": "2016",
+   "journal-title": "Sensors"
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2018.02.016_b0050",
+   "doi-asserted-by": "crossref",
+   "first-page": "311",
+   "DOI": "10.3182/20100707-3-BE-2012.0061",
+   "article-title": "Neural predictive control of broiler chicken growth",
+   "volume": "43",
+   "author": "Demmers",
+   "year": "2010",
+   "journal-title": "IFAC Proc. Vol."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0055",
+   "unstructured": "Demmers, T.G., Cao, Y., Parsons, D.J., Gauss, S., Wathes, C.M., 2012. Simultaneous monitoring and control of pig growth and ammonia emissions. IX International Livestock Environment Symposium (ILES IX). American Society of Agricultural and Biological Engineers, Valencia, Spain."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0060",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Deng, J., Dong, W., Socher, R., Li, L.J., Li, K., Fei-Fei, L., 2009. Imagenet: A large-scale hierarchical image database. IEEE Conference on Computer Vision and Pattern Recognition (CVPR). Miami, FL, USA, pp. 248\u2013255.",
+   "DOI": "10.1109/CVPR.2009.5206848"
+  },
+  {
+   "issue": "3\u20134",
+   "key": "10.1016/j.compag.2018.02.016_b0065",
+   "doi-asserted-by": "crossref",
+   "first-page": "197",
+   "DOI": "10.1561/2000000039",
+   "article-title": "Deep learning: methods and applications",
+   "volume": "7",
+   "author": "Deng",
+   "year": "2014",
+   "journal-title": "Found. Trends Signal Process."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0070",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Douarre, C., Schielein, R., Frindel, C., Gerth, S., Rousseau, D., 2016. Deep learning based root-soil segmentation from X-ray tomography. bioRxiv, 071662.",
+   "DOI": "10.1101/071662"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0075",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Dyrmann, M., J\u00f8rgensen, R.N., Midtiby, H.S., 2017. RoboWeedSupport \u2013 Detection of weed locations in leaf occluded cereal crops using a fully convolutional neural network. 11th European Conference on Precision Agriculture (ECPA). Edinburgh, Scotland.",
+   "DOI": "10.1017/S2040470017000206"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0080",
+   "doi-asserted-by": "crossref",
+   "first-page": "72",
+   "DOI": "10.1016/j.biosystemseng.2016.08.024",
+   "article-title": "Plant species classification using deep convolutional neural network",
+   "volume": "151",
+   "author": "Dyrmann",
+   "year": "2016",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0085",
+   "unstructured": "Dyrmann, M., Mortensen, A.K., Midtiby, H.S., J\u00f8rgensen, R.N., 2016. Pixel-wise classification of weeds and crops in images by using a fully convolutional neural network. International Conference on Agricultural Engineering. Aarhus, Denmark."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0090",
+   "series-title": "How to Feed the World in 2050",
+   "author": "FAO",
+   "year": "2009"
+  },
+  {
+   "issue": "5967",
+   "key": "10.1016/j.compag.2018.02.016_b0095",
+   "doi-asserted-by": "crossref",
+   "first-page": "828",
+   "DOI": "10.1126/science.1183899",
+   "article-title": "Precision agriculture and food security",
+   "volume": "327",
+   "author": "Gebbers",
+   "year": "2010",
+   "journal-title": "Science"
+  },
+  {
+   "issue": "10",
+   "key": "10.1016/j.compag.2018.02.016_b0100",
+   "doi-asserted-by": "crossref",
+   "first-page": "2451",
+   "DOI": "10.1162/089976600300015015",
+   "article-title": "Learning to forget: Continual prediction with LSTM",
+   "volume": "12",
+   "author": "Gers",
+   "year": "2000",
+   "journal-title": "Neural Comput."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0105",
+   "doi-asserted-by": "crossref",
+   "first-page": "418",
+   "DOI": "10.1016/j.compag.2016.07.003",
+   "article-title": "Deep learning for plant identification using vein morphological patterns",
+   "volume": "127",
+   "author": "Grinblat",
+   "year": "2016",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0110",
+   "series-title": "Winter Conference on Applications of Computer Vision (WACV)",
+   "first-page": "797",
+   "article-title": "Evaluation of features for leaf classification in challenging conditions",
+   "author": "Hall",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0120",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Ienco, D., Gaetano, R., Dupaquier, C., Maurel, P., 2017. Land Cover Classification via Multi-temporal Spatial Data by Recurrent Neural Networks. arXiv preprint arXiv: 1704.04055.",
+   "DOI": "10.1109/LGRS.2017.2728698"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2018.02.016_b0125",
+   "doi-asserted-by": "crossref",
+   "first-page": "128",
+   "DOI": "10.4236/ars.2014.33011",
+   "article-title": "Applications of thermal imaging in agriculture\u2014A review",
+   "volume": "3",
+   "author": "Ishimwe",
+   "year": "2014",
+   "journal-title": "Adv. Remote Sens."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0130",
+   "series-title": "Proceedings of the 22nd International Conference on Multimedia",
+   "first-page": "675",
+   "article-title": "Caffe: Convolutional architecture for fast feature embedding",
+   "author": "Jia",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0135",
+   "series-title": "Estimating the environmental impact of agriculture by means of geospatial and big data analysis: the case of Catalonia",
+   "first-page": "39",
+   "author": "Kamilaris",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0140",
+   "series-title": "Agri-IoT: A Semantic Framework for Internet of Things-Enabled Smart Farming Applications",
+   "first-page": "442",
+   "author": "Kamilaris",
+   "year": "2016"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2018.02.016_b0145",
+   "doi-asserted-by": "crossref",
+   "first-page": "23",
+   "DOI": "10.1016/j.compag.2017.09.037",
+   "article-title": "A review on the practice of big data analysis in agriculture",
+   "volume": "143",
+   "author": "Kamilaris",
+   "year": "2017",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "1491",
+   "key": "10.1016/j.compag.2018.02.016_b0150",
+   "doi-asserted-by": "crossref",
+   "first-page": "467",
+   "DOI": "10.1098/rstb.2007.2164",
+   "article-title": "Shrink and share: humanity's present and future Ecological Footprint",
+   "volume": "363",
+   "author": "Kitzes",
+   "year": "2008",
+   "journal-title": "Philos. Trans. the Roy. Soc. London B: Biol. Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0155",
+   "first-page": "1097",
+   "article-title": "Imagenet classification with deep convolutional neural networks",
+   "author": "Krizhevsky",
+   "year": "2012",
+   "journal-title": "Adv. Neural Inform. Process. Syst."
+  },
+  {
+   "issue": "5",
+   "key": "10.1016/j.compag.2018.02.016_b0160",
+   "doi-asserted-by": "crossref",
+   "first-page": "778",
+   "DOI": "10.1109/LGRS.2017.2681128",
+   "article-title": "Deep learning classification of land cover and crop types using remote sensing data",
+   "volume": "14",
+   "author": "Kussul",
+   "year": "2017",
+   "journal-title": "IEEE Geosci. Remote Sens. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0165",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kuwata, K., Shibasaki, R., 2015. Estimating crop yields with deep learning and remotely sensed data. IEEE International Geoscience and Remote Sensing Symposium (IGARSS). Milan, Italy, pp. 858\u2013861.",
+   "DOI": "10.1109/IGARSS.2015.7325900"
+  },
+  {
+   "issue": "10",
+   "key": "10.1016/j.compag.2018.02.016_b0170",
+   "article-title": "Convolutional networks for images, speech, and time series",
+   "volume": "3361",
+   "author": "LeCun",
+   "year": "1995",
+   "journal-title": "Handbook Brain Theory Neural Networks"
+  },
+  {
+   "issue": "7553",
+   "key": "10.1016/j.compag.2018.02.016_b0175",
+   "doi-asserted-by": "crossref",
+   "first-page": "436",
+   "DOI": "10.1038/nature14539",
+   "article-title": "Deep learning",
+   "volume": "521",
+   "author": "LeCun",
+   "year": "2015",
+   "journal-title": "Nature"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0180",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lee, S.H., Chan, C.S., Wilkin, P., Remagnino, P., 2015. Deep-plant: Plant identification with convolutional neural networks. IEEE International Conference on Image Processing (ICIP). Quebec city, Canada, pp. 452\u2013456.",
+   "DOI": "10.1109/ICIP.2015.7350839"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2018.02.016_b0185",
+   "doi-asserted-by": "crossref",
+   "first-page": "50",
+   "DOI": "10.3844/ajabssp.2010.50.55",
+   "article-title": "A review: The role of remote sensing in precision agriculture",
+   "volume": "5",
+   "author": "Liaghat",
+   "year": "2010",
+   "journal-title": "Am. J. Agric. Biol. Sci."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2018.02.016_b0190",
+   "doi-asserted-by": "crossref",
+   "first-page": "731",
+   "DOI": "10.1007/s11629-016-3950-2",
+   "article-title": "Cultivated land information extraction in UAV imagery based on deep convolutional neural network and transfer learning",
+   "volume": "14",
+   "author": "Lu",
+   "year": "2017",
+   "journal-title": "J. Mountain Sci."
+  },
+  {
+   "issue": "12",
+   "key": "10.1016/j.compag.2018.02.016_b0195",
+   "doi-asserted-by": "crossref",
+   "first-page": "2448",
+   "DOI": "10.1109/LGRS.2015.2483680",
+   "article-title": "Multiview deep learning for land-use classification",
+   "volume": "12",
+   "author": "Luus",
+   "year": "2015",
+   "journal-title": "IEEE Geosci. Remote Sens. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0200",
+   "series-title": "Recurrent Neural Networks for Prediction: Learning Algorithms, Architectures and Stability",
+   "author": "Mandic",
+   "year": "2001"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2018.02.016_b0205",
+   "doi-asserted-by": "crossref",
+   "first-page": "1344",
+   "DOI": "10.1109/LRA.2017.2667039",
+   "article-title": "Mixtures of lightweight deep convolutional neural networks: applied to agricultural robotics",
+   "volume": "2",
+   "author": "McCool",
+   "year": "2017",
+   "journal-title": "IEEE Rob. Autom. Lett."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0210",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Milioto, A., Lottes, P., Stachniss, C., 2017. Real-time blob-wise sugar beets vs weeds classification for monitoring fields using convolutional neural networks. Proceedings of the International Conference on Unmanned Aerial Vehicles in Geomatics. Bonn, Germany.",
+   "DOI": "10.5194/isprs-annals-IV-2-W3-41-2017"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0215",
+   "unstructured": "Minh, D.H., Ienco, D., Gaetano, R., Lalande, N., Ndikumana, E., Osman, F., Maurel, P., 2017. Deep Recurrent Neural Networks for mapping winter vegetation quality coverage via multi-temporal SAR Sentinel-1. arXiv preprint arXiv: 1708.03694."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0220",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.3389/fpls.2016.01419",
+   "article-title": "Using deep learning for image-based plant disease detection",
+   "volume": "7",
+   "author": "Mohanty",
+   "year": "2016",
+   "journal-title": "Front. Plant. Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0225",
+   "unstructured": "Mortensen, A.K., Dyrmann, M., Karstoft, H., J\u00f8rgensen, R.N., Gislum, R., 2016. Semantic segmentation of mixed crops using deep convolutional neural network. International Conference on Agricultural Engineering. Aarhus, Denmark."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2018.02.016_b0230",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1186/s40537-014-0007-7",
+   "article-title": "Deep learning applications and challenges in big data analytics",
+   "volume": "2",
+   "author": "Najafabadi",
+   "year": "2015",
+   "journal-title": "J. Big Data"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0235",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Namin, S.T., Esmaeilzadeh, M., Najafi, M., Brown, T.B., Borevitz, J.O., 2017. Deep Phenotyping: Deep Learning For Temporal Phenotype/Genotype Classification. bioRxiv, 134205.",
+   "DOI": "10.1101/134205"
+  },
+  {
+   "issue": "9",
+   "key": "10.1016/j.compag.2018.02.016_b0240",
+   "doi-asserted-by": "crossref",
+   "first-page": "2274",
+   "DOI": "10.3390/rs2092274",
+   "article-title": "Remote sensing of irrigated agriculture: Opportunities and challenges",
+   "volume": "2",
+   "author": "Ozdogan",
+   "year": "2010",
+   "journal-title": "Remote Sensing"
+  },
+  {
+   "issue": "10",
+   "key": "10.1016/j.compag.2018.02.016_b0245",
+   "doi-asserted-by": "crossref",
+   "first-page": "1345",
+   "DOI": "10.1109/TKDE.2009.191",
+   "article-title": "A survey on transfer learning",
+   "volume": "22",
+   "author": "Pan",
+   "year": "2010",
+   "journal-title": "IEEE Trans. Knowl. Data Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0250",
+   "unstructured": "PASCAL VOC Project. 2012. The PASCAL Visual Object Classes. Obtenido de http://host.robots.ox.ac.uk/pascal/VOC/."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0255",
+   "series-title": "International Conference on Intelligent Autonomous Systems",
+   "first-page": "105",
+   "article-title": "Fast and accurate crop and weed identification with summarized train sets for precision agriculture",
+   "author": "Potena",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0260",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Pound, M.P. et al., 2016. Deep Machine Learning provides state-of-the-art performance in image-based plant phenotyping. bioRxiv, 053033.",
+   "DOI": "10.1101/053033"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2018.02.016_b0265",
+   "doi-asserted-by": "crossref",
+   "first-page": "905",
+   "DOI": "10.3390/s17040905",
+   "article-title": "Deep count: fruit counting based on deep simulated learning",
+   "volume": "17",
+   "author": "Rahnemoonfar",
+   "year": "2017",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0270",
+   "unstructured": "Rebetez, J. et al., 2016. Augmenting a convolutional neural network with local histograms\u2014a case study in crop classification from high-resolution UAV imagery. European Symposium on Artificial Neural Networks, Computational Intelligence and Machine Learning. Bruges, Belgium."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0275",
+   "series-title": "Fine-Tuning Deep Convolutional Networks for Plant Recognition",
+   "author": "Reyes",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0280",
+   "article-title": "Multi-temporal land cover classification with long short-term memory neural networks",
+   "volume": "42",
+   "author": "Ru\u00dfwurm",
+   "year": "2017",
+   "journal-title": "Int. Arch. Photogramm., Remote Sens. Spatial Inform. Sci."
+  },
+  {
+   "issue": "8",
+   "key": "10.1016/j.compag.2018.02.016_b0285",
+   "doi-asserted-by": "crossref",
+   "first-page": "1222",
+   "DOI": "10.3390/s16081222",
+   "article-title": "Deepfruits: A fruit detection system using deep neural networks",
+   "volume": "16",
+   "author": "Sa",
+   "year": "2016",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0290",
+   "doi-asserted-by": "crossref",
+   "first-page": "493",
+   "DOI": "10.1016/j.procs.2015.07.525",
+   "article-title": "Cattle race classification using gray level co-occurrence matrix convolutional neural networks",
+   "volume": "59",
+   "author": "Santoni",
+   "year": "2015",
+   "journal-title": "Procedia Comput. Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0295",
+   "unstructured": "Saxena, L., Armstrong, L., 2014. A survey of image processing techniques for agriculture. Proceedings of Asian Federation for Information Technology in Agriculture, Australian Society of Information and Communication Technologies in Agriculture. Perth, Australia."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0300",
+   "doi-asserted-by": "crossref",
+   "first-page": "85",
+   "DOI": "10.1016/j.neunet.2014.09.003",
+   "article-title": "Deep learning in neural networks: An overview",
+   "volume": "61",
+   "author": "Schmidhuber",
+   "year": "2015",
+   "journal-title": "Neural Networks"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0305",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Sehgal, G., Gupta, B., Paneri, K., Singh, K., Sharma, G., Shroff, G., 2017. Crop Planning using Stochastic Visual Optimization. arXiv preprint arXiv: 1710.09077.",
+   "DOI": "10.1109/VDS.2017.8573443"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0310",
+   "unstructured": "Simonyan, K., Zisserman, A., 2014. Very deep convolutional networks for large-scale image recognition. arXiv preprint arXiv: 1409.1556."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2018.02.016_b0315",
+   "doi-asserted-by": "crossref",
+   "first-page": "110",
+   "DOI": "10.1016/j.tplants.2015.10.015",
+   "article-title": "Machine learning for high-throughput stress phenotyping in plants",
+   "volume": "21",
+   "author": "Singh",
+   "year": "2016",
+   "journal-title": "Trends Plant Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0320",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1155/2016/3289801",
+   "article-title": "Deep neural networks based recognition of plant diseases by leaf image classification",
+   "volume": "2016",
+   "author": "Sladojevic",
+   "year": "2016",
+   "journal-title": "Comput. Intell. Neurosci."
+  },
+  {
+   "issue": "5",
+   "key": "10.1016/j.compag.2018.02.016_b0325",
+   "doi-asserted-by": "crossref",
+   "first-page": "734",
+   "DOI": "10.1007/s40333-016-0049-0",
+   "article-title": "Modeling spatio-temporal distribution of soil moisture by deep learning-based cellular automata model",
+   "volume": "8",
+   "author": "Song",
+   "year": "2016",
+   "journal-title": "J. Arid Land"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0330",
+   "series-title": "Thistle Detection Using Convolutional Neural Networks",
+   "author": "S\u00f8rensen",
+   "year": "2017"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2018.02.016_b0335",
+   "doi-asserted-by": "crossref",
+   "first-page": "6",
+   "DOI": "10.3390/jimaging2010006",
+   "article-title": "Using deep learning to challenge safety standard for highly autonomous machines in agriculture",
+   "volume": "2",
+   "author": "Steen",
+   "year": "2016",
+   "journal-title": "J. Imag."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0340",
+   "series-title": "Inception-v4, Inception-ResNet and the Impact of Residual Connections on Learning",
+   "first-page": "4278",
+   "author": "Szegedy",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0345",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Szegedy, C., Liu, W., Jia, Y., Sermanet, P., Reed, S., Anguelov, D., Rabinovich, A., 2015. Going deeper with convolutions. IEEE Conference on Computer Vision and Pattern Recognition. Boston, MA, USA, pp. 1\u20139.",
+   "DOI": "10.1109/CVPR.2015.7298594"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0350",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Teke, M., Deveci, H.S., Halilo\u011flu, O., G\u00fcrb\u00fcz, S.Z., Sakarya, U., 2013. A short survey of hyperspectral remote sensing applications in agriculture. 6th International Conference on Recent Advances in Space Technologies (RAST). IEEE, Istanbul, Turkey.",
+   "DOI": "10.1109/RAST.2013.6581194"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2018.02.016_b0355",
+   "doi-asserted-by": "crossref",
+   "first-page": "388",
+   "DOI": "10.1002/ird.2076",
+   "article-title": "Towards a second green revolution",
+   "volume": "65",
+   "author": "Tyagi",
+   "year": "2016",
+   "journal-title": "Irrig. Drain."
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0365",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Wan, J., Wang, D., Hoi, S.C., Wu, P., Zhu, J., Zhang, Y., Li, J., 2014. Deep learning for content-based image retrieval: A comprehensive study. Proceedings of the 22nd ACM International Conference on Multimedia. ACM, Orlando, FL, pp. 157\u2013166.",
+   "DOI": "10.1145/2647868.2654948"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0375",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Xinshao, W., Cheng, C., 2015. Weed seeds classification based on PCANet deep learning baseline. IEEE Signal and Information Processing Association Annual Summit and Conference (APSIPA), pp. 408\u2013415.",
+   "DOI": "10.1109/APSIPA.2015.7415304"
+  },
+  {
+   "key": "10.1016/j.compag.2018.02.016_b0380",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Yalcin, H., 2017. Plant phenology recognition using deep learning: Deep-Pheno. 6th International Conference on Agro-Geoinformatics. Fairfax VA, USA.",
+   "DOI": "10.1109/Agro-Geoinformatics.2017.8046996"
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169917308803?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169917308803?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2019,
+    10,
+    11
+   ]
+  ],
+  "date-time": "2019-10-11T07:15:12Z",
+  "timestamp": 1570778112000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169917308803"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    4
+   ]
+  ]
+ },
+ "references-count": 72,
+ "alternative-id": [
+  "S0168169917308803"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2018.02.016",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    4
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "Deep learning in agriculture: A survey",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Computers and Electronics in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.compag.2018.02.016",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2018 Elsevier B.V. All rights reserved.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ]
+}

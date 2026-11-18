@@ -1,0 +1,382 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    13
+   ]
+  ],
+  "date-time": "2026-11-13T09:36:38Z",
+  "timestamp": 1794562598289,
+  "version": "4.9.1"
+ },
+ "reference-count": 29,
+ "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+ "issue": "4",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      10,
+      1
+     ]
+    ],
+    "date-time": "2018-10-01T00:00:00Z",
+    "timestamp": 1538352000000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html"
+  }
+ ],
+ "funder": [
+  {
+   "name": "EC",
+   "award": [
+    "H2020-ICT-644227-Flourish"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "H2020-ICT-644227-Flourish"
+     ]
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "IEEE Robot. Autom. Lett."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2018,
+    10
+   ]
+  ]
+ },
+ "DOI": "10.1109/lra.2018.2846289",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2018,
+    6,
+    11
+   ]
+  ],
+  "date-time": "2018-06-11T14:39:27Z",
+  "timestamp": 1528727967000
+ },
+ "page": "2870-2877",
+ "source": "Crossref",
+ "is-referenced-by-count": 264,
+ "title": [
+  "Fully Convolutional Networks With Sequential Information for Robust Crop and Weed Detection in Precision Farming"
+ ],
+ "prefix": "10.1109",
+ "volume": "3",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-2619-7070",
+   "authenticated-orcid": false,
+   "given": "Philipp",
+   "family": "Lottes",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-6483-0319",
+   "authenticated-orcid": false,
+   "given": "Jens",
+   "family": "Behley",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5716-3279",
+   "authenticated-orcid": false,
+   "given": "Andres",
+   "family": "Milioto",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-1173-6972",
+   "authenticated-orcid": false,
+   "given": "Cyrill",
+   "family": "Stachniss",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "263",
+ "reference": [
+  {
+   "key": "ref10",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPRW.2017.156"
+  },
+  {
+   "key": "ref11",
+   "first-page": "16",
+   "article-title": "Tube stamp for mechanical intra-row individual plant weed control",
+   "author": "langsenkamp",
+   "year": "0",
+   "journal-title": "Proc Conf Agricultural Engineering"
+  },
+  {
+   "key": "ref12",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298965"
+  },
+  {
+   "key": "ref13",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.21675"
+  },
+  {
+   "key": "ref14",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICRA.2017.7989347"
+  },
+  {
+   "key": "ref15",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/IROS.2017.8206403"
+  },
+  {
+   "key": "ref16",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2017.2667039"
+  },
+  {
+   "key": "ref17",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.5194/isprs-annals-IV-2-W3-41-2017"
+  },
+  {
+   "key": "ref18",
+   "article-title": "Real-time semantic segmentation of crop and weed for precision agriculture robots leveraging background knowledge in CNNs",
+   "author": "milioto",
+   "year": "0",
+   "journal-title": "Proc IEEE Int Conf Robot Autom"
+  },
+  {
+   "key": "ref19",
+   "article-title": "Semantic segmentation of mixed crops using deep convolutional neural network",
+   "author": "mortensen",
+   "year": "0",
+   "journal-title": "Proc Conf Agricultural Engineering"
+  },
+  {
+   "key": "ref28",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.308"
+  },
+  {
+   "key": "ref4",
+   "article-title": "A guide to convolution arithmetic for deep learning",
+   "author": "dumoulin",
+   "year": "2018"
+  },
+  {
+   "key": "ref27",
+   "first-page": "1929",
+   "article-title": "Dropout: A simple way to prevent neural networks from overfitting",
+   "volume": "15",
+   "author": "srivastava",
+   "year": "2014",
+   "journal-title": "J Mach Learn Res"
+  },
+  {
+   "key": "ref3",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/IROS.2017.8206408"
+  },
+  {
+   "key": "ref6",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/IROS.2017.8206406"
+  },
+  {
+   "key": "ref29",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICRA.2016.7487717"
+  },
+  {
+   "key": "ref5",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICRA.2017.7989612"
+  },
+  {
+   "key": "ref8",
+   "first-page": "1026",
+   "article-title": "Delving deep into rectifiers: Surpassing human-level performance on imagenet classification",
+   "author": "he",
+   "year": "0",
+   "journal-title": "Proc IEEE Int Conf Comput Vis"
+  },
+  {
+   "key": "ref7",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/WACV.2014.6835733"
+  },
+  {
+   "key": "ref2",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1177/0278364917720510"
+  },
+  {
+   "key": "ref9",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2017.243"
+  },
+  {
+   "key": "ref1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2016.2644615"
+  },
+  {
+   "key": "ref20",
+   "article-title": "Development of an intra-row weeding system using electric servo drives and machine vision for plant detection",
+   "author": "m\u00fcter",
+   "year": "0",
+   "journal-title": "Proc Conf Agricultural Engineering"
+  },
+  {
+   "key": "ref22",
+   "article-title": "ENet: Deep neural network architecture for real-time semantic segmentation",
+   "volume": "abs 1606 2147",
+   "author": "paszke",
+   "year": "2016"
+  },
+  {
+   "key": "ref21",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.18174/11952",
+   "article-title": "Automated detection and control of volunteer potato plants",
+   "author": "nieuwenhuizen",
+   "year": "2009"
+  },
+  {
+   "key": "ref24",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-24574-4_28"
+  },
+  {
+   "key": "ref23",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-48036-7_9"
+  },
+  {
+   "key": "ref26",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2007.05.008"
+  },
+  {
+   "key": "ref25",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2017.2774979"
+  }
+ ],
+ "container-title": [
+  "IEEE Robotics and Automation Letters"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "http://xplorestaging.ieee.org/ielx7/7083369/8386768/08379414.pdf?arnumber=8379414",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    7,
+    4
+   ]
+  ],
+  "date-time": "2025-07-04T22:27:46Z",
+  "timestamp": 1751668066000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://ieeexplore.ieee.org/document/8379414/"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2018,
+    10
+   ]
+  ]
+ },
+ "references-count": 29,
+ "journal-issue": {
+  "issue": "4"
+ },
+ "URL": "https://doi.org/10.1109/lra.2018.2846289",
+ "relation": {},
+ "ISSN": [
+  "2377-3766",
+  "2377-3774"
+ ],
+ "issn-type": [
+  {
+   "value": "2377-3766",
+   "type": "electronic"
+  },
+  {
+   "value": "2377-3774",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2018,
+    10
+   ]
+  ]
+ }
+}

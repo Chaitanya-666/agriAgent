@@ -1,0 +1,327 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    13
+   ]
+  ],
+  "date-time": "2026-11-13T09:35:23Z",
+  "timestamp": 1794562523636,
+  "version": "4.9.1"
+ },
+ "reference-count": 9,
+ "publisher": "SAGE Publications",
+ "issue": "10",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2017,
+      7,
+      23
+     ]
+    ],
+    "date-time": "2017-07-23T00:00:00Z",
+    "timestamp": 1500768000000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://journals.sagepub.com/page/policies/text-and-data-mining-license"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "journals.sagepub.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "The International Journal of Robotics Research"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2017,
+    9
+   ]
+  ]
+ },
+ "abstract": "<jats:p>There is an increasing interest in agricultural robotics and precision farming. In such domains, relevant datasets are often hard to obtain, as dedicated fields need to be maintained and the timing of the data collection is critical. In this paper, we present a large-scale agricultural robot dataset for plant classification as well as localization and mapping that covers the relevant growth stages of plants for robotic intervention and weed control. We used a readily available agricultural field robot to record the dataset on a sugar beet farm near Bonn in Germany over a period of three months in the spring of 2016. On average, we recorded data three times per week, starting at the emergence of the plants and stopping at the state when the field was no longer accessible to the machinery without damaging the crops. The robot carried a four-channel multi-spectral camera and an RGB-D sensor to capture detailed information about the plantation. Multiple lidar and global positioning system sensors as well as wheel encoders provided measurements relevant to localization, navigation, and mapping. All sensors had been calibrated before the data acquisition campaign. In addition to the data recorded by the robot, we provide lidar data of the field recorded using a terrestrial laser scanner. We believe this dataset will help researchers to develop autonomous systems operating in agricultural field environments. The dataset can be downloaded from http://www.ipb.uni-bonn.de/data/sugarbeets2016/ .</jats:p>",
+ "DOI": "10.1177/0278364917720510",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2017,
+    7,
+    24
+   ]
+  ],
+  "date-time": "2017-07-24T02:19:38Z",
+  "timestamp": 1500862778000
+ },
+ "page": "1045-1052",
+ "update-policy": "https://doi.org/10.1177/sage-journals-update-policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 320,
+ "title": [
+  "Agricultural robot dataset for plant classification, localization and mapping on sugar beet fields"
+ ],
+ "prefix": "10.1177",
+ "volume": "36",
+ "author": [
+  {
+   "given": "Nived",
+   "family": "Chebrolu",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Philipp",
+   "family": "Lottes",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Alexander",
+   "family": "Schaefer",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Freiburg, Freiburg im Breisgau, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Wera",
+   "family": "Winterhalter",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Freiburg, Freiburg im Breisgau, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Wolfram",
+   "family": "Burgard",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Freiburg, Freiburg im Breisgau, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Cyrill",
+   "family": "Stachniss",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "179",
+ "published-online": {
+  "date-parts": [
+   [
+    2017,
+    7,
+    23
+   ]
+  ]
+ },
+ "reference": [
+  {
+   "key": "bibr1-0278364917720510",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.21644"
+  },
+  {
+   "key": "bibr2-0278364917720510",
+   "unstructured": "Bradski G (2000) Dr. Dobb\u2019s Journal of Software Tools. Available at: http://code.opencv.org/projects/opencv/wiki/CiteOpenCV"
+  },
+  {
+   "key": "bibr3-0278364917720510",
+   "volume-title": "Global Navigation Satellite Systems, Inertial Navigation, and Integration",
+   "author": "Grewal MS",
+   "year": "2013"
+  },
+  {
+   "key": "bibr4-0278364917720510",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/WACV.2015.111"
+  },
+  {
+   "key": "bibr5-0278364917720510",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICRA.2016.7487720"
+  },
+  {
+   "key": "bibr6-0278364917720510",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.21675"
+  },
+  {
+   "key": "bibr7-0278364917720510",
+   "first-page": "309",
+   "volume": "351",
+   "author": "Rouse JW",
+   "year": "1974",
+   "journal-title": "NASA Special Publication"
+  },
+  {
+   "key": "bibr8-0278364917720510",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.patcog.2007.07.007"
+  },
+  {
+   "key": "bibr9-0278364917720510",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.21607"
+  }
+ ],
+ "container-title": [
+  "The International Journal of Robotics Research"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://journals.sagepub.com/doi/pdf/10.1177/0278364917720510",
+   "content-type": "application/pdf",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://journals.sagepub.com/doi/full-xml/10.1177/0278364917720510",
+   "content-type": "application/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://journals.sagepub.com/doi/pdf/10.1177/0278364917720510",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2026,
+    4,
+    29
+   ]
+  ],
+  "date-time": "2026-04-29T10:15:25Z",
+  "timestamp": 1777457725000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://journals.sagepub.com/doi/10.1177/0278364917720510"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2017,
+    7,
+    23
+   ]
+  ]
+ },
+ "references-count": 9,
+ "journal-issue": {
+  "issue": "10",
+  "published-print": {
+   "date-parts": [
+    [
+     2017,
+     9
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "10.1177/0278364917720510"
+ ],
+ "URL": "https://doi.org/10.1177/0278364917720510",
+ "relation": {},
+ "ISSN": [
+  "0278-3649",
+  "1741-3176"
+ ],
+ "issn-type": [
+  {
+   "value": "0278-3649",
+   "type": "print"
+  },
+  {
+   "value": "1741-3176",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2017,
+    7,
+    23
+   ]
+  ]
+ }
+}

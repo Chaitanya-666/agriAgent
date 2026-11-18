@@ -1,0 +1,21 @@
+\chapter{Team Roles}\label{app:contrib}
+The project was planned in four tracks: (1) vision pipeline, workflow and safety gate, (2) agronomy and
+herbicide advice, (3) data and evaluation, (4) application, testing and release. The table records
+each member's role in the work as delivered.
+
+\begin{small}
+\begin{longtable}{@{}L{3.2cm}L{11.2cm}@{}}
+\caption{Roles of the team members.}\label{tab:roles}\\
+\toprule
+\textbf{Member} & \textbf{Role and work}\\
+\midrule\endfirsthead
+\toprule
+\textbf{Member} & \textbf{Role and work}\\
+\midrule\endhead
+Chaitanya Shinde (team lead) & Research questions, scope and methodology; the vision pipeline (Grounding DINO, SAM~2, refinement, model loading); the deterministic safety gate and spray map; plant rules v3; the escalation agent; the final System~2 and ICAR knowledge store, checked row by row against the bulletin; farmer summary; the Streamlit application and GeoJSON export; the evaluation sets, label audit and metrics; all experiments in Chapter~\ref{ch:results}; the unit and end-to-end tests, CI, verification run and manual test cycle; fixes for findings F1--F30; this report and the presentation.\\[4pt]
+Amit Ingle & The first Streamlit dashboard; system test cycle~0 (16 cases on a fresh Windows installation, 8 issues filed); system test cycle~2 on the final build (24 of 24 cases passed on Windows~11 with an RTX~3050), including install, regression and exploratory cases; the packaging bug report; the \code{v1.0.0} release (version bump, release notes, draft release); the live demonstration.\\[4pt]
+Sumant Vetal & The first version of the System~2 agronomy module (diagnosis and herbicide advice), later rewritten and integrated.\\[4pt]
+Sahil Chavan & The dataset downloader used to fetch the public datasets.\\
+\bottomrule
+\end{longtable}
+\end{small}

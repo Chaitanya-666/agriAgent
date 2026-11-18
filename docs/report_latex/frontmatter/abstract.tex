@@ -1,0 +1,29 @@
+\frontpage{Abstract}
+Spot spraying applies herbicide only where weeds grow instead of over the whole field, but it needs a
+vision system that can tell a weed from a crop plant. Supervised networks do this well after training
+on labelled images of the target field; zero-shot foundation models promise to do it with no training
+at all. \textbf{AgriAgent} tests that promise on real field photographs. It implements the Grounded SAM
+pipeline, a text-prompted Grounding DINO detector
+followed by the SAM~2 segmenter, and adds four things around it: a deterministic
+safety gate that is the only authority on what may be sprayed, a rule-based plant classifier built on
+the excess-green index and the planting row, one bounded escalation agent
+that consults vision-language models about uncertain plants, and herbicide advice taken only from the
+ICAR herbicide bulletin. The whole pipeline runs on a laptop GPU (RTX~5050,
+8~GB) in about 0.6~s per photo.
+
+We evaluate on sugar beet and cotton photographs whose labels were copied from the official dataset
+files, after discovering and replacing an earlier evaluation set with fabricated labels. On 90
+held-out sugar beet photos, the Grounded SAM label policy sprays \textbf{65.5\% of crop pixels} while
+reaching only \textbf{1.8\% of weed pixels}: text prompts alone do not separate crop from weed. Four
+frozen rules (crop-mask overlap, planting row, size relative to the crop, off-row position) raise weed
+recall to \textbf{77.9\%} and cut crop pixels sprayed to \textbf{8.8\%}, measured once on the held-out set,
+while saving 95\% of the herbicide of blanket spraying. The escalation agent never approved spraying a
+crop plant and was right in 13 of its 14 ``crop'' verdicts, but it called no weed a weed: it is safe
+but not effective. These findings agree with the best published zero-shot crop--weed
+work and show how much a transparent, testable safety layer recovers without
+any training. AgriAgent is a research prototype and must not drive a real sprayer.
+
+\vspace{1em}
+\noindent\textbf{Keywords:} precision agriculture, weed detection, zero-shot segmentation, Grounding DINO,
+SAM~2, safety gate, vision-language models, spot spraying.
+\clearpage

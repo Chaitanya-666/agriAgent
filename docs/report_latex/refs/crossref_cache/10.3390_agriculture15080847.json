@@ -1,0 +1,1707 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    15
+   ]
+  ],
+  "date-time": "2026-11-15T05:02:42Z",
+  "timestamp": 1794718962873,
+  "version": "4.9.1"
+ },
+ "reference-count": 198,
+ "publisher": "MDPI AG",
+ "issue": "8",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2025,
+      4,
+      14
+     ]
+    ],
+    "date-time": "2025-04-14T00:00:00Z",
+    "timestamp": 1744588800000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "funder": [
+  {
+   "name": "Faculty of Agricultural Engineering of Jiangsu University",
+   "award": [
+    "NGXB20240101"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "NGXB20240101"
+     ]
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "Agriculture"
+ ],
+ "abstract": "<jats:p>This paper explores the transformative potential of Foundation Models (FMs) in agriculture, driven by the need for efficient and intelligent decision support systems in the face of growing global population and climate change. It begins by outlining the development history of FMs, including general FM training processes, application trends and challenges, before focusing on Agricultural Foundation Models (AFMs). The paper examines the diversity and applications of AFMs in areas like crop classification, pest detection, and crop image segmentation, and delves into specific use cases such as agricultural knowledge question-answering, image and video analysis, decision support, and robotics. Furthermore, it discusses the challenges faced by AFMs, including data acquisition, training efficiency, data shift, and practical application challenges. Finally, the paper discusses future development directions for AFMs, emphasizing multimodal applications, integrating AFMs across the agricultural and food sectors, and intelligent decision-making systems, ultimately aiming to promote the digitalization and intelligent transformation of agriculture.</jats:p>",
+ "DOI": "10.3390/agriculture15080847",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2025,
+    4,
+    14
+   ]
+  ],
+  "date-time": "2025-04-14T09:06:51Z",
+  "timestamp": 1744621611000
+ },
+ "page": "847",
+ "update-policy": "https://doi.org/10.3390/mdpi_crossmark_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 62,
+ "title": [
+  "Foundation Models in Agriculture: A Comprehensive Review"
+ ],
+ "prefix": "10.3390",
+ "volume": "15",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0009-0009-7020-2920",
+   "authenticated-orcid": false,
+   "given": "Shuolei",
+   "family": "Yin",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "School of Computer Science and Communication Engineering, Jiangsu University, 301 Xuefu Road, Zhenjiang 212013, China"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0009-1869-1771",
+   "authenticated-orcid": false,
+   "given": "Yejing",
+   "family": "Xi",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Computer Science and Communication Engineering, Jiangsu University, 301 Xuefu Road, Zhenjiang 212013, China"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0004-6392-1349",
+   "authenticated-orcid": false,
+   "given": "Xun",
+   "family": "Zhang",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Computer Science and Communication Engineering, Jiangsu University, 301 Xuefu Road, Zhenjiang 212013, China"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0009-9602-1642",
+   "authenticated-orcid": false,
+   "given": "Chengnuo",
+   "family": "Sun",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Computer Science and Communication Engineering, Jiangsu University, 301 Xuefu Road, Zhenjiang 212013, China"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-0616-4431",
+   "authenticated-orcid": false,
+   "given": "Qirong",
+   "family": "Mao",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "School of Computer Science and Communication Engineering, Jiangsu University, 301 Xuefu Road, Zhenjiang 212013, China"
+    },
+    {
+     "name": "Jiangsu Engineering Research Center of Big Data Ubiquitous Perception and Intelligent Agricultural Applications, Zhenjiang 212013, China"
+    },
+    {
+     "name": "Key Laboratory of Computational Intelligence and Low-Altitude Digital Agricultural New Technology of Jiangsu Universities, Zhenjiang 212013, China"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "1968",
+ "published-online": {
+  "date-parts": [
+   [
+    2025,
+    4,
+    14
+   ]
+  ]
+ },
+ "reference": [
+  {
+   "key": "ref_1",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Botero-Valencia, J., Garc\u00eda-Pineda, V., Valencia-Arias, A., Valencia, J., Reyes-Vera, E., Mejia-Herrera, M., and Hern\u00e1ndez-Garc\u00eda, R. (2025). Machine Learning in Sustainable Agriculture: Systematic Review and Research Perspectives. Agriculture, 15.",
+   "DOI": "10.3390/agriculture15040377"
+  },
+  {
+   "key": "ref_2",
+   "doi-asserted-by": "crossref",
+   "first-page": "109032",
+   "DOI": "10.1016/j.compag.2024.109032",
+   "article-title": "Foundation models in smart agriculture: Basics, opportunities, and challenges",
+   "volume": "222",
+   "author": "Li",
+   "year": "2024",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_3",
+   "doi-asserted-by": "crossref",
+   "first-page": "685",
+   "DOI": "10.1007/s12525-021-00475-2",
+   "article-title": "Machine learning and deep learning",
+   "volume": "31",
+   "author": "Janiesch",
+   "year": "2021",
+   "journal-title": "Electron. Mark."
+  },
+  {
+   "key": "ref_4",
+   "doi-asserted-by": "crossref",
+   "first-page": "11",
+   "DOI": "10.1016/j.neucom.2016.12.038",
+   "article-title": "A survey of deep neural network architectures and their applications",
+   "volume": "234",
+   "author": "Liu",
+   "year": "2017",
+   "journal-title": "Neurocomputing"
+  },
+  {
+   "key": "ref_5",
+   "unstructured": "Bommasani, R., Hudson, D.A., Adeli, E., Altman, R., Arora, S., von Arx, S., and Bernstein, M.S. (2021). On the Opportunities and Risks of Foundation Models. arXiv."
+  },
+  {
+   "key": "ref_6",
+   "first-page": "9",
+   "article-title": "Language models are unsupervised multitask learners",
+   "volume": "1",
+   "author": "Radford",
+   "year": "2019",
+   "journal-title": "OpenAI Blog"
+  },
+  {
+   "key": "ref_7",
+   "first-page": "1877",
+   "article-title": "Language models are few-shot learners",
+   "volume": "33",
+   "author": "Brown",
+   "year": "2020",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_8",
+   "first-page": "27730",
+   "article-title": "Training language models to follow instructions with human feedback",
+   "volume": "35",
+   "author": "Ouyang",
+   "year": "2022",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_9",
+   "unstructured": "Touvron, H., Lavril, T., Izacard, G., Martinet, X., Lachaux, M.A., Lacroix, T., Rozi\u00e8re, B., Goyal, N., Hambro, E., and Azhar, F. (2023). Llama: Open and efficient foundation language models. arXiv."
+  },
+  {
+   "key": "ref_10",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Rombach, R., Blattmann, A., Lorenz, D., Esser, P., and Ommer, B. (2022, January 19\u201320). High-resolution image synthesis with latent diffusion models. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, New Orleans, LA, USA.",
+   "DOI": "10.1109/CVPR52688.2022.01042"
+  },
+  {
+   "key": "ref_11",
+   "unstructured": "Ramesh, A., Dhariwal, P., Nichol, A., Chu, C., and Chen, M. (2022). Hierarchical text-conditional image generation with clip latents. arXiv."
+  },
+  {
+   "key": "ref_12",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kirillov, A., Mintun, E., Ravi, N., Mao, H., Rolland, C., Gustafson, L., Xiao, T., Whitehead, S., Berg, A.C., and Lo, W.Y. (2023, January 2\u20133). Segment anything. Proceedings of the IEEE/CVF International Conference on Computer Vision, Paris, France.",
+   "DOI": "10.1109/ICCV51070.2023.00371"
+  },
+  {
+   "key": "ref_13",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kang, M., Zhu, J.Y., Zhang, R., Park, J., Shechtman, E., Paris, S., and Park, T. (2023, January 17\u201324). Scaling up gans for text-to-image synthesis. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, Vancouver, BC, Canada.",
+   "DOI": "10.1109/CVPR52729.2023.00976"
+  },
+  {
+   "key": "ref_14",
+   "unstructured": "Reed, S., Zolna, K., Parisotto, E., Colmenarejo, S.G., Novikov, A., Barth-Maron, G., Gimenez, M., Sulsky, Y., Kay, J., and Springenberg, J.T. (2022). A generalist agent. arXiv."
+  },
+  {
+   "key": "ref_15",
+   "unstructured": "Team, A.A., Bauer, J., Baumli, K., Baveja, S., Behbahani, F., Bhoopchand, A., Bradley-Schmieg, N., Chang, M., Clay, N., and Collister, A. (2023). Human-timescale adaptation in an open-ended task space. arXiv."
+  },
+  {
+   "key": "ref_16",
+   "doi-asserted-by": "crossref",
+   "first-page": "436",
+   "DOI": "10.1038/nature14539",
+   "article-title": "Deep learning",
+   "volume": "521",
+   "author": "LeCun",
+   "year": "2015",
+   "journal-title": "Nature"
+  },
+  {
+   "key": "ref_17",
+   "first-page": "485",
+   "article-title": "Imagenet classification with deep convolutional neural networks",
+   "volume": "25",
+   "author": "Krizhevsky",
+   "year": "2012",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_18",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Deng, J., Dong, W., Socher, R., Li, L.J., Li, K., and Fei-Fei, L. (2009, January 20\u201325). Imagenet: A large-scale hierarchical image database. Proceedings of the 2009 IEEE Conference on Computer Vision and Pattern Recognition, Miami, FL, USA.",
+   "DOI": "10.1109/CVPR.2009.5206848"
+  },
+  {
+   "key": "ref_19",
+   "doi-asserted-by": "crossref",
+   "first-page": "6",
+   "DOI": "10.1038/s41746-017-0013-1",
+   "article-title": "Fast and accurate view classification of echocardiograms using deep learning",
+   "volume": "1",
+   "author": "Madani",
+   "year": "2018",
+   "journal-title": "NPJ Digit. Med."
+  },
+  {
+   "key": "ref_20",
+   "doi-asserted-by": "crossref",
+   "first-page": "1140",
+   "DOI": "10.1126/science.aar6404",
+   "article-title": "A general reinforcement learning algorithm that masters chess, shogi, and Go through self-play",
+   "volume": "362",
+   "author": "Silver",
+   "year": "2018",
+   "journal-title": "Science"
+  },
+  {
+   "key": "ref_21",
+   "unstructured": "Zhu, H., Qin, S., Su, M., Lin, C., Li, A., and Gao, J. (2024). Harnessing large vision and language models in agriculture: A review. arXiv."
+  },
+  {
+   "key": "ref_22",
+   "unstructured": "Wei, J., Tay, Y., Bommasani, R., Raffel, C., Zoph, B., Borgeaud, S., Yogatama, D., Bosma, M., Zhou, D., and Metzler, D. (2022). Emergent abilities of large language models. arXiv."
+  },
+  {
+   "key": "ref_23",
+   "unstructured": "Kaplan, J., McCandlish, S., Henighan, T., Brown, T.B., Chess, B., Child, R., Gray, S., Radford, A., Wu, J., and Amodei, D. (2020). Scaling laws for neural language models. arXiv."
+  },
+  {
+   "key": "ref_24",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Hadi, M.U., Qureshi, R., Shah, A., Irfan, M., Zafar, A., Shaikh, M.B., Akhtar, N., Wu, J., and Mirjalili, S. (2023). A survey on large language models: Applications, challenges, limitations, and practical usage. Authorea Preprints, 3.",
+   "DOI": "10.36227/techrxiv.23589741.v1"
+  },
+  {
+   "key": "ref_25",
+   "unstructured": "Simonyan, K. (2014). Very deep convolutional networks for large-scale image recognition. arXiv."
+  },
+  {
+   "key": "ref_26",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Szegedy, C., Liu, W., Jia, Y., Sermanet, P., Reed, S., Anguelov, D., Erhan, D., Vanhoucke, V., and Rabinovich, A. (2015, January 7\u201312). Going deeper with convolutions. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, Boston, MA, USA.",
+   "DOI": "10.1109/CVPR.2015.7298594"
+  },
+  {
+   "key": "ref_27",
+   "doi-asserted-by": "crossref",
+   "unstructured": "He, K., Zhang, X., Ren, S., and Sun, J. (2016, January 27\u201330). Deep residual learning for image recognition. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, Las Vegas, NV, USA.",
+   "DOI": "10.1109/CVPR.2016.90"
+  },
+  {
+   "key": "ref_28",
+   "doi-asserted-by": "crossref",
+   "first-page": "1137",
+   "DOI": "10.1109/TPAMI.2016.2577031",
+   "article-title": "Faster R-CNN: Towards real-time object detection with region proposal networks",
+   "volume": "39",
+   "author": "Ren",
+   "year": "2016",
+   "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell."
+  },
+  {
+   "key": "ref_29",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Redmon, J. (2016, January 27\u201330). You only look once: Unified, real-time object detection. Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition, Las Vegas, NV, USA.",
+   "DOI": "10.1109/CVPR.2016.91"
+  },
+  {
+   "key": "ref_30",
+   "doi-asserted-by": "crossref",
+   "unstructured": "He, K., Gkioxari, G., Doll\u00e1r, P., and Girshick, R. (2017, January 22\u201329). Mask r-cnn. Proceedings of the Proceedings of the IEEE International Conference on Computer Vision, Venice, Italy.",
+   "DOI": "10.1109/ICCV.2017.322"
+  },
+  {
+   "key": "ref_31",
+   "unstructured": "Dosovitskiy, A., Beyer, L., Kolesnikov, A., Weissenborn, D., Zhai, X., Unterthiner, T., Dehghani, M., Minderer, M., Heigold, G., and Gelly, S. (2021, January 3\u20137). An Image is Worth 16x16 Words: Transformers for Image Recognition at Scale. Proceedings of the 9th International Conference on Learning Representations (ICLR), Virtual."
+  },
+  {
+   "key": "ref_32",
+   "unstructured": "Ramesh, A., Pavlov, M., Goh, G., Gray, S., Voss, C., Radford, A., Chen, M., and Sutskever, I. (2021, January 18\u201324). Zero-shot text-to-image generation. Proceedings of the International Conference on machine Learning, Virtual."
+  },
+  {
+   "key": "ref_33",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Wu, J., Gan, W., Chen, Z., Wan, S., and Philip, S.Y. (2023, January 15\u201318). Multimodal large language models: A survey. Proceedings of the 2023 IEEE International Conference on Big Data (BigData), Sorrento, Italy.",
+   "DOI": "10.1109/BigData59044.2023.10386743"
+  },
+  {
+   "key": "ref_34",
+   "unstructured": "Radford, A. (2025, January 14). Improving Language Understanding by Generative Pre-Training. Available online: https://cdn.openai.com/research-covers/language-unsupervised/language_understanding_paper.pdf."
+  },
+  {
+   "key": "ref_35",
+   "unstructured": "Zeng, A., Liu, X., Du, Z., Wang, Z., Lai, H., Ding, M., Yang, Z., Xu, Y., Zheng, W., and Xia, X. (2023, January 1\u20135). GLM-130B: An Open Bilingual Pre-trained Model. Proceedings of the 11th International Conference on Learning Representations (ICLR), Kigali, Rwanda."
+  },
+  {
+   "key": "ref_36",
+   "unstructured": "Devlin, J., Chang, M.-W., Lee, K., and Toutanova, K. (2019). BERT: Pre-training of Deep Bidirectional Transformers for Language Understanding. Proceedings of the 2019 Conference of the North American Chapter of the Association for Computational Linguistics: Human Language Technologies, Volume 1 (Long and Short Papers), Association for Computational Linguistics."
+  },
+  {
+   "key": "ref_37",
+   "unstructured": "Liu, Y. (2019). Roberta: A robustly optimized bert pretraining approach. arXiv."
+  },
+  {
+   "key": "ref_38",
+   "first-page": "1",
+   "article-title": "Exploring the limits of transfer learning with a unified text-to-text transformer",
+   "volume": "21",
+   "author": "Raffel",
+   "year": "2020",
+   "journal-title": "J. Mach. Learn. Res."
+  },
+  {
+   "key": "ref_39",
+   "unstructured": "Team, G., Mesnard, T., Hardin, C., Dadashi, R., Bhupatiraju, S., Pathak, S., Sifre, L., Rivi\u00e8re, M., Kale, M.S., and Love, J. (2024). Gemma: Open models based on gemini research and technology. arXiv."
+  },
+  {
+   "key": "ref_40",
+   "first-page": "1",
+   "article-title": "Palm: Scaling language modeling with pathways",
+   "volume": "24",
+   "author": "Chowdhery",
+   "year": "2023",
+   "journal-title": "J. Mach. Learn. Res."
+  },
+  {
+   "key": "ref_41",
+   "unstructured": "Anil, R., Dai, A.M., Firat, O., Johnson, M., Lepikhin, D., Passos, A., Shakeri, S., Taropa, E., Bailey, P., and Chen, Z. (2023). Palm 2 technical report. arXiv."
+  },
+  {
+   "key": "ref_42",
+   "first-page": "1",
+   "article-title": "Estimating the Carbon Footprint of BLOOM, a 176B Parameter Language Model",
+   "volume": "24",
+   "author": "Luccioni",
+   "year": "2023",
+   "journal-title": "J. Mach. Learn. Res."
+  },
+  {
+   "key": "ref_43",
+   "unstructured": "Sun, Y., Wang, S., Feng, S., Ding, S., Pang, C., Shang, J., Liu, J., Chen, X., Zhao, Y., and Lu, Y. (2021). Ernie 3.0: Large-scale knowledge enhanced pre-training for language understanding and generation. arXiv."
+  },
+  {
+   "key": "ref_44",
+   "unstructured": "Dubey, A., Jauhri, A., Pandey, A., Kadian, A., Al-Dahle, A., Letman, A., Mathur, A., Schelten, A., Yang, A., and Fan, A. (2024). The llama 3 herd of models. arXiv."
+  },
+  {
+   "key": "ref_45",
+   "unstructured": "Chiang, W.L., Li, Z., Lin, Z., Sheng, Y., Wu, Z., Zhang, H., Zheng, L., Zhuang, S., Zhuang, Y., and Gonzalez, J.E. (2023, April 14). Vicuna: An Open-Source Chatbot Impressing gpt-4 with 90%* Chatgpt Quality. Available online: https://vicuna.lmsys.org."
+  },
+  {
+   "key": "ref_46",
+   "first-page": "7",
+   "article-title": "Alpaca: A strong, replicable instruction-following model",
+   "volume": "3",
+   "author": "Taori",
+   "year": "2023",
+   "journal-title": "Stanf. Cent. Res. Found. Model."
+  },
+  {
+   "key": "ref_47",
+   "unstructured": "Bi, X., Chen, D., Chen, G., Chen, S., Dai, D., Deng, C., Ding, H., Dong, K., Du, Q., and Fu, Z. (2024). Deepseek llm: Scaling open-source language models with longtermism. arXiv."
+  },
+  {
+   "key": "ref_48",
+   "unstructured": "Liu, A., Feng, B., Wang, B., Wang, B., Liu, B., Zhao, C., Dengr, C., Ruan, C., Dai, D., and Guo, D. (2024). Deepseek-v2: A strong, economical, and efficient mixture-of-experts language model. arXiv."
+  },
+  {
+   "key": "ref_49",
+   "unstructured": "Guo, D., Yang, D., Zhang, H., Song, J., Zhang, R., Xu, R., Zhu, Q., Ma, S., Wang, P., and Bi, X. (2025). DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning. arXiv."
+  },
+  {
+   "key": "ref_50",
+   "first-page": "1",
+   "article-title": "Visual instruction tuning",
+   "volume": "36",
+   "author": "Liu",
+   "year": "2024",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_51",
+   "unstructured": "Li, J., Li, D., Savarese, S., and Hoi, S. (2023, January 23\u201329). Blip-2: Bootstrapping language-image pre-training with frozen image encoders and large language models. Proceedings of the International Conference on Machine Learning, Honolulu, HI, USA."
+  },
+  {
+   "key": "ref_52",
+   "first-page": "23716",
+   "article-title": "Flamingo: A visual language model for few-shot learning",
+   "volume": "35",
+   "author": "Alayrac",
+   "year": "2022",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_53",
+   "unstructured": "Yuan, L., Chen, D., Chen, Y.L., Codella, N., Dai, X., Gao, J., Hu, H., Huang, X., Li, B., and Li, C. (2021). Florence: A new foundation model for computer vision. arXiv."
+  },
+  {
+   "key": "ref_54",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Xiao, B., Wu, H., Xu, W., Dai, X., Hu, H., Lu, Y., Zeng, M., Liu, C., and Yuan, L. (2024, January 16\u201322). Florence-2: Advancing a unified representation for a variety of vision tasks. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, Seattle, WA, USA.",
+   "DOI": "10.1109/CVPR52733.2024.00461"
+  },
+  {
+   "key": "ref_55",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Xi, T., Sun, Y., Yu, D., Li, B., Peng, N., Zhang, G., Zhang, X., Wang, Z., Chen, J., and Wang, J. (2022, January 23\u201327). UFO: Unified feature optimization. Proceedings of the European Conference on Computer Vision, Tel Aviv, Israel.",
+   "DOI": "10.1007/978-3-031-19809-0_27"
+  },
+  {
+   "key": "ref_56",
+   "unstructured": "Shao, J., Chen, S., Li, Y., Wang, K., Yin, Z., He, Y., Teng, J., Sun, Q., Gao, M., and Liu, J. (2021). Intern: A new learning paradigm towards general vision. arXiv."
+  },
+  {
+   "key": "ref_57",
+   "unstructured": "Lu, H., Liu, W., Zhang, B., Wang, B., Dong, K., Liu, B., Sun, J., Ren, T., Li, Z., and Yang, H. (2024). Deepseek-vl: Towards real-world vision-language understanding. arXiv."
+  },
+  {
+   "key": "ref_58",
+   "unstructured": "Wu, Z., Chen, X., Pan, Z., Liu, X., Liu, W., Dai, D., Gao, H., Ma, Y., Wu, C., and Wang, B. (2024). DeepSeek-VL2: Mixture-of-Experts Vision-Language Models for Advanced Multimodal Understanding. arXiv."
+  },
+  {
+   "key": "ref_59",
+   "unstructured": "Achiam, J., Adler, S., Agarwal, S., Ahmad, L., Akkaya, I., Aleman, F.L., Almeida, D., Altenschmidt, J., Altman, S., and Anadkat, S. (2023). Gpt-4 technical report. arXiv."
+  },
+  {
+   "key": "ref_60",
+   "unstructured": "Liu, Y., Zhang, K., Li, Y., Yan, Z., Gao, C., Chen, R., Yuan, Z., Huang, Y., Sun, H., and Gao, J. (2024). Sora: A review on background, technology, limitations, and opportunities of large vision models. arXiv."
+  },
+  {
+   "key": "ref_61",
+   "unstructured": "Anthropic, A. (2024). The claude 3 model family: Opus, sonnet, haiku. Claude-3 Model Card, 1."
+  },
+  {
+   "key": "ref_62",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhang, H., Li, X., and Bing, L. (2023). Video-LLaMA: An Instruction-tuned Audio-Visual Language Model for Video Understanding. Proceedings of the 2023 Conference on Empirical Methods in Natural Language Processing: System Demonstrations, Association for Computational Linguistics.",
+   "DOI": "10.18653/v1/2023.emnlp-demo.49"
+  },
+  {
+   "key": "ref_63",
+   "unstructured": "Team, G., Georgiev, P., Lei, V.I., Burnell, R., Bai, L., Gulati, A., Tanzer, G., Vincent, D., Pan, Z., and Wang, S. (2024). Gemini 1.5: Unlocking multimodal understanding across millions of tokens of context. arXiv."
+  },
+  {
+   "key": "ref_64",
+   "first-page": "8469",
+   "article-title": "PaLM-E: An Embodied Multimodal Language Model",
+   "volume": "Volume 202",
+   "author": "Driess",
+   "year": "2023",
+   "journal-title": "Proceedings of the 40th International Conference on Machine Learning"
+  },
+  {
+   "key": "ref_65",
+   "unstructured": "Su, Y., Lan, T., Li, H., Xu, J., Wang, Y., and Cai, D. (2023, January 12). PandaGPT: One Model To Instruction-Follow Them All. Proceedings of the 1st Workshop on Taming Large Language Models: Controllability in the era of Interactive Assistants!, Prague, Czech Republic. Available online: https://arxiv.org/pdf/2305.16355."
+  },
+  {
+   "key": "ref_66",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhang, D., Li, S., Zhang, X., Zhan, J., Wang, P., Zhou, Y., and Qiu, X. (2023, January 6\u201310). SpeechGPT: Empowering Large Language Models with Intrinsic Cross-Modal Conversational Abilities. Proceedings of the Findings of the Association for Computational Linguistics: EMNLP 2023, Singapore. Available online: https://arxiv.org/pdf/2305.11000.",
+   "DOI": "10.18653/v1/2023.findings-emnlp.1055"
+  },
+  {
+   "key": "ref_67",
+   "first-page": "200",
+   "article-title": "Multimodal few-shot learning with frozen language models",
+   "volume": "34",
+   "author": "Tsimpoukelli",
+   "year": "2021",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_68",
+   "first-page": "16705",
+   "article-title": "Taisu: A 166m large-scale high-quality dataset for chinese vision-language pre-training",
+   "volume": "35",
+   "author": "Liu",
+   "year": "2022",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_69",
+   "unstructured": "Carlini, N., Tramer, F., Wallace, E., Jagielski, M., Herbert-Voss, A., Lee, K., Roberts, A., Brown, T., Song, D., and Erlingsson, U. (2021, January 11\u201313). Extracting training data from large language models. Proceedings of the 30th USENIX Security Symposium (USENIX Security 21), Online."
+  },
+  {
+   "key": "ref_70",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Sennrich, R., Haddow, B., and Birch, A. (2016, January 7\u201312). Neural Machine Translation of Rare Words with Subword Units. Proceedings of the 54th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), Berlin, Germany. Available online: https://arxiv.org/pdf/1508.07909.",
+   "DOI": "10.18653/v1/P16-1162"
+  },
+  {
+   "key": "ref_71",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Schuster, M., and Nakajima, K. (2012, January 25\u201330). Japanese and korean voice search. Proceedings of the 2012 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Kyoto, Japan.",
+   "DOI": "10.1109/ICASSP.2012.6289079"
+  },
+  {
+   "key": "ref_72",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kudo, T. (2018, January 15\u201320). Subword Regularization: Improving Neural Network Translation Models with Multiple Subword Candidates. Proceedings of the 56th Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), Melbourne, Australia. Available online: https://arxiv.org/pdf/1804.10959.",
+   "DOI": "10.18653/v1/P18-1007"
+  },
+  {
+   "key": "ref_73",
+   "unstructured": "Chen, M., Tworek, J., Jun, H., Yuan, Q., Pinto, H.P.D.O., Kaplan, J., Edwards, H., Burda, Y., Joseph, N., and Brockman, G. (2021). Evaluating large language models trained on code. arXiv."
+  },
+  {
+   "key": "ref_74",
+   "doi-asserted-by": "crossref",
+   "first-page": "1092",
+   "DOI": "10.1126/science.abq1158",
+   "article-title": "Competition-level code generation with alphacode",
+   "volume": "378",
+   "author": "Li",
+   "year": "2022",
+   "journal-title": "Science"
+  },
+  {
+   "key": "ref_75",
+   "unstructured": "Vaswani, A. (2017). Attention is all you need. Adv. Neural Inf. Process. Syst., 30, Available online: https://arxiv.org/pdf/1706.03762."
+  },
+  {
+   "key": "ref_76",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lewis, M., Liu, Y., Goyal, N., Ghazvininejad, M., Mohamed, A., Levy, O., Stoyanov, V., and Zettlemoyer, L. (2020, January 5\u201310). BART: Denoising Sequence-to-Sequence Pre-training for Natural Language Generation, Translation, and Comprehension. Proceedings of the 58th Annual Meeting of the Association for Computational Linguistics, Online.",
+   "DOI": "10.18653/v1/2020.acl-main.703"
+  },
+  {
+   "key": "ref_77",
+   "first-page": "5110",
+   "article-title": "Semi-supervised sequence learning",
+   "volume": "28",
+   "author": "Dai",
+   "year": "2015",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_78",
+   "doi-asserted-by": "crossref",
+   "first-page": "329",
+   "DOI": "10.1037/0033-2909.88.2.329",
+   "article-title": "Visual masking: Mechanisms and theories",
+   "volume": "88",
+   "author": "Felsten",
+   "year": "1980",
+   "journal-title": "Psychol. Bull."
+  },
+  {
+   "key": "ref_79",
+   "unstructured": "Shazeer, N., Mirhoseini, A., Maziarz, K., Davis, A., Le, Q., Hinton, G., and Dean, J. (2017, January 24\u201326). Outrageously Large Neural Networks: The Sparsely-Gated Mixture-of-Experts Layer. Proceedings of the 5th International Conference on Learning Representations (ICLR), Palais des Congr\u00e8s Neptune, Toulon, France."
+  },
+  {
+   "key": "ref_80",
+   "unstructured": "Han, Z., Gao, C., Liu, J., Zhang, J., and Zhang, S.Q. (2024). Parameter-Efficient Fine-Tuning for Large Models: A Comprehensive Survey. Trans. Mach. Learn. Res., Available online: https://arxiv.org/pdf/2403.14608."
+  },
+  {
+   "key": "ref_81",
+   "unstructured": "Zhang, S., Dong, L., Li, X., Zhang, S., Sun, X., Wang, S., Li, J., Hu, R., Zhang, T., and Wu, F. (2023). Instruction tuning for large language models: A survey. arXiv."
+  },
+  {
+   "key": "ref_82",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lv, K., Yang, Y., Liu, T., Guo, Q., and Qiu, X. (2024, January 9\u201314). Full Parameter Fine-tuning for Large Language Models with Limited Resources. Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 1: Long Papers), Toronto, ON, Canada. Available online: https://arxiv.org/pdf/2306.09782.",
+   "DOI": "10.18653/v1/2024.acl-long.445"
+  },
+  {
+   "key": "ref_83",
+   "unstructured": "Mangrulkar, S., Gugger, S., Debut, L., Belkada, Y., Paul, S., and Bossan, B. (2025, January 14). Peft: State-of-the-Art Parameter-Efficient Fine-Tuning Methods. Available online: https://github.com/huggingface/peft."
+  },
+  {
+   "key": "ref_84",
+   "unstructured": "Hu, E.J., Shen, Y., Wallis, P., Allen-Zhu, Z., Li, Y., Wang, S., Wang, L., and Chen, W. (2021). Lora: Low-rank adaptation of large language models. arXiv."
+  },
+  {
+   "key": "ref_85",
+   "unstructured": "Bai, Y., Jones, A., Ndousse, K., Askell, A., Chen, A., DasSarma, N., Drain, D., Fort, S., Ganguli, D., and Henighan, T. (2022). Training a helpful and harmless assistant with reinforcement learning from human feedback. arXiv."
+  },
+  {
+   "key": "ref_86",
+   "unstructured": "Lee, H., Phatale, S., Mansoor, H., Lu, K.R., Mesnard, T., Ferret, J., Bishop, C., Hall, E., Carbune, V., and Rastogi, A. (2025, January 14). Rlaif: Scaling Reinforcement Learning from Human Feedback with AI Feedback. Available online: https://arxiv.org/pdf/2309.00267."
+  },
+  {
+   "key": "ref_87",
+   "unstructured": "Gao, Y., Xiong, Y., Gao, X., Jia, K., Pan, J., Bi, Y., Dai, Y., Sun, J., and Wang, H. (2023). Retrieval-augmented generation for large language models: A survey. arXiv."
+  },
+  {
+   "key": "ref_88",
+   "unstructured": "Lin, C.Y. (2004, January 25\u201326). Rouge: A package for automatic evaluation of summaries. Proceedings of the Text Summarization Branches Out, Barcelona, Spain."
+  },
+  {
+   "key": "ref_89",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Papineni, K., Roukos, S., Ward, T., and Zhu, W.J. (2002, January 6\u201312). Bleu: A method for automatic evaluation of machine translation. Proceedings of the 40th Annual Meeting of the Association for Computational Linguistics, Philadelphia, PA, USA.",
+   "DOI": "10.3115/1073083.1073135"
+  },
+  {
+   "key": "ref_90",
+   "first-page": "1",
+   "article-title": "Measuring Mathematical Problem Solving With the MATH Dataset",
+   "volume": "2",
+   "author": "Hendrycks",
+   "year": "2021",
+   "journal-title": "Sort"
+  },
+  {
+   "key": "ref_91",
+   "unstructured": "Wang, A., Singh, A., Michael, J., Hill, F., Levy, O., and Bowman, S.R. (2019, January 6\u20139). GLUE: A Multi-Task Benchmark and Analysis Platform for Natural Language Understanding. Proceedings of the 7th International Conference on Learning Representations (ICLR), New Orleans, LA, USA."
+  },
+  {
+   "key": "ref_92",
+   "unstructured": "Wang, A., Pruksachatkun, Y., Nangia, N., Singh, A., Michael, J., Hill, F., Levy, O., and Bowman, S. (2019). Superglue: A stickier benchmark for general-purpose language understanding systems. Adv. Neural Inf. Process. Syst., 32, Available online: https://arxiv.org/pdf/1905.00537."
+  },
+  {
+   "key": "ref_93",
+   "doi-asserted-by": "crossref",
+   "first-page": "179",
+   "DOI": "10.1207/s15516709cog1402_1",
+   "article-title": "Finding structure in time",
+   "volume": "14",
+   "author": "Elman",
+   "year": "1990",
+   "journal-title": "Cogn. Sci."
+  },
+  {
+   "key": "ref_94",
+   "unstructured": "Raji, I.D., Denton, E., Bender, E.M., Hanna, A., and Paullada, A. (December, January 28). AI and the Everything in the Whole Wide World Benchmark. Proceedings of the Advances in Neural Information Processing Systems 35 (NeurIPS 2022) Datasets and Benchmarks Track, Virtual. Available online: https://arxiv.org/pdf/2111.15366."
+  },
+  {
+   "key": "ref_95",
+   "first-page": "9459",
+   "article-title": "Retrieval-augmented generation for knowledge-intensive nlp tasks",
+   "volume": "33",
+   "author": "Lewis",
+   "year": "2020",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_96",
+   "first-page": "22199",
+   "article-title": "Large language models are zero-shot reasoners",
+   "volume": "35",
+   "author": "Kojima",
+   "year": "2022",
+   "journal-title": "Adv. Neural Inf. Process. Syst."
+  },
+  {
+   "key": "ref_97",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Snow, R., O\u2019connor, B., Jurafsky, D., and Ng, A.Y. (2008, January 25\u201327). Cheap and fast\u2013but is it good? Evaluating non-expert annotations for natural language tasks. Proceedings of the 2008 Conference on Empirical Methods in Natural Language Processing, Stroudsburg, PA, USA.",
+   "DOI": "10.3115/1613715.1613751"
+  },
+  {
+   "key": "ref_98",
+   "unstructured": "Kachuee, M., Ahuja, S., Kumar, V., Xu, P., and Liu, X. (2025, January 19\u201324). Improving Tool Retrieval by Leveraging Large Language Models for Query Generation. Proceedings of the 31st International Conference on Computational Linguistics: Industry Track, Abu Dhabi, United Arab Emirates."
+  },
+  {
+   "key": "ref_99",
+   "doi-asserted-by": "crossref",
+   "first-page": "583",
+   "DOI": "10.1038/s41586-021-03819-2",
+   "article-title": "Highly accurate protein structure prediction with AlphaFold",
+   "volume": "596",
+   "author": "Jumper",
+   "year": "2021",
+   "journal-title": "Nature"
+  },
+  {
+   "key": "ref_100",
+   "unstructured": "Wang, W., Xie, J., Hu, C., Zou, H., Fan, J., Tong, W., Wen, Y., Wu, S., Deng, H., and Li, Z. (2023). DriveMLM: Aligning Multi-Modal Large Language Models with Behavioral Planning States for Autonomous Driving. arXiv."
+  },
+  {
+   "key": "ref_101",
+   "first-page": "125",
+   "article-title": "Design and research of robot visual servo system based on artificial intelligence",
+   "volume": "28",
+   "author": "Wu",
+   "year": "2017",
+   "journal-title": "Agro Food Ind. Tech"
+  },
+  {
+   "key": "ref_102",
+   "doi-asserted-by": "crossref",
+   "first-page": "34",
+   "DOI": "10.1007/s44267-024-00065-8",
+   "article-title": "An overview of large AI models and their applications",
+   "volume": "2",
+   "author": "Tu",
+   "year": "2024",
+   "journal-title": "Vis. Intell."
+  },
+  {
+   "key": "ref_103",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Pan, X., Zhang, M., Ji, S., and Yang, M. (2020, January 18\u201321). Privacy Risks of General-Purpose Language Models. Proceedings of the 2020 IEEE Symposium on Security and Privacy (SP), San Francisco, CA, USA.",
+   "DOI": "10.1109/SP40000.2020.00095"
+  },
+  {
+   "key": "ref_104",
+   "doi-asserted-by": "crossref",
+   "first-page": "122536",
+   "DOI": "10.1016/j.jenvman.2024.122536",
+   "article-title": "Smallholder farmers\u2019 challenges and opportunities: Implications for agricultural production, environment and food security",
+   "volume": "370",
+   "author": "Touch",
+   "year": "2024",
+   "journal-title": "J. Environ. Manag."
+  },
+  {
+   "key": "ref_105",
+   "doi-asserted-by": "crossref",
+   "first-page": "1595",
+   "DOI": "10.1016/j.jksuci.2021.11.019",
+   "article-title": "A review on TinyML: State-of-the-art and prospects",
+   "volume": "34",
+   "author": "Ray",
+   "year": "2022",
+   "journal-title": "J. King Saud-Univ.-Comput. Inf. Sci."
+  },
+  {
+   "key": "ref_106",
+   "first-page": "100315",
+   "article-title": "A review of social science on digital agriculture, smart farming and agriculture 4.0: New contributions and a future research agenda",
+   "volume": "90",
+   "author": "Klerkx",
+   "year": "2019",
+   "journal-title": "NJAS-Wagening. J. Life Sci."
+  },
+  {
+   "key": "ref_107",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Rezayi, S., Liu, Z., Wu, Z., Dhakal, C., Ge, B., Zhen, C., Liu, T., and Li, S. (2022, January 23\u201329). AgriBERT: Knowledge-Infused Agricultural Language Models for Matching Food and Nutrition. Proceedings of the IJCAI, Vienna, Austria.",
+   "DOI": "10.24963/ijcai.2022/715"
+  },
+  {
+   "key": "ref_108",
+   "doi-asserted-by": "crossref",
+   "first-page": "109349",
+   "DOI": "10.1016/j.compag.2024.109349",
+   "article-title": "AgXQA: A benchmark for advanced Agricultural Extension question answering",
+   "volume": "225",
+   "author": "Kpodo",
+   "year": "2024",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_109",
+   "doi-asserted-by": "crossref",
+   "first-page": "107993",
+   "DOI": "10.1016/j.compag.2023.107993",
+   "article-title": "Cucumber disease recognition with small samples using image-text-label-based multi-modal language model",
+   "volume": "211",
+   "author": "Cao",
+   "year": "2023",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_110",
+   "doi-asserted-by": "crossref",
+   "first-page": "126708",
+   "DOI": "10.1016/j.neucom.2023.126708",
+   "article-title": "ChatAgri: Exploring potentials of ChatGPT on cross-linguistic agricultural text classification",
+   "volume": "557",
+   "author": "Zhao",
+   "year": "2023",
+   "journal-title": "Neurocomputing"
+  },
+  {
+   "key": "ref_111",
+   "unstructured": "Yang, X., Gao, J., Xue, W., and Alexandersson, E. (2024). Pllama: An open-source large language model for plant science. arXiv."
+  },
+  {
+   "key": "ref_112",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Huang, Y., Liu, J., and Lv, C. (2023). Chains-BERT: A High-Performance Semi-Supervised and Contrastive Learning-Based Automatic Question-and-Answering Model for Agricultural Scenarios. Appl. Sci., 13.",
+   "DOI": "10.3390/app13052924"
+  },
+  {
+   "key": "ref_113",
+   "unstructured": "Yang, X., Dai, H., Wu, Z., Bist, R., Subedi, S., Sun, J., Lu, G., Li, C., Liu, T., and Chai, L. (2023). Sam for poultry science. arXiv."
+  },
+  {
+   "key": "ref_114",
+   "doi-asserted-by": "crossref",
+   "first-page": "100515",
+   "DOI": "10.1016/j.atech.2024.100515",
+   "article-title": "Leaf only SAM: A segment anything pipeline for zero-shot automated leaf segmentation",
+   "volume": "8",
+   "author": "Williams",
+   "year": "2024",
+   "journal-title": "Smart Agric. Technol."
+  },
+  {
+   "key": "ref_115",
+   "doi-asserted-by": "crossref",
+   "first-page": "109587",
+   "DOI": "10.1016/j.compag.2024.109587",
+   "article-title": "Visual large language model for wheat disease diagnosis in the wild",
+   "volume": "227",
+   "author": "Zhang",
+   "year": "2024",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_116",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Chauhdary, J.N., Li, H., Jiang, Y., Pan, X., Hussain, Z., Javaid, M., and Rizwan, M. (2023). Advances in Sprinkler Irrigation: A Review in the Context of Precision Irrigation for Crop Production. Agronomy, 14.",
+   "DOI": "10.3390/agronomy14010047"
+  },
+  {
+   "key": "ref_117",
+   "first-page": "225",
+   "article-title": "Development and experiment of the intelligent control system for rhizosphere temperature of aeroponic lettuce via the Internet of Things",
+   "volume": "15",
+   "author": "Mohamed",
+   "year": "2022",
+   "journal-title": "Int. J. Agric. Biol. Eng."
+  },
+  {
+   "key": "ref_118",
+   "doi-asserted-by": "crossref",
+   "first-page": "108924",
+   "DOI": "10.1016/j.compag.2024.108924",
+   "article-title": "Ai-Chatbots for Agriculture-Where Can Large Language Models Provide Substantial Value?",
+   "volume": "221",
+   "author": "Kuska",
+   "year": "2024",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_119",
+   "first-page": "158",
+   "article-title": "Preprocessing method of night vision image application in apple harvesting robot",
+   "volume": "11",
+   "author": "Jia",
+   "year": "2018",
+   "journal-title": "Int. J. Agric. Biol. Eng."
+  },
+  {
+   "key": "ref_120",
+   "doi-asserted-by": "crossref",
+   "first-page": "1687",
+   "DOI": "10.1080/10942912.2015.1055760",
+   "article-title": "Classification of black beans using visible and near infrared hyperspectral imaging",
+   "volume": "19",
+   "author": "Sun",
+   "year": "2016",
+   "journal-title": "Int. J. Food Prop."
+  },
+  {
+   "key": "ref_121",
+   "first-page": "48",
+   "article-title": "Advanced agricultural disease image recognition technologies: A review",
+   "volume": "9",
+   "author": "Yuan",
+   "year": "2022",
+   "journal-title": "Inf. Process. Agric."
+  },
+  {
+   "key": "ref_122",
+   "doi-asserted-by": "crossref",
+   "first-page": "100835",
+   "DOI": "10.1016/j.crfs.2024.100835",
+   "article-title": "Tracing pistachio nuts\u2019 origin and irrigation practices through hyperspectral imaging",
+   "volume": "9",
+   "year": "2024",
+   "journal-title": "Curr. Res. Food Sci."
+  },
+  {
+   "key": "ref_123",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Solangi, K.A., Siyal, A.A., Wu, Y., Abbasi, B., Solangi, F., Lakhiar, I.A., and Zhou, G. (2019). An assessment of the spatial and temporal distribution of soil salinity in combination with field and satellite data: A case study in Sujawal District. Agronomy, 9.",
+   "DOI": "10.3390/agronomy9120869"
+  },
+  {
+   "key": "ref_124",
+   "unstructured": "Ganeshkumar, C., David, A., Sankar, J.G., and Saginala, M. (2023). Application of drone Technology in Agriculture: A predictive forecasting of Pest and disease incidence. Applying Drone Rechnologies and Robotics for Agricultural Sustainability, IGI Global."
+  },
+  {
+   "key": "ref_125",
+   "first-page": "132",
+   "article-title": "Modeling of working environment and coverage path planning method of combine harvesters",
+   "volume": "13",
+   "author": "Lu",
+   "year": "2020",
+   "journal-title": "Int. J. Agric. Biol. Eng."
+  },
+  {
+   "key": "ref_126",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Chen, Y., Yu, Z., Han, Z., Sun, W., and He, L. (2023). A Decision-Making System for Cotton Irrigation Based on Reinforcement Learning Strategy. Agronomy, 14.",
+   "DOI": "10.3390/agronomy14010011"
+  },
+  {
+   "key": "ref_127",
+   "doi-asserted-by": "crossref",
+   "first-page": "107881",
+   "DOI": "10.1016/j.engappai.2024.107881",
+   "article-title": "A comprehensive review of synthetic data generation in smart farming by using variational autoencoder and generative adversarial network",
+   "volume": "131",
+   "author": "Akkem",
+   "year": "2024",
+   "journal-title": "Eng. Appl. Artif. Intell."
+  },
+  {
+   "key": "ref_128",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Iatrou, M., Karydas, C., Tseni, X., and Mourelatos, S. (2022). Representation learning with a variational autoencoder for predicting nitrogen requirement in rice. Remote. Sens., 14.",
+   "DOI": "10.3390/rs14235978"
+  },
+  {
+   "key": "ref_129",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Mittal, A., and Gupta, H. (2021, January 10\u201312). A Systematic Literature Survey on Generative Adversarial Network Based Crop Disease Identification. Proceedings of the 2021 International Conference on Technological Advancements and Innovations (ICTAI), Tashkent, Uzbekistan.",
+   "DOI": "10.1109/ICTAI53825.2021.9673159"
+  },
+  {
+   "key": "ref_130",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Barman, U., Sarma, P., Rahman, M., Deka, V., Lahkar, S., Sharma, V., and Saikia, M.J. (2024). Vit-SmartAgri: Vision transformer and smartphone-based plant disease detection for smart agriculture. Agronomy, 14.",
+   "DOI": "10.3390/agronomy14020327"
+  },
+  {
+   "key": "ref_131",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Momaya, M., Khanna, A., Sadavarte, J., and Sankhe, M. (2021, January 25\u201327). Krushi\u2013the farmer chatbot. Proceedings of the 2021 International Conference on Communication information and Computing Technology (ICCICT), Mumbai, India.",
+   "DOI": "10.1109/ICCICT50803.2021.9510040"
+  },
+  {
+   "key": "ref_132",
+   "unstructured": "Mattila, M. (2025, January 14). Synthetic Image Generation Using GANs: Generating Class Specific Images of Bacterial Growth. Available online: https://www.diva-portal.org/smash/get/diva2:1564297/FULLTEXT01.pdf."
+  },
+  {
+   "key": "ref_133",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Tai, C.Y., Wang, W.J., and Huang, Y.M. (2023). Using time-series generative adversarial networks to synthesize sensing data for pest incidence forecasting on sustainable agriculture. Sustainability, 15.",
+   "DOI": "10.3390/su15107834"
+  },
+  {
+   "key": "ref_134",
+   "doi-asserted-by": "crossref",
+   "first-page": "141793",
+   "DOI": "10.1016/j.jclepro.2024.141793",
+   "article-title": "Impacts of the changing climate on agricultural productivity and food security: Evidence from Ethiopia",
+   "volume": "449",
+   "author": "Bouteska",
+   "year": "2024",
+   "journal-title": "J. Clean. Prod."
+  },
+  {
+   "key": "ref_135",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kollia, I., Stevenson, J., and Kollias, S. (2021). Ai-enabled efficient and safe food supply chain. Electronics, 10.",
+   "DOI": "10.20944/preprints202105.0254.v1"
+  },
+  {
+   "key": "ref_136",
+   "first-page": "273",
+   "article-title": "Machine learning to support geographical origin traceability of Coffea Arabica",
+   "volume": "2",
+   "author": "Fernandes",
+   "year": "2022",
+   "journal-title": "Adv. Artif. Intell. Mach. Learn. Res."
+  },
+  {
+   "key": "ref_137",
+   "doi-asserted-by": "crossref",
+   "first-page": "107701",
+   "DOI": "10.1016/j.compag.2023.107701",
+   "article-title": "A review of core agricultural robot technologies for crop productions",
+   "volume": "206",
+   "author": "Yang",
+   "year": "2023",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_138",
+   "first-page": "1",
+   "article-title": "Development status and trend of agricultural robot technology",
+   "volume": "14",
+   "author": "Jin",
+   "year": "2021",
+   "journal-title": "Int. J. Agric. Biol. Eng."
+  },
+  {
+   "key": "ref_139",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Pazhanivelan, S., Kumaraperumal, R., Shanmugapriya, P., Sudarmanian, N., Sivamurugan, A., and Satheesh, S. (2023). Quantification of biophysical parameters and economic yield in cotton and rice using drone technology. Agriculture, 13.",
+   "DOI": "10.3390/agriculture13091668"
+  },
+  {
+   "key": "ref_140",
+   "unstructured": "Yang, J., Gao, M., Li, Z., Gao, S., Wang, F., and Zheng, F. (2023). Track anything: Segment anything meets videos. arXiv."
+  },
+  {
+   "key": "ref_141",
+   "doi-asserted-by": "crossref",
+   "first-page": "2300233",
+   "DOI": "10.1002/aisy.202300233",
+   "article-title": "Intelligent soft robotic grippers for agricultural and food product handling: A brief review with a focus on design and control",
+   "volume": "5",
+   "author": "Liu",
+   "year": "2023",
+   "journal-title": "Adv. Intell. Syst."
+  },
+  {
+   "key": "ref_142",
+   "doi-asserted-by": "crossref",
+   "first-page": "1925",
+   "DOI": "10.21273/HORTSCI14161-19",
+   "article-title": "Growth, photosynthesis, and nutrient uptake at different light intensities and temperatures in lettuce",
+   "volume": "54",
+   "author": "Zhou",
+   "year": "2019",
+   "journal-title": "HortScience"
+  },
+  {
+   "key": "ref_143",
+   "doi-asserted-by": "crossref",
+   "first-page": "187",
+   "DOI": "10.1016/j.biosystemseng.2023.08.002",
+   "article-title": "Wheat biomass, yield, and straw-grain ratio estimation from multi-temporal UAV-based RGB and multispectral images",
+   "volume": "234",
+   "author": "Wei",
+   "year": "2023",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "ref_144",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Awais, M., Li, W., Hussain, S., Cheema, M.J.M., Li, W., Song, R., and Liu, C. (2022). Comparative evaluation of land surface temperature images from unmanned aerial vehicle and satellite observation for agricultural areas using in situ data. Agriculture, 12.",
+   "DOI": "10.3390/agriculture12020184"
+  },
+  {
+   "key": "ref_145",
+   "doi-asserted-by": "crossref",
+   "first-page": "116738",
+   "DOI": "10.1016/j.geoderma.2023.116738",
+   "article-title": "Estimating and mapping the dynamics of soil salinity under different crop types using Sentinel-2 satellite imagery",
+   "volume": "440",
+   "author": "Cui",
+   "year": "2023",
+   "journal-title": "Geoderma"
+  },
+  {
+   "key": "ref_146",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhang, J., Zhou, Y., Wu, L., Xu, L., Xu, C., Liang, D., Ding, Y., Zhang, Y., Wang, J., and Li, G. (2023). The Yield-forming role of nitrogen in rice in the growing seasons with variable thermal conditions. Agronomy, 13.",
+   "DOI": "10.3390/agronomy13020313"
+  },
+  {
+   "key": "ref_147",
+   "doi-asserted-by": "crossref",
+   "first-page": "945",
+   "DOI": "10.1002/ird.2838",
+   "article-title": "Modelling reference evapotranspiration using principal component analysis and machine learning methods under different climatic environments",
+   "volume": "72",
+   "author": "Raza",
+   "year": "2023",
+   "journal-title": "Irrig. Drain."
+  },
+  {
+   "key": "ref_148",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Zhu, X., Chikangaise, P., Shi, W., Chen, W.H., and Yuan, S. (2018). Review of intelligent sprinkler irrigation technologies for remote autonomous system. Int. J. Agric. Biol. Eng., 11.",
+   "DOI": "10.25165/j.ijabe.20181101.3557"
+  },
+  {
+   "key": "ref_149",
+   "doi-asserted-by": "crossref",
+   "first-page": "5614",
+   "DOI": "10.1002/jsfa.13393",
+   "article-title": "Time series prediction of insect pests in tea gardens",
+   "volume": "104",
+   "author": "Chen",
+   "year": "2024",
+   "journal-title": "J. Sci. Food Agric."
+  },
+  {
+   "key": "ref_150",
+   "doi-asserted-by": "crossref",
+   "first-page": "3459",
+   "DOI": "10.1002/jsfa.9564",
+   "article-title": "Tea diseases detection based on fast infrared thermal image processing technology",
+   "volume": "99",
+   "author": "Yang",
+   "year": "2019",
+   "journal-title": "J. Sci. Food Agric."
+  },
+  {
+   "key": "ref_151",
+   "doi-asserted-by": "crossref",
+   "first-page": "269",
+   "DOI": "10.1016/j.agsy.2016.09.021",
+   "article-title": "Toward a new generation of agricultural system data, models, and knowledge products: State of agricultural systems science",
+   "volume": "155",
+   "author": "Jones",
+   "year": "2017",
+   "journal-title": "Agric. Syst."
+  },
+  {
+   "key": "ref_152",
+   "doi-asserted-by": "crossref",
+   "first-page": "213",
+   "DOI": "10.1016/j.agsy.2017.01.019",
+   "article-title": "Modelling the impacts of pests and diseases on agricultural systems",
+   "volume": "155",
+   "author": "Donatelli",
+   "year": "2017",
+   "journal-title": "Agric. Syst."
+  },
+  {
+   "key": "ref_153",
+   "doi-asserted-by": "crossref",
+   "first-page": "79",
+   "DOI": "10.1016/j.cropro.2016.03.018",
+   "article-title": "Droplet deposition and control effect of insecticides sprayed with an unmanned aerial vehicle against plant hoppers",
+   "volume": "85",
+   "author": "Qin",
+   "year": "2016",
+   "journal-title": "Crop. Prot."
+  },
+  {
+   "key": "ref_154",
+   "doi-asserted-by": "crossref",
+   "first-page": "127387",
+   "DOI": "10.1016/j.eja.2024.127387",
+   "article-title": "Advancing lettuce physiological state recognition in IoT aeroponic systems: A meta-learning-driven data fusion approach",
+   "volume": "161",
+   "author": "Elsherbiny",
+   "year": "2024",
+   "journal-title": "Eur. J. Agron."
+  },
+  {
+   "key": "ref_155",
+   "first-page": "82",
+   "article-title": "Development of a low-cost quadrotor UAV based on ADRC for agricultural remote sensing",
+   "volume": "12",
+   "author": "Zhang",
+   "year": "2019",
+   "journal-title": "Int. J. Agric. Biol. Eng."
+  },
+  {
+   "key": "ref_156",
+   "first-page": "10",
+   "article-title": "Review of agricultural IoT technology",
+   "volume": "6",
+   "author": "Xu",
+   "year": "2022",
+   "journal-title": "Artif. Intell. Agric."
+  },
+  {
+   "key": "ref_157",
+   "doi-asserted-by": "crossref",
+   "first-page": "106775",
+   "DOI": "10.1016/j.knosys.2021.106775",
+   "article-title": "A survey on federated learning",
+   "volume": "216",
+   "author": "Zhang",
+   "year": "2021",
+   "journal-title": "Knowl. Based Syst."
+  },
+  {
+   "key": "ref_158",
+   "doi-asserted-by": "crossref",
+   "first-page": "107208",
+   "DOI": "10.1016/j.compag.2022.107208",
+   "article-title": "Generative adversarial networks (GANs) for image augmentation in agriculture: A systematic review",
+   "volume": "200",
+   "author": "Lu",
+   "year": "2022",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_159",
+   "doi-asserted-by": "crossref",
+   "first-page": "108412",
+   "DOI": "10.1016/j.compag.2023.108412",
+   "article-title": "Label-efficient learning in agriculture: A comprehensive review",
+   "volume": "215",
+   "author": "Li",
+   "year": "2023",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_160",
+   "doi-asserted-by": "crossref",
+   "first-page": "105709",
+   "DOI": "10.1016/j.compag.2020.105709",
+   "article-title": "Crop yield prediction using machine learning: A systematic literature review",
+   "volume": "177",
+   "author": "Kassahun",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "ref_161",
+   "unstructured": "Wiles, O., Gowal, S., Stimberg, F., Rebuffi, S.-A., Ktena, I., Dvijotham, K.D., and Cemgil, A.T. (2022, January 25\u201329). A fine-grained analysis on distribution shift. Proceedings of the International Conference on Learning Representations (ICLR), Online."
+  },
+  {
+   "key": "ref_162",
+   "unstructured": "Chawla, S., Singh, N., and Drori, I. (2021, January 13). Quantifying and alleviating distribution shifts in foundation models on review classification. Proceedings of the NeurIPS 2021 Workshop on Distribution Shifts: Connecting Methods and Applications, Online."
+  },
+  {
+   "key": "ref_163",
+   "doi-asserted-by": "crossref",
+   "first-page": "1685",
+   "DOI": "10.1109/LGRS.2017.2728698",
+   "article-title": "Land cover classification via multitemporal spatial data by deep recurrent neural networks",
+   "volume": "14",
+   "author": "Ienco",
+   "year": "2017",
+   "journal-title": "IEEE Geosci. Remote. Sens. Lett."
+  },
+  {
+   "key": "ref_164",
+   "doi-asserted-by": "crossref",
+   "first-page": "778",
+   "DOI": "10.1109/LGRS.2017.2681128",
+   "article-title": "Deep learning classification of land cover and crop types using remote sensing data",
+   "volume": "14",
+   "author": "Kussul",
+   "year": "2017",
+   "journal-title": "IEEE Geosci. Remote. Sens. Lett."
+  },
+  {
+   "key": "ref_165",
+   "doi-asserted-by": "crossref",
+   "first-page": "2448",
+   "DOI": "10.1109/LGRS.2015.2483680",
+   "article-title": "Multiview deep learning for land-use classification",
+   "volume": "12",
+   "author": "Luus",
+   "year": "2015",
+   "journal-title": "IEEE Geosci. Remote. Sens. Lett."
+  },
+  {
+   "key": "ref_166",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Yalcin, H. (2017, January 7\u201310). Plant phenology recognition using deep learning: Deep-Pheno. Proceedings of the 2017 6th International Conference on Agro-Geoinformatics, Fairfax, VA, USA.",
+   "DOI": "10.1109/Agro-Geoinformatics.2017.8046996"
+  },
+  {
+   "key": "ref_167",
+   "first-page": "1",
+   "article-title": "Deep phenotyping: Deep learning for temporal phenotype/genotype classification",
+   "volume": "14",
+   "author": "Esmaeilzadeh",
+   "year": "2018",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "ref_168",
+   "doi-asserted-by": "crossref",
+   "first-page": "781",
+   "DOI": "10.1109/LRA.2017.2651944",
+   "article-title": "Counting apples and oranges with deep learning: A data-driven approach",
+   "volume": "2",
+   "author": "Chen",
+   "year": "2017",
+   "journal-title": "IEEE Robot. Autom. Lett."
+  },
+  {
+   "key": "ref_169",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Bargoti, S., and Underwood, J. (June, January 29). Deep fruit detection in orchards. Proceedings of the 2017 IEEE International Conference on Robotics and Automation (ICRA), Singapore.",
+   "DOI": "10.1109/ICRA.2017.7989417"
+  },
+  {
+   "key": "ref_170",
+   "unstructured": "Dyrmann, M., Mortensen, A.K., Midtiby, H.S., and J\u00f8rgensen, R.N. (2016, January 26\u201329). Pixel-wise classification of weeds and crops in images by using a fully convolutional neural network. Proceedings of the International Conference on Agricultural Engineering, Aarhus, Denmark."
+  },
+  {
+   "key": "ref_171",
+   "doi-asserted-by": "crossref",
+   "first-page": "842",
+   "DOI": "10.1017/S2040470017000206",
+   "article-title": "RoboWeedSupport-Detection of weed locations in leaf occluded cereal crops using a fully convolutional neural network",
+   "volume": "8",
+   "author": "Dyrmann",
+   "year": "2017",
+   "journal-title": "Adv. Anim. Biosci."
+  },
+  {
+   "key": "ref_172",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Xinshao, W., and Cheng, C. (2015, January 16\u201319). Weed seeds classification based on PCANet deep learning baseline. Proceedings of the 2015 Asia-Pacific Signal and Information Processing Association Annual Summit and Conference (APSIPA), Hong Kong, China.",
+   "DOI": "10.1109/APSIPA.2015.7415304"
+  },
+  {
+   "key": "ref_173",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Wang, H., Vasu, P.K.A., Faghri, F., Vemulapalli, R., Farajtabar, M., Mehta, S., Rastegari, M., Tuzel, O., and Pouransari, H. (2024, January 16\u201322). Sam-clip: Merging vision foundation models towards semantic and spatial understanding. Proceedings of the IEEE/CVF Conference on Computer Vision and Pattern Recognition, Seattle, WA, USA.",
+   "DOI": "10.1109/CVPRW63382.2024.00367"
+  },
+  {
+   "key": "ref_174",
+   "unstructured": "Cvejoski, K., S\u00e1nchez, R.J., and Ojeda, C. (2022). The future is different: Large pre-trained language models fail in prediction tasks. arXiv."
+  },
+  {
+   "key": "ref_175",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Xu, M., Park, J.E., Lee, J., Yang, J., and Yoon, S. (2024). Plant disease recognition datasets in the age of deep learning: Challenges and opportunities. Front. Plant Sci., 15.",
+   "DOI": "10.3389/fpls.2024.1452551"
+  },
+  {
+   "key": "ref_176",
+   "first-page": "130",
+   "article-title": "Robotics and automation in agriculture: Present and future applications",
+   "volume": "4",
+   "author": "Mahmud",
+   "year": "2020",
+   "journal-title": "Appl. Model. Simul."
+  },
+  {
+   "key": "ref_177",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Gernert, B., Schlichter, J., and Wolf, L. (2019, January 29\u201330). PotatoScanner\u2013A mobile delay tolerant wireless sensor node for smart farming applications. Proceedings of the 2019 15th International Conference on Distributed Computing in Sensor Systems (DCOSS), Santorini Island, Greece.",
+   "DOI": "10.1109/DCOSS.2019.00037"
+  },
+  {
+   "key": "ref_178",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kondo, S., Yoshimoto, N., and Nakayama, Y. (2024). Farm Monitoring System with Drones and Optical Camera Communication. Sensors, 24.",
+   "DOI": "10.20944/preprints202408.1528.v1"
+  },
+  {
+   "key": "ref_179",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Graves, A., and Graves, A. (2012). Long short-term memory. Supervised Sequence Labelling with Recurrent Neural Networks, Springer.",
+   "DOI": "10.1007/978-3-642-24797-2"
+  },
+  {
+   "key": "ref_180",
+   "unstructured": "Nabaei, S.H., Zheng, Z., Chen, D., and Heydarian, A. (2025). Multimodal Data Integration for Sustainable Indoor Gardening: Tracking Anyplant with Time Series Foundation Model. arXiv."
+  },
+  {
+   "key": "ref_181",
+   "doi-asserted-by": "crossref",
+   "first-page": "1163",
+   "DOI": "10.18517/ijaseit.9.4.9483",
+   "article-title": "Application design of farmbot based on Internet of Things (IoT)",
+   "volume": "9",
+   "author": "Murdyantoro",
+   "year": "2019",
+   "journal-title": "Int. J. Adv. Sci. Eng. Inf. Technol."
+  },
+  {
+   "key": "ref_182",
+   "unstructured": "Stock, P., Fan, A., Graham, B., Grave, E., Gribonval, R., Jegou, H., and Joulin, A. (2021, January 3\u20137). Training with quantization noise for extreme model compression. Proceedings of the International Conference on Learning Representations (ICLR), Virtual."
+  },
+  {
+   "key": "ref_183",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Muslim, A.B., Nordemann, F., and T\u00f6njes, R. (2020, January 12\u201314). Analysis of methods for prioritizing critical data transmissions in agricultural vehicular networks. Proceedings of the 2020 16th International Conference on Wireless and Mobile Computing, Networking and Communications (WiMob), Thessaloniki, Greece.",
+   "DOI": "10.1109/WiMob50308.2020.9253435"
+  },
+  {
+   "key": "ref_184",
+   "doi-asserted-by": "crossref",
+   "first-page": "104",
+   "DOI": "10.1038/s42256-022-00440-4",
+   "article-title": "Responsible artificial intelligence in agriculture requires systemic understanding of risks and externalities",
+   "volume": "4",
+   "author": "Tzachor",
+   "year": "2022",
+   "journal-title": "Nat. Mach. Intell."
+  },
+  {
+   "key": "ref_185",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Chandrasiri, C., Kiridena, S., Dharmapriya, S., and Kulatunga, A.K. (2024). Adoption of Multi-Modal Transportation for Configuring Sustainable Agri-Food Supply Chains in Constrained Environments. Sustainability, 16.",
+   "DOI": "10.3390/su16177601"
+  },
+  {
+   "key": "ref_186",
+   "doi-asserted-by": "crossref",
+   "first-page": "146",
+   "DOI": "10.1007/s11119-023-10063-3",
+   "article-title": "Who is responsible for \u2018responsible AI\u2019?: Navigating challenges to build trust in AI agriculture and food system technology",
+   "volume": "25",
+   "author": "Alexander",
+   "year": "2024",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "ref_187",
+   "doi-asserted-by": "crossref",
+   "first-page": "364",
+   "DOI": "10.1016/j.ejor.2022.07.053",
+   "article-title": "An integrated multitiered supply chain network model of competing agricultural firms and processing firms: The case of fresh produce and quality",
+   "volume": "307",
+   "author": "Besik",
+   "year": "2023",
+   "journal-title": "Eur. J. Oper. Res."
+  },
+  {
+   "key": "ref_188",
+   "doi-asserted-by": "crossref",
+   "first-page": "126503",
+   "DOI": "10.1016/j.foodchem.2020.126503",
+   "article-title": "Hyperspectral technique combined with deep learning algorithm for detection of compound heavy metals in lettuce",
+   "volume": "321",
+   "author": "Zhou",
+   "year": "2020",
+   "journal-title": "Food Chem."
+  },
+  {
+   "key": "ref_189",
+   "doi-asserted-by": "crossref",
+   "first-page": "128515",
+   "DOI": "10.1016/j.foodchem.2020.128515",
+   "article-title": "Application of volatile and spectral profiling together with multimode data fusion strategy for the discrimination of preserved eggs",
+   "volume": "343",
+   "author": "Ren",
+   "year": "2021",
+   "journal-title": "Food Chem."
+  },
+  {
+   "key": "ref_190",
+   "doi-asserted-by": "crossref",
+   "first-page": "1172543",
+   "DOI": "10.3389/fsufs.2023.1172543",
+   "article-title": "A review on the application of computer vision and machine learning in the tea industry",
+   "volume": "7",
+   "author": "Wang",
+   "year": "2023",
+   "journal-title": "Front Sustain. Food Syst."
+  },
+  {
+   "key": "ref_191",
+   "doi-asserted-by": "crossref",
+   "first-page": "5207",
+   "DOI": "10.1109/ACCESS.2022.3140815",
+   "article-title": "Rice-fusion: A multimodality data fusion framework for rice disease diagnosis",
+   "volume": "10",
+   "author": "Patil",
+   "year": "2022",
+   "journal-title": "IEEE Access"
+  },
+  {
+   "key": "ref_192",
+   "doi-asserted-by": "crossref",
+   "first-page": "5486",
+   "DOI": "10.1002/jsfa.13381",
+   "article-title": "Prediction and visualization of moisture content in Tencha drying processes by computer vision and deep learning",
+   "volume": "104",
+   "author": "You",
+   "year": "2024",
+   "journal-title": "J. Sci. Food Agric."
+  },
+  {
+   "key": "ref_193",
+   "doi-asserted-by": "crossref",
+   "first-page": "e12873",
+   "DOI": "10.1111/jfpe.12873",
+   "article-title": "Integration of computer vision and colorimetric sensor array for nondestructive detection of mango quality",
+   "volume": "41",
+   "author": "Huang",
+   "year": "2018",
+   "journal-title": "J. Food Process. Eng."
+  },
+  {
+   "key": "ref_194",
+   "doi-asserted-by": "crossref",
+   "first-page": "1293",
+   "DOI": "10.13031/ja.14630",
+   "article-title": "Design and Evaluation of A Control System for The Fertigation Device",
+   "volume": "65",
+   "author": "Zhang",
+   "year": "2022",
+   "journal-title": "J. ASABE"
+  },
+  {
+   "key": "ref_195",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Lu, S., Zhang, M., Xu, B., and Guo, Z. (2024). Intelligent quality control of gelatinous polysaccharide-based fresh products during cold chain logistics: A review. Food Biosci., 62.",
+   "DOI": "10.1016/j.fbio.2024.105081"
+  },
+  {
+   "key": "ref_196",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1145/3653070",
+   "article-title": "On the opportunities and challenges of foundation models for geospatial artificial intelligence",
+   "volume": "10",
+   "author": "Mai",
+   "year": "2024",
+   "journal-title": "ACM Trans. Spat. Algorithms Syst."
+  },
+  {
+   "key": "ref_197",
+   "first-page": "742",
+   "article-title": "Estimation of summer maize biomass based on a crop growth model",
+   "volume": "33",
+   "author": "Li",
+   "year": "2021",
+   "journal-title": "Emir. J. Food Agric. (EJFA)"
+  },
+  {
+   "key": "ref_198",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Shen, Y., Gao, J., and Jin, Z. (2024). Research on Acoustic Signal Identification Mechanism and Denoising Methods of Combine Harvesting Loss. Agronomy, 14.",
+   "DOI": "10.3390/agronomy14081816"
+  }
+ ],
+ "container-title": [
+  "Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://www.mdpi.com/2077-0472/15/8/847/pdf",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    9
+   ]
+  ],
+  "date-time": "2025-10-09T17:14:15Z",
+  "timestamp": 1760030055000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://www.mdpi.com/2077-0472/15/8/847"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2025,
+    4,
+    14
+   ]
+  ]
+ },
+ "references-count": 198,
+ "journal-issue": {
+  "issue": "8",
+  "published-online": {
+   "date-parts": [
+    [
+     2025,
+     4
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "agriculture15080847"
+ ],
+ "URL": "https://doi.org/10.3390/agriculture15080847",
+ "relation": {},
+ "ISSN": [
+  "2077-0472"
+ ],
+ "issn-type": [
+  {
+   "value": "2077-0472",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2025,
+    4,
+    14
+   ]
+  ]
+ }
+}

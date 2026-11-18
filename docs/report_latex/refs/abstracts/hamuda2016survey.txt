@@ -1,0 +1,1 @@
+A detailed discussion of the segmentation performance of colour index-based approaches is presented, based on studies from the literature conducted in the recent past, particularly from 2008 to 2015.

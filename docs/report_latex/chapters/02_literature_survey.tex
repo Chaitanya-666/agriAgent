@@ -1,0 +1,135 @@
+\chapter{Literature Survey}\label{ch:survey}
+
+Having set out the problem and our objectives in Chapter~\ref{ch:intro}, we now summarise the work it
+builds on. The survey moves from the closest work outwards: zero-shot segmentation and the foundation
+models we use, supervised crop--weed segmentation, methods that use the planting row instead of labels,
+spot spraying and vegetation indices, weed classification and detection, and finally vision-language
+models and agents. Each section ends with what it means for AgriAgent, and Table~\ref{tab:survey}
+summarises the main papers. Every paper's details were checked against its DOI record and its summary
+is based on the paper's own text. The gaps that remain are stated in Chapter~\ref{ch:gaps}.
+
+\section{Zero-shot segmentation and foundation models}\label{sec:lit-zeroshot}
+The closest work to ours is \emph{Weeds are Weird} (WaW) by Chong et al.~\cite{chong2025zeroshot}
+(IROS 2025). It segments crop and weed without labels by describing every plant segment with features
+of the biology foundation model BioCLIP~\cite{stevens2024bioclip} and treating weeds as anomalies
+around a model of the crop. It reaches a mean weed IoU of 12.1\% (11.1\% on PhenoBench), against 62.7\%
+for a supervised ERFNet. The authors also argue, without measuring it, that text-prompted pipelines are
+ill-defined for crop and weed.
+
+The pipeline they criticise is the one we implement. Grounded SAM~\cite{ren2024groundedsam} chains the
+open-set detector Grounding DINO~\cite{liu2024groundingdino}, which finds objects named in a text prompt
+(52.5 AP zero-shot on COCO), with the promptable segmenter SAM~\cite{kirillov2023sam}, which outlines
+any object it is given but assigns no class; together they report 48.7 mean AP on SegInW. SAM~2
+\cite{ravi2025sam2}, the segmenter we use, extends SAM to video. BioCLIP~\cite{stevens2024bioclip}
+learns tree-of-life features from 10 million images and improves fine-grained biology classification by
+16--17\%, but classifies whole images rather than locating plants. Singh et al.~\cite{singh2025fewshot}
+found that a few labelled examples adapt Grounding DINO to agricultural classes better than zero-shot
+prompts.
+
+\textit{For AgriAgent:} these models find and outline plants without training, but none of them has
+been measured on deciding \emph{which} plant to spray; that is our first research question.
+
+\section{Supervised crop--weed segmentation and datasets}\label{sec:lit-supervised}
+Supervised networks are the accurate baseline. Milioto et al.~\cite{milioto2018realtime} add vegetation
+indices to a CNN and segment sugar beet and weeds at about 20~Hz on a field robot, with a weed IoU of
+20.6\% from RGB alone and 59.2\% with 14 input channels. Lottes et al.\ use image sequences along the
+row in a fully convolutional network~\cite{lottes2018fcn} and jointly detect plant stems for
+plant-specific treatment~\cite{lottes2020stem}; both generalise to unseen fields but need pixel labels
+and robot image sequences. Weyler et al.~\cite{weyler2023domain} show that networks trained on one field
+lose accuracy on others and propose domain generalisation from unlabelled images. The public data
+behind this line of work includes the Bonn sugar beet robot dataset of Chebrolu et
+al.~\cite{chebrolu2017sugarbeet} and the drone benchmark PhenoBench~\cite{weyler2024phenobench}, with
+pixel-wise crop and weed labels.
+
+\textit{For AgriAgent:} supervised accuracy is the ceiling, but every one of these methods needs
+labelled data from the same crop and conditions, which a small farm does not have.
+
+\section{The planting row instead of labels}\label{sec:lit-rows}
+Two papers replace manual labels with the structure of the field. Bah et al.~\cite{bah2018unsupervised}
+detect crop rows in drone images, label the vegetation between rows as weed and train a CNN on these
+automatic labels, reaching accuracy within 1.5--6\% of manual labelling. Louargant et
+al.~\cite{louargant2018rowcrops} combine row position with spectral features in an SVM and detect 89\%
+of weeds in maize and sugar beet, but need wide rows and high resolution.
+
+\textit{For AgriAgent:} rows are a free source of crop knowledge; our plant rules 2 and 4 use the same
+idea on single ground photos.
+
+\section{Spot spraying, weed management and vegetation indices}\label{sec:lit-spraying}
+Slaughter et al.~\cite{slaughter2008review} reviewed autonomous weed control and named robust weed
+identification as the main barrier, while guidance and actuation had matured. Gerhards et
+al.~\cite{gerhards2022sswm} review site-specific weed management and its savings, again noting that
+reliable automatic classification is a precondition. Partel et al.~\cite{partel2019sprayer} built a
+low-cost smart sprayer with a deep detector that reached 71\% precision and 78\% recall on real plants.
+For separating plants from soil, Woebbecke et al.~\cite{woebbecke1995color} found the excess-green index
+$2g-r-b$ among the best colour indices, and Wang et al.~\cite{wang2019review} identify telling crop from
+weed as the hardest step of ground-based weed detection.
+
+\textit{For AgriAgent:} the nozzle is solved and the decision is not; excess green is the first step of
+our plant rules.
+
+\section{Weed classification and detection}\label{sec:lit-detection}
+With enough labels, deep networks classify and detect weeds well. Dyrmann et
+al.~\cite{dyrmann2016species} reach 86.2\% accuracy on 22 crop and weed species; the DeepWeeds dataset of
+Olsen et al.~\cite{olsen2019deepweeds} (17,509 images, eight species) gives 95.7\% with ResNet-50; and
+Jiang et al.~\cite{jiang2020gcn} report 96.5--99.4\% with a semi-supervised graph network. For cotton,
+Rahman et al.~\cite{rahman2023cotton} benchmarked 13 detectors on CottonWeedDet3, the source of our
+cotton photos, with a best mAP@0.5 of 79.98\%, and Dang et al.~\cite{dang2023yoloweeds} compared 25 YOLO
+detectors on 12 cotton weed classes. Belissent et al.~\cite{belissent2024transfer} found that transfer
+learning reaches 77.8\% on drone weed images but that zero-shot classification was not yet usable.
+
+\textit{For AgriAgent:} these results show what training buys; they are the supervised reference for our
+zero-shot numbers.
+
+\section{Vision-language models, language models and agents}\label{sec:lit-vlm}
+Nasir et al.~\cite{nasir2026vlmweed} tested six commercial vision-language models on soybean drone
+images: weed detection accuracy ranged from 0.15 to 0.75, so even the best model cannot decide alone.
+Reviews of LLMs in crop production~\cite{kuska2024llm} and in agricultural knowledge
+systems~\cite{li2025llmagri} stress that their advice must be grounded in verified sources, and Wang et
+al.~\cite{wang2024agents} survey LLM-based autonomous agents that plan and use tools on their own.
+
+\textit{For AgriAgent:} vision-language models may advise but not decide, every herbicide dose comes from
+the ICAR bulletin~\cite{choudhury2016icar}, and our one agent is deliberately small, with fixed tools, a
+call budget and no authority to spray.
+
+\section{Background works}\label{sec:lit-background}
+The methods above rest on standard work. Hamuda et al.~\cite{hamuda2016survey} surveyed plant extraction
+by colour index and automatic (Otsu) thresholds; Tian et al.~\cite{tian2020cv}, Kamilaris and
+Prenafeta-Bold\'u~\cite{kamilaris2018dl} and Hasan et al.~\cite{hasan2021survey} reviewed computer vision
+and deep learning in agriculture and weed detection; Lu and Young~\cite{lu2020datasets} reviewed public
+agricultural datasets; dos Santos Ferreira et al.~\cite{dossantos2017soybean} classified soybean drone
+superpixels with a ConvNet. The segmentation and detection networks behind the surveyed systems are fully
+convolutional networks~\cite{long2017fcn}, SegNet~\cite{badrinarayanan2017segnet},
+DeepLab~\cite{chen2018deeplab}, ERFNet~\cite{romera2018erfnet} (WaW's supervised baseline) and Faster
+R-CNN~\cite{ren2017fasterrcnn}. Zhang et al.~\cite{zhang2024vlmsurvey} surveyed vision-language models and
+Yin et al.~\cite{yin2025foundation} reviewed agricultural foundation models and their data challenges.
+
+\section{Summary of the survey}
+\begin{small}
+\begin{longtable}{@{}L{2.5cm}L{3.4cm}L{3.4cm}L{4.6cm}@{}}
+\caption{Summary of the surveyed papers.}\label{tab:survey}\\
+\toprule
+\textbf{Work} & \textbf{Approach} & \textbf{Data} & \textbf{Reported result / relevance}\\
+\midrule\endfirsthead
+\toprule
+\textbf{Work} & \textbf{Approach} & \textbf{Data} & \textbf{Reported result / relevance}\\
+\midrule\endhead
+Chong et al.~\cite{chong2025zeroshot} & SAM + BioCLIP, weeds as anomalies & Several crop datasets & Weed IoU 12.1\% vs 62.7\% supervised; \textbf{closest work}.\\
+Ren et al.~\cite{ren2024groundedsam} & Grounding DINO + SAM & General images & 48.7 mAP on SegInW; \textbf{pipeline we implement}.\\
+Liu et al.~\cite{liu2024groundingdino} & Open-set detector & COCO, ODinW & 52.5 AP zero-shot on COCO.\\
+Kirillov et al.~\cite{kirillov2023sam} & Promptable segmenter & SA-1B & Strong zero-shot masks, no classes.\\
+Milioto et al.~\cite{milioto2018realtime} & Real-time CNN + indices & Sugar beet & Weed IoU 20.6\% (RGB), 59.2\% (14 ch).\\
+Lottes et al.~\cite{lottes2018fcn} & FCN + row sequence & Sugar beet & Generalises to unseen fields.\\
+Weyler et al.~\cite{weyler2023domain} & Domain generalisation & Several fields & Supervised models degrade on new fields.\\
+Bah et al.~\cite{bah2018unsupervised} & Row-based auto-labels + CNN & UAV, spinach, bean & Within 1.5--6\% of manual labels.\\
+Louargant et al.~\cite{louargant2018rowcrops} & Row + spectral SVM & Maize, sugar beet & 89\% weed detection rate.\\
+Partel et al.~\cite{partel2019sprayer} & Deep-learning smart sprayer & Real plants & 71\% precision, 78\% recall.\\
+Woebbecke et al.~\cite{woebbecke1995color} & Colour indices & Soils, residues & ExG among the best; \textbf{used in our rules}.\\
+Dyrmann et al.~\cite{dyrmann2016species} & CNN classifier & 22 species & 86.2\% accuracy.\\
+Olsen et al.~\cite{olsen2019deepweeds} & Dataset + CNNs & 8 weed species & 95.7\% accuracy (ResNet-50).\\
+Jiang et al.~\cite{jiang2020gcn} & Semi-supervised GCN & Four weed sets & 96.5--99.4\% accuracy.\\
+Rahman et al.~\cite{rahman2023cotton} & 13 detectors & CottonWeedDet3 & 79.98\% mAP@0.5; \textbf{our cotton data}.\\
+Belissent et al.~\cite{belissent2024transfer} & Transfer / zero-shot & TomatoWeeds (UAV) & 77.8\% fine-tuned; zero-shot unsatisfactory.\\
+Nasir et al.~\cite{nasir2026vlmweed} & Six commercial VLMs & Soybean UAV & Weed accuracy 0.15--0.75.\\
+\bottomrule
+\end{longtable}
+\end{small}

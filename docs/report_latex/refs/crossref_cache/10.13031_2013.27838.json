@@ -1,0 +1,166 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    13
+   ]
+  ],
+  "date-time": "2026-11-13T14:25:35Z",
+  "timestamp": 1794579935695,
+  "version": "4.9.1"
+ },
+ "reference-count": 0,
+ "publisher": "American Society of Agricultural and Biological Engineers (ASABE)",
+ "issue": "1",
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [],
+ "DOI": "10.13031/2013.27838",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2013,
+    10,
+    22
+   ]
+  ],
+  "date-time": "2013-10-22T17:23:37Z",
+  "timestamp": 1382462617000
+ },
+ "page": "259-269",
+ "source": "Crossref",
+ "is-referenced-by-count": 1390,
+ "title": [
+  "Color Indices for Weed Identification Under Various Soil, Residue, and Lighting Conditions"
+ ],
+ "prefix": "10.13031",
+ "volume": "38",
+ "author": [
+  {
+   "family": "D. M. Woebbecke",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "family": "G. E. Meyer",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "family": "K. Von Bargen",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "family": "D. A. Mortensen",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "5183",
+ "published-online": {
+  "date-parts": [
+   [
+    1995
+   ]
+  ]
+ },
+ "container-title": [
+  "Transactions of the ASAE"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "http://elibrary.asabe.org/azdez.asp?JID=3&AID=27838&t=2&v=38&i=1&CID=t1995&redir=aid=27838&redir=%5Bconfid=t1995%5D&redirType=&downPDF=Y&directPDF=Y",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2022,
+    10,
+    24
+   ]
+  ],
+  "date-time": "2022-10-24T19:02:49Z",
+  "timestamp": 1666638169000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "http://elibrary.asabe.org/abstract.asp??JID=3&AID=27838&CID=t1995&v=38&i=1&T=1"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    1995
+   ]
+  ]
+ },
+ "references-count": 0,
+ "journal-issue": {
+  "issue": "1",
+  "published-online": {
+   "date-parts": [
+    [
+     1995
+    ]
+   ]
+  }
+ },
+ "URL": "https://doi.org/10.13031/2013.27838",
+ "relation": {},
+ "ISSN": [
+  "2151-0059"
+ ],
+ "issn-type": [
+  {
+   "value": "2151-0059",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    1995
+   ]
+  ]
+ }
+}

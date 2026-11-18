@@ -1,0 +1,661 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    10,
+    30
+   ]
+  ],
+  "date-time": "2026-10-30T13:23:49Z",
+  "timestamp": 1793366629221,
+  "version": "4.5.0"
+ },
+ "reference-count": 43,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2024-05-01T00:00:00Z",
+    "timestamp": 1714521600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      5,
+      1
+     ]
+    ],
+    "date-time": "2024-05-01T00:00:00Z",
+    "timestamp": 1714521600000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      3,
+      7
+     ]
+    ],
+    "date-time": "2024-03-07T00:00:00Z",
+    "timestamp": 1709769600000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Knowledge-Based Systems"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2024,
+    5
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.knosys.2024.111586",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2024,
+    3,
+    12
+   ]
+  ],
+  "date-time": "2024-03-12T23:09:48Z",
+  "timestamp": 1710284988000
+ },
+ "page": "111586",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 47,
+ "special_numbering": "C",
+ "title": [
+  "Transfer and zero-shot learning for scalable weed detection and classification in UAV images"
+ ],
+ "prefix": "10.1016",
+ "volume": "292",
+ "author": [
+  {
+   "given": "Nicolas",
+   "family": "Belissent",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-4592-3792",
+   "authenticated-orcid": false,
+   "given": "Jos\u00e9 M.",
+   "family": "Pe\u00f1a",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Gustavo A.",
+   "family": "Mes\u00edas-Ruiz",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "John",
+   "family": "Shawe-Taylor",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Mar\u00eda",
+   "family": "P\u00e9rez-Ortiz",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "issue": "11",
+   "key": "10.1016/j.knosys.2024.111586_b1",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1007/s42452-019-1485-1",
+   "article-title": "Worldwide pesticide usage and its impacts on ecosystem",
+   "volume": "1",
+   "author": "Sharma",
+   "year": "2019",
+   "journal-title": "SN Appl. Sci."
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b2",
+   "series-title": "Pesticide use in europe",
+   "author": "Eurostat",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b3",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.3389/fagro.2019.00003",
+   "article-title": "Grand challenges in weed management",
+   "volume": "1",
+   "author": "Chauhan",
+   "year": "2020",
+   "journal-title": "Front. Agronomy"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b4",
+   "doi-asserted-by": "crossref",
+   "first-page": "233",
+   "DOI": "10.1111/j.1365-3180.2009.00696.x",
+   "article-title": "Site-specific weed control technologies",
+   "volume": "49",
+   "author": "Christensen",
+   "year": "2009",
+   "journal-title": "Weed Res."
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b5",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.asoc.2015.08.027",
+   "article-title": "A semi-supervised system for weed mapping in sunflower crops using unmanned aerial vehicles and a crop row detection method",
+   "volume": "37",
+   "author": "P\u00e9rez-Ortiz",
+   "year": "2015",
+   "journal-title": "Appl. Soft Comput."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.knosys.2024.111586_b6",
+   "doi-asserted-by": "crossref",
+   "first-page": "259",
+   "DOI": "10.1111/wre.12307",
+   "article-title": "Is the current state of the art of weed monitoring suitable for site-specific weed management in arable crops?",
+   "volume": "58",
+   "author": "Fern\u00e1ndez-Quintanilla",
+   "year": "2018",
+   "journal-title": "Weed Res."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.knosys.2024.111586_b7",
+   "doi-asserted-by": "crossref",
+   "first-page": "849",
+   "DOI": "10.1093/aob/mcv169",
+   "article-title": "Plants and climate change: complexities and surprises",
+   "volume": "116",
+   "author": "Parmesan",
+   "year": "2015",
+   "journal-title": "Ann. Botany"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b8",
+   "doi-asserted-by": "crossref",
+   "first-page": "2412",
+   "DOI": "10.48084/etasr.1647",
+   "article-title": "Weed detection using SVMs",
+   "volume": "8",
+   "author": "Murawwat",
+   "year": "2018",
+   "journal-title": "Eng., Technol. Appl. Sci. Res."
+  },
+  {
+   "issue": "16",
+   "key": "10.1016/j.knosys.2024.111586_b9",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.3390/rs11161892",
+   "article-title": "Feature selection on sentinel-2 multispectral imagery for mapping a landscape infested by parthenium weed",
+   "volume": "11",
+   "author": "Kiala",
+   "year": "2019",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b10",
+   "series-title": "2016 IEEE International Conference on Robotics and Automation",
+   "first-page": "5128",
+   "article-title": "Self-supervised weed detection in vegetable crops using ground based hyperspectral imaging",
+   "author": "Wendel",
+   "year": "2016"
+  },
+  {
+   "issue": "12",
+   "key": "10.1016/j.knosys.2024.111586_b11",
+   "doi-asserted-by": "crossref",
+   "first-page": "12037",
+   "DOI": "10.3390/rs61212037",
+   "article-title": "Feature learning based approach for weed classification using high resolution aerial images from a digital camera mounted on a UAV",
+   "volume": "6",
+   "author": "Hung",
+   "year": "2014",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.knosys.2024.111586_b12",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1038/s41598-018-38343-3",
+   "article-title": "DeepWeeds: A multiclass weed species image dataset for deep learning",
+   "volume": "9",
+   "author": "Olsen",
+   "year": "2019",
+   "journal-title": "Sci. Rep."
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b13",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2020.105520",
+   "article-title": "Graph weeds net: A graph-based deep learning method for weed recognition",
+   "volume": "174",
+   "author": "Hu",
+   "year": "2020",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "24",
+   "key": "10.1016/j.knosys.2024.111586_b14",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.3390/rs12244185",
+   "article-title": "Weed identification in maize, sunflower, and potatoes with the aid of convolutional neural networks",
+   "volume": "12",
+   "author": "Peteinatos",
+   "year": "2020",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "issue": "13",
+   "key": "10.1016/j.knosys.2024.111586_b15",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.3390/rs12132136",
+   "article-title": "Comparison of object detection and patch-based classification deep learning models on mid- to late-season weed detection in UAV imagery",
+   "volume": "12",
+   "author": "Veeranampalayam Sivakumar",
+   "year": "2020",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.knosys.2024.111586_b16",
+   "doi-asserted-by": "crossref",
+   "first-page": "837",
+   "DOI": "10.32604/csse.2022.023016",
+   "article-title": "CNN based automated weed detection system using UAV imagery",
+   "volume": "42",
+   "author": "Haq",
+   "year": "2022",
+   "journal-title": "Comput. Syst. Sci. Eng."
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b17",
+   "series-title": "Autonomous Air and Ground Sensing Systems for Agricultural Optimization and Phenotyping IV",
+   "first-page": "202",
+   "article-title": "Machine learning approaches to automate weed detection by UAV based sensors",
+   "volume": "Vol. 11008",
+   "author": "Etienne",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b18",
+   "article-title": "A deep learning approach for weed detection in lettuce crops using multispectral images",
+   "volume": "2",
+   "author": "Puerto",
+   "year": "2020",
+   "journal-title": "AgriEngineering"
+  },
+  {
+   "issue": "5",
+   "key": "10.1016/j.knosys.2024.111586_b19",
+   "doi-asserted-by": "crossref",
+   "first-page": "1861",
+   "DOI": "10.1002/ps.6804",
+   "article-title": "A novel deep learning-based method for detection of weeds in vegetables",
+   "volume": "78",
+   "author": "Jin",
+   "year": "2022",
+   "journal-title": "Pest Manage. Sci."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.knosys.2024.111586_b20",
+   "doi-asserted-by": "crossref",
+   "first-page": "588",
+   "DOI": "10.1109/LRA.2017.2774979",
+   "article-title": "Weednet: Dense semantic weed classification using multispectral images and MAV for smart farming",
+   "volume": "3",
+   "author": "Sa",
+   "year": "2018",
+   "journal-title": "IEEE Robot. Autom. Lett."
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b21",
+   "series-title": "2019 IEEE Latin American Conference on Computational Intelligence (la-CCI)",
+   "first-page": "1",
+   "article-title": "Classification of weeds and crops at the pixel-level using convolutional neural networks and data augmentation",
+   "author": "Brilhador",
+   "year": "2019"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.knosys.2024.111586_b22",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1371/journal.pone.0196302",
+   "article-title": "A fully convolutional network for weed mapping of unmanned aerial vehicle (UAV) imagery",
+   "volume": "13",
+   "author": "Huang",
+   "year": "2018",
+   "journal-title": "PLOS ONE"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.knosys.2024.111586_b23",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1145/3293318",
+   "article-title": "A survey of zero-shot learning: Settings, methods, and applications",
+   "volume": "10",
+   "author": "Wang",
+   "year": "2019",
+   "journal-title": "ACM Trans. Intell. Syst. Technol."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.knosys.2024.111586_b24",
+   "first-page": "4051",
+   "article-title": "A review of generalized zero-shot learning methods",
+   "volume": "45",
+   "author": "Pourpanah",
+   "year": "2023",
+   "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell."
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b25",
+   "series-title": "Generative multi-label zero-shot learning",
+   "author": "Gupta",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b26",
+   "article-title": "Dual generative network with discriminative information for generalized zero-shot learning",
+   "volume": "2021",
+   "author": "Xu",
+   "year": "2021",
+   "journal-title": "Complexity"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b27",
+   "series-title": "2019 IEEE/CVF Conference on Computer Vision and Pattern Recognition",
+   "first-page": "9376",
+   "article-title": "Attentive region embedding network for zero-shot learning",
+   "author": "Xie",
+   "year": "2019"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b28",
+   "series-title": "Predicting deep zero-shot convolutional neural networks using textual descriptions",
+   "author": "Ba",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b29",
+   "series-title": "Proceedings of the AAAI Conference on Artificial Intelligence",
+   "article-title": "Relational knowledge transfer for zero-shot learning",
+   "volume": "Vol. 30",
+   "author": "Wang",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b30",
+   "series-title": "Latent embeddings for zero-shot classification",
+   "author": "Xian",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b31",
+   "series-title": "Semantically consistent regularization for zero-shot recognition",
+   "author": "Morgado",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b32",
+   "doi-asserted-by": "crossref",
+   "unstructured": "S. Mannor, D. Peleg, R. Rubinstein, The cross entropy method for classification, in: Proceedings of the 22nd International Conference on Machine Learning, 2005, pp. 561\u2013568.",
+   "DOI": "10.1145/1102351.1102422"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b33",
+   "series-title": "Adam: A method for stochastic optimization",
+   "author": "Kingma",
+   "year": "2014"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b34",
+   "series-title": "A survey of deep learning techniques for weed detection from images",
+   "author": "Hasan",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b35",
+   "doi-asserted-by": "crossref",
+   "first-page": "243",
+   "DOI": "10.1016/j.inffus.2021.05.008",
+   "article-title": "A review of uncertainty quantification in deep learning: Techniques, applications and challenges",
+   "volume": "76",
+   "author": "Abdar",
+   "year": "2021",
+   "journal-title": "Inf. Fusion"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b36",
+   "series-title": "Restrictive invasixe plants",
+   "author": "Queensland Government",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b37",
+   "doi-asserted-by": "crossref",
+   "unstructured": "J. Pennington, R. Socher, C.D. Manning, Glove: Global vectors for word representation, in: Proceedings of the 2014 Conference on Empirical Methods in Natural Language Processing, EMNLP, 2014, pp. 1532\u20131543.",
+   "DOI": "10.3115/v1/D14-1162"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b38",
+   "series-title": "Semantically consistent regularization for zero-shot recognition",
+   "author": "Morgado",
+   "year": "2017"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b39",
+   "series-title": "Proceedings of the AAAI Conference on Artificial Intelligence",
+   "article-title": "Relational knowledge transfer for zero-shot learning",
+   "volume": "Vol. 30",
+   "author": "Wang",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b40",
+   "series-title": "Deep learning and the information bottleneck principle",
+   "author": "Tishby",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b41",
+   "series-title": "2009 IEEE Conference on Computer Vision and Pattern Recognition",
+   "first-page": "248",
+   "article-title": "Imagenet: A large-scale hierarchical image database",
+   "author": "Deng",
+   "year": "2009"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b42",
+   "series-title": "Contrastive embedding for generalized zero-shot learning",
+   "author": "Han",
+   "year": "2021"
+  },
+  {
+   "key": "10.1016/j.knosys.2024.111586_b43",
+   "series-title": "Proceedings of the 28th ACM International Conference on Multimedia",
+   "first-page": "3413",
+   "article-title": "Rethinking generative zero-shot learning: An ensemble learning perspective for recognising visual patches",
+   "author": "Chen",
+   "year": "2020"
+  }
+ ],
+ "container-title": [
+  "Knowledge-Based Systems"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0950705124002211?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0950705124002211?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    10,
+    16
+   ]
+  ],
+  "date-time": "2025-10-16T06:12:18Z",
+  "timestamp": 1760595138000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0950705124002211"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2024,
+    5
+   ]
+  ]
+ },
+ "references-count": 43,
+ "alternative-id": [
+  "S0950705124002211"
+ ],
+ "URL": "https://doi.org/10.1016/j.knosys.2024.111586",
+ "relation": {},
+ "ISSN": [
+  "0950-7051"
+ ],
+ "issn-type": [
+  {
+   "value": "0950-7051",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2024,
+    5
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "Transfer and zero-shot learning for scalable weed detection and classification in UAV images",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Knowledge-Based Systems",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.knosys.2024.111586",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2024 The Author(s). Published by Elsevier B.V.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ],
+ "article-number": "111586"
+}

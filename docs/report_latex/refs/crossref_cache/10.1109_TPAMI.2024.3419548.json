@@ -1,0 +1,913 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    12
+   ]
+  ],
+  "date-time": "2026-11-12T09:39:56Z",
+  "timestamp": 1794476396155,
+  "version": "4.9.1"
+ },
+ "reference-count": 99,
+ "publisher": "Institute of Electrical and Electronics Engineers (IEEE)",
+ "issue": "12",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      12,
+      1
+     ]
+    ],
+    "date-time": "2024-12-01T00:00:00Z",
+    "timestamp": 1733011200000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "https://ieeexplore.ieee.org/Xplorehelp/downloads/license-information/IEEE.html"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      12,
+      1
+     ]
+    ],
+    "date-time": "2024-12-01T00:00:00Z",
+    "timestamp": 1733011200000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-029"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      12,
+      1
+     ]
+    ],
+    "date-time": "2024-12-01T00:00:00Z",
+    "timestamp": 1733011200000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-037"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100001659",
+   "name": "Deutsche Forschungsgemeinschaft",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100001659",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/501100001659",
+   "name": "Deutsche Forschungsgemeinschaft",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100001659",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "name": "Germany&#x0027;s Excellence Strategy",
+   "award": [
+    "EXC-2070\u2013 390732324 (PhenoRob)"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "EXC-2070\u2013 390732324 (PhenoRob)"
+     ]
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "IEEE Trans. Pattern Anal. Mach. Intell."
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2024,
+    12
+   ]
+  ]
+ },
+ "DOI": "10.1109/tpami.2024.3419548",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2024,
+    6,
+    26
+   ]
+  ],
+  "date-time": "2024-06-26T18:03:44Z",
+  "timestamp": 1719425024000
+ },
+ "page": "9583-9594",
+ "source": "Crossref",
+ "is-referenced-by-count": 72,
+ "title": [
+  "PhenoBench: A Large Dataset and Benchmarks for Semantic Image Interpretation in the Agricultural Domain"
+ ],
+ "prefix": "10.1109",
+ "volume": "46",
+ "author": [
+  {
+   "ORCID": "https://orcid.org/0000-0002-8944-8949",
+   "authenticated-orcid": false,
+   "given": "Jan",
+   "family": "Weyler",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Center for Robotics, University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-2815-5760",
+   "authenticated-orcid": false,
+   "given": "Federico",
+   "family": "Magistri",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Center for Robotics, University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-1322-9317",
+   "authenticated-orcid": false,
+   "given": "Elias",
+   "family": "Marks",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Center for Robotics, University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0002-5851-953X",
+   "authenticated-orcid": false,
+   "given": "Yue Linn",
+   "family": "Chong",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Center for Robotics, University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-3358-6979",
+   "authenticated-orcid": false,
+   "given": "Matteo",
+   "family": "Sodano",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Center for Robotics, University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0009-0005-7101-0497",
+   "authenticated-orcid": false,
+   "given": "Gianmarco",
+   "family": "Roggiolani",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Center for Robotics, University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-6408-4459",
+   "authenticated-orcid": false,
+   "given": "Nived",
+   "family": "Chebrolu",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of Oxford, Oxford, U.K."
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-1173-6972",
+   "authenticated-orcid": false,
+   "given": "Cyrill",
+   "family": "Stachniss",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Center for Robotics, University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0001-6483-0319",
+   "authenticated-orcid": false,
+   "given": "Jens",
+   "family": "Behley",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Center for Robotics, University of Bonn, Bonn, Germany"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "263",
+ "reference": [
+  {
+   "key": "ref1",
+   "article-title": "Aberystwyth leaf evaluation dataset",
+   "author": "Bell",
+   "year": "2016"
+  },
+  {
+   "key": "ref2",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2020.3014297"
+  },
+  {
+   "key": "ref3",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.21869"
+  },
+  {
+   "key": "ref4",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/cvprw.2017.66"
+  },
+  {
+   "key": "ref5",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-030-58452-8_13"
+  },
+  {
+   "key": "ref6",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/aps3.11373"
+  },
+  {
+   "key": "ref7",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1177/0278364917720510"
+  },
+  {
+   "key": "ref8",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2017.2699184"
+  },
+  {
+   "key": "ref9",
+   "article-title": "Rethinking atrous convolution for semantic image segmentation",
+   "author": "Chen",
+   "year": "2017"
+  },
+  {
+   "key": "ref10",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR42600.2020.01249"
+  },
+  {
+   "key": "ref11",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.00135"
+  },
+  {
+   "key": "ref12",
+   "first-page": "17864",
+   "article-title": "Per-pixel classification is not all you need for semantic segmentation",
+   "volume-title": "Proc. Conf. Neural Inf. Process. Syst.",
+   "author": "Cheng"
+  },
+  {
+   "key": "ref13",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR42600.2020.00290"
+  },
+  {
+   "key": "ref14",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.350"
+  },
+  {
+   "key": "ref15",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2005.177"
+  },
+  {
+   "key": "ref16",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.34133/2021/9846158"
+  },
+  {
+   "key": "ref17",
+   "article-title": "An image is worth 16x16 words: Transformers for image recognition at scale",
+   "volume-title": "Proc. Int. Conf. Learn. Representations",
+   "author": "Dosovitskiy"
+  },
+  {
+   "key": "ref18",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.31256/wp2018.2"
+  },
+  {
+   "key": "ref19",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1186/s13007-020-00573-w"
+  },
+  {
+   "key": "ref20",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-014-0733-5"
+  },
+  {
+   "key": "ref21",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-009-0275-4"
+  },
+  {
+   "key": "ref22",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.robot.2021.103861"
+  },
+  {
+   "key": "ref23",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2009.167"
+  },
+  {
+   "key": "ref24",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2011.70"
+  },
+  {
+   "key": "ref25",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.169"
+  },
+  {
+   "key": "ref26",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2014.81"
+  },
+  {
+   "key": "ref27",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2023.3346807"
+  },
+  {
+   "key": "ref28",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3389/fpls.2021.786702"
+  },
+  {
+   "key": "ref29",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3389/fpls.2022.850666"
+  },
+  {
+   "key": "ref30",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-16220-1_8"
+  },
+  {
+   "key": "ref31",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2017.322"
+  },
+  {
+   "key": "ref32",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1289/ehp.02110445"
+  },
+  {
+   "key": "ref33",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1609/aaai.v36i1.19984"
+  },
+  {
+   "key": "ref34",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2018.2855052"
+  },
+  {
+   "key": "ref35",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1186/s13007-019-0398-8"
+  },
+  {
+   "key": "ref36",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.22122"
+  },
+  {
+   "key": "ref37",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2019.00656"
+  },
+  {
+   "key": "ref38",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2019.00963"
+  },
+  {
+   "key": "ref39",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV51070.2023.00371"
+  },
+  {
+   "key": "ref40",
+   "first-page": "109",
+   "article-title": "Efficient inference in fully connected CRFs with Gaussian edge potentials",
+   "volume-title": "Proc. Conf. Neural Inf. Process. Syst.",
+   "author": "Kr\u00e4henb\u00fchl"
+  },
+  {
+   "key": "ref41",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/3065386"
+  },
+  {
+   "key": "ref42",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/nav.3800020109"
+  },
+  {
+   "key": "ref43",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2009.5459248"
+  },
+  {
+   "key": "ref44",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-67597-8_11"
+  },
+  {
+   "key": "ref45",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/j.1744-7348.1991.tb04895.x"
+  },
+  {
+   "key": "ref46",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.neucom.2019.02.003"
+  },
+  {
+   "key": "ref47",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-030-01264-9_45"
+  },
+  {
+   "key": "ref48",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.00434"
+  },
+  {
+   "key": "ref49",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1038/nature14539"
+  },
+  {
+   "key": "ref50",
+   "first-page": "1",
+   "article-title": "Combined object categorization and segmentation with an implicit shape model",
+   "volume-title": "Proc. Workshop Stat. Learn. Comput. Vis.",
+   "author": "Leibe"
+  },
+  {
+   "key": "ref51",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR46437.2021.00028"
+  },
+  {
+   "key": "ref52",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-10602-1_48"
+  },
+  {
+   "key": "ref53",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/agronomy11061227"
+  },
+  {
+   "key": "ref54",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298965"
+  },
+  {
+   "key": "ref55",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2018.2846289"
+  },
+  {
+   "key": "ref56",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1002/rob.21675"
+  },
+  {
+   "key": "ref57",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.compag.2020.105760"
+  },
+  {
+   "key": "ref58",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/rs12081246"
+  },
+  {
+   "key": "ref59",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICRA.2018.8461130"
+  },
+  {
+   "key": "ref60",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICRA.2018.8460962"
+  },
+  {
+   "key": "ref61",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.patrec.2015.10.013"
+  },
+  {
+   "key": "ref62",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/MSP.2015.2405111"
+  },
+  {
+   "key": "ref63",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-021-01445-z"
+  },
+  {
+   "key": "ref64",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3389/fpls.2016.014192016"
+  },
+  {
+   "key": "ref65",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPRW.2019.00328"
+  },
+  {
+   "key": "ref66",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2017.534"
+  },
+  {
+   "key": "ref67",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1038/s41598-018-38343-3"
+  },
+  {
+   "issue": "198",
+   "key": "ref68",
+   "first-page": "1",
+   "article-title": "CodaLab competitions: An open source platform to organize scientific challenges",
+   "volume": "24",
+   "author": "Pavao",
+   "year": "2023",
+   "journal-title": "J. Mach. Learn. Res."
+  },
+  {
+   "key": "ref69",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1177/0278364919841437"
+  },
+  {
+   "key": "ref70",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2019.00847"
+  },
+  {
+   "key": "ref71",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR46437.2021.00722"
+  },
+  {
+   "key": "ref72",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1093/gigascience/gix083"
+  },
+  {
+   "key": "ref73",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.91"
+  },
+  {
+   "key": "ref74",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/tpami.2016.2577031"
+  },
+  {
+   "key": "ref75",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICRA48891.2023.10160918"
+  },
+  {
+   "key": "ref76",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TITS.2017.2750080"
+  },
+  {
+   "key": "ref77",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-24574-4_28"
+  },
+  {
+   "key": "ref78",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/s16081222"
+  },
+  {
+   "key": "ref79",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/rs10091423"
+  },
+  {
+   "key": "ref80",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1371/journal.pone.0256340"
+  },
+  {
+   "key": "ref81",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/wacv56688.2023.00372"
+  },
+  {
+   "key": "ref82",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.eja.2024.127178"
+  },
+  {
+   "key": "ref83",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/iccv48922.2021.00717"
+  },
+  {
+   "key": "ref84",
+   "article-title": "High-Resolution Representations for Labeling Pixels and Regions",
+   "author": "Sun",
+   "year": "2019"
+  },
+  {
+   "key": "ref85",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s10462-020-09854-1"
+  },
+  {
+   "key": "ref86",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2011.6126456"
+  },
+  {
+   "key": "ref87",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.48550/ARXIV.1706.03762"
+  },
+  {
+   "key": "ref88",
+   "doi-asserted-by": "crossref",
+   "first-page": "137",
+   "DOI": "10.1023/B:VISI.0000013087.49260.fb",
+   "article-title": "Robust real-time object detection",
+   "volume": "57",
+   "author": "Viola",
+   "year": "2001",
+   "journal-title": "Int. J. Comput. Vis."
+  },
+  {
+   "key": "ref89",
+   "first-page": "1",
+   "article-title": "Flourish\u2013A robotic approach for automation in crop management",
+   "volume-title": "Proc. Int. Conf. Precis. Agriculture",
+   "author": "Walter"
+  },
+  {
+   "key": "ref90",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/cvpr52729.2023.00721"
+  },
+  {
+   "key": "ref91",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR42600.2020.00948"
+  },
+  {
+   "key": "ref92",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-030-58523-5_38"
+  },
+  {
+   "key": "ref93",
+   "first-page": "17721",
+   "article-title": "SOLOv2: Dynamic and fast instance segmentation",
+   "volume-title": "Proc. Conf. Neural Inf. Process. Syst.",
+   "author": "Wang"
+  },
+  {
+   "key": "ref94",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/WACV51458.2022.00302"
+  },
+  {
+   "key": "ref95",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2021.3060712"
+  },
+  {
+   "key": "ref96",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2018.2852841"
+  },
+  {
+   "key": "ref97",
+   "first-page": "12077",
+   "article-title": "SegFormer: Simple and efficient design for semantic segmentation with transformers",
+   "volume-title": "Proc. Conf. Neural Inf. Process. Syst.",
+   "author": "Xie"
+  },
+  {
+   "key": "ref98",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.00259"
+  },
+  {
+   "key": "ref99",
+   "article-title": "Objects as points",
+   "author": "Zhou",
+   "year": "2019"
+  }
+ ],
+ "container-title": [
+  "IEEE Transactions on Pattern Analysis and Machine Intelligence"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "http://xplorestaging.ieee.org/ielx8/34/10746266/10572312.pdf?arnumber=10572312",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    11,
+    27
+   ]
+  ],
+  "date-time": "2024-11-27T00:28:58Z",
+  "timestamp": 1732667338000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://ieeexplore.ieee.org/document/10572312/"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2024,
+    12
+   ]
+  ]
+ },
+ "references-count": 99,
+ "journal-issue": {
+  "issue": "12"
+ },
+ "URL": "https://doi.org/10.1109/tpami.2024.3419548",
+ "relation": {
+  "has-part": [
+   {
+    "id-type": "doi",
+    "id": "https://doi.org/10.1109/tpami.2024.3419548/mm1",
+    "asserted-by": "subject"
+   }
+  ]
+ },
+ "ISSN": [
+  "0162-8828",
+  "2160-9292",
+  "1939-3539"
+ ],
+ "issn-type": [
+  {
+   "value": "0162-8828",
+   "type": "print"
+  },
+  {
+   "value": "2160-9292",
+   "type": "electronic"
+  },
+  {
+   "value": "1939-3539",
+   "type": "electronic"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2024,
+    12
+   ]
+  ]
+ }
+}

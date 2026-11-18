@@ -1,0 +1,560 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    11
+   ]
+  ],
+  "date-time": "2026-11-11T23:06:18Z",
+  "timestamp": 1794438378489,
+  "version": "4.9.1"
+ },
+ "reference-count": 35,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2017,
+      12,
+      1
+     ]
+    ],
+    "date-time": "2017-12-01T00:00:00Z",
+    "timestamp": 1512086400000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2017,
+    12
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2017.10.027",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2017,
+    11,
+    12
+   ]
+  ],
+  "date-time": "2017-11-12T10:45:21Z",
+  "timestamp": 1510483521000
+ },
+ "page": "314-324",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 542,
+ "special_numbering": "C",
+ "title": [
+  "Weed detection in soybean crops using ConvNets"
+ ],
+ "prefix": "10.1016",
+ "volume": "143",
+ "author": [
+  {
+   "given": "Alessandro",
+   "family": "dos Santos Ferreira",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Daniel",
+   "family": "Matte Freitas",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Gercina",
+   "family": "Gon\u00e7alves da Silva",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Hemerson",
+   "family": "Pistori",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Marcelo",
+   "family": "Theophilo Folhes",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "issue": "11",
+   "key": "10.1016/j.compag.2017.10.027_b0005",
+   "doi-asserted-by": "crossref",
+   "first-page": "2274",
+   "DOI": "10.1109/TPAMI.2012.120",
+   "article-title": "Slic superpixels compared to state-of-the-art superpixel methods",
+   "volume": "34",
+   "author": "Achanta",
+   "year": "2012",
+   "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0010",
+   "doi-asserted-by": "crossref",
+   "first-page": "98",
+   "DOI": "10.1016/j.cropro.2012.04.024",
+   "article-title": "Classification of crops and weeds from digital images: A support vector machine approach",
+   "volume": "40",
+   "author": "Ahmed",
+   "year": "2012",
+   "journal-title": "Crop Protect."
+  },
+  {
+   "issue": "12",
+   "key": "10.1016/j.compag.2017.10.027_b0015",
+   "doi-asserted-by": "crossref",
+   "first-page": "2037",
+   "DOI": "10.1109/TPAMI.2006.244",
+   "article-title": "Face description with local binary patterns: Application to face recognition",
+   "volume": "28",
+   "author": "Ahonen",
+   "year": "2006",
+   "journal-title": "IEEE Trans. Pattern Anal. Mach. Intell."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2017.10.027_b0020",
+   "doi-asserted-by": "crossref",
+   "first-page": "13",
+   "DOI": "10.1109/MCI.2010.938364",
+   "article-title": "Deep machine learning \u2013 a new frontier in artificial intelligence research",
+   "volume": "5",
+   "author": "Arel",
+   "year": "2010",
+   "journal-title": "IEEE Comput. Intell. Mag."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2017.10.027_b0025",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1561/2200000006",
+   "article-title": "Learning deep architectures for ai",
+   "volume": "2",
+   "author": "Bengio",
+   "year": "2009",
+   "journal-title": "Found. Trends Mach. Learn."
+  },
+  {
+   "issue": "11",
+   "key": "10.1016/j.compag.2017.10.027_b0030",
+   "first-page": "120",
+   "article-title": "The opencv library",
+   "volume": "25",
+   "author": "Bradski",
+   "year": "2000",
+   "journal-title": "Dr. Dobb\u2019s J.: Software Tools Prof. Program."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2017.10.027_b0035",
+   "doi-asserted-by": "crossref",
+   "first-page": "5",
+   "DOI": "10.1023/A:1010933404324",
+   "article-title": "Random forests",
+   "volume": "45",
+   "author": "Breiman",
+   "year": "2001",
+   "journal-title": "Mach. Learn."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0040",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Cheng, B., Matson, E.T., 2015. A feature-based machine learning agent for automatic rice and weed discrimination. International Conference on Artificial Intelligence and Soft Computing, pp 517\u2013527.",
+   "DOI": "10.1007/978-3-319-19324-3_46"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2017.10.027_b0045",
+   "doi-asserted-by": "crossref",
+   "first-page": "273",
+   "DOI": "10.1007/BF00994018",
+   "article-title": "Support-vector networks",
+   "volume": "20",
+   "author": "Cortes",
+   "year": "1995",
+   "journal-title": "Mach. Learn."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0050",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Dalal, N., Triggs, B., 2005. Histograms of oriented gradients for human detection. Computer Vision and Pattern Recognition, 2005. CVPR 2005. IEEE Computer Society Conference on, vol. 1, pp. 886\u2013893.",
+   "DOI": "10.1109/CVPR.2005.177"
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0055",
+   "first-page": "69",
+   "article-title": "Deep convolutional neural networks for sentiment analysis of short texts",
+   "author": "Dos Santos",
+   "year": "2014",
+   "journal-title": "COLING"
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0060",
+   "first-page": "148",
+   "article-title": "Experiments with a new boosting algorithm",
+   "volume": "96",
+   "author": "Freund",
+   "year": "1996",
+   "journal-title": "Icml"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2017.10.027_b0065",
+   "doi-asserted-by": "crossref",
+   "first-page": "193",
+   "DOI": "10.1007/BF00344251",
+   "article-title": "Neocognitron: A self-organizing neural network model for a mechanism of pattern recognition unaffected by shift in position",
+   "volume": "36",
+   "author": "Fukushima",
+   "year": "1980",
+   "journal-title": "Biol. Cybern."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2017.10.027_b0070",
+   "doi-asserted-by": "crossref",
+   "first-page": "10",
+   "DOI": "10.1145/1656274.1656278",
+   "article-title": "The weka data mining software: an update",
+   "volume": "11",
+   "author": "Hall",
+   "year": "2009",
+   "journal-title": "ACM SIGKDD Explor. Newslett."
+  },
+  {
+   "issue": "8",
+   "key": "10.1016/j.compag.2017.10.027_b0075",
+   "doi-asserted-by": "crossref",
+   "first-page": "15304",
+   "DOI": "10.3390/s140815304",
+   "article-title": "A novel approach for weed type classification based on shape descriptors and a fuzzy decision-making method",
+   "volume": "14",
+   "author": "Herrera",
+   "year": "2014",
+   "journal-title": "Sensors"
+  },
+  {
+   "issue": "12",
+   "key": "10.1016/j.compag.2017.10.027_b0080",
+   "doi-asserted-by": "crossref",
+   "first-page": "12037",
+   "DOI": "10.3390/rs61212037",
+   "article-title": "Feature learning based approach for weed classification using high resolution aerial images from a digital camera mounted on a uav",
+   "volume": "6",
+   "author": "Hung",
+   "year": "2014",
+   "journal-title": "Remote Sens."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0085",
+   "unstructured": "International: World soybean production, 2017. Soystats, <http://soystats.com/international-world-soybean-production/> (last visited July 26, 2017)."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2017.10.027_b0090",
+   "doi-asserted-by": "crossref",
+   "first-page": "53",
+   "DOI": "10.1016/j.compag.2008.12.003",
+   "article-title": "Weed image classification using gabor wavelet and gradient field distribution",
+   "volume": "66",
+   "author": "Ishak",
+   "year": "2009",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0095",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Jia, Y., Shelhamer, E., Donahue, J., Karayev, S., Long, J., Girshick, R., Guadarrama, S., Darrell, T., 2014. Caffe: Convolutional architecture for fast feature embedding. Proceedings of the 22nd ACM International Conference on Multimedia, pp. 675\u2013678.",
+   "DOI": "10.1145/2647868.2654889"
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0100",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kalchbrenner, N, Grefenstette, E., Blunsom, P., 2014. A convolutional neural network for modelling sentences. Available from: arXiv preprint <arXiv:1404.2188>.",
+   "DOI": "10.3115/v1/P14-1062"
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0105",
+   "unstructured": "Krizhevsky, A., Sutskever, I., Hinton, G.E., 2012. Imagenet classification with deep convolutional neural networks. Advances in Neural Information Processing Systems, pp. 1097\u20131105."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0110",
+   "unstructured": "LeCun, Y., Boser, B.E., Denker, J.S., Henderson, D., Howard, R.E., Hubbard, W.E., Jackel, L.D., 1990. Handwritten digit recognition with a back-propagation network. Advances in Neural Information Processing Systems, pp. 396\u2013404."
+  },
+  {
+   "issue": "7553",
+   "key": "10.1016/j.compag.2017.10.027_b0115",
+   "doi-asserted-by": "crossref",
+   "first-page": "436",
+   "DOI": "10.1038/nature14539",
+   "article-title": "Deep learning",
+   "volume": "521",
+   "author": "LeCun",
+   "year": "2015",
+   "journal-title": "Nature"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2017.10.027_b0120",
+   "first-page": "18",
+   "article-title": "Classification and regression by randomforest",
+   "volume": "2",
+   "author": "Liaw",
+   "year": "2002",
+   "journal-title": "R News"
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0125",
+   "article-title": "Sequential minimal optimization: A fast algorithm for training support vector machines",
+   "author": "Platt",
+   "year": "1998",
+   "journal-title": "Microsoft Reas."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0130",
+   "series-title": "C4. 5: Programs for Machine Learning",
+   "author": "Quinlan",
+   "year": "1993"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2017.10.027_b0135",
+   "doi-asserted-by": "crossref",
+   "first-page": "13",
+   "DOI": "10.1590/S0103-84782004000100003",
+   "article-title": "M\u00e9todos de quantifica\u00e7\u00e3o da cobertura foliar da infesta\u00e7\u00e3o das plantas daninhas e da cultura de soja",
+   "volume": "34",
+   "author": "Rizzardi",
+   "year": "2004",
+   "journal-title": "Ci\u00eancia Rural"
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0140",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Saha, D., Hanson, A., Shin, S.Y., 2016. Development of enhanced weed detection system with adaptive thresholding and support vector machine. Proceedings of the International Conference on Research in Adaptive and Convergent Systems, pp. 85\u201388.",
+   "DOI": "10.1145/2987386.2987433"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2017.10.027_b0145",
+   "article-title": "Weed image classification using wavelet transform, stepwise linear discriminant analysis, and support vector machines for an automatic spray control system",
+   "volume": "30",
+   "author": "Siddiqi",
+   "year": "2014",
+   "journal-title": "J. Inform. Sci. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0150",
+   "unstructured": "Silva, A.C., Lima, E.P.C., Batista, H.R., 2011. A import\u00e2ncia da soja para o agroneg\u00f3cio brasileiro: uma an\u00f3lise sob o enfoque da produ\u00e7\u00e3o, emprego e exporta\u00e7\u00e3o. Encontro de Economia Catarinense."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2017.10.027_b0155",
+   "doi-asserted-by": "crossref",
+   "first-page": "780",
+   "DOI": "10.1109/36.752194",
+   "article-title": "Texture analysis of SAR sea ice imagery using gray level co-occurrence matrices",
+   "volume": "37",
+   "author": "Soh",
+   "year": "1999",
+   "journal-title": "IEEE Trans. Geosci. Remote Sens."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2017.10.027_b0160",
+   "doi-asserted-by": "crossref",
+   "first-page": "908",
+   "DOI": "10.1016/j.asoc.2010.01.011",
+   "article-title": "A computer vision approach for weeds identification through support vector machines",
+   "volume": "11",
+   "author": "Tellaeche",
+   "year": "2011",
+   "journal-title": "Appl. Soft Comput."
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0165",
+   "doi-asserted-by": "crossref",
+   "first-page": "e453",
+   "DOI": "10.7717/peerj.453",
+   "article-title": "scikit-image: image processing in python",
+   "volume": "2",
+   "author": "Van der Walt",
+   "year": "2014",
+   "journal-title": "PeerJ"
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0170",
+   "article-title": "Din\u00e2mica das plantas daninhas e pr\u00e1ticas de manejo",
+   "author": "Voll",
+   "year": "2005",
+   "journal-title": "Embrapa Soja"
+  },
+  {
+   "key": "10.1016/j.compag.2017.10.027_b0175",
+   "unstructured": "Wallach, I., Dzamba, M., Heifets, A., 2015. Atomnet: a deep convolutional neural network for bioactivity prediction in structure-based drug discovery. Available from: arXiv preprint <arXiv:p1510.02855>."
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169917301977?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169917301977?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2019,
+    10,
+    5
+   ]
+  ],
+  "date-time": "2019-10-05T21:53:40Z",
+  "timestamp": 1570312420000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169917301977"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2017,
+    12
+   ]
+  ]
+ },
+ "references-count": 35,
+ "alternative-id": [
+  "S0168169917301977"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2017.10.027",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2017,
+    12
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "Weed detection in soybean crops using ConvNets",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Computers and Electronics in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.compag.2017.10.027",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2017 Elsevier B.V. All rights reserved.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ]
+}

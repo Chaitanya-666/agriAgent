@@ -1,0 +1,15 @@
+\chapter{How to Run}\label{app:run}
+The commands below install AgriAgent from the public repository, download the two models, and run the
+application, one photo, the measurements and the tests.
+
+\begin{lstlisting}[language=bash]
+git clone https://github.com/Chaitanya-666/agriAgent && cd agriAgent
+python3.11 -m venv .venv && source .venv/bin/activate        # Python 3.11-3.13
+pip install -r requirements-lock.txt && pip install -e . --no-deps
+python scripts/download_models.py          # Grounding DINO-tiny + SAM 2-tiny
+cp .env.example .env                        # add CLOUDFLARE_ACCOUNT_ID, CLOUDFLARE_API_TOKEN
+streamlit run app/app.py                    # dashboard
+PYTHONPATH=. python -m unittest discover -s tests            # tests
+python scripts/run_baseline.py --manifest data/manifests/eval_manifest_v2_holdout.json
+\end{lstlisting}
+The release \code{v1.0.0} is at \url{https://github.com/Chaitanya-666/agriAgent/releases/tag/v1.0.0}.

@@ -1,0 +1,992 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    15
+   ]
+  ],
+  "date-time": "2026-11-15T11:11:13Z",
+  "timestamp": 1794741073093,
+  "version": "4.9.1"
+ },
+ "reference-count": 115,
+ "publisher": "IEEE",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      10,
+      1
+     ]
+    ],
+    "date-time": "2023-10-01T00:00:00Z",
+    "timestamp": 1696118400000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-029"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2023,
+      10,
+      1
+     ]
+    ],
+    "date-time": "2023-10-01T00:00:00Z",
+    "timestamp": 1696118400000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-037"
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2023,
+    10,
+    1
+   ]
+  ]
+ },
+ "DOI": "10.1109/iccv51070.2023.00371",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2024,
+    1,
+    15
+   ]
+  ],
+  "date-time": "2024-01-15T15:55:59Z",
+  "timestamp": 1705334159000
+ },
+ "page": "3992-4003",
+ "source": "Crossref",
+ "is-referenced-by-count": 12464,
+ "title": [
+  "Segment Anything"
+ ],
+ "prefix": "10.1109",
+ "author": [
+  {
+   "given": "Alexander",
+   "family": "Kirillov",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Eric",
+   "family": "Mintun",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Nikhila",
+   "family": "Ravi",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Hanzi",
+   "family": "Mao",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Chloe",
+   "family": "Rolland",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Laura",
+   "family": "Gustafson",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Tete",
+   "family": "Xiao",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Spencer",
+   "family": "Whitehead",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Alexander C.",
+   "family": "Berg",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Wan-Yen",
+   "family": "Lo",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Piotr",
+   "family": "Doll\u00e1r",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Ross",
+   "family": "Girshick",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Meta AI Research,FAIR"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "263",
+ "reference": [
+  {
+   "key": "ref1",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1117/12.429489"
+  },
+  {
+   "key": "ref2",
+   "article-title": "What is an object?",
+   "author": "Alexe",
+   "year": "2010",
+   "journal-title": "CVPR"
+  },
+  {
+   "key": "ref3",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2010.161"
+  },
+  {
+   "key": "ref4",
+   "article-title": "Layer normalization",
+   "author": "Ba",
+   "year": "2016"
+  },
+  {
+   "key": "ref5",
+   "article-title": "BEiT: BERT pre-training of image transformers",
+   "author": "Bao",
+   "year": "2021"
+  },
+  {
+   "key": "ref6",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.02047"
+  },
+  {
+   "key": "ref7",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1038/s41592-019-0582-9"
+  },
+  {
+   "key": "ref8",
+   "article-title": "On the opportunities and risks of foundation models",
+   "author": "Bommasani",
+   "year": "2021"
+  },
+  {
+   "key": "ref9",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-030-00919-9_42"
+  },
+  {
+   "key": "ref10",
+   "article-title": "Language models are few-shot learners",
+   "author": "Brown",
+   "year": "2020",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref11",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1038/s41592-019-0612-7"
+  },
+  {
+   "key": "ref12",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.1986.4767851"
+  },
+  {
+   "key": "ref13",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-030-58452-8_13"
+  },
+  {
+   "key": "ref14",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-540-88690-7_10"
+  },
+  {
+   "key": "ref15",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.97"
+  },
+  {
+   "key": "ref16",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TGRS.2022.3183567"
+  },
+  {
+   "key": "ref17",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.00136"
+  },
+  {
+   "key": "ref18",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.00135"
+  },
+  {
+   "key": "ref19",
+   "article-title": "Perpixel classification is not all you need for semantic segmentation",
+   "author": "Cheng",
+   "year": "2021",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref20",
+   "article-title": "PaLM: Scaling language modeling with pathways",
+   "author": "Chowdhery",
+   "year": "2022"
+  },
+  {
+   "key": "ref21",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.5220/0010303401850195"
+  },
+  {
+   "key": "ref22",
+   "article-title": "Night and day instance segmented park (NDISPark) dataset: a collection of images taken by day and by night for vehicle detection, segmentation and counting in parking areas",
+   "author": "Ciampi",
+   "year": "2022",
+   "journal-title": "Zenodo"
+  },
+  {
+   "key": "ref23",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/cgf.14473"
+  },
+  {
+   "key": "ref24",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.350"
+  },
+  {
+   "key": "ref25",
+   "article-title": "Learning parameterized skills",
+   "author": "da Silva",
+   "year": "2012",
+   "journal-title": "ICML"
+  },
+  {
+   "key": "ref26",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-021-01531-2"
+  },
+  {
+   "key": "ref27",
+   "article-title": "EPIC-KITCHENS VISOR benchmark: Video segmentations and object relations",
+   "author": "Darkhalil",
+   "year": "2022",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref28",
+   "article-title": "Does object recognition work for everyone?",
+   "volume-title": "CVPR workshops",
+   "author": "De Vries"
+  },
+  {
+   "key": "ref29",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/3531146.3534647"
+  },
+  {
+   "key": "ref30",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-030-58580-8_25"
+  },
+  {
+   "key": "ref31",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2014.2377715"
+  },
+  {
+   "key": "ref32",
+   "article-title": "An image is worth 16x16 words: Transformers for image recognition at scale",
+   "author": "Dosovitskiy",
+   "year": "2021",
+   "journal-title": "ICLR"
+  },
+  {
+   "key": "ref33",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2011.5995444"
+  },
+  {
+   "key": "ref34",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1023/B:VISI.0000022288.19776.77",
+   "article-title": "Efficient graphbased image segmentation",
+   "author": "Felzenszwalb",
+   "year": "2004",
+   "journal-title": "IJCV"
+  },
+  {
+   "key": "ref35",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1001/archderm.124.6.869"
+  },
+  {
+   "key": "ref36",
+   "article-title": "Getting to 99% accuracy in interactive segmentation",
+   "author": "Forte",
+   "year": "2020"
+  },
+  {
+   "key": "ref37",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/IROS47612.2022.9982286"
+  },
+  {
+   "key": "ref38",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/3458723"
+  },
+  {
+   "key": "ref39",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR46437.2021.00294"
+  },
+  {
+   "key": "ref40",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2014.81"
+  },
+  {
+   "key": "ref41",
+   "article-title": "Accurate, large minibatch SGD: Training ImageNet in 1 hour",
+   "author": "Goyal",
+   "year": "2017"
+  },
+  {
+   "key": "ref42",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.01842"
+  },
+  {
+   "key": "ref43",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2019.00550"
+  },
+  {
+   "key": "ref44",
+   "article-title": "Multiple choice learning: Learning to produce multiple structured outputs",
+   "author": "Guzman-Rivera",
+   "year": "2012",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref45",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.3390/s22239082"
+  },
+  {
+   "key": "ref46",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.01553"
+  },
+  {
+   "key": "ref47",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.90"
+  },
+  {
+   "key": "ref48",
+   "article-title": "Gaussian error linear units (gelus)",
+   "author": "Hendrycks",
+   "year": "2016"
+  },
+  {
+   "key": "ref49",
+   "article-title": "Training compute-optimal large language models",
+   "author": "Hoffmann",
+   "year": "2022"
+  },
+  {
+   "key": "ref50",
+   "article-title": "TrashCan: A semantically-segmented dataset towards visual detection of marine debris",
+   "author": "Hong",
+   "year": "2020"
+  },
+  {
+   "key": "ref51",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-46493-0_39"
+  },
+  {
+   "key": "ref52",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52729.2023.00292"
+  },
+  {
+   "key": "ref53",
+   "article-title": "Scaling up visual and vision-language representation learning with noisy text supervision",
+   "author": "Jia",
+   "year": "2021",
+   "journal-title": "ICML"
+  },
+  {
+   "key": "ref54",
+   "article-title": "Scaling laws for neural language models",
+   "author": "Kaplan",
+   "year": "2020"
+  },
+  {
+   "key": "ref55",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/BF00133570"
+  },
+  {
+   "key": "ref56",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/LRA.2022.3146922"
+  },
+  {
+   "key": "ref57",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2019.00963"
+  },
+  {
+   "key": "ref58",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-020-01316-z"
+  },
+  {
+   "key": "ref59",
+   "article-title": "Quantifying the carbon emissions of machine learning",
+   "author": "Lacoste",
+   "year": "2019"
+  },
+  {
+   "key": "ref60",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-031-20077-9_17"
+  },
+  {
+   "key": "ref61",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2015.7298625"
+  },
+  {
+   "key": "ref62",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2018.00067"
+  },
+  {
+   "key": "ref63",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2017.324"
+  },
+  {
+   "key": "ref64",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-319-10602-1_48"
+  },
+  {
+   "key": "ref65",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV51070.2023.02037"
+  },
+  {
+   "key": "ref66",
+   "article-title": "Decoupled weight decay regularization",
+   "author": "Loshchilov",
+   "year": "2019",
+   "journal-title": "ICLR"
+  },
+  {
+   "key": "ref67",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1111/geb.12169"
+  },
+  {
+   "key": "ref68",
+   "article-title": "Iteratively trained interactive segmentation",
+   "author": "Mahadevan",
+   "year": "2018",
+   "journal-title": "BMVC"
+  },
+  {
+   "key": "ref69",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2018.00071"
+  },
+  {
+   "key": "ref70",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2001.937655"
+  },
+  {
+   "key": "ref71",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/3DV.2016.79"
+  },
+  {
+   "key": "ref72",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1016/j.patrec.2015.10.013"
+  },
+  {
+   "key": "ref73",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/3287560.3287596"
+  },
+  {
+   "key": "ref74",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2017.528"
+  },
+  {
+   "key": "ref75",
+   "article-title": "Carbon emissions and large neural network training",
+   "author": "Patterson",
+   "year": "2021"
+  },
+  {
+   "key": "ref76",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.18653/v1/P17-1161"
+  },
+  {
+   "key": "ref77",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.00146"
+  },
+  {
+   "key": "ref78",
+   "article-title": "DOORS: Dataset fOr bOuldeRs Segmentation",
+   "author": "Pugliatti",
+   "year": "2022",
+   "journal-title": "Zenodo"
+  },
+  {
+   "key": "ref79",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-022-01629-1"
+  },
+  {
+   "key": "ref80",
+   "article-title": "Learning transferable visual models from natural language supervision",
+   "author": "Radford",
+   "year": "2021",
+   "journal-title": "ICML"
+  },
+  {
+   "key": "ref81",
+   "article-title": "Zero-shot textto-image generation",
+   "author": "Ramesh",
+   "year": "2021",
+   "journal-title": "ICML"
+  },
+  {
+   "key": "ref82",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2016.2577031"
+  },
+  {
+   "key": "ref83",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2003.1238308"
+  },
+  {
+   "key": "ref84",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV48922.2021.01073"
+  },
+  {
+   "key": "ref85",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/3461702.3462594"
+  },
+  {
+   "key": "ref86",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ASYU50717.2020.9259802"
+  },
+  {
+   "key": "ref87",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICEET53442.2021.9659697"
+  },
+  {
+   "key": "ref88",
+   "article-title": "TextonBoost: Joint appearance, shape and context modeling for mulit-class object recognition and segmentation",
+   "author": "Shotton",
+   "year": "2006",
+   "journal-title": "ECCV"
+  },
+  {
+   "key": "ref89",
+   "article-title": "STREETS: A novel camera network dataset for traffic flow",
+   "author": "Snyder",
+   "year": "2019",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref90",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICIP46576.2022.9897365"
+  },
+  {
+   "key": "ref91",
+   "article-title": "Dropout: A simple way to prevent neural networks from overfitting",
+   "author": "Srivastava",
+   "year": "2014",
+   "journal-title": "The Journal of Machine Learning Research"
+  },
+  {
+   "key": "ref92",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.1999.784637"
+  },
+  {
+   "key": "ref93",
+   "article-title": "Fourier features let networks learn high frequency functions in low dimensional domains",
+   "author": "Tancik",
+   "year": "2020",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref94",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICIP.2017.8296915"
+  },
+  {
+   "key": "ref95",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TCSVT.2018.2875441"
+  },
+  {
+   "key": "ref96",
+   "article-title": "The world by income and regions",
+   "year": "2022"
+  },
+  {
+   "key": "ref97",
+   "article-title": "Is learning the n-th thing any easier than learning the first?",
+   "author": "Thrun",
+   "year": "1995",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref98",
+   "article-title": "NDD20: A large-scale few-shot dolphin dataset for coarse and fine-grained categorisation",
+   "author": "Trotter",
+   "year": "2020"
+  },
+  {
+   "key": "ref99",
+   "article-title": "Greenhouse Gas Equivalencies Calculator",
+   "year": "2022"
+  },
+  {
+   "key": "ref100",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2011.6126456"
+  },
+  {
+   "key": "ref101",
+   "article-title": "Attention is all you need",
+   "author": "Vaswani",
+   "year": "2017",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref102",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV48922.2021.00536"
+  },
+  {
+   "key": "ref103",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52688.2022.00438"
+  },
+  {
+   "key": "ref104",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR52729.2023.00875"
+  },
+  {
+   "key": "ref105",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2010.5539970"
+  },
+  {
+   "key": "ref106",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2015.164"
+  },
+  {
+   "key": "ref107",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/CVPR.2016.47"
+  },
+  {
+   "key": "ref108",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1145/3351095.3375709"
+  },
+  {
+   "key": "ref109",
+   "article-title": "iShape: A first step towards irregular shape instance segmentation",
+   "author": "Yang",
+   "year": "2021"
+  },
+  {
+   "key": "ref110",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/ICCV.2019.00940"
+  },
+  {
+   "key": "ref111",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/978-3-031-19818-2_8"
+  },
+  {
+   "key": "ref112",
+   "article-title": "K-Net: Towards unified image segmentation",
+   "author": "Zhang",
+   "year": "2021",
+   "journal-title": "NeurIPS"
+  },
+  {
+   "key": "ref113",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.18653/v1/D17-1323"
+  },
+  {
+   "key": "ref114",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1109/TPAMI.2017.2723009"
+  },
+  {
+   "key": "ref115",
+   "doi-asserted-by": "publisher",
+   "DOI": "10.1007/s11263-018-1140-0"
+  }
+ ],
+ "event": {
+  "name": "2023 IEEE/CVF International Conference on Computer Vision (ICCV)",
+  "location": "Paris, France",
+  "start": {
+   "date-parts": [
+    [
+     2023,
+     10,
+     1
+    ]
+   ]
+  },
+  "end": {
+   "date-parts": [
+    [
+     2023,
+     10,
+     6
+    ]
+   ]
+  }
+ },
+ "container-title": [
+  "2023 IEEE/CVF International Conference on Computer Vision (ICCV)"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "http://xplorestaging.ieee.org/ielx7/10376473/10376477/10378323.pdf?arnumber=10378323",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    1,
+    17
+   ]
+  ],
+  "date-time": "2024-01-17T20:29:49Z",
+  "timestamp": 1705523389000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://ieeexplore.ieee.org/document/10378323/"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2023,
+    10,
+    1
+   ]
+  ]
+ },
+ "references-count": 115,
+ "URL": "https://doi.org/10.1109/iccv51070.2023.00371",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2023,
+    10,
+    1
+   ]
+  ]
+ }
+}

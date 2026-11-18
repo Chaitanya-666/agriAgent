@@ -1,0 +1,129 @@
+\chapter{Introduction}\label{ch:intro}
+
+This chapter introduces the problem that AgriAgent addresses. We first give the background of spot
+spraying and explain why the weed-versus-crop decision is its bottleneck, then the motivation for
+trying zero-shot vision, the problem statement, our objectives and research questions, the scope of
+the work, our contributions and the key observations of the project. It closes with the organisation
+of the rest of the report.
+
+\section{Background}\label{sec:background}
+Weeds compete with the crop for light, water and nutrients, and herbicide is the cheapest way to
+control them. It is usually applied uniformly across a field, although weeds cover only part of it.
+Site-specific weed management (SSWM) instead treats only the places where weeds grow; reviews of the
+field report that the saving in herbicide depends strongly on how patchy the weeds
+are~\cite{gerhards2022sswm}. The finest form of SSWM is \emph{spot spraying}: a camera looks at the
+ground ahead of a boom, and each nozzle opens only over a weed. Low-cost prototypes of such sprayers
+already exist~\cite{partel2019sprayer}.
+
+The hard part of spot spraying is not the nozzle but the decision. Slaughter et al.\ identified
+reliable weed identification as the main obstacle to robotic weed control more than fifteen years
+ago~\cite{slaughter2008review}, and it still is. The two possible mistakes are not equal: a missed
+weed survives until the next pass, but a false ``weed'' on a crop plant damages the crop the farmer is
+trying to protect. A spot sprayer is therefore only useful if its vision system keeps the crop off
+the spray map.
+
+\section{Motivation}\label{sec:motivation}
+Today this separation is done by supervised networks trained on thousands of labelled images of the
+same crop under similar conditions~\cite{milioto2018realtime,lottes2018fcn,hasan2021survey}. Labelling
+plants pixel by pixel is slow and expensive, and a network trained on one field often degrades on
+another~\cite{weyler2023domain}. For a small Indian farm growing several crops in a season, collecting
+a labelled dataset for each crop and field is not realistic.
+
+Foundation models offer a different route. Grounding DINO~\cite{liu2024groundingdino} finds objects
+named in a free-text prompt, and SAM~2~\cite{ravi2025sam2} outlines any object it is pointed at.
+Chained together, as in Grounded SAM~\cite{ren2024groundedsam}, they promise to segment ``the weeds''
+in a photograph without a single training label. Whether this works for crop and weed, which are both
+small green plants that often look alike, is an open question: a 2025 study by Chong et
+al.~\cite{chong2025zeroshot} argues that text prompts are ill-defined for exactly this task. AgriAgent
+measures the question on real field photographs and asks what a transparent safety layer can recover.
+
+\section{Problem statement}\label{sec:problem}
+Given an RGB field photograph and the name of the crop, produce a spray map that covers the weeds and
+leaves the crop untouched, using pretrained models only (no training on our data), on a laptop GPU,
+with every spraying decision explainable and testable.
+
+\section{Objectives}\label{sec:objectives}
+To solve this problem we set six objectives. Each answers one of the literature gaps G1--G5 stated in
+Chapter~\ref{ch:gaps}.
+\begin{enumerate}[label=\textbf{O\arabic*.}]
+\item Run Grounding DINO and SAM~2 zero-shot on a laptop GPU (8~GB) on sugar beet and cotton field
+  photos, with no training on our data (gaps G1, G2).
+\item Build a deterministic safety gate that is the only authority on what is sprayed, and that
+  withholds anything uncertain (G4).
+\item Measure crop pixels sprayed, weed recall and herbicide saved on photos with official labels,
+  keeping a held-out set that is evaluated only once (G2, G3).
+\item Test one bounded escalation agent on the plants the gate withholds, under a call budget (G4).
+\item Give herbicide advice only from the ICAR bulletin row for the declared crop and weed, and never
+  invent a dose (G5).
+\item Deliver a working application with a spray-map export (GeoJSON) and a plain-language summary
+  for a farmer in English, Hindi or Marathi (G5).
+\end{enumerate}
+
+\subsection*{Research questions}
+The objectives lead to three measurable research questions (Table~\ref{tab:rq}).
+\begin{table}[H]
+\centering
+\caption{Research questions.}\label{tab:rq}
+\begin{tabularx}{\textwidth}{@{}lY@{}}
+\toprule
+\textbf{ID} & \textbf{Question}\\
+\midrule
+RQ1 & How well do zero-shot detection and segmentation (Grounded SAM) separate weed from crop? Measured as weed recall and the share of crop pixels that end up on the spray map.\\
+RQ2 & When the deterministic gate is unsure and asks vision-language models (escalation), does the spray map become more complete without becoming less safe?\\
+RQ3 & Which cheap addition reduces crop on the map most (a stricter confidence gate, subtracting crop masks, rules on planting rows and plant size), and what does it cost in missed weeds?\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\subsection*{Success criteria}
+The project is judged by measured numbers, not by the number of features. A result counts only if it
+is (i) produced by the real models on the laptop GPU, (ii) computed against labels copied from the
+official dataset files, (iii) reproducible from a script in the repository, and (iv) for the headline
+number, measured once on held-out photos after the method was frozen.
+
+\section{Scope}\label{sec:scope}
+AgriAgent is a research prototype. It produces a map on screen and a GeoJSON file; it does not drive a
+sprayer, a drone or a tractor, and its GeoJSON coordinates are placeholders, not GPS. Separating weed
+from crop for spot spraying is the only application studied. No model is trained or fine-tuned.
+Disease detection, yield counting, canopy cover and nutrient stress, listed in our original proposal,
+are future scope (Section~\ref{sec:future}).
+
+\section{Contributions}\label{sec:contributions}
+\begin{enumerate}
+\item An honest measurement of the Grounded SAM pipeline for crop-versus-weed spraying on two crops,
+  with labels copied from the official dataset files and a held-out set evaluated once
+  (Chapter~\ref{ch:results}).
+\item A deterministic safety gate and a four-rule plant classifier that move the held-out result from
+  65.5\% crop pixels sprayed and 1.8\% weed recall to 8.8\% and 77.9\%, with no training and no model
+  calls (Section~\ref{sec:holdout}).
+\item A bounded escalation agent whose verdicts are combined by the measured accuracy of each source,
+  and a negative but useful result: it is safe and precise but adds no weed recall
+  (Section~\ref{sec:agent-results}).
+\item A testing record: 270 automated tests, two system test cycles by a team member on a fresh
+  Windows installation, a verification run, a manual test cycle and 30 findings (F1--F30) traced to
+  fixes or stated limitations (Section~\ref{sec:testing}). The final build is released as
+  \code{v1.0.0}.
+\end{enumerate}
+
+\section{Key observations}\label{sec:observations}
+The main observations of the project, each measured and analysed in Chapter~\ref{ch:results}, are:
+\begin{itemize}
+\item \textbf{The masks are good, the labels are not.} Spraying every SAM~2 mask reaches 97.6\% of
+  the weed pixels, but trusting Grounding DINO's text labels sprays 65.5\% of the crop for 1.8\% weed
+  recall on the held-out photos. Its confidence never exceeded 0.68.
+\item \textbf{Simple agronomic rules recover most of it.} Four frozen rules on crop overlap, the
+  planting row and relative size reach 77.9\% weed recall at 8.8\% crop sprayed and save 95\% of the
+  herbicide, in 0.6~s per photo, with no training.
+\item \textbf{A second opinion from vision-language models is safe but adds nothing.} The escalation
+  agent approved no crop plant, but also confirmed none of 25 weeds.
+\item \textbf{The rules have a known failure.} When the detector finds no crop, an off-row beet can
+  be sprayed whole (finding F1, Section~\ref{sec:f1}).
+\end{itemize}
+
+\section{Organisation of the report}\label{sec:organisation}
+Chapter~\ref{ch:survey} summarises the related work and Chapter~\ref{ch:gaps} states the gaps it
+leaves and the base paper. Chapter~\ref{ch:proposed} describes the proposed system, the datasets and
+the implementation. Chapter~\ref{ch:results} gives the mathematical model, the evaluation method, the
+results with their analysis, and the testing. Chapter~\ref{ch:conclusion} concludes the report and
+describes the future scope. Appendix~\ref{app:run} explains how to run the system;
+Appendix~\ref{app:contrib} records the role of each team member.

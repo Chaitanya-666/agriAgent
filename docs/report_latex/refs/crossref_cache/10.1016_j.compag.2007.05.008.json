@@ -1,0 +1,1187 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    11
+   ]
+  ],
+  "date-time": "2026-11-11T23:06:34Z",
+  "timestamp": 1794438394407,
+  "version": "4.9.1"
+ },
+ "reference-count": 103,
+ "publisher": "Elsevier BV",
+ "issue": "1",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2008,
+      4,
+      1
+     ]
+    ],
+    "date-time": "2008-04-01T00:00:00Z",
+    "timestamp": 1207008000000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2008,
+    4
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2007.05.008",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2007,
+    9,
+    4
+   ]
+  ],
+  "date-time": "2007-09-04T12:42:51Z",
+  "timestamp": 1188909771000
+ },
+ "page": "63-78",
+ "source": "Crossref",
+ "is-referenced-by-count": 710,
+ "title": [
+  "Autonomous robotic weed control systems: A review"
+ ],
+ "prefix": "10.1016",
+ "volume": "61",
+ "author": [
+  {
+   "given": "D.C.",
+   "family": "Slaughter",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "D.K.",
+   "family": "Giles",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "D.",
+   "family": "Downey",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib1",
+   "doi-asserted-by": "crossref",
+   "first-page": "44",
+   "DOI": "10.3733/ca.v058n01p44",
+   "article-title": "Autoguidance system operated at high speed causes almost no tomato damage",
+   "volume": "58",
+   "author": "Abidine",
+   "year": "2004",
+   "journal-title": "Calif. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib2",
+   "doi-asserted-by": "crossref",
+   "first-page": "69",
+   "DOI": "10.1046/j.1365-3180.1998.00073.x",
+   "article-title": "Comparison of flaming and infrared radiation techniques for thermal weed control",
+   "volume": "38",
+   "author": "Ascard",
+   "year": "1998",
+   "journal-title": "Weed Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib3",
+   "unstructured": "\u00c5strand, B., 2005. Vision based perception or mechatronic weed control. Doctor of Philosophy Thesis, Chalmers and Halmstad Universities, Sweden."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib4",
+   "doi-asserted-by": "crossref",
+   "first-page": "21",
+   "DOI": "10.1023/A:1015674004201",
+   "article-title": "An agricultural mobile robot with vision-based perception for mechanical weed control",
+   "volume": "13",
+   "author": "\u00c5strand",
+   "year": "2002",
+   "journal-title": "Auton. Rob."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib5",
+   "series-title": "Proc. of the IEEE Conf. Mechatronics and Robotics 2004\u2014special session Autonomous Machines in Agriculture",
+   "first-page": "1191",
+   "article-title": "Plant recognition and localization using context information. 2004",
+   "author": "\u00c5strand",
+   "year": "2004"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib6",
+   "doi-asserted-by": "crossref",
+   "first-page": "251",
+   "DOI": "10.1016/j.mechatronics.2004.05.005",
+   "article-title": "A vision based row-following system for agricultural field machinery",
+   "volume": "15",
+   "author": "\u00c5strand",
+   "year": "2005",
+   "journal-title": "Mechatronics"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib7",
+   "unstructured": "\u00c5strand, B., Baerveldt, A.-J., 2005b. Paper IV\u2014Plant recognition and localization using context information and individual plant features. In: Vision Based Perception for Mechatronic Weed Control. \u00c5strand B. Doctor of Philosophy Thesis, Chalmers University of Technology and Halmstad University, Sweden."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib8",
+   "doi-asserted-by": "crossref",
+   "first-page": "125",
+   "DOI": "10.1016/j.biosystemseng.2003.10.009",
+   "article-title": "Agricultural robotic platform with four wheel steering for weed detection",
+   "volume": "87",
+   "author": "Bak",
+   "year": "2004",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib9",
+   "doi-asserted-by": "crossref",
+   "first-page": "147",
+   "DOI": "10.1016/S0168-1699(96)00034-8",
+   "article-title": "The successful development of a vision guidance system for agriculture",
+   "volume": "16",
+   "author": "Billingsley",
+   "year": "1997",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib10",
+   "doi-asserted-by": "crossref",
+   "first-page": "149",
+   "DOI": "10.1006/bioe.2002.0109",
+   "article-title": "Robotic weed control using machine vision",
+   "volume": "83",
+   "author": "Blasco",
+   "year": "2002",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib11",
+   "doi-asserted-by": "crossref",
+   "first-page": "389",
+   "DOI": "10.1006/jaer.1999.0519",
+   "article-title": "Crop\u2013weed discrimination by line imaging spectroscopy",
+   "volume": "75",
+   "author": "Borregaard",
+   "year": "2000",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib12",
+   "doi-asserted-by": "crossref",
+   "first-page": "252",
+   "DOI": "10.1614/WS-04-068R1",
+   "article-title": "Site-specific weed management: sensing requirements\u2014what do we need to see?",
+   "volume": "53",
+   "author": "Brown",
+   "year": "2005",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib13",
+   "doi-asserted-by": "crossref",
+   "first-page": "1029",
+   "DOI": "10.13031/2013.2971",
+   "article-title": "Backpropagation neural network design and evaluation for classifying weed species using color image texture",
+   "volume": "43",
+   "author": "Burks",
+   "year": "2000",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib14",
+   "doi-asserted-by": "crossref",
+   "first-page": "441",
+   "DOI": "10.13031/2013.2723",
+   "article-title": "Classification of weed species using color texture features and discriminant analysis",
+   "volume": "43",
+   "author": "Burks",
+   "year": "2000",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib15",
+   "series-title": "Weeds of Cotton: Characterization and Control",
+   "first-page": "85",
+   "article-title": "Economics of cotton losses caused by weeds",
+   "author": "Chandler",
+   "year": "1992"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib16",
+   "first-page": "175",
+   "article-title": "Leaf shape modeling and analysis using geometric descriptors derived from Bezier curves",
+   "volume": "46",
+   "author": "Chi",
+   "year": "2002",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib17",
+   "unstructured": "Concurrent Solutions, 2004. An Ultralight Autonomous Robot for Weed Control. Final Report, Phase I Proposal Number 00128, USDA 2003 SBIR Program, USDA CSREES, Washington, D.C."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib18",
+   "doi-asserted-by": "crossref",
+   "first-page": "332",
+   "DOI": "10.1016/0021-8634(69)90078-X",
+   "article-title": "Electro-chemical thinning of sugar beet",
+   "volume": "14",
+   "author": "Cox",
+   "year": "1969",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib19",
+   "first-page": "1",
+   "article-title": "New technology harnesses hot water to kill weeds",
+   "volume": "16",
+   "author": "Daar",
+   "year": "1994",
+   "journal-title": "IPM Pract."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib20",
+   "doi-asserted-by": "crossref",
+   "first-page": "1684",
+   "DOI": "10.1104/pp.44.12.1684",
+   "article-title": "Effect of sublethal and lethal temperature on plant cells",
+   "volume": "44",
+   "author": "Daniell",
+   "year": "1969",
+   "journal-title": "Plant Physiol."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2007.05.008_bib21",
+   "doi-asserted-by": "crossref",
+   "first-page": "197",
+   "DOI": "10.1016/S0021-8634(84)80021-9",
+   "article-title": "Electrical methods of killing plants",
+   "volume": "30",
+   "author": "Diprose",
+   "year": "1984",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib22",
+   "doi-asserted-by": "crossref",
+   "first-page": "93",
+   "DOI": "10.1615/AtomizSpr.v14.i2.10",
+   "article-title": "Pulsed jet micro-spray applications for high spatial resolution of deposition on biological targets",
+   "volume": "14",
+   "author": "Downey",
+   "year": "2004",
+   "journal-title": "Atomizat. Sprays"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib23",
+   "doi-asserted-by": "crossref",
+   "first-page": "218",
+   "DOI": "10.3733/ca.v058n04p218",
+   "article-title": "Weeds accurately mapped using DGPS and ground-based vision identification",
+   "volume": "58",
+   "author": "Downey",
+   "year": "2004",
+   "journal-title": "Calif. Agric."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib24",
+   "doi-asserted-by": "crossref",
+   "first-page": "11",
+   "DOI": "10.1145/361237.361242",
+   "article-title": "Use of the Hough transformation to detect lines and curves in pictures",
+   "volume": "15",
+   "author": "Duda",
+   "year": "1972",
+   "journal-title": "Commun. ACM"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2007.05.008_bib25",
+   "doi-asserted-by": "crossref",
+   "first-page": "909",
+   "DOI": "10.13031/2013.16088",
+   "article-title": "Seed location mapping using RTK GPS",
+   "volume": "47",
+   "author": "Ehsani",
+   "year": "2004",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib26",
+   "doi-asserted-by": "crossref",
+   "first-page": "667",
+   "DOI": "10.1016/S0167-8655(01)00006-X",
+   "article-title": "Multi-spectral vision system for weed detection",
+   "volume": "22",
+   "author": "Feyaerts",
+   "year": "2001",
+   "journal-title": "Pattern Recognit. Lett."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib27",
+   "doi-asserted-by": "crossref",
+   "first-page": "673",
+   "DOI": "10.13031/2013.31716",
+   "article-title": "Shape description of completely visible and partially occluded leaves for identifying plants in digital images",
+   "volume": "34",
+   "author": "Franz",
+   "year": "1991",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib28",
+   "doi-asserted-by": "crossref",
+   "first-page": "682",
+   "DOI": "10.13031/2013.31717",
+   "article-title": "The use of local spectral properties of leaves as an aid for identifying weed seedlings in digital images",
+   "volume": "34",
+   "author": "Franz",
+   "year": "1991",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib29",
+   "unstructured": "Fujii, Y., Hayashi, M., 1989. Boundary detecting method and apparatus for automatic working vehicle. US Patent No. 4,868,752."
+  },
+  {
+   "issue": "5",
+   "key": "10.1016/j.compag.2007.05.008_bib30",
+   "doi-asserted-by": "crossref",
+   "first-page": "206",
+   "DOI": "10.5274/jsbr.14.3.206",
+   "article-title": "Development of a synchronous thinner",
+   "volume": "14",
+   "author": "Garrett",
+   "year": "1966",
+   "journal-title": "J. Am. Soc. Sugar Beet Technol."
+  },
+  {
+   "issue": "12",
+   "key": "10.1016/j.compag.2007.05.008_bib31",
+   "first-page": "652",
+   "article-title": "Device designed for synchronous thinning of plants",
+   "volume": "47",
+   "author": "Garrett",
+   "year": "1966",
+   "journal-title": "Agric. Eng."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2007.05.008_bib32",
+   "doi-asserted-by": "crossref",
+   "first-page": "735",
+   "DOI": "10.13031/2013.17721",
+   "article-title": "Herbicide micro-dosing for weed control in field grown processing tomatoes",
+   "volume": "20",
+   "author": "Giles",
+   "year": "2004",
+   "journal-title": "Appl. Eng. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib33",
+   "unstructured": "Giles, D.K., Lanini, W.T., Slaughter, D.C., 2005. Precision weed control for organic and conventional specialty crops. Buy California Crop Block Grant Program Final Report. California Department of Food and Agriculture, Sacramento, CA, pp. 9."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2007.05.008_bib34",
+   "doi-asserted-by": "crossref",
+   "first-page": "927",
+   "DOI": "10.1046/j.1365-313X.1996.9060927.x",
+   "article-title": "Lc as a non-destructive visual reporter and transposition excision marker gene for tomato",
+   "volume": "9",
+   "author": "Goldsbrough",
+   "year": "1996",
+   "journal-title": "Plant J."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib35",
+   "doi-asserted-by": "crossref",
+   "first-page": "157",
+   "DOI": "10.1007/s11119-005-1032-5",
+   "article-title": "Seed mapping of sugar beet",
+   "volume": "6",
+   "author": "Griepentrog",
+   "year": "2005",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib36",
+   "doi-asserted-by": "crossref",
+   "first-page": "163",
+   "DOI": "10.13031/2013.28327",
+   "article-title": "Application of machine vision to shape analysis in leaf and plant identification",
+   "volume": "36",
+   "author": "Guyer",
+   "year": "1993",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2007.05.008_bib37",
+   "doi-asserted-by": "crossref",
+   "first-page": "1500",
+   "DOI": "10.13031/2013.30344",
+   "article-title": "Machine vision and image processing for plant identification",
+   "volume": "29",
+   "author": "Guyer",
+   "year": "1986",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib38",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1016/S0957-4158(00)00003-9",
+   "article-title": "A bandpass filter-based approach to crop row location and tracking",
+   "volume": "11",
+   "author": "Hague",
+   "year": "2001",
+   "journal-title": "Mechatronics"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib39",
+   "unstructured": "Harrell, R.C., Slaughter, D.C., Adsit, P.D., 1988. Robotics in agriculture. In: Dorf, R.C. (Ed.-in-Chief), International Encyclopedia of Robotics Applications and Automation. John Wiley & Sons, Inc., New York, pp. 1378\u20131387."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib40",
+   "doi-asserted-by": "crossref",
+   "first-page": "406",
+   "DOI": "10.1046/j.1365-3180.2002.00301.x",
+   "article-title": "Sugar beet yield response to competition from Sinapis arvensis or Lolium perenne growing at three different distances from the beet and removed at various times during early growth",
+   "volume": "42",
+   "author": "Heisel",
+   "year": "2002",
+   "journal-title": "Weed Res."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2007.05.008_bib41",
+   "doi-asserted-by": "crossref",
+   "first-page": "233",
+   "DOI": "10.1006/jaer.2000.0639",
+   "article-title": "Computer-vision-based weed identification under field conditions using controlled lighting",
+   "volume": "78",
+   "author": "Hemming",
+   "year": "2001",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib42",
+   "series-title": "Tech. Bull. 1386",
+   "article-title": "The nature, ecology, and control of Canada thistle",
+   "author": "Hodgson",
+   "year": "1968"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib43",
+   "unstructured": "Hough, P.V.C., 1962. Method and means for recognizing complex patterns. US Patent 3,069,654."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2007.05.008_bib44",
+   "first-page": "344",
+   "article-title": "Precision planting\u2014a reality for vegetables",
+   "volume": "49",
+   "author": "Inman",
+   "year": "1968",
+   "journal-title": "Agric. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib45",
+   "unstructured": "Jahns, G., 1983. Automatic guidance in agriculture a review. ASAE Paper No. 83-404, St. Joseph, MI."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib46",
+   "unstructured": "JRC-IES, 2006. The Joint Research Centre-Institute for Environment and Sustainability, Directorate-General of the European Commission, Brussels, Belgium, http://re.jrc.cec.eu.int/pvgis/solradframe.php?en&europe."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib47",
+   "doi-asserted-by": "crossref",
+   "first-page": "339",
+   "DOI": "10.1017/S0043174500072027",
+   "article-title": "Growth and interaction of johnsongrass (Sorghum halepense) with cotton (Gossypium hirsutum)",
+   "volume": "37",
+   "author": "Keeley",
+   "year": "1989",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib48",
+   "doi-asserted-by": "crossref",
+   "first-page": "369",
+   "DOI": "10.1017/S0043174500073082",
+   "article-title": "Growth and interaction of barnyardgrass (Echinochloa crus-galli) with cotton (Gossypium hirsutum)",
+   "volume": "39",
+   "author": "Keeley",
+   "year": "1991",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib49",
+   "series-title": "Principles of Farm Machinery. Section 11.22",
+   "article-title": "Selective Mechanical or chemical thinning",
+   "author": "Kepner",
+   "year": "1978"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib50",
+   "unstructured": "Kise, M., Noguchi, N., Ishii, K., Terao, H., 2002. The development of the autonomous tractor with steering controller applied by optimal control. In: Zhang, Q. (Ed.), Automation Technology for Off-Road Equipment, Proceedings of the July 26\u201327, 2002 Conference (Chicago, Illinois, USA) ASAE Publication Number 701P0502, pp. 367\u2013373."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib51",
+   "doi-asserted-by": "crossref",
+   "first-page": "357",
+   "DOI": "10.1016/j.biosystemseng.2004.12.008",
+   "article-title": "A stereovision-based crop row detection method for tractor-automated guidance",
+   "volume": "90",
+   "author": "Kise",
+   "year": "2005",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib52",
+   "series-title": "Physical Control Methods in Plant Protection",
+   "first-page": "35",
+   "article-title": "Thermal control in plant protection",
+   "author": "Lagu\u00eb",
+   "year": "2001"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib53",
+   "first-page": "358",
+   "article-title": "Field experiments with an air-curtain flame weeder",
+   "volume": "50",
+   "author": "Lalor",
+   "year": "1969",
+   "journal-title": "Agric. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib54",
+   "doi-asserted-by": "crossref",
+   "first-page": "117",
+   "DOI": "10.1006/jaer.2000.0630",
+   "article-title": "Remote-sensing and mapping of weeds in crops",
+   "volume": "78",
+   "author": "Lamb",
+   "year": "2001",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib55",
+   "unstructured": "Lamm, R.D., 2000. Robotic weed control for cotton. Ph.D. dissertation, Department of Biological and Agricultural Engineering, University of California, Davis, p. 116."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib56",
+   "first-page": "231",
+   "article-title": "Precision weed control system for cotton",
+   "volume": "45",
+   "author": "Lamm",
+   "year": "2002",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib57",
+   "doi-asserted-by": "crossref",
+   "first-page": "11",
+   "DOI": "10.3733/ca.v045n01p11",
+   "article-title": "Low-input management of weeds in vegetable fields",
+   "volume": "45",
+   "author": "Lanini",
+   "year": "1991",
+   "journal-title": "Calif. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib58",
+   "unstructured": "Lee, W.S., 1998. Robotic weed control system for tomatoes. Ph.D. dissertation, University of California, Davis, p. 287."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib59",
+   "doi-asserted-by": "crossref",
+   "first-page": "1269",
+   "DOI": "10.13031/2013.16561",
+   "article-title": "Recognition of partially occluded plant leaves using a modified watershed algorithm",
+   "volume": "47",
+   "author": "Lee",
+   "year": "2004",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib60",
+   "doi-asserted-by": "crossref",
+   "first-page": "95",
+   "DOI": "10.1023/A:1009977903204",
+   "article-title": "Robotic weed control system for tomatoes",
+   "volume": "1",
+   "author": "Lee",
+   "year": "1999",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib61",
+   "unstructured": "Leer, S., Lowenberg-DeBoer, J., 2004. Purdue study drives home benefits of GPS auto guidance, http://news.uns.purdue.edu/UNS/html4ever/2004/040413.Lowenberg.gps.html."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib62",
+   "article-title": "Responses of plants to environmental stresses",
+   "volume": "vol. I",
+   "author": "Levitt",
+   "year": "1980"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib63",
+   "doi-asserted-by": "crossref",
+   "first-page": "139",
+   "DOI": "10.1006/jaer.2001.0725",
+   "article-title": "Weed Leaf Image segmentation by deformable templates",
+   "volume": "80",
+   "author": "Manh",
+   "year": "2001",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib64",
+   "doi-asserted-by": "crossref",
+   "first-page": "363",
+   "DOI": "10.1006/rtim.1995.1036",
+   "article-title": "Real-time tracking of plant rows using a Hough transform",
+   "volume": "1",
+   "author": "Marchant",
+   "year": "1995",
+   "journal-title": "Real-time Imaging"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib65",
+   "doi-asserted-by": "crossref",
+   "first-page": "165",
+   "DOI": "10.1016/S0168-1699(96)00031-2",
+   "article-title": "Row-following accuracy of an autonomous vision-guided agricultural vehicle",
+   "volume": "16",
+   "author": "Marchant",
+   "year": "1997",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "5",
+   "key": "10.1016/j.compag.2007.05.008_bib66",
+   "doi-asserted-by": "crossref",
+   "first-page": "840",
+   "DOI": "10.1364/JOSAA.19.000840",
+   "article-title": "Spectral invariance under daylight illumination changes",
+   "volume": "19",
+   "author": "Marchant",
+   "year": "2002",
+   "journal-title": "J. Opt. Soc. Am."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib67",
+   "series-title": "National Renewable Energy Laboratory,",
+   "first-page": "255",
+   "article-title": "Solar radiation data manual for buildings",
+   "author": "Marion",
+   "year": "1995"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib68",
+   "unstructured": "Matthews, E.J., Smith Jr., H., 1969. Water shielded high speed flame weeding of cotton. Arkansas Farm Res. 18(6), 3. Also presented as ASAE paper Southwest Region Annual Meeting 71-102, April 1971."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib69",
+   "doi-asserted-by": "crossref",
+   "first-page": "147",
+   "DOI": "10.1016/0021-8634(69)90089-4",
+   "article-title": "Chemical thinning of sugar beet",
+   "volume": "14",
+   "author": "McLean",
+   "year": "1969",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib70",
+   "doi-asserted-by": "crossref",
+   "first-page": "1189",
+   "DOI": "10.13031/2013.17244",
+   "article-title": "Textural imaging and discriminant analysis for distinguishing weeds for spot spraying",
+   "volume": "41",
+   "author": "Meyer",
+   "year": "1998",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib71",
+   "doi-asserted-by": "crossref",
+   "first-page": "394",
+   "DOI": "10.1017/S0043174500039874",
+   "article-title": "Influence of four weed species on the growth, yield, and quality of direct seeded tomatoes (Lycopersicon esculentum)",
+   "volume": "29",
+   "author": "Monaco",
+   "year": "1981",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2007.05.008_bib72",
+   "doi-asserted-by": "crossref",
+   "first-page": "319",
+   "DOI": "10.1016/S0034-4257(97)00045-X",
+   "article-title": "Opportunities and limitations for image-based remote sensing in precision crop management",
+   "volume": "61",
+   "author": "Moran",
+   "year": "1997",
+   "journal-title": "Remote Sens. Environ."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib73",
+   "doi-asserted-by": "crossref",
+   "first-page": "223",
+   "DOI": "10.1016/j.compag.2004.01.005",
+   "article-title": "Autonomous guidance for rice transplanting using global positioning and gyroscopes",
+   "volume": "43",
+   "author": "Nagasaka",
+   "year": "2004",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib74",
+   "doi-asserted-by": "crossref",
+   "first-page": "522",
+   "DOI": "10.1017/S0043174500051419",
+   "article-title": "Modeling soybean growth and canopy apportionment in weed-soybean (Glycine max)",
+   "volume": "38",
+   "author": "Pike",
+   "year": "1990",
+   "journal-title": "Weed Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib75",
+   "unstructured": "Reid, J.F., Searcy, S.W., 1986. Detecting crop rows using the Hough transform. ASAE Paper No. 86-3042, St. Joseph, MI, USA."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib76",
+   "first-page": "39",
+   "article-title": "Weed competition in drilled summer lettuce",
+   "volume": "17",
+   "author": "Roberts",
+   "year": "1977",
+   "journal-title": "Hortic. Res."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2007.05.008_bib77",
+   "doi-asserted-by": "crossref",
+   "first-page": "235",
+   "DOI": "10.1016/j.biosystemseng.2004.11.010",
+   "article-title": "Applications of spectral reflectance techniques in Northern European cereal production: a review",
+   "volume": "90",
+   "author": "Scotford",
+   "year": "2005",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib78",
+   "series-title": "Image Analysis and Mathematical Morphology",
+   "author": "Serra",
+   "year": "1982"
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2007.05.008_bib79",
+   "doi-asserted-by": "crossref",
+   "first-page": "2037",
+   "DOI": "10.13031/2013.31574",
+   "article-title": "Plant identification using color co-occurrence matrices",
+   "volume": "33",
+   "author": "Shearer",
+   "year": "1990",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib80",
+   "first-page": "347",
+   "article-title": "Spiny amaranth (Amaranthus spinosus L.) a serious competitor to crisphead lettuce (Lactuca sativa L.)",
+   "volume": "31",
+   "author": "Shrefler",
+   "year": "1996",
+   "journal-title": "Hortic. Sci."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib81",
+   "doi-asserted-by": "crossref",
+   "first-page": "199",
+   "DOI": "10.1023/A:1009963924920",
+   "article-title": "Vision guided precision cultivation",
+   "volume": "1",
+   "author": "Slaughter",
+   "year": "1999",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib82",
+   "unstructured": "Slaughter, D.C., Curley, R.G., Chen, P., Giles, D.K., 1996. Robotic cultivator. U.S. Patent 5,442,553. Washington D.C. U.S. Patent and Trademark Office."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2007.05.008_bib83",
+   "doi-asserted-by": "crossref",
+   "first-page": "1907",
+   "DOI": "10.13031/2013.17800",
+   "article-title": "Discriminating weeds from processing tomato plants using visible and near-infrared spectroscopy",
+   "volume": "47",
+   "author": "Slaughter",
+   "year": "2004",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2007.05.008_bib84",
+   "doi-asserted-by": "crossref",
+   "first-page": "271",
+   "DOI": "10.1016/j.biosystemseng.2005.04.011",
+   "article-title": "Weed classification by active shape models",
+   "volume": "91",
+   "author": "S\u00f8gaard",
+   "year": "2005",
+   "journal-title": "Biosyst. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib85",
+   "unstructured": "S\u00f8gaard, H.T., J\u00f8rgensen, M.H., Nielsen, P.S., 2002. Pr\u00e6cision ved automatisk styring af radrensere. Gr\u00f8n Viden Ministeriet for F\u00f8devarer, Landbrug og Fiskeri, Danmarks JordbrugsForskning Markbrug 268, 1\u20134 November."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2007.05.008_bib86",
+   "doi-asserted-by": "crossref",
+   "first-page": "141",
+   "DOI": "10.1016/S0168-1699(02)00140-0",
+   "article-title": "Determination of crop rows by image analysis without segmentation",
+   "volume": "38",
+   "author": "S\u00f8gaard",
+   "year": "2003",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib87",
+   "series-title": "Engineering the Future, AgEng2004 International Conference on Agricultural Engineering in Leuven",
+   "article-title": "Robotic localisation of sugar beets by use of RTK-GPS, computer vision and seed maps",
+   "author": "S\u00f8gaard",
+   "year": "2004"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib88",
+   "series-title": "Principles and Applications",
+   "article-title": "Morphological image analysis",
+   "author": "Soille",
+   "year": "2003"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib89",
+   "doi-asserted-by": "crossref",
+   "first-page": "281",
+   "DOI": "10.1023/A:1011842907397",
+   "article-title": "Guidance of a forage harvester with GPS",
+   "volume": "2",
+   "author": "Stoll",
+   "year": "2000",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib90",
+   "doi-asserted-by": "crossref",
+   "first-page": "254",
+   "DOI": "10.1016/0261-2194(91)90002-9",
+   "article-title": "Potential for automatic weed detection and selective herbicide application",
+   "volume": "10",
+   "author": "Thompson",
+   "year": "1991",
+   "journal-title": "Crop Product."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib91",
+   "doi-asserted-by": "crossref",
+   "first-page": "153",
+   "DOI": "10.1016/S0168-1699(98)00037-4",
+   "article-title": "Environmentally adaptive segmentation algorithm for outdoor image segmentation",
+   "volume": "21",
+   "author": "Tian",
+   "year": "1998",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2007.05.008_bib92",
+   "first-page": "1761",
+   "article-title": "Outdoor field machine vision identification of tomato seedlings for automated weed control",
+   "volume": "40",
+   "author": "Tian",
+   "year": "1997",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib93",
+   "doi-asserted-by": "crossref",
+   "first-page": "167",
+   "DOI": "10.1016/S0021-8634(05)80012-5",
+   "article-title": "Automatic guidance sensors for agricultural field machines: a review",
+   "volume": "50",
+   "author": "Tillett",
+   "year": "1991",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib94",
+   "doi-asserted-by": "crossref",
+   "first-page": "225",
+   "DOI": "10.1006/jaer.1999.0458",
+   "article-title": "Computer-vision-based hoe guidance for cereals\u2014an initial trial",
+   "volume": "74",
+   "author": "Tillett",
+   "year": "1999",
+   "journal-title": "J. Agric. Eng. Res."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib95",
+   "unstructured": "Upadhyaya, S., Ehsani, M., Mattson, M.L., 2003. Method and apparatus for ultra precise GPS-based mapping of seeds or vegetation during planting. US Patents 6,553,312, and 6,941,225. Washington D.C. U.S. Patent and Trademark Office."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib96",
+   "series-title": "Cotton Production",
+   "first-page": "187",
+   "article-title": "Cotton weed management",
+   "author": "Vargas",
+   "year": "1996"
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2007.05.008_bib97",
+   "doi-asserted-by": "crossref",
+   "first-page": "583",
+   "DOI": "10.1109/34.87344",
+   "article-title": "Watersheds in digital space: an efficient algorithm based on immersion simulations",
+   "volume": "13",
+   "author": "Vincent",
+   "year": "1991",
+   "journal-title": "IEEE Trans. Pattern Anal. Machine Intelligence"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib98",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "DOI": "10.1023/A:1013326304427",
+   "article-title": "Weed detection using canopy reflection",
+   "volume": "3",
+   "author": "Vrindts",
+   "year": "2002",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2007.05.008_bib99",
+   "doi-asserted-by": "crossref",
+   "first-page": "1237",
+   "DOI": "10.2307/1938849",
+   "article-title": "A neighborhood model of annual plant interference",
+   "volume": "63",
+   "author": "Weiner",
+   "year": "1982",
+   "journal-title": "Ecology"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib100",
+   "doi-asserted-by": "crossref",
+   "first-page": "259",
+   "DOI": "10.13031/2013.27838",
+   "article-title": "Color indices for weed identification under various soil, residue, and lighting conditions",
+   "volume": "38",
+   "author": "Woebbecke",
+   "year": "1995",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2007.05.008_bib101",
+   "doi-asserted-by": "crossref",
+   "first-page": "271",
+   "DOI": "10.13031/2013.27839",
+   "article-title": "Shape features for identifying young weeds using image analysis",
+   "volume": "38",
+   "author": "Woebbecke",
+   "year": "1995",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2007.05.008_bib102",
+   "doi-asserted-by": "crossref",
+   "first-page": "1525",
+   "DOI": "10.13031/2013.27647",
+   "article-title": "Identification of idealized leaf types using simple dimensionless shape features by image analysis",
+   "volume": "39",
+   "author": "Yonekawa",
+   "year": "1996",
+   "journal-title": "Trans. ASAE"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2007.05.008_bib103",
+   "doi-asserted-by": "crossref",
+   "first-page": "189",
+   "DOI": "10.1016/S0261-2194(98)00009-X",
+   "article-title": "A review of spectral properties of plants and their potential use for crop/weed discrimination in row-crops",
+   "volume": "17",
+   "author": "Zwiggelaar",
+   "year": "1998",
+   "journal-title": "Crop Protect."
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169907001688?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169907001688?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2020,
+    4,
+    26
+   ]
+  ],
+  "date-time": "2020-04-26T08:25:05Z",
+  "timestamp": 1587889505000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169907001688"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2008,
+    4
+   ]
+  ]
+ },
+ "references-count": 103,
+ "journal-issue": {
+  "issue": "1",
+  "published-print": {
+   "date-parts": [
+    [
+     2008,
+     4
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "S0168169907001688"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2007.05.008",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2008,
+    4
+   ]
+  ]
+ }
+}

@@ -1,0 +1,474 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    15
+   ]
+  ],
+  "date-time": "2026-11-15T07:46:35Z",
+  "timestamp": 1794728795168,
+  "version": "4.9.1"
+ },
+ "reference-count": 19,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      6,
+      1
+     ]
+    ],
+    "date-time": "2024-06-01T00:00:00Z",
+    "timestamp": 1717200000000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      6,
+      1
+     ]
+    ],
+    "date-time": "2024-06-01T00:00:00Z",
+    "timestamp": 1717200000000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      6,
+      13
+     ]
+    ],
+    "date-time": "2024-06-13T00:00:00Z",
+    "timestamp": 1718236800000
+   },
+   "content-version": "vor",
+   "delay-in-days": 12,
+   "URL": "http://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100010771",
+   "name": "Federal Agency for Agriculture and Food",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "28DE104A18"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "28DE104A18"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100010771",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/501100005908",
+   "name": "Bundesministerium f\u00fcr Ern\u00e4hrung und Landwirtschaft",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100005908",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  },
+  {
+   "DOI": "10.13039/501100001659",
+   "name": "German Research Foundation",
+   "doi-asserted-by": "publisher",
+   "award": [
+    "EXC 2070-390732324"
+   ],
+   "award-info": [
+    {
+     "award-number": [
+      "EXC 2070-390732324"
+     ]
+    }
+   ],
+   "id": [
+    {
+     "id": "10.13039/501100001659",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2024,
+    6
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2024.108924",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2024,
+    4,
+    16
+   ]
+  ],
+  "date-time": "2024-04-16T14:14:05Z",
+  "timestamp": 1713276845000
+ },
+ "page": "108924",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 88,
+ "special_numbering": "C",
+ "title": [
+  "AI for crop production \u2013 Where can large language models (LLMs) provide substantial value?"
+ ],
+ "prefix": "10.1016",
+ "volume": "221",
+ "author": [
+  {
+   "given": "Matheus Thomas",
+   "family": "Kuska",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Mirwaes",
+   "family": "Wahabzada",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "ORCID": "https://orcid.org/0000-0003-4402-4760",
+   "authenticated-orcid": false,
+   "given": "Stefan",
+   "family": "Paulus",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.compag.2024.108924_b0005",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Arawjo, I., Swoopes, C., Vaithilingam, P., Wattenberg, M., Glassman, E., 2023. ChainForge: a visual toolkit for prompt engineering and LLM hypothesis testing (Version 2). arXiv. doi: 10.48550/ARXIV.2309.09128.",
+   "DOI": "10.1145/3613904.3642016"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0010",
+   "first-page": "2",
+   "article-title": "Is it a platform? Is it a search engine? It's Chat GPT! The European liability regime for large language models",
+   "volume": "3",
+   "author": "Arcila",
+   "year": "2023",
+   "journal-title": "J. Free Speech Law"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0015",
+   "doi-asserted-by": "crossref",
+   "first-page": "162",
+   "DOI": "10.1111/soru.12324",
+   "article-title": "Perceptions of the fourth agricultural revolution: what\u2019s in, what\u2019s out, and what consequences are anticipated?",
+   "volume": "62",
+   "author": "Barrett",
+   "year": "2020",
+   "journal-title": "Sociol. Ruralis"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2024.108924_b0020",
+   "first-page": "1",
+   "article-title": "A survey on evaluation of large language models",
+   "volume": "37",
+   "author": "Chang",
+   "year": "2023",
+   "journal-title": "J. ACM"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0030",
+   "unstructured": "Gozalo-Brizuela, R., Garrido-Merch\u00e1n E., C., 2023. ChatGPT is not all you need. A State of the Art. Review of large Generative AI models. arXiv:2301.04655v1 (https://arxiv.org/pdf/2301.04655.pdf)."
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0035",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Hacker, P., Engel, A., Mauer, M., 2023. Regulating ChatGPT and other large generative AI models. In: FAccT '23: Proceedings of the 2023 ACM Conference on Fairness, Accountability, and Transparency, pp. 1112\u20131123. doi: 10.1145/3593013.3594067.",
+   "DOI": "10.1145/3593013.3594067"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0040",
+   "doi-asserted-by": "crossref",
+   "first-page": "457",
+   "DOI": "10.1007/s41348-022-00600-z",
+   "article-title": "Digital plant pathology: a foundation and guide to modern agriculture",
+   "volume": "129",
+   "author": "Kuska",
+   "year": "2022",
+   "journal-title": "J. Plant Dis. Protect."
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0045",
+   "doi-asserted-by": "crossref",
+   "first-page": "455",
+   "DOI": "10.1007/s41348-022-00620-9",
+   "article-title": "Digital plant pathology for precision agriculture (special issue)",
+   "volume": "129",
+   "author": "Mahlein",
+   "year": "2022",
+   "journal-title": "J. Plant Dis. Protect"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0050",
+   "doi-asserted-by": "crossref",
+   "first-page": "1979",
+   "DOI": "10.1007/s11831-022-09857-x",
+   "article-title": "Application of bio and nature-inspired algorithms in agricultural engineering",
+   "volume": "30",
+   "author": "Maraveas",
+   "year": "2022",
+   "journal-title": "Arch. Comput. Methods Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0055",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.34133/plantphenomics.0070",
+   "article-title": "Can distributed ledgers help to overcome the need of labeled data for agricultural machine learning tasks?",
+   "volume": "5",
+   "author": "Paulus",
+   "year": "2023",
+   "journal-title": "Plant Phenomics"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0060",
+   "doi-asserted-by": "crossref",
+   "first-page": "79",
+   "DOI": "10.1016/j.jrurstud.2021.05.003",
+   "article-title": "Digital transformation of agriculture and rural areas: a socio-cyber-physical system framework to support responsibilisation",
+   "volume": "85",
+   "author": "Rijswijk",
+   "year": "2021",
+   "journal-title": "J. Rural Sud."
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0065",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1016/j.compag.2023.108281",
+   "article-title": "Proposal for a framework to manage the barriers that hinder the development of agriculture 4.0 in the agricultural production chain",
+   "volume": "214",
+   "author": "Silveira",
+   "year": "2023",
+   "journal-title": "Comput. Electron. Agric."
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0070",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Stoyanov, S., Kumurdjieva, M., Tabakova-Komsalova, V., Doukovska, L., 2023. Using LLMs in cyber-physical systems for agriculture - ZEMELA. In: International Conference on Big Data, Knowledge and Control Systems Engineering (BdKCSE). doi: 10.1109/BdKCSE59280.2023.10339738.",
+   "DOI": "10.1109/BdKCSE59280.2023.10339738"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0075",
+   "doi-asserted-by": "crossref",
+   "first-page": "941",
+   "DOI": "10.1038/s43016-023-00867-x",
+   "article-title": "Large language models and agricultural extension services",
+   "volume": "4",
+   "author": "Tzachor",
+   "year": "2023",
+   "journal-title": "Nat. Food"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0080",
+   "unstructured": "Wang, W., Chen, Z., Chen, X., Wu, J, Zhu, X., Zeng, G., Luo, P., Lu, T., Zhou, J., Qiao, Y., Dai, J., 2023. VisionLLM: Large Language Model is also an Open-Ended Decoder for Vision-Centric Tasks arXiv:2305.11175. doi: 10.48550/arXiv.2305.11175."
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0085",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Yadav, S., Kaushik, A., 2023. Comparative study of pre-trained language models for text classification in smart agriculture domain. In: Das, S., Saha, S., Coello Coello, C.A., Bansal, J.C. (Eds.), Advance in data-driven computing and intelligent systems. Lecture Notes in Networks and Systems, Vol. 653. Springer, Singapore, pp. 267\u2013279. doi: 10.1007/978-981-99-0981-0_21.",
+   "DOI": "10.1007/978-981-99-0981-0_21"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0090",
+   "doi-asserted-by": "crossref",
+   "first-page": "10748",
+   "DOI": "10.1021/acsnano.1c05980",
+   "article-title": "Entrepreneurial talent building for 21st century agricultural innovation",
+   "volume": "7",
+   "author": "Yoon",
+   "year": "2021",
+   "journal-title": "ACS Nano"
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0095",
+   "unstructured": "Zhang, C., Zhang, C., Zhang, M., Kweon, I.S., 2023. Text-to-image diffusion models in generative AI: a survey. arXiv:2303.07909. doi: 10.48550/arXiv.2303.07909."
+  },
+  {
+   "key": "10.1016/j.compag.2024.108924_b0100",
+   "doi-asserted-by": "crossref",
+   "DOI": "10.1088/1755-1315/677/3/032092",
+   "article-title": "The main areas of application of information and digital technologies in the agro-industrial complex",
+   "volume": "677",
+   "author": "Zolkin",
+   "year": "2021",
+   "journal-title": "IOP. Conf. Ser. Earth. Environ. Sci."
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169924003156?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169924003156?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    12,
+    3
+   ]
+  ],
+  "date-time": "2024-12-03T21:19:39Z",
+  "timestamp": 1733260779000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169924003156"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2024,
+    6
+   ]
+  ]
+ },
+ "references-count": 19,
+ "alternative-id": [
+  "S0168169924003156"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2024.108924",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2024,
+    6
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "AI for crop production \u2013 Where can large language models (LLMs) provide substantial value?",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Computers and Electronics in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.compag.2024.108924",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2024 Insitute of Sugar Beet Reserach, G\u00f6ttingen, Germany. Published by Elsevier B.V.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ],
+ "article-number": "108924"
+}

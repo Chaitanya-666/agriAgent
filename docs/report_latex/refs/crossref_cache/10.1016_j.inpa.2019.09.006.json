@@ -1,0 +1,1482 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    13
+   ]
+  ],
+  "date-time": "2026-11-13T08:47:01Z",
+  "timestamp": 1794559621681,
+  "version": "4.9.1"
+ },
+ "reference-count": 114,
+ "publisher": "Elsevier BV",
+ "issue": "1",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2020-03-01T00:00:00Z",
+    "timestamp": 1583020800000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2020,
+      3,
+      1
+     ]
+    ],
+    "date-time": "2020-03-01T00:00:00Z",
+    "timestamp": 1583020800000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      9,
+      27
+     ]
+    ],
+    "date-time": "2019-09-27T00:00:00Z",
+    "timestamp": 1569542400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by-nc-nd/4.0/"
+  }
+ ],
+ "funder": [
+  {
+   "DOI": "10.13039/501100001809",
+   "name": "National Natural Science Foundation of China",
+   "doi-asserted-by": "publisher",
+   "id": [
+    {
+     "id": "10.13039/501100001809",
+     "id-type": "DOI",
+     "asserted-by": "publisher"
+    }
+   ]
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Information Processing in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2020,
+    3
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.inpa.2019.09.006",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2019,
+    9,
+    27
+   ]
+  ],
+  "date-time": "2019-09-27T11:45:53Z",
+  "timestamp": 1569584753000
+ },
+ "page": "1-19",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 396,
+ "title": [
+  "Computer vision technology in agricultural automation \u2014A review"
+ ],
+ "prefix": "10.1016",
+ "volume": "7",
+ "author": [
+  {
+   "given": "Hongkun",
+   "family": "Tian",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Tianhai",
+   "family": "Wang",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Yadong",
+   "family": "Liu",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Xi",
+   "family": "Qiao",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Yanzhou",
+   "family": "Li",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0005",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Calabi-Floody M, Medina J, Rumpel C, et al. Smart fertilizers as a strategy for sustainable agriculture 2018;147: 119\u201357.",
+   "DOI": "10.1016/bs.agron.2017.10.003"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0010",
+   "doi-asserted-by": "crossref",
+   "first-page": "226",
+   "DOI": "10.1016/j.compag.2019.02.005",
+   "article-title": "A review on weed detection using ground-based machine vision and image processing techniques",
+   "volume": "158",
+   "author": "Wang",
+   "year": "2019",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0015",
+   "doi-asserted-by": "crossref",
+   "first-page": "69",
+   "DOI": "10.1016/j.compag.2018.08.001",
+   "article-title": "Computer vision and artificial intelligence in precision agriculture for grain crops: a systematic review",
+   "volume": "153",
+   "author": "Patr\u00edcio",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.inpa.2019.09.006_b0020",
+   "doi-asserted-by": "crossref",
+   "first-page": "395",
+   "DOI": "10.3233/AIS-170440",
+   "article-title": "Internet of things for smart agriculture: technologies, practices and future direction",
+   "volume": "9",
+   "author": "Ray",
+   "year": "2017",
+   "journal-title": "AIS"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0025",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.3390/s18082674",
+   "article-title": "Machine learning in agriculture: a review",
+   "volume": "18",
+   "author": "Liakos",
+   "year": "2018",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0030",
+   "doi-asserted-by": "crossref",
+   "first-page": "69",
+   "DOI": "10.1016/j.biosystemseng.2014.07.012",
+   "article-title": "Advances in agricultural machinery management: a review",
+   "volume": "126",
+   "author": "Bochtis",
+   "year": "2014",
+   "journal-title": "Biosyst Eng"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0035",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Seema, Kumar A, Gill GS. Automatic fruit grading and classification system using computer vision: a review 2015;15:598\u2013603.",
+   "DOI": "10.1109/ICACCE.2015.15"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0040",
+   "doi-asserted-by": "crossref",
+   "first-page": "378",
+   "DOI": "10.1016/j.compag.2018.11.033",
+   "article-title": "A contextualized approach for segmentation of foliage in different crop species",
+   "volume": "156",
+   "author": "Rico-Fern\u00e1ndez",
+   "year": "2019",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0045",
+   "doi-asserted-by": "crossref",
+   "first-page": "989",
+   "DOI": "10.1007/s00217-012-1844-2",
+   "article-title": "Applications of computer vision techniques in the agriculture and food industry: a review",
+   "volume": "235",
+   "author": "Gomes",
+   "year": "2012",
+   "journal-title": "Eur Food Res Technol"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0050",
+   "doi-asserted-by": "crossref",
+   "first-page": "363",
+   "DOI": "10.1002/rob.20131",
+   "article-title": "Agricultural robot for radicchio harvesting",
+   "volume": "23",
+   "author": "Foglia",
+   "year": "2006",
+   "journal-title": "J Field Rob"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0055",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1093/gigascience/giy153",
+   "article-title": "Computer vision-based phenotyping for improvement of plant productivity: a machine learning perspective",
+   "volume": "8",
+   "author": "Mochida",
+   "year": "2019",
+   "journal-title": "GigaScience"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0060",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.3390/s16050618",
+   "article-title": "3-D imaging systems for agricultural applications \u2013 a review",
+   "volume": "16",
+   "author": "Vazquez-Arellano",
+   "year": "2016",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0065",
+   "doi-asserted-by": "crossref",
+   "first-page": "171",
+   "DOI": "10.1016/j.eswa.2018.10.041",
+   "article-title": "Underwater video mosaicing using topology and superpixel-based pairwise stitching",
+   "volume": "119",
+   "author": "Li",
+   "year": "2019",
+   "journal-title": "Expert Syst Appl"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0070",
+   "doi-asserted-by": "crossref",
+   "first-page": "585",
+   "DOI": "10.1016/j.compag.2018.12.006",
+   "article-title": "Current and future applications of statistical machine learning algorithms for agricultural machine vision systems",
+   "volume": "156",
+   "author": "Rehman",
+   "year": "2019",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0075",
+   "first-page": "42",
+   "article-title": "Agric 4.0 \u2013 the coming age of intelligent agriculture",
+   "author": "Daoliang",
+   "year": "2018",
+   "journal-title": "J Agron"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0080",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Culman MA, Gomez JA, Talavera J, et al. A novel application for identification of nutrient deficiencies in oil palm using the internet of things 2017;32:169\u2013172.",
+   "DOI": "10.1109/MobileCloud.2017.32"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0085",
+   "doi-asserted-by": "crossref",
+   "first-page": "214",
+   "DOI": "10.1016/j.dyepig.2018.09.084",
+   "article-title": "A far-red-emitting NaMgLaTeO6:Mn4+ phosphor with perovskite structure for indoor plant growth",
+   "volume": "162",
+   "author": "Li",
+   "year": "2019",
+   "journal-title": "Dyes Pigm"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0090",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Choudhury SD, Goswami S, Bashyam S, et al. Automated stem angle determination for temporal plant phenotyping analysis 2017;237:2022\u201329.",
+   "DOI": "10.1109/ICCVW.2017.237"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0095",
+   "doi-asserted-by": "crossref",
+   "first-page": "219",
+   "DOI": "10.3389/fpls.2018.00219",
+   "article-title": "PlantSize offers an affordable, non-destructive method to measure plant size and color in vitro",
+   "volume": "9",
+   "author": "Farago",
+   "year": "2018",
+   "journal-title": "Front Plant Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0100",
+   "doi-asserted-by": "crossref",
+   "first-page": "136",
+   "DOI": "10.1016/j.compag.2018.05.019",
+   "article-title": "A pattern recognition strategy for visual grape bunch detection in vineyards",
+   "volume": "151",
+   "author": "P\u00e9rez-Zavala",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0105",
+   "doi-asserted-by": "crossref",
+   "first-page": "012064",
+   "DOI": "10.1088/1742-6596/978/1/012064",
+   "article-title": "Image processing analysis of geospatial uav orthophotos for palm oil plantation monitoring",
+   "volume": "978",
+   "author": "Fahmi",
+   "year": "2018",
+   "journal-title": "J Phys Conf Ser"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0110",
+   "doi-asserted-by": "crossref",
+   "first-page": "278",
+   "DOI": "10.1080/09637486.2016.1247434",
+   "article-title": "Ancient wheat and health: a legend or the reality? A review on KAMUT khorasan wheat",
+   "volume": "68",
+   "author": "Bordoni",
+   "year": "2017",
+   "journal-title": "Int J Food Sci Nutr"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0115",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1155/2018/1469314",
+   "article-title": "Utilization of machine vision to monitor the dynamic responses of rice leaf morphology and colour to nitrogen, phosphorus, and potassium deficiencies",
+   "volume": "2018",
+   "author": "Sun",
+   "year": "2018",
+   "journal-title": "J Spectroscopy"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0120",
+   "doi-asserted-by": "crossref",
+   "first-page": "28",
+   "DOI": "10.1016/j.biosystemseng.2015.12.015",
+   "article-title": "In-field automatic observation of wheat heading stage using computer vision",
+   "volume": "143",
+   "author": "Zhu",
+   "year": "2016",
+   "journal-title": "Biosyst Eng"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0125",
+   "doi-asserted-by": "crossref",
+   "first-page": "252",
+   "DOI": "10.3389/fpls.2017.00252",
+   "article-title": "Automated method to determine two critical growth stages of wheat: heading and flowering",
+   "volume": "8",
+   "author": "Sadeghi-Tehran",
+   "year": "2017",
+   "journal-title": "Front Plant Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0130",
+   "first-page": "216",
+   "article-title": "A segmentation method for processing greenhouse vegetable foliar disease symptom images",
+   "volume": "6",
+   "author": "Ma",
+   "year": "2019",
+   "journal-title": "Inform Process Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0135",
+   "doi-asserted-by": "crossref",
+   "first-page": "376",
+   "DOI": "10.1016/j.compag.2018.06.008",
+   "article-title": "Big data and machine learning for crop protection",
+   "volume": "151",
+   "author": "Ip",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0140",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.3389/fpls.2019.00272",
+   "article-title": "A mobile-based deep learning model for cassava disease diagnosis",
+   "volume": "10",
+   "author": "Ramcharan",
+   "year": "2019",
+   "journal-title": "Front Plant Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0145",
+   "doi-asserted-by": "crossref",
+   "first-page": "15",
+   "DOI": "10.1016/j.compeleceng.2017.02.020",
+   "article-title": "Towards real-time crops surveillance for disease classification: exploiting parallelism in computer vision",
+   "volume": "59",
+   "author": "Akram",
+   "year": "2017",
+   "journal-title": "Comput Electr Eng"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0150",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "DOI": "10.1016/j.compag.2016.11.019",
+   "article-title": "Detection of soybean aphids in a greenhouse using an image processing technique",
+   "volume": "132",
+   "author": "Maharlooei",
+   "year": "2017",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0155",
+   "doi-asserted-by": "crossref",
+   "first-page": "279",
+   "DOI": "10.1016/j.compag.2018.05.002",
+   "article-title": "A multispectral machine vision system for invertebrate detection on green leaves",
+   "volume": "150",
+   "author": "Liu",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0160",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.3390/s18051489",
+   "article-title": "A vision-based counting and recognition system for flying insects in intelligent agriculture",
+   "volume": "18",
+   "author": "Zhong",
+   "year": "2018",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0165",
+   "first-page": "134",
+   "article-title": "Development of automatic counting system for urediospores of wheat stripe rust based on image processing",
+   "volume": "10",
+   "author": "Xiaolong",
+   "year": "2017",
+   "journal-title": "Int J Agric Biol Eng"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0170",
+   "doi-asserted-by": "crossref",
+   "first-page": "2917536",
+   "DOI": "10.1155/2017/2917536",
+   "article-title": "Automatic image-based plant disease severity estimation using deep learning",
+   "volume": "2017",
+   "author": "Wang",
+   "year": "2017",
+   "journal-title": "Comput Intell Neurosci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0175",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1016/j.compag.2018.07.034",
+   "article-title": "An intelligent mobile application for diagnosis of crop diseases in Pakistan using fuzzy inference system",
+   "volume": "153",
+   "author": "Toseef",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0180",
+   "doi-asserted-by": "crossref",
+   "first-page": "80",
+   "DOI": "10.1016/j.compind.2018.03.001",
+   "article-title": "A fast and accurate expert system for weed identification in potato crops using metaheuristic algorithms",
+   "volume": "98",
+   "author": "Sabzi",
+   "year": "2018",
+   "journal-title": "Comput Ind"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0185",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.3390/s18061795",
+   "article-title": "A mission planning approach for precision farming systems based on multi-objective optimization",
+   "volume": "18",
+   "author": "Zhai",
+   "year": "2018",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0190",
+   "doi-asserted-by": "crossref",
+   "first-page": "38",
+   "DOI": "10.3390/robotics7030038",
+   "article-title": "Smart agricultural machine with a computer vision-based weeding and variable-rate irrigation scheme",
+   "volume": "7",
+   "author": "Chang",
+   "year": "2018",
+   "journal-title": "Robotics"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0195",
+   "doi-asserted-by": "crossref",
+   "first-page": "14118",
+   "DOI": "10.1109/ACCESS.2018.2812999",
+   "article-title": "Modern trends in hyperspectral image analysis: a review",
+   "volume": "6",
+   "author": "Khan",
+   "year": "2018",
+   "journal-title": "IEEE Access"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0200",
+   "first-page": "1",
+   "article-title": "Research and development in agricultural robotics: a perspective of digital farming",
+   "volume": "11",
+   "author": "Ramin Shamshiri",
+   "year": "2018",
+   "journal-title": "Int J Agric Biol Eng"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0205",
+   "doi-asserted-by": "crossref",
+   "first-page": "215",
+   "DOI": "10.1006/jaer.1997.0195",
+   "article-title": "Influence of mushroom strains and population density on the performance of a robotic harvester",
+   "volume": "68",
+   "author": "Noble",
+   "year": "1997",
+   "journal-title": "J agric Engng Res"
+  },
+  {
+   "issue": "8",
+   "key": "10.1016/j.inpa.2019.09.006_b0210",
+   "first-page": "409",
+   "article-title": "Application of computer vision and pattern recognition technology in agricultural production",
+   "volume": "43",
+   "author": "Chen Guizhen",
+   "year": "2015",
+   "journal-title": "Jiangsu Agric Sci"
+  },
+  {
+   "issue": "8",
+   "key": "10.1016/j.inpa.2019.09.006_b0215",
+   "first-page": "2054",
+   "article-title": "Information acquisition of cucumber fruit in greenhouse environment based on nearing infrared image",
+   "volume": "29",
+   "author": "Yuan Ting",
+   "year": "2009",
+   "journal-title": "Spectrosc Spect Anal"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0220",
+   "doi-asserted-by": "crossref",
+   "first-page": "012021",
+   "DOI": "10.1088/1755-1315/61/1/012021",
+   "article-title": "Cherry recognition in natural environment based on the vision of picking robot",
+   "volume": "61",
+   "author": "Zhang",
+   "year": "2017",
+   "journal-title": "IOP Conf Ser: Earth Environ Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0225",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Christopher McCool IS, Feras Dayoub, Christopher Lehnert, Tristan Perez, and Ben Upcroft. Visual detection of occluded crop: for automated harvesting. In: International conference on robotics and automation (ICRA) 2016;2506\u201312.",
+   "DOI": "10.1109/ICRA.2016.7487405"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0230",
+   "first-page": "216",
+   "article-title": "Design oApple-Picking End Effector",
+   "volume": "4",
+   "author": "Zhu",
+   "year": "2018",
+   "journal-title": "Strojni\u0161ki vestnik \u2013 J Mech Eng"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0235",
+   "series-title": "International conference on intelligent robots and systems (IROS)",
+   "first-page": "952",
+   "article-title": "Proof-of-concept of a robotic apple harvester",
+   "author": "Joseph",
+   "year": "2016"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0240",
+   "first-page": "1",
+   "article-title": "A nighttime image enhancement method based on Retinex and guided filter for object recognition of apple harvesting robot",
+   "author": "Ji Wei",
+   "year": "2018",
+   "journal-title": "Res Art"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0245",
+   "doi-asserted-by": "crossref",
+   "first-page": "952",
+   "DOI": "10.1007/s11119-017-9538-1",
+   "article-title": "Proof-of-concept robot platform for exploring automated harvesting of sugar snap peas",
+   "volume": "18",
+   "author": "Tejada",
+   "year": "2017",
+   "journal-title": "Precis Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0250",
+   "first-page": "566",
+   "article-title": "Recent advances in image processing techniques for automated harvesting purposes: a review",
+   "author": "Pereira",
+   "year": "2017",
+   "journal-title": "Intell Syst Conf"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0255",
+   "doi-asserted-by": "crossref",
+   "first-page": "8",
+   "DOI": "10.1016/j.compag.2015.05.021",
+   "article-title": "Sensors and systems for fruit detection and localization: a review",
+   "volume": "116",
+   "author": "Gongal",
+   "year": "2015",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0260",
+   "doi-asserted-by": "crossref",
+   "first-page": "1027",
+   "DOI": "10.1109/TII.2018.2875149",
+   "article-title": "Automatic fruit classification using deep learning for industrial applications",
+   "volume": "15",
+   "author": "Hossain",
+   "year": "2019",
+   "journal-title": "IEEE Trans Ind Inf"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0265",
+   "series-title": "International conference on wavelet analysis and pattern recognition",
+   "first-page": "1",
+   "article-title": "Multi-class fruit detection based on multiple color channels",
+   "author": "Kuang",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0270",
+   "doi-asserted-by": "crossref",
+   "first-page": "1135",
+   "DOI": "10.1007/s11694-018-9728-1",
+   "article-title": "Mechatronic components in apple sorting machines with computer vision",
+   "volume": "12",
+   "author": "Mohammadi Baneh",
+   "year": "2018",
+   "journal-title": "J Food Meas Charact"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0275",
+   "doi-asserted-by": "crossref",
+   "first-page": "116",
+   "DOI": "10.1016/j.tifs.2015.01.001",
+   "article-title": "Image acquisition techniques for assessment of legume quality",
+   "volume": "42",
+   "author": "Mahajan",
+   "year": "2015",
+   "journal-title": "Trends Food Sci Technol"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0280",
+   "doi-asserted-by": "crossref",
+   "first-page": "149",
+   "DOI": "10.13031/aea.11549",
+   "article-title": "A carrot sorting system using machine vision technique",
+   "volume": "33",
+   "author": "Deng HD",
+   "year": "2017",
+   "journal-title": "Appl Eng Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0285",
+   "doi-asserted-by": "crossref",
+   "first-page": "1513",
+   "DOI": "10.1007/s11694-018-9766-8",
+   "article-title": "Sweet lemon mechanical damage detection using image processing technique and UV radiation",
+   "volume": "12",
+   "author": "Firouzjaei",
+   "year": "2018",
+   "journal-title": "J Food Meas Charact"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0290",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kim MS, Chao K, Chin BA, et al. Nondestructive and rapid detection of potato black heart based on machine vision technology. 2016;9864:98640T.",
+   "DOI": "10.1117/12.2223292"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0295",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.1007/s11694-018-9913-2",
+   "article-title": "Comparison between soft computing methods for tomato quality grading using machine vision",
+   "volume": "13",
+   "author": "Iraji",
+   "year": "2018",
+   "journal-title": "J Food Meas Charact"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0300",
+   "doi-asserted-by": "crossref",
+   "first-page": "302",
+   "DOI": "10.1016/j.compag.2018.07.017",
+   "article-title": "SeeFruits: design and evaluation of a cloud-based ultra-portable NIRS system for sweet cherry quality detection",
+   "volume": "152",
+   "author": "Wang",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0305",
+   "first-page": "1",
+   "article-title": "Application of deep learning architectures for accurate and rapid detection of internal mechanical damage of blueberry using hyperspectral transmittance data",
+   "volume": "18",
+   "author": "Wang",
+   "year": "2018",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0310",
+   "doi-asserted-by": "crossref",
+   "first-page": "261",
+   "DOI": "10.1016/j.compag.2018.07.012",
+   "article-title": "Potato quality grading based on machine vision and 3D shape analysis",
+   "volume": "152",
+   "author": "Su",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0315",
+   "doi-asserted-by": "crossref",
+   "first-page": "312",
+   "DOI": "10.1017/S0021859618000436",
+   "article-title": "A review of the use of convolutional neural networks in agriculture",
+   "volume": "156",
+   "author": "Kamilaris",
+   "year": "2018",
+   "journal-title": "J Agric Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0320",
+   "doi-asserted-by": "crossref",
+   "first-page": "378",
+   "DOI": "10.5532/KJAFM.2016.18.4.378",
+   "article-title": "The study of MP-MAS utilization to support decision-making for climate-smart agriculture in rice farming",
+   "volume": "18",
+   "author": "Kim",
+   "year": "2016",
+   "journal-title": "Korean J Agric Forest Meteorol"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0325",
+   "doi-asserted-by": "crossref",
+   "first-page": "161",
+   "DOI": "10.1016/j.rse.2018.04.047",
+   "article-title": "Geospatial Soil Sensing System (GEOS3): a powerful data mining procedure to retrieve soil spectral reflectance from satellite images",
+   "volume": "212",
+   "author": "Dematt\u00ea",
+   "year": "2018",
+   "journal-title": "Remote Sens Environ"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0330",
+   "doi-asserted-by": "crossref",
+   "first-page": "41",
+   "DOI": "10.1016/j.biosystemseng.2016.06.006",
+   "article-title": "Microscope-based computer vision to characterize soil texture and soil organic matter",
+   "volume": "152",
+   "author": "Sudarsan",
+   "year": "2016",
+   "journal-title": "Biosyst Eng"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0335",
+   "doi-asserted-by": "crossref",
+   "first-page": "1771",
+   "DOI": "10.3390/w10121771",
+   "article-title": "Improving irrigation water use efficiency: a review of advances, challenges and opportunities in the Australian context",
+   "volume": "10",
+   "author": "Koech",
+   "year": "2018",
+   "journal-title": "Water"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0340",
+   "doi-asserted-by": "crossref",
+   "first-page": "15",
+   "DOI": "10.1016/j.compag.2017.07.001",
+   "article-title": "Development of a visual monitoring system for water balance estimation of horticultural crops using low cost cameras",
+   "volume": "141",
+   "author": "Gonz\u00e1lez-Esquiva",
+   "year": "2017",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0345",
+   "first-page": "502",
+   "article-title": "Irrigated pinto bean crop stress and yield assessment using ground based low altitude remote sensing technology",
+   "volume": "6",
+   "author": "Ranjan",
+   "year": "2019",
+   "journal-title": "Inform Process Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0350",
+   "doi-asserted-by": "crossref",
+   "first-page": "2995",
+   "DOI": "10.1109/LRA.2018.2849514",
+   "article-title": "Fruit quantity and ripeness estimation using a robotic vision system",
+   "author": "Michael Halstead",
+   "year": "2018",
+   "journal-title": "IEEE Robot Automat Lett"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0355",
+   "doi-asserted-by": "crossref",
+   "first-page": "43",
+   "DOI": "10.1016/j.compag.2018.01.011",
+   "article-title": "A methodology for fresh tomato maturity detection using computer vision",
+   "volume": "146",
+   "author": "Wan",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0360",
+   "doi-asserted-by": "crossref",
+   "first-page": "572",
+   "DOI": "10.1016/j.compag.2016.07.023",
+   "article-title": "Automatic green fruit counting in orange trees using digital images",
+   "volume": "127",
+   "author": "Maldonado",
+   "year": "2016",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0365",
+   "doi-asserted-by": "crossref",
+   "first-page": "126",
+   "DOI": "10.1016/j.compag.2018.12.041",
+   "article-title": "Ground based hyperspectral imaging for extensive mango yield estimation",
+   "volume": "157",
+   "author": "Guti\u00e9rrez",
+   "year": "2019",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0370",
+   "doi-asserted-by": "crossref",
+   "first-page": "165",
+   "DOI": "10.1016/j.compind.2018.03.008",
+   "article-title": "Machine vision for orchard navigation",
+   "volume": "98",
+   "author": "Radcliffe",
+   "year": "2018",
+   "journal-title": "Comput Ind"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0375",
+   "doi-asserted-by": "crossref",
+   "first-page": "280",
+   "DOI": "10.1016/j.procs.2015.08.022",
+   "article-title": "Smart farming: pomegranate disease detection using image processing",
+   "volume": "58",
+   "author": "Bhange",
+   "year": "2015",
+   "journal-title": "Procedia Comput Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0380",
+   "first-page": "773",
+   "article-title": "Application progress of unmanned aerial vehicle remote sensing in farmland information monitoring",
+   "volume": "56",
+   "author": "JiJingChun",
+   "year": "2019",
+   "journal-title": "J Soil"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0385",
+   "doi-asserted-by": "crossref",
+   "first-page": "5453",
+   "DOI": "10.1080/01431161.2018.1455241",
+   "article-title": "Unmanned aerial vehicle-based remote sensing in monitoring smallholder, heterogeneous crop fields in Tanzania",
+   "volume": "39",
+   "author": "Yonah",
+   "year": "2018",
+   "journal-title": "Int J Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0390",
+   "doi-asserted-by": "crossref",
+   "first-page": "1443",
+   "DOI": "10.3390/rs11121443",
+   "article-title": "Unmanned aerial vehicle for remote sensing applications\u2014a review",
+   "volume": "11",
+   "author": "Yao",
+   "year": "2019",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0395",
+   "doi-asserted-by": "crossref",
+   "first-page": "780",
+   "DOI": "10.3390/rs11070780",
+   "article-title": "Spatial-spectral fusion based on conditional random fields for the fine classification of crops in UAV-borne hyperspectral remote sensing imagery",
+   "volume": "11",
+   "author": "Wei",
+   "year": "2019",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0400",
+   "doi-asserted-by": "crossref",
+   "first-page": "206",
+   "DOI": "10.1108/CAER-11-2017-0216",
+   "article-title": "Technology adoption among farmers in Jilin Province, China",
+   "volume": "11",
+   "author": "Zheng",
+   "year": "2019",
+   "journal-title": "China Agric Econ Rev"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0405",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.3389/fpls.2017.00421",
+   "article-title": "High-throughput phenotyping of sorghum plant height using an unmanned aerial vehicle and its application to genomic prediction modeling",
+   "volume": "8",
+   "author": "Watanabe",
+   "year": "2017",
+   "journal-title": "Front Plant Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0410",
+   "doi-asserted-by": "crossref",
+   "first-page": "87",
+   "DOI": "10.3390/ijgi8020087",
+   "article-title": "Multi-sensor UAV application for thermal analysis on a dry-stone terraced vineyard in rural tuscany landscape",
+   "volume": "8",
+   "author": "Tucci",
+   "year": "2019",
+   "journal-title": "ISPRS Int J Geo-Inf"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0415",
+   "doi-asserted-by": "crossref",
+   "first-page": "909",
+   "DOI": "10.13031/trans.12701",
+   "article-title": "Prediction of aerial spray release from UAVs",
+   "volume": "61",
+   "author": "Teske",
+   "year": "2018",
+   "journal-title": "Trans ASABE"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0420",
+   "doi-asserted-by": "crossref",
+   "first-page": "5402",
+   "DOI": "10.1080/01431161.2018.1448484",
+   "article-title": "The potential for RGB images obtained using unmanned aerial vehicle to assess and predict yield in sugarcane fields",
+   "volume": "39",
+   "author": "Sanches",
+   "year": "2018",
+   "journal-title": "Int J Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0425",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.3390/s19030535",
+   "article-title": "Comparing UAV-based technologies and RGB-D reconstruction methods for plant height and biomass monitoring on grass ley",
+   "volume": "19",
+   "author": "Rueda-Ayala",
+   "year": "2019",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0430",
+   "doi-asserted-by": "crossref",
+   "first-page": "10",
+   "DOI": "10.1186/s13007-019-0394-z",
+   "article-title": "Modeling maize above-ground biomass based on machine learning approaches using UAV remote-sensing data",
+   "volume": "15",
+   "author": "Han",
+   "year": "2019",
+   "journal-title": "Plant Methods"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0435",
+   "doi-asserted-by": "crossref",
+   "first-page": "1261",
+   "DOI": "10.3390/rs11111261",
+   "article-title": "Estimating above-ground biomass of maize using features derived from UAV-based RGB imagery",
+   "volume": "11",
+   "author": "Niu",
+   "year": "2019",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0440",
+   "doi-asserted-by": "crossref",
+   "first-page": "3097",
+   "DOI": "10.1109/LRA.2018.2849603",
+   "article-title": "Robust long-term registration of UAV images of crop fields for precision agriculture",
+   "volume": "3",
+   "author": "Chebrolu",
+   "year": "2018",
+   "journal-title": "IEEE Rob Autom Lett"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0445",
+   "doi-asserted-by": "crossref",
+   "first-page": "1423",
+   "DOI": "10.3390/rs10091423",
+   "article-title": "WeedMap: a large-scale semantic weed mapping framework using aerial multispectral imaging and deep neural network for precision farming",
+   "volume": "10",
+   "author": "Sa",
+   "year": "2018",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0450",
+   "doi-asserted-by": "crossref",
+   "first-page": "53",
+   "DOI": "10.1016/j.compag.2019.03.028",
+   "article-title": "A framework for the management of agricultural resources with automated aerial imagery detection",
+   "volume": "162",
+   "author": "Saldana Ochoa",
+   "year": "2019",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0455",
+   "doi-asserted-by": "crossref",
+   "first-page": "126",
+   "DOI": "10.1016/j.compag.2019.04.009",
+   "article-title": "Development of a positioning system using UAV-based computer vision for an airboat navigation in paddy field",
+   "volume": "162",
+   "author": "Liu",
+   "year": "2019",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0460",
+   "doi-asserted-by": "crossref",
+   "first-page": "5345",
+   "DOI": "10.1080/01431161.2017.1410300",
+   "article-title": "What good are unmanned aircraft systems for agricultural remote sensing and precision agriculture?",
+   "volume": "39",
+   "author": "Hunt",
+   "year": "2017",
+   "journal-title": "Int J Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0465",
+   "doi-asserted-by": "crossref",
+   "first-page": "855",
+   "DOI": "10.3390/rs11070855",
+   "article-title": "UAV-based automatic detection and monitoring of chestnut trees",
+   "volume": "11",
+   "author": "Marques",
+   "year": "2019",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0470",
+   "doi-asserted-by": "crossref",
+   "first-page": "278",
+   "DOI": "10.1016/j.compag.2019.02.011",
+   "article-title": "Validation of agronomic UAV and field measurements for tomato varieties",
+   "volume": "158",
+   "author": "Enciso",
+   "year": "2019",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0475",
+   "doi-asserted-by": "crossref",
+   "first-page": "49",
+   "DOI": "10.1016/j.compag.2017.10.006",
+   "article-title": "Mapping skips in sugarcane fields using object-based analysis of unmanned aerial vehicle (UAV) images",
+   "volume": "143",
+   "author": "Souza",
+   "year": "2017",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0480",
+   "doi-asserted-by": "crossref",
+   "first-page": "1",
+   "DOI": "10.3390/s19132880",
+   "article-title": "Decision support system for variable rate irrigation based on UAV multispectral remote sensing",
+   "volume": "19",
+   "author": "Shi",
+   "year": "2019",
+   "journal-title": "Sensors"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0485",
+   "doi-asserted-by": "crossref",
+   "first-page": "712",
+   "DOI": "10.3390/rs10050712",
+   "article-title": "Improving the accuracy of remotely sensed irrigated areas using post-classification enhancement through UAV capability",
+   "volume": "10",
+   "author": "Nhamo",
+   "year": "2018",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0490",
+   "doi-asserted-by": "crossref",
+   "first-page": "31",
+   "DOI": "10.1016/j.compag.2019.03.025",
+   "article-title": "Automatic delivery and recovery system of Wireless Sensor Networks (WSN) nodes based on UAV for agricultural applications",
+   "volume": "162",
+   "author": "Ouyang",
+   "year": "2019",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0495",
+   "doi-asserted-by": "crossref",
+   "first-page": "61",
+   "DOI": "10.1016/j.rse.2019.03.025",
+   "article-title": "UAV data as alternative to field sampling to map woody invasive species based on combined Sentinel-1 and Sentinel-2 data",
+   "volume": "227",
+   "author": "Kattenborn",
+   "year": "2019",
+   "journal-title": "Remote Sens Environ"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0500",
+   "doi-asserted-by": "crossref",
+   "first-page": "1110",
+   "DOI": "10.3390/rs9111110",
+   "article-title": "Hyperspectral imaging: a review on UAV-based sensors, data processing and applications for agriculture and forestry",
+   "volume": "9",
+   "author": "Ad\u00e3o",
+   "year": "2017",
+   "journal-title": "Remote Sens"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0505",
+   "doi-asserted-by": "crossref",
+   "first-page": "220",
+   "DOI": "10.1016/j.compag.2018.04.023",
+   "article-title": "Detection and classification of citrus diseases in agriculture based on optimized weighted segmentation and feature selection",
+   "volume": "150",
+   "author": "Sharif",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0510",
+   "first-page": "1",
+   "article-title": "Reflections on the construction of grass-roots young agricultural talents in the process of agricultural modernization",
+   "volume": "9",
+   "author": "Yi Un",
+   "year": "2018",
+   "journal-title": "Modern Rural Sci Technol"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0515",
+   "doi-asserted-by": "crossref",
+   "first-page": "57",
+   "DOI": "10.15302/J-SSCAE-2018.06.009",
+   "article-title": "Foresight of disruptive technologies in agricultural engineering",
+   "volume": "20",
+   "author": "Shaozhong",
+   "year": "2018",
+   "journal-title": "Chinese J Eng Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0520",
+   "article-title": "Discussion on computer vision technology in agricultural automation",
+   "volume": "1",
+   "author": "Mingyang",
+   "year": "2018",
+   "journal-title": "J Agric Mech Res"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0525",
+   "first-page": "1",
+   "article-title": "Application of computer vision technology in agriculture",
+   "volume": "3",
+   "author": "Wenying",
+   "year": "2018",
+   "journal-title": "Modern Rural Sci Technol"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0530",
+   "doi-asserted-by": "crossref",
+   "first-page": "1823",
+   "DOI": "10.1016/j.jclepro.2017.03.237",
+   "article-title": "Agriculture and degrowth: state of the art and assessment of organic and biotech-based agriculture from a degrowth perspective",
+   "volume": "197",
+   "author": "Gomiero",
+   "year": "2018",
+   "journal-title": "J Cleaner Prod"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0535",
+   "doi-asserted-by": "crossref",
+   "first-page": "104",
+   "DOI": "10.1016/j.compag.2018.06.004",
+   "article-title": "Model predictive control and its application in agriculture: a review",
+   "volume": "151",
+   "author": "Ding",
+   "year": "2018",
+   "journal-title": "Comput Electron Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0540",
+   "doi-asserted-by": "crossref",
+   "first-page": "47",
+   "DOI": "10.3390/agriculture8040047",
+   "article-title": "Smart machines, remote sensing, precision farming, processes, mechatronic, materials and policies for safety and health aspects",
+   "volume": "8",
+   "author": "Colantoni",
+   "year": "2018",
+   "journal-title": "Agriculture"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0545",
+   "doi-asserted-by": "crossref",
+   "first-page": "1010",
+   "DOI": "10.3390/su9061010",
+   "article-title": "iPathology: robotic applications and management of plants and plant diseases",
+   "volume": "9",
+   "author": "Ampatzidis",
+   "year": "2017",
+   "journal-title": "Sustainability"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0550",
+   "doi-asserted-by": "crossref",
+   "first-page": "39",
+   "DOI": "10.1108/CAER-05-2017-0093",
+   "article-title": "General review of intelligent agriculture development in China",
+   "volume": "11",
+   "author": "Shi",
+   "year": "2019",
+   "journal-title": "China Agric Econ Rev"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0555",
+   "doi-asserted-by": "crossref",
+   "first-page": "012030",
+   "DOI": "10.1088/1755-1315/185/1/012030",
+   "article-title": "Significance of cultivation of new agricultural management subjects for the development goal of modern agriculture: a perspective review",
+   "volume": "185",
+   "author": "Chen",
+   "year": "2018",
+   "journal-title": "IOP Conf Ser: Earth Environ Sci"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0560",
+   "doi-asserted-by": "crossref",
+   "first-page": "188",
+   "DOI": "10.1007/s11036-017-0930-x",
+   "article-title": "Botanical internet of things: toward smart indoor farming by connecting people, plant, data and clouds",
+   "volume": "23",
+   "author": "Yang",
+   "year": "2017",
+   "journal-title": "Mobile Netw Appl"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0565",
+   "first-page": "1",
+   "article-title": "Promoting sustainable intensification in precision agriculture: review of decision support systems development and strategies",
+   "author": "Jessica Lindblom",
+   "year": "2016",
+   "journal-title": "Precis Agric"
+  },
+  {
+   "key": "10.1016/j.inpa.2019.09.006_b0570",
+   "doi-asserted-by": "crossref",
+   "first-page": "883",
+   "DOI": "10.1016/j.tplants.2018.07.004",
+   "article-title": "Deep learning for plant stress phenotyping: trends and future perspectives",
+   "volume": "23",
+   "author": "Singh",
+   "year": "2018",
+   "journal-title": "Trends Plant Sci"
+  }
+ ],
+ "container-title": [
+  "Information Processing in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2214317319301751?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S2214317319301751?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    11,
+    1
+   ]
+  ],
+  "date-time": "2025-11-01T12:18:53Z",
+  "timestamp": 1761999533000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S2214317319301751"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2020,
+    3
+   ]
+  ]
+ },
+ "references-count": 114,
+ "journal-issue": {
+  "issue": "1",
+  "published-print": {
+   "date-parts": [
+    [
+     2020,
+     3
+    ]
+   ]
+  }
+ },
+ "alternative-id": [
+  "S2214317319301751"
+ ],
+ "URL": "https://doi.org/10.1016/j.inpa.2019.09.006",
+ "relation": {},
+ "ISSN": [
+  "2214-3173"
+ ],
+ "issn-type": [
+  {
+   "value": "2214-3173",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2020,
+    3
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "Computer vision technology in agricultural automation \u2014A review",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Information Processing in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.inpa.2019.09.006",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2019 China Agricultural University. Production and hosting by Elsevier B.V. on behalf of KeAi.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ]
+}

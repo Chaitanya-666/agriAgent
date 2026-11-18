@@ -1,0 +1,354 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    14
+   ]
+  ],
+  "date-time": "2026-11-14T02:53:13Z",
+  "timestamp": 1794624793192,
+  "version": "4.9.1"
+ },
+ "reference-count": 0,
+ "publisher": "IEEE",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      6,
+      16
+     ]
+    ],
+    "date-time": "2024-06-16T00:00:00Z",
+    "timestamp": 1718496000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-029"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2024,
+      6,
+      16
+     ]
+    ],
+    "date-time": "2024-06-16T00:00:00Z",
+    "timestamp": 1718496000000
+   },
+   "content-version": "stm-asf",
+   "delay-in-days": 0,
+   "URL": "https://doi.org/10.15223/policy-037"
+  }
+ ],
+ "content-domain": {
+  "domain": [],
+  "crossmark-restriction": false
+ },
+ "short-container-title": [],
+ "published-print": {
+  "date-parts": [
+   [
+    2024,
+    6,
+    16
+   ]
+  ]
+ },
+ "DOI": "10.1109/cvpr52733.2024.01836",
+ "type": "proceedings-article",
+ "created": {
+  "date-parts": [
+   [
+    2024,
+    9,
+    16
+   ]
+  ],
+  "date-time": "2024-09-16T17:34:53Z",
+  "timestamp": 1726508093000
+ },
+ "page": "19412-19424",
+ "source": "Crossref",
+ "is-referenced-by-count": 154,
+ "title": [
+  "BioCLIP: A Vision Foundation Model for the Tree of Life"
+ ],
+ "prefix": "10.1109",
+ "author": [
+  {
+   "given": "Samuel",
+   "family": "Stevens",
+   "sequence": "first",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Jiaman",
+   "family": "Wu",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Matthew J",
+   "family": "Thompson",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Elizabeth G",
+   "family": "Campolongo",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Chan Hee",
+   "family": "Song",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "David Edward",
+   "family": "Carlyn",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Li",
+   "family": "Dong",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Microsoft Research"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Wasila M",
+   "family": "Dahdul",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "University of California,Irvine"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Charles",
+   "family": "Stewart",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "Rensselaer Polytechnic Institute"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Tanya",
+   "family": "Berger-Wolf",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Wei-Lun",
+   "family": "Chao",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Yu",
+   "family": "Su",
+   "sequence": "additional",
+   "affiliation": [
+    {
+     "name": "The Ohio State University"
+    }
+   ],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "263",
+ "event": {
+  "name": "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)",
+  "location": "Seattle, WA, USA",
+  "start": {
+   "date-parts": [
+    [
+     2024,
+     6,
+     16
+    ]
+   ]
+  },
+  "end": {
+   "date-parts": [
+    [
+     2024,
+     6,
+     22
+    ]
+   ]
+  }
+ },
+ "container-title": [
+  "2024 IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR)"
+ ],
+ "original-title": [],
+ "link": [
+  {
+   "URL": "http://xplorestaging.ieee.org/ielx8/10654794/10654797/10655059.pdf?arnumber=10655059",
+   "content-type": "unspecified",
+   "content-version": "vor",
+   "intended-application": "similarity-checking"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2024,
+    9,
+    16
+   ]
+  ],
+  "date-time": "2024-09-16T18:07:16Z",
+  "timestamp": 1726510036000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://ieeexplore.ieee.org/document/10655059/"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2024,
+    6,
+    16
+   ]
+  ]
+ },
+ "references-count": 0,
+ "URL": "https://doi.org/10.1109/cvpr52733.2024.01836",
+ "relation": {},
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2024,
+    6,
+    16
+   ]
+  ]
+ }
+}

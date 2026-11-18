@@ -1,0 +1,619 @@
+{
+ "indexed": {
+  "date-parts": [
+   [
+    2026,
+    11,
+    10
+   ]
+  ],
+  "date-time": "2026-11-10T16:40:11Z",
+  "timestamp": 1794328811006,
+  "version": "4.9.0"
+ },
+ "reference-count": 40,
+ "publisher": "Elsevier BV",
+ "license": [
+  {
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2019-02-01T00:00:00Z",
+    "timestamp": 1548979200000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/tdm/userlicense/1.0/"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2019,
+      2,
+      1
+     ]
+    ],
+    "date-time": "2019-02-01T00:00:00Z",
+    "timestamp": 1548979200000
+   },
+   "content-version": "tdm",
+   "delay-in-days": 0,
+   "URL": "https://www.elsevier.com/legal/tdmrep-license"
+  },
+  {
+   "start": {
+    "date-parts": [
+     [
+      2018,
+      12,
+      26
+     ]
+    ],
+    "date-time": "2018-12-26T00:00:00Z",
+    "timestamp": 1545782400000
+   },
+   "content-version": "vor",
+   "delay-in-days": 0,
+   "URL": "http://creativecommons.org/licenses/by/4.0/"
+  }
+ ],
+ "content-domain": {
+  "domain": [
+   "elsevier.com",
+   "sciencedirect.com"
+  ],
+  "crossmark-restriction": true
+ },
+ "short-container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "published-print": {
+  "date-parts": [
+   [
+    2019,
+    2
+   ]
+  ]
+ },
+ "DOI": "10.1016/j.compag.2018.12.048",
+ "type": "journal-article",
+ "created": {
+  "date-parts": [
+   [
+    2019,
+    1,
+    11
+   ]
+  ],
+  "date-time": "2019-01-11T02:31:25Z",
+  "timestamp": 1547173885000
+ },
+ "page": "339-350",
+ "update-policy": "https://doi.org/10.1016/elsevier_cm_policy",
+ "source": "Crossref",
+ "is-referenced-by-count": 412,
+ "special_numbering": "C",
+ "title": [
+  "Development and evaluation of a low-cost and smart technology for precision weed management utilizing artificial intelligence"
+ ],
+ "prefix": "10.1016",
+ "volume": "157",
+ "author": [
+  {
+   "given": "Victor",
+   "family": "Partel",
+   "sequence": "first",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Sri",
+   "family": "Charan Kakarla",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  },
+  {
+   "given": "Yiannis",
+   "family": "Ampatzidis",
+   "sequence": "additional",
+   "affiliation": [],
+   "role": [
+    {
+     "vocabulary": "crossref",
+     "role": "author"
+    }
+   ]
+  }
+ ],
+ "member": "78",
+ "reference": [
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0005",
+   "doi-asserted-by": "crossref",
+   "first-page": "203",
+   "DOI": "10.1016/j.compag.2018.10.016",
+   "article-title": "Evaluating the performance of spectral features and multivariate analysis tools to detect laurel wilt disease and nutritional deficiency in avocado",
+   "volume": "155",
+   "author": "Abdulridha",
+   "year": "2018",
+   "journal-title": "Comput. Electronics Agri."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0010",
+   "doi-asserted-by": "crossref",
+   "first-page": "549",
+   "DOI": "10.1016/j.compag.2018.12.018",
+   "article-title": "A remote sensing technique for detecting laurel wilt disease in avocado in presence of other biotic and abiotic stresses",
+   "volume": "156",
+   "author": "Abdulridha",
+   "year": "2019",
+   "journal-title": "Comput. Electronics Agri."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2018.12.048_b0015",
+   "doi-asserted-by": "crossref",
+   "first-page": "157",
+   "DOI": "10.1016/S0168-1699(03)00076-0",
+   "article-title": "Weed and crop discrimination using image analysis and artificial intelligence methods",
+   "volume": "39",
+   "author": "Aitkenhead",
+   "year": "2003",
+   "journal-title": "Comput. Electronics Agri."
+  },
+  {
+   "issue": "6",
+   "key": "10.1016/j.compag.2018.12.048_b0020",
+   "doi-asserted-by": "crossref",
+   "first-page": "1010",
+   "DOI": "10.3390/su9061010",
+   "article-title": "iPathology: robotic applications and management of plants and plant diseases",
+   "volume": "9",
+   "author": "Ampatzidis",
+   "year": "2017",
+   "journal-title": "Sustainability"
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0025",
+   "unstructured": "Ampatzidis Y., and Cruz A.C., 2018. Plant disease detection utilizing artificial intelligence and remote sensing. International Congress of Plant Pathology (ICPP) 2018: Plant Health in a Global Economy, July 29 \u2013 August 3, Boston, USA."
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2018.12.048_b0030",
+   "doi-asserted-by": "crossref",
+   "first-page": "421",
+   "DOI": "10.3390/su10020421",
+   "article-title": "Voice-Controlled and Wireless Solid Set Canopy Delivery (VCW-SSCD) system for mist-cooling",
+   "volume": "10",
+   "author": "Ampatzidis",
+   "year": "2018",
+   "journal-title": "Sustainability"
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0035",
+   "unstructured": "Ampatzidis Y., Vougioukas S., Blackmore S. and Bochtis D., 2006. An Object- Oriented Asynchronous Kalman Filter with Outlier Rejection for Autonomous Tractor Navigation. In: Proceedings of the XVI CIGR World Congress (International Commission of Agricultural Engineering) Bonn, Germany (September 3-7)."
+  },
+  {
+   "issue": "9",
+   "key": "10.1016/j.compag.2018.12.048_b0040",
+   "doi-asserted-by": "crossref",
+   "first-page": "1339",
+   "DOI": "10.3390/su9081339",
+   "article-title": "Precision agriculture technologies positively contributing to GHG emissions mitigation\u2019, farm productivity and economics",
+   "volume": "2017",
+   "author": "Balafoutis",
+   "year": "2017",
+   "journal-title": "Sustainability"
+  },
+  {
+   "issue": "4",
+   "key": "10.1016/j.compag.2018.12.048_b0045",
+   "first-page": "4",
+   "article-title": "See & spray: the next generation of weed control",
+   "volume": "24",
+   "author": "Chostner",
+   "year": "2017",
+   "journal-title": "Res. Mag."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2018.12.048_b0050",
+   "doi-asserted-by": "crossref",
+   "first-page": "611",
+   "DOI": "10.1614/WT-D-14-00101.1",
+   "article-title": "Performance of postemergence herbicides applied at different carrier volume rates",
+   "volume": "29",
+   "author": "Creech",
+   "year": "2017",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0055",
+   "doi-asserted-by": "crossref",
+   "first-page": "63",
+   "DOI": "10.1016/j.compag.2018.12.028",
+   "article-title": "Detection of grapevine yellows symptoms in vitis vinifera L. with artificial intelligence",
+   "volume": "157",
+   "author": "Cruz",
+   "year": "2019",
+   "journal-title": "Comput. Electron. Agri."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0060",
+   "article-title": "X-FIDO: an effective application for detecting olive quick decline syndrome with novel deep learning methods",
+   "volume": "10",
+   "author": "Cruz",
+   "year": "2017",
+   "journal-title": "Front. Plant Sci."
+  },
+  {
+   "issue": "6405",
+   "key": "10.1016/j.compag.2018.12.048_b0065",
+   "doi-asserted-by": "crossref",
+   "first-page": "916",
+   "DOI": "10.1126/science.aat3466",
+   "article-title": "Increase in crop losses to insect pests in a warming climate",
+   "volume": "361",
+   "author": "Deutsch",
+   "year": "2018",
+   "journal-title": "Science"
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2018.12.048_b0070",
+   "first-page": "3130",
+   "article-title": "The 2010 european union report on pesticide residues in food",
+   "volume": "11",
+   "author": "Efsa",
+   "year": "2013",
+   "journal-title": "EFSA J."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0075",
+   "unstructured": "Embedded Systems Developer Kits, Modules, & SDKs _ NVIDIA Jetson. (n.d.).Retrieved October25, 2018, from <https://www.nvidia.com/en-us/autonomous-machines/embedded-systems-dev-kits-modules/?section=jetsonTX2>."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0080",
+   "doi-asserted-by": "crossref",
+   "first-page": "259",
+   "DOI": "10.1111/wre.12307",
+   "article-title": "Is the current state-of-the-art of weed monitoring suitable for site-specific weed management in arable crops?",
+   "volume": "58",
+   "author": "Fernandez-Quintanilla",
+   "year": "2018",
+   "journal-title": "Weed Res."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0085",
+   "series-title": "Introduction to integrated pest management",
+   "author": "Flint",
+   "year": "1981"
+  },
+  {
+   "issue": "2",
+   "key": "10.1016/j.compag.2018.12.048_b0090",
+   "doi-asserted-by": "crossref",
+   "first-page": "559",
+   "DOI": "10.1614/WT-06-130.1",
+   "article-title": "The value of herbicides in U.S. crop production",
+   "volume": "21",
+   "author": "Gianessi",
+   "year": "2007",
+   "journal-title": "Weed Technol."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0095",
+   "unstructured": "GTX 1070 Ti Gaming Graphics Card _ NVIDIA GeForce.(n.d.).Retrieved October25, 2018, from <https://www.nvidia.com/en-us/geforce/products/10series/geforce-gtx-1070-ti/>."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2018.12.048_b0100",
+   "doi-asserted-by": "crossref",
+   "first-page": "317",
+   "DOI": "10.1016/j.bmc.2015.12.014",
+   "article-title": "Synthetic approaches to the 2010\u20132014 new agrochemicals",
+   "volume": "24",
+   "author": "Jeanmart",
+   "year": "2016",
+   "journal-title": "Bioorg. Medi. Chem."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0105",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Kargar B. A. H., Shirzadifar A. M., 2013. Automatic weed detection system and smart herbicide sprayer robot for corn fields. In: 2013 First RSI/ISM International Conference on Robotics and Mechatronics (ICRoM), pp. 468-473, Tehran, Iran, Feb 13-15, 2013.",
+   "DOI": "10.1109/ICRoM.2013.6510152"
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2018.12.048_b0110",
+   "doi-asserted-by": "crossref",
+   "first-page": "10",
+   "DOI": "10.1094/PDIS-05-15-0574-FE",
+   "article-title": "Toward a reduced reliance on conventional pesticides in european agriculture",
+   "volume": "100",
+   "author": "Lamichhane",
+   "year": "2016",
+   "journal-title": "Plant Disease"
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0115",
+   "doi-asserted-by": "crossref",
+   "first-page": "95",
+   "DOI": "10.1023/A:1009977903204",
+   "article-title": "Robotic weed control system for tomatoes",
+   "volume": "1",
+   "author": "Lee",
+   "year": "1999",
+   "journal-title": "Precis. Agric."
+  },
+  {
+   "issue": "8",
+   "key": "10.1016/j.compag.2018.12.048_b0120",
+   "doi-asserted-by": "crossref",
+   "first-page": "831",
+   "DOI": "10.3390/su8080831",
+   "article-title": "Plant pathology and information technology: opportunity and uncertainty in pest management",
+   "volume": "8",
+   "author": "Luvisi",
+   "year": "2016",
+   "journal-title": "Sustainability"
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0125",
+   "unstructured": "McCarthy C., Rees S., and Baillie C., 2010. Machine vision-based weed spot spraying: a review and where next for sugarcane. In: 32nd Annual Conference of the Australian Society of Sugar Cane Technologists (ASSCT 2010), 11-14 May 2010, Bundaberg, Australia."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0130",
+   "doi-asserted-by": "crossref",
+   "first-page": "451",
+   "DOI": "10.1007/s10658-017-1386-3",
+   "article-title": "A multiple disease test for field-based phenotyping of resistances to Fusarium head blight, yellow rust and stem rust in wheat",
+   "volume": "2",
+   "author": "Miedaner",
+   "year": "2018",
+   "journal-title": "Eur. J. Plant Pathol."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0135",
+   "unstructured": "Moller J., 2010. Computer vision \u2013 a versatile technology in automation of agricultural machinery. In: 21 st. Annual Meeting, Bologna, EIMA International, Nov 13-14, 2010."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0140",
+   "first-page": "6",
+   "article-title": "Genetically engineered crops, glyphosate and the deterioration of health in the United States of America",
+   "volume": "9",
+   "author": "Swanson",
+   "year": "2014",
+   "journal-title": "J. Org. Sys."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0145",
+   "doi-asserted-by": "crossref",
+   "first-page": "621",
+   "DOI": "10.1146/annurev-ento-010814-021005",
+   "article-title": "Economic value of biological control in integrated pest management of managed plant systems",
+   "volume": "60",
+   "author": "Naranjo",
+   "year": "2015",
+   "journal-title": "Ann. Rev. Entomol."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2018.12.048_b0150",
+   "doi-asserted-by": "crossref",
+   "first-page": "31",
+   "DOI": "10.1017/S0021859605005708",
+   "article-title": "Crop losses to pests",
+   "volume": "144",
+   "author": "Oerke",
+   "year": "2006",
+   "journal-title": "J. Agri. Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0155",
+   "doi-asserted-by": "crossref",
+   "first-page": "301",
+   "DOI": "10.1002/ps.1015",
+   "article-title": "Herbicide resistant crops and weed resistance to herbicides",
+   "author": "Owen",
+   "year": "2005",
+   "journal-title": "Pest Manage. Sci."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0160",
+   "article-title": "Integration of plant defense traits with biological control of arthropod pests: challenges and opportunities",
+   "volume": "30",
+   "author": "Peterson",
+   "year": "2015",
+   "journal-title": "Front. Plant Sci."
+  },
+  {
+   "issue": "1",
+   "key": "10.1016/j.compag.2018.12.048_b0165",
+   "doi-asserted-by": "crossref",
+   "first-page": "152",
+   "DOI": "10.3390/insects6010152",
+   "article-title": "Integrated pest management for sustainable intensification of agriculture in Asia and Africa",
+   "volume": "6",
+   "author": "Pretty",
+   "year": "2015",
+   "journal-title": "Insects"
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0170",
+   "series-title": "Herbicide resistance in plants",
+   "author": "Powles",
+   "year": "1996"
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0175",
+   "series-title": "New Horizons in Insect Science: Towards Sustainable Pest Management",
+   "article-title": "Integrated pest management (IPM) for reducing pesticide residues in crops and natural resources",
+   "author": "Ranga",
+   "year": "2015"
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0180",
+   "doi-asserted-by": "crossref",
+   "unstructured": "Redmon J., Divvala S., Girshick R. and Farhadi A., 2016. You only look once: Unified, real-time object detection. In:The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), pp. 779-788",
+   "DOI": "10.1109/CVPR.2016.91"
+  },
+  {
+   "issue": "10",
+   "key": "10.1016/j.compag.2018.12.048_b0185",
+   "doi-asserted-by": "crossref",
+   "first-page": "759",
+   "DOI": "10.20546/ijcmas.2016.510.082",
+   "article-title": "Heavy metals contamination in water and their hazardous effect on human health-A review",
+   "volume": "5",
+   "author": "Sankhla",
+   "year": "2016",
+   "journal-title": "Int. J. Curr. Microbiol. App. Sci."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2018.12.048_b0190",
+   "doi-asserted-by": "crossref",
+   "first-page": "319",
+   "DOI": "10.1080/10798587.2015.1015781",
+   "article-title": "Technology application of smart spray in agriculture: a review",
+   "volume": "21",
+   "author": "Song",
+   "year": "2015",
+   "journal-title": "Intell. Automat. Soft Comput."
+  },
+  {
+   "issue": "3",
+   "key": "10.1016/j.compag.2018.12.048_b0195",
+   "first-page": "10",
+   "article-title": "Detection system of smart sprayer: Status, challenges, and perspectives",
+   "volume": "5",
+   "author": "Sun",
+   "year": "2012",
+   "journal-title": "Int. J. Agri. Biol. Eng."
+  },
+  {
+   "key": "10.1016/j.compag.2018.12.048_b0200",
+   "unstructured": "Wikipedia: <https://en.wikipedia.org/wiki/Precision_and_recall>"
+  }
+ ],
+ "container-title": [
+  "Computers and Electronics in Agriculture"
+ ],
+ "original-title": [],
+ "language": "en",
+ "link": [
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169918316612?httpAccept=text/xml",
+   "content-type": "text/xml",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  },
+  {
+   "URL": "https://api.elsevier.com/content/article/PII:S0168169918316612?httpAccept=text/plain",
+   "content-type": "text/plain",
+   "content-version": "vor",
+   "intended-application": "text-mining"
+  }
+ ],
+ "deposited": {
+  "date-parts": [
+   [
+    2025,
+    9,
+    29
+   ]
+  ],
+  "date-time": "2025-09-29T13:09:12Z",
+  "timestamp": 1759151352000
+ },
+ "score": 1,
+ "resource": {
+  "primary": {
+   "URL": "https://linkinghub.elsevier.com/retrieve/pii/S0168169918316612"
+  }
+ },
+ "subtitle": [],
+ "short-title": [],
+ "issued": {
+  "date-parts": [
+   [
+    2019,
+    2
+   ]
+  ]
+ },
+ "references-count": 40,
+ "alternative-id": [
+  "S0168169918316612"
+ ],
+ "URL": "https://doi.org/10.1016/j.compag.2018.12.048",
+ "relation": {},
+ "ISSN": [
+  "0168-1699"
+ ],
+ "issn-type": [
+  {
+   "value": "0168-1699",
+   "type": "print"
+  }
+ ],
+ "subject": [],
+ "published": {
+  "date-parts": [
+   [
+    2019,
+    2
+   ]
+  ]
+ },
+ "assertion": [
+  {
+   "value": "Elsevier",
+   "name": "publisher",
+   "label": "This article is maintained by"
+  },
+  {
+   "value": "Development and evaluation of a low-cost and smart technology for precision weed management utilizing artificial intelligence",
+   "name": "articletitle",
+   "label": "Article Title"
+  },
+  {
+   "value": "Computers and Electronics in Agriculture",
+   "name": "journaltitle",
+   "label": "Journal Title"
+  },
+  {
+   "value": "https://doi.org/10.1016/j.compag.2018.12.048",
+   "name": "articlelink",
+   "label": "CrossRef DOI link to publisher maintained version"
+  },
+  {
+   "value": "article",
+   "name": "content_type",
+   "label": "Content Type"
+  },
+  {
+   "value": "\u00a9 2018 The Authors. Published by Elsevier B.V.",
+   "name": "copyright",
+   "label": "Copyright"
+  }
+ ]
+}

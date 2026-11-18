@@ -1,0 +1,76 @@
+% ─────────────────────────────────────────────────────────────────────────────
+% Page layout and styles. This is the ONLY file to change when the department's
+% black-book template arrives (margins, fonts, spacing, headings, title page).
+% Matches the VJTI department Stage II report used as the format reference
+% (EXTERNALTEMPLATE/, not committed): A4, 12 pt Latin Modern, 1 in margins, default report
+% chapter style, header = CHAPTER N. TITLE, footer = report title | page number.
+% ─────────────────────────────────────────────────────────────────────────────
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{lmodern}
+\else
+  \usepackage{fontspec}
+\fi
+
+\usepackage[a4paper,margin=1in,headheight=15pt]{geometry}
+\usepackage{setspace}
+\setstretch{1.1}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\graphicspath{{figures/}}
+\usepackage{booktabs,tabularx,longtable,multirow,array}
+\usepackage{caption}
+\captionsetup{font=small,labelfont=bf,skip=6pt}
+\captionsetup[table]{position=top}
+\usepackage{float}
+\usepackage{enumitem}
+\setlist{nosep,leftmargin=*}
+\usepackage[table]{xcolor}
+\definecolor{accent}{HTML}{2F6B3A}
+\definecolor{muted}{HTML}{5B6470}
+\usepackage{tikz}
+\usetikzlibrary{positioning,arrows.meta,shapes.geometric,fit,calc}
+\usepackage{listings}
+\lstset{basicstyle=\ttfamily\footnotesize,breaklines=true,frame=single,rulecolor=\color{muted},
+  backgroundcolor=\color{black!3},columns=fullflexible,keepspaces=true}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\leftmark}
+\fancyfoot[L]{\small AgriAgent: A Safety-Gated Zero-Shot Vision Pipeline for Crop--Weed Spot Spraying}
+\fancyfoot[R]{\small\thepage}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\footrulewidth}{0.4pt}
+\fancypagestyle{plain}{\fancyhf{}\fancyfoot[C]{\thepage}\renewcommand{\headrulewidth}{0pt}\renewcommand{\footrulewidth}{0pt}}
+
+
+\usepackage[nottoc]{tocbibind}
+\usepackage[hidelinks]{hyperref}
+\usepackage{url}
+\urlstyle{same}
+
+% Helpers
+\newcommand{\code}[1]{\texttt{\small #1}}
+\newcommand{\src}[1]{\par\vspace{-2pt}{\raggedright\footnotesize\color{muted}Source: \nolinkurl{#1}\par}}
+\makeatletter\g@addto@macro{\UrlBreaks}{\do\_\do\,}\makeatother
+\newcommand{\frontchapter}[1]{\chapter*{#1}\addcontentsline{toc}{chapter}{#1}\markboth{\MakeUppercase{#1}}{}}
+% Front-matter page headed like the template: bold capitals, centred, no chapter break styling.
+\newcommand{\frontpage}[1]{\clearpage\thispagestyle{plain}\phantomsection\addcontentsline{toc}{chapter}{#1}%
+  \begin{center}\textbf{\MakeUppercase{#1}}\end{center}\vspace{0.5em}}
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcolumntype{R}{>{\raggedleft\arraybackslash}X}
+
+% \bstctlcite (from the IEEEtran bibliography docs) so IEEEtran.bst options work in the report class:
+% list at most 6 authors, else "et al.".
+\makeatletter
+\def\bstctlcite{\@ifnextchar[{\@bstctlcite}{\@bstctlcite[@auxout]}}
+\def\@bstctlcite[#1]#2{\@bsphack
+  \@for\@citeb:=#2\do{%
+    \edef\@citeb{\expandafter\@firstofone\@citeb}%
+    \if@filesw\immediate\write\csname #1\endcsname{\string\citation{\@citeb}}\fi}%
+  \@esphack}
+\makeatother
